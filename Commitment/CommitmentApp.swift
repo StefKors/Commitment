@@ -28,7 +28,6 @@ struct CommitmentApp: App {
 
     func commit() {
         print("commit!")
-
         git.commit(message: "testing commit \(Date.now.debugDescription)")
     }
 }
