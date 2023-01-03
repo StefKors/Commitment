@@ -37,12 +37,28 @@ class GitClient: ObservableObject {
         }
     }
 
-    func add() {
-        Shell.run("git add .", in: workspace)
-            .split(separator: "\n")
-            .forEach { line in
-                print(line)
-            }
+    func add(files: [String]? = nil) {
+        guard let files else {
+            // Add everything
+            Shell.run("git add .", in: workspace)
+                .split(separator: "\n")
+                .forEach { line in
+                    print(line)
+                }
+
+            return
+        }
+
+        // Stage provided file paths
+        for file in files {
+            // Stage file
+            Shell.run("git add \(file)", in: workspace)
+                .split(separator: "\n")
+                .forEach { line in
+                    print(line)
+                }
+        }
+
     }
 
     func commit(message: String) {

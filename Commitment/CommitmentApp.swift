@@ -14,20 +14,21 @@ struct CommitmentApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .ignoresSafeArea()
                 .environmentObject(git)
-                .toolbar {
-                    ToolbarItem {
-                        Button(action: commit, label: {
-                            Text("run git commit")
-                        })
-                    }
-                }
-        }.windowToolbarStyle(.unified)
-    }
-
-
-    func commit() {
-        print("commit!")
-        git.commit(message: "testing commit \(Date.now.debugDescription)")
+                .presentedWindowStyle(.hiddenTitleBar)
+                .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification), perform: { _ in
+                    // NSApp.mainWindow?.styleMask.remove(.titled)
+                    NSApp.mainWindow?.standardWindowButton(.zoomButton)?.isHidden = true
+                    NSApp.mainWindow?.standardWindowButton(.closeButton)?.isHidden = true
+                    NSApp.mainWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
+                    NSApp.mainWindow?.toolbar = nil
+                })
+                .frame(minWidth: 100, idealWidth: 200, maxWidth: 600,
+                       minHeight: 30, idealHeight: 30, maxHeight: 90,
+                       alignment: .center)
+        }
+        .windowStyle(.hiddenTitleBar)
+        .windowResizability(.contentSize)
     }
 }

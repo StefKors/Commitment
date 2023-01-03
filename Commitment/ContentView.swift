@@ -11,12 +11,8 @@ struct ContentView: View {
     @EnvironmentObject var git: GitClient
 
     var body: some View {
-        List(git.commitHistory(entries: 10), id: \.hash) { commit in
-            VStack(alignment: .leading) {
-                Text(commit.author)
-                Text(commit.message)
-            }.padding()
-        }
+        TextEditorView()
+            // .frame(width: 200, height: 300)
     }
 }
 
