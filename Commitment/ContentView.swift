@@ -9,10 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var git: GitClient
+    @State private var message: String = ""
 
     var body: some View {
-        TextEditorView()
-            // .frame(width: 200, height: 300)
+        HStack {
+            TextEditorView(message: $message)
+                .onSubmit { handleSubmit() }
+
+            Button(action: { handleSubmit() }) {
+                Text("Commit")
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(message.isEmpty)
+            
+        }
+        .scenePadding()
+    }
+
+    func handleSubmit() {
+        git.commit(message: message)
+        message = ""
     }
 }
 

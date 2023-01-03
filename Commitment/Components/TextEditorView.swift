@@ -9,32 +9,21 @@ import SwiftUI
 
 struct TextEditorView: View {
     @EnvironmentObject private var git: GitClient
-    @State private var message: String = ""
     private let placeholder: String = "Summary"
+
+    @Binding var message: String
+
     var body: some View {
-        HStack() {
-            TextField("CommitMessage", text: $message, prompt: Text(placeholder))
-                .onSubmit { handleSubmit() }
-                .textFieldStyle(.plain)
-                .multilineTextAlignment(.leading)
-
-            Button(action: { handleSubmit() }) {
-                Text("Commit")
-            }
-        }
-        .scenePadding()
-        .font(Font.custom("Inter-Regular", size: 18))
+        TextField("CommitMessage", text: $message, prompt: Text(placeholder))
+            .textFieldStyle(.plain)
+            .multilineTextAlignment(.leading)
+            .font(Font.custom("Inter-Regular", size: 18))
     }
 
-    func handleSubmit() {
-        print("submitting")
-        git.commit(message: message)
-        message = ""
-    }
 }
 
 struct TextEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        TextEditorView()
+        TextEditorView(message: .constant("Commit message"))
     }
 }
