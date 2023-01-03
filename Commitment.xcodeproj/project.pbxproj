@@ -14,6 +14,9 @@
 		8A48D12327FD9E2E007803D2 /* CommitmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D12227FD9E2E007803D2 /* CommitmentTests.swift */; };
 		8A48D12D27FD9E2F007803D2 /* CommitmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D12C27FD9E2F007803D2 /* CommitmentUITests.swift */; };
 		8A48D12F27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D12E27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift */; };
+		8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14127FDA8A0007803D2 /* Shell.swift */; };
+		8A48D14727FDAF16007803D2 /* GitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14627FDAF16007803D2 /* GitClient.swift */; };
+		8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14C27FDB6DF007803D2 /* BranchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		8A48D12827FD9E2F007803D2 /* CommitmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommitmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A48D12C27FD9E2F007803D2 /* CommitmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentUITests.swift; sourceTree = "<group>"; };
 		8A48D12E27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8A48D14127FDA8A0007803D2 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		8A48D14627FDAF16007803D2 /* GitClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitClient.swift; sourceTree = "<group>"; };
+		8A48D14C27FDB6DF007803D2 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BranchView.swift; path = Commitment/BranchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,7 @@
 		8A48D10427FD9E2D007803D2 = {
 			isa = PBXGroup;
 			children = (
+				8A48D14C27FDB6DF007803D2 /* BranchView.swift */,
 				8A48D10F27FD9E2D007803D2 /* Commitment */,
 				8A48D12127FD9E2E007803D2 /* CommitmentTests */,
 				8A48D12B27FD9E2F007803D2 /* CommitmentUITests */,
@@ -97,6 +104,8 @@
 			children = (
 				8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */,
 				8A48D11227FD9E2D007803D2 /* ContentView.swift */,
+				8A48D14127FDA8A0007803D2 /* Shell.swift */,
+				8A48D14627FDAF16007803D2 /* GitClient.swift */,
 				8A48D11427FD9E2E007803D2 /* Assets.xcassets */,
 				8A48D11927FD9E2E007803D2 /* Commitment.entitlements */,
 				8A48D11627FD9E2E007803D2 /* Preview Content */,
@@ -145,6 +154,8 @@
 			dependencies = (
 			);
 			name = Commitment;
+			packageProductDependencies = (
+			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +228,8 @@
 				Base,
 			);
 			mainGroup = 8A48D10427FD9E2D007803D2;
+			packageReferences = (
+			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,7 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */,
+				8A48D14727FDAF16007803D2 /* GitClient.swift in Sources */,
 				8A48D11327FD9E2D007803D2 /* ContentView.swift in Sources */,
+				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,7 +437,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Commitment/Preview Content\"";
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -448,7 +464,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Commitment/Preview Content\"";
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
