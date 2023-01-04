@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import Git
-
 
 class GitClient: ObservableObject {
     var workspace: String
@@ -73,45 +71,9 @@ class GitClient: ObservableObject {
             }
     }
 
-    func diff() {
-        // if let repository = try? GitRepository(atPath: "/Users/stefkors/Developer/Commitment"),
-        //    let referencesList = try? repository.listReferences(),
-        //    let status = try? repository.listStatus() {
-        //
-        //     for file in status.files {
-        //         print("\(file.state)")
-        //     }
-        //
-        //     // Iterate throw all references
-        //     for reference in referencesList {
-        //         // refs/remotes/origin/feature/feature1
-        //         print(reference.path)
-        //
-        //         // remotes/origin/feature/feature1
-        //         print(reference.name.fullName)
-        //
-        //         // origin/feature/feature1
-        //         print(reference.name.shortName)
-        //
-        //         // feature/feature1
-        //         print(reference.name.localName)
-        //
-        //         // feature1
-        //         print(reference.name.lastName)
-        //     }
-        // }
-
-
-        // added line
-
+    func diff() -> GitDiff? {
         let unifiedDiff = Shell.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
-        print("unifiedDiff ===== START")
-        print(unifiedDiff)
-        print("unifiedDiff ===== END")
-        let gitDiff = try? GitDiff(unifiedDiff: unifiedDiff)
-        print("gitDiff ===== START")
-        print(gitDiff)
-        print("gitDiff ===== END")
+        return try? GitDiff(unifiedDiff: unifiedDiff)
     }
 }
 

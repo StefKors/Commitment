@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A07612029658B4500D878DC /* Git in Frameworks */ = {isa = PBXBuildFile; productRef = 8A07611F29658B4500D878DC /* Git */; };
 		8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612529659EEE00D878DC /* GitDiff.swift */; };
 		8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612629659EEE00D878DC /* GitDiffHunkLineType.swift */; };
 		8A07612C29659EEE00D878DC /* GitDiffParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612729659EEE00D878DC /* GitDiffParser.swift */; };
@@ -112,7 +111,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A07612029658B4500D878DC /* Git in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +259,6 @@
 			);
 			name = Commitment;
 			packageProductDependencies = (
-				8A07611F29658B4500D878DC /* Git */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -336,7 +333,6 @@
 			);
 			mainGroup = 8A48D10427FD9E2D007803D2;
 			packageReferences = (
-				8A07611E29658B4500D878DC /* XCRemoteSwiftPackageReference "git-macos" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -738,25 +734,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8A07611E29658B4500D878DC /* XCRemoteSwiftPackageReference "git-macos" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/way-to-code/git-macos.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8A07611F29658B4500D878DC /* Git */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A07611E29658B4500D878DC /* XCRemoteSwiftPackageReference "git-macos" */;
-			productName = Git;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A48D10527FD9E2D007803D2 /* Project object */;
 }
