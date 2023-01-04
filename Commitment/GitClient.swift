@@ -107,7 +107,8 @@ class GitClient: ObservableObject {
         let diffLines = Shell.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
             .split(separator: "\n")
             .compactMap { line in
-                // print(line)
+                // print(line)/
+                // print("another")
 
                 let text = String(line)
 
