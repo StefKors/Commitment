@@ -128,9 +128,7 @@ class GitClient: ObservableObject {
     }
 }
 
-
-
-struct GitDiffLine {
+struct GitDiffLine: CustomDebugStringConvertible {
     let text: String
     let type: LineType
     let originalLineNumber: Int?
@@ -154,6 +152,10 @@ struct GitDiffLine {
         /// When comparing two files, diff finds sequences of lines common to both files, interspersed with groups of differing lines called hunks.
         /// https://www.gnu.org/software/diffutils/manual/html_node/Hunks.html
         // case Hunk = "
+    }
+
+    var debugDescription: String {
+        return text
     }
 }
 
