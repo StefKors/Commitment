@@ -14,9 +14,10 @@ struct TextEditorView: View {
     @Binding var message: String
 
     var body: some View {
-        TextField("CommitMessage", text: $message, prompt: Text(placeholder))
-            .textFieldStyle(.plain)
+        TextField("CommitMessage", text: $message, prompt: Text(placeholder), axis: .vertical)
+            .lineLimit(1...20)
             .multilineTextAlignment(.leading)
+            .textFieldStyle(.plain)
             .font(Font.custom("Inter-Regular", size: 18))
     }
 

@@ -21,7 +21,7 @@ struct ContentView: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(message.isEmpty)
-            
+
         }
         .scenePadding()
     }
