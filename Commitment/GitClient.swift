@@ -156,7 +156,7 @@ struct GitDiffLine: CustomDebugStringConvertible {
     }
 
     var debugDescription: String {
-        return "GitDiffLine(\"\(text)\")"
+        return "GitDiffLine(\(text))"
     }
 }
 
