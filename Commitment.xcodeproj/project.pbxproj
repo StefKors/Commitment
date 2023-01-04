@@ -72,7 +72,7 @@
 		8A48D12E27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A48D14127FDA8A0007803D2 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		8A48D14627FDAF16007803D2 /* GitClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitClient.swift; sourceTree = "<group>"; };
-		8A48D14C27FDB6DF007803D2 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BranchView.swift; path = Commitment/BranchView.swift; sourceTree = "<group>"; };
+		8A48D14C27FDB6DF007803D2 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
 		8A8C6659296464B400A774D7 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		8A8C665B296464E300A774D7 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		8A8C665E2964682B00A774D7 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
@@ -126,7 +126,6 @@
 		8A48D10427FD9E2D007803D2 = {
 			isa = PBXGroup;
 			children = (
-				8A48D14C27FDB6DF007803D2 /* BranchView.swift */,
 				8A8C665D2964682B00A774D7 /* Fonts */,
 				8A48D10F27FD9E2D007803D2 /* Commitment */,
 				8A48D12127FD9E2E007803D2 /* CommitmentTests */,
@@ -189,6 +188,7 @@
 		8A8C6658296464A700A774D7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8A48D14C27FDB6DF007803D2 /* BranchView.swift */,
 				8A8C6659296464B400A774D7 /* HistoryView.swift */,
 				8A8C665B296464E300A774D7 /* TextEditorView.swift */,
 			);

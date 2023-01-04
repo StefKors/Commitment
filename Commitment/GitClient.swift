@@ -74,7 +74,7 @@ class GitClient: ObservableObject {
     }
 
     func diff() {
-        let repository = try? GitRepository(atPath: workspace)
+        let repository = try? GitRepository(atPath: "/Users/stefkors/Developer/Commitment")
         print("repository, \(repository.debugDescription) \(workspace)")
         if
         // #1. git for-each-ref
