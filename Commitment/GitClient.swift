@@ -70,6 +70,14 @@ class GitClient: ObservableObject {
                 print(line)
             }
     }
+
+    func diff() {
+        Shell.run("git diff", in: workspace)
+            .split(separator: "\n")
+            .forEach { line in
+                print(line)
+            }
+    }
 }
 
 extension GitClient {

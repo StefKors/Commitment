@@ -27,6 +27,7 @@ struct ContentView: View {
     }
 
     func handleSubmit() {
+        git.diff()
         git.commit(message: message)
         message = ""
     }
