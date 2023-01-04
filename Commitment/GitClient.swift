@@ -74,32 +74,32 @@ class GitClient: ObservableObject {
     }
 
     func diff() {
-        if let repository = try? GitRepository(atPath: "/Users/stefkors/Developer/Commitment"),
-           let referencesList = try? repository.listReferences(),
-           let status = try? repository.listStatus() {
-
-            for file in status.files {
-                print("\(file.state)")
-            }
-
-            // Iterate throw all references
-            for reference in referencesList {
-                // refs/remotes/origin/feature/feature1
-                print(reference.path)
-
-                // remotes/origin/feature/feature1
-                print(reference.name.fullName)
-
-                // origin/feature/feature1
-                print(reference.name.shortName)
-
-                // feature/feature1
-                print(reference.name.localName)
-
-                // feature1
-                print(reference.name.lastName)
-            }
-        }
+        // if let repository = try? GitRepository(atPath: "/Users/stefkors/Developer/Commitment"),
+        //    let referencesList = try? repository.listReferences(),
+        //    let status = try? repository.listStatus() {
+        // 
+        //     for file in status.files {
+        //         print("\(file.state)")
+        //     }
+        // 
+        //     // Iterate throw all references
+        //     for reference in referencesList {
+        //         // refs/remotes/origin/feature/feature1
+        //         print(reference.path)
+        // 
+        //         // remotes/origin/feature/feature1
+        //         print(reference.name.fullName)
+        // 
+        //         // origin/feature/feature1
+        //         print(reference.name.shortName)
+        // 
+        //         // feature/feature1
+        //         print(reference.name.localName)
+        // 
+        //         // feature1
+        //         print(reference.name.lastName)
+        //     }
+        // }
 
 
         Shell.run("git diff", in: workspace)

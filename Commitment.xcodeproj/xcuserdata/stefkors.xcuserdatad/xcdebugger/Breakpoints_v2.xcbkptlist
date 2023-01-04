@@ -3,4 +3,54 @@
    uuid = "EE9CCD2D-37AE-41EA-BD99-19327FA651D9"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61DFEDD6-9942-4596-B888-C631DEC9DD4B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Library/Developer/Xcode/DerivedData/Commitment-fbyftvhrankkywcyoukllkdikijl/SourcePackages/checkouts/git-macos/Sources/Classes/Tasks/RepositoryTask.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "run()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "61DFEDD6-9942-4596-B888-C631DEC9DD4B - d6c7810c57eaa56a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Git.RepositoryTask.run() throws -&gt; ()"
+                  moduleName = "Commitment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefkors/Library/Developer/Xcode/DerivedData/Commitment-fbyftvhrankkywcyoukllkdikijl/SourcePackages/checkouts/git-macos/Sources/Classes/Tasks/RepositoryTask.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "2236">
+               </Location>
+               <Location
+                  uuid = "61DFEDD6-9942-4596-B888-C631DEC9DD4B - f6c2cb5d8857e5c0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String) -&gt; () in Git.RepositoryTask.run() throws -&gt; ()"
+                  moduleName = "Commitment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/stefkors/Library/Developer/Xcode/DerivedData/Commitment-fbyftvhrankkywcyoukllkdikijl/SourcePackages/checkouts/git-macos/Sources/Classes/Tasks/RepositoryTask.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "232">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
