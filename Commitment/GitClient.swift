@@ -108,6 +108,10 @@ class GitClient: ObservableObject {
         print("unifiedDiff ===== START")
         print(unifiedDiff)
         print("unifiedDiff ===== END")
+        let gitDiff = try? GitDiff(unifiedDiff: unifiedDiff)
+        print("gitDiff ===== START")
+        print(gitDiff)
+        print("gitDiff ===== END")
     }
 }
 
