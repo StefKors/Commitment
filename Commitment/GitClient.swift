@@ -104,25 +104,35 @@ class GitClient: ObservableObject {
 
         // added line
 
-        let diffLines = Shell.run("git diff --no-ext-diff --no-color", in: workspace)
+        let diffLines = Shell.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
             .split(separator: "\n")
-            .map { line in
+            .compactMap { line in
                 print(line)
-                return line
+
+                let text = String(line)
+
+                if text.starts(with: "+ ") {
+                    return GitDiffLine(
+                        text: text,
+                        type: .Add,
+                        originalLineNumber: nil,
+                        oldLineNumber: nil,
+                        newLineNumber: nil
+                    )
+                }
+
+                return nil
             }
+        print("-------------------")
+        print(diffLines.debugDescription)
     }
 }
 
-enum GitDiffLineType: String {
-    case Context
-    case Add
-    case Delete
-    case Hunk
-}
+
 
 struct GitDiffLine {
     let text: String
-    let type: GitDiffLineType
+    let type: LineType
     let originalLineNumber: Int?
     let oldLineNumber: Int?
     let newLineNumber: Int?
@@ -134,6 +144,16 @@ struct GitDiffLine {
 
     var content: String {
         String(self.text.prefix(1))
+    }
+
+    enum LineType: String {
+        case Add = "+"
+        case Delete = "-"
+        case Context = " "
+
+        /// When comparing two files, diff finds sequences of lines common to both files, interspersed with groups of differing lines called hunks.
+        /// https://www.gnu.org/software/diffutils/manual/html_node/Hunks.html
+        // case Hunk = "
     }
 }
 
