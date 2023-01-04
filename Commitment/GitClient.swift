@@ -102,12 +102,37 @@ class GitClient: ObservableObject {
         // }
 
 
-
-        Shell.run("git diff --no-ext-diff", in: workspace)
+        // added line
+        let diffLines = Shell.run("git diff --no-ext-diff --word-diff=porcelain", in: workspace)
             .split(separator: "\n")
-            .forEach { line in
+            .map { line in
                 print(line)
+                return line
             }
+    }
+}
+
+enum GitDiffLineType: String {
+    case Context
+    case Add
+    case Delete
+    case Hunk
+}
+
+struct GitDiffLine {
+    let text: String
+    let type: GitDiffLineType
+    let originalLineNumber: Int?
+    let oldLineNumber: Int?
+    let newLineNumber: Int?
+    let noTrailingNewLine: Bool = false
+
+    var isIncludeableLine: Bool {
+        self.type == .Add || self.type == .Delete
+    }
+
+    var content: String {
+        String(self.text.prefix(1))
     }
 }
 
