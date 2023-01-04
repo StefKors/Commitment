@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class GitDiffHunk {
+public struct GitDiffHunk: CustomDebugStringConvertible {
     
     public let oldLineStart: Int
     
@@ -20,6 +20,13 @@ public class GitDiffHunk {
     public let lines: [GitDiffHunkLine]
     
     internal var description: String {
+        let header = "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@"
+        return lines.reduce(into: header) {
+            $0 += "\n\($1.description)"
+        }
+    }
+
+    public var debugDescription: String {
         let header = "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@"
         return lines.reduce(into: header) {
             $0 += "\n\($1.description)"
