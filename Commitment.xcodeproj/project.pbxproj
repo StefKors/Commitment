@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A07612029658B4500D878DC /* Git in Frameworks */ = {isa = PBXBuildFile; productRef = 8A07611F29658B4500D878DC /* Git */; };
 		8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */; };
 		8A48D11327FD9E2D007803D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D11227FD9E2D007803D2 /* ContentView.swift */; };
 		8A48D11527FD9E2E007803D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A48D11427FD9E2E007803D2 /* Assets.xcassets */; };
@@ -101,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A07612029658B4500D878DC /* Git in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +238,7 @@
 			);
 			name = Commitment;
 			packageProductDependencies = (
+				8A07611F29658B4500D878DC /* Git */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -310,6 +313,7 @@
 			);
 			mainGroup = 8A48D10427FD9E2D007803D2;
 			packageReferences = (
+				8A07611E29658B4500D878DC /* XCRemoteSwiftPackageReference "git-macos" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -706,6 +710,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A07611E29658B4500D878DC /* XCRemoteSwiftPackageReference "git-macos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/way-to-code/git-macos.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A07611F29658B4500D878DC /* Git */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A07611E29658B4500D878DC /* XCRemoteSwiftPackageReference "git-macos" */;
+			productName = Git;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A48D10527FD9E2D007803D2 /* Project object */;
 }

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Git
+
 
 class GitClient: ObservableObject {
     var workspace: String
@@ -72,6 +74,30 @@ class GitClient: ObservableObject {
     }
 
     func diff() {
+        if let repository = try? GitRepository(atPath: workspace),
+        // #1. git for-each-ref
+           let referencesList = try? repository.listReferences() {
+            
+            // Iterate throw all references
+            for reference in referencesList {
+                // refs/remotes/origin/feature/feature1
+                print(reference.path)
+                
+                // remotes/origin/feature/feature1
+                print(reference.name.fullName)
+                
+                // origin/feature/feature1
+                print(reference.name.shortName)
+                
+                // feature/feature1
+                print(reference.name.localName)
+                
+                // feature1
+                print(reference.name.lastName)
+            }
+        }
+
+
         Shell.run("git diff", in: workspace)
             .split(separator: "\n")
             .forEach { line in
