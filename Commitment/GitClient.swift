@@ -103,7 +103,8 @@ class GitClient: ObservableObject {
 
 
         // added line
-        let diffLines = Shell.run("git diff --no-ext-diff --word-diff=porcelain", in: workspace)
+
+        let diffLines = Shell.run("git diff --no-ext-diff --no-color --word-diff=porcelain", in: workspace)
             .split(separator: "\n")
             .map { line in
                 print(line)
