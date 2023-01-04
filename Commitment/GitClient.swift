@@ -104,28 +104,10 @@ class GitClient: ObservableObject {
 
         // added line
 
-        let diffLines = Shell.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
-            .split(separator: "\n")
-            .compactMap { line in
-                // print(line)/
-                // print("another")
-
-                let text = String(line)
-
-                if text.starts(with: "+ ") {
-                    return GitDiffLine(
-                        text: text,
-                        type: .Add,
-                        originalLineNumber: nil,
-                        oldLineNumber: nil,
-                        newLineNumber: nil
-                    )
-                }
-
-                return nil
-            }
-        print("-------------------")
-        print(diffLines.debugDescription)
+        let unifiedDiff = Shell.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
+        print("unifiedDiff ===== START")
+        print(unifiedDiff)
+        print("unifiedDiff ===== END")
     }
 }
 
