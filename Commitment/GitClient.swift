@@ -76,10 +76,9 @@ class GitClient: ObservableObject {
     func diff() {
         let repository = try? GitRepository(atPath: "/Users/stefkors/Developer/Commitment")
         print("repository, \(repository.debugDescription) \(workspace)")
-        if
-        // #1. git for-each-ref
-           let referencesList = try? repository?.listReferences() {
-            print("test")
+        if let referencesList = try? repository?.listReferences() {
+            let status = try? repository?.listStatus()
+            print("test \(status)")
 
             // Iterate throw all references
             for reference in referencesList {
