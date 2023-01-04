@@ -69,7 +69,7 @@ class GitClient: ObservableObject {
         Shell.run("git commit -m \"\(message)\"", in: workspace)
             .split(separator: "\n")
             .forEach { line in
-                print(line)
+                // print(line)
             }
     }
 
