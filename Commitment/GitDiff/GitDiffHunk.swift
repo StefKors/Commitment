@@ -27,10 +27,7 @@ public struct GitDiffHunk: CustomDebugStringConvertible {
     }
 
     public var debugDescription: String {
-        let header = "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@"
-        return lines.reduce(into: header) {
-            $0 += "\n\($1.description)"
-        }
+        return self.description
     }
     
     internal init(
