@@ -71,9 +71,15 @@ class GitClient: ObservableObject {
             }
     }
 
-    func diff() -> GitDiff? {
-        let unifiedDiff = Shell.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
-        return try? GitDiff(unifiedDiff: unifiedDiff)
+    func diff() -> [GitDiff] {
+        let diffs = Shell.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
+            .split(separator: "\ndiff --git ")
+            .compactMap { diffSegment in
+                return try? GitDiff(unifiedDiff: String(diffSegment))
+            }
+
+
+        return diffs
     }
 }
 

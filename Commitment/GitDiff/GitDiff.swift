@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a universal git diff
-public struct GitDiff {
+public class GitDiff {
     
     public let addedFile: String
     
@@ -16,7 +16,7 @@ public struct GitDiff {
     
     public let hunks: [GitDiffHunk]
     
-    public init?(unifiedDiff: String) throws {
+    public convenience init?(unifiedDiff: String) throws {
         let parsingResults = try GitDiffParser(unifiedDiff: unifiedDiff).parse()
         self.init(
             addedFile: parsingResults.addedFile,

@@ -12,6 +12,7 @@
 		8A07612C29659EEE00D878DC /* GitDiffParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612729659EEE00D878DC /* GitDiffParser.swift */; };
 		8A07612D29659EEE00D878DC /* GitDiffHunkLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612829659EEE00D878DC /* GitDiffHunkLine.swift */; };
 		8A07612E29659EEE00D878DC /* GitDiffHunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612929659EEE00D878DC /* GitDiffHunk.swift */; };
+		8A0761302965A15200D878DC /* DiffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612F2965A15200D878DC /* DiffView.swift */; };
 		8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */; };
 		8A48D11327FD9E2D007803D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D11227FD9E2D007803D2 /* ContentView.swift */; };
 		8A48D11527FD9E2E007803D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A48D11427FD9E2E007803D2 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		8A07612729659EEE00D878DC /* GitDiffParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffParser.swift; sourceTree = "<group>"; };
 		8A07612829659EEE00D878DC /* GitDiffHunkLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffHunkLine.swift; sourceTree = "<group>"; };
 		8A07612929659EEE00D878DC /* GitDiffHunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffHunk.swift; sourceTree = "<group>"; };
+		8A07612F2965A15200D878DC /* DiffView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffView.swift; sourceTree = "<group>"; };
 		8A48D10D27FD9E2D007803D2 /* Commitment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commitment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentApp.swift; sourceTree = "<group>"; };
 		8A48D11227FD9E2D007803D2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				8A48D14C27FDB6DF007803D2 /* BranchView.swift */,
 				8A8C6659296464B400A774D7 /* HistoryView.swift */,
 				8A8C665B296464E300A774D7 /* TextEditorView.swift */,
+				8A07612F2965A15200D878DC /* DiffView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
 				8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,
+				8A0761302965A15200D878DC /* DiffView.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,
 				8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */,
 				8A07612E29659EEE00D878DC /* GitDiffHunk.swift in Sources */,

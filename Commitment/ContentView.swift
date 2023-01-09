@@ -12,22 +12,24 @@ struct ContentView: View {
     @State private var message: String = ""
 
     var body: some View {
-        HStack {
-            TextEditorView(message: $message)
-                .onSubmit { handleSubmit() }
+        VStack {
+            HStack {
+                TextEditorView(message: $message)
+                    .onSubmit { handleSubmit() }
 
-            Button(action: { handleSubmit() }) {
-                Text("Commit")
+                Button(action: { handleSubmit() }) {
+                    Text("Commit")
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(message.isEmpty)
             }
-            .buttonStyle(.borderedProminent)
-            .disabled(message.isEmpty)
 
+            DiffView()
         }
         .scenePadding()
     }
 
     func handleSubmit() {
-        git.diff()
         git.commit(message: message)
         message = ""
     }
