@@ -123,7 +123,7 @@ struct DiffView: View {
                             )
                             .clipShape(RoundedRectangle(cornerRadius: 6))
                         }
-                        .transition(.move(edge: .leading).animation(.easeInOut))
+                        .transition(.move(edge: .top).animation(.easeInOut))
                     }
                 }
             }
