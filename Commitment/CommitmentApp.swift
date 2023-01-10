@@ -26,5 +26,6 @@ struct CommitmentApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
+        .defaultPosition(.center)
     }
 }

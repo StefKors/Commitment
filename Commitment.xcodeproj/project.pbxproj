@@ -169,15 +169,14 @@
 		8A48D10F27FD9E2D007803D2 /* Commitment */ = {
 			isa = PBXGroup;
 			children = (
+				8A48D11427FD9E2E007803D2 /* Assets.xcassets */,
+				8A48D11927FD9E2E007803D2 /* Commitment.entitlements */,
 				8A8C6684296468CD00A774D7 /* Info.plist */,
 				8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */,
 				8A48D11227FD9E2D007803D2 /* ContentView.swift */,
 				8A8C6658296464A700A774D7 /* Components */,
-				8A48D14127FDA8A0007803D2 /* Shell.swift */,
-				8A48D14627FDAF16007803D2 /* GitClient.swift */,
+				8AA71063296D5BE0002F6C24 /* Models */,
 				8A07612429659EE400D878DC /* GitDiff */,
-				8A48D11427FD9E2E007803D2 /* Assets.xcassets */,
-				8A48D11927FD9E2E007803D2 /* Commitment.entitlements */,
 				8A48D11627FD9E2E007803D2 /* Preview Content */,
 			);
 			path = Commitment;
@@ -243,6 +242,15 @@
 				8A8C66702964682B00A774D7 /* Inter-LightItalic.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8AA71063296D5BE0002F6C24 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A48D14127FDA8A0007803D2 /* Shell.swift */,
+				8A48D14627FDAF16007803D2 /* GitClient.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
