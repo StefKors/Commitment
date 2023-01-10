@@ -89,7 +89,7 @@ struct DiffView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                if let diffs {
+                if let diffs, !diffs.isEmpty {
                     ForEach(diffs, id: \.description) { diff in
                         VStack(alignment: .leading, spacing: 0, content: {
                             VStack(alignment: .leading, content: {
