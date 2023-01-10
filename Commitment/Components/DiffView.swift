@@ -123,10 +123,10 @@ struct DiffView: View {
                                 .stroke(.separator, lineWidth: 2)
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 6))
-                        .transition(.opacity)
                     }
                 }
             }
+            .transition(.opacity)
             .multilineTextAlignment(.leading)
         }
     }
