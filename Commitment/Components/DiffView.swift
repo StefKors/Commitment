@@ -126,7 +126,7 @@ struct DiffView: View {
                     }
                 }
             }
-            .transition(.opacity)
+            .transition(.move(edge: .trailing))
             .multilineTextAlignment(.leading)
         }
     }
