@@ -121,11 +121,10 @@ struct DiffView: View {
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                     }
-                    .transition(.opacity.combined(with: .move(edge: .top)).animation(.easeInOut))
                 }
             }
             .multilineTextAlignment(.leading)
-        }
+        }.transition(.opacity.combined(with: .move(edge: .top)).animation(.easeInOut))
     }
 }
 
