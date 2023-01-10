@@ -121,7 +121,7 @@ struct DiffView: View {
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                     }
-                    .transition(.move(edge: .top))
+                    .transition(.move(edge: .top).combined(with: .opacity))
                 }
             }
             .multilineTextAlignment(.leading)
