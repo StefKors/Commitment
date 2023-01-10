@@ -112,9 +112,6 @@ struct DiffView: View {
                                     Divider()
                                     DiffHunkView(hunk: hunk)
                                 }
-                                // ForEach(diff.lines, id: \.self) { line in
-                                //     DiffLineView(line: line)
-                                // }
                             }
                             .fontDesign(.monospaced)
                         })
@@ -124,6 +121,7 @@ struct DiffView: View {
                         )
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                     }
+                    .transition(.move(edge: .top))
                 }
             }
             .multilineTextAlignment(.leading)
