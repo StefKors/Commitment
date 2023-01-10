@@ -90,7 +90,9 @@ struct DiffView: View {
 
                     }
                 }
-            } .multilineTextAlignment(.leading)
+            }
+            .multilineTextAlignment(.leading)
+            .transition(.slide.animation(Animation.interpolatingSpring(stiffness: 300, damping: 20)))
         }
     }
 }
