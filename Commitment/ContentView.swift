@@ -34,11 +34,9 @@ struct ContentView: View {
     }
     
     func handleSubmit() {
-        withAnimation {
-            git.commit(message: message)
-            message = ""
-            self.diffstate.diffs = git.diff()
-        }
+        git.commit(message: message)
+        message = ""
+        self.diffstate.diffs = git.diff()
     }
 }
 
