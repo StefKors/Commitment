@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var git: GitClient
     @State private var message: String = ""
+    @StateObject private var diffstate: DiffState = DiffState()
 
     var body: some View {
         VStack {
@@ -24,7 +25,10 @@ struct ContentView: View {
                 .disabled(message.isEmpty)
             }
 
-            DiffView()
+            DiffView(diffs: diffstate.diffs)
+                .task {
+                    self.diffstate.diffs = git.diff()
+                }
         }
         .scenePadding()
     }
@@ -32,6 +36,7 @@ struct ContentView: View {
     func handleSubmit() {
         git.commit(message: message)
         message = ""
+        self.diffstate.diffs = git.diff()
     }
 }
 

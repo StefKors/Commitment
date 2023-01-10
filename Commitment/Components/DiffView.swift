@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct DiffView: View {
-    @EnvironmentObject private var git: GitClient
-    @State private var diffs: [GitDiff]? = nil
+    var diffs: [GitDiff]? = nil
 
     private let columns = [GridItem(.fixed(25), spacing: 0), GridItem(.flexible(), spacing: 0)]
 
@@ -92,9 +91,6 @@ struct DiffView: View {
                     }
                 }
             } .multilineTextAlignment(.leading)
-        }
-        .task {
-            self.diffs = git.diff()
         }
     }
 }

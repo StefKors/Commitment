@@ -44,6 +44,7 @@
 		8A8C66812964682B00A774D7 /* Inter-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C666E2964682B00A774D7 /* Inter-ExtraBoldItalic.otf */; };
 		8A8C66822964682B00A774D7 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C666F2964682B00A774D7 /* Inter-BoldItalic.otf */; };
 		8A8C66832964682B00A774D7 /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C66702964682B00A774D7 /* Inter-LightItalic.otf */; };
+		8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71069296DAE06002F6C24 /* DiffState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		8A8C666F2964682B00A774D7 /* Inter-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.otf"; sourceTree = "<group>"; };
 		8A8C66702964682B00A774D7 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
 		8A8C6684296468CD00A774D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8AA71069296DAE06002F6C24 /* DiffState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 			children = (
 				8A48D14127FDA8A0007803D2 /* Shell.swift */,
 				8A48D14627FDAF16007803D2 /* GitClient.swift */,
+				8AA71069296DAE06002F6C24 /* DiffState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */,
 				8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */,
 				8A8C665A296464B400A774D7 /* HistoryView.swift in Sources */,
 				8A48D14727FDAF16007803D2 /* GitClient.swift in Sources */,
