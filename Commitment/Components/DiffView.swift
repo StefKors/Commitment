@@ -89,39 +89,42 @@ struct DiffView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                if let diffs, !diffs.isEmpty {
-                    ForEach(diffs, id: \.description) { diff in
-                        VStack(alignment: .leading, spacing: 0, content: {
-                            VStack(alignment: .leading, content: {
+                ZStack {
+                    Rectangle().fill(.blue)
+                    if let diffs, !diffs.isEmpty {
+                        ForEach(diffs, id: \.description) { diff in
+                            VStack(alignment: .leading, spacing: 0, content: {
                                 VStack(alignment: .leading, content: {
-                                    Text(diff.addedFile)
-                                    Text(diff.removedFile)
-                                })
-                                .padding(.top, 7)
-                                .padding(.horizontal, 10)
+                                    VStack(alignment: .leading, content: {
+                                        Text(diff.addedFile)
+                                        Text(diff.removedFile)
+                                    })
+                                    .padding(.top, 7)
+                                    .padding(.horizontal, 10)
 
-                                Divider()
-                            })
-                            .background(.separator)
-
-
-
-                            VStack(alignment: .leading, spacing: 0) {
-                                ForEach(diff.hunks, id: \.description) { hunk in
-                                    Text(hunk.header)
                                     Divider()
-                                    DiffHunkView(hunk: hunk)
+                                })
+                                .background(.separator)
+
+
+
+                                VStack(alignment: .leading, spacing: 0) {
+                                    ForEach(diff.hunks, id: \.description) { hunk in
+                                        Text(hunk.header)
+                                        Divider()
+                                        DiffHunkView(hunk: hunk)
+                                    }
                                 }
-                            }
-                            .fontDesign(.monospaced)
-                        })
-                        .background(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(.separator, lineWidth: 2)
-                        )
-                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                                .fontDesign(.monospaced)
+                            })
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(.separator, lineWidth: 2)
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 6))
+                        }
+                        .transition(.move(edge: .leading).animation(.easeInOut))
                     }
-                    .transition(.move(edge: .leading).animation(.easeInOut))
                 }
             }
             .multilineTextAlignment(.leading)
