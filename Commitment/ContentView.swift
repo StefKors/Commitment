@@ -36,7 +36,9 @@ struct ContentView: View {
     func handleSubmit() {
         git.commit(message: message)
         message = ""
-        self.diffstate.diffs = git.diff()
+        withAnimation(.spring()) {
+            self.diffstate.diffs = git.diff()
+        }
     }
 }
 
