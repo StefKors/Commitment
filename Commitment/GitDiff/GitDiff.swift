@@ -21,6 +21,10 @@ public class GitDiff: Equatable {
     public let removedFile: String
     
     public let hunks: [GitDiffHunk]
+
+    public var lines: [GitDiffHunkLine] {
+        return hunks.map { $0.lines }.flatMap { $0 }
+    }
     
     public convenience init?(unifiedDiff: String) throws {
         let parsingResults = try GitDiffParser(unifiedDiff: unifiedDiff).parse()

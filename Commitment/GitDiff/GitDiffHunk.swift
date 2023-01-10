@@ -25,6 +25,8 @@ public class GitDiffHunk: Equatable {
     public let newLineSpan: Int
     
     public let lines: [GitDiffHunkLine]
+
+    public var header: String { "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@" }
     
     internal var description: String {
         let header = "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@"

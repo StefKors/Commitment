@@ -34,6 +34,8 @@ internal class GitDiffParser {
         
         var hunks: [GitDiffHunk] = []
         var currentHunk: GitDiffHunk?
+        var currentHunkOldCount: Int = 0
+        var currentHunkNewCount: Int = 0
         
         unifiedDiff.enumerateLines { line, _ in
             // Skip headers
@@ -58,6 +60,9 @@ internal class GitDiffParser {
                     if let currentHunk = currentHunk {
                         hunks.append(currentHunk)
                     }
+
+                    currentHunkOldCount = oldLineStart
+                    currentHunkNewCount = newLineStart
                     
                     currentHunk = GitDiffHunk(
                         oldLineStart: oldLineStart,
@@ -72,16 +77,33 @@ internal class GitDiffParser {
                     guard let hunk = currentHunk else {
                         fatalError("Found a git diff line without a hunk header")
                     }
-                    
+                    var oldNum: Int? = nil
+                    var newNum: Int? = nil
                     let lineType: GitDiffHunkLineType
                     switch delta {
-                    case "-": lineType = .deletion
-                    case "+": lineType = .addition
-                    case " ": lineType = .unchanged
+                    case "-":
+                        lineType = .deletion
+                        oldNum = currentHunkOldCount
+                        currentHunkOldCount += 1
+                    case "+":
+                        lineType = .addition
+                        newNum = currentHunkNewCount
+                        currentHunkNewCount += 1
+                    case " ":
+                        lineType = .unchanged
+                        oldNum = currentHunkOldCount
+                        newNum = currentHunkNewCount
+                        currentHunkOldCount += 1
+                        currentHunkNewCount += 1
                     default: fatalError("Unexpected group 2 character: \(delta)")
                     }
                     
-                    currentHunk = hunk.copyAppendingLine(GitDiffHunkLine(type: lineType, text: text))
+                    currentHunk = hunk.copyAppendingLine(GitDiffHunkLine(
+                        type: lineType,
+                        text: text,
+                        oldLineNumber: oldNum,
+                        newLineNumber: newNum
+                    ))
                 }
             }
         }
