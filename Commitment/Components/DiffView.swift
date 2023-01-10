@@ -117,6 +117,8 @@ struct DiffView: View {
                                 }
                                 .fontDesign(.monospaced)
                             })
+                            .transition(.move(edge: .top).animation(.easeInOut))
+
                             .background(
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(.separator, lineWidth: 2)
@@ -125,7 +127,6 @@ struct DiffView: View {
                         }
                     }
                 }
-                .transition(.move(edge: .top).animation(.easeInOut))
             }
             .multilineTextAlignment(.leading)
         }
