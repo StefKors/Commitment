@@ -76,6 +76,7 @@ struct DiffView: View {
 
                                     }
                                 }
+                                .animation(Animation.interpolatingSpring(stiffness: 300, damping: 20), value: diffs)
                                 .transition(.slide.animation(Animation.interpolatingSpring(stiffness: 300, damping: 20)))
                             }
                             .fontDesign(.monospaced)

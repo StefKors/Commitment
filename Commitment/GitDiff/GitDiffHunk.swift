@@ -7,8 +7,15 @@
 
 import Foundation
 
-public class GitDiffHunk {
-    
+public class GitDiffHunk: Equatable {
+    public static func == (lhs: GitDiffHunk, rhs: GitDiffHunk) -> Bool {
+        return lhs.oldLineStart == rhs.oldLineStart &&
+        lhs.oldLineSpan == rhs.oldLineSpan &&
+        lhs.newLineStart == rhs.newLineStart &&
+        lhs.newLineSpan == rhs.newLineSpan &&
+        lhs.lines == rhs.lines
+    }
+
     public let oldLineStart: Int
     
     public let oldLineSpan: Int

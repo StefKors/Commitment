@@ -8,7 +8,7 @@
 import Foundation
 
 /// A diff line inside a hunk,
-public struct GitDiffHunkLine: Hashable {
+public struct GitDiffHunkLine: Hashable, Equatable {
     
     public let type: GitDiffHunkLineType
     

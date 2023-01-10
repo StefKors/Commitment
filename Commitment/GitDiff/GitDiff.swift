@@ -8,7 +8,13 @@
 import Foundation
 
 /// Represents a universal git diff
-public class GitDiff {
+public class GitDiff: Equatable {
+    public static func == (lhs: GitDiff, rhs: GitDiff) -> Bool {
+        return lhs.addedFile == rhs.addedFile &&
+        lhs.removedFile == rhs.removedFile &&
+        lhs.hunks == rhs.hunks
+    }
+
     
     public let addedFile: String
     
