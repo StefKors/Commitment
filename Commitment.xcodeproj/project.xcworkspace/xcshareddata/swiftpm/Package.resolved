@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "defaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Defaults",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d71bfd8ffbf944ef08eacbca5fb96d6f69bf7696"
+      }
+    },
+    {
+      "identity" : "git-macos",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/way-to-code/git-macos.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "72a0065a440cc10fb2f0026fba126b81b468ab4b"
+      }
+    },
+    {
+      "identity" : "swiftui-cached-async-image",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lorenzofiamingo/swiftui-cached-async-image",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f94be38411297c71aa8df69c6875127e6d8d7a92"
+      }
+    }
+  ],
+  "version" : 2
+}
