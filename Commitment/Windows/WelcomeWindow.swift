@@ -11,7 +11,7 @@ struct WelcomeWindow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 50) {
             WelcomeStackView()
-            WelcomeRepoListView()
+            // WelcomeRepoListView()
         }.padding()
     }
 }

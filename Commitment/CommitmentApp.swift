@@ -9,20 +9,16 @@ import SwiftUI
 
 @main
 struct CommitmentApp: App {
-    @StateObject var git = GitClient(workspace: "~/Developer/Commitment")
-    @StateObject var model = RepositoriesModel()
 
     var body: some Scene {
 
-        WindowGroup("Difference", id: "RepoWindow", for: Repo.self) { $repo in
+        WindowGroup("Difference", id: "RepoWindow", for: RepoState.self) { $repo in
             if let repo = repo {
                 RepoWindow()
                     .environmentObject(WindowState(repo))
-                    .environmentObject(model)
-                    .environmentObject(git)
             } else {
                 WelcomeWindow()
-                    .environmentObject(model)
+                    // .environmentObject(model)
             }
         }
         .windowStyle(.automatic)

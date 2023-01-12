@@ -1,5 +1,5 @@
 //
-//  Repo.swift
+//  RepoState.swift
 //  Difference
 //
 //  Created by Stef Kors on 18/09/2022.
@@ -12,11 +12,12 @@ import SwiftUI
 // https://developer.apple.com/documentation/appkit/nscolor/3000782-controlaccentcolor
 
 extension Defaults.Keys {
-    static let repos = Key<[Repo]>("repos", default: [])
+    static let repos = Key<[RepoState]>("repos", default: [])
 }
 
-struct Repo: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentable, Identifiable {
+struct RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentable, Identifiable {
     var repository: GitRepository
+    var shell: Shell
 
     var path: URL
 
@@ -25,6 +26,8 @@ struct Repo: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentab
     }
 
     var branch: RepositoryReference?
+
+    var diff: DiffState = DiffState()
 
     init?(string: String) {
         guard let path = URL(string: string) else {
@@ -54,9 +57,10 @@ struct Repo: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentab
         self.repository = repo
         self.path = url
         self.branch = refsList?.currentReference
+        self.shell = Shell(workspace: path.absoluteString)
     }
 
-    static func == (lhs: Repo, rhs: Repo) -> Bool {
+    static func == (lhs: RepoState, rhs: RepoState) -> Bool {
         lhs.path == rhs.path
     }
 

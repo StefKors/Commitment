@@ -1,18 +1,23 @@
 //
-//  RepositoriesModel.swift
+//  WindowState.swift
 //  Difference
 //
-//  Created by Stef Kors on 18/09/2022.
+//  Created by Stef Kors on 03/10/2022.
 //
 
 import Foundation
 import Defaults
 import SwiftUI
 
-class RepositoriesModel: ObservableObject {
+class WindowState: ObservableObject {
     @Default(.repos) var repos
+    var repo: RepoState
 
-    func addRepo(_ repo: Repo) {
+    init (_ repo: RepoState) {
+        self.repo = repo
+    }
+
+    func addRepo(_ repo: RepoState) {
         if repos.contains(where: { $0.path == repo.path }) {
             print("chore: remove duplicates")
             repos = Array(Set(repos))
@@ -23,7 +28,7 @@ class RepositoriesModel: ObservableObject {
         repos.append(repo)
     }
 
-    func openRepo() -> Repo? {
+    func openRepo() -> RepoState? {
         let openPanel = NSOpenPanel()
         openPanel.message = "Add repo"
         openPanel.prompt = "Add"
@@ -35,7 +40,7 @@ class RepositoriesModel: ObservableObject {
         let response = openPanel.runModal()
         if response == .OK {
             if let path = openPanel.url?.path() {
-                if let repo = Repo(string: path) {
+                if let repo = RepoState(string: path) {
                     self.addRepo(repo)
                     return repo
                 }
@@ -44,5 +49,4 @@ class RepositoriesModel: ObservableObject {
 
         return nil
     }
-
 }

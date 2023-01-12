@@ -12,9 +12,9 @@ public class GitDiff: Equatable {
     public static func == (lhs: GitDiff, rhs: GitDiff) -> Bool {
         return lhs.addedFile == rhs.addedFile &&
         lhs.removedFile == rhs.removedFile &&
-        lhs.hunks == rhs.hunks
+        lhs.hunks == rhs.hunks &&
+        lhs.lines == rhs.lines
     }
-
     
     public let addedFile: String
     

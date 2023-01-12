@@ -14,56 +14,43 @@ enum SidebarViewSelection: String, CaseIterable {
 }
 
 struct CommitHistorySplitView: View {
-    var allCommits: [RepositoryLogRecord]
-    @EnvironmentObject var git: GitClient
+    var commits: [RepositoryLogRecord]
+    var diffs: [GitDiff]
+    var status: GitFileStatusList
     @SceneStorage("DetailView.selectedTab") private var sidebarSelection: Int = 0
-    @State var segmentationSelection : SidebarViewSelection = .history
-    
+    @State var segmentationSelection : SidebarViewSelection = .changes
+
     @State private var message: String = ""
-    
+
     var body: some View {
         NavigationSplitView {
-            ScrollView {
-                LazyVStack(spacing: 1, pinnedViews: [.sectionFooters]) {
-                    Section {
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack {
                         switch segmentationSelection {
                         case .history:
-                            ForEach(allCommits.indices, id: \.self) { index in
+                            ForEach(commits.indices, id: \.self) { index in
                                 NavigationLink(value: index, label: {
-                                    SidebarCommitLabelView(commit: allCommits[index])
+                                    SidebarCommitLabelView(commit: commits[index])
                                 })
                                 .buttonStyle(.plain)
                             }
                         case .changes:
-                            Text("changes")
-                        }
-                    } footer: {
-                        GroupBox {
-                            VStack {
-                                TextEditorView(message: $message)
-                                    .onSubmit { handleSubmit() }
-                                
-                                Button(action: { handleSubmit() }) {
-                                    Text("Commit")
-                                    Spacer()
-                                }
-                                .buttonStyle(.borderedProminent)
-                                .disabled(message.isEmpty)
+                            ForEach(status.files.indices, id: \.self) { index in
+                                Divider()
+                                NavigationLink(value: status.files[index], label: {
+                                    GitFileStatusView(status: status.files[index])
+                                })
+                                .buttonStyle(.plain)
                             }
-                            
                         }
-                        .background(.thinMaterial)
-                        .padding(4)
-                        .shadow(radius: 10)
                     }
                 }
+
+                TextEditorView()
             }
             .toolbar(content: {
                 // TODO: Hide when sidebar is closed
-                ToolbarItemGroup(placement: .automatic) {
-                    AddRepoView()
-                }
-                
                 ToolbarItemGroup(placement: .automatic) {
                     Picker("", selection: $segmentationSelection) {
                         ForEach(SidebarViewSelection.allCases, id: \.self) { option in
@@ -71,20 +58,20 @@ struct CommitHistorySplitView: View {
                         }
                     }.pickerStyle(SegmentedPickerStyle())
                 }
+
+                // TODO: Hide when sidebar is closed
+                ToolbarItemGroup(placement: .automatic) {
+                    AddRepoView()
+                }
+
             })
         } detail: {
             if let index = sidebarSelection {
                 Text("ComitView \(index)")
-                CommitView(commit: allCommits[index])
+                CommitView(commit: commits[index])
             } else {
                 Text("nothing selected")
             }
         }
-    }
-    
-    func handleSubmit() {
-        git.commit(message: message)
-        message = ""
-        // self.diffstate.diffs = git.diff()
     }
 }

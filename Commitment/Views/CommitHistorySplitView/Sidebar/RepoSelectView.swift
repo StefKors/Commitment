@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct RepoSelectView: View {
-    @EnvironmentObject private var model: RepositoriesModel
     @EnvironmentObject private var state: WindowState
 
     var placeholder = "Select Repo"
 
     var body: some View {
         Menu {
-            ForEach(model.repos.indices, id: \.self){ index in
+            ForEach(state.repos.indices, id: \.self){ index in
                 Button(action: {
-                    self.state.repo = model.repos[index]
+                    self.state.repo = state.repos[index]
                 }, label: {
-                    Text(model.repos[index].folderName)
+                    Text(state.repos[index].folderName)
                 })
             }
         } label: {

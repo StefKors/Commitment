@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddRepoView: View {
-    @EnvironmentObject private var model: RepositoriesModel
+    @EnvironmentObject var state: WindowState
     @Environment(\.openWindow) private var openWindow
 
     var body: some View {
@@ -20,7 +20,7 @@ struct AddRepoView: View {
     }
 
     func onClick() {
-        if let selectedRepo = model.openRepo() {
+        if let selectedRepo = state.openRepo() {
             openWindow(value: selectedRepo)
         }
     }

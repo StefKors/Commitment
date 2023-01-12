@@ -17,8 +17,10 @@ struct RepoWindow: View {
     var body: some View {
         HStack {
             // Watch out for re-renders, can be slow
-            if let repo = state.repo.repository, let allCommits = try? repo.listLogRecords().records {
-                CommitHistorySplitView(allCommits: allCommits)
+            if let repository = state.repo.repository, let commits = try? repository.listLogRecords().records,
+               let diffs = state.repo.shell.diff(),
+               let status = try? state.repo.repository.listStatus() {
+                CommitHistorySplitView(commits: commits, diffs: diffs, status: status)
                     // .navigationDocument(URL(fileURLWithPath: state.repo.path.absoluteString, isDirectory: true))
                     .toolbar(content: {
                         ToolbarItemGroup(placement: .principal, content: {
