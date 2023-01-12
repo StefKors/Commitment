@@ -66,6 +66,10 @@
 		8AFBD533296F2C1400525BF7 /* CommitHistorySplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD528296F2C1400525BF7 /* CommitHistorySplitView.swift */; };
 		8AFBD534296F2C1400525BF7 /* CommitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD52A296F2C1400525BF7 /* CommitView.swift */; };
 		8AFBD536296F2C4300525BF7 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD535296F2C4300525BF7 /* Repo.swift */; };
+		8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */; };
+		8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */; };
+		8AFBD53D296F2EB600525BF7 /* RepoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */; };
+		8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +151,10 @@
 		8AFBD528296F2C1400525BF7 /* CommitHistorySplitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitHistorySplitView.swift; sourceTree = "<group>"; };
 		8AFBD52A296F2C1400525BF7 /* CommitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitView.swift; sourceTree = "<group>"; };
 		8AFBD535296F2C4300525BF7 /* Repo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
+		8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
+		8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeWindow.swift; sourceTree = "<group>"; };
+		8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoWindow.swift; sourceTree = "<group>"; };
+		8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,9 +226,8 @@
 				8A8C6684296468CD00A774D7 /* Info.plist */,
 				8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */,
 				8A48D11227FD9E2D007803D2 /* ContentView.swift */,
-				8AFBD520296F2C1400525BF7 /* CommitHistorySplitView */,
-				8AFBD51D296F2C1400525BF7 /* SettingsViews */,
-				8AFBD505296F2A4000525BF7 /* WelcomeViews */,
+				8AFBD537296F2EB600525BF7 /* Windows */,
+				8AFBD53E296F2EC500525BF7 /* Views */,
 				8A8C6658296464A700A774D7 /* Components */,
 				8AA71063296D5BE0002F6C24 /* Models */,
 				8A07612429659EE400D878DC /* GitDiff */,
@@ -263,6 +270,7 @@
 				8A8C6659296464B400A774D7 /* HistoryView.swift */,
 				8A8C665B296464E300A774D7 /* TextEditorView.swift */,
 				8A07612F2965A15200D878DC /* DiffView.swift */,
+				8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -354,6 +362,26 @@
 				8AFBD52A296F2C1400525BF7 /* CommitView.swift */,
 			);
 			path = MainContent;
+			sourceTree = "<group>";
+		};
+		8AFBD537296F2EB600525BF7 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */,
+				8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */,
+				8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
+		8AFBD53E296F2EC500525BF7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8AFBD520296F2C1400525BF7 /* CommitHistorySplitView */,
+				8AFBD51D296F2C1400525BF7 /* SettingsViews */,
+				8AFBD505296F2A4000525BF7 /* WelcomeViews */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,6 +545,7 @@
 			files = (
 				8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */,
 				8AFBD530296F2C1400525BF7 /* MD5+Gravitar.swift in Sources */,
+				8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */,
 				8AFBD531296F2C1400525BF7 /* AddRepoView.swift in Sources */,
 				8AFBD52B296F2C1400525BF7 /* AdvancedSettingsView.swift in Sources */,
 				8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */,
@@ -534,9 +563,12 @@
 				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
 				8AFBD52D296F2C1400525BF7 /* AvatarView.swift in Sources */,
 				8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */,
+				8AFBD53D296F2EB600525BF7 /* RepoWindow.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,
 				8A0761302965A15200D878DC /* DiffView.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,
+				8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */,
+				8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */,
 				8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */,
 				8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */,
 				8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */,

@@ -35,7 +35,7 @@ struct Repo: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentab
     }
 
     init?(path: URL) {
-        guard let repo = try? GitRepository(atPath: path.absoluteString)  else {
+        guard let repo = try? GitRepository(atPath: path.path())  else {
             print("can't open repo at \(path.absoluteString)")
             return nil
         }
@@ -64,7 +64,7 @@ struct Repo: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentab
         case path = "path"
     }
 
-    init(from decoder:Decoder) throws {
+    init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let path = try values.decode(URL.self, forKey: .path)
         // TODO: remove this force bang

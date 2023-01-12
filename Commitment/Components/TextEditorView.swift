@@ -15,10 +15,10 @@ struct TextEditorView: View {
 
     var body: some View {
         TextField("CommitMessage", text: $message, prompt: Text(placeholder), axis: .vertical)
-            .lineLimit(1...20)
+            .lineLimit(2...20)
             .multilineTextAlignment(.leading)
             .textFieldStyle(.plain)
-            .font(Font.custom("Inter-Regular", size: 18))
+            // .font(Font.custom("Inter-Regular", size: 14))
     }
 
 }

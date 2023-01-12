@@ -23,9 +23,15 @@ struct RepoSelectView: View {
                 })
             }
         } label: {
-            Text(self.state.repo.folderName)
-                .foregroundColor(.primary)
+            HStack {
+                Image(systemName: "folder")
+                Text(self.state.repo.folderName)
+                    .foregroundColor(.primary)
+            }
+                .font(.system(size: 11))
         }
+        .menuStyle(.borderlessButton)
+        .menuIndicator(.hidden)
     }
 }
 

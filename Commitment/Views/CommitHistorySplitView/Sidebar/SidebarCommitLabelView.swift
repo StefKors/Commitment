@@ -18,10 +18,11 @@ struct SidebarCommitLabelView: View {
             HStack() {
                 AvatarView(email: commit.authorEmail)
                 Text(commit.authorName)
+                Spacer()
                 Text(commit.commiterDate.formatted())
             }
             .foregroundColor(.secondary)
-        }
+        }.padding(.horizontal)
     }
 }
 
