@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
+import Git
 
 struct DiffView: View {
+    var status: GitFileStatus
     var diff: GitDiff
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0, content: {
             VStack(alignment: .leading, content: {
                 VStack(alignment: .leading, content: {
-                    Text(diff.addedFile)
-                    Text(diff.removedFile)
+                    GitFileStatusView(status: status)
                 })
                 .padding(.top, 7)
                 .padding(.horizontal, 10)
@@ -26,8 +27,6 @@ struct DiffView: View {
 
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(diff.hunks, id: \.description) { hunk in
-                    Text(hunk.header)
-                    Divider()
                     DiffHunkView(hunk: hunk)
                 }
             }
@@ -41,9 +40,9 @@ struct DiffView: View {
     }
 }
 
-struct DiffView_Previews: PreviewProvider {
-    static var previews: some View {
-        DiffView(diff: GitDiff.Preview.toDiff(GitDiff.Preview.versionBump))
-            .padding()
-    }
-}
+// struct DiffView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         DiffView(diff: GitDiff.Preview.toDiff(GitDiff.Preview.versionBump))
+//             .padding()
+//     }
+// }

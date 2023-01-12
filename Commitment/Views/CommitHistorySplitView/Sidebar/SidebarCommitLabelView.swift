@@ -22,7 +22,7 @@ struct SidebarCommitLabelView: View {
                 Text(commit.commiterDate.formatted())
             }
             .foregroundColor(.secondary)
-        }.padding(.horizontal)
+        }
     }
 }
 

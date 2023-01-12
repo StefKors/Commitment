@@ -13,7 +13,7 @@ struct GitFileStatusView: View {
     var body: some View {
         let url = URL(filePath: status.path)
 
-        HStack {
+        HStack(alignment: .center) {
             HStack(spacing: .zero, content: {
                 Text(url.deletingLastPathComponent().path())
                     .truncationMode(.tail)
@@ -25,7 +25,6 @@ struct GitFileStatusView: View {
             Spacer()
             FileChangeIconView(type: status.state.index)
         }
-        .padding(.horizontal)
     }
 }
 

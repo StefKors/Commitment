@@ -14,7 +14,7 @@ enum SidebarViewSelection: String, CaseIterable {
 }
 
 struct CommitHistorySplitView: View {
-    var commits: [RepositoryLogRecord]
+    var commits: [GitLogRecord]
     var diffs: [GitDiff]
     var status: GitFileStatusList
     @SceneStorage("DetailView.selectedTab") private var sidebarSelection: Int = 0
@@ -25,26 +25,37 @@ struct CommitHistorySplitView: View {
     var body: some View {
         NavigationSplitView {
             VStack(spacing: 0) {
-                ScrollView {
-                    VStack {
+                NavigationStack {
+                    List {
                         switch segmentationSelection {
                         case .history:
                             ForEach(commits.indices, id: \.self) { index in
-                                NavigationLink(value: index, label: {
+                                NavigationLink(value: commits[index], label: {
                                     SidebarCommitLabelView(commit: commits[index])
                                 })
                                 .buttonStyle(.plain)
                             }
                         case .changes:
                             ForEach(status.files.indices, id: \.self) { index in
-                                Divider()
                                 NavigationLink(value: status.files[index], label: {
                                     GitFileStatusView(status: status.files[index])
                                 })
                                 .buttonStyle(.plain)
+
                             }
                         }
                     }
+                }
+                .navigationDestination(for: GitFileStatus.self) { status in
+                    ScrollView(.vertical) {
+                        if let diff = diffs.first { $0.addedFile.contains(status.path) } {
+                            DiffView(status: status, diff: diff)
+                                .scenePadding()
+                        }
+                    }
+                }
+                .navigationDestination(for: GitLogRecord.self) { commit in
+                    Text("commit number \(commit.subject)")
                 }
 
                 TextEditorView()

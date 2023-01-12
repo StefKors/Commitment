@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TextEditorView: View {
-    // @EnvironmentObject private var git: GitShell
+    @EnvironmentObject private var state: WindowState
     private let placeholder: String = "Summary"
     @State private var message: String = ""
 
@@ -36,7 +36,7 @@ struct TextEditorView: View {
     }
 
     func handleSubmit() {
-        // git.commit(message: message)
+        state.repo?.shell.commit(message: message)
         message = ""
         // self.diffstate.diffs = git.diff()
     }

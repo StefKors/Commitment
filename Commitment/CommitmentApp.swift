@@ -18,7 +18,7 @@ struct CommitmentApp: App {
                     .environmentObject(WindowState(repo))
             } else {
                 WelcomeWindow()
-                    // .environmentObject(model)
+                    .environmentObject(WindowState())
             }
         }
         .windowStyle(.automatic)

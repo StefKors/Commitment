@@ -11,9 +11,9 @@ import SwiftUI
 
 class WindowState: ObservableObject {
     @Default(.repos) var repos
-    var repo: RepoState
+    var repo: RepoState?
 
-    init (_ repo: RepoState) {
+    init (_ repo: RepoState? = nil) {
         self.repo = repo
     }
 

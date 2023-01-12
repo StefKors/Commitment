@@ -38,6 +38,7 @@ struct DiffLineView: View {
             }
             .frame(width: 30)
             .font(.system(size: 11))
+            .foregroundColor(.secondary)
             
             ZStack(alignment: .center) {
                 color.opacity(0.3)
@@ -47,6 +48,7 @@ struct DiffLineView: View {
             }
             .frame(width: 30)
             .font(.system(size: 11))
+            .foregroundColor(.secondary)
             
             ZStack(alignment: .center) {
                 color.opacity(0.3)

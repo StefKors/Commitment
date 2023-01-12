@@ -24,7 +24,7 @@ struct RepoSelectView: View {
         } label: {
             HStack {
                 Image(systemName: "folder")
-                Text(self.state.repo.folderName)
+                Text(self.state.repo?.folderName ?? "no repo found")
                     .foregroundColor(.primary)
             }
                 .font(.system(size: 11))
