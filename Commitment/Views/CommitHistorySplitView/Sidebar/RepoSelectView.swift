@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RepoSelectView: View {
-    @EnvironmentObject private var state: WindowState
+    @EnvironmentObject private var repo: RepoState
 
     var placeholder = "Select Repo"
 
@@ -18,7 +18,7 @@ struct RepoSelectView: View {
                 .resizable()
                 .frame(width: 16, height: 12)
                 .foregroundColor(.primary)
-            Text(self.state.repo?.folderName ?? "no repo found")
+            Text(self.repo.folderName)
                 .foregroundColor(.primary)
         }
         .font(.system(size: 11))

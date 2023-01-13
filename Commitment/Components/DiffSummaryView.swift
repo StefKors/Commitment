@@ -10,9 +10,9 @@ import SwiftUI
 struct DiffSummaryView: View {
     var body: some View {
         HStack {
-            Text("257 +++")
+            Text("999 +++")
                 .foregroundColor(Color("DiffGreenBright"))
-            Text("217 ---")
+            Text("999 ---")
                 .foregroundColor(Color("DiffRedBright"))
         }
     }
