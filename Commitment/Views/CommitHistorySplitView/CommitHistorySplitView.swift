@@ -14,7 +14,7 @@ enum SidebarViewSelection: String, CaseIterable {
 }
 
 struct CommitHistorySplitView: View {
-    @EnvironmentObject private var state: WindowState
+    @EnvironmentObject var repo: RepoState
     @SceneStorage("DetailView.selectedTab") private var sidebarSelection: Int = 0
     @State var segmentationSelection : SidebarViewSelection = .changes
 
@@ -27,7 +27,7 @@ struct CommitHistorySplitView: View {
                     List {
                         switch segmentationSelection {
                         case .history:
-                            if let commits = state.repo?.commits.commits {
+                            if let commits = repo.commits.commits {
                                 ForEach(commits.indices, id: \.self) { index in
                                     NavigationLink(value: commits[index], label: {
                                         SidebarCommitLabelView(commit: commits[index])
@@ -36,7 +36,7 @@ struct CommitHistorySplitView: View {
                                 }
                             }
                         case .changes:
-                            if let status = state.repo?.status.status {
+                            if let status = repo.status.status {
                                 ForEach(status.files.indices, id: \.self) { index in
                                     NavigationLink(value: status.files[index], label: {
                                         GitFileStatusView(status: status.files[index])
@@ -50,7 +50,7 @@ struct CommitHistorySplitView: View {
                 }
                 .navigationDestination(for: GitFileStatus.self) { status in
                     ScrollView(.vertical) {
-                        if let diff = state.repo?.diff.diffs.first { $0.addedFile.contains(status.path) } {
+                        if let diff = repo.diff.diffs.first { $0.addedFile.contains(status.path) } {
                             DiffView(status: status, diff: diff)
                                 .scenePadding()
                         }
@@ -82,7 +82,7 @@ struct CommitHistorySplitView: View {
 
             })
         } detail: {
-            if let index = sidebarSelection, let commits = state.repo?.commits.commits {
+            if let index = sidebarSelection, let commits = repo.commits.commits {
                 Text("ComitView \(index)")
                 CommitView(commit: commits[index])
             } else {

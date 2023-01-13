@@ -12,7 +12,7 @@ struct RepoWindow: View {
     // The user activity type representing this view.
     static let productUserActivityType = "com.stefkors.Difference.repoview"
 
-    @EnvironmentObject var state: WindowState
+    @EnvironmentObject var repo: RepoState
 
     var body: some View {
         HStack {
@@ -29,7 +29,7 @@ struct RepoWindow: View {
                 })
         }
         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
-        .navigationTitle(state.repo?.folderName ?? "Commitment")
-        .navigationSubtitle(state.repo?.branch?.name.localName ?? "no-branch")
+        .navigationTitle(repo.folderName ?? "Commitment")
+        .navigationSubtitle(repo.branch?.name.localName ?? "no-branch")
     }
 }

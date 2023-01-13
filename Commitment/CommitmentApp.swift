@@ -15,6 +15,7 @@ struct CommitmentApp: App {
         WindowGroup("Difference", id: "RepoWindow", for: RepoState.self) { $repo in
             if let repo = repo {
                 RepoWindow()
+                    .environmentObject(repo)
                     .environmentObject(WindowState(repo))
             } else {
                 WelcomeWindow()
