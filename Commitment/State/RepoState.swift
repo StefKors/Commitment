@@ -16,7 +16,7 @@ extension Defaults.Keys {
 }
 
 class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentable, Identifiable, ObservableObject {
-    var repository: GitRepository
+    var repository: GitRepository?
     var shell: Shell
 
     var path: URL
@@ -40,34 +40,45 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
     }
 
     init?(path: URL) {
-        guard let repo = try? GitRepository(atPath: path.path())  else {
-            print("can't open repo at \(path.absoluteString)")
-            return nil
-        }
-        guard let localPath = repo.localPath  else {
-            print("can't open localpath at \(path.absoluteString)")
-            return nil
-        }
-        guard let url = URL(string: localPath) else {
-            print("can't open url at \(path.absoluteString)")
-            return nil
-        }
+        self.path = path
+        self.shell = Shell(workspace: path.absoluteString)
+        // guard let repo = try? GitRepository(atPath: path.path())  else {
+        //     print("can't open repo at \(path.absoluteString)")
+        //     return nil
+        // }
+        // guard let localPath = repo.localPath  else {
+        //     print("can't open localpath at \(path.absoluteString)")
+        //     return nil
+        // }
+        // guard let url = URL(string: localPath) else {
+        //     print("can't open url at \(path.absoluteString)")
+        //     return nil
+        // }
 
         // git branch –show-current
+        // self.repository = repo
+        // self.path = url
+
+        // self.refreshRepoState()
+    }
+
+    func initializeFullRepo() {
+        guard let repo = try? GitRepository(atPath: path.path())  else {
+            print("can't open repo at \(path.absoluteString)")
+            return
+        }
         self.repository = repo
-        self.path = url
-        self.shell = Shell(workspace: path.absoluteString)
         self.refreshRepoState()
     }
 
     /// Watch out for re-renders, can be slow
     func refreshRepoState() {
         print("BEFORE: updating repo state \(commits?.count ?? 0)")
-        let refsList = try? repository.listReferences()
+        let refsList = try? repository?.listReferences()
         self.branch = refsList?.currentReference
         self.diffs = self.shell.diff()
-        self.status = try? repository.listStatus()
-        self.commits = try? repository.listLogRecords().records as? [GitLogRecord]
+        self.status = try? repository?.listStatus()
+        self.commits = try? repository?.listLogRecords().records as? [GitLogRecord]
         print("AFTER: updating repo state \(commits?.count ?? 0)")
     }
 

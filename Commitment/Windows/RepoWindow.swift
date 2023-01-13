@@ -31,5 +31,8 @@ struct RepoWindow: View {
         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
         .navigationTitle(repo.folderName ?? "Commitment")
         .navigationSubtitle(repo.branch?.name.localName ?? "no-branch")
+        .task {
+            repo.initializeFullRepo()
+        }
     }
 }
