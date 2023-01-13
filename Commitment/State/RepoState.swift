@@ -19,6 +19,8 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
     var repository: GitRepository?
     var shell: Shell
 
+    var monitor: FolderContentMonitor? = nil
+
     var path: URL
 
     var folderName: String {
@@ -30,6 +32,20 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
     @Published var diffs: [GitDiff] = []
     @Published var status: GitFileStatusList? = nil
     @Published var commits: [GitLogRecord]? = nil
+
+    var task: Task<(), Never>?
+    /// Debounce Source: https://stackoverflow.com/a/74794440/3199999
+    private func debounce(interval: Duration = .nanoseconds(10000), operation: @escaping () -> Void) {
+        task?.cancel()
+        task = Task {
+            do {
+                try await Task.sleep(for: interval)
+                operation()
+            } catch {
+                // TODO
+            }
+        }
+    }
 
     convenience init?(string: String) {
         guard let path = URL(string: string) else {
@@ -44,12 +60,27 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
         self.shell = Shell(workspace: path.absoluteString)
     }
 
+    deinit {
+        monitor?.stop()
+    }
+
     func initializeFullRepo() {
         guard let repo = try? GitRepository(atPath: path.path())  else {
             print("can't open repo at \(path.absoluteString)")
             return
         }
         self.repository = repo
+
+        monitor = FolderContentMonitor(url: path, latency: 0.1) { [weak self] event in
+            // TODO: Figure out better filtering... Perhaps based on .gitignore?
+            if event.filename != "index.lock" {
+                self?.debounce(interval: .milliseconds(300), operation: { [weak self] in
+                    // print("Folder contents changed at \(event.url) (\(event.change))")
+                    self?.refreshRepoState()
+                })
+            }
+        }
+        monitor?.start()
         self.refreshRepoState()
     }
 

@@ -78,7 +78,9 @@
 		8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD563297150DF00525BF7 /* DiffSummaryView.swift */; };
 		8AFBD56629715D4E00525BF7 /* StatusState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56529715D4E00525BF7 /* StatusState.swift */; };
 		8AFBD56829715DE400525BF7 /* CommitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56729715DE400525BF7 /* CommitState.swift */; };
-		8AFBD56D2971900100525BF7 /* DirMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56C2971900100525BF7 /* DirMonitor.swift */; };
+		8AFBD5742971B08D00525BF7 /* FolderContentMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD5712971B08D00525BF7 /* FolderContentMonitor.swift */; };
+		8AFBD5752971B08D00525BF7 /* FolderContentChangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD5722971B08D00525BF7 /* FolderContentChangeEvent.swift */; };
+		8AFBD5762971B08D00525BF7 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD5732971B08D00525BF7 /* Change.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,7 +174,9 @@
 		8AFBD563297150DF00525BF7 /* DiffSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffSummaryView.swift; sourceTree = "<group>"; };
 		8AFBD56529715D4E00525BF7 /* StatusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusState.swift; sourceTree = "<group>"; };
 		8AFBD56729715DE400525BF7 /* CommitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitState.swift; sourceTree = "<group>"; };
-		8AFBD56C2971900100525BF7 /* DirMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirMonitor.swift; sourceTree = "<group>"; };
+		8AFBD5712971B08D00525BF7 /* FolderContentMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderContentMonitor.swift; sourceTree = "<group>"; };
+		8AFBD5722971B08D00525BF7 /* FolderContentChangeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderContentChangeEvent.swift; sourceTree = "<group>"; };
+		8AFBD5732971B08D00525BF7 /* Change.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,10 +331,10 @@
 		8AA71063296D5BE0002F6C24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8AFBD5772971B09200525BF7 /* FileMonitor */,
 				8A48D14127FDA8A0007803D2 /* Shell.swift */,
 				8AFBD54329702A0600525BF7 /* Commit.swift */,
 				8AFBD54829702A4200525BF7 /* GitDiffLine.swift */,
-				8AFBD56C2971900100525BF7 /* DirMonitor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -425,6 +429,16 @@
 				8AFBD56529715D4E00525BF7 /* StatusState.swift */,
 			);
 			path = State;
+			sourceTree = "<group>";
+		};
+		8AFBD5772971B09200525BF7 /* FileMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				8AFBD5732971B08D00525BF7 /* Change.swift */,
+				8AFBD5722971B08D00525BF7 /* FolderContentChangeEvent.swift */,
+				8AFBD5712971B08D00525BF7 /* FolderContentMonitor.swift */,
+			);
+			path = FileMonitor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -586,9 +600,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AFBD56D2971900100525BF7 /* DirMonitor.swift in Sources */,
 				8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */,
 				8AFBD530296F2C1400525BF7 /* MD5+Gravitar.swift in Sources */,
+				8AFBD5762971B08D00525BF7 /* Change.swift in Sources */,
 				8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */,
 				8AFBD56029705B3A00525BF7 /* GitFileStatus.swift in Sources */,
 				8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */,
@@ -623,9 +637,11 @@
 				8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */,
 				8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */,
 				8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */,
+				8AFBD5752971B08D00525BF7 /* FolderContentChangeEvent.swift in Sources */,
 				8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */,
 				8A07612E29659EEE00D878DC /* GitDiffHunk.swift in Sources */,
 				8AFBD536296F2C4300525BF7 /* RepoState.swift in Sources */,
+				8AFBD5742971B08D00525BF7 /* FolderContentMonitor.swift in Sources */,
 				8AFBD513296F2AA900525BF7 /* WindowState.swift in Sources */,
 				8AFBD52F296F2C1400525BF7 /* SidebarCommitLabelView.swift in Sources */,
 				8AFBD533296F2C1400525BF7 /* CommitHistorySplitView.swift in Sources */,
