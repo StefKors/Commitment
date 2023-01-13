@@ -23,7 +23,13 @@ struct TextEditorView: View {
                     .onSubmit { handleSubmit() }
 
                 Button(action: { handleSubmit() }) {
+                    Spacer()
                     Text("Commit")
+                    if let branch = repo.branch?.name.localName {
+                        Text("to")
+                        Text(branch)
+                            .fontWeight(.bold)
+                    }
                     Spacer()
                 }
                 .buttonStyle(.borderedProminent)
