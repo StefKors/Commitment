@@ -15,7 +15,7 @@ struct ToolbarContentView: View {
             HStack {
                 RepoSelectView()
                 Image(systemName: "chevron.compact.right")
-                BranchView(branch: repo.branch?.name.localName ?? "no-branch")
+                BranchView(branch: repo.branch)
                 Image(systemName: "chevron.compact.right")
                 DiffSummaryView()
             }

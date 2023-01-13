@@ -81,7 +81,8 @@ public class FolderContentMonitor {
             latency,
             flags)
 
-        FSEventStreamScheduleWithRunLoop(streamRef, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue)
+        FSEventStreamSetDispatchQueue(streamRef, .main)
+        // FSEventStreamSetDispatchQueue(streamRef, CFRunLoopMode.defaultMode.rawValue)
         FSEventStreamStart(streamRef)
 
         hasStarted = true

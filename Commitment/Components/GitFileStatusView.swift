@@ -20,7 +20,9 @@ struct GitFileStatusView: View {
                     .foregroundColor(.secondary)
 
                 Text(url.lastPathComponent.removingPercentEncoding ?? "")
+                    .fixedSize()
             }).lineLimit(1)
+                .allowsHitTesting(true)
 
             Spacer()
             FileChangeIconView(type: status.state.index)

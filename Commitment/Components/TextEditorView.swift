@@ -19,17 +19,14 @@ struct TextEditorView: View {
                     .lineLimit(2...20)
                     .multilineTextAlignment(.leading)
                     .textFieldStyle(.plain)
-                // .font(Font.custom("Inter-Regular", size: 14))
                     .onSubmit { handleSubmit() }
 
                 Button(action: { handleSubmit() }) {
                     Spacer()
                     Text("Commit")
-                    if let branch = repo.branch?.name.localName {
-                        Text("to")
-                        Text(branch)
-                            .fontWeight(.bold)
-                    }
+                    Text("to")
+                    Text(repo.branch)
+                        .fontWeight(.bold)
                     Spacer()
                 }
                 .buttonStyle(.borderedProminent)

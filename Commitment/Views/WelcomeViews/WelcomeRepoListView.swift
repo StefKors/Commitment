@@ -19,8 +19,8 @@ struct WelcomeRepoListView: View {
                 ForEach(state.repos.suffix(5), id: \.id) { repo in
                     ListItem(
                         label: repo.folderName,
-                        subLabel: repo.branch?.name.localName ?? "",
-                        image: "folder"
+                        subLabel: repo.branch,
+                        assetImage: "git-repo-24"
                     ).onTapGesture {
                         print("opening repo \(repo.folderName)")
                         openWindow(value: repo)
@@ -31,20 +31,20 @@ struct WelcomeRepoListView: View {
                 ListItem(
                     label: "Learn Git",
                     subLabel: "Getting started with Git",
-                    image: "graduationcap"
+                    systemImage: "graduationcap"
                 )
 
                 ListItem(
                     label: "Release Notes",
                     subLabel: "Learn about new features",
-                    image: "newspaper"
+                    systemImage: "newspaper"
                 )
             }
 
             ListItem(
                 label: "Add Local Repository",
                 subLabel: "Click here",
-                image: "plus.rectangle.on.folder.fill"
+                systemImage: "plus.rectangle.on.folder.fill"
             ).onTapGesture {
                 if let selectedRepo = state.openRepo() {
                     print("opening repo \(selectedRepo.folderName)")
@@ -59,16 +59,24 @@ struct WelcomeRepoListView: View {
 struct ListItem: View {
     var label: String
     var subLabel: String
-    var image: String
+    var systemImage: String? = nil
+    var assetImage: String? = nil
 
     @State private var isHovering: Bool = false
 
     var body: some View {
         HStack {
-            Image(systemName: image)
-                .font(Font.system(size: 20))
-                .foregroundColor(.accentColor)
-                .frame(width: 25)
+            if let systemImage {
+                Image(systemName: systemImage)
+                    .font(Font.system(size: 20))
+                    .foregroundColor(.accentColor)
+                    .frame(width: 25)
+            } else if let assetImage {
+                Image(assetImage)
+                    .font(Font.system(size: 20))
+                    .foregroundColor(.accentColor)
+                    .frame(width: 25)
+            }
 
             VStack(alignment: .leading) {
                 Text(label)

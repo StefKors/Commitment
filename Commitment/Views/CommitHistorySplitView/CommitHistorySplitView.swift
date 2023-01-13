@@ -15,9 +15,7 @@ enum SidebarViewSelection: String, CaseIterable {
 
 struct CommitHistorySplitView: View {
     @EnvironmentObject var repo: RepoState
-    @SceneStorage("DetailView.selectedTab") private var sidebarSelection: Int = 0
-    @State var segmentationSelection : SidebarViewSelection = .changes
-
+    @State private var segmentationSelection : SidebarViewSelection = .changes
     @State private var message: String = ""
 
     var body: some View {
@@ -61,7 +59,6 @@ struct CommitHistorySplitView: View {
                 }
 
                 Divider()
-
                 TextEditorView(isDisabled: repo.diffs.isEmpty)
                     .background(.thinMaterial)
             }
@@ -82,12 +79,21 @@ struct CommitHistorySplitView: View {
 
             })
         } detail: {
-            if let index = sidebarSelection, let commits = repo.commits {
-                Text("ComitView \(index)")
-                CommitView(commit: commits[index])
-            } else {
-                Text("nothing selected")
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("No local changes")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .fixedSize(horizontal: true, vertical: false)
+                    Text("There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:")
+                        .lineSpacing(4)
+                        // .font(.body)
+                }
+                WelcomeRepoListView()
             }
+            .frame(maxWidth: 400)
+            .padding()
+
         }
     }
 }
