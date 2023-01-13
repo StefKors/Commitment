@@ -27,9 +27,9 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
 
     var branch: RepositoryReference? = nil
 
-    var diff: DiffState = DiffState()
-    var status: StatusState = StatusState()
-    var commits: CommitState = CommitState()
+    @Published var diff: DiffState = DiffState()
+    @Published var status: StatusState = StatusState()
+    @Published var commits: CommitState = CommitState()
 
     convenience init?(string: String) {
         guard let path = URL(string: string) else {
