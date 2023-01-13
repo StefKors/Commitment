@@ -57,9 +57,7 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
         self.repository = repo
         self.path = url
         self.shell = Shell(workspace: path.absoluteString)
-        Task {
-            self.refreshRepoState()
-        }
+        self.refreshRepoState()
     }
 
     /// Watch out for re-renders, can be slow
