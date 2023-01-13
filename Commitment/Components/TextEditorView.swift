@@ -36,7 +36,6 @@ struct TextEditorView: View {
         state.repo?.shell.commit(message: message)
         message = ""
         state.repo?.refreshRepoState()
-        // self.diffstate.diffs = git.diff()
     }
 }
 // 

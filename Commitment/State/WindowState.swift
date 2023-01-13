@@ -11,7 +11,7 @@ import SwiftUI
 
 class WindowState: ObservableObject {
     @Default(.repos) var repos
-    var repo: RepoState?
+    @Published var repo: RepoState?
 
     init (_ repo: RepoState? = nil) {
         self.repo = repo
