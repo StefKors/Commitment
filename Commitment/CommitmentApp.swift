@@ -31,21 +31,5 @@ struct CommitmentApp: App {
         .windowStyle(.automatic)
         .windowToolbarStyle(.unified)
         .windowResizability(.contentMinSize)
-
-        // WindowGroup {
-        //     ContentView()
-        //         .ignoresSafeArea()
-        //         .environmentObject(git)
-        //         .presentedWindowStyle(.hiddenTitleBar)
-        //         .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification), perform: { _ in
-        //             NSApp.mainWindow?.standardWindowButton(.zoomButton)?.isHidden = true
-        //             NSApp.mainWindow?.standardWindowButton(.closeButton)?.isHidden = true
-        //             NSApp.mainWindow?.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        //             NSApp.mainWindow?.toolbar = nil
-        //         })
-        // }
-        // .windowStyle(.hiddenTitleBar)
-        // .windowResizability(.contentSize)
-        // .defaultPosition(.center)
     }
 }
