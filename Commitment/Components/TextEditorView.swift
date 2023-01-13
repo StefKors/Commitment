@@ -26,7 +26,6 @@ struct TextEditorView: View {
                     Spacer()
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(message.isEmpty)
             }
             .padding()
         // .shadow(radius: 10)

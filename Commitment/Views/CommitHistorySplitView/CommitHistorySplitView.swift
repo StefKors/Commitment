@@ -64,6 +64,7 @@ struct CommitHistorySplitView: View {
 
                 TextEditorView()
                     .background(.thinMaterial)
+                    .disabled(repo.diffs.isEmpty)
             }
             .toolbar(content: {
                 // TODO: Hide when sidebar is closed
