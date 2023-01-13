@@ -62,11 +62,13 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
 
     /// Watch out for re-renders, can be slow
     func refreshRepoState() {
+        print("BEFORE: updating repo state \(commits.commits?.count ?? 0)")
         let refsList = try? repository.listReferences()
         self.branch = refsList?.currentReference
         self.diff.diffs = self.shell.diff()
         self.status.status = try? repository.listStatus()
         self.commits.commits = try? repository.listLogRecords().records as? [GitLogRecord]
+        print("AFTER: updating repo state \(commits.commits?.count ?? 0)")
     }
 
     static func == (lhs: RepoState, rhs: RepoState) -> Bool {
