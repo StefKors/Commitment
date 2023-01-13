@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TextEditorView: View {
+    let isDisabled: Bool
     @EnvironmentObject private var repo: RepoState
     private let placeholder: String = "Summary"
     @State private var message: String = ""
@@ -26,6 +27,7 @@ struct TextEditorView: View {
                     Spacer()
                 }
                 .buttonStyle(.borderedProminent)
+                .disabled(isDisabled)
             }
             .padding()
         // .shadow(radius: 10)
