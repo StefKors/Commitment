@@ -15,11 +15,11 @@ struct GitFileStatusView: View {
 
         HStack(alignment: .center) {
             HStack(spacing: .zero, content: {
-                Text(url.deletingLastPathComponent().path())
+                Text(url.deletingLastPathComponent().path().removingPercentEncoding ?? "")
                     .truncationMode(.tail)
                     .foregroundColor(.secondary)
 
-                Text(url.lastPathComponent)
+                Text(url.lastPathComponent.removingPercentEncoding ?? "")
             }).lineLimit(1)
 
             Spacer()

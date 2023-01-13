@@ -71,3 +71,11 @@ public class GitDiffHunk: Equatable {
     }
     
 }
+
+extension GitDiffHunk {
+    struct Preview {
+        static var versionBump: GitDiffHunk {
+            return GitDiff.Preview.toDiff(GitDiff.Preview.versionBump).hunks.first!
+        }
+    }
+}

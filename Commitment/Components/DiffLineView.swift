@@ -74,9 +74,9 @@ struct DiffLineView: View {
 struct DiffLineView_Previews: PreviewProvider {
     static var previews: some View {
         DiffLineView(line: GitDiffHunkLine.Preview.deletion)
-        
+
         DiffLineView(line: GitDiffHunkLine.Preview.addition)
-        
+
         DiffLineView(line: GitDiffHunkLine.Preview.unchanged)
     }
 }

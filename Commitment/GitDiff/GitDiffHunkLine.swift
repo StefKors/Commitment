@@ -33,3 +33,19 @@ public struct GitDiffHunkLine: Hashable, Equatable {
         self.newLineNumber = newLineNumber
     }
 }
+
+extension GitDiffHunkLine {
+    struct Preview {
+        static var deletion: GitDiffHunkLine {
+            GitDiffHunk.Preview.versionBump.lines[3]
+        }
+
+        static var addition: GitDiffHunkLine {
+            GitDiffHunk.Preview.versionBump.lines[4]
+        }
+
+        static var unchanged: GitDiffHunkLine {
+            GitDiffHunk.Preview.versionBump.lines[5]
+        }
+    }
+}
