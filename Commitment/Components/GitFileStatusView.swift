@@ -27,10 +27,3 @@ struct GitFileStatusView: View {
         }
     }
 }
-
-// struct GitFileStatusView_Previews: PreviewProvider {
-//     static let status = GitFileStatusList(files: [GitFileStatus(path: "package.json", state: " M")])
-//     static var previews: some View {
-//         GitFileStatusView()
-//     }
-// }

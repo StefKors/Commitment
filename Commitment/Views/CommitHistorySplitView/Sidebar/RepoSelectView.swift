@@ -23,7 +23,10 @@ struct RepoSelectView: View {
             }
         } label: {
             HStack {
-                Image(systemName: "folder")
+                Image("git-repo-16")
+                    .resizable()
+                    .frame(width: 16, height: 12)
+                    .foregroundColor(.primary)
                 Text(self.state.repo?.folderName ?? "no repo found")
                     .foregroundColor(.primary)
             }

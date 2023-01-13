@@ -16,23 +16,17 @@ struct RepoWindow: View {
 
     var body: some View {
         HStack {
-            // Watch out for re-renders, can be slow
-            if let repository = state.repo?.repository, let commits = try? repository.listLogRecords().records as? [GitLogRecord],
-               let diffs = state.repo?.shell.diff(),
-               let status = try? state.repo?.repository.listStatus() {
-                CommitHistorySplitView(commits: commits, diffs: diffs, status: status)
-                    // .navigationDocument(URL(fileURLWithPath: state.repo.path.absoluteString, isDirectory: true))
-                    .toolbar(content: {
-                        ToolbarItemGroup(placement: .principal, content: {
-                            ToolbarContentView()
-                        })
-
-                        ToolbarItemGroup(placement: .keyboard, content: {
-                            ToolbarContentView()
-                        })
+            CommitHistorySplitView()
+            // .navigationDocument(URL(fileURLWithPath: state.repo.path.absoluteString, isDirectory: true))
+                .toolbar(content: {
+                    ToolbarItemGroup(placement: .principal, content: {
+                        ToolbarContentView()
                     })
 
-            }
+                    ToolbarItemGroup(placement: .keyboard, content: {
+                        ToolbarContentView()
+                    })
+                })
         }
         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
         .navigationTitle(state.repo?.folderName ?? "Commitment")

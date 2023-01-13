@@ -26,6 +26,7 @@ class Shell {
         return (String(data: data, encoding: .utf8) ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
+    @discardableResult
     func run(_ command: String, in folderPath: String) -> String {
         self.run("cd \(folderPath);\(command)")
     }
@@ -57,10 +58,10 @@ class Shell {
         guard let files else {
             // Add everything
             self.run("git add .", in: workspace)
-                .split(separator: "\n")
-                .forEach { line in
-                    print(line)
-                }
+                // .split(separator: "\n")
+                // .forEach { line in
+                //     // print(line)
+                // }
 
             return
         }
@@ -69,10 +70,10 @@ class Shell {
         for file in files {
             // Stage file
             self.run("git add \(file)", in: workspace)
-                .split(separator: "\n")
-                .forEach { line in
-                    print(line)
-                }
+                // .split(separator: "\n")
+                // .forEach { line in
+                //     // print(line)
+                // }
         }
 
     }
@@ -81,10 +82,10 @@ class Shell {
         self.add()
 
         self.run("git commit -m \"\(message)\"", in: workspace)
-            .split(separator: "\n")
-            .forEach { line in
-                // print(line)
-            }
+            // .split(separator: "\n")
+            // .forEach { line in
+            //     print(line)
+            // }
     }
 
     func diff() -> [GitDiff] {

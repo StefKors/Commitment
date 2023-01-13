@@ -78,6 +78,9 @@
 		8AFBD55E29704F7000525BF7 /* GitFileStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD55D29704F7000525BF7 /* GitFileStatusView.swift */; };
 		8AFBD56029705B3A00525BF7 /* GitFileStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD55F29705B3A00525BF7 /* GitFileStatus.swift */; };
 		8AFBD56229705D3500525BF7 /* RepositoryLogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56129705D3500525BF7 /* RepositoryLogRecord.swift */; };
+		8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD563297150DF00525BF7 /* DiffSummaryView.swift */; };
+		8AFBD56629715D4E00525BF7 /* StatusState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56529715D4E00525BF7 /* StatusState.swift */; };
+		8AFBD56829715DE400525BF7 /* CommitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56729715DE400525BF7 /* CommitState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +174,9 @@
 		8AFBD55D29704F7000525BF7 /* GitFileStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStatusView.swift; sourceTree = "<group>"; };
 		8AFBD55F29705B3A00525BF7 /* GitFileStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStatus.swift; sourceTree = "<group>"; };
 		8AFBD56129705D3500525BF7 /* RepositoryLogRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryLogRecord.swift; sourceTree = "<group>"; };
+		8AFBD563297150DF00525BF7 /* DiffSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffSummaryView.swift; sourceTree = "<group>"; };
+		8AFBD56529715D4E00525BF7 /* StatusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusState.swift; sourceTree = "<group>"; };
+		8AFBD56729715DE400525BF7 /* CommitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +300,7 @@
 				8AFBD54F29703AB600525BF7 /* DiffHunkView.swift */,
 				8AFBD54D29703A9C00525BF7 /* DiffLineView.swift */,
 				8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */,
+				8AFBD563297150DF00525BF7 /* DiffSummaryView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -418,8 +425,10 @@
 			isa = PBXGroup;
 			children = (
 				8AFBD535296F2C4300525BF7 /* RepoState.swift */,
+				8AFBD56729715DE400525BF7 /* CommitState.swift */,
 				8AFBD511296F2AA900525BF7 /* WindowState.swift */,
 				8AA71069296DAE06002F6C24 /* DiffState.swift */,
+				8AFBD56529715D4E00525BF7 /* StatusState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -585,6 +594,7 @@
 			files = (
 				8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */,
 				8AFBD530296F2C1400525BF7 /* MD5+Gravitar.swift in Sources */,
+				8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */,
 				8AFBD56029705B3A00525BF7 /* GitFileStatus.swift in Sources */,
 				8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */,
 				8AFBD531296F2C1400525BF7 /* AddRepoView.swift in Sources */,
@@ -593,6 +603,8 @@
 				8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */,
 				8AFBD54729702A2C00525BF7 /* Collection.swift in Sources */,
 				8AFBD50F296F2A5F00525BF7 /* AccentGlow.swift in Sources */,
+				8AFBD56829715DE400525BF7 /* CommitState.swift in Sources */,
+				8AFBD56629715D4E00525BF7 /* StatusState.swift in Sources */,
 				8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */,
 				8AFBD532296F2C1400525BF7 /* RepoSelectView.swift in Sources */,
 				8AFBD54E29703A9C00525BF7 /* DiffLineView.swift in Sources */,

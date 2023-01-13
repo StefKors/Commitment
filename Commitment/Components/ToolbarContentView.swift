@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ToolbarContentView: View {
+    @EnvironmentObject var state: WindowState
+
     var body: some View {
         GroupBox {
             HStack {
                 RepoSelectView()
                 Image(systemName: "chevron.compact.right")
-                RepoSelectView()
+                BranchView(branch: state.repo?.branch?.name.localName ?? "no-branch")
                 Image(systemName: "chevron.compact.right")
-                RepoSelectView()
+                DiffSummaryView()
             }
         }
     }

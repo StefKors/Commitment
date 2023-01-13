@@ -10,8 +10,13 @@ import SwiftUI
 struct BranchView: View {
     var branch: String
     var body: some View {
-        Text(branch)
-            .navigationSubtitle(branch)
+        HStack(spacing: 0) {
+            Image("git-branch-16")
+                .resizable()
+                .frame(width: 16, height: 16)
+            Text(branch)
+                .navigationSubtitle(branch)
+        }
     }
 }
 

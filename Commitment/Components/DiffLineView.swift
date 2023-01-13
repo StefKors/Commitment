@@ -18,10 +18,10 @@ struct DiffLineView: View {
         switch line.type {
         case .addition:
             self.image = "plus"
-            self.color = .green
+            self.color = Color("DiffGreen")
         case .deletion:
             self.image = "minus"
-            self.color = .red
+            self.color = Color("DiffRed")
         case .unchanged:
             self.image = nil
             self.color = .clear
@@ -31,7 +31,7 @@ struct DiffLineView: View {
     var body: some View {
         HStack(spacing: 0) {
             ZStack(alignment: .center) {
-                color.opacity(0.3)
+                color
                 if let oldNumber = line.oldLineNumber {
                     Text(oldNumber.description)
                 }
@@ -41,7 +41,7 @@ struct DiffLineView: View {
             .foregroundColor(.secondary)
             
             ZStack(alignment: .center) {
-                color.opacity(0.3)
+                color
                 if let newNumber = line.newLineNumber {
                     Text(newNumber.description)
                 }
@@ -49,9 +49,11 @@ struct DiffLineView: View {
             .frame(width: 30)
             .font(.system(size: 11))
             .foregroundColor(.secondary)
-            
+
+            // Divider()
+
             ZStack(alignment: .center) {
-                color.opacity(0.3)
+                color.opacity(0.8)
                 if let image {
                     Image(systemName: image)
                 }
@@ -59,10 +61,8 @@ struct DiffLineView: View {
             .frame(width: 30)
             .font(.system(size: 11))
             
-            Divider()
-            
             ZStack(alignment: .leading) {
-                color.opacity(0.2)
+                color.opacity(0.8)
                 Text(line.text)
                     .padding(.horizontal)
             }

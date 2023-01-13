@@ -13,7 +13,6 @@ struct TextEditorView: View {
     @State private var message: String = ""
 
     var body: some View {
-        GroupBox {
             VStack {
                 TextField("CommitMessage", text: $message, prompt: Text(placeholder), axis: .vertical)
                     .lineLimit(2...20)
@@ -29,15 +28,14 @@ struct TextEditorView: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(message.isEmpty)
             }
-        }
-        .background(.thinMaterial)
-        .padding(4)
-        .shadow(radius: 10)
+            .padding()
+        // .shadow(radius: 10)
     }
 
     func handleSubmit() {
         state.repo?.shell.commit(message: message)
         message = ""
+        state.repo?.refreshRepoState()
         // self.diffstate.diffs = git.diff()
     }
 }

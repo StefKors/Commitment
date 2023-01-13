@@ -14,9 +14,7 @@ enum SidebarViewSelection: String, CaseIterable {
 }
 
 struct CommitHistorySplitView: View {
-    var commits: [GitLogRecord]
-    var diffs: [GitDiff]
-    var status: GitFileStatusList
+    @EnvironmentObject private var state: WindowState
     @SceneStorage("DetailView.selectedTab") private var sidebarSelection: Int = 0
     @State var segmentationSelection : SidebarViewSelection = .changes
 
@@ -29,26 +27,30 @@ struct CommitHistorySplitView: View {
                     List {
                         switch segmentationSelection {
                         case .history:
-                            ForEach(commits.indices, id: \.self) { index in
-                                NavigationLink(value: commits[index], label: {
-                                    SidebarCommitLabelView(commit: commits[index])
-                                })
-                                .buttonStyle(.plain)
+                            if let commits = state.repo?.commits.commits {
+                                ForEach(commits.indices, id: \.self) { index in
+                                    NavigationLink(value: commits[index], label: {
+                                        SidebarCommitLabelView(commit: commits[index])
+                                    })
+                                    .buttonStyle(.plain)
+                                }
                             }
                         case .changes:
-                            ForEach(status.files.indices, id: \.self) { index in
-                                NavigationLink(value: status.files[index], label: {
-                                    GitFileStatusView(status: status.files[index])
-                                })
-                                .buttonStyle(.plain)
-
+                            if let status = state.repo?.status.status {
+                                ForEach(status.files.indices, id: \.self) { index in
+                                    NavigationLink(value: status.files[index], label: {
+                                        GitFileStatusView(status: status.files[index])
+                                    })
+                                    .buttonStyle(.plain)
+                                }
                             }
                         }
                     }
+                    .listStyle(.sidebar)
                 }
                 .navigationDestination(for: GitFileStatus.self) { status in
                     ScrollView(.vertical) {
-                        if let diff = diffs.first { $0.addedFile.contains(status.path) } {
+                        if let diff = state.repo?.diff.diffs.first { $0.addedFile.contains(status.path) } {
                             DiffView(status: status, diff: diff)
                                 .scenePadding()
                         }
@@ -58,7 +60,10 @@ struct CommitHistorySplitView: View {
                     Text("commit number \(commit.subject)")
                 }
 
+                Divider()
+
                 TextEditorView()
+                    .background(.thinMaterial)
             }
             .toolbar(content: {
                 // TODO: Hide when sidebar is closed
@@ -77,7 +82,7 @@ struct CommitHistorySplitView: View {
 
             })
         } detail: {
-            if let index = sidebarSelection {
+            if let index = sidebarSelection, let commits = state.repo?.commits.commits {
                 Text("ComitView \(index)")
                 CommitView(commit: commits[index])
             } else {

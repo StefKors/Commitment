@@ -15,7 +15,7 @@ extension Defaults.Keys {
     static let repos = Key<[RepoState]>("repos", default: [])
 }
 
-struct RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentable, Identifiable {
+class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentable, Identifiable, ObservableObject {
     var repository: GitRepository
     var shell: Shell
 
@@ -25,11 +25,13 @@ struct RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawRepres
         path.lastPathComponent
     }
 
-    var branch: RepositoryReference?
+    var branch: RepositoryReference? = nil
 
     var diff: DiffState = DiffState()
+    var status: StatusState = StatusState()
+    var commits: CommitState = CommitState()
 
-    init?(string: String) {
+    convenience init?(string: String) {
         guard let path = URL(string: string) else {
             return nil
         }
@@ -51,13 +53,22 @@ struct RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawRepres
             return nil
         }
 
-        let refsList = try? repo.listReferences()
-
         // git branch –show-current
         self.repository = repo
         self.path = url
-        self.branch = refsList?.currentReference
         self.shell = Shell(workspace: path.absoluteString)
+        Task {
+            self.refreshRepoState()
+        }
+    }
+
+    /// Watch out for re-renders, can be slow
+    func refreshRepoState() {
+        let refsList = try? repository.listReferences()
+        self.branch = refsList?.currentReference
+        self.diff.diffs = self.shell.diff()
+        self.status.status = try? repository.listStatus()
+        self.commits.commits = try? repository.listLogRecords().records as? [GitLogRecord]
     }
 
     static func == (lhs: RepoState, rhs: RepoState) -> Bool {
@@ -68,7 +79,7 @@ struct RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawRepres
         case path = "path"
     }
 
-    init(from decoder: Decoder) throws {
+    required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let path = try values.decode(URL.self, forKey: .path)
         // TODO: remove this force bang
@@ -80,7 +91,7 @@ struct RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawRepres
         path
     }
 
-    init?(rawValue: URL) {
+    required convenience init?(rawValue: URL) {
         // TODO: can probably stay url?
         self.init(path: rawValue)
     }
