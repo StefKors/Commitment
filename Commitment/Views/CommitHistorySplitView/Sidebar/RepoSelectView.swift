@@ -13,27 +13,36 @@ struct RepoSelectView: View {
     var placeholder = "Select Repo"
 
     var body: some View {
-        Menu {
-            ForEach(state.repos.indices, id: \.self){ index in
-                Button(action: {
-                    self.state.repo = state.repos[index]
-                }, label: {
-                    Text(state.repos[index].folderName)
-                })
-            }
-        } label: {
-            HStack {
-                Image("git-repo-16")
-                    .resizable()
-                    .frame(width: 16, height: 12)
-                    .foregroundColor(.primary)
-                Text(self.state.repo?.folderName ?? "no repo found")
-                    .foregroundColor(.primary)
-            }
-                .font(.system(size: 11))
+        HStack {
+            Image("git-repo-16")
+                .resizable()
+                .frame(width: 16, height: 12)
+                .foregroundColor(.primary)
+            Text(self.state.repo?.folderName ?? "no repo found")
+                .foregroundColor(.primary)
         }
-        .menuStyle(.borderlessButton)
-        .menuIndicator(.hidden)
+        .font(.system(size: 11))
+        // Menu {
+        //     ForEach(state.repos.indices, id: \.self){ index in
+        //         Button(action: {
+        //             self.state.repo = state.repos[index]
+        //         }, label: {
+        //             Text(state.repos[index].folderName)
+        //         })
+        //     }
+        // } label: {
+        //     HStack {
+        //         Image("git-repo-16")
+        //             .resizable()
+        //             .frame(width: 16, height: 12)
+        //             .foregroundColor(.primary)
+        //         Text(self.state.repo?.folderName ?? "no repo found")
+        //             .foregroundColor(.primary)
+        //     }
+        //         .font(.system(size: 11))
+        // }
+        // .menuStyle(.borderlessButton)
+        // .menuIndicator(.hidden)
     }
 }
 

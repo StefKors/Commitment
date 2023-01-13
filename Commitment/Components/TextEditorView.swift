@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TextEditorView: View {
-    @EnvironmentObject private var state: WindowState
+    @EnvironmentObject private var repo: RepoState
     private let placeholder: String = "Summary"
     @State private var message: String = ""
 
@@ -33,9 +33,9 @@ struct TextEditorView: View {
     }
 
     func handleSubmit() {
-        state.repo?.shell.commit(message: message)
+        repo.shell.commit(message: message)
         message = ""
-        state.repo?.refreshRepoState()
+        repo.refreshRepoState()
     }
 }
 // 
