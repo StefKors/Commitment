@@ -78,6 +78,7 @@
 		8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD563297150DF00525BF7 /* DiffSummaryView.swift */; };
 		8AFBD56629715D4E00525BF7 /* StatusState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56529715D4E00525BF7 /* StatusState.swift */; };
 		8AFBD56829715DE400525BF7 /* CommitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56729715DE400525BF7 /* CommitState.swift */; };
+		8AFBD56D2971900100525BF7 /* DirMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56C2971900100525BF7 /* DirMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		8AFBD563297150DF00525BF7 /* DiffSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffSummaryView.swift; sourceTree = "<group>"; };
 		8AFBD56529715D4E00525BF7 /* StatusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusState.swift; sourceTree = "<group>"; };
 		8AFBD56729715DE400525BF7 /* CommitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitState.swift; sourceTree = "<group>"; };
+		8AFBD56C2971900100525BF7 /* DirMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +330,7 @@
 				8A48D14127FDA8A0007803D2 /* Shell.swift */,
 				8AFBD54329702A0600525BF7 /* Commit.swift */,
 				8AFBD54829702A4200525BF7 /* GitDiffLine.swift */,
+				8AFBD56C2971900100525BF7 /* DirMonitor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AFBD56D2971900100525BF7 /* DirMonitor.swift in Sources */,
 				8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */,
 				8AFBD530296F2C1400525BF7 /* MD5+Gravitar.swift in Sources */,
 				8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */,

@@ -36,10 +36,10 @@ struct CommitHistorySplitView: View {
                                 }
                             }
                         case .changes:
-                            if let status = repo.status {
-                                ForEach(status.files.indices, id: \.self) { index in
-                                    NavigationLink(value: status.files[index], label: {
-                                        GitFileStatusView(status: status.files[index])
+                            if let files = repo.status?.files {
+                                ForEach(files.indices, id: \.self) { index in
+                                    NavigationLink(value: files[index], label: {
+                                        GitFileStatusView(status: files[index])
                                     })
                                     .buttonStyle(.plain)
                                 }

@@ -42,24 +42,6 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
     init?(path: URL) {
         self.path = path
         self.shell = Shell(workspace: path.absoluteString)
-        // guard let repo = try? GitRepository(atPath: path.path())  else {
-        //     print("can't open repo at \(path.absoluteString)")
-        //     return nil
-        // }
-        // guard let localPath = repo.localPath  else {
-        //     print("can't open localpath at \(path.absoluteString)")
-        //     return nil
-        // }
-        // guard let url = URL(string: localPath) else {
-        //     print("can't open url at \(path.absoluteString)")
-        //     return nil
-        // }
-
-        // git branch –show-current
-        // self.repository = repo
-        // self.path = url
-
-        // self.refreshRepoState()
     }
 
     func initializeFullRepo() {
@@ -73,13 +55,21 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
 
     /// Watch out for re-renders, can be slow
     func refreshRepoState() {
-        print("BEFORE: updating repo state \(commits?.count ?? 0)")
-        let refsList = try? repository?.listReferences()
-        self.branch = refsList?.currentReference
-        self.diffs = self.shell.diff()
-        self.status = try? repository?.listStatus()
-        self.commits = try? repository?.listLogRecords().records as? [GitLogRecord]
-        print("AFTER: updating repo state \(commits?.count ?? 0)")
+        /// Update on background thread
+        Task(priority: .background) {
+            let refsList = try? repository?.listReferences()
+            self.branch = refsList?.currentReference
+            let diffs = self.shell.diff()
+            let status = try? repository?.listStatus()
+            let commits = try? repository?.listLogRecords().records as? [GitLogRecord]
+
+            /// Publish on main thread
+            await MainActor.run {
+                self.diffs = diffs
+                self.status = status
+                self.commits = commits
+            }
+        }
     }
 
     static func == (lhs: RepoState, rhs: RepoState) -> Bool {
