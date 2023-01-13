@@ -27,9 +27,9 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
 
     var branch: RepositoryReference? = nil
 
-    @Published var diff: DiffState = DiffState()
-    @Published var status: StatusState = StatusState()
-    @Published var commits: CommitState = CommitState()
+    @Published var diffs: [GitDiff] = []
+    @Published var status: GitFileStatusList? = nil
+    @Published var commits: [GitLogRecord]? = nil
 
     convenience init?(string: String) {
         guard let path = URL(string: string) else {
@@ -62,13 +62,13 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
 
     /// Watch out for re-renders, can be slow
     func refreshRepoState() {
-        print("BEFORE: updating repo state \(commits.commits?.count ?? 0)")
+        print("BEFORE: updating repo state \(commits?.count ?? 0)")
         let refsList = try? repository.listReferences()
         self.branch = refsList?.currentReference
-        self.diff.diffs = self.shell.diff()
-        self.status.status = try? repository.listStatus()
-        self.commits.commits = try? repository.listLogRecords().records as? [GitLogRecord]
-        print("AFTER: updating repo state \(commits.commits?.count ?? 0)")
+        self.diffs = self.shell.diff()
+        self.status = try? repository.listStatus()
+        self.commits = try? repository.listLogRecords().records as? [GitLogRecord]
+        print("AFTER: updating repo state \(commits?.count ?? 0)")
     }
 
     static func == (lhs: RepoState, rhs: RepoState) -> Bool {
