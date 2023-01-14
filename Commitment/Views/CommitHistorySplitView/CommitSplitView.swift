@@ -30,7 +30,7 @@ struct CommitSplitView: View {
 
                 ZStack {
                     Rectangle().fill(.background)
-                    if let file = files[selection] {
+                    if let file = getItem(at: selection, from: files) {
                         VStack {
                             Text("TBD git history diff view")
                             Text(file.path)
@@ -39,6 +39,19 @@ struct CommitSplitView: View {
                 }
             }
         }
+    }
+
+    func getItem(at index: Int, from files: [GitFileStatus]) -> GitFileStatus? {
+        if files.isEmpty {
+            return nil
+        }
+
+        if files.indices.contains(index) {
+            return files[index]
+        }
+
+        selection = 0
+        return files[0]
     }
 }
 
