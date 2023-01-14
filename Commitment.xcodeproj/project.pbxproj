@@ -26,12 +26,6 @@
 		8A6B649829730E560074B3C1 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649729730E560074B3C1 /* FileView.swift */; };
 		8A6B649A29730FD50074B3C1 /* FileRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649929730FD50074B3C1 /* FileRenderView.swift */; };
 		8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */; };
-		8A6B649F297323820074B3C1 /* CodeEditTextView in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6B649E297323820074B3C1 /* CodeEditTextView */; };
-		8A6B64A1297323F20074B3C1 /* CodeRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B64A0297323F20074B3C1 /* CodeRenderView.swift */; };
-		8A6B64A42973247F0074B3C1 /* codeedit-github-light.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B64A32973247F0074B3C1 /* codeedit-github-light.json */; };
-		8A6B64A6297324870074B3C1 /* codeedit-github-dark.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A6B64A5297324870074B3C1 /* codeedit-github-dark.json */; };
-		8A6B64A8297324BC0074B3C1 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B64A7297324BC0074B3C1 /* Theme.swift */; };
-		8A6B64AA2973257D0074B3C1 /* Loopable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B64A92973257D0074B3C1 /* Loopable.swift */; };
 		8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C665B296464E300A774D7 /* TextEditorView.swift */; };
 		8A8C66712964682B00A774D7 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665E2964682B00A774D7 /* Inter-Bold.otf */; };
 		8A8C66722964682B00A774D7 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665F2964682B00A774D7 /* Inter-Regular.otf */; };
@@ -210,7 +204,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */,
-				8A6B649F297323820074B3C1 /* CodeEditTextView in Frameworks */,
 				8AFBD516296F2BA500525BF7 /* Defaults in Frameworks */,
 				8AFBD519296F2BDB00525BF7 /* Git in Frameworks */,
 			);
@@ -499,7 +492,6 @@
 				8AFBD515296F2BA500525BF7 /* Defaults */,
 				8AFBD518296F2BDB00525BF7 /* Git */,
 				8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */,
-				8A6B649E297323820074B3C1 /* CodeEditTextView */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -577,7 +569,6 @@
 				8AFBD514296F2BA500525BF7 /* XCRemoteSwiftPackageReference "Defaults" */,
 				8AFBD517296F2BDB00525BF7 /* XCRemoteSwiftPackageReference "git-macos" */,
 				8AFBD51A296F2BF600525BF7 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
-				8A6B649D297323820074B3C1 /* XCRemoteSwiftPackageReference "CodeEditTextView" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -613,8 +604,6 @@
 				8A8C66772964682B00A774D7 /* Inter-ExtraLightItalic.otf in Resources */,
 				8A8C66812964682B00A774D7 /* Inter-ExtraBoldItalic.otf in Resources */,
 				8A8C667B2964682B00A774D7 /* Inter-MediumItalic.otf in Resources */,
-				8A6B64A42973247F0074B3C1 /* codeedit-github-light.json in Resources */,
-				8A6B64A6297324870074B3C1 /* codeedit-github-dark.json in Resources */,
 				8A8C66712964682B00A774D7 /* Inter-Bold.otf in Resources */,
 				8A8C667E2964682B00A774D7 /* Inter-ExtraBold.otf in Resources */,
 				8A8C66732964682B00A774D7 /* Inter-SemiBoldItalic.otf in Resources */,
@@ -648,7 +637,6 @@
 				8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */,
 				8AFBD56029705B3A00525BF7 /* GitFileStatus.swift in Sources */,
 				8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */,
-				8A6B64A1297323F20074B3C1 /* CodeRenderView.swift in Sources */,
 				8AFBD57D2971D14700525BF7 /* CheckoutProgressIconView.swift in Sources */,
 				8AFBD531296F2C1400525BF7 /* AddRepoView.swift in Sources */,
 				8AFBD52B296F2C1400525BF7 /* AdvancedSettingsView.swift in Sources */,
@@ -675,7 +663,6 @@
 				8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */,
 				8A6B649429730B070074B3C1 /* SplitModeToggleView.swift in Sources */,
 				8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */,
-				8A6B64AA2973257D0074B3C1 /* Loopable.swift in Sources */,
 				8AFBD55E29704F7000525BF7 /* GitFileStatusView.swift in Sources */,
 				8AFBD54929702A4200525BF7 /* GitDiffLine.swift in Sources */,
 				8AFBD55029703AB600525BF7 /* DiffHunkView.swift in Sources */,
@@ -684,7 +671,6 @@
 				8A0761302965A15200D878DC /* DiffRenderView.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,
 				8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */,
-				8A6B64A8297324BC0074B3C1 /* Theme.swift in Sources */,
 				8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */,
 				8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */,
 				8A6B649829730E560074B3C1 /* FileView.swift in Sources */,
@@ -1030,14 +1016,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8A6B649D297323820074B3C1 /* XCRemoteSwiftPackageReference "CodeEditTextView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/CodeEditApp/CodeEditTextView.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		8AFBD514296F2BA500525BF7 /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
@@ -1065,11 +1043,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8A6B649E297323820074B3C1 /* CodeEditTextView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A6B649D297323820074B3C1 /* XCRemoteSwiftPackageReference "CodeEditTextView" */;
-			productName = CodeEditTextView;
-		};
 		8AFBD515296F2BA500525BF7 /* Defaults */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8AFBD514296F2BA500525BF7 /* XCRemoteSwiftPackageReference "Defaults" */;

@@ -1,24 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "codeeditlanguages",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/CodeEditApp/CodeEditLanguages.git",
-      "state" : {
-        "revision" : "2afcfab433a53e0a3e79ff18d34fbf8247e62922",
-        "version" : "0.1.7"
-      }
-    },
-    {
-      "identity" : "codeedittextview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/CodeEditApp/CodeEditTextView.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "179f3971a2ef7bd56543669e38f573f2deb8244b"
-      }
-    },
-    {
       "identity" : "defaults",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sindresorhus/Defaults",
@@ -34,33 +16,6 @@
       "state" : {
         "branch" : "master",
         "revision" : "72a0065a440cc10fb2f0026fba126b81b468ab4b"
-      }
-    },
-    {
-      "identity" : "sttextview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/krzyzanowskim/STTextView.git",
-      "state" : {
-        "revision" : "3df7ce1829a9277f427daa794e8a0d1aaeacfbb7",
-        "version" : "0.1.2"
-      }
-    },
-    {
-      "identity" : "swiftlintplugin",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/lukepistrol/SwiftLintPlugin",
-      "state" : {
-        "revision" : "f69b412a765396d44dc9f4788a5b79919c1ca9e3",
-        "version" : "0.2.2"
-      }
-    },
-    {
-      "identity" : "swifttreesitter",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ChimeHQ/SwiftTreeSitter.git",
-      "state" : {
-        "revision" : "df25a52f72ebc5b50ae20d26d1363793408bb28b",
-        "version" : "0.7.1"
       }
     },
     {
