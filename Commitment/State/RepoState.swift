@@ -90,7 +90,7 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
             }
 
             if !isGitFolderChange {
-                
+                // made a commit
             }
             // if event.eventPath
             // if event.filename != "index.lock" {
