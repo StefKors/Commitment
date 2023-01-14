@@ -8,54 +8,37 @@
 import SwiftUI
 import Git
 
-enum SidebarViewSelection: String, CaseIterable {
+enum SplitModeOptions: String, CaseIterable {
     case changes = "Changes"
     case history = "History"
 }
 
 struct CommitHistorySplitView: View {
     @EnvironmentObject var repo: RepoState
-    @State private var segmentationSelection : SidebarViewSelection = .changes
+    @State private var modeSelection: SplitModeOptions = .changes
     @State private var message: String = ""
 
+    @State private var columnVisibility: NavigationSplitViewVisibility = .all
+
+    @SceneStorage("SplitView.SelectedCommitID") private var commitId: GitLogRecord.ID?
+    @SceneStorage("SplitView.SelectedFileID") private var fileId: GitFileStatus.ID?
     var body: some View {
-        NavigationSplitView {
-            VStack(spacing: 0) {
-                NavigationStack {
-                    List {
-                        switch segmentationSelection {
-                        case .history:
-                            if let commits = repo.commits {
-                                ForEach(commits.indices, id: \.self) { index in
-                                    NavigationLink(value: commits[index], label: {
-                                        SidebarCommitLabelView(commit: commits[index])
-                                    })
-                                    .buttonStyle(.plain)
-                                }
-                            }
-                        case .changes:
-                            if let files = repo.status?.files {
-                                ForEach(files.indices, id: \.self) { index in
-                                    NavigationLink(value: files[index], label: {
-                                        GitFileStatusView(status: files[index])
-                                    })
-                                    .buttonStyle(.plain)
-                                }
-                            }
+        NavigationSplitView(columnVisibility: $columnVisibility, sidebar: {
+            VStack {
+                switch modeSelection {
+                case .history:
+                    if let commits = repo.commits {
+                        List(commits, selection: $commitId) { commit in
+                            SidebarCommitLabelView(commit: commit)
                         }
                     }
-                    .listStyle(.sidebar)
-                }
-                .navigationDestination(for: GitFileStatus.self) { status in
-                    ScrollView(.vertical) {
-                        if let diff = repo.diffs.first { $0.addedFile.contains(status.path) } {
-                            DiffView(status: status, diff: diff)
-                                .scenePadding()
+
+                case .changes:
+                    if let files = repo.status?.files {
+                        List(files, selection: $fileId) { file in
+                            GitFileStatusView(status: file)
                         }
                     }
-                }
-                .navigationDestination(for: GitLogRecord.self) { commit in
-                    CommitSplitView(commit: commit)
                 }
 
                 Divider()
@@ -65,35 +48,34 @@ struct CommitHistorySplitView: View {
             .toolbar(content: {
                 // TODO: Hide when sidebar is closed
                 ToolbarItemGroup(placement: .automatic) {
-                    Picker("", selection: $segmentationSelection) {
-                        ForEach(SidebarViewSelection.allCases, id: \.self) { option in
-                            Text(option.rawValue)
-                        }
-                    }.pickerStyle(SegmentedPickerStyle())
+                    SplitModeToggleView(modeSelection: $modeSelection)
                 }
 
                 // TODO: Hide when sidebar is closed
                 ToolbarItemGroup(placement: .automatic) {
                     AddRepoView()
                 }
-
             })
-        } detail: {
-            VStack(alignment: .leading, spacing: 20) {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("No local changes")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .fixedSize(horizontal: true, vertical: false)
-                    Text("There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:")
-                        .lineSpacing(4)
-                        // .font(.body)
+        }, detail: {
+            switch modeSelection {
+            case .history:
+                // TODO: Cleanup this if else
+                if let commit = repo.commits?.first(where: { $0.id == commitId }), let files = repo.status?.files {
+                    CommitSplitView(commit: commit, fileId: $fileId)
+                        .redacted(reason: .placeholder)
+                } else {
+                    ContentPlaceholderView()
                 }
-                WelcomeRepoListView()
+            case .changes:
+                ScrollView(.vertical) {
+                    if let fileId, let diff = repo.diffs.first { $0.addedFile.contains(fileId) }, let status = repo.status?.files.first { $0.id == fileId } {
+                        DiffView(status: status, diff: diff)
+                            .scenePadding()
+                    } else {
+                        ContentPlaceholderView()
+                    }
+                }
             }
-            .frame(maxWidth: 400)
-            .padding()
-
-        }
+        })
     }
 }

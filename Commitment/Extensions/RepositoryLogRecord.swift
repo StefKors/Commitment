@@ -24,3 +24,15 @@ extension GitLogRecord: Hashable {
         hasher.combine(refNames)
     }
 }
+
+extension GitLogRecord: Identifiable {
+    public var id: String {
+        self.hash
+    }
+}
+
+extension GitFileStatus: Identifiable {
+    public var id: String {
+        self.path
+    }
+}

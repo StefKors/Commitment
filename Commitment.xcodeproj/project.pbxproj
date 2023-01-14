@@ -21,6 +21,8 @@
 		8A48D12F27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D12E27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift */; };
 		8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14127FDA8A0007803D2 /* Shell.swift */; };
 		8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14C27FDB6DF007803D2 /* BranchView.swift */; };
+		8A6B649429730B070074B3C1 /* SplitModeToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */; };
+		8A6B649629730B380074B3C1 /* ContentPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */; };
 		8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C665B296464E300A774D7 /* TextEditorView.swift */; };
 		8A8C66712964682B00A774D7 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665E2964682B00A774D7 /* Inter-Bold.otf */; };
 		8A8C66722964682B00A774D7 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665F2964682B00A774D7 /* Inter-Regular.otf */; };
@@ -121,6 +123,8 @@
 		8A48D12E27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A48D14127FDA8A0007803D2 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		8A48D14C27FDB6DF007803D2 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
+		8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitModeToggleView.swift; sourceTree = "<group>"; };
+		8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPlaceholderView.swift; sourceTree = "<group>"; };
 		8A8C665B296464E300A774D7 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		8A8C665E2964682B00A774D7 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
 		8A8C665F2964682B00A774D7 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
@@ -369,7 +373,6 @@
 			children = (
 				8AFBD521296F2C1400525BF7 /* Sidebar */,
 				8AFBD528296F2C1400525BF7 /* CommitHistorySplitView.swift */,
-				8AFBD5782971C14E00525BF7 /* CommitSplitView.swift */,
 			);
 			path = CommitHistorySplitView;
 			sourceTree = "<group>";
@@ -377,12 +380,15 @@
 		8AFBD521296F2C1400525BF7 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
+				8AFBD5782971C14E00525BF7 /* CommitSplitView.swift */,
 				8AFBD522296F2C1400525BF7 /* AvatarView.swift */,
 				8AFBD523296F2C1400525BF7 /* SidebarFooterView.swift */,
 				8AFBD524296F2C1400525BF7 /* SidebarCommitLabelView.swift */,
 				8AFBD525296F2C1400525BF7 /* MD5+Gravitar.swift */,
 				8AFBD526296F2C1400525BF7 /* AddRepoView.swift */,
 				8AFBD527296F2C1400525BF7 /* RepoSelectView.swift */,
+				8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */,
+				8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -626,6 +632,7 @@
 				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
 				8AFBD52D296F2C1400525BF7 /* AvatarView.swift in Sources */,
 				8AFBD57B2971CAC500525BF7 /* BranchSelectView.swift in Sources */,
+				8A6B649429730B070074B3C1 /* SplitModeToggleView.swift in Sources */,
 				8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */,
 				8AFBD55E29704F7000525BF7 /* GitFileStatusView.swift in Sources */,
 				8AFBD54929702A4200525BF7 /* GitDiffLine.swift in Sources */,
@@ -637,6 +644,7 @@
 				8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */,
 				8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */,
 				8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */,
+				8A6B649629730B380074B3C1 /* ContentPlaceholderView.swift in Sources */,
 				8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */,
 				8AFBD5752971B08D00525BF7 /* FolderContentChangeEvent.swift in Sources */,
 				8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */,

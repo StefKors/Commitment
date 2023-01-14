@@ -33,7 +33,7 @@ struct TextEditorView: View {
                 .disabled(isDisabled)
             }
             .padding()
-        // .shadow(radius: 10)
+            .background(.thinMaterial)
     }
 
     func handleSubmit() {
@@ -42,9 +42,10 @@ struct TextEditorView: View {
         repo.refreshRepoState()
     }
 }
-// 
-// struct TextEditorView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         TextEditorView()
-//     }
-// }
+
+struct TextEditorView_Previews: PreviewProvider {
+    static var previews: some View {
+        TextEditorView(isDisabled: false)
+        TextEditorView(isDisabled: true)
+    }
+}
