@@ -13,11 +13,29 @@
   <img alt="macos" src="Images/macos-active.svg" height="24">
 </picture>
 
-  <img src="Images/macos-active.svg" height="24">
-  <img src="Images/ios.svg" height="24">
-  <img src="Images/ipados.svg" height="24">
-  <img src="Images/tvos.svg" height="24">
-  <img src="Images/watchos.svg" height="24">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/ios-active.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Images/ios.svg">
+  <img alt="macos" src="Images/ios.svg" height="24">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/ipados-active.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Images/ipados.svg">
+  <img alt="macos" src="Images/ipados.svg" height="24">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/tvos-active.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Images/tvos.svg">
+  <img alt="macos" src="Images/tvos.svg" height="24">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="Images/watchos-active.svg">
+  <source media="(prefers-color-scheme: light)" srcset="Images/watchos.svg">
+  <img alt="macos" src="Images/watchos.svg" height="24">
+</picture>
 </p>
 
 Built by ![Stef Kors](https://stefkors.com)
