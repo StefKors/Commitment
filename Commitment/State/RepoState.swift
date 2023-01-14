@@ -77,27 +77,26 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
         monitor = FolderContentMonitor(url: path, latency: 0.1) { [weak self] event in
             // TODO: Figure out better filtering... Perhaps based on .gitignore?
             // skip lock events
-            if event.filename == "index.lock" {
+            if event.filename == "index.lock", event.filename == ".DS_Store" {
                 return
             }
 
-            print("Folder contents changed at \(event.url) (\(event.change))")
             let isGitFolderChange = event.eventPath.contains("/.git/")
 
             if isGitFolderChange, event.filename == "HEAD" {
-                // Branch got updated
-                self?.refreshBranch()
+                self?.debounce(interval: .milliseconds(500), operation: { [weak self] in
+                    print("[File Change] Refreshing Branch \(event.url) (\(event.change))")
+                    self?.refreshBranch()
+                })
             }
 
             if !isGitFolderChange {
                 // made a commit
+                self?.debounce(interval: .milliseconds(500), operation: { [weak self] in
+                    print("[File Change] Refreshing Diffs and Status \(event.url) (\(event.change))")
+                    self?.refreshDiffsAndStatus()
+                })
             }
-            // if event.eventPath
-            // if event.filename != "index.lock" {
-                // self?.debounce(interval: .milliseconds(300), operation: { [weak self] in
-                    // self?.refreshRepoState()
-                // })
-            // }
         }
         monitor?.start()
         self.refreshRepoState()
@@ -105,21 +104,21 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
 
     /// Watch out for re-renders, can be slow
     func refreshRepoState() {
+        refreshBranch()
+        refreshDiffsAndStatus()
+    }
+
+    /// Watch out for re-renders, can be slow
+    func refreshDiffsAndStatus() {
         /// Update on background thread
         Task(priority: .background) {
-            let branch = self.shell.branch()
             let diffs = self.shell.diff()
             let status = try? repository?.listStatus()
             let commits = try? repository?.listLogRecords().records as? [GitLogRecord]
-            let refs = try? repository?.listReferences()
 
             /// Publish on main thread
             await MainActor.run {
-                self.branch = branch
                 self.diffs = diffs
-                self.branches = refs?.localBranches.sorted(by: { branchA, branchB in
-                    return branchA.date > branchB.date
-                }) ?? []
                 self.status = status
                 self.commits = commits
                 self.isCheckingOut = false
