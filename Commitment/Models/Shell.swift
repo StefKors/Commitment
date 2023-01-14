@@ -102,9 +102,25 @@ class Shell {
         self.run("git rev-parse \(SHA)~1", in: workspace)
     }
 
-    func status() {
-        
+    func cat(file: String) -> String {
+        self.run("cat \(file)", in: workspace)
     }
+
+    /// Probably not performant
+    func cat(file: String) -> [String] {
+        self.cat(file: file)
+            .split(separator: "\n")
+            .map({ String($0) })
+    }
+
+    /// Probably not performant
+    // func cat(file: String) -> [GitDiffHunkLine] {
+    //     self.cat(file: file)
+    //         .split(separator: "\n")
+    //         .map({ line in
+    //             GitDiffHunkLine(type: .unchanged, text: String(line), oldLineNumber: 0, newLineNumber: 0)
+    //         })
+    // }
 }
 
 extension String {

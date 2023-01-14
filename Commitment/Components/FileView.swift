@@ -1,17 +1,18 @@
 //
-//  DiffView.swift
+//  FileView.swift
 //  Commitment
 //
-//  Created by Stef Kors on 04/01/2023.
+//  Created by Stef Kors on 14/01/2023.
 //
 
 import SwiftUI
 import Git
 
-struct DiffView: View {
+struct FileView<Content: View>: View {
     var status: GitFileStatus
-    var diff: GitDiff
-    
+
+    @ViewBuilder var content: () -> Content
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0, content: {
             VStack(alignment: .leading, content: {
@@ -25,10 +26,10 @@ struct DiffView: View {
             })
             .background(.separator)
 
+
+
             VStack(alignment: .leading, spacing: 0) {
-                ForEach(diff.hunks, id: \.description) { hunk in
-                    DiffHunkView(hunk: hunk)
-                }
+                content()
             }
             .fontDesign(.monospaced)
         })
@@ -39,11 +40,11 @@ struct DiffView: View {
         .clipShape(RoundedRectangle(cornerRadius: 6))
         .textSelection(.enabled)
     }
+
 }
 
-// struct DiffView_Previews: PreviewProvider {
+// struct FileView_Previews: PreviewProvider {
 //     static var previews: some View {
-//         DiffView(diff: GitDiff.Preview.toDiff(GitDiff.Preview.versionBump))
-//             .padding()
+//         FileView()
 //     }
 // }

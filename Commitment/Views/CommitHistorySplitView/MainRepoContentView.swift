@@ -13,8 +13,9 @@ enum SplitModeOptions: String, CaseIterable {
     case history = "History"
 }
 
-struct CommitHistorySplitView: View {
-    @EnvironmentObject var repo: RepoState
+struct MainRepoContentView: View {
+    @EnvironmentObject private var repo: RepoState
+
     @State private var modeSelection: SplitModeOptions = .changes
     @State private var message: String = ""
 
@@ -61,20 +62,13 @@ struct CommitHistorySplitView: View {
             case .history:
                 // TODO: Cleanup this if else
                 if let commit = repo.commits?.first(where: { $0.id == commitId }), let files = repo.status?.files {
-                    CommitSplitView(commit: commit, fileId: $fileId)
+                    CommitSplitView(commit: commit, commitId: commitId, fileId: $fileId)
                         .redacted(reason: .placeholder)
                 } else {
                     ContentPlaceholderView()
                 }
             case .changes:
-                ScrollView(.vertical) {
-                    if let fileId, let diff = repo.diffs.first { $0.addedFile.contains(fileId) }, let status = repo.status?.files.first { $0.id == fileId } {
-                        DiffView(status: status, diff: diff)
-                            .scenePadding()
-                    } else {
-                        ContentPlaceholderView()
-                    }
-                }
+                FileDiffChangesView(commitId: commitId, fileId: fileId)
             }
         })
     }

@@ -9,23 +9,40 @@ import SwiftUI
 import Git
 
 struct GitFileStatusView: View {
+    internal init(status: GitFileStatus) {
+        self.status = status
+        self.labels = status.path.split(separator: " -> ").compactMap({ URL(filePath: String($0)) })
+    }
+
     var status: GitFileStatus
+    let labels: [URL]
+
     var body: some View {
-        let url = URL(filePath: status.path)
 
         HStack(alignment: .center) {
             HStack(spacing: .zero, content: {
-                Text(url.deletingLastPathComponent().path().removingPercentEncoding ?? "")
-                    .truncationMode(.tail)
-                    .foregroundColor(.secondary)
+                ForEach(labels, id: \.self) { label in
+                    Text(label.deletingLastPathComponent().path().removingPercentEncoding ?? "")
+                        .truncationMode(.tail)
+                        .foregroundColor(.secondary)
 
-                Text(url.lastPathComponent.removingPercentEncoding ?? "")
-                    .fixedSize()
+                    Text(label.lastPathComponent.removingPercentEncoding ?? "")
+                        .fixedSize()
+
+                    if labels.count > 1, label == labels.first {
+                        Image(systemName: "arrow.right.square")
+                            .padding(.horizontal, 8)
+                            .foregroundColor(.blue)
+                    }
+                }
             }).lineLimit(1)
                 .allowsHitTesting(true)
 
             Spacer()
             FileChangeIconView(type: status.state.index)
+        }
+        .task {
+            print(status.path.split(separator: " -> "))
         }
     }
 }

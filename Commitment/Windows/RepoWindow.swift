@@ -17,7 +17,7 @@ struct RepoWindow: View {
 
     var body: some View {
         HStack {
-            CommitHistorySplitView()
+            MainRepoContentView()
             // .navigationDocument(URL(fileURLWithPath: state.repo.path.absoluteString, isDirectory: true))
                 .toolbar(content: {
                     ToolbarItemGroup(placement: .principal, content: {

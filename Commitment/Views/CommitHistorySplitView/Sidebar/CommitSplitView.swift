@@ -10,6 +10,7 @@ import Git
 
 struct CommitSplitView: View {
     var commit: GitLogRecord
+    var commitId: GitLogRecord.ID?
     @Binding var fileId: GitFileStatus.ID?
 
     @EnvironmentObject private var repo: RepoState
@@ -20,15 +21,9 @@ struct CommitSplitView: View {
                     GitFileStatusView(status: file)
                 }
 
-
                 ZStack {
                     Rectangle().fill(.background)
-                    ScrollView(.vertical) {
-                        if let fileId, let diff = repo.diffs.first { $0.addedFile.contains(fileId) }, let status = repo.status?.files.first { $0.id == fileId } {
-                            DiffView(status: status, diff: diff)
-                                .scenePadding()
-                        }
-                    }
+                    FileDiffChangesView(commitId: commitId, fileId: fileId)
                 }
             }
         }
