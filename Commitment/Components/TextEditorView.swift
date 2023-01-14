@@ -33,7 +33,6 @@ struct TextEditorView: View {
                 .disabled(isDisabled)
             }
             .padding()
-            .background(.thinMaterial)
     }
 
     func handleSubmit() {

@@ -28,23 +28,26 @@ struct MainRepoContentView: View {
             VStack {
                 switch modeSelection {
                 case .history:
-                    // if let commits =  {
-                        List(repo.commits ?? [], selection: $commitId) { commit in
+                    if let commits = repo.commits {
+                        List(commits, selection: $commitId) { commit in
                             SidebarCommitLabelView(commit: commit)
                         }
-                    // }
+                    } else {
+                        Spacer()
+                    }
 
                 case .changes:
-                    // if let files = repo.status?.files {
-                        List(repo.status?.files ?? [], selection: $fileId) { file in
+                    if let files = repo.status?.files {
+                        List(files, selection: $fileId) { file in
                             GitFileStatusView(status: file)
                         }
-                    // }
+                    } else {
+                        Spacer()
+                    }
                 }
 
                 Divider()
                 TextEditorView(isDisabled: repo.diffs.isEmpty)
-                    .background(.thinMaterial)
             }
             .toolbar(content: {
                 // TODO: Hide when sidebar is closed
