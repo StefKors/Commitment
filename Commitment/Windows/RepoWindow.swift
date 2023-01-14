@@ -10,7 +10,7 @@ import Git
 
 struct RepoWindow: View {
     // The user activity type representing this view.
-    static let productUserActivityType = "com.stefkors.Difference.repoview"
+    static let productUserActivityType = "com.stefkors.Commitment.repoview"
 
     @EnvironmentObject var repo: RepoState
 

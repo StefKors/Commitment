@@ -55,7 +55,7 @@ struct CommitHistorySplitView: View {
                     }
                 }
                 .navigationDestination(for: GitLogRecord.self) { commit in
-                    Text("commit number \(commit.subject)")
+                    CommitSplitView(commit: commit)
                 }
 
                 Divider()

@@ -58,11 +58,6 @@ class Shell {
         guard let files else {
             // Add everything
             self.run("git add .", in: workspace)
-                // .split(separator: "\n")
-                // .forEach { line in
-                //     // print(line)
-                // }
-
             return
         }
 
@@ -70,10 +65,6 @@ class Shell {
         for file in files {
             // Stage file
             self.run("git add \(file)", in: workspace)
-                // .split(separator: "\n")
-                // .forEach { line in
-                //     // print(line)
-                // }
         }
 
     }
@@ -82,10 +73,6 @@ class Shell {
         self.add()
 
         self.run("git commit -m \"\(message)\"", in: workspace)
-            // .split(separator: "\n")
-            // .forEach { line in
-            //     print(line)
-            // }
     }
 
     func diff() -> [GitDiff] {
@@ -97,6 +84,22 @@ class Shell {
 
 
         return diffs
+    }
+
+    func diff(at commitA: String) -> [GitDiff] {
+        let commitB = self.SHAbefore(SHA: commitA)
+        let diffs = self.run("git diff \(commitB)..\(commitA) --no-ext-diff --no-color --find-renames", in: workspace)
+            .split(separator: "\ndiff --git ")
+            .compactMap { diffSegment in
+                return try? GitDiff(unifiedDiff: String(diffSegment))
+            }
+
+
+        return diffs
+    }
+
+    func SHAbefore(SHA: String) -> String {
+        self.run("git rev-parse \(SHA)~1", in: workspace)
     }
 
     func status() {

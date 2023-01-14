@@ -11,7 +11,7 @@ import SwiftUI
 struct CommitmentApp: App {
 
     var body: some Scene {
-        WindowGroup("Difference", id: "RepoWindow", for: RepoState.self) { $repo in
+        WindowGroup("Commitment", id: "RepoWindow", for: RepoState.self) { $repo in
             if let repo = repo {
                 RepoWindow()
                     .environmentObject(repo)

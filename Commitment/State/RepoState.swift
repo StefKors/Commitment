@@ -28,10 +28,12 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
     }
 
     var branch: String
+    var branches: [RepositoryReference] = []
 
     @Published var diffs: [GitDiff] = []
     @Published var status: GitFileStatusList? = nil
     @Published var commits: [GitLogRecord]? = nil
+    @Published var isCheckingOut: Bool = false
 
     // var task: Task<(), Never>?
     // /// Debounce Source: https://stackoverflow.com/a/74794440/3199999
@@ -93,13 +95,18 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
             let diffs = self.shell.diff()
             let status = try? repository?.listStatus()
             let commits = try? repository?.listLogRecords().records as? [GitLogRecord]
+            let refs = try? repository?.listReferences()
 
             /// Publish on main thread
             await MainActor.run {
                 self.branch = branch
                 self.diffs = diffs
+                self.branches = refs?.localBranches.sorted(by: { branchA, branchB in
+                    return branchA.date > branchB.date
+                }) ?? []
                 self.status = status
                 self.commits = commits
+                self.isCheckingOut = false
             }
         }
     }

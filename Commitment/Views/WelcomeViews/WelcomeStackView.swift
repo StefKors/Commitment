@@ -23,7 +23,7 @@ struct WelcomeStackView: View {
 
             HStack {
                 Text("Welcome to ") +
-                Text("Difference")
+                Text("Commitment")
                     .foregroundColor(Color.accentColor)
             }
             .font(.largeTitle)

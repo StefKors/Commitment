@@ -14,6 +14,7 @@ struct BranchView: View {
             Image("git-branch-16")
                 .resizable()
                 .frame(width: 16, height: 16)
+                .foregroundColor(.primary)
             Text(branch)
                 .navigationSubtitle(branch)
         }
