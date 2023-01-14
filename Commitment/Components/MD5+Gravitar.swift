@@ -14,50 +14,9 @@ import CryptoKit
 
 extension String {
     fileprivate var md5Hash: String {
-        print(self)
         return Insecure.MD5.hash(data: self.data(using: .utf8)!).map {String(format: "%02hhx", $0)}.joined()
     }
-    // fileprivate var md5Hash: String {
-    //     let digest = Insecure.MD5.hash(data: self.data(using: .utf8) ?? Data())
-    //
-    //     return digest.map {
-    //         String(format: "%02hhx", $0)
-    //     }.joined()
-    //     // let trimmedString = lowercased().trimmingCharacters(in: .whitespaces)
-    //     // let utf8String = trimmedString.cString(using: .utf8)!
-    //     // let stringLength = CC_LONG(trimmedString.lengthOfBytes(using: .utf8))
-    //     // let digestLength = Int(CC_MD5_DIGEST_LENGTH)
-    //     // let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLength)
-    //     //
-    //     // CC_MD5(utf8String, stringLength, result)
-    //     //
-    //     // var hash = ""
-    //     //
-    //     // for i in 0..<digestLength {
-    //     //     hash += String(format: "%02x", result[i])
-    //     // }
-    //     //
-    //     // result.deallocate()
-    //     //
-    //     // return String(format: hash)
-    // }
 }
-//
-//
-// import Foundation
-// import CommonCrypto
-//
-// extension String {
-//     var md5Hash: String {
-//         let data = Data(self.utf8)
-//         let hash = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> [UInt8] in
-//             var hash = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-//             CC_MD5(bytes.baseAddress, CC_LONG(data.count), &hash)
-//             return hash
-//         }
-//         return hash.map { String(format: "%02x", $0) }.joined()
-//     }
-// }
 
 // MARK: - QueryItemConvertible
 private protocol QueryItemConvertible {

@@ -41,8 +41,5 @@ struct GitFileStatusView: View {
             Spacer()
             FileChangeIconView(type: status.state.index)
         }
-        .task {
-            print(status.path.split(separator: " -> "))
-        }
     }
 }

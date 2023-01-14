@@ -52,7 +52,6 @@ struct WelcomeRepoListView: View {
                 }
             }
         }
-        //.frame(width: 320)
     }
 }
 

@@ -11,7 +11,7 @@ import Git
 struct CommitSplitView: View {
     var commit: GitLogRecord
     var commitId: GitLogRecord.ID?
-    @Binding var fileId: GitFileStatus.ID?
+    @SceneStorage("SplitView.HistorySelectedFileID") private var fileId: GitFileStatus.ID?
 
     @EnvironmentObject private var repo: RepoState
     var body: some View {

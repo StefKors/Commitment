@@ -21,8 +21,8 @@ struct MainRepoContentView: View {
 
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
-    @SceneStorage("SplitView.SelectedCommitID") private var commitId: GitLogRecord.ID?
-    @SceneStorage("SplitView.SelectedFileID") private var fileId: GitFileStatus.ID?
+    @SceneStorage("SplitView.HistorySelectedCommitID") private var commitId: GitLogRecord.ID?
+    @SceneStorage("SplitView.ChangesSelectedFileID") private var fileId: GitFileStatus.ID?
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility, sidebar: {
             VStack {
@@ -65,7 +65,7 @@ struct MainRepoContentView: View {
             case .history:
                 // TODO: Cleanup this if else
                 if let commit = repo.commits?.first(where: { $0.id == commitId }), let files = repo.status?.files {
-                    CommitSplitView(commit: commit, commitId: commitId, fileId: $fileId)
+                    CommitSplitView(commit: commit, commitId: commitId)
                         .redacted(reason: .placeholder)
                 } else {
                     ContentPlaceholderView()
