@@ -114,13 +114,16 @@ class Shell {
     }
 
     /// Probably not performant
-    // func cat(file: String) -> [GitDiffHunkLine] {
-    //     self.cat(file: file)
-    //         .split(separator: "\n")
-    //         .map({ line in
-    //             GitDiffHunkLine(type: .unchanged, text: String(line), oldLineNumber: 0, newLineNumber: 0)
-    //         })
-    // }
+    func cat(file: String) -> [GitDiffHunkLine] {
+        var i = 0
+        return self.cat(file: file)
+            .split(separator: "\n")
+            .map({ line in
+                let hunk = GitDiffHunkLine(type: .unchanged, text: String(line), oldLineNumber: i, newLineNumber: i)
+                i += 1
+                return hunk
+            })
+    }
 }
 
 extension String {

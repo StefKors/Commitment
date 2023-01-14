@@ -16,9 +16,15 @@ struct FileRenderView: View {
     var body: some View {
         FileView(status: status) {
             if let path = String(status.path.split(separator: " -> ").last ?? "") {
-                if let file = repo.shell.cat(file: path) {
-                    ForEach(file.split(separator: "\n"), id: \.self) { line in
-                        DiffLineView(line: GitDiffHunkLine(type: .unchanged, text: String(line)))
+            //     if let text = repo.shell.cat(file: path) {
+            //         CodeRenderView(text: text)
+            //     } else {
+            //         Text("Could not read file at \(path)")
+            //     }
+            // }
+                if let lines: [GitDiffHunkLine] = repo.shell.cat(file: path) {
+                    ForEach(lines, id: \.self) { line in
+                        DiffLineView(line: line)
                     }
                 } else {
                     Text("Could not read file at \(path)")
