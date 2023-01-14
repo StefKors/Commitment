@@ -1,2 +1,0 @@
-Commitment/ContentView.swift --- Swift
-27     }28 29     func handleSubmit() {30         git.diff()§31         git.commit(message: message)32         message = ""33     }
