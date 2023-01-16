@@ -47,6 +47,10 @@
 		8A8C66822964682B00A774D7 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C666F2964682B00A774D7 /* Inter-BoldItalic.otf */; };
 		8A8C66832964682B00A774D7 /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C66702964682B00A774D7 /* Inter-LightItalic.otf */; };
 		8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71069296DAE06002F6C24 /* DiffState.swift */; };
+		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
+		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
+		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
+		8AC8EB5029759AAD00365EB9 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4F29759AAD00365EB9 /* Border.swift */; };
 		8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD506296F2A4000525BF7 /* PillView.swift */; };
 		8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */; };
 		8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */; };
@@ -158,6 +162,10 @@
 		8A8C66702964682B00A774D7 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
 		8A8C6684296468CD00A774D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8AA71069296DAE06002F6C24 /* DiffState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffState.swift; sourceTree = "<group>"; };
+		8AC8EB49297586FC00365EB9 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
+		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
+		8AC8EB4F29759AAD00365EB9 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Border.swift; path = Commitment/Extensions/Border.swift; sourceTree = SOURCE_ROOT; };
 		8AFBD506296F2A4000525BF7 /* PillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRepoListView.swift; sourceTree = "<group>"; };
 		8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeStackView.swift; sourceTree = "<group>"; };
@@ -328,6 +336,7 @@
 				8A6B64A2297324730074B3C1 /* CodeRenderView */,
 				8AFBD5782971C14E00525BF7 /* CommitSplitView.swift */,
 				8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */,
+				8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */,
 				8AFBD54F29703AB600525BF7 /* DiffHunkView.swift */,
 				8AFBD54D29703A9C00525BF7 /* DiffLineView.swift */,
 				8A07612F2965A15200D878DC /* DiffRenderView.swift */,
@@ -343,6 +352,8 @@
 				8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */,
 				8A8C665B296464E300A774D7 /* TextEditorView.swift */,
 				8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */,
+				8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */,
+				8AC8EB4F29759AAD00365EB9 /* Border.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -446,6 +457,7 @@
 				8AFBD54629702A2C00525BF7 /* Collection.swift */,
 				8AFBD55F29705B3A00525BF7 /* GitFileStatus.swift */,
 				8AFBD56129705D3500525BF7 /* RepositoryLogRecord.swift */,
+				8AC8EB49297586FC00365EB9 /* URL.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -634,6 +646,7 @@
 				8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */,
 				8AFBD530296F2C1400525BF7 /* MD5+Gravitar.swift in Sources */,
 				8AFBD5762971B08D00525BF7 /* Change.swift in Sources */,
+				8AC8EB5029759AAD00365EB9 /* Border.swift in Sources */,
 				8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */,
 				8AFBD56029705B3A00525BF7 /* GitFileStatus.swift in Sources */,
 				8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */,
@@ -650,12 +663,14 @@
 				8AFBD532296F2C1400525BF7 /* RepoSelectView.swift in Sources */,
 				8AFBD5792971C14E00525BF7 /* CommitSplitView.swift in Sources */,
 				8AFBD54E29703A9C00525BF7 /* DiffLineView.swift in Sources */,
+				8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */,
 				8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */,
 				8AFBD55A2970461C00525BF7 /* FileChangeIconView.swift in Sources */,
 				8A6B649A29730FD50074B3C1 /* FileRenderView.swift in Sources */,
 				8AFBD52E296F2C1400525BF7 /* SidebarFooterView.swift in Sources */,
 				8A07612C29659EEE00D878DC /* GitDiffParser.swift in Sources */,
 				8AFBD54429702A0600525BF7 /* Commit.swift in Sources */,
+				8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */,
 				8A07612D29659EEE00D878DC /* GitDiffHunkLine.swift in Sources */,
 				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
 				8AFBD52D296F2C1400525BF7 /* AvatarView.swift in Sources */,
@@ -668,6 +683,7 @@
 				8AFBD55029703AB600525BF7 /* DiffHunkView.swift in Sources */,
 				8AFBD53D296F2EB600525BF7 /* RepoWindow.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,
+				8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */,
 				8A0761302965A15200D878DC /* DiffRenderView.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,
 				8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */,

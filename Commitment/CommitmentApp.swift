@@ -16,6 +16,9 @@ struct CommitmentApp: App {
                 RepoWindow()
                     .environmentObject(repo)
                     .environmentObject(WindowState(repo))
+                    .onAppear {
+                        repo.initializeFullRepo()
+                    }
             } else {
                 WelcomeWindow()
                     .environmentObject(WindowState())
@@ -24,6 +27,9 @@ struct CommitmentApp: App {
         .windowStyle(.automatic)
         .windowToolbarStyle(.unified)
         .windowResizability(.contentMinSize)
+        .commands {
+            SidebarCommands()
+        }
 
         Settings {
             SettingsWindow()

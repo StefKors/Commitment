@@ -15,17 +15,17 @@ struct FileDiffChangesView: View {
     var fileId: GitFileStatus.ID?
 
     var body: some View {
-        ScrollView(.vertical) {
             if let fileId, let status = repo.status?.files.first { $0.id == fileId } {
-                if let diff = repo.diffs.first { $0.addedFile.contains(String(fileId.split(separator: " -> ").last ?? "")) } {
-                    DiffRenderView(status: status, diff: diff)
-                } else {
-                    FileRenderView(status: status)
-                }
+                ScrollView(.vertical) {
+                    if let diff = repo.diffs.first { $0.addedFile.contains(String(fileId.split(separator: " -> ").last ?? "")) } {
+                        DiffRenderView(status: status, diff: diff)
+                    } else {
+                        FileRenderView(status: status)
+                    }
+                }.scenePadding()
             } else {
                 ContentPlaceholderView()
             }
-        }.scenePadding()
     }
 }
 

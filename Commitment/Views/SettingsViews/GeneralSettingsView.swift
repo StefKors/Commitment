@@ -8,14 +8,35 @@
 import SwiftUI
 
 struct GeneralSettingsView: View {
-    @AppStorage("showPreview") private var showPreview = true
-    @AppStorage("fontSize") private var fontSize = 12.0
+    @AppStorage("SelectedExternalEditor") private var selectedExternalEditor: String = "Visual Studio Code"
+    @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
+
+    private let externalEditorPickerItems = [
+        "Visual Studio Code",
+        "WebStorm",
+        "Xcode",
+    ]
+
+    private let externalGitProviderPickerItems = [
+        "GitHub",
+        "GitLab",
+        "Bitbucket",
+        "sourcehut",
+        "Radicle",
+    ]
 
     var body: some View {
         Form {
-            Toggle("Show Previews", isOn: $showPreview)
-            Slider(value: $fontSize, in: 9...96) {
-                Text("Font Size (\(fontSize, specifier: "%.0f") pts)")
+            Picker(selection: $selectedExternalEditor, label: Text("External editor:")) {
+                ForEach(externalEditorPickerItems, id: \.self) { item in
+                    Text(item).tag(item as String?)
+                }
+            }
+
+            Picker(selection: $selectedExternalGitProvider, label: Text("External Git Provider:")) {
+                ForEach(externalGitProviderPickerItems, id: \.self) { item in
+                    Text(item).tag(item as String?)
+                }
             }
         }
         .padding(20)

@@ -19,17 +19,17 @@ struct MainRepoContentView: View {
     @State private var modeSelection: SplitModeOptions = .changes
     @State private var message: String = ""
 
-    @State private var columnVisibility: NavigationSplitViewVisibility = .all
-
-    @SceneStorage("SplitView.HistorySelectedCommitID") private var commitId: GitLogRecord.ID?
-    @SceneStorage("SplitView.ChangesSelectedFileID") private var fileId: GitFileStatus.ID?
+    // @SceneStorage("SplitView.HistorySelectedCommitID") private var commitId: GitLogRecord.ID?
+    // @SceneStorage("SplitView.ChangesSelectedFileID") private var fileId: GitFileStatus.ID?
+    @State private var commitId: GitLogRecord.ID? = nil
+    @State private var fileId: GitFileStatus.ID? = nil
     var body: some View {
-        NavigationSplitView(columnVisibility: $columnVisibility, sidebar: {
+        NavigationSplitView(sidebar: {
             VStack {
                 switch modeSelection {
                 case .history:
                     if let commits = repo.commits {
-                        List(commits, selection: $commitId) { commit in
+                        List(commits) { commit in
                             SidebarCommitLabelView(commit: commit)
                         }
                     } else {
@@ -53,6 +53,7 @@ struct MainRepoContentView: View {
                 // TODO: Hide when sidebar is closed
                 ToolbarItemGroup(placement: .automatic) {
                     SplitModeToggleView(modeSelection: $modeSelection)
+                        .disabled(true)
                 }
 
                 // TODO: Hide when sidebar is closed
