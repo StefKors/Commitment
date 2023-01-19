@@ -11,18 +11,20 @@ import Git
 struct FileDiffChangesView: View {
     @EnvironmentObject private var repo: RepoState
 
-    var commitId: GitLogRecord.ID?
+    // var commitId: GitLogRecord.ID?
     var fileId: GitFileStatus.ID?
 
     var body: some View {
-            if let fileId, let status = repo.status?.files.first { $0.id == fileId } {
+            if let fileId, let status = repo.status.first { $0.id == fileId } {
                 ScrollView(.vertical) {
                     if let diff = repo.diffs.first { $0.addedFile.contains(String(fileId.split(separator: " -> ").last ?? "")) } {
                         DiffRenderView(status: status, diff: diff)
+                            .scenePadding()
                     } else {
                         FileRenderView(status: status)
+                            .scenePadding()
                     }
-                }.scenePadding()
+                }
             } else {
                 ContentPlaceholderView()
             }

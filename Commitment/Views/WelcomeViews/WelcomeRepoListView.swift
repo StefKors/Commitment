@@ -6,17 +6,19 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct WelcomeRepoListView: View {
+    @Default(.repos) var repos
     @EnvironmentObject private var state: WindowState
     @Environment(\.openWindow) private var openWindow
 
     var body: some View {
 
         VStack(alignment: .leading, spacing: 0) {
-            if !state.repos.isEmpty {
+            if !repos.isEmpty {
 
-                ForEach(state.repos.suffix(5), id: \.id) { repo in
+                ForEach(repos.suffix(5), id: \.id) { repo in
                     ListItem(
                         label: repo.folderName,
                         subLabel: repo.branch,

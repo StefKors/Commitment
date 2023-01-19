@@ -6,22 +6,17 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct SplitModeToggleView: View {
-    @Binding var modeSelection: SplitModeOptions
+    @Default(.windowMode) var modeSelection
 
     var body: some View {
         Picker("", selection: $modeSelection) {
             ForEach(SplitModeOptions.allCases, id: \.self) { option in
                 Text(option.rawValue)
+                    .tag(option)
             }
         }.pickerStyle(SegmentedPickerStyle())
-    }
-}
-
-struct SplitModeToggleView_Previews: PreviewProvider {
-    static var previews: some View {
-        SplitModeToggleView(modeSelection: .constant(.changes))
-        SplitModeToggleView(modeSelection: .constant(.history))
     }
 }

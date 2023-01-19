@@ -31,8 +31,8 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
     var branches: [RepositoryReference] = []
 
     @Published var diffs: [GitDiff] = []
-    @Published var status: GitFileStatusList? = nil
-    @Published var commits: [GitLogRecord]? = nil
+    @Published var status: [GitFileStatus] = []
+    @Published var commits: [GitLogRecord] = []
     @Published var isCheckingOut: Bool = false
 
     var task: Task<(), Never>?
@@ -119,8 +119,8 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
             /// Publish on main thread
             await MainActor.run {
                 self.diffs = diffs
-                self.status = status
-                self.commits = commits
+                self.status = status?.files ?? []
+                self.commits = commits ?? []
                 self.isCheckingOut = false
             }
         }

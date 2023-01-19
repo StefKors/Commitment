@@ -10,7 +10,6 @@ import Defaults
 import SwiftUI
 
 class WindowState: ObservableObject {
-    @Default(.repos) var repos
     @Published var repo: RepoState?
 
     init (_ repo: RepoState? = nil) {
@@ -18,14 +17,14 @@ class WindowState: ObservableObject {
     }
 
     func addRepo(_ repo: RepoState) {
-        if repos.contains(where: { $0.path == repo.path }) {
+        if Defaults[.repos].contains(where: { $0.path == repo.path }) {
             print("chore: remove duplicates")
-            repos = Array(Set(repos))
+            Defaults[.repos] = Array(Set(Defaults[.repos]))
             return
         }
 
         print("added repo: \(repo)")
-        repos.append(repo)
+        Defaults[.repos].append(repo)
     }
 
     func openRepo() -> RepoState? {

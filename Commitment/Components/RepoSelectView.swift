@@ -6,20 +6,24 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct RepoSelectView: View {
     @EnvironmentObject private var repo: RepoState
-    @EnvironmentObject private var state: WindowState
+    @Default(.repos) var repos
+    @Environment(\.openWindow) private var openWindow
 
     var placeholder = "Select Repo"
 
     var body: some View {
         Menu {
-            ForEach(state.repos.indices, id: \.self){ index in
+            ForEach(repos.indices, id: \.self){ index in
                 Button(action: {
-                    self.state.repo = state.repos[index]
+                    // TODO: open in single window
+                    // self.state.repo = repos[index]
+                    openWindow(value: repos[index])
                 }, label: {
-                    Text(state.repos[index].folderName)
+                    Text(repos[index].folderName)
                 })
             }
         } label: {

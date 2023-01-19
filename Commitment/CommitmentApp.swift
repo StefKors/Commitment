@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// - [ ] Refactor file split into components
+/// - [ ] 
+
 @main
 struct CommitmentApp: App {
 
