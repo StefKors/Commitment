@@ -29,10 +29,5 @@ struct ActiveChangesSidebarView: View {
             Divider()
             TextEditorView(isDisabled: repo.diffs.isEmpty)
         }
-        .onChange(of: repo.diffs, perform: { newDiffs in
-            if newDiffs.isEmpty {
-                activeChangesSelection = nil
-            }
-        })
     }
 }

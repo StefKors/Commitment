@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ActiveChangesMainView: View {
+    @EnvironmentObject private var repo: RepoState
     var fileStatus: GitFileStatus?
     var diff: GitDiff?
 
     var body: some View {
-        if let diff, let fileStatus {
+        if let diff, let fileStatus, !repo.diffs.isEmpty {
             FileDiffChangesView(fileStatus: fileStatus, diff: diff)
         } else {
             ContentPlaceholderView()
