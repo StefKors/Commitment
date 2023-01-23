@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-import Git
 
 struct ActiveChangesMainView: View {
-    var fileId: GitFileStatus.ID? = nil
+    var fileStatus: GitFileStatus?
+    var diff: GitDiff?
 
     var body: some View {
-        if let fileId {
-            FileDiffChangesView(fileId: fileId)
+        if let diff, let fileStatus {
+            FileDiffChangesView(fileStatus: fileStatus, diff: diff)
         } else {
             ContentPlaceholderView()
         }

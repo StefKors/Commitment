@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct CommitHistorySidebarView: View {
     @EnvironmentObject private var repo: RepoState

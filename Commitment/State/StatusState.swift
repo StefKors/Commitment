@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Git
+
 
 class StatusState: ObservableObject {
     @Published var status: GitFileStatusList? = nil

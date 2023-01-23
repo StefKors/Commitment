@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct CommitHistoryMainView: View {
     @EnvironmentObject private var repo: RepoState
@@ -14,16 +14,26 @@ struct CommitHistoryMainView: View {
 
     @State private var activeCommitFileSelection: GitFileStatus.ID? = nil
 
+    @State private var diffs: [GitDiff] = []
+    @State private var files: [GitFileStatus] = []
+
     var body: some View {
         List(selection: $activeCommitFileSelection) {
-            ForEach(repo.status) { file in
+            ForEach(files) { fileStatus in
                 NavigationLink(destination: {
-                    // TODO: get actual git file changes
-                    CommitHistoryDetailView(fileId: activeCommitFileSelection)
+                    let diff = diffs.fileStatus(for: fileStatus.id)
+                    CommitHistoryDetailView(fileStatus: fileStatus, diff: diff)
                 }, label: {
-                    GitFileStatusView(status: file)
+                    GitFileStatusView(fileStatus: fileStatus)
                 })
             }
-        }.listStyle(SidebarListStyle())
+        }
+        .listStyle(SidebarListStyle())
+        .task {
+            if let commitId {
+                self.diffs = repo.shell.diff(at: commitId)
+                self.files = repo.shell.show(at: commitId)
+            }
+        }
     }
 }

@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct FileView<Content: View>: View {
-    var status: GitFileStatus
+    var fileStatus: GitFileStatus
 
     @ViewBuilder var content: () -> Content
 
@@ -17,7 +17,7 @@ struct FileView<Content: View>: View {
         VStack(alignment: .leading, spacing: 0, content: {
             VStack(alignment: .leading, content: {
                 VStack(alignment: .leading, content: {
-                    GitFileStatusView(status: status)
+                    GitFileStatusView(fileStatus: fileStatus)
                 })
                 .padding(.top, 7)
                 .padding(.horizontal, 10)
@@ -25,7 +25,6 @@ struct FileView<Content: View>: View {
                 Divider()
             })
             .background(.separator)
-
 
 
             VStack(alignment: .leading, spacing: 0) {

@@ -41,7 +41,9 @@ struct ContentPlaceholderView: View {
                                 }.foregroundStyle(.secondary)
                             }
                             Spacer()
-                            Button("Publish repository", action: repo.path.showInFinder)
+                            Button("Publish repository", action: {
+                                repo.path.showInFinder()
+                            })
                         }
                         .scenePadding()
                     }
@@ -61,7 +63,9 @@ struct ContentPlaceholderView: View {
                                 }.foregroundStyle(.secondary)
                             }
                             Spacer()
-                            Button("Open in \(selectedExternalEditor)", action: repo.path.showInFinder)
+                            Button("Open in \(selectedExternalEditor)", action: {
+                                repo.path.showInFinder()
+                            })
                         }
                         .scenePadding()
                     }.disabled(true)
@@ -79,7 +83,9 @@ struct ContentPlaceholderView: View {
                                 }.foregroundStyle(.secondary)
                             }
                             Spacer()
-                            Button("Show in Finder", action: URL(filePath: repo.path.absoluteString).showInFinder)
+                            Button("Show in Finder", action: {
+                                repo.path.showInFinder()
+                            })
                         }
                         .scenePadding()
                     }

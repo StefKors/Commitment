@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Git
+
 import Defaults
 
 extension Defaults.Keys {

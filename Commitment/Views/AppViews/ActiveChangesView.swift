@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct ActiveChangesView: View {
     @EnvironmentObject private var repo: RepoState

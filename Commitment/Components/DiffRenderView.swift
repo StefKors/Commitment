@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-import Git
 
 struct DiffRenderView: View {
-    var status: GitFileStatus
+    var fileStatus: GitFileStatus
     var diff: GitDiff
     
     var body: some View {
-        FileView(status: status) {
+        FileView(fileStatus: fileStatus) {
             ForEach(diff.hunks, id: \.description) { hunk in
                 DiffHunkView(hunk: hunk)
             }

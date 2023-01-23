@@ -94,8 +94,28 @@ class Shell {
                 return try? GitDiff(unifiedDiff: String(diffSegment))
             }
 
-
         return diffs
+    }
+
+    func show(at commit: String) -> [GitFileStatus] {
+        let result = self.run("git show --oneline --name-status --no-color \(commit)", in: workspace)
+            .split(separator: "\n")
+            .compactMap { line -> GitFileStatus? in
+                guard line.count > 3 else { return nil }
+                let splits = line.split(separator: "\t")
+                // only use the actual file change liens
+                guard let first = splits.first,
+                      String(first).count == 1 else { return nil }
+                let fileState = String(line.prefix(2))
+                var fileName = String(line.suffix(from: line.index(line.startIndex, offsetBy: 2)))
+
+                // When file name contains spaces, need to ensure leading and trailing quoes escapes are removed
+                fileName = fileName.trimmingCharacters(in: CharacterSet(charactersIn: "\"\\"))
+
+                return GitFileStatus(path: fileName, state: fileState)
+            }
+
+        return result
     }
 
     func SHAbefore(SHA: String) -> String {

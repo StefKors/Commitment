@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct SidebarCommitLabelView: View {
     var commit: RepositoryLogRecord

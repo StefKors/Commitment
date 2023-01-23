@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Git
+
 import Defaults
 import SwiftUI
 // https://developer.apple.com/documentation/appkit/nscolor/3000782-controlaccentcolor

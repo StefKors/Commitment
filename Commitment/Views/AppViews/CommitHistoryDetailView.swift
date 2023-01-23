@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct CommitHistoryDetailView: View {
-    var fileId: GitFileStatus.ID? = nil
+    var fileStatus: GitFileStatus?
+    var diff: GitDiff?
 
     var body: some View {
-        Text("CommitHistoryDetailView \(fileId.debugDescription)")
+        if let diff, let fileStatus {
+            FileDiffChangesView(fileStatus: fileStatus, diff: diff)
+        } else {
+            Text("place holder file diff")
+        }
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Git
+
 
 class CommitState: ObservableObject {
     @Published var commits: [GitLogRecord]? = nil

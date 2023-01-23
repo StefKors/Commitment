@@ -6,19 +6,18 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct GitFileStatusView: View {
-    internal init(status: GitFileStatus) {
-        self.status = status
-        self.labels = status.path.split(separator: " -> ").compactMap({ URL(filePath: String($0)) })
+    internal init(fileStatus: GitFileStatus) {
+        self.fileStatus = fileStatus
+        self.labels = fileStatus.path.split(separator: " -> ").compactMap({ URL(filePath: String($0)) })
     }
     
-    var status: GitFileStatus
+    var fileStatus: GitFileStatus
     let labels: [URL]
     
     var body: some View {
-        
         HStack(alignment: .center) {
             HStack(spacing: .zero, content: {
                 ForEach(labels, id: \.self) { label in
@@ -40,7 +39,7 @@ struct GitFileStatusView: View {
             .allowsHitTesting(true)
             
             Spacer()
-            FileChangeIconView(type: status.state.index)
+            FileChangeIconView(type: fileStatus.state.index)
         }
     }
 }

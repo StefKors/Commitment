@@ -25,23 +25,30 @@ public class GitDiff: Equatable {
     public var lines: [GitDiffHunkLine] {
         return hunks.map { $0.lines }.flatMap { $0 }
     }
+
+    // Source string of diff
+    public let unifiedDiff: String
     
     public convenience init?(unifiedDiff: String) throws {
         let parsingResults = try GitDiffParser(unifiedDiff: unifiedDiff).parse()
         self.init(
             addedFile: parsingResults.addedFile,
             removedFile: parsingResults.removedFile,
-            hunks: parsingResults.hunks)
+            hunks: parsingResults.hunks,
+            unifiedDiff: unifiedDiff
+        )
     }
     
     internal init(
         addedFile: String,
         removedFile: String,
-        hunks: [GitDiffHunk]
-        ) {
+        hunks: [GitDiffHunk],
+        unifiedDiff: String
+    ) {
         self.addedFile = addedFile
         self.removedFile = removedFile
         self.hunks = hunks
+        self.unifiedDiff = unifiedDiff
     }
     
     internal var description: String {
@@ -96,6 +103,16 @@ index c8ecb36..0000000
 
         static func toDiff(_ unifiedDiff: String) -> GitDiff {
             return try! GitDiff(unifiedDiff: unifiedDiff)!
+        }
+    }
+}
+
+extension Collection where Element == GitDiff {
+    func fileStatus(for fileId: GitFileStatus.ID) -> GitDiff? {
+        return self.first { diff in
+            // Gets file path while supporting renamed/moved files
+            guard let filePath = fileId.split(separator: " -> ").last else { return false }
+            return diff.addedFile.contains(String(filePath))
         }
     }
 }

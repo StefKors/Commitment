@@ -6,33 +6,28 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct FileDiffChangesView: View {
-    @EnvironmentObject private var repo: RepoState
-
-    // var commitId: GitLogRecord.ID?
-    var fileId: GitFileStatus.ID?
+    var fileStatus: GitFileStatus
+    var diff: GitDiff?
 
     var body: some View {
-            if let fileId, let status = repo.status.first { $0.id == fileId } {
-                ScrollView(.vertical) {
-                    if let diff = repo.diffs.first { $0.addedFile.contains(String(fileId.split(separator: " -> ").last ?? "")) } {
-                        DiffRenderView(status: status, diff: diff)
-                            .scenePadding()
-                    } else {
-                        FileRenderView(status: status)
-                            .scenePadding()
-                    }
-                }
+        ScrollView(.vertical) {
+            if let diff {
+                DiffRenderView(fileStatus: fileStatus, diff: diff)
+                    .scenePadding()
             } else {
-                ContentPlaceholderView()
+                FileRenderView(fileStatus: fileStatus)
+                    .scenePadding()
             }
-    }
-}
+        }
 
-struct FileDiffChangesView_Previews: PreviewProvider {
-    static var previews: some View {
-        FileDiffChangesView()
     }
 }
+//
+// struct FileDiffChangesView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         FileDiffChangesView()
+//     }
+// }

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct RepoWindow: View {
     // The user activity type representing this view.

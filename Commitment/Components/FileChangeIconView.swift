@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct FileChangeIconView: View {
     let type: GitFileStatus.ModificationState

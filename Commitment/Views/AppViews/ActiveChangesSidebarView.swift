@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Git
+
 
 struct ActiveChangesSidebarView: View {
     @EnvironmentObject private var repo: RepoState
@@ -16,11 +16,12 @@ struct ActiveChangesSidebarView: View {
     var body: some View {
         VStack {
             List(selection: $activeChangesSelection) {
-                ForEach(repo.status) { file in
+                ForEach(repo.status) { fileStatus in
                     NavigationLink(destination: {
-                        ActiveChangesMainView(fileId: activeChangesSelection)
+                        let diff = repo.diffs.fileStatus(for: fileStatus.id)
+                        ActiveChangesMainView(fileStatus: fileStatus, diff: diff)
                     }, label: {
-                        GitFileStatusView(status: file)
+                        GitFileStatusView(fileStatus: fileStatus)
                     })
                 }
             }.listStyle(SidebarListStyle())
