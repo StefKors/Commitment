@@ -11,7 +11,7 @@ import SwiftUI
 struct ActiveChangesSidebarView: View {
     @EnvironmentObject private var repo: RepoState
     @State private var activeChangesSelection: GitFileStatus.ID? = nil
-    
+
     var body: some View {
         VStack {
             List(selection: $activeChangesSelection) {
@@ -29,5 +29,10 @@ struct ActiveChangesSidebarView: View {
             Divider()
             TextEditorView(isDisabled: repo.diffs.isEmpty)
         }
+        .onChange(of: repo.diffs, perform: { newDiffs in
+            if newDiffs.isEmpty {
+                activeChangesSelection = nil
+            }
+        })
     }
 }
