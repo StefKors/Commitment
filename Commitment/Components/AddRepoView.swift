@@ -8,21 +8,14 @@
 import SwiftUI
 
 struct AddRepoView: View {
-    @EnvironmentObject var state: WindowState
-    @Environment(\.openWindow) private var openWindow
+    @EnvironmentObject var appModel: AppModel
 
     var body: some View {
-        Button(action: onClick, label: {
+        Button(action: appModel.openRepo, label: {
             Label("Add folder", systemImage: "plus.rectangle.on.folder")
         })
         .buttonStyle(.plain)
         .foregroundColor(.secondary)
-    }
-
-    func onClick() {
-        if let selectedRepo = state.openRepo() {
-            openWindow(value: selectedRepo)
-        }
     }
 }
 

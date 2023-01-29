@@ -13,17 +13,23 @@ struct FileRenderView: View {
 
     var fileStatus: GitFileStatus
 
+    @State private var lines: [GitDiffHunkLine] = []
+    @State private var path: String = ""
+
     var body: some View {
         FileView(fileStatus: fileStatus) {
-            if let path = String(fileStatus.path.split(separator: " -> ").last ?? "") {
-                if let lines: [GitDiffHunkLine] = repo.shell.cat(file: path) {
-                    ForEach(lines, id: \.self) { line in
+                if let lines {
+                    ForEach(lines, id: \.id) { line in
                         DiffLineView(line: line)
                     }
                 } else {
                     Text("Could not read file at \(path)")
                 }
-            }
+        }
+        .id(fileStatus.path)
+        .task(priority: .background) {
+            self.path = String(fileStatus.path.split(separator: " -> ").last ?? "")
+            self.lines = repo.shell.show(file: path, defaultType: fileStatus.diffModificationState)
         }
     }
 }

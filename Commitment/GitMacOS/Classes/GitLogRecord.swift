@@ -45,7 +45,7 @@ public class GitLogRecord: RepositoryLogRecord, Codable {
     private(set) public var refNames: String
 }
 
-extension GitLogRecord: Hashable {
+extension GitLogRecord {
     public static func == (lhs: GitLogRecord, rhs: GitLogRecord) -> Bool {
         lhs.hash == rhs.hash
     }

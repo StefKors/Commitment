@@ -6,26 +6,22 @@
 //
 
 import SwiftUI
-import Defaults
 
 struct WelcomeRepoListView: View {
-    @Default(.repos) var repos
-    @EnvironmentObject private var state: WindowState
-    @Environment(\.openWindow) private var openWindow
+    @EnvironmentObject var appModel: AppModel
+    @State private var repos: [RepoState] = []
 
     var body: some View {
 
         VStack(alignment: .leading, spacing: 0) {
             if !repos.isEmpty {
-
-                ForEach(repos.suffix(5), id: \.id) { repo in
+                ForEach(repos, id: \.id) { repo in
                     ListItem(
                         label: repo.folderName,
                         subLabel: repo.branch,
                         assetImage: "git-repo-24"
                     ).onTapGesture {
-                        print("opening repo \(repo.folderName)")
-                        openWindow(value: repo)
+                        appModel.$activeRepositoryId.set(repo.id)
                     }
                 }
 
@@ -48,12 +44,13 @@ struct WelcomeRepoListView: View {
                 subLabel: "Click here",
                 systemImage: "plus.rectangle.on.folder.fill"
             ).onTapGesture {
-                if let selectedRepo = state.openRepo() {
-                    print("opening repo \(selectedRepo.folderName)")
-                    openWindow(value: selectedRepo)
-                }
+                appModel.openRepo()
             }
         }
+        .onReceive(appModel.$repos.$items, perform: {
+            // Filtering can happen here
+            self.repos = $0.suffix(5)
+        })
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class GitDiffHunk: Equatable {
+public class GitDiffHunk: Codable, Equatable {
     public static func == (lhs: GitDiffHunk, rhs: GitDiffHunk) -> Bool {
         return lhs.oldLineStart == rhs.oldLineStart &&
         lhs.oldLineSpan == rhs.oldLineSpan &&

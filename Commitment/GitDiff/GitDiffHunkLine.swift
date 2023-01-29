@@ -8,7 +8,9 @@
 import Foundation
 
 /// A diff line inside a hunk,
-public struct GitDiffHunkLine: Hashable, Equatable {
+public struct GitDiffHunkLine: Codable, Equatable {
+
+    public let id: String
 
     public let type: GitDiffHunkLineType
     
@@ -31,6 +33,8 @@ public struct GitDiffHunkLine: Hashable, Equatable {
         self.text = text
         self.oldLineNumber = oldLineNumber
         self.newLineNumber = newLineNumber
+
+        self.id = "\(self.oldLineNumber ?? 0)-\(self.newLineNumber ?? 0)-\(self.type)"
     }
 }
 

@@ -6,16 +6,11 @@
 //
 
 import Foundation
-
-import Defaults
 import SwiftUI
+import Boutique
 // https://developer.apple.com/documentation/appkit/nscolor/3000782-controlaccentcolor
 
-extension Defaults.Keys {
-    static let repos = Key<[RepoState]>("repos", default: [])
-}
-
-class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawRepresentable, Identifiable, ObservableObject {
+class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     var repository: GitRepository?
     var shell: Shell
 
@@ -57,10 +52,23 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
         self.init(path: path)
     }
 
-    init?(path: URL) {
+    init(path: URL) {
         self.path = path
         self.shell = Shell(workspace: path.absoluteString)
         self.branch = shell.branch()
+    }
+
+    convenience init(path: URL, commits: [GitLogRecord], status: [GitFileStatus], diffs: [GitDiff]) {
+        self.init(path: path)
+        self.commits = commits
+        self.status = status
+        self.diffs = diffs
+        print("""
+init RepoState: \(folderName) with:
+    - \(commits.count) commits
+    - \(status.count) status files
+    - \(diffs.count) diffs
+""")
     }
 
     deinit {
@@ -104,6 +112,7 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
 
     /// Watch out for re-renders, can be slow
     func refreshRepoState() {
+        print("refreshRepoState init \(folderName) with \(commits.count) commits")
         refreshBranch()
         refreshDiffsAndStatus()
     }
@@ -122,6 +131,7 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
                 self.status = status?.files ?? []
                 self.commits = commits ?? []
                 self.isCheckingOut = false
+                print("refreshRepoState finish \(folderName) with \(self.commits.count) commits")
             }
         }
     }
@@ -147,20 +157,43 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
         lhs.path == rhs.path
     }
 
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey, CaseIterable {
         case path = "path"
+        case commits = "commits"
+        case status = "status"
+        case diffs = "diffs"
+    }
+
+    /// Manual conformance due to persisting published properties
+    /// https://www.hackingwithswift.com/books/ios-swiftui/adding-codable-conformance-for-published-properties
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(path, forKey: .path)
+        try container.encode(commits, forKey: .commits)
+        try container.encode(status, forKey: .status)
+        try container.encode(diffs, forKey: .diffs)
     }
 
     required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let path = try values.decode(URL.self, forKey: .path)
-        // TODO: remove this force bang
-        self.init(path: path)!
+        let commits = try values.decode([GitLogRecord].self, forKey: .commits)
+        let status = try values.decode([GitFileStatus].self, forKey: .status)
+        let diffs = try values.decode([GitDiff].self, forKey: .diffs)
+        self.init(
+            path: path,
+            commits: commits,
+            status: status,
+            diffs: diffs
+        )
     }
 
-    // RawRepresentable
-    var rawValue: URL {
-        path
+    // Hashable
+    public func hash(into hasher: inout Hasher) {
+        // Dumb or ingenious?
+        for key in RepoState.CodingKeys.allCases {
+            hasher.combine(key)
+        }
     }
 
     required convenience init?(rawValue: URL) {
@@ -169,7 +202,7 @@ class RepoState: Defaults.Serializable, Codable, Equatable, Hashable, RawReprese
     }
 
     // Identifiable
-    var id: URL {
-        path
+    var id: String {
+        return CacheKey(url: self.path).value
     }
 }

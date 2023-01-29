@@ -11,6 +11,7 @@ import SwiftUI
 struct GitFileStatusView: View {
     internal init(fileStatus: GitFileStatus) {
         self.fileStatus = fileStatus
+        // slow here?
         self.labels = fileStatus.path.split(separator: " -> ").compactMap({ URL(filePath: String($0)) })
     }
     

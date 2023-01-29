@@ -13,10 +13,10 @@ struct ActiveChangesMainView: View {
     var diff: GitDiff?
 
     var body: some View {
-        if let diff, let fileStatus, !repo.diffs.isEmpty {
+        if let fileStatus, !repo.diffs.isEmpty {
             FileDiffChangesView(fileStatus: fileStatus, diff: diff)
         } else {
-            ContentPlaceholderView()
+            Text("ContentPlaceholderView()")
         }
     }
 }

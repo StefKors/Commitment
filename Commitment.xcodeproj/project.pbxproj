@@ -33,6 +33,7 @@
 		8A6B649829730E560074B3C1 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649729730E560074B3C1 /* FileView.swift */; };
 		8A6B649A29730FD50074B3C1 /* FileRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649929730FD50074B3C1 /* FileRenderView.swift */; };
 		8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */; };
+		8A76E76929802F700033B978 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8A76E76829802F700033B978 /* Boutique */; };
 		8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C665B296464E300A774D7 /* TextEditorView.swift */; };
 		8A8C66712964682B00A774D7 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665E2964682B00A774D7 /* Inter-Bold.otf */; };
 		8A8C66722964682B00A774D7 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665F2964682B00A774D7 /* Inter-Regular.otf */; };
@@ -53,7 +54,6 @@
 		8A8C66812964682B00A774D7 /* Inter-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C666E2964682B00A774D7 /* Inter-ExtraBoldItalic.otf */; };
 		8A8C66822964682B00A774D7 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C666F2964682B00A774D7 /* Inter-BoldItalic.otf */; };
 		8A8C66832964682B00A774D7 /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C66702964682B00A774D7 /* Inter-LightItalic.otf */; };
-		8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA71069296DAE06002F6C24 /* DiffState.swift */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
 		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
@@ -168,8 +168,6 @@
 		8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */; };
 		8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD50C296F2A5E00525BF7 /* AppIcon.swift */; };
 		8AFBD50F296F2A5F00525BF7 /* AccentGlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD50D296F2A5E00525BF7 /* AccentGlow.swift */; };
-		8AFBD513296F2AA900525BF7 /* WindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD511296F2AA900525BF7 /* WindowState.swift */; };
-		8AFBD516296F2BA500525BF7 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8AFBD515296F2BA500525BF7 /* Defaults */; };
 		8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */; };
 		8AFBD52B296F2C1400525BF7 /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD51E296F2C1400525BF7 /* AdvancedSettingsView.swift */; };
 		8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD51F296F2C1400525BF7 /* GeneralSettingsView.swift */; };
@@ -193,8 +191,6 @@
 		8AFBD55A2970461C00525BF7 /* FileChangeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD5592970461C00525BF7 /* FileChangeIconView.swift */; };
 		8AFBD55E29704F7000525BF7 /* GitFileStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD55D29704F7000525BF7 /* GitFileStatusView.swift */; };
 		8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD563297150DF00525BF7 /* DiffSummaryView.swift */; };
-		8AFBD56629715D4E00525BF7 /* StatusState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56529715D4E00525BF7 /* StatusState.swift */; };
-		8AFBD56829715DE400525BF7 /* CommitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD56729715DE400525BF7 /* CommitState.swift */; };
 		8AFBD5742971B08D00525BF7 /* FolderContentMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD5712971B08D00525BF7 /* FolderContentMonitor.swift */; };
 		8AFBD5752971B08D00525BF7 /* FolderContentChangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD5722971B08D00525BF7 /* FolderContentChangeEvent.swift */; };
 		8AFBD5762971B08D00525BF7 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD5732971B08D00525BF7 /* Change.swift */; };
@@ -250,11 +246,6 @@
 		8A6B649729730E560074B3C1 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
 		8A6B649929730FD50074B3C1 /* FileRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRenderView.swift; sourceTree = "<group>"; };
 		8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDiffChangesView.swift; sourceTree = "<group>"; };
-		8A6B64A0297323F20074B3C1 /* CodeRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRenderView.swift; sourceTree = "<group>"; };
-		8A6B64A32973247F0074B3C1 /* codeedit-github-light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "codeedit-github-light.json"; sourceTree = "<group>"; };
-		8A6B64A5297324870074B3C1 /* codeedit-github-dark.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "codeedit-github-dark.json"; sourceTree = "<group>"; };
-		8A6B64A7297324BC0074B3C1 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		8A6B64A92973257D0074B3C1 /* Loopable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loopable.swift; sourceTree = "<group>"; };
 		8A8C665B296464E300A774D7 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		8A8C665E2964682B00A774D7 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
 		8A8C665F2964682B00A774D7 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
@@ -276,7 +267,6 @@
 		8A8C666F2964682B00A774D7 /* Inter-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.otf"; sourceTree = "<group>"; };
 		8A8C66702964682B00A774D7 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
 		8A8C6684296468CD00A774D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8AA71069296DAE06002F6C24 /* DiffState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffState.swift; sourceTree = "<group>"; };
 		8AAD63E72976A88500C7D1BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8AAD63E92976A88500C7D1BB /* Screenshot-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-dark.png"; sourceTree = "<group>"; };
 		8AAD63EA2976A88500C7D1BB /* watchos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchos.svg; sourceTree = "<group>"; };
@@ -404,7 +394,6 @@
 		8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeStackView.swift; sourceTree = "<group>"; };
 		8AFBD50C296F2A5E00525BF7 /* AppIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		8AFBD50D296F2A5E00525BF7 /* AccentGlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccentGlow.swift; sourceTree = "<group>"; };
-		8AFBD511296F2AA900525BF7 /* WindowState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowState.swift; sourceTree = "<group>"; };
 		8AFBD51E296F2C1400525BF7 /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
 		8AFBD51F296F2C1400525BF7 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		8AFBD522296F2C1400525BF7 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -427,8 +416,6 @@
 		8AFBD5592970461C00525BF7 /* FileChangeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileChangeIconView.swift; sourceTree = "<group>"; };
 		8AFBD55D29704F7000525BF7 /* GitFileStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStatusView.swift; sourceTree = "<group>"; };
 		8AFBD563297150DF00525BF7 /* DiffSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffSummaryView.swift; sourceTree = "<group>"; };
-		8AFBD56529715D4E00525BF7 /* StatusState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusState.swift; sourceTree = "<group>"; };
-		8AFBD56729715DE400525BF7 /* CommitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitState.swift; sourceTree = "<group>"; };
 		8AFBD5712971B08D00525BF7 /* FolderContentMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderContentMonitor.swift; sourceTree = "<group>"; };
 		8AFBD5722971B08D00525BF7 /* FolderContentChangeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderContentChangeEvent.swift; sourceTree = "<group>"; };
 		8AFBD5732971B08D00525BF7 /* Change.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
@@ -442,7 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */,
-				8AFBD516296F2BA500525BF7 /* Defaults in Frameworks */,
+				8A76E76929802F700033B978 /* Boutique in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,18 +531,6 @@
 			path = CommitmentUITests;
 			sourceTree = "<group>";
 		};
-		8A6B64A2297324730074B3C1 /* CodeRenderView */ = {
-			isa = PBXGroup;
-			children = (
-				8A6B64A92973257D0074B3C1 /* Loopable.swift */,
-				8A6B64A7297324BC0074B3C1 /* Theme.swift */,
-				8A6B64A5297324870074B3C1 /* codeedit-github-dark.json */,
-				8A6B64A32973247F0074B3C1 /* codeedit-github-light.json */,
-				8A6B64A0297323F20074B3C1 /* CodeRenderView.swift */,
-			);
-			path = CodeRenderView;
-			sourceTree = "<group>";
-		};
 		8A8C6658296464A700A774D7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -568,7 +543,6 @@
 				8AFBD57A2971CAC500525BF7 /* BranchSelectView.swift */,
 				8A48D14C27FDB6DF007803D2 /* BranchView.swift */,
 				8AFBD57C2971D14700525BF7 /* CheckoutProgressIconView.swift */,
-				8A6B64A2297324730074B3C1 /* CodeRenderView */,
 				8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */,
 				8AFBD54F29703AB600525BF7 /* DiffHunkView.swift */,
 				8AFBD54D29703A9C00525BF7 /* DiffLineView.swift */,
@@ -1113,10 +1087,6 @@
 			isa = PBXGroup;
 			children = (
 				8AFBD535296F2C4300525BF7 /* RepoState.swift */,
-				8AFBD56729715DE400525BF7 /* CommitState.swift */,
-				8AFBD511296F2AA900525BF7 /* WindowState.swift */,
-				8AA71069296DAE06002F6C24 /* DiffState.swift */,
-				8AFBD56529715D4E00525BF7 /* StatusState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -1148,8 +1118,8 @@
 			);
 			name = Commitment;
 			packageProductDependencies = (
-				8AFBD515296F2BA500525BF7 /* Defaults */,
 				8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */,
+				8A76E76829802F700033B978 /* Boutique */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -1226,6 +1196,7 @@
 			packageReferences = (
 				8AFBD514296F2BA500525BF7 /* XCRemoteSwiftPackageReference "Defaults" */,
 				8AFBD51A296F2BF600525BF7 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+				8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -1292,7 +1263,6 @@
 				8ACCD291297F265B0020BF84 /* IndexIterator.swift in Sources */,
 				8ACCD2D8297F265C0020BF84 /* File.swift in Sources */,
 				8ACCD2F2297F265C0020BF84 /* RepositoryDelegate.swift in Sources */,
-				8AA7106A296DAE06002F6C24 /* DiffState.swift in Sources */,
 				8ACCD2E9297F265C0020BF84 /* GitLogRecordList.swift in Sources */,
 				8ACCD2D2297F265C0020BF84 /* GitStashRecordList.swift in Sources */,
 				8ACCD2C6297F265C0020BF84 /* GitLogCompareOptions.swift in Sources */,
@@ -1336,8 +1306,6 @@
 				8AFBD54729702A2C00525BF7 /* Collection.swift in Sources */,
 				8AFBD50F296F2A5F00525BF7 /* AccentGlow.swift in Sources */,
 				8ACCD2C1297F265C0020BF84 /* GitStashListOptions.swift in Sources */,
-				8AFBD56829715DE400525BF7 /* CommitState.swift in Sources */,
-				8AFBD56629715D4E00525BF7 /* StatusState.swift in Sources */,
 				8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */,
 				8ACCD2B1297F265B0020BF84 /* CleanOptions.swift in Sources */,
 				8ACCD2EE297F265C0020BF84 /* FileManager+Utils.swift in Sources */,
@@ -1445,7 +1413,6 @@
 				8AFBD5742971B08D00525BF7 /* FolderContentMonitor.swift in Sources */,
 				8A5C64D229797DB300CA8FE1 /* ActiveChangesMainView.swift in Sources */,
 				8ACCD2E8297F265C0020BF84 /* GitTagRecord.swift in Sources */,
-				8AFBD513296F2AA900525BF7 /* WindowState.swift in Sources */,
 				8ACCD2A0297F265B0020BF84 /* MergeTask.swift in Sources */,
 				8ACCD2D0297F265C0020BF84 /* GitStashRecord.swift in Sources */,
 				8AFBD52F296F2C1400525BF7 /* SidebarCommitLabelView.swift in Sources */,
@@ -1526,6 +1493,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EAGER_LINKING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1587,6 +1555,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EAGER_LINKING = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1686,7 +1655,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.CommitmentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1706,7 +1675,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.CommitmentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1794,6 +1763,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mergesort/Boutique.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		8AFBD514296F2BA500525BF7 /* XCRemoteSwiftPackageReference "Defaults" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/Defaults";
@@ -1813,10 +1790,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8AFBD515296F2BA500525BF7 /* Defaults */ = {
+		8A76E76829802F700033B978 /* Boutique */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8AFBD514296F2BA500525BF7 /* XCRemoteSwiftPackageReference "Defaults" */;
-			productName = Defaults;
+			package = 8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */;
+			productName = Boutique;
 		};
 		8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;

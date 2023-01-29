@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a universal git diff
-public class GitDiff: Equatable {
+public class GitDiff: Codable, Equatable {
     public static func == (lhs: GitDiff, rhs: GitDiff) -> Bool {
         return lhs.addedFile == rhs.addedFile &&
         lhs.removedFile == rhs.removedFile &&

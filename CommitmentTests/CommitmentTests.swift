@@ -18,18 +18,33 @@ class CommitmentTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    class TestObject: Identifiable {
+        internal init(id: UUID = .init()) {
+            self.id = id
+        }
+
+        var id: UUID
     }
 
-    func testPerformanceExample() throws {
+    func createData(with idToFind: UUID) -> [TestObject] {
+        var data: [TestObject] = []
+        for index in 1...500000 {
+            if index == 250000 {
+                data.append(TestObject(id: idToFind))
+            } else {
+                data.append(TestObject())
+            }
+        }
+        return data
+    }
+
+    func testCollectionSearchLoop() throws {
         // This is an example of a performance test case.
+        let idToFind = UUID()
+        let testdata = createData(with: idToFind)
         self.measure {
-            // Put the code you want to measure the time of here.
+            let foundObject = testdata.first(with: idToFind)
+            XCTAssertEqual(foundObject?.id, idToFind)
         }
     }
 

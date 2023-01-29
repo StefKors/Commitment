@@ -16,8 +16,8 @@
 //  limitations under the License.
 
 /// Describes a single file status
-public class GitFileStatus {
-    
+public class GitFileStatus: Codable {
+
     // MARK: - Init
     internal init(path: String, state: String) {
         self.path = path
@@ -67,13 +67,25 @@ public class GitFileStatus {
             return true
         }
     }
+
+
+    public var diffModificationState: GitDiffHunkLineType {
+        switch state.index {
+        case .deleted:
+            return .deletion
+        case.added:
+            return .addition
+        default:
+            return .unchanged
+        }
+    }
 }
 
 // MARK: - Types
 public extension GitFileStatus {
     
     // MARK: - State
-    class State {
+    class State: Codable {
         
         // MARK: - Init
         public required init(index: ModificationState, worktree: ModificationState) {
@@ -124,7 +136,7 @@ public extension GitFileStatus {
     }
     
     // MARK: - ModificationState
-    enum ModificationState: String {
+    enum ModificationState: String, Codable {
         
         case modified = "M"
         case added = "A"
@@ -140,7 +152,7 @@ public extension GitFileStatus {
     }
     
     // MARK: - ConflictState
-    enum ConflictState {
+    enum ConflictState: Codable {
         
         case unmergedAddedBoth
         case unmergedAddedByUs
@@ -154,7 +166,7 @@ public extension GitFileStatus {
     }
 }
 
-extension GitFileStatus.State: Hashable {
+extension GitFileStatus.State {
     public static func == (lhs: GitFileStatus.State, rhs: GitFileStatus.State) -> Bool {
         return lhs.index == rhs.index &&
         lhs.worktree == rhs.worktree
@@ -166,15 +178,10 @@ extension GitFileStatus.State: Hashable {
     }
 }
 
-extension GitFileStatus: Hashable {
+extension GitFileStatus {
     public static func == (lhs: GitFileStatus, rhs: GitFileStatus) -> Bool {
         lhs.path == rhs.path &&
         lhs.state == rhs.state
-    }
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(path)
-        hasher.combine(state)
     }
 }
 

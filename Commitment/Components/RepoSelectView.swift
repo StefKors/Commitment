@@ -6,22 +6,18 @@
 //
 
 import SwiftUI
-import Defaults
 
 struct RepoSelectView: View {
     @EnvironmentObject private var repo: RepoState
-    @Default(.repos) var repos
-    @Environment(\.openWindow) private var openWindow
-
+    @EnvironmentObject var appModel: AppModel
+    @State private var repos: [RepoState] = []
     var placeholder = "Select Repo"
 
     var body: some View {
         Menu {
             ForEach(repos.indices, id: \.self){ index in
                 Button(action: {
-                    // TODO: open in single window
-                    // self.state.repo = repos[index]
-                    openWindow(value: repos[index])
+                    appModel.$activeRepositoryId.set(repos[index].id)
                 }, label: {
                     Text(repos[index].folderName)
                 })
@@ -39,6 +35,10 @@ struct RepoSelectView: View {
             .font(.system(size: 11))
         }
         .menuStyle(.borderlessButton)
+        .onReceive(appModel.$repos.$items, perform: {
+            // Filtering can happen here
+            self.repos = $0.suffix(5)
+        })
     }
 }
 

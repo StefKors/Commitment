@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct RepoWindow: View {
     // The user activity type representing this view.
     static let productUserActivityType = "com.stefkors.Commitment.repoview"
@@ -33,7 +32,10 @@ struct RepoWindow: View {
         .navigationTitle(repo.folderName)
         .navigationSubtitle(repo.branch)
         .task {
-            repo.initializeFullRepo()
+            // Disabled to test state restore
+            Task.detached(priority: .background) {
+                await repo.initializeFullRepo()
+            }
         }
         .onChange(of: scenePhase) { phase in
             // Stop monitoring for file changes when app minimizes

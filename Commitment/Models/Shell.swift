@@ -122,6 +122,23 @@ class Shell {
         self.run("git rev-parse \(SHA)~1", in: workspace)
     }
 
+    func show(file: String) -> String {
+        self.run("git show --textconv HEAD:\(file)", in: workspace)
+    }
+
+    /// Probably not performant
+    func show(file: String, defaultType: GitDiffHunkLineType = .unchanged) -> [GitDiffHunkLine] {
+        print("RUNNDING SHOW ON FILE \(file)")
+        var i = 0
+        return self.show(file: file)
+            .split(separator: "\n")
+            .map({ line in
+                let hunk = GitDiffHunkLine(type: .unchanged, text: String(line), oldLineNumber: i, newLineNumber: i)
+                i += 1
+                return hunk
+            })
+    }
+
     func cat(file: String) -> String {
         self.run("cat \(file)", in: workspace)
     }
