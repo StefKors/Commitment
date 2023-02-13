@@ -8,7 +8,7 @@
 import Foundation
 
 /// A diff line inside a hunk,
-public struct GitDiffHunkLine: Codable, Equatable {
+public struct GitDiffHunkLine: Identifiable, Codable, Equatable {
 
     public let id: String
 
@@ -20,13 +20,7 @@ public struct GitDiffHunkLine: Codable, Equatable {
 
     public let newLineNumber: Int?
     
-    internal var description: String {
-        switch type {
-        case .addition: return "+\(text)"
-        case .deletion: return "-\(text)"
-        case .unchanged: return " \(text)"
-        }
-    }
+    internal let description: String
 
     internal init(type: GitDiffHunkLineType, text: String, oldLineNumber: Int? = nil, newLineNumber: Int? = nil) {
         self.type = type
@@ -35,6 +29,12 @@ public struct GitDiffHunkLine: Codable, Equatable {
         self.newLineNumber = newLineNumber
 
         self.id = "\(self.oldLineNumber ?? 0)-\(self.newLineNumber ?? 0)-\(self.type)"
+
+        switch type {
+        case .addition: self.description = "+\(text)"
+        case .deletion: self.description = "-\(text)"
+        case .unchanged: self.description = " \(text)"
+        }
     }
 }
 

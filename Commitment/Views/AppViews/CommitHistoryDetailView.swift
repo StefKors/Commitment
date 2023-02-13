@@ -9,14 +9,21 @@ import SwiftUI
 
 
 struct CommitHistoryDetailView: View {
-    var fileStatus: GitFileStatus?
-    var diff: GitDiff?
+    let diffs: [GitDiff]
+    let fileStatus: GitFileStatus?
+    @State private var diff: GitDiff?
 
     var body: some View {
-        if let diff, let fileStatus {
-            FileDiffChangesView(fileStatus: fileStatus, diff: diff)
-        } else {
-            Text("place holder file diff")
-        }
+        Group {
+            if let diff, let fileStatus {
+                FileDiffChangesView(fileStatus: fileStatus, diff: diff)
+            } else {
+                Text("place holder file diff")
+            }
+        }.task(priority: .userInitiated, {
+            if let fileStatus {
+                self.diff = diffs.fileStatus(for: fileStatus.id)
+            }
+        })
     }
 }

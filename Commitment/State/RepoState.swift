@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Boutique
+import OrderedCollections
 // https://developer.apple.com/documentation/appkit/nscolor/3000782-controlaccentcolor
 
 class RepoState: Codable, Equatable, Identifiable, ObservableObject {
@@ -82,6 +83,9 @@ init RepoState: \(folderName) with:
         }
         self.repository = repo
 
+        // if let monitor, monitor.hasStarted {
+        //     monitor.stop()
+        // }
         monitor = FolderContentMonitor(url: path, latency: 0.1) { [weak self] event in
             // TODO: Figure out better filtering... Perhaps based on .gitignore?
             // skip lock events
@@ -106,6 +110,9 @@ init RepoState: \(folderName) with:
                 })
             }
         }
+
+        // if let monitor, monitor.hasStarted == false {
+        // }
         monitor?.start()
         self.refreshRepoState()
     }
@@ -123,13 +130,22 @@ init RepoState: \(folderName) with:
         Task(priority: .background) {
             let diffs = self.shell.diff()
             let status = try? repository?.listStatus()
-            let commits = try? repository?.listLogRecords().records as? [GitLogRecord]
+            let commits = (try? repository?.listLogRecords().records) ?? []
 
+            let options = GitLogOptions()
+            options.compareReference = .init(lhsReferenceName: "origin/HEAD", rhsReferenceName: "HEAD")
+            let localCommits = (try? repository?.listLogRecords(options: options).records) ?? []
+            let updatedLocalCommits = localCommits.map { localCommit in
+                localCommit.isLocal = true
+                return localCommit
+            }
+
+            let updatedCommits = commits.merge(updatedLocalCommits)
             /// Publish on main thread
             await MainActor.run {
                 self.diffs = diffs
                 self.status = status?.files ?? []
-                self.commits = commits ?? []
+                self.commits = updatedCommits
                 self.isCheckingOut = false
                 print("refreshRepoState finish \(folderName) with \(self.commits.count) commits")
             }

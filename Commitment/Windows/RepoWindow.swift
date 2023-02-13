@@ -19,12 +19,8 @@ struct RepoWindow: View {
             MainRepoContentView()
             // .navigationDocument(URL(fileURLWithPath: state.repo.path.absoluteString, isDirectory: true))
                 .toolbar(content: {
-                    ToolbarItemGroup(placement: .principal, content: {
-                        ToolbarContentView()
-                    })
-
                     ToolbarItemGroup(placement: .keyboard, content: {
-                        ToolbarContentView()
+                                TouchbarContentView()
                     })
                 })
         }
@@ -37,6 +33,11 @@ struct RepoWindow: View {
                 await repo.initializeFullRepo()
             }
         }
+        .onChange(of: repo, perform: { _ in
+            Task.detached(priority: .background) {
+                await repo.initializeFullRepo()
+            }
+        })
         .onChange(of: scenePhase) { phase in
             // Stop monitoring for file changes when app minimizes
             print("[Scene Change] App became: \(phase)")

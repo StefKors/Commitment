@@ -7,10 +7,28 @@
 
 import SwiftUI
 
+struct DiffLineNumberView: View {
+    let number: Int?
+    let color: Color
+
+    var body: some View {
+        ZStack(alignment: .center) {
+            color
+            if let number {
+                Text(number.description)
+            }
+        }
+        .frame(width: 30)
+        .font(.system(size: 11))
+        .foregroundColor(.secondary)
+    }
+}
+
 struct DiffLineView: View {
     let line: GitDiffHunkLine
     private let image: String?
     private let color: Color
+    private let colorOpaque: Color
     
     init(line: GitDiffHunkLine) {
         self.line = line
@@ -19,41 +37,26 @@ struct DiffLineView: View {
         case .addition:
             self.image = "plus"
             self.color = Color("DiffGreen")
+            self.colorOpaque = color.opacity(0.8)
         case .deletion:
             self.image = "minus"
             self.color = Color("DiffRed")
+            self.colorOpaque = color.opacity(0.8)
         case .unchanged:
             self.image = nil
             self.color = .clear
+            self.colorOpaque = .clear
         }
     }
     
     var body: some View {
         HStack(spacing: 0) {
-            ZStack(alignment: .center) {
-                color
-                if let oldNumber = line.oldLineNumber {
-                    Text(oldNumber.description)
-                }
-            }
-            .frame(width: 30)
-            .font(.system(size: 11))
-            .foregroundColor(.secondary)
+            DiffLineNumberView(number: line.oldLineNumber, color: color)
             
-            ZStack(alignment: .center) {
-                color
-                if let newNumber = line.newLineNumber {
-                    Text(newNumber.description)
-                }
-            }
-            .frame(width: 30)
-            .font(.system(size: 11))
-            .foregroundColor(.secondary)
-
-            // Divider()
+            DiffLineNumberView(number: line.newLineNumber, color: color)
 
             ZStack(alignment: .center) {
-                color.opacity(0.8)
+                colorOpaque
                 if let image {
                     Image(systemName: image)
                 }
@@ -62,7 +65,7 @@ struct DiffLineView: View {
             .font(.system(size: 11))
             
             ZStack(alignment: .leading) {
-                color.opacity(0.8)
+                colorOpaque
                 Text(line.text)
                     .padding(.horizontal)
             }

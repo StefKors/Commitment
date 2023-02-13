@@ -9,14 +9,29 @@ import SwiftUI
 
 struct ActiveChangesMainView: View {
     @EnvironmentObject private var repo: RepoState
-    var fileStatus: GitFileStatus?
-    var diff: GitDiff?
+    let fileStatus: GitFileStatus?
+    let diffs: [GitDiff] = []
+    @State private var diff: GitDiff?
 
     var body: some View {
-        if let fileStatus, !repo.diffs.isEmpty {
-            FileDiffChangesView(fileStatus: fileStatus, diff: diff)
-        } else {
-            Text("ContentPlaceholderView()")
-        }
+        VStack {
+            ToolbarContentView()
+
+            Divider()
+
+            ZStack {
+                Rectangle().fill(.clear)
+
+                if let fileStatus, !repo.diffs.isEmpty {
+                    FileDiffChangesView(fileStatus: fileStatus, diff: diff)
+                } else {
+                    Text("ContentPlaceholderView()")
+                }
+            }
+        }.task(priority: .userInitiated, {
+            if let fileStatus {
+                self.diff = repo.diffs.fileStatus(for: fileStatus.id)
+            }
+        })
     }
 }

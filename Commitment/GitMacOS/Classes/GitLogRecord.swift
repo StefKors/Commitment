@@ -43,27 +43,36 @@ public class GitLogRecord: RepositoryLogRecord, Codable {
     
     /// Reference names
     private(set) public var refNames: String
+
+    /// Optional boolean if commit is local or not
+    public var isLocal: Bool? = nil
 }
 
 extension GitLogRecord {
     public static func == (lhs: GitLogRecord, rhs: GitLogRecord) -> Bool {
         lhs.hash == rhs.hash
     }
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(hash)
-        hasher.combine(shortHash)
-        hasher.combine(authorName)
-        hasher.combine(authorEmail)
-        hasher.combine(subject)
-        hasher.combine(body)
-        hasher.combine(commiterDate)
-        hasher.combine(refNames)
-    }
 }
 
 extension GitLogRecord: Identifiable {
     public var id: String {
         self.hash
+    }
+}
+
+extension Collection where Element: GitLogRecord {
+    func merge(_ second: [GitLogRecord]) -> [GitLogRecord] {
+        var secondCopy = second
+        let updatedFirst = self.map({ commit -> GitLogRecord in
+            let updatedIndex = secondCopy.firstIndex(where: {$0.hash == commit.hash})
+            if let updatedIndex = updatedIndex {
+                let updated = secondCopy[updatedIndex]
+                secondCopy.remove(at: updatedIndex)
+                return updated
+            } else {
+                return commit
+            }
+        })
+        return updatedFirst + secondCopy
     }
 }

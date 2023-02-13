@@ -9,19 +9,32 @@ import SwiftUI
 
 
 struct SidebarCommitLabelView: View {
-    var commit: RepositoryLogRecord
+    var commit: GitLogRecord
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(commit.subject)
-                .bold()
-            HStack() {
-                AvatarView(email: commit.authorEmail)
-                Text(commit.authorName)
-                Spacer()
-                Text(commit.commiterDate.formatted())
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(commit.subject)
+                    .bold()
+                HStack() {
+                    AvatarView(email: commit.authorEmail)
+                    Text(commit.authorName) + Text(" · ") +
+                    // GroupBox {
+                    Text(commit.commiterDate.formatted())
+                    // }.font(.system(size: 8))
+                    // .background(
+                    //     RoundedRectangle(cornerRadius: 4)
+                    //         .fill(.secondary)
+                    // )
+                }.foregroundColor(.secondary)
             }
-            .foregroundColor(.secondary)
+            if commit.isLocal ?? false {
+                Spacer()
+                GroupBox {
+                    Image(systemName: "arrow.up")
+                        .foregroundColor(.secondary)
+                }
+            }
         }
     }
 }

@@ -44,3 +44,4 @@ public protocol RepositoryLogRecord {
     /// Reference names
     var refNames: String { get }
 }
+

@@ -17,6 +17,8 @@ struct GitFileStatusView: View {
     
     var fileStatus: GitFileStatus
     let labels: [URL]
+
+    // improve resizing this view with .layoutPriority(1)
     
     var body: some View {
         HStack(alignment: .center) {

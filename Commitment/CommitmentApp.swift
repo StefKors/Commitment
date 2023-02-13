@@ -63,6 +63,7 @@ final class AppModel: ObservableObject {
     }
 }
 
+// https://reichel.dev/blog/swift-global-key-binding.html#install-hotkey
 @main
 struct CommitmentApp: App {
     @StateObject var appModel: AppModel = AppModel()
@@ -71,22 +72,28 @@ struct CommitmentApp: App {
     var body: some Scene {
         Window("Commitment", id: "main window", content: {
             Group {
-                if let repo {
-                    RepoWindow()
-                        .environmentObject(repo)
-                } else {
+                if appModel.repos.isEmpty {
+                    // Appicon view is slow?
+                    // repos list is slow?
                     WelcomeWindow()
                         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
                         .navigationTitle("Commitment")
-                        .navigationSubtitle("")
+                } else if let repo {
+                    RepoWindow()
+                        .environmentObject(repo)
+                } else {
+                    EmptyView()
                 }
             }
             .environmentObject(appModel)
             .onReceive(appModel.$repos.$items, perform: {
-                print("print: \($0.debugDescription)")
                 // TODO: update db when things update
                 // We can even create complex pipelines, for example filtering all notes bigger than a tweet
                 self.repo = $0.first(with: appModel.activeRepositoryId) ?? $0.first
+            })
+            .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
+                let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
+                self.repo = repo
             })
         })
         .windowStyle(.automatic)
@@ -95,7 +102,6 @@ struct CommitmentApp: App {
         .commands {
             SidebarCommands()
         }
-
         
         Settings {
             SettingsWindow()

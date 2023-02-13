@@ -21,6 +21,7 @@ struct FileRenderView: View {
                 if let lines {
                     ForEach(lines, id: \.id) { line in
                         DiffLineView(line: line)
+                            .id(line.id)
                     }
                 } else {
                     Text("Could not read file at \(path)")

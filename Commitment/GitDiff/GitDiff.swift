@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a universal git diff
-public class GitDiff: Codable, Equatable {
+public struct GitDiff: Codable, Equatable {
     public static func == (lhs: GitDiff, rhs: GitDiff) -> Bool {
         return lhs.addedFile == rhs.addedFile &&
         lhs.removedFile == rhs.removedFile &&
@@ -22,14 +22,12 @@ public class GitDiff: Codable, Equatable {
     
     public let hunks: [GitDiffHunk]
 
-    public var lines: [GitDiffHunkLine] {
-        return hunks.map { $0.lines }.flatMap { $0 }
-    }
+    public var lines: [GitDiffHunkLine]
 
     // Source string of diff
     public let unifiedDiff: String
     
-    public convenience init?(unifiedDiff: String) throws {
+    public init?(unifiedDiff: String) throws {
         let parsingResults = try GitDiffParser(unifiedDiff: unifiedDiff).parse()
         self.init(
             addedFile: parsingResults.addedFile,
@@ -49,6 +47,9 @@ public class GitDiff: Codable, Equatable {
         self.removedFile = removedFile
         self.hunks = hunks
         self.unifiedDiff = unifiedDiff
+        self.lines = hunks.map { hunk in
+            hunk.lines
+        }.flatMap { $0 }
     }
     
     internal var description: String {

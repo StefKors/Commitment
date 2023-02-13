@@ -16,7 +16,6 @@ extension Collection {
 
 extension Collection where Element: Identifiable {
     func first(with id: Self.Element.ID?) -> Self.Element? {
-        print("finding first")
         return self.first { item -> Bool in
             guard let id else { return false }
             return item.id == id

@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ToolbarContentView: View {
     var body: some View {
-        RepoSelectView()
-        Image(systemName: "chevron.compact.right")
-        BranchSelectView()
-        Image(systemName: "chevron.compact.right")
-        DiffSummaryView()
+        HStack {
+            ToolbarActionButtonView()
+            ToolbarActionUpdateMain()
+            Spacer()
+        }
+        .padding(.top, 6)
+        .padding(.horizontal, 6)
     }
 }
 

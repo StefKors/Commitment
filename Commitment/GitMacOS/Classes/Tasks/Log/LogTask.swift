@@ -57,7 +57,7 @@ class LogTask: RepositoryTask, TaskRequirable {
         if terminationStatus == 0, let output = output {
             let decoder = GitFormatDecoder()
             let objects: [GitLogRecord] = decoder.decode(output)
-            
+
             records = GitLogRecordList(objects)
         }
     }

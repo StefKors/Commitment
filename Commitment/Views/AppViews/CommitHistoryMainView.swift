@@ -21,8 +21,7 @@ struct CommitHistoryMainView: View {
         List(selection: $activeCommitFileSelection) {
             ForEach(files) { fileStatus in
                 NavigationLink(destination: {
-                    let diff = diffs.fileStatus(for: fileStatus.id)
-                    CommitHistoryDetailView(fileStatus: fileStatus, diff: diff)
+                    CommitHistoryDetailView(diffs: diffs, fileStatus: fileStatus)
                 }, label: {
                     GitFileStatusView(fileStatus: fileStatus)
                 })

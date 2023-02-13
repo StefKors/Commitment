@@ -13,7 +13,7 @@ struct DiffRenderView: View {
     
     var body: some View {
         FileView(fileStatus: fileStatus) {
-            ForEach(diff.hunks, id: \.description) { hunk in
+            ForEach(diff.hunks, id: \.id) { hunk in
                 DiffHunkView(hunk: hunk)
             }
         }

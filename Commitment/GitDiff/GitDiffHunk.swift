@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class GitDiffHunk: Codable, Equatable {
+public struct GitDiffHunk: Identifiable, Codable, Equatable {
     public static func == (lhs: GitDiffHunk, rhs: GitDiffHunk) -> Bool {
         return lhs.oldLineStart == rhs.oldLineStart &&
         lhs.oldLineSpan == rhs.oldLineSpan &&
@@ -15,6 +15,8 @@ public class GitDiffHunk: Codable, Equatable {
         lhs.newLineSpan == rhs.newLineSpan &&
         lhs.lines == rhs.lines
     }
+
+    public let id: UUID
 
     public let oldLineStart: Int
     
@@ -26,14 +28,9 @@ public class GitDiffHunk: Codable, Equatable {
     
     public let lines: [GitDiffHunkLine]
 
-    public var header: String { "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@" }
+    public let header: String
     
-    internal var description: String {
-        let header = "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@"
-        return lines.reduce(into: header) {
-            $0 += "\n\($1.description)"
-        }
-    }
+    internal let description: String
     
     internal init(
         oldLineStart: Int,
@@ -41,7 +38,12 @@ public class GitDiffHunk: Codable, Equatable {
         newLineStart: Int,
         newLineSpan: Int,
         lines: [GitDiffHunkLine]
-        ) {
+    ) {
+        self.id = UUID()
+        self.header = "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@"
+        self.description = lines.reduce(into: header) {
+            $0 += "\n\($1.description)"
+        }
         self.oldLineStart = oldLineStart
         self.oldLineSpan = oldLineSpan
         self.newLineStart = newLineStart
@@ -55,14 +57,14 @@ public class GitDiffHunk: Codable, Equatable {
         newLineStart: Int? = nil,
         newLineSpan: Int? = nil,
         lines: [GitDiffHunkLine]? = nil) -> GitDiffHunk {
-        
-        return GitDiffHunk(
-            oldLineStart: oldLineStart ?? self.oldLineStart,
-            oldLineSpan: oldLineSpan ?? self.oldLineSpan,
-            newLineStart: newLineStart ?? self.newLineStart,
-            newLineSpan: newLineSpan ?? self.newLineSpan,
-            lines: lines ?? self.lines)
-    }
+            return GitDiffHunk(
+                oldLineStart: oldLineStart ?? self.oldLineStart,
+                oldLineSpan: oldLineSpan ?? self.oldLineSpan,
+                newLineStart: newLineStart ?? self.newLineStart,
+                newLineSpan: newLineSpan ?? self.newLineSpan,
+                lines: lines ?? self.lines
+            )
+        }
     
     internal func copyAppendingLine(_ line: GitDiffHunkLine) -> GitDiffHunk {
         var newLines = lines

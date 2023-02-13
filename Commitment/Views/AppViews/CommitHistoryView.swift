@@ -25,7 +25,7 @@ struct CommitHistoryView: View {
             })
         CommitHistoryMainView() // You won't see this in practice (with a default selection)
             .frame(minWidth: 300)
-        CommitHistoryDetailView()
+        CommitHistoryDetailView(diffs: [], fileStatus: nil)
             .frame(minWidth: 300)
     }
 }

@@ -15,14 +15,13 @@ struct ActiveChangesSidebarView: View {
     var body: some View {
         VStack {
             List(selection: $activeChangesSelection) {
-                ForEach(repo.status) { fileStatus in
+                ForEach(repo.status, id: \.id) { fileStatus in
                     NavigationLink(destination: {
-                        ActiveChangesMainView(
-                            fileStatus: fileStatus,
-                            diff: repo.diffs.fileStatus(for: fileStatus.id)
-                        )
+                        ActiveChangesMainView(fileStatus: fileStatus)
+                            .id(fileStatus.id)
                     }, label: {
                         GitFileStatusView(fileStatus: fileStatus)
+                            .id(fileStatus.id)
                     })
                 }
             }.listStyle(SidebarListStyle())

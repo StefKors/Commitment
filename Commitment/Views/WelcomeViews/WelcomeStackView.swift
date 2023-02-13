@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct WelcomeStackView: View {
-    private var appVersion: String {
-        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
-    }
-
-    private var appBuild: String {
-        Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
-    }
+    private let appVersion: String = "Build: \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")"
+    private let appBuild: String = "Version: \(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "")"
 
     var body: some View {
         VStack(spacing: 10) {
@@ -31,8 +26,8 @@ struct WelcomeStackView: View {
             .fixedSize(horizontal: true, vertical: false)
 
             HStack {
-                PillView(label: "Build: \(appBuild)")
-                PillView(label: "Version: \(appVersion)")
+                PillView(label: appBuild)
+                PillView(label: appVersion)
             }
         }
     }
