@@ -19,12 +19,12 @@
       }
     },
     {
-      "identity" : "defaults",
+      "identity" : "runestone",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/sindresorhus/Defaults",
+      "location" : "https://github.com/simonbs/Runestone.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "d71bfd8ffbf944ef08eacbca5fb96d6f69bf7696"
+        "branch" : "mac",
+        "revision" : "4c8043b72f5a38b12e33cf0e37d011e5a2509172"
       }
     },
     {

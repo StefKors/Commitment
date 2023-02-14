@@ -110,10 +110,11 @@ index c8ecb36..0000000
 
 extension Collection where Element == GitDiff {
     func fileStatus(for fileId: GitFileStatus.ID) -> GitDiff? {
+        // Gets file path while supporting renamed/moved files
+        guard let filePath = fileId.split(separator: " -> ").last else { return nil }
+        let path = String(filePath)
         return self.first { diff in
-            // Gets file path while supporting renamed/moved files
-            guard let filePath = fileId.split(separator: " -> ").last else { return false }
-            return diff.addedFile.contains(String(filePath))
+            return diff.addedFile.contains(path)
         }
     }
 }

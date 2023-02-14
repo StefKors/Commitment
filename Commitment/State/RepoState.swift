@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 import Boutique
-import OrderedCollections
 // https://developer.apple.com/documentation/appkit/nscolor/3000782-controlaccentcolor
 
 class RepoState: Codable, Equatable, Identifiable, ObservableObject {

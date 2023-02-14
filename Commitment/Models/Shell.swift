@@ -6,6 +6,12 @@
 //
 
 import Foundation
+import System
+
+public struct ProcessError : Error {
+    public var terminationStatus:Int32
+    public var output:String
+}
 
 class Shell {
     var workspace: String
@@ -24,6 +30,42 @@ class Shell {
         try? task.run()
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         return (String(data: data, encoding: .utf8) ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    func run(_ command: String) async throws -> String {
+        let task = Process()
+        let pipe = Pipe()
+        task.standardOutput = pipe
+        task.standardError = pipe
+        task.arguments = ["-c", command]
+        task.executableURL = URL(fileURLWithPath: "/bin/zsh")
+        return try await withCheckedThrowingContinuation { continuation in
+            task.terminationHandler = { process in
+                let data = pipe.fileHandleForReading.readDataToEndOfFile()
+                let output = String(data: data, encoding: .utf8) ?? ""
+
+                switch process.terminationReason {
+                case .uncaughtSignal:
+                    let error = ProcessError(terminationStatus: process.terminationStatus, output: output)
+                    continuation.resume(throwing:error)
+                case .exit:
+                    continuation.resume(returning:output)
+                @unknown default:
+                    //TODO: theoretically, this ought not to happen
+                    continuation.resume(returning:output)
+                }
+            }
+            do {
+                try task.run()
+            } catch {
+                continuation.resume(throwing:error)
+            }
+        }
+    }
+
+    @discardableResult
+    func run(_ command: String, in folderPath: String) async throws -> String {
+        try await self.run("cd \(folderPath);\(command)")
     }
 
     @discardableResult
@@ -126,16 +168,38 @@ class Shell {
         self.run("git show --textconv HEAD:\(file)", in: workspace)
     }
 
+    func show(file: String) async throws -> String {
+        try await self.run("git show --textconv HEAD:\(file)", in: workspace)
+    }
+
+    /// Probably not performant
+    func show(file: String, defaultType: GitDiffHunkLineType = .unchanged) async throws -> [GitDiffHunkLine] {
+        return try await self.show(file: file)
+            .split(separator: "\n")
+            .enumerated()
+            .map({ (index, line) in
+                return GitDiffHunkLine(
+                    type: .unchanged,
+                    text: String(line),
+                    oldLineNumber: index,
+                    newLineNumber: index
+                )
+            })
+    }
+
     /// Probably not performant
     func show(file: String, defaultType: GitDiffHunkLineType = .unchanged) -> [GitDiffHunkLine] {
         print("RUNNDING SHOW ON FILE \(file)")
-        var i = 0
         return self.show(file: file)
             .split(separator: "\n")
-            .map({ line in
-                let hunk = GitDiffHunkLine(type: .unchanged, text: String(line), oldLineNumber: i, newLineNumber: i)
-                i += 1
-                return hunk
+            .enumerated()
+            .map({ (index, line) in
+                return GitDiffHunkLine(
+                    type: .unchanged,
+                    text: String(line),
+                    oldLineNumber: index,
+                    newLineNumber: index
+                )
             })
     }
 
@@ -143,23 +207,16 @@ class Shell {
         self.run("cat \(file)", in: workspace)
     }
 
+    /// is it better to open the file via the filesystem?
+    func cat(file: String) async throws -> String {
+        try await self.run("cat \(file)", in: workspace)
+    }
+
     /// Probably not performant
     func cat(file: String) -> [String] {
         self.cat(file: file)
             .split(separator: "\n")
             .map({ String($0) })
-    }
-
-    /// Probably not performant
-    func cat(file: String) -> [GitDiffHunkLine] {
-        var i = 0
-        return self.cat(file: file)
-            .split(separator: "\n")
-            .map({ line in
-                let hunk = GitDiffHunkLine(type: .unchanged, text: String(line), oldLineNumber: i, newLineNumber: i)
-                i += 1
-                return hunk
-            })
     }
 }
 
