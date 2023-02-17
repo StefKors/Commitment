@@ -15,6 +15,7 @@ struct FileRenderView: View {
 
     @State private var lines: [GitDiffHunkLine] = []
     @State private var path: String = ""
+    @State private var content: String = ""
 
     var body: some View {
         FileView(fileStatus: fileStatus) {
@@ -31,6 +32,7 @@ struct FileRenderView: View {
         .task(priority: .background) {
             self.path = String(fileStatus.path.split(separator: " -> ").last ?? "")
             self.lines = repo.shell.show(file: path, defaultType: fileStatus.diffModificationState)
+            self.content = repo.shell.cat(file: path)
         }
     }
 }

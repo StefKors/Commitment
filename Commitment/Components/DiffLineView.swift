@@ -66,7 +66,7 @@ struct DiffLineView: View {
             
             ZStack(alignment: .leading) {
                 colorOpaque
-                Text(line.text)
+                HighlightedText(line.text)
                     .padding(.horizontal)
             }
         }

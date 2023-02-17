@@ -182,6 +182,19 @@
 		8A97DBB3299B9629001E25E1 /* TreeSitterYAMLQueries in Frameworks */ = {isa = PBXBuildFile; productRef = 8A97DBB2299B9629001E25E1 /* TreeSitterYAMLQueries */; };
 		8A97DBB5299B962A001E25E1 /* TreeSitterYAMLRunestone in Frameworks */ = {isa = PBXBuildFile; productRef = 8A97DBB4299B962A001E25E1 /* TreeSitterYAMLRunestone */; };
 		8A97DBB7299B9798001E25E1 /* MultiPlatformColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DBB6299B9798001E25E1 /* MultiPlatformColor.swift */; };
+		8A97DC73299BA4C4001E25E1 /* HighlightedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */; };
+		8A97DC8E299BB148001E25E1 /* CharacterSet+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC80299BB148001E25E1 /* CharacterSet+Contains.swift */; };
+		8A97DC8F299BB148001E25E1 /* Sequence+Occurrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC82299BB148001E25E1 /* Sequence+Occurrences.swift */; };
+		8A97DC90299BB148001E25E1 /* Sequence+AnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC83299BB148001E25E1 /* Sequence+AnyOf.swift */; };
+		8A97DC91299BB148001E25E1 /* Int+IsOdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC85299BB148001E25E1 /* Int+IsOdd.swift */; };
+		8A97DC92299BB148001E25E1 /* Equatable+AnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC87299BB148001E25E1 /* Equatable+AnyOf.swift */; };
+		8A97DC93299BB148001E25E1 /* Substring+HasSuffix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC89299BB148001E25E1 /* Substring+HasSuffix.swift */; };
+		8A97DC94299BB148001E25E1 /* String+PrefixChecking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC8A299BB148001E25E1 /* String+PrefixChecking.swift */; };
+		8A97DC95299BB148001E25E1 /* String+Removing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC8B299BB148001E25E1 /* String+Removing.swift */; };
+		8A97DC96299BB148001E25E1 /* String+IsNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC8C299BB148001E25E1 /* String+IsNumber.swift */; };
+		8A97DC97299BB148001E25E1 /* String+HTMLEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC8D299BB148001E25E1 /* String+HTMLEntities.swift */; };
+		8A97DDA3299BC76A001E25E1 /* Splash in Frameworks */ = {isa = PBXBuildFile; productRef = 8A97DDA2299BC76A001E25E1 /* Splash */; };
+		8A97DDA5299BCA7A001E25E1 /* Theme+Light+Dark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DDA4299BCA7A001E25E1 /* Theme+Light+Dark.swift */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
 		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
@@ -409,6 +422,18 @@
 		8A97D7AE299B9280001E25E1 /* TomorrowTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TomorrowTheme.swift; sourceTree = "<group>"; };
 		8A97DACE299B95C7001E25E1 /* TreeSitterLanguages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TreeSitterLanguages; sourceTree = "<group>"; };
 		8A97DBB6299B9798001E25E1 /* MultiPlatformColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPlatformColor.swift; sourceTree = "<group>"; };
+		8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightedText.swift; sourceTree = "<group>"; };
+		8A97DC80299BB148001E25E1 /* CharacterSet+Contains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Contains.swift"; sourceTree = "<group>"; };
+		8A97DC82299BB148001E25E1 /* Sequence+Occurrences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Occurrences.swift"; sourceTree = "<group>"; };
+		8A97DC83299BB148001E25E1 /* Sequence+AnyOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+AnyOf.swift"; sourceTree = "<group>"; };
+		8A97DC85299BB148001E25E1 /* Int+IsOdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+IsOdd.swift"; sourceTree = "<group>"; };
+		8A97DC87299BB148001E25E1 /* Equatable+AnyOf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Equatable+AnyOf.swift"; sourceTree = "<group>"; };
+		8A97DC89299BB148001E25E1 /* Substring+HasSuffix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Substring+HasSuffix.swift"; sourceTree = "<group>"; };
+		8A97DC8A299BB148001E25E1 /* String+PrefixChecking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+PrefixChecking.swift"; sourceTree = "<group>"; };
+		8A97DC8B299BB148001E25E1 /* String+Removing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Removing.swift"; sourceTree = "<group>"; };
+		8A97DC8C299BB148001E25E1 /* String+IsNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+IsNumber.swift"; sourceTree = "<group>"; };
+		8A97DC8D299BB148001E25E1 /* String+HTMLEntities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HTMLEntities.swift"; sourceTree = "<group>"; };
+		8A97DDA4299BCA7A001E25E1 /* Theme+Light+Dark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Light+Dark.swift"; sourceTree = "<group>"; };
 		8AAD63E72976A88500C7D1BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8AAD63E92976A88500C7D1BB /* Screenshot-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-dark.png"; sourceTree = "<group>"; };
 		8AAD63EA2976A88500C7D1BB /* watchos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchos.svg; sourceTree = "<group>"; };
@@ -616,6 +641,7 @@
 				8A97DB21299B9616001E25E1 /* TreeSitterJavaScriptQueries in Frameworks */,
 				8A97DB11299B9615001E25E1 /* TreeSitterHaskellRunestone in Frameworks */,
 				8A97DB67299B961D001E25E1 /* TreeSitterPHPRunestone in Frameworks */,
+				8A97DDA3299BC76A001E25E1 /* Splash in Frameworks */,
 				8A97DAE9299B9613001E25E1 /* TreeSitterCPPRunestone in Frameworks */,
 				8A97DB6D299B961E001E25E1 /* TreeSitterPythonRunestone in Frameworks */,
 				8A97DB97299B9624001E25E1 /* TreeSitterSvelteRunestone in Frameworks */,
@@ -826,6 +852,8 @@
 				8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */,
 				8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */,
 				8A97D7A3299B9276001E25E1 /* RunestoneCodeView */,
+				8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */,
+				8A97DDA4299BCA7A001E25E1 /* Theme+Light+Dark.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -925,6 +953,51 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A97DC7F299BB148001E25E1 /* CharacterSet */ = {
+			isa = PBXGroup;
+			children = (
+				8A97DC80299BB148001E25E1 /* CharacterSet+Contains.swift */,
+			);
+			path = CharacterSet;
+			sourceTree = "<group>";
+		};
+		8A97DC81299BB148001E25E1 /* Sequence */ = {
+			isa = PBXGroup;
+			children = (
+				8A97DC82299BB148001E25E1 /* Sequence+Occurrences.swift */,
+				8A97DC83299BB148001E25E1 /* Sequence+AnyOf.swift */,
+			);
+			path = Sequence;
+			sourceTree = "<group>";
+		};
+		8A97DC84299BB148001E25E1 /* Int */ = {
+			isa = PBXGroup;
+			children = (
+				8A97DC85299BB148001E25E1 /* Int+IsOdd.swift */,
+			);
+			path = Int;
+			sourceTree = "<group>";
+		};
+		8A97DC86299BB148001E25E1 /* Equatable */ = {
+			isa = PBXGroup;
+			children = (
+				8A97DC87299BB148001E25E1 /* Equatable+AnyOf.swift */,
+			);
+			path = Equatable;
+			sourceTree = "<group>";
+		};
+		8A97DC88299BB148001E25E1 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				8A97DC89299BB148001E25E1 /* Substring+HasSuffix.swift */,
+				8A97DC8A299BB148001E25E1 /* String+PrefixChecking.swift */,
+				8A97DC8B299BB148001E25E1 /* String+Removing.swift */,
+				8A97DC8C299BB148001E25E1 /* String+IsNumber.swift */,
+				8A97DC8D299BB148001E25E1 /* String+HTMLEntities.swift */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		8AA71063296D5BE0002F6C24 /* Models */ = {
@@ -1406,6 +1479,11 @@
 		8AFBD54529702A2200525BF7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8A97DC7F299BB148001E25E1 /* CharacterSet */,
+				8A97DC86299BB148001E25E1 /* Equatable */,
+				8A97DC84299BB148001E25E1 /* Int */,
+				8A97DC81299BB148001E25E1 /* Sequence */,
+				8A97DC88299BB148001E25E1 /* Strings */,
 				8AFBD54629702A2C00525BF7 /* Collection.swift */,
 				8AC8EB49297586FC00365EB9 /* URL.swift */,
 			);
@@ -1565,6 +1643,7 @@
 				8A97DBB0299B9629001E25E1 /* TreeSitterYAML */,
 				8A97DBB2299B9629001E25E1 /* TreeSitterYAMLQueries */,
 				8A97DBB4299B962A001E25E1 /* TreeSitterYAMLRunestone */,
+				8A97DDA2299BC76A001E25E1 /* Splash */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -1642,6 +1721,7 @@
 				8AFBD51A296F2BF600525BF7 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */,
 				8A97D72F299B8F6E001E25E1 /* XCRemoteSwiftPackageReference "Runestone" */,
+				8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -1722,6 +1802,8 @@
 				8AFBD5762971B08D00525BF7 /* Change.swift in Sources */,
 				8ACCD2A7297F265B0020BF84 /* GitCherryOptions.swift in Sources */,
 				8ACCD290297F265B0020BF84 /* GitFormatDecoder.swift in Sources */,
+				8A97DC90299BB148001E25E1 /* Sequence+AnyOf.swift in Sources */,
+				8A97DC96299BB148001E25E1 /* String+IsNumber.swift in Sources */,
 				8ACCD2C2297F265C0020BF84 /* StashListTask.swift in Sources */,
 				8AC8EB5029759AAD00365EB9 /* Border.swift in Sources */,
 				8ACCD29D297F265B0020BF84 /* ArgumentConvertible.swift in Sources */,
@@ -1747,6 +1829,7 @@
 				8AFBD531296F2C1400525BF7 /* AddRepoView.swift in Sources */,
 				8AFBD52B296F2C1400525BF7 /* AdvancedSettingsView.swift in Sources */,
 				8ACCD2D3297F265C0020BF84 /* GitFile.swift in Sources */,
+				8A97DC97299BB148001E25E1 /* String+HTMLEntities.swift in Sources */,
 				8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */,
 				8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */,
 				8ACCD295297F265B0020BF84 /* GitRepositoryErrorFormatter.swift in Sources */,
@@ -1760,10 +1843,12 @@
 				8ACCD2C1297F265C0020BF84 /* GitStashListOptions.swift in Sources */,
 				8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */,
 				8ACCD2B1297F265B0020BF84 /* CleanOptions.swift in Sources */,
+				8A97DC73299BA4C4001E25E1 /* HighlightedText.swift in Sources */,
 				8ACCD2EE297F265C0020BF84 /* FileManager+Utils.swift in Sources */,
 				8AFBD532296F2C1400525BF7 /* RepoSelectView.swift in Sources */,
 				8ACCD2C5297F265C0020BF84 /* RepositoryTask.swift in Sources */,
 				8ACCD2C7297F265C0020BF84 /* GitLogOptions.swift in Sources */,
+				8A97DC93299BB148001E25E1 /* Substring+HasSuffix.swift in Sources */,
 				8ACCD298297F265B0020BF84 /* CommitOptions.swift in Sources */,
 				8ACCD297297F265B0020BF84 /* CommitTask.swift in Sources */,
 				8ACCD2E7297F265C0020BF84 /* GitFileStatus.swift in Sources */,
@@ -1774,6 +1859,7 @@
 				8ACCD2A4297F265B0020BF84 /* PullTask.swift in Sources */,
 				8ACCD2DE297F265C0020BF84 /* GitRepository+CherryPick.swift in Sources */,
 				8ACCD2BF297F265C0020BF84 /* StashDropTask.swift in Sources */,
+				8A97DC91299BB148001E25E1 /* Int+IsOdd.swift in Sources */,
 				8ACCD2D6297F265C0020BF84 /* FileCoder.swift in Sources */,
 				8ACCD2D5297F265C0020BF84 /* FileStorage.swift in Sources */,
 				8ACCD2CB297F265C0020BF84 /* TagTask.swift in Sources */,
@@ -1801,6 +1887,7 @@
 				8ACCD2A3297F265B0020BF84 /* GitPullOptions.swift in Sources */,
 				8A327EFE298E9081008521B0 /* HeaderContentView.swift in Sources */,
 				8ACCD2ED297F265C0020BF84 /* Formatter+Date.swift in Sources */,
+				8A97DC92299BB148001E25E1 /* Equatable+AnyOf.swift in Sources */,
 				8ACCD2E2297F265C0020BF84 /* GitRepository+Files.swift in Sources */,
 				8A07612D29659EEE00D878DC /* GitDiffHunkLine.swift in Sources */,
 				8ACCD2C8297F265C0020BF84 /* LogTask.swift in Sources */,
@@ -1821,6 +1908,7 @@
 				8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */,
 				8A6B649429730B070074B3C1 /* SplitModeToggleView.swift in Sources */,
 				8A5C64D329797DB300CA8FE1 /* CommitHistoryView.swift in Sources */,
+				8A97DC8E299BB148001E25E1 /* CharacterSet+Contains.swift in Sources */,
 				8A97D733299B901F001E25E1 /* RunestoneCodeView.swift in Sources */,
 				8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */,
 				8ACCD2AB297F265B0020BF84 /* GitStatusOptions.swift in Sources */,
@@ -1830,11 +1918,13 @@
 				8A5C64D529797DB300CA8FE1 /* CommitHistoryDetailView.swift in Sources */,
 				8AFBD54929702A4200525BF7 /* GitDiffLine.swift in Sources */,
 				8ACCD2EC297F265C0020BF84 /* Array+Utils.swift in Sources */,
+				8A97DC94299BB148001E25E1 /* String+PrefixChecking.swift in Sources */,
 				8A5C64CF29797DB300CA8FE1 /* CommitHistorySidebarView.swift in Sources */,
 				8A97D7B8299B9280001E25E1 /* TomorrowTheme.swift in Sources */,
 				8AFBD55029703AB600525BF7 /* DiffHunkView.swift in Sources */,
 				8ACCD2C3297F265C0020BF84 /* GitStashOptions.swift in Sources */,
 				8ACCD2B4297F265B0020BF84 /* RemoteRenameTask.swift in Sources */,
+				8A97DDA5299BCA7A001E25E1 /* Theme+Light+Dark.swift in Sources */,
 				8AFBD53D296F2EB600525BF7 /* RepoWindow.swift in Sources */,
 				8ACCD2BA297F265B0020BF84 /* AddTask.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,
@@ -1843,6 +1933,7 @@
 				8ACCD2F4297F265C0020BF84 /* RepositoryReferenceName.swift in Sources */,
 				8ACCD2CC297F265C0020BF84 /* GitTagListOptions.swift in Sources */,
 				8A0761302965A15200D878DC /* DiffRenderView.swift in Sources */,
+				8A97DC95299BB148001E25E1 /* String+Removing.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,
 				8ACCD2C9297F265C0020BF84 /* CheckReferenceTask.swift in Sources */,
 				8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */,
@@ -1850,6 +1941,7 @@
 				8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */,
 				8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */,
 				8A6B649829730E560074B3C1 /* FileView.swift in Sources */,
+				8A97DC8F299BB148001E25E1 /* Sequence+Occurrences.swift in Sources */,
 				8AF7637C2987FC6300DBB0BA /* ToolbarActionButtonView.swift in Sources */,
 				8A6B649629730B380074B3C1 /* ContentPlaceholderView.swift in Sources */,
 				8ACCD2DA297F265C0020BF84 /* GitRemoteList.swift in Sources */,
@@ -2236,6 +2328,14 @@
 			repositoryURL = "https://github.com/simonbs/Runestone.git";
 			requirement = {
 				branch = mac;
+				kind = branch;
+			};
+		};
+		8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Splash.git";
+			requirement = {
+				branch = master;
 				kind = branch;
 			};
 		};
@@ -2719,6 +2819,11 @@
 		8A97DBB4299B962A001E25E1 /* TreeSitterYAMLRunestone */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TreeSitterYAMLRunestone;
+		};
+		8A97DDA2299BC76A001E25E1 /* Splash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */;
+			productName = Splash;
 		};
 		8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
