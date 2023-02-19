@@ -18,7 +18,7 @@ struct CommitHistoryDetailView: View {
             if let diff, let fileStatus {
                 FileDiffChangesView(fileStatus: fileStatus, diff: diff)
             } else {
-                Text("place holder file diff")
+                EmptyView()
             }
         }.task(priority: .userInitiated, {
             if let fileStatus {

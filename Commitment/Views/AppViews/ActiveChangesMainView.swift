@@ -25,7 +25,7 @@ struct ActiveChangesMainView: View {
                 if let fileStatus, !repo.diffs.isEmpty {
                     FileDiffChangesView(fileStatus: fileStatus, diff: diff)
                 } else {
-                    Text("ContentPlaceholderView()")
+                    EmptyView()
                 }
             }
         }.task(priority: .userInitiated, {
