@@ -11,9 +11,9 @@ struct DiffSummaryView: View {
     var body: some View {
         HStack {
             Text("999 +++")
-                .foregroundColor(Color("DiffGreenBright"))
+                .foregroundColor(Color("GitHubDiffGreenBright"))
             Text("999 ---")
-                .foregroundColor(Color("DiffRedBright"))
+                .foregroundColor(Color("GitHubDiffRedBright"))
         }
     }
 }
