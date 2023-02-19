@@ -169,7 +169,14 @@ class Shell {
     }
 
     func show(file: String) async throws -> String {
-        try await self.run("git show --textconv HEAD:\(file)", in: workspace)
+        let result = try await self.run("git show --textconv HEAD:\(file)", in: workspace)
+        
+        // still handle files not in git history
+        if result.starts(with: "fatal: path") {
+            return try await self.cat(file: file)
+        }
+
+        return result
     }
 
     /// Probably not performant
@@ -189,11 +196,11 @@ class Shell {
 
     /// Probably not performant
     func show(file: String, defaultType: GitDiffHunkLineType = .unchanged) -> [GitDiffHunkLine] {
-        print("RUNNDING SHOW ON FILE \(file)")
         return self.show(file: file)
             .split(separator: "\n")
             .enumerated()
             .map({ (index, line) in
+                // print(line)
                 return GitDiffHunkLine(
                     type: .unchanged,
                     text: String(line),
