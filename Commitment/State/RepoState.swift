@@ -82,6 +82,11 @@ init RepoState: \(folderName) with:
         }
         self.repository = repo
 
+
+        // self.refreshRepoState()
+    }
+
+    func startMonitor() {
         // if let monitor, monitor.hasStarted {
         //     monitor.stop()
         // }
@@ -91,16 +96,16 @@ init RepoState: \(folderName) with:
             if event.filename == "index.lock", event.filename == ".DS_Store" {
                 return
             }
-
+        
             let isGitFolderChange = event.eventPath.contains("/.git/")
-
+        
             if isGitFolderChange, event.filename == "HEAD" {
                 self?.debounce(interval: .milliseconds(500), operation: { [weak self] in
                     print("[File Change] Refreshing Branch \(event.url) (\(event.change))")
                     self?.refreshBranch()
                 })
             }
-
+        
             if !isGitFolderChange {
                 // made a commit
                 self?.debounce(interval: .milliseconds(500), operation: { [weak self] in
@@ -113,12 +118,11 @@ init RepoState: \(folderName) with:
         // if let monitor, monitor.hasStarted == false {
         // }
         monitor?.start()
-        self.refreshRepoState()
     }
 
     /// Watch out for re-renders, can be slow
     func refreshRepoState() {
-        print("refreshRepoState init \(folderName) with \(commits.count) commits")
+        // print("refreshRepoState init \(folderName) with \(commits.count) commits")
         refreshBranch()
         refreshDiffsAndStatus()
     }
@@ -146,7 +150,7 @@ init RepoState: \(folderName) with:
                 self.status = status?.files ?? []
                 self.commits = updatedCommits
                 self.isCheckingOut = false
-                print("refreshRepoState finish \(folderName) with \(self.commits.count) commits")
+                print("refreshRepoState finish \(folderName) with \(self.commits.count) & \(diffs.count) diffs commits")
             }
         }
     }

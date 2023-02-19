@@ -67,7 +67,11 @@ final class AppModel: ObservableObject {
 @main
 struct CommitmentApp: App {
     @StateObject var appModel: AppModel = AppModel()
-    @State private var repo: RepoState?
+    @State private var repo: RepoState? {
+        didSet {
+            print("repo update?")
+        }
+    }
 
     var body: some Scene {
         Window("Commitment", id: "main window", content: {
@@ -92,8 +96,15 @@ struct CommitmentApp: App {
                 self.repo = $0.first(with: appModel.activeRepositoryId) ?? $0.first
             })
             .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
+                print("total repos \(appModel.repos.map({ $0.folderName }))")
                 let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
+                guard let repo else { return }
+
                 self.repo = repo
+                repo.initializeFullRepo()
+                repo.refreshBranch()
+                repo.refreshDiffsAndStatus()
+                repo.startMonitor()
             })
         })
         .windowStyle(.automatic)

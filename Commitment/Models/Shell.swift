@@ -118,13 +118,14 @@ class Shell {
     }
 
     func diff() -> [GitDiff] {
-        let diffs = self.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
+        let diff = self.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
+        let diffs = diff
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
                 return try? GitDiff(unifiedDiff: String(diffSegment))
             }
 
-
+        // print("diff found \(diff)")
         return diffs
     }
 

@@ -13,6 +13,7 @@ struct RepoWindow: View {
 
     @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var model: AppModel
 
     var body: some View {
         HStack {
@@ -27,20 +28,23 @@ struct RepoWindow: View {
         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
         .navigationTitle(repo.folderName)
         .navigationSubtitle(repo.branch)
-        .task {
-            // Disabled to test state restore
-            Task.detached(priority: .background) {
-                await repo.initializeFullRepo()
-            }
-        }
-        .onChange(of: repo, perform: { _ in
-            Task.detached(priority: .background) {
-                await repo.initializeFullRepo()
-            }
-        })
+        // .task {
+        //     // Disabled to test state restore
+        //     Task.detached(priority: .background) {
+        //         await repo.initializeFullRepo()
+        //     }
+        // }
+        // .onChange(of: repo, perform: { _ in
+        //     Task.detached(priority: .background) {
+        //         await repo.initializeFullRepo()
+        //     }
+        // })
         .onChange(of: scenePhase) { phase in
             // Stop monitoring for file changes when app minimizes
             print("[Scene Change] App became: \(phase)")
+            Task.detached(priority: .background, operation: {
+                try? await model.saveRepo(repo: repo)
+            })
             switch phase {
             case .active:
                 if let hasStarted = repo.monitor?.hasStarted, hasStarted == false {
