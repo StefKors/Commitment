@@ -16,6 +16,7 @@ struct ActiveChangesMainView: View {
     var body: some View {
         VStack {
             ToolbarContentView()
+                .zIndex(999)
 
             Divider()
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct ToolbarContentView: View {
     var body: some View {
         HStack {
+            RepoSelectView()
             ToolbarActionButtonView()
             ToolbarActionUpdateMain()
             Spacer()

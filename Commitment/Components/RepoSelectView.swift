@@ -11,15 +11,27 @@ struct RepoSelectView: View {
     @EnvironmentObject private var repo: RepoState
     @EnvironmentObject var appModel: AppModel
     @State private var repos: [RepoState] = []
+    @State private var searchText: String = ""
     var placeholder = "Select Repo"
 
     var body: some View {
-        Menu {
+        CustomMenu {
+            TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
+                .textFieldStyle(.roundedBorder)
+                .font(.body)
+
             ForEach(repos.indices, id: \.self){ index in
                 Button(action: {
                     appModel.$activeRepositoryId.set(repos[index].id)
                 }, label: {
-                    Text(repos[index].folderName)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(repos[index].folderName)
+                            Text(repos[index].branch)
+                                .opacity(0.7)
+                        }
+                        Spacer()
+                    }
                 })
             }
         } label: {
@@ -29,16 +41,59 @@ struct RepoSelectView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 16, height: 16)
                     .foregroundColor(.primary)
-                Text(self.repo.folderName)
-                    .foregroundColor(.primary)
+                VStack(alignment: .leading) {
+                    Text("Current Repository")
+                        .opacity(0.7)
+                    Text(self.repo.folderName)
+                }
             }
-            .font(.system(size: 11))
         }
-        .menuStyle(.borderlessButton)
         .onReceive(appModel.$repos.$items, perform: {
             // Filtering can happen here
             self.repos = $0.suffix(5)
         })
+
+        CustomMenu {
+            HStack {
+                TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
+                    .textFieldStyle(.roundedBorder)
+                    .font(.body)
+
+                Button("Create Branch", action: {
+                    // TODO:
+                })
+                .buttonStyle(.bordered)
+            }
+            .padding(.bottom)
+
+            ForEach(repo.branches.indices, id: \.self){ index in
+                Button(action: {
+                    // TODO:
+                    // appModel.$activeRepositoryId.set(repos[index].id)
+                }, label: {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(repo.branches[index].name.localName)
+                        }
+                        Spacer()
+                    }
+                })
+            }
+        } label: {
+            HStack {
+                Image("git-branch-16")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16, height: 16)
+                    .foregroundColor(.primary)
+                VStack(alignment: .leading) {
+                    Text("Current Branch")
+                        .foregroundColor(.secondary)
+                    Text(self.repo.branch)
+                        .foregroundColor(.primary)
+                }
+            }
+        }
     }
 }
 
