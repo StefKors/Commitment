@@ -29,6 +29,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     @Published var status: [GitFileStatus] = []
     @Published var commits: [GitLogRecord] = []
     @Published var isCheckingOut: Bool = false
+    @Published var commitsAhead: Int = 0
 
     var task: Task<(), Never>?
     /// Debounce Source: https://stackoverflow.com/a/74794440/3199999
@@ -143,6 +144,8 @@ init RepoState: \(folderName) with:
                 return localCommit
             }
 
+            print("updatedLocalCommits \(updatedLocalCommits.count)")
+
             let updatedCommits = commits.merge(updatedLocalCommits)
             /// Publish on main thread
             await MainActor.run {
@@ -150,6 +153,7 @@ init RepoState: \(folderName) with:
                 self.status = status?.files ?? []
                 self.commits = updatedCommits
                 self.isCheckingOut = false
+                self.commitsAhead = updatedLocalCommits.count
                 print("refreshRepoState finish \(folderName) with \(self.commits.count) & \(diffs.count) diffs commits")
             }
         }

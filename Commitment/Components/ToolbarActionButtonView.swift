@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToolbarActionButtonView: View {
-    private let num = 5
+    @EnvironmentObject private var repo: RepoState
     var body: some View {
         Button(action: handleButton, label: {
             HStack {
@@ -16,7 +16,7 @@ struct ToolbarActionButtonView: View {
                     .imageScale(.small)
                 Text("Push origin")
                     .fontWeight(.bold)
-                Text("\(num) commits ahead")
+                Text("\(repo.commitsAhead) commits ahead")
                     .foregroundColor(.secondary)
             }
             .font(.system(size: 10))
@@ -26,6 +26,7 @@ struct ToolbarActionButtonView: View {
 
     func handleButton() {
         print("TODO: primary repo action")
+        // self.repo.repository.git
     }
 }
 
