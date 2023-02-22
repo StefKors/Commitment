@@ -11,6 +11,7 @@ import Boutique
 // https://developer.apple.com/documentation/appkit/nscolor/3000782-controlaccentcolor
 
 class RepoState: Codable, Equatable, Identifiable, ObservableObject {
+
     var repository: GitRepository?
     var shell: Shell
 
@@ -27,23 +28,13 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
 
     @Published var diffs: [GitDiff] = []
     @Published var status: [GitFileStatus] = []
-    @Published var commits: [GitLogRecord] = []
-    @Published var isCheckingOut: Bool = false
-    @Published var commitsAhead: Int = 0
-
-    var task: Task<(), Never>?
-    /// Debounce Source: https://stackoverflow.com/a/74794440/3199999
-    private func debounce(interval: Duration = .nanoseconds(10000), operation: @escaping () -> Void) {
-        task?.cancel()
-        task = Task {
-            do {
-                try await Task.sleep(for: interval)
-                operation()
-            } catch {
-                // TODO
-            }
+    @Published var commits: [GitLogRecord] = []  {
+        didSet {
+            print("Didset \(commits.count) commits")
         }
     }
+    @Published var isCheckingOut: Bool = false
+    @Published var commitsAhead: Int = 0
 
     convenience init?(string: String) {
         guard let path = URL(string: string) else {
@@ -82,16 +73,10 @@ init RepoState: \(folderName) with:
             return
         }
         self.repository = repo
-
-
-        // self.refreshRepoState()
     }
 
     func startMonitor() {
-        // if let monitor, monitor.hasStarted {
-        //     monitor.stop()
-        // }
-        monitor = FolderContentMonitor(url: path, latency: 0.1) { [weak self] event in
+        monitor = FolderContentMonitor(url: path, latency: 1) { [weak self] event in
             // TODO: Figure out better filtering... Perhaps based on .gitignore?
             // skip lock events
             if event.filename == "index.lock", event.filename == ".DS_Store" {
@@ -101,29 +86,31 @@ init RepoState: \(folderName) with:
             let isGitFolderChange = event.eventPath.contains("/.git/")
         
             if isGitFolderChange, event.filename == "HEAD" {
-                self?.debounce(interval: .milliseconds(500), operation: { [weak self] in
-                    print("[File Change] Refreshing Branch \(event.url) (\(event.change))")
+                Throttler.throttle( delay: .seconds(3),shouldRunImmediately: true) {
+                    print("[File Change] Refreshing Branch \(event.url.lastPathComponent) (\(event.change))")
                     self?.refreshBranch()
-                })
+                }
             }
         
             if !isGitFolderChange {
                 // made a commit
-                self?.debounce(interval: .milliseconds(500), operation: { [weak self] in
-                    print("[File Change] Refreshing Diffs and Status \(event.url) (\(event.change))")
+                Throttler.throttle( delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) {
+                    print("[File Change] \(event.url.lastPathComponent)")
                     self?.refreshDiffsAndStatus()
-                })
+                    let copy = self
+                    Task(priority: .background, operation: {
+                        // print("[File Change] Persist repo \(copy?.folderName ?? "")")
+                        try? await AppModel.shared.saveRepo(repo: copy)
+                    })
+                }
             }
         }
 
-        // if let monitor, monitor.hasStarted == false {
-        // }
         monitor?.start()
     }
 
     /// Watch out for re-renders, can be slow
     func refreshRepoState() {
-        // print("refreshRepoState init \(folderName) with \(commits.count) commits")
         refreshBranch()
         refreshDiffsAndStatus()
     }
@@ -134,29 +121,43 @@ init RepoState: \(folderName) with:
         Task(priority: .background) {
             let diffs = self.shell.diff()
             let status = try? repository?.listStatus()
-            let commits = (try? repository?.listLogRecords().records) ?? []
+            let commits = try? await getCommits()
+            let localCommits = try? await getLocalCommits()
 
-            let options = GitLogOptions()
-            options.compareReference = .init(lhsReferenceName: "origin/HEAD", rhsReferenceName: "HEAD")
-            let localCommits = (try? repository?.listLogRecords(options: options).records) ?? []
-            let updatedLocalCommits = localCommits.map { localCommit in
-                localCommit.isLocal = true
-                return localCommit
-            }
-
-            print("updatedLocalCommits \(updatedLocalCommits.count)")
-
-            let updatedCommits = commits.merge(updatedLocalCommits)
             /// Publish on main thread
             await MainActor.run {
                 self.diffs = diffs
-                self.status = status?.files ?? []
-                self.commits = updatedCommits
+                if let files = status?.files {
+                    self.status = files
+                }
+                if let commits, let localCommits {
+                    let mergedCommits = commits.merge(localCommits)
+                    self.commits = mergedCommits
+                    self.commitsAhead = localCommits.count
+                }
                 self.isCheckingOut = false
-                self.commitsAhead = updatedLocalCommits.count
-                print("refreshRepoState finish \(folderName) with \(self.commits.count) & \(diffs.count) diffs commits")
             }
         }
+    }
+
+    private func getCommits() async throws -> [GitLogRecord]? {
+        let commits = try? repository?.listLogRecords().records
+        guard let commits else { return nil }
+        return commits
+    }
+
+    private func getLocalCommits() async throws -> [GitLogRecord]? {
+        let options = GitLogOptions()
+        options.compareReference = .init(lhsReferenceName: "origin/HEAD", rhsReferenceName: "HEAD")
+        let localCommits = try? repository?.listLogRecords(options: options).records
+        guard let localCommits else { return nil }
+
+        let updatedLocalCommits = localCommits.map { localCommit in
+            localCommit.isLocal = true
+            return localCommit
+        }
+
+        return updatedLocalCommits
     }
 
     func refreshBranch() {

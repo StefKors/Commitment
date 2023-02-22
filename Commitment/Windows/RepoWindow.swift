@@ -28,17 +28,6 @@ struct RepoWindow: View {
         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
         .navigationTitle(repo.folderName)
         .navigationSubtitle(repo.branch)
-        // .task {
-        //     // Disabled to test state restore
-        //     Task.detached(priority: .background) {
-        //         await repo.initializeFullRepo()
-        //     }
-        // }
-        // .onChange(of: repo, perform: { _ in
-        //     Task.detached(priority: .background) {
-        //         await repo.initializeFullRepo()
-        //     }
-        // })
         .onChange(of: scenePhase) { phase in
             // Stop monitoring for file changes when app minimizes
             print("[Scene Change] App became: \(phase)")
@@ -50,14 +39,10 @@ struct RepoWindow: View {
                 if let hasStarted = repo.monitor?.hasStarted, hasStarted == false {
                     repo.monitor?.start()
                 }
-            case .inactive:
+            case .inactive, .background:
                 if let hasStarted = repo.monitor?.hasStarted, hasStarted == true {
                     repo.monitor?.stop()
                 }
-            // case .background:
-                // todo?
-            case .background:
-                print("TODO: handle background scenePhase")
             @unknown default:
                 print("TODO: handle default scenePhase")
             }

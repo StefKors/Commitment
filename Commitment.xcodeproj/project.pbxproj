@@ -74,6 +74,7 @@
 		8A992DFB29A62C8B001E26A3 /* StatefulPreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */; };
 		8A992DFD29A63B36001E26A3 /* OverlayAlignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */; };
 		8A992DFF29A64867001E26A3 /* CustomMenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFE29A64867001E26A3 /* CustomMenuButtonStyle.swift */; };
+		8AAF7AEC29A6CEAE0007CE8D /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
 		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
@@ -320,6 +321,7 @@
 		8AAD63F22976A88500C7D1BB /* ios.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ios.svg; sourceTree = "<group>"; };
 		8AAD63F32976A88500C7D1BB /* macos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = macos.svg; sourceTree = "<group>"; };
 		8AAD63F42976A88500C7D1BB /* tvos-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tvos-active.svg"; sourceTree = "<group>"; };
+		8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		8AC8EB49297586FC00365EB9 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
@@ -1188,6 +1190,7 @@
 		8AFBD54A29702A5A00525BF7 /* State */ = {
 			isa = PBXGroup;
 			children = (
+				8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */,
 				8AFBD535296F2C4300525BF7 /* RepoState.swift */,
 			);
 			path = State;
@@ -1429,6 +1432,7 @@
 				8ACCD2A5297F265B0020BF84 /* GitResetOptions.swift in Sources */,
 				8ACCD2DC297F265C0020BF84 /* GitRepository+Log.swift in Sources */,
 				8ACCD2BB297F265B0020BF84 /* CloneTask.swift in Sources */,
+				8AAF7AEC29A6CEAE0007CE8D /* Throttler.swift in Sources */,
 				8ACCD2F0297F265C0020BF84 /* CredentialsProvider.swift in Sources */,
 				8ACCD2A4297F265B0020BF84 /* PullTask.swift in Sources */,
 				8ACCD2DE297F265C0020BF84 /* GitRepository+CherryPick.swift in Sources */,

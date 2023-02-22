@@ -16,7 +16,9 @@ extension Store where Item == RepoState {
     )
 }
 
-final class AppModel: ObservableObject {
+class AppModel: ObservableObject {
+    static let shared = AppModel()
+
     @StoredValue(key: "WindowMode") var windowMode: SplitModeOptions = .history
     @StoredValue(key: "ActiveRepository") var activeRepositoryId: RepoState.ID? = nil
     /// Creates a @Stored property to handle an in-memory and on-disk cache of type.
@@ -24,7 +26,8 @@ final class AppModel: ObservableObject {
     
     
     /// Saves an type to the `Store` in memory and on disk.
-    func saveRepo(repo: RepoState) async throws {
+    func saveRepo(repo: RepoState?) async throws {
+        guard let repo else { return }
         try await self.$repos.insert(repo)
     }
     
@@ -63,16 +66,33 @@ final class AppModel: ObservableObject {
     }
 }
 
+// public class Features: ObservableObject {
+//     public static let shared = Features()
+//     private init() { }
+//
+//     @Published public var isDebugMenuEnabled = false
+// }
+
+@propertyWrapper
+struct AppState: DynamicProperty {
+    @ObservedObject private var model: AppModel
+
+    init(model: AppModel = .shared) {
+        self.model = model
+    }
+
+    var wrappedValue: AppModel {
+        return model
+    }
+}
+
 // https://reichel.dev/blog/swift-global-key-binding.html#install-hotkey
 @main
 struct CommitmentApp: App {
-    @StateObject var appModel: AppModel = AppModel()
-    @State private var repo: RepoState? {
-        didSet {
-            print("repo update?")
-        }
-    }
+    @AppState var model
 
+    @StateObject var appModel: AppModel = .shared
+    @State private var repo: RepoState?
     var body: some Scene {
         Window("Commitment", id: "main window", content: {
             Group {
@@ -90,13 +110,12 @@ struct CommitmentApp: App {
                 }
             }
             .environmentObject(appModel)
-            .onReceive(appModel.$repos.$items, perform: {
-                // TODO: update db when things update
-                // We can even create complex pipelines, for example filtering all notes bigger than a tweet
-                self.repo = $0.first(with: appModel.activeRepositoryId) ?? $0.first
-            })
+            // .onReceive(appModel.$repos.$items, perform: {
+            //     // TODO: update db when things update
+            //     // We can even create complex pipelines, for example filtering all notes bigger than a tweet
+            //     self.repo = $0.first(with: appModel.activeRepositoryId) ?? $0.first
+            // })
             .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
-                print("total repos \(appModel.repos.map({ $0.folderName }))")
                 let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
                 guard let repo else { return }
 

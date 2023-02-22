@@ -166,7 +166,7 @@ public extension GitFileStatus {
     }
 }
 
-extension GitFileStatus.State {
+extension GitFileStatus.State: Hashable {
     public static func == (lhs: GitFileStatus.State, rhs: GitFileStatus.State) -> Bool {
         return lhs.index == rhs.index &&
         lhs.worktree == rhs.worktree
@@ -178,10 +178,15 @@ extension GitFileStatus.State {
     }
 }
 
-extension GitFileStatus {
+extension GitFileStatus: Hashable {
     public static func == (lhs: GitFileStatus, rhs: GitFileStatus) -> Bool {
         lhs.path == rhs.path &&
         lhs.state == rhs.state
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(path)
+        hasher.combine(state)
     }
 }
 
