@@ -26,12 +26,14 @@ struct AvatarView: View {
             switch phase {
             case .success(let image):
                 ZStack {
-                    image.resizable()
+                    image
+                        .resizable()
                         .clipShape(Circle())
                 }
             default:
                 ZStack {
-                    EmptyView()
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
                 }
             }
         }
