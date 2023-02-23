@@ -15,6 +15,7 @@ struct DiffHunkView: View {
     }
 
     var body: some View {
+        HunkHeaderLineView(header: hunk.header)
         ForEach(hunk.lines, id: \.id) { line  in
             DiffLineView(line: line)
                 .id(line.id)

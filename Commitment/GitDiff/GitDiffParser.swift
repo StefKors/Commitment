@@ -36,8 +36,13 @@ internal class GitDiffParser {
         var currentHunk: GitDiffHunk?
         var currentHunkOldCount: Int = 0
         var currentHunkNewCount: Int = 0
+        var header: String?
         
         unifiedDiff.enumerateLines { line, _ in
+            if line.starts(with: "@@ ") {
+                print(line)
+                header = String(line)
+            }
             // Skip headers
             guard !line.starts(with: "+++ ") else {
                 addedFile = String(line.dropFirst(4))
@@ -47,7 +52,7 @@ internal class GitDiffParser {
                 removedFile = String(line.dropFirst(4))
                 return
             }
-            
+
             if let match = self.regex.firstMatch(in: line, options: [], range: NSMakeRange(0, line.utf16.count)) {
                 
                 if let oldLineStartString = match.group(1, in: line), let oldLineStart = Int(oldLineStartString),
@@ -69,6 +74,7 @@ internal class GitDiffParser {
                         oldLineSpan: oldLineSpan,
                         newLineStart: newLineStart,
                         newLineSpan: newLineSpan,
+                        header: header,
                         lines: [])
                     
                 } else if let delta = match.group(5, in: line),

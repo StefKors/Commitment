@@ -37,11 +37,12 @@ public struct GitDiffHunk: Identifiable, Codable, Equatable {
         oldLineSpan: Int,
         newLineStart: Int,
         newLineSpan: Int,
+        header: String?,
         lines: [GitDiffHunkLine]
     ) {
         self.id = UUID()
-        self.header = "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@"
-        self.description = lines.reduce(into: header) {
+        self.header = header ?? "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@"
+        self.description = lines.reduce(into: self.header) {
             $0 += "\n\($1.description)"
         }
         self.oldLineStart = oldLineStart
@@ -56,12 +57,14 @@ public struct GitDiffHunk: Identifiable, Codable, Equatable {
         oldLineSpan: Int? = nil,
         newLineStart: Int? = nil,
         newLineSpan: Int? = nil,
+        header: String? = nil,
         lines: [GitDiffHunkLine]? = nil) -> GitDiffHunk {
             return GitDiffHunk(
                 oldLineStart: oldLineStart ?? self.oldLineStart,
                 oldLineSpan: oldLineSpan ?? self.oldLineSpan,
                 newLineStart: newLineStart ?? self.newLineStart,
                 newLineSpan: newLineSpan ?? self.newLineSpan,
+                header: header ?? self.header,
                 lines: lines ?? self.lines
             )
         }

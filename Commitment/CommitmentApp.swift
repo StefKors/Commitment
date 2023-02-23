@@ -101,7 +101,7 @@ struct CommitmentApp: App {
                     // repos list is slow?
                     WelcomeWindow()
                         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
-                        .navigationTitle("Commitment")
+                        // .navigationTitle("Commitment")
                 } else if let repo {
                     RepoWindow()
                         .environmentObject(repo)
@@ -110,11 +110,6 @@ struct CommitmentApp: App {
                 }
             }
             .environmentObject(appModel)
-            // .onReceive(appModel.$repos.$items, perform: {
-            //     // TODO: update db when things update
-            //     // We can even create complex pipelines, for example filtering all notes bigger than a tweet
-            //     self.repo = $0.first(with: appModel.activeRepositoryId) ?? $0.first
-            // })
             .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
                 let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
                 guard let repo else { return }
@@ -125,9 +120,10 @@ struct CommitmentApp: App {
                 repo.refreshDiffsAndStatus()
                 repo.startMonitor()
             })
+
         })
-        .windowStyle(.automatic)
-        .windowToolbarStyle(.unified)
+        // .windowStyle(.hiddenTitleBar)
+        .windowToolbarStyle(.unifiedCompact(showsTitle: true))
         .windowResizability(.contentMinSize)
         .commands {
             SidebarCommands()

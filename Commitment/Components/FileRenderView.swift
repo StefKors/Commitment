@@ -16,24 +16,30 @@ struct FileRenderView: View {
     @State private var lines: [GitDiffHunkLine] = []
     @State private var path: String = ""
     @State private var content: String = ""
+    @State private var finishedFetching: Bool = false
 
     var body: some View {
-        FileView(fileStatus: fileStatus) {
-                if let lines {
-                    ForEach(lines, id: \.id) { line in
-                        DiffLineView(line: line)
-                            .id(line.id)
+        Group {
+            if finishedFetching {
+                FileView(fileStatus: fileStatus) {
+                    if let lines {
+                        ForEach(lines, id: \.id) { line in
+                            DiffLineView(line: line)
+                                .id(line.id)
+                        }
+                    } else {
+                        Text("Could not read file at \(path)")
                     }
-                } else {
-                    Text("Could not read file at \(path)")
                 }
+            }
         }
         .id(fileStatus.path)
-        .task(priority: .background) {
+        .task {
             self.path = String(fileStatus.path.split(separator: " -> ").last ?? "")
             do {
                 self.lines = try await repo.shell.show(file: path, defaultType: fileStatus.diffModificationState)
                 self.content = try await repo.shell.cat(file: path)
+                self.finishedFetching = true
             } catch {
                 print("Failed at FileRenderView: \(error.localizedDescription)")
             }

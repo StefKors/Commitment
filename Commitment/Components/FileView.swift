@@ -32,7 +32,7 @@ struct FileView<Content: View>: View {
             }
             .fontDesign(.monospaced)
         })
-        .background(
+        .overlay(
             RoundedRectangle(cornerRadius: 6)
                 .stroke(.separator, lineWidth: 2)
         )

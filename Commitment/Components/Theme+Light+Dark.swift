@@ -30,9 +30,9 @@ fileprivate struct ThemeColors {
 
 public extension Theme {
     /// Create a theme matching my personal light Xcode theme
-    static func light(withFont font: Splash.Font = .init(size: 14)) -> Theme {
+    static func light(withFont font: Splash.Font = .init(size: 12)) -> Theme {
         return Theme(
-            font: .init(size: 14),
+            font: font,
             plainTextColor: Color(red: 0.258824, green: 0.258824, blue: 0.258824, alpha: 1),
             tokenColors: [
                 .keyword: ThemeColors.Light.blue,
@@ -50,9 +50,9 @@ public extension Theme {
     }
 
     /// Create a theme matching my personal dark Xcode theme
-    static func dark(withFont font: Splash.Font = .init(size: 14)) -> Theme {
+    static func dark(withFont font: Splash.Font = .init(size: 12)) -> Theme {
         return Theme(
-            font: .init(size: 14),
+            font: font,
             plainTextColor: Color(red: 0.850973, green: 0.847061, blue: 0.847059, alpha: 1),
             tokenColors: [
                 .keyword: ThemeColors.Dark.blue,
