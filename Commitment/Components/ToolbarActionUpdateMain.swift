@@ -10,25 +10,28 @@ import SwiftUI
 // git fetch origin main:main will fetch udpates and apply them to local main
 struct ToolbarActionUpdateMain: View {
     @EnvironmentObject private var repo: RepoState
-
+    let commitsBehind: Int = 00
     var body: some View {
         Button(action: handleButton, label: {
             HStack {
                 Image(systemName: "arrow.up.and.down.and.sparkles")
                     .imageScale(.small)
-                Text("Update Main")
-                    .fontWeight(.bold)
-                // Text("Update Main")
-                //     .foregroundColor(.secondary)
+                VStack(alignment: .leading) {
+                    Text("Update Main")
+                        // .fontWeight(.bold)
+                    Text("\(commitsBehind.description) behind main")
+                        .foregroundColor(.secondary)
+                }
             }
-            .font(.system(size: 10))
             .foregroundColor(.primary)
         })
+        .buttonStyle(.plain)
     }
 
     func handleButton() {
-        let log = repo.shell.run("git fetch origin main:main")
-        print(log)
+        Task {
+            try? await repo.shell.run("git fetch origin main:main")
+        }
     }
 }
 

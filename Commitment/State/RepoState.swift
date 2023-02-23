@@ -11,6 +11,7 @@ import Boutique
 // https://developer.apple.com/documentation/appkit/nscolor/3000782-controlaccentcolor
 
 class RepoState: Codable, Equatable, Identifiable, ObservableObject {
+    @Published var activity = ActivityState()
 
     var repository: GitRepository?
     var shell: Shell
@@ -23,7 +24,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         path.lastPathComponent
     }
 
-    var branch: String
+    var branch: String = ""
     var branches: [RepositoryReference] = []
 
     @Published var diffs: [GitDiff] = []
@@ -33,7 +34,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
             print("Didset \(commits.count) commits")
         }
     }
-    @Published var isCheckingOut: Bool = false
+
     @Published var commitsAhead: Int = 0
 
     convenience init?(string: String) {
@@ -47,7 +48,12 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     init(path: URL) {
         self.path = path
         self.shell = Shell(workspace: path.absoluteString)
-        self.branch = shell.branch()
+        Task {
+            let branch = try? await shell.branch()
+            if let branch {
+                self.branch = branch
+            }
+        }
     }
 
     convenience init(path: URL, commits: [GitLogRecord], status: [GitFileStatus], diffs: [GitDiff]) {
@@ -95,12 +101,13 @@ init RepoState: \(folderName) with:
             if !isGitFolderChange {
                 // made a commit
                 Throttler.throttle( delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) {
+                    self?.activity.start(.isRefreshingState)
                     print("[File Change] \(event.url.lastPathComponent)")
                     self?.refreshDiffsAndStatus()
                     let copy = self
-                    Task(priority: .background, operation: {
-                        // print("[File Change] Persist repo \(copy?.folderName ?? "")")
+                    Task(priority: .background, operation: { [weak self] in
                         try? await AppModel.shared.saveRepo(repo: copy)
+                        self?.activity.finish(.isRefreshingState)
                     })
                 }
             }
@@ -117,16 +124,19 @@ init RepoState: \(folderName) with:
 
     /// Watch out for re-renders, can be slow
     func refreshDiffsAndStatus() {
+        /// TODO: this should run paralell
         /// Update on background thread
         Task(priority: .background) {
-            let diffs = self.shell.diff()
+            let diffs = try? await self.shell.diff()
             let status = try? repository?.listStatus()
             let commits = try? await getCommits()
             let localCommits = try? await getLocalCommits()
 
             /// Publish on main thread
             await MainActor.run {
-                self.diffs = diffs
+                if let diffs {
+                    self.diffs = diffs
+                }
                 if let files = status?.files {
                     self.status = files
                 }
@@ -135,7 +145,6 @@ init RepoState: \(folderName) with:
                     self.commits = mergedCommits
                     self.commitsAhead = localCommits.count
                 }
-                self.isCheckingOut = false
             }
         }
     }
@@ -163,12 +172,14 @@ init RepoState: \(folderName) with:
     func refreshBranch() {
         /// Update on background thread
         Task(priority: .background) {
-            let branch = self.shell.branch()
+            let branch = try? await self.shell.branch()
             let refs = try? repository?.listReferences()
 
             /// Publish on main thread
             await MainActor.run {
-                self.branch = branch
+                if let branch {
+                    self.branch = branch
+                }
                 self.branches = refs?.localBranches.sorted(by: { branchA, branchB in
                     return branchA.date > branchB.date
                 }) ?? []

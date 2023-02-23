@@ -30,8 +30,17 @@ struct CommitHistoryMainView: View {
         .listStyle(SidebarListStyle())
         .task {
             if let commitId {
-                self.diffs = repo.shell.diff(at: commitId)
-                self.files = repo.shell.show(at: commitId)
+                // TODO: is this the right way to do paralell?
+                Task {
+                    if let diffs = try? await repo.shell.diff(at: commitId) {
+                        self.diffs = diffs
+                    }
+                }
+                Task {
+                    if let files = try? await repo.shell.show(at: commitId) {
+                        self.files = files
+                    }
+                }
             }
         }
     }

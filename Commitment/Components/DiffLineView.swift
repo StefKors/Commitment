@@ -37,11 +37,11 @@ struct DiffLineView: View {
         case .addition:
             self.image = "plus"
             self.color = Color("GitHubDiffGreen")
-            self.colorOpaque = color.opacity(0.8)
+            self.colorOpaque = color.opacity(0.3)
         case .deletion:
             self.image = "minus"
             self.color = Color("GitHubDiffRed")
-            self.colorOpaque = color.opacity(0.8)
+            self.colorOpaque = color.opacity(0.3)
         case .unchanged:
             self.image = nil
             self.color = .clear

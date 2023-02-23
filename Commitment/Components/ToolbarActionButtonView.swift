@@ -9,24 +9,34 @@ import SwiftUI
 
 struct ToolbarActionButtonView: View {
     @EnvironmentObject private var repo: RepoState
+    let remote: String = "origin"
+
     var body: some View {
         Button(action: handleButton, label: {
             HStack {
                 Image(systemName: "arrow.up")
                     .imageScale(.small)
-                Text("Push origin")
-                    .fontWeight(.bold)
-                Text("\(repo.commitsAhead) commits ahead")
-                    .foregroundColor(.secondary)
+
+                VStack(alignment: .leading) {
+                    Text("Push \(remote)")
+                        // .fontWeight(.bold)
+                    Text("Last fetched just now")
+                        .foregroundColor(.secondary)
+                }
+
+                GroupBox {
+                    Text(repo.commitsAhead.description)
+                }
             }
-            .font(.system(size: 10))
             .foregroundColor(.primary)
         })
+        .buttonStyle(.plain)
     }
 
     func handleButton() {
-        print("TODO: primary repo action")
-        // self.repo.repository.git
+        Task {
+            try? await self.repo.shell.push()
+        }
     }
 }
 

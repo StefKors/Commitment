@@ -19,30 +19,19 @@ class Shell {
     init(workspace: String) {
         self.workspace = workspace
     }
-    
-    func run(_ command: String) -> String {
-        let task = Process()
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.standardError = pipe
-        task.arguments = ["-c", command]
-        task.executableURL = URL(fileURLWithPath: "/bin/zsh")
-        try? task.run()
-        let data = pipe.fileHandleForReading.readDataToEndOfFile()
-        return (String(data: data, encoding: .utf8) ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-    }
 
-    func run(_ command: String) async throws -> String {
+    func run(_ command: String, in currentDirectoryURL: URL) async throws -> String {
         let task = Process()
         let pipe = Pipe()
         task.standardOutput = pipe
         task.standardError = pipe
         task.arguments = ["-c", command]
         task.executableURL = URL(fileURLWithPath: "/bin/zsh")
+        task.currentDirectoryURL = currentDirectoryURL
         return try await withCheckedThrowingContinuation { continuation in
             task.terminationHandler = { process in
                 let data = pipe.fileHandleForReading.readDataToEndOfFile()
-                let output = String(data: data, encoding: .utf8) ?? ""
+                let output = (String(data: data, encoding: .utf8) ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
 
                 switch process.terminationReason {
                 case .uncaughtSignal:
@@ -65,25 +54,25 @@ class Shell {
 
     @discardableResult
     func run(_ command: String, in folderPath: String) async throws -> String {
-        try await self.run("cd \(folderPath);\(command)")
+        try await self.run("\(command)", in: URL(filePath: folderPath, directoryHint: .isDirectory))
     }
 
     @discardableResult
-    func run(_ command: String, in folderPath: String) -> String {
-        self.run("cd \(folderPath);\(command)")
+    func run(_ command: String) async throws -> String {
+        try await self.run("\(command)", in: URL(filePath: self.workspace, directoryHint: .isDirectory))
     }
 
-    func branch() -> String {
-        self.run("git rev-parse --abbrev-ref HEAD", in: workspace)
+    func branch() async throws -> String {
+        try await self.run("git rev-parse --abbrev-ref HEAD")
     }
 
-    func commitHistory(entries: Int?) -> [Commit] {
+    func commitHistory(entries: Int?) async throws -> [Commit] {
         var entriesString = ""
         if let entries = entries { entriesString = "-n \(entries)" }
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
-        return self.run("git log --pretty=%h¦%s¦%aN¦%aD¦ \(entriesString)", in: workspace)
+        return try await self.run("git log --pretty=%h¦%s¦%aN¦%aD¦ \(entriesString)")
             .split(separator: "\n")
             .map { line -> Commit in
                 let parameters = line.components(separatedBy: "¦")
@@ -96,52 +85,49 @@ class Shell {
             }
     }
 
-    func add(files: [String]? = nil) {
+    func add(files: [String]? = nil) async throws {
         guard let files else {
             // Add everything
-            self.run("git add .", in: workspace)
+            try await self.run("git add .", in: workspace)
             return
         }
 
         // Stage provided file paths
         for file in files {
             // Stage file
-            self.run("git add \(file)", in: workspace)
+            try await self.run("git add \(file)")
         }
-
     }
 
-    func commit(message: String) {
-        self.add()
-
-        self.run("git commit -m \"\(message)\"", in: workspace)
+    func commit(message: String) async throws {
+        try await self.add()
+        try await self.run("git commit -m \"\(message)\"")
     }
 
-    func diff() -> [GitDiff] {
-        let diff = self.run("git diff --no-ext-diff --no-color --find-renames", in: workspace)
-        let diffs = diff
+    func push() async throws -> String {
+        try await self.run("git push")
+    }
+
+    func diff() async throws -> [GitDiff] {
+        let diff = try await self.run("git diff --no-ext-diff --no-color --find-renames")
+        return diff
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
                 return try? GitDiff(unifiedDiff: String(diffSegment))
             }
-
-        // print("diff found \(diff)")
-        return diffs
     }
 
-    func diff(at commitA: String) -> [GitDiff] {
-        let commitB = self.SHAbefore(SHA: commitA)
-        let diffs = self.run("git diff \(commitB)..\(commitA) --no-ext-diff --no-color --find-renames", in: workspace)
+    func diff(at commitA: String) async throws -> [GitDiff] {
+        let commitB = try await self.SHAbefore(SHA: commitA)
+        return try await self.run("git diff \(commitB)..\(commitA) --no-ext-diff --no-color --find-renames")
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
                 return try? GitDiff(unifiedDiff: String(diffSegment))
             }
-
-        return diffs
     }
 
-    func show(at commit: String) -> [GitFileStatus] {
-        let result = self.run("git show --oneline --name-status --no-color \(commit)", in: workspace)
+    func show(at commit: String) async throws -> [GitFileStatus] {
+        return try await self.run("git show --oneline --name-status --no-color \(commit)")
             .split(separator: "\n")
             .compactMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }
@@ -157,20 +143,14 @@ class Shell {
 
                 return GitFileStatus(path: fileName, state: fileState)
             }
-
-        return result
     }
 
-    func SHAbefore(SHA: String) -> String {
-        self.run("git rev-parse \(SHA)~1", in: workspace)
-    }
-
-    func show(file: String) -> String {
-        self.run("git show --textconv HEAD:\(file)", in: workspace)
+    func SHAbefore(SHA: String) async throws -> String {
+        try await self.run("git rev-parse \(SHA)~1")
     }
 
     func show(file: String) async throws -> String {
-        let result = try await self.run("git show --textconv HEAD:\(file)", in: workspace)
+        let result = try await self.run("git show --textconv HEAD:\(file)")
         
         // still handle files not in git history
         if result.starts(with: "fatal: path") {
@@ -195,34 +175,14 @@ class Shell {
             })
     }
 
-    /// Probably not performant
-    func show(file: String, defaultType: GitDiffHunkLineType = .unchanged) -> [GitDiffHunkLine] {
-        return self.show(file: file)
-            .split(separator: "\n")
-            .enumerated()
-            .map({ (index, line) in
-                // print(line)
-                return GitDiffHunkLine(
-                    type: .unchanged,
-                    text: String(line),
-                    oldLineNumber: index,
-                    newLineNumber: index
-                )
-            })
-    }
-
-    func cat(file: String) -> String {
-        self.run("cat \(file)", in: workspace)
-    }
-
     /// is it better to open the file via the filesystem?
     func cat(file: String) async throws -> String {
-        try await self.run("cat \(file)", in: workspace)
+        try await self.run("cat \(file)")
     }
 
     /// Probably not performant
-    func cat(file: String) -> [String] {
-        self.cat(file: file)
+    func cat(file: String) async throws -> [String] {
+        try await self.cat(file: file)
             .split(separator: "\n")
             .map({ String($0) })
     }

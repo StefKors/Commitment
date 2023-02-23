@@ -76,6 +76,7 @@
 		8A992DFF29A64867001E26A3 /* CustomMenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFE29A64867001E26A3 /* CustomMenuButtonStyle.swift */; };
 		8AAF7AEC29A6CEAE0007CE8D /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */; };
 		8AAF7AEE29A6D9600007CE8D /* HunkHeaderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AED29A6D9600007CE8D /* HunkHeaderLineView.swift */; };
+		8AAF7AF029A77E9F0007CE8D /* ActivityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
 		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
@@ -324,6 +325,7 @@
 		8AAD63F42976A88500C7D1BB /* tvos-active.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "tvos-active.svg"; sourceTree = "<group>"; };
 		8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		8AAF7AED29A6D9600007CE8D /* HunkHeaderLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HunkHeaderLineView.swift; sourceTree = "<group>"; };
+		8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityState.swift; sourceTree = "<group>"; };
 		8AC8EB49297586FC00365EB9 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
@@ -1195,6 +1197,7 @@
 			children = (
 				8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */,
 				8AFBD535296F2C4300525BF7 /* RepoState.swift */,
+				8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -1511,6 +1514,7 @@
 				8AFBD53D296F2EB600525BF7 /* RepoWindow.swift in Sources */,
 				8ACCD2BA297F265B0020BF84 /* AddTask.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,
+				8AAF7AF029A77E9F0007CE8D /* ActivityState.swift in Sources */,
 				8ACCD2BC297F265B0020BF84 /* CloneOptions.swift in Sources */,
 				8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */,
 				8ACCD2F4297F265C0020BF84 /* RepositoryReferenceName.swift in Sources */,

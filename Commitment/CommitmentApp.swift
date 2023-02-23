@@ -16,6 +16,11 @@ extension Store where Item == RepoState {
     )
 }
 
+/// theming?
+// /.foregroundStyle(.blue, .green, Gradient(colors: [.red, .yellow]))
+// /.backgroundStyle(.pink)
+
+
 class AppModel: ObservableObject {
     static let shared = AppModel()
 
@@ -101,7 +106,7 @@ struct CommitmentApp: App {
                     // repos list is slow?
                     WelcomeWindow()
                         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
-                        // .navigationTitle("Commitment")
+                    // .navigationTitle("Commitment")
                 } else if let repo {
                     RepoWindow()
                         .environmentObject(repo)

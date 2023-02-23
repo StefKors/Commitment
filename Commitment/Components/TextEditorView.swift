@@ -36,9 +36,12 @@ struct TextEditorView: View {
     }
 
     func handleSubmit() {
-        repo.shell.commit(message: message)
-        message = ""
-        repo.refreshRepoState()
+        Task(priority: .userInitiated) {
+            
+            try? await repo.shell.commit(message: message)
+            try? await repo.refreshRepoState()
+            message = ""
+        }
     }
 }
 

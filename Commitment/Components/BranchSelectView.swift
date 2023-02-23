@@ -10,41 +10,58 @@ import SwiftUI
 struct BranchSelectView: View {
     @EnvironmentObject private var repo: RepoState
     var placeholder = "Select Branch"
+    @State private var searchText: String = ""
+    
     var body: some View {
-                Menu {
-                    ForEach(repo.branches.indices, id: \.self){ index in
-                        Button(action: {
-                            // self.repo = state.repos[index]
-                            repo.isCheckingOut = true
-                            Task(priority: .background, operation: {
-                                print("checkout branch \(repo.branches[index].name.localName)")
-                                do {
-                                    try repo.repository?.checkout(reference: repo.branches[index])
-                                } catch {
-                                    print(error.localizedDescription)
-                                }
-                                repo.refreshRepoState()
-                            })
-                        }, label: {
-                            Text(repo.branches[index].name.localName)
-                        })
-                    }
-                } label: {
-                    HStack(spacing: 0) {
-                        Image("git-branch-16")
-                            .resizable()
-                            .frame(width: 16, height: 16)
-                        Text(repo.branch)
-                            .navigationSubtitle(repo.branch)
-                    }
-                }
-                .menuStyle(.borderlessButton)
 
-                Button(action: createBranch, label: {
-                    Image(systemName: "plus").imageScale(.small)
+        CustomMenu {
+            HStack {
+                TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
+                    .textFieldStyle(.roundedBorder)
+                    .font(.body)
+
+                Button("Create Branch", action: {
+                    // TODO:
                 })
-                .help("Create Branch")
-                .foregroundColor(.primary)
+                .buttonStyle(.bordered)
+            }
+            .padding(.bottom)
+
+            ForEach(repo.branches.indices, id: \.self){ index in
+                Button(action: {
+                    Task(priority: .background, operation: {
+                        print("checkout branch \(repo.branches[index].name.localName)")
+                        do {
+                            try repo.repository?.checkout(reference: repo.branches[index])
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                        repo.refreshRepoState()
+                    })
+                }, label: {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(repo.branches[index].name.localName)
+                        }
+                        Spacer()
+                    }
+                })
+            }
+        } label: {
+            HStack {
+                Image("git-branch-16")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16, height: 16)
+                    .foregroundColor(.primary)
+                VStack(alignment: .leading) {
+                    Text("Current Branch")
+                        .foregroundColor(.secondary)
+                    Text(self.repo.branch)
+                        .foregroundColor(.primary)
+                }
+            }
+        }
     }
 
     func createBranch() {

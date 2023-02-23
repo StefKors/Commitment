@@ -9,14 +9,19 @@ import SwiftUI
 
 struct ToolbarContentView: View {
     var body: some View {
-        HStack {
+        HStack(alignment: .center, spacing: 10) {
             RepoSelectView()
+            Divider()
+            BranchSelectView()
+            Divider()
             ToolbarActionButtonView()
+            Divider()
             ToolbarActionUpdateMain()
+            Divider()
             Spacer()
         }
-        .padding(.top, 6)
-        .padding(.horizontal, 6)
+        .frame(height: 50)
+        .padding(.horizontal, 10)
     }
 }
 

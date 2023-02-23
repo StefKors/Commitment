@@ -14,7 +14,7 @@ struct ActiveChangesMainView: View {
     @State private var diff: GitDiff?
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ToolbarContentView()
                 .zIndex(999)
 
