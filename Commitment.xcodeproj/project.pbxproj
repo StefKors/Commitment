@@ -79,6 +79,7 @@
 		8AAF7AF029A77E9F0007CE8D /* ActivityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */; };
 		8AAF7AF629A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF529A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift */; };
 		8AAF7AF829AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */; };
+		8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
 		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
@@ -330,6 +331,7 @@
 		8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityState.swift; sourceTree = "<group>"; };
 		8AAF7AF529A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialAccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
 		8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPrimaryActionView.swift; sourceTree = "<group>"; };
+		8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarFetchOriginActionView.swift; sourceTree = "<group>"; };
 		8AC8EB49297586FC00365EB9 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */,
 				8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */,
 				8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */,
+				8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */,
 				8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */,
 				8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */,
 				8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */,
@@ -1411,6 +1414,7 @@
 				8ACCD2A9297F265B0020BF84 /* CherryTask.swift in Sources */,
 				8ACCD2D7297F265C0020BF84 /* GitFileStorage.swift in Sources */,
 				8ACCD2EB297F265C0020BF84 /* GitRemote.swift in Sources */,
+				8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */,
 				8ACCD2A8297F265B0020BF84 /* GitCherryResult.swift in Sources */,
 				8ACCD2BD297F265B0020BF84 /* StashApplyTask.swift in Sources */,
 				8ACCD299297F265B0020BF84 /* InitOptions.swift in Sources */,

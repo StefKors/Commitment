@@ -15,7 +15,7 @@ struct ToolbarPrimaryActionView: View {
         if repo.commitsAhead > 0 {
             ToolbarPushOriginActionButtonView()
         } else {
-            ToolbarRefresh
+            ToolbarFetchOriginActionView()
         }
     }
 }
