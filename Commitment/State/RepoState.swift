@@ -131,7 +131,6 @@ init RepoState: \(folderName) with:
             let status = try? repository?.listStatus()
             let commits = try? await getCommits()
             let localCommits = try? await getLocalCommits()
-
             /// Publish on main thread
             await MainActor.run {
                 if let diffs {

@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ToolbarContentView: View {
+    /// TODO: Handle line wrapping
+    /// TODO: Handle view that fits
+    /// TODO: improve menu...
+    /// TODO: Fix blinking when switching view
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
             RepoSelectView()
             Divider()
             BranchSelectView()
             Divider()
-            ToolbarActionButtonView()
+            ToolbarPrimaryActionView()
             Divider()
             ToolbarActionUpdateMain()
             Divider()
@@ -22,6 +26,8 @@ struct ToolbarContentView: View {
         }
         .frame(height: 50)
         .padding(.horizontal, 10)
+        .truncationMode(.head)
+        .lineLimit(1)
     }
 }
 

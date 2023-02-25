@@ -77,6 +77,8 @@
 		8AAF7AEC29A6CEAE0007CE8D /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */; };
 		8AAF7AEE29A6D9600007CE8D /* HunkHeaderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AED29A6D9600007CE8D /* HunkHeaderLineView.swift */; };
 		8AAF7AF029A77E9F0007CE8D /* ActivityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */; };
+		8AAF7AF629A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF529A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift */; };
+		8AAF7AF829AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
 		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
@@ -186,7 +188,7 @@
 		8ACCD2F6297F265C0020BF84 /* RepositoryRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28D297F265B0020BF84 /* RepositoryRemote.swift */; };
 		8ACCD2F7297F265C0020BF84 /* RepositoryLogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */; };
 		8ACCD2F8297F265C0020BF84 /* RepositoryStashRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28F297F265B0020BF84 /* RepositoryStashRecord.swift */; };
-		8AF7637C2987FC6300DBB0BA /* ToolbarActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7637B2987FC6300DBB0BA /* ToolbarActionButtonView.swift */; };
+		8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */; };
 		8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD506296F2A4000525BF7 /* PillView.swift */; };
 		8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */; };
 		8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */; };
@@ -326,6 +328,8 @@
 		8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		8AAF7AED29A6D9600007CE8D /* HunkHeaderLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HunkHeaderLineView.swift; sourceTree = "<group>"; };
 		8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityState.swift; sourceTree = "<group>"; };
+		8AAF7AF529A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialAccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
+		8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPrimaryActionView.swift; sourceTree = "<group>"; };
 		8AC8EB49297586FC00365EB9 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
@@ -435,7 +439,7 @@
 		8ACCD28D297F265B0020BF84 /* RepositoryRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryRemote.swift; sourceTree = "<group>"; };
 		8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryLogRecord.swift; sourceTree = "<group>"; };
 		8ACCD28F297F265B0020BF84 /* RepositoryStashRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryStashRecord.swift; sourceTree = "<group>"; };
-		8AF7637B2987FC6300DBB0BA /* ToolbarActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarActionButtonView.swift; sourceTree = "<group>"; };
+		8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPushOriginActionButtonView.swift; sourceTree = "<group>"; };
 		8AFBD506296F2A4000525BF7 /* PillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRepoListView.swift; sourceTree = "<group>"; };
 		8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeStackView.swift; sourceTree = "<group>"; };
@@ -583,6 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */,
+				8AAF7AF529A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift */,
 				8AFBD50D296F2A5E00525BF7 /* AccentGlow.swift */,
 				8AFBD526296F2C1400525BF7 /* AddRepoView.swift */,
 				8AFBD50C296F2A5E00525BF7 /* AppIcon.swift */,
@@ -610,8 +615,9 @@
 				8AFBD523296F2C1400525BF7 /* SidebarFooterView.swift */,
 				8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */,
 				8A8C665B296464E300A774D7 /* TextEditorView.swift */,
-				8AF7637B2987FC6300DBB0BA /* ToolbarActionButtonView.swift */,
+				8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */,
 				8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */,
+				8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */,
 				8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */,
 				8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */,
 				8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */,
@@ -1529,7 +1535,8 @@
 				8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */,
 				8A6B649829730E560074B3C1 /* FileView.swift in Sources */,
 				8A97DC8F299BB148001E25E1 /* Sequence+Occurrences.swift in Sources */,
-				8AF7637C2987FC6300DBB0BA /* ToolbarActionButtonView.swift in Sources */,
+				8AAF7AF829AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift in Sources */,
+				8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */,
 				8A6B649629730B380074B3C1 /* ContentPlaceholderView.swift in Sources */,
 				8ACCD2DA297F265C0020BF84 /* GitRemoteList.swift in Sources */,
 				8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */,
@@ -1537,6 +1544,7 @@
 				8AFBD5752971B08D00525BF7 /* FolderContentChangeEvent.swift in Sources */,
 				8ACCD2F8297F265C0020BF84 /* RepositoryStashRecord.swift in Sources */,
 				8ACCD29E297F265B0020BF84 /* CherryPickTask.swift in Sources */,
+				8AAF7AF629A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift in Sources */,
 				8ACCD2B3297F265B0020BF84 /* FetchTask.swift in Sources */,
 				8ACCD2A6297F265B0020BF84 /* ResetTask.swift in Sources */,
 				8ACCD292297F265B0020BF84 /* GitFormatEncoder.swift in Sources */,

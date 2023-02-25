@@ -23,6 +23,11 @@ struct ActiveChangesSidebarView: View {
                         GitFileStatusView(fileStatus: fileStatus)
                             .id(fileStatus.id)
                     })
+                }.onAppear {
+                    let id = repo.status.first?.id
+                    if let id, activeChangesSelection == nil {
+                        activeChangesSelection = id
+                    }
                 }
             }.listStyle(SidebarListStyle())
             Divider()

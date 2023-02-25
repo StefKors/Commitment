@@ -15,12 +15,13 @@ struct ToolbarActionUpdateMain: View {
         Button(action: handleButton, label: {
             HStack {
                 Image(systemName: "arrow.up.and.down.and.sparkles")
-                    .imageScale(.small)
+                    .imageScale(.medium)
                 VStack(alignment: .leading) {
                     Text("Update Main")
                         // .fontWeight(.bold)
-                    Text("\(commitsBehind.description) behind main")
-                        .foregroundColor(.secondary)
+                    // Text("\(commitsBehind.description) behind main")
+                    //     .foregroundColor(.secondary)
+                    //     .redacted(reason: .placeholder)
                 }
             }
             .foregroundColor(.primary)

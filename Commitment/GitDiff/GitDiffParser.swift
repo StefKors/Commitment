@@ -40,7 +40,6 @@ internal class GitDiffParser {
         
         unifiedDiff.enumerateLines { line, _ in
             if line.starts(with: "@@ ") {
-                print(line)
                 header = String(line)
             }
             // Skip headers

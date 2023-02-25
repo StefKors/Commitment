@@ -10,16 +10,42 @@ import SwiftUI
 struct TextEditorView: View {
     let isDisabled: Bool
     @EnvironmentObject private var repo: RepoState
-    private let placeholder: String = "Summary"
-    @State private var message: String = ""
+
+    // @FocusState private var titleFieldIsFocused: Bool
+    @State private var commitTitle: String = ""
+    private let placeholderTitle: String = "Summary (Required)"
+
+    // @FocusState private var bodyFieldIsFocused: Bool
+    @State private var commitBody: String = ""
+    private let placeholderBody: String = "Body"
+
 
     var body: some View {
             VStack {
-                TextField("CommitMessage", text: $message, prompt: Text(placeholder), axis: .vertical)
-                    .lineLimit(2...20)
-                    .multilineTextAlignment(.leading)
-                    .textFieldStyle(.plain)
-                    .onSubmit { handleSubmit() }
+                // GroupBox {
+                // TODO: limit to 50 chars
+                    TextField("CommitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
+                        .lineLimit(1)
+                        .multilineTextAlignment(.leading)
+                        // .textFieldStyle(.roundedBorder)
+                        .onSubmit { handleSubmit() }
+                        // .focused($titleFieldIsFocused)
+                        // .padding()
+                        // .background(.thinMaterial)
+                        // .background(
+                        //     RoundedRectangle(cornerRadius: 5)
+                        //         .stroke(.separator, lineWidth: 1)
+                        // )
+                // }.groupBoxStyle(MaterialAccentBorderGroupBoxStyle(isActive: titleFieldIsFocused))
+
+                // GroupBox {
+                    TextField("Commitbody", text: $commitBody, prompt: Text(placeholderBody), axis: .vertical)
+                        .lineLimit(3...20)
+                        .multilineTextAlignment(.leading)
+                        // .textFieldStyle(.roundedBorder)
+                        .onSubmit { handleSubmit() }
+                        // .focused($bodyFieldIsFocused)
+                // }.groupBoxStyle(MaterialAccentBorderGroupBoxStyle(isActive: bodyFieldIsFocused))
 
                 Button(action: { handleSubmit() }) {
                     Spacer()
@@ -32,15 +58,24 @@ struct TextEditorView: View {
                 .buttonStyle(.borderedProminent)
                 .disabled(isDisabled)
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.bottom)
     }
 
     func handleSubmit() {
+        // TODO: handle is disabled
         Task(priority: .userInitiated) {
-            
-            try? await repo.shell.commit(message: message)
-            try? await repo.refreshRepoState()
-            message = ""
+            if !commitTitle.isEmpty, !commitBody.isEmpty {
+                try? await repo.shell.commit(title: commitTitle, message: commitBody)
+                commitTitle = ""
+                commitBody = ""
+            } else if !commitTitle.isEmpty {
+                try? await repo.shell.commit(message: commitTitle)
+                commitTitle = ""
+            }
+
+            repo.refreshRepoState()
+
         }
     }
 }
