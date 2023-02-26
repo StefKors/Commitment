@@ -49,12 +49,12 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         self.commits = commits
         self.status = status
         self.diffs = diffs
-        print("""
-init RepoState: \(folderName) with:
-    - \(commits.count) commits
-    - \(status.count) status files
-    - \(diffs.count) diffs
-""")
+//         print("""
+// init RepoState: \(folderName) with:
+//     - \(commits.count) commits
+//     - \(status.count) status files
+//     - \(diffs.count) diffs
+// """)
     }
 
     deinit {

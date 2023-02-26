@@ -81,6 +81,7 @@
 		8AAF7AF629A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF529A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift */; };
 		8AAF7AF829AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */; };
 		8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */; };
+		8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
 		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
@@ -334,6 +335,7 @@
 		8AAF7AF529A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialAccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
 		8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPrimaryActionView.swift; sourceTree = "<group>"; };
 		8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarFetchOriginActionView.swift; sourceTree = "<group>"; };
+		8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Git.swift"; sourceTree = "<group>"; };
 		8AC8EB49297586FC00365EB9 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 		8A48D10427FD9E2D007803D2 = {
 			isa = PBXGroup;
 			children = (
+				8AAF7B0A29AA803B0007CE8D /* Executables */,
 				8A48D10F27FD9E2D007803D2 /* Commitment */,
 				8A48D12127FD9E2E007803D2 /* CommitmentTests */,
 				8A48D12B27FD9E2F007803D2 /* CommitmentUITests */,
@@ -719,6 +722,7 @@
 			children = (
 				8AFBD5772971B09200525BF7 /* FileMonitor */,
 				8A48D14127FDA8A0007803D2 /* Shell.swift */,
+				8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */,
 				8AFBD54329702A0600525BF7 /* Commit.swift */,
 				8AFBD54829702A4200525BF7 /* GitDiffLine.swift */,
 			);
@@ -742,6 +746,13 @@
 				8AAD63F42976A88500C7D1BB /* tvos-active.svg */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		8AAF7B0A29AA803B0007CE8D /* Executables */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Executables;
 			sourceTree = "<group>";
 		};
 		8ACCD203297F265B0020BF84 /* GitMacOS */ = {
@@ -1456,6 +1467,7 @@
 				8ACCD2F0297F265C0020BF84 /* CredentialsProvider.swift in Sources */,
 				8ACCD2A4297F265B0020BF84 /* PullTask.swift in Sources */,
 				8AAF7AEE29A6D9600007CE8D /* HunkHeaderLineView.swift in Sources */,
+				8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */,
 				8ACCD2DE297F265C0020BF84 /* GitRepository+CherryPick.swift in Sources */,
 				8ACCD2BF297F265C0020BF84 /* StashDropTask.swift in Sources */,
 				8A97DC91299BB148001E25E1 /* Int+IsOdd.swift in Sources */,

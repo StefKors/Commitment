@@ -31,7 +31,7 @@ struct ToolbarActionUpdateMain: View {
 
     func handleButton() {
         Task {
-            try? await repo.shell.run("git fetch origin main:main")
+            try? await repo.shell.fetch(branch: "main")
         }
     }
 }
