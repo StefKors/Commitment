@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A02C1BD29ABD15B004DCA69 /* Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */; };
 		8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612529659EEE00D878DC /* GitDiff.swift */; };
 		8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612629659EEE00D878DC /* GitDiffHunkLineType.swift */; };
 		8A07612C29659EEE00D878DC /* GitDiffParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612729659EEE00D878DC /* GitDiffParser.swift */; };
@@ -243,6 +244,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmarks.swift; sourceTree = "<group>"; };
 		8A07612529659EEE00D878DC /* GitDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiff.swift; sourceTree = "<group>"; };
 		8A07612629659EEE00D878DC /* GitDiffHunkLineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffHunkLineType.swift; sourceTree = "<group>"; };
 		8A07612729659EEE00D878DC /* GitDiffParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffParser.swift; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 				8A48D11427FD9E2E007803D2 /* Assets.xcassets */,
 				8A48D11927FD9E2E007803D2 /* Commitment.entitlements */,
 				8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */,
+				8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */,
 				8A8C6658296464A700A774D7 /* Components */,
 				8AFBD54529702A2200525BF7 /* Extensions */,
 				8A07612429659EE400D878DC /* GitDiff */,
@@ -1432,6 +1435,7 @@
 				8ACCD2AC297F265B0020BF84 /* CheckoutOptions.swift in Sources */,
 				8AFBD54729702A2C00525BF7 /* Collection.swift in Sources */,
 				8AFBD50F296F2A5F00525BF7 /* AccentGlow.swift in Sources */,
+				8A02C1BD29ABD15B004DCA69 /* Bookmarks.swift in Sources */,
 				8ACCD2C1297F265C0020BF84 /* GitStashListOptions.swift in Sources */,
 				8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */,
 				8ACCD2B1297F265B0020BF84 /* CleanOptions.swift in Sources */,

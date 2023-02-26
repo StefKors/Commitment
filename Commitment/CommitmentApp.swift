@@ -23,11 +23,15 @@ extension Store where Item == RepoState {
 
 class AppModel: ObservableObject {
     static let shared = AppModel()
-
     @StoredValue(key: "WindowMode") var windowMode: SplitModeOptions = .history
     @StoredValue(key: "ActiveRepository") var activeRepositoryId: RepoState.ID? = nil
     /// Creates a @Stored property to handle an in-memory and on-disk cache of type.
     @Stored(in: .repositoryStore) var repos
+
+    let bookmarks: Bookmarks = .init()
+    init() {
+        bookmarks.loadBookmarks()
+    }
     
     
     /// Saves an type to the `Store` in memory and on disk.
@@ -57,13 +61,13 @@ class AppModel: ObservableObject {
 
         let response = openPanel.runModal()
         if response == .OK {
-            if let path = openPanel.url?.path() {
-                if let repo = RepoState(string: path) {
-                    Task {
-                        try? await saveRepo(repo: repo)
-                    }
-                    $activeRepositoryId.set(repo.id)
+            if let url = openPanel.url {
+                self.bookmarks.storeFolderInBookmark(url: url)
+                let repo = RepoState(path: url)
+                Task {
+                    try? await saveRepo(repo: repo)
                 }
+                $activeRepositoryId.set(repo.id)
             }
         }
 
@@ -71,31 +75,9 @@ class AppModel: ObservableObject {
     }
 }
 
-// public class Features: ObservableObject {
-//     public static let shared = Features()
-//     private init() { }
-//
-//     @Published public var isDebugMenuEnabled = false
-// }
-
-@propertyWrapper
-struct AppState: DynamicProperty {
-    @ObservedObject private var model: AppModel
-
-    init(model: AppModel = .shared) {
-        self.model = model
-    }
-
-    var wrappedValue: AppModel {
-        return model
-    }
-}
-
 // https://reichel.dev/blog/swift-global-key-binding.html#install-hotkey
 @main
 struct CommitmentApp: App {
-    @AppState var model
-
     @StateObject var appModel: AppModel = .shared
     @State private var repo: RepoState?
     var body: some Scene {

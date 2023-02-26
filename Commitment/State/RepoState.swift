@@ -33,14 +33,6 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
 
     @Published var commitsAhead: Int = 0
 
-    convenience init?(string: String) {
-        guard let path = URL(string: string) else {
-            return nil
-        }
-
-        self.init(path: path)
-    }
-
     init(path: URL) {
         self.path = path
         self.shell = Shell(workspace: path.absoluteString)

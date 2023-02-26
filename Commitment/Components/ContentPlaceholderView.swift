@@ -99,10 +99,10 @@ struct ContentPlaceholderView: View {
     }
 }
 
-struct ContentPlaceholderView_Previews: PreviewProvider {
-    static let repo = RepoState(string: "/users/stefkors/Developer/Commitment")!
-    static var previews: some View {
-        ContentPlaceholderView()
-            .environmentObject(repo)
-    }
-}
+// struct ContentPlaceholderView_Previews: PreviewProvider {
+//     static let repo = RepoState(string: URL(filePath: "/users/stefkors/Developer/Commitment")!
+//     static var previews: some View {
+//         ContentPlaceholderView()
+//             .environmentObject(repo)
+//     }
+// }
