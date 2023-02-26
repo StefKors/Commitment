@@ -29,11 +29,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
 
     @Published var diffs: [GitDiff] = []
     @Published var status: [GitFileStatus] = []
-    @Published var commits: [GitLogRecord] = []  {
-        didSet {
-            print("Didset \(commits.count) commits")
-        }
-    }
+    @Published var commits: [GitLogRecord] = []
 
     @Published var commitsAhead: Int = 0
 
@@ -186,6 +182,9 @@ init RepoState: \(folderName) with:
         }
     }
 
+    func readFile(at path: String) throws -> String {
+        try String(contentsOf: URL(filePath: path), encoding: .utf8)
+    }
 
     static func == (lhs: RepoState, rhs: RepoState) -> Bool {
         lhs.path == rhs.path

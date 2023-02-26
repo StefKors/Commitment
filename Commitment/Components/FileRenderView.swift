@@ -38,7 +38,7 @@ struct FileRenderView: View {
             self.path = String(fileStatus.path.split(separator: " -> ").last ?? "")
             do {
                 self.lines = try await repo.shell.show(file: path, defaultType: fileStatus.diffModificationState)
-                self.content = try await repo.shell.cat(file: path)
+                self.content = try repo.readFile(at: path)
                 self.finishedFetching = true
             } catch {
                 print("Failed at FileRenderView: \(error.localizedDescription)")
