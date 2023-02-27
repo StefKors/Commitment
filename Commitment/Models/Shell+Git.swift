@@ -56,7 +56,7 @@ extension Shell {
 
     func commit(title: String, message: String) async throws {
         try await self.add()
-        try await self.run(.git, ["commit", "-m", title, "-m", "\"\(message)\""])
+        try await self.run(.git, ["commit", "-m", title, "-m", message])
     }
 
     func commit(message: String) async throws {
