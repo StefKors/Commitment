@@ -64,7 +64,7 @@ struct TextEditorView: View {
 
     func handleSubmit() {
         // TODO: handle is disabled
-        Task(priority: .userInitiated) {
+        Task { @MainActor in
             if !commitTitle.isEmpty, !commitBody.isEmpty {
                 try? await repo.shell.commit(title: commitTitle, message: commitBody)
                 commitTitle = ""
