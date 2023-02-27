@@ -174,6 +174,7 @@ extension Shell {
                     .trimmingCharacters(in: .whitespacesAndNewlines)
                     .split(separator: "$:$")
                     .map { String($0).trimmingCharacters(in: .whitespacesAndNewlines) }
+
                 guard let date = try? Date(parts[safe: 6] ?? "", strategy: .iso8601) else { return nil }
                 return Commit(
                     hash: parts[safe: 0] ?? "",

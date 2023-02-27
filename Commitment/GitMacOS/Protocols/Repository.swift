@@ -17,6 +17,7 @@
 
 import Foundation
 
+@available(*, deprecated, message: "lets not pls")
 public protocol Repository: AnyObject {
     
     /// Stores the remote url to the repository

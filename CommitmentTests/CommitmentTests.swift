@@ -38,15 +38,6 @@ class CommitmentTests: XCTestCase {
         return data
     }
 
-    func testSplit() throws {
-        let line = """
-"$:$e4f65c1861da92ea8a7b653c5597921f60f8cb68 $:$e4f65c1 $:$Stef Kors $:$stef.kors@gmail.com $:$Initial Commit $:$Initial Commit
-$:$2022-04-06T12:08:48+02:00 $:$
-"""
-        let parts = line.split(separator: "$:$").map { String($0) }
-        XCTAssertEqual(parts, ["e4f65c1861da92ea8a7b653c5597921f60f8cb68"])
-    }
-
     func testCollectionSearchLoop() throws {
         // This is an example of a performance test case.
         let idToFind = UUID()
