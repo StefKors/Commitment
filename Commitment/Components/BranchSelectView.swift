@@ -29,10 +29,11 @@ struct BranchSelectView: View {
 
             ForEach(repo.branches.indices, id: \.self){ index in
                 Button(action: {
-                    Task(priority: .userInitiated, operation: {
-                        print("checkout branch \(repo.branches[index].name.localName)")
+                    Task(priority: .userInitiated, operation: { @MainActor in
                         do {
-                            // try await repo.shell.checkout(repo.branches[index].name.fullName)
+                            let name = repo.branches[index].name.localName
+                            print("checkout branch \(name)")
+                            try await repo.shell.checkout(name)
                         } catch {
                             print(error.localizedDescription)
                         }
