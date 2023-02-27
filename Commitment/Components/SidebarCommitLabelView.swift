@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct SidebarCommitLabelView: View {
-    var commit: GitLogRecord
+    var commit: Commit
     
     var body: some View {
         HStack {

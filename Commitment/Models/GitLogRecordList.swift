@@ -18,6 +18,7 @@
 import Foundation
 
 /// List containing log records
+@available(*, deprecated, message: "use simple array of `[GitLogRecord]`")
 public class GitLogRecordList {
     
     // MARK: - Public

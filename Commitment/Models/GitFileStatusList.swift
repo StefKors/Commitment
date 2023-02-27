@@ -16,6 +16,7 @@
 //  limitations under the License.
 
 /// Describes a status of a single status operation
+@available(*, deprecated, message: "use simple array of `[GitFileStatus]`")
 public class GitFileStatusList {
 
     // MARK: - Public

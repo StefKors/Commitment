@@ -28,6 +28,10 @@ struct RepoWindow: View {
         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
         // .navigationTitle(repo.folderName)
         // .navigationSubtitle(repo.branch)
+        .task {
+            print("about to call log")
+            try? await self.repo.shell.log()
+        }
         .onChange(of: scenePhase) { phase in
             // Stop monitoring for file changes when app minimizes
             print("[Scene Change] App became: \(phase)")

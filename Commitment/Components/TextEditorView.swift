@@ -74,7 +74,7 @@ struct TextEditorView: View {
                 commitTitle = ""
             }
 
-            repo.refreshRepoState()
+            try? await repo.refreshRepoState()
 
         }
     }

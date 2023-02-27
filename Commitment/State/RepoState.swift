@@ -28,8 +28,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
 
     @Published var diffs: [GitDiff] = []
     @Published var status: [GitFileStatus] = []
-    @Published var commits: [GitLogRecord] = []
-
+    @Published var commits: [Commit] = []
     @Published var commitsAhead: Int = 0
 
     init(path: URL) {
@@ -43,7 +42,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         }
     }
 
-    convenience init(path: URL, commits: [GitLogRecord], status: [GitFileStatus], diffs: [GitDiff]) {
+    convenience init(path: URL, commits: [Commit], status: [GitFileStatus], diffs: [GitDiff]) {
         self.init(path: path)
         self.commits = commits
         self.status = status
@@ -77,73 +76,60 @@ init RepoState: \(folderName) with:
                     self?.refreshBranch()
                 }
             }
-            // if !isGitFolderChange {
-                Throttler.throttle( delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) {
+            if !isGitFolderChange {
+                Throttler.throttle( delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) { [weak self] in
                     self?.activity.start(.isRefreshingState)
                     print("[File Change] \(event.url.lastPathComponent)")
-                    self?.refreshDiffsAndStatus()
-                    let copy = self
                     Task(priority: .userInitiated, operation: { [weak self] in
-                        try? await AppModel.shared.saveRepo(repo: copy)
+                        try? await self?.refreshDiffsAndStatus()
+                        try? await AppModel.shared.saveRepo(repo: self)
                         self?.activity.finish(.isRefreshingState)
                     })
                 }
-            // }
+            }
         }
 
         monitor?.start()
     }
 
     /// Watch out for re-renders, can be slow
-    func refreshRepoState() {
+    func refreshRepoState() async throws {
         refreshBranch()
-        refreshDiffsAndStatus()
+        try await refreshDiffsAndStatus()
     }
 
     /// Watch out for re-renders, can be slow
-    func refreshDiffsAndStatus() {
-        /// TODO: this should run paralell
-        /// Update on background thread
-        Task {
-            let diffs = try? await self.shell.diff()
-            let status = try? await self.shell.status()
-            let commits = try? await getCommits()
-            let localCommits = try? await getLocalCommits()
-            /// Publish on main thread
-            await MainActor.run {
-                if let diffs {
-                    self.diffs = diffs
-                }
-                if let files = status?.files {
-                    self.status = files
-                }
-                if let commits, let localCommits {
-                    let mergedCommits = commits.merge(localCommits)
-                    self.commits = mergedCommits
-                    self.commitsAhead = localCommits.count
-                }
+    func refreshDiffsAndStatus() async throws {
+        let diffs = try await self.shell.diff()
+        let status = try await self.shell.status()
+        let commits = try await getCommits()
+        let localCommits = try await getLocalCommits()
+        /// Publish on main thread
+        await MainActor.run {
+            self.diffs = diffs
+            self.status = status
+            if let commits, let localCommits {
+                let mergedCommits = commits.merge(localCommits)
+                self.commits = mergedCommits
+                self.commitsAhead = localCommits.count
             }
         }
     }
 
-    private func getCommits() async throws -> [GitLogRecord]? {
-        let commits = try? await self.shell.listLogRecords().records
+    private func getCommits() async throws -> [Commit]? {
+        let commits = try? await self.shell.log()
         guard let commits else { return nil }
         return commits
     }
 
-    private func getLocalCommits() async throws -> [GitLogRecord]? {
-        let options = GitLogOptions()
+    private func getLocalCommits() async throws -> [Commit]? {
+        let options = LogOptions()
         options.compareReference = .init(lhsReferenceName: "origin/HEAD", rhsReferenceName: "HEAD")
-        let localCommits = try? await self.shell.listLogRecords(options: options).records
+        let localCommits = try? await self.shell.log(options: options, isLocal: true)
         guard let localCommits else { return nil }
 
-        let updatedLocalCommits = localCommits.map { localCommit in
-            localCommit.isLocal = true
-            return localCommit
-        }
 
-        return updatedLocalCommits
+        return localCommits
     }
 
     func refreshBranch() {
@@ -191,7 +177,7 @@ init RepoState: \(folderName) with:
     required convenience init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         let path = try values.decode(URL.self, forKey: .path)
-        let commits = try values.decode([GitLogRecord].self, forKey: .commits)
+        let commits = try values.decode([Commit].self, forKey: .commits)
         let status = try values.decode([GitFileStatus].self, forKey: .status)
         let diffs = try values.decode([GitDiff].self, forKey: .diffs)
         self.init(

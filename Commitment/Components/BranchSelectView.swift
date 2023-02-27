@@ -37,7 +37,7 @@ struct BranchSelectView: View {
                         } catch {
                             print(error.localizedDescription)
                         }
-                        repo.refreshRepoState()
+                        try await repo.refreshRepoState()
                     })
                 }, label: {
                     HStack {

@@ -18,6 +18,7 @@
 import Foundation
 
 /// Describes a remote in a repository
+@available(*, deprecated, renamed: "Remote")
 public protocol RepositoryRemote {
 
     /// A name of a remote in repository

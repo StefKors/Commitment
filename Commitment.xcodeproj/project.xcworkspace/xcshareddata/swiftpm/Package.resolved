@@ -19,15 +19,6 @@
       }
     },
     {
-      "identity" : "runestone",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/simonbs/Runestone.git",
-      "state" : {
-        "branch" : "mac",
-        "revision" : "4c8043b72f5a38b12e33cf0e37d011e5a2509172"
-      }
-    },
-    {
       "identity" : "splash",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JohnSundell/Splash.git",

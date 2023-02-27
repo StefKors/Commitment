@@ -18,26 +18,6 @@ extension Shell {
 
     func branch() async throws -> String {
         try await self.run(.git, ["branch", "--show-current"])
-        // return try await self.help()
-    }
-
-    func commitHistory(entries: Int?) async throws -> [Commit] {
-        var entriesString = ""
-        if let entries = entries { entriesString = "-n \(entries)" }
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
-        dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss Z"
-        return try await self.run(.git, ["log", "--pretty=%h¦%s¦%aN¦%aD¦", "\(entriesString)"])
-            .split(separator: "\n")
-            .map { line -> Commit in
-                let parameters = line.components(separatedBy: "¦")
-                return Commit(
-                    hash: parameters[safe: 0] ?? "",
-                    message: parameters[safe: 1] ?? "",
-                    author: parameters[safe: 2] ?? "",
-                    date: dateFormatter.date(from: parameters[safe: 3] ?? "") ?? Date()
-                )
-            }
     }
 
     func add(files: [String]? = nil) async throws {
@@ -144,6 +124,7 @@ extension Shell {
     /// - Returns: GitReferenceList - a list of references
     /// - Throws: An exception in case any error occured
     func listReferences() async throws -> GitReferenceList {
+        // TODO: CHECK if works
         let output = try await self.run(.git, ["for-each-ref", "--format={$(^QUOTES^)$path$(^QUOTES^)$:$(^QUOTES^)$%(refname)$(^QUOTES^)$,$(^QUOTES^)$id$(^QUOTES^)$:$(^QUOTES^)$%(objectname)$(^QUOTES^)$,$(^QUOTES^)$author$(^QUOTES^)$:$(^QUOTES^)$%(authorname)$(^QUOTES^)$,$(^QUOTES^)$parentId$(^QUOTES^)$:$(^QUOTES^)$%(parent)$(^QUOTES^)$,$(^QUOTES^)$date$(^QUOTES^)$:$(^QUOTES^)$%(creatordate:iso8601-strict)$(^QUOTES^)$,$(^QUOTES^)$message$(^QUOTES^)$:$(^QUOTES^)$%(contents)$(^QUOTES^)$,$(^QUOTES^)$active$(^QUOTES^)$:%(if)%(HEAD)%(then)true%(else)false%(end)}$(END_OF_LINE)$"])
 
         let decoder = GitFormatDecoder()
@@ -155,9 +136,8 @@ extension Shell {
         return GitReferenceList(references)
     }
 
-    func status() async throws -> GitFileStatusList {
-        let output = try await self.run(.git, ["status", "--porcelain"])
-        let files = output
+    func status() async throws -> [GitFileStatus] {
+        try await self.run(.git, ["status", "--porcelain"])
             .split(separator: "\n")
             .compactMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }
@@ -170,21 +150,93 @@ extension Shell {
 
                 return GitFileStatus(path: fileName, state: fileState)
             }
-
-        return GitFileStatusList(files: files)
     }
 
-    func listLogRecords(options: GitLogOptions = GitLogOptions.default) async throws -> GitLogRecordList {
-        let ref = "origin/HEAD..HEAD"
-        let output = try await self.run(.git, ["log", "--format={$(^QUOTES^)$hash$(^QUOTES^)$:$(^QUOTES^)$%H$(^QUOTES^)$,$(^QUOTES^)$shortHash$(^QUOTES^)$:$(^QUOTES^)$%h$(^QUOTES^)$,$(^QUOTES^)$authorName$(^QUOTES^)$:$(^QUOTES^)$%an$(^QUOTES^)$,$(^QUOTES^)$authorEmail$(^QUOTES^)$:$(^QUOTES^)$%ae$(^QUOTES^)$,$(^QUOTES^)$subject$(^QUOTES^)$:$(^QUOTES^)$%s$(^QUOTES^)$,$(^QUOTES^)$body$(^QUOTES^)$:$(^QUOTES^)$%B$(^QUOTES^)$,$(^QUOTES^)$commiterDate$(^QUOTES^)$:$(^QUOTES^)$%cI$(^QUOTES^)$,$(^QUOTES^)$refNames$(^QUOTES^)$:$(^QUOTES^)$%D$(^QUOTES^)$}$(END_OF_LINE)$", ref])
+    func log(options: LogOptions = LogOptions.default, isLocal: Bool = false) async throws -> [Commit] {
+        // Check whether a reference is provided
+        if let reference = options.reference, reference.remote == nil {
+            // Reference is provided, but it is required to take the first available remote
+            let remotes: [Remote] = try await remotes()
 
+            if let remote = remotes.first {
+                options.reference?.firstRemote = remote
+            }
+        }
 
-        let decoder = GitFormatDecoder()
-        let objects: [GitLogRecord] = decoder.decode(output)
-        return GitLogRecordList(objects)
+        let args = ["--no-pager", "log", "--pretty=$:$%H $:$%h $:$%an $:$%ae $:$%s $:$%B $:$%cI $:$%D$(END_OF_LINE)"]
+
+        let opts: [String] = options.toArguments()
+
+        return try await self.run(.git, args + opts)
+            .split(separator: "$(END_OF_LINE)")
+            .compactMap({ line -> Commit? in
+                let parts = line
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                    .split(separator: "$:$")
+                    .map { String($0).trimmingCharacters(in: .whitespacesAndNewlines) }
+                guard let date = try? Date(parts[safe: 6] ?? "", strategy: .iso8601) else { return nil }
+                return Commit(
+                    hash: parts[safe: 0] ?? "",
+                    shortHash: parts[safe: 1] ?? "",
+                    authorName: parts[safe: 2] ?? "",
+                    authorEmail: parts[safe: 3] ?? "",
+                    subject: parts[safe: 4] ?? "",
+                    body: parts[safe: 5] ?? "",
+                    commiterDate: date,
+                    refNames: parts[safe: 7] ?? "",
+                    isLocal: isLocal
+                )
+            })
     }
 
     func checkout(_ branch: String) async throws {
         try await self.run(.git, ["switch", branch])
     }
+
+    /// run `git remote`
+    /// - Returns: all remotes
+    func remotes() async throws -> [String] {
+        try await self.run(.git, ["remote"])
+            .split(separator: "\n")
+            .compactMap({ subStr in
+                String(subStr).trimmingCharacters(in: .whitespacesAndNewlines)
+            })
+    }
+
+    /// run `git remote`
+    /// - Returns: all remotes
+    func remotes() async throws -> [Remote] {
+        try await self.remotes()
+            .parallelMap { remote in
+                let url: URL = try await self.remoteUrl(for: remote)
+                return Remote(name: remote, url: url)
+            }
+    }
+
+    /// Gets main remote, preferring `origin`, then `upstream` otherwise falling back to the first in the list.
+    /// - Returns: first remote
+    func remote() async throws -> String? {
+        // TODO: handle multiple
+        let remotes: [String] = try await remotes()
+
+        return remotes.sortBy(orderArray: ["origin"]).first
+    }
+
+    func remoteUrl(for name: String) async throws -> String {
+        try await self.run(.git, ["remote", "get-url", "--all", name])
+    }
+
+    func remoteUrl(for name: String) async throws -> URL {
+        let result = try await self.run(.git, ["remote", "get-url", "--all", name])
+        if let url = URL(string: result) {
+            return url
+        } else {
+            throw URLError.cantCreateURLFrom(string: result)
+        }
+    }
 }
+
+enum URLError: Error {
+    case cantCreateURLFrom(string: String)
+}
+

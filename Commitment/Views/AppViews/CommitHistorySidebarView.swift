@@ -11,7 +11,7 @@ import SwiftUI
 struct CommitHistorySidebarView: View {
     @EnvironmentObject private var repo: RepoState
 
-    @State private var activeCommitSelection: GitLogRecord.ID? = nil
+    @State private var activeCommitSelection: Commit.ID? = nil
 
     var body: some View {
         List(selection: $activeCommitSelection) {

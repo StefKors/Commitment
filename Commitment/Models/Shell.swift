@@ -59,7 +59,7 @@ class Shell {
             task.terminationHandler = { process in
                 let data = pipe.fileHandleForReading.readDataToEndOfFile()
                 let output = (String(data: data, encoding: .utf8) ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-                // print("output: \(output)")
+                // print("output run: \(output)")
                 switch process.terminationReason {
                 case .uncaughtSignal:
                     let error = ProcessError(terminationStatus: process.terminationStatus, output: output)
@@ -76,13 +76,9 @@ class Shell {
                     continuation.resume(returning:output)
                 }
             }
-            do {
-                try task.run()
-            } catch {
-                signposter.endInterval("run", state)
-                fatalError(error.localizedDescription)
-                continuation.resume(throwing:error)
-            }
+
+            try! task.run()
+            // signposter.endInterval("run", state)
         }
     }
 }
