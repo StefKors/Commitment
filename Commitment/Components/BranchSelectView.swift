@@ -29,7 +29,7 @@ struct BranchSelectView: View {
 
             ForEach(repo.branches.indices, id: \.self){ index in
                 Button(action: {
-                    Task(priority: .background, operation: {
+                    Task(priority: .userInitiated, operation: {
                         print("checkout branch \(repo.branches[index].name.localName)")
                         do {
                             // try await repo.shell.checkout(repo.branches[index].name.fullName)

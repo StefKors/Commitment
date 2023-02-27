@@ -31,7 +31,7 @@ struct RepoWindow: View {
         .onChange(of: scenePhase) { phase in
             // Stop monitoring for file changes when app minimizes
             print("[Scene Change] App became: \(phase)")
-            Task.detached(priority: .background, operation: {
+            Task.detached(priority: .utility, operation: {
                 try? await model.saveRepo(repo: repo)
             })
             switch phase {

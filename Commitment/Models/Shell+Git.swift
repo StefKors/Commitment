@@ -70,7 +70,6 @@ extension Shell {
 
     func diff() async throws -> [GitDiff] {
         let diff = try await self.run(.git, ["diff"])
-        print("diff returned \(diff.count)")
         return diff
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in

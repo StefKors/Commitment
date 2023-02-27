@@ -77,22 +77,18 @@ init RepoState: \(folderName) with:
                     self?.refreshBranch()
                 }
             }
-
-            print("[File Change] TEMP \(event.url.lastPathComponent)")
-            self?.refreshDiffsAndStatus()
-            if !isGitFolderChange {
-                // made a commit
+            // if !isGitFolderChange {
                 Throttler.throttle( delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) {
                     self?.activity.start(.isRefreshingState)
                     print("[File Change] \(event.url.lastPathComponent)")
                     self?.refreshDiffsAndStatus()
                     let copy = self
-                    Task(priority: .background, operation: { [weak self] in
+                    Task(priority: .userInitiated, operation: { [weak self] in
                         try? await AppModel.shared.saveRepo(repo: copy)
                         self?.activity.finish(.isRefreshingState)
                     })
                 }
-            }
+            // }
         }
 
         monitor?.start()
@@ -114,8 +110,6 @@ init RepoState: \(folderName) with:
             let commits = try? await getCommits()
             let localCommits = try? await getLocalCommits()
             /// Publish on main thread
-
-            print("DIFFS: \(diffs)")
             await MainActor.run {
                 if let diffs {
                     self.diffs = diffs
@@ -154,7 +148,7 @@ init RepoState: \(folderName) with:
 
     func refreshBranch() {
         /// Update on background thread
-        Task(priority: .background) {
+        Task(priority: .utility) {
             let branch = try? await self.shell.branch()
             let refs = try? await shell.listReferences()
             /// Publish on main thread

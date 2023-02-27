@@ -105,10 +105,6 @@ struct CommitmentApp: App {
                 repo.refreshBranch()
                 repo.refreshDiffsAndStatus()
                 repo.startMonitor()
-                Task {
-                    let result = try? await repo.shell.diff()
-                    print("RESULT \(result)")
-                }
             })
 
         })
