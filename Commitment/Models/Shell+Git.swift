@@ -45,7 +45,9 @@ extension Shell {
     }
 
     func push() async throws -> String {
-        try await self.run(.git, ["push"])
+        let remote = try await self.remote()
+        let branch = try await self.branch()
+        return try await self.run(.git, ["push", remote, branch])
     }
 
     func diff() async throws -> [GitDiff] {
@@ -215,12 +217,12 @@ extension Shell {
     }
 
     /// Gets main remote, preferring `origin`, then `upstream` otherwise falling back to the first in the list.
-    /// - Returns: first remote
-    func remote() async throws -> String? {
+    /// - Returns: first remote or "origin"
+    func remote() async throws -> String {
         // TODO: handle multiple
         let remotes: [String] = try await remotes()
 
-        return remotes.sortBy(orderArray: ["origin"]).first
+        return remotes.sortBy(orderArray: ["origin"]).first ?? "origin"
     }
 
     func remoteUrl(for name: String) async throws -> String {

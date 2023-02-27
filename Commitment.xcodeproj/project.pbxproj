@@ -206,6 +206,7 @@
 		8A02C4FF29ACB0E7004DCA69 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C4FE29ACB0E7004DCA69 /* Array.swift */; };
 		8A02C50129ACB801004DCA69 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C50029ACB801004DCA69 /* Remote.swift */; };
 		8A02C50329ACB9CF004DCA69 /* LogOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C50229ACB9CF004DCA69 /* LogOptions.swift */; };
+		8A02C50529ACD3AA004DCA69 /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C50429ACD3AA004DCA69 /* Rotation.swift */; };
 		8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612529659EEE00D878DC /* GitDiff.swift */; };
 		8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612629659EEE00D878DC /* GitDiffHunkLineType.swift */; };
 		8A07612C29659EEE00D878DC /* GitDiffParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612729659EEE00D878DC /* GitDiffParser.swift */; };
@@ -642,6 +643,7 @@
 		8A02C4FE29ACB0E7004DCA69 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		8A02C50029ACB801004DCA69 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		8A02C50229ACB9CF004DCA69 /* LogOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOptions.swift; sourceTree = "<group>"; };
+		8A02C50429ACD3AA004DCA69 /* Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rotation.swift; sourceTree = "<group>"; };
 		8A07612529659EEE00D878DC /* GitDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiff.swift; sourceTree = "<group>"; };
 		8A07612629659EEE00D878DC /* GitDiffHunkLineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffHunkLineType.swift; sourceTree = "<group>"; };
 		8A07612729659EEE00D878DC /* GitDiffParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffParser.swift; sourceTree = "<group>"; };
@@ -1249,6 +1251,7 @@
 				8A992DFE29A64867001E26A3 /* CustomMenuButtonStyle.swift */,
 				8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */,
 				8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */,
+				8A02C50429ACD3AA004DCA69 /* Rotation.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2332,6 +2335,7 @@
 				8AFBD57B2971CAC500525BF7 /* BranchSelectView.swift in Sources */,
 				8A5C64D629797DB300CA8FE1 /* CommitHistoryMainView.swift in Sources */,
 				8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */,
+				8A02C50529ACD3AA004DCA69 /* Rotation.swift in Sources */,
 				8A6B649429730B070074B3C1 /* SplitModeToggleView.swift in Sources */,
 				8A5C64D329797DB300CA8FE1 /* CommitHistoryView.swift in Sources */,
 				8A97DC8E299BB148001E25E1 /* CharacterSet+Contains.swift in Sources */,

@@ -14,8 +14,7 @@ struct AvatarView: View {
     let size: CGFloat = 14
 
     fileprivate func getAvatar(_ email: String) -> URL? {
-        print(email)
-        return URL(string: "https://avatars.githubusercontent.com/u/e?email=\(email)&s=64")
+        URL(string: "https://avatars.githubusercontent.com/u/e?email=\(email)&s=64")
     }
 
     var body: some View {

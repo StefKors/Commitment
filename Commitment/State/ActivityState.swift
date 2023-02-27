@@ -11,13 +11,15 @@ enum Activity {
     case isRefreshingState
     case isCommiting
     case isCheckingOutBranch
+    case isPushingBranch
 }
 
 class ActivityState: ObservableObject {
     @Published var current: [Activity: Bool] = [
         .isRefreshingState: false,
         .isCommiting: false,
-        .isCheckingOutBranch: false
+        .isCheckingOutBranch: false,
+        .isPushingBranch: false
     ]
 
     func start(_ activity: Activity) {

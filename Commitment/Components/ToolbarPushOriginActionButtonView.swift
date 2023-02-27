@@ -7,17 +7,31 @@
 
 import SwiftUI
 
+struct ActivityArrow: View {
+    let isPushingBranch: Bool
+    var body: some View {
+        if isPushingBranch {
+            Image(systemName: "arrow.2.circlepath")
+                .imageScale(.medium)
+                .rotation(isEnabled: true)
+        } else {
+            Image(systemName: "arrow.up")
+                .imageScale(.medium)
+        }
+    }
+}
+
 struct ToolbarPushOriginActionButtonView: View {
     @EnvironmentObject private var repo: RepoState
     let remote: String = "origin"
+
+    @State private var isPushingBranch: Bool = false
 
     var body: some View {
         Button(action: handleButton, label: {
             ViewThatFits {
                 HStack {
-                    Image(systemName: "arrow.up")
-                        .imageScale(.medium)
-
+                    ActivityArrow(isPushingBranch: isPushingBranch)
                     VStack(alignment: .leading) {
                         Text("Push \(remote)")
                         // .fontWeight(.bold)
@@ -32,9 +46,7 @@ struct ToolbarPushOriginActionButtonView: View {
                 .foregroundColor(.primary)
 
                 HStack {
-                    Image(systemName: "arrow.up")
-                        .imageScale(.medium)
-
+                    ActivityArrow(isPushingBranch: isPushingBranch)
                     VStack(alignment: .leading) {
                         Text("Push \(remote)")
                         // .fontWeight(.bold)
@@ -45,8 +57,7 @@ struct ToolbarPushOriginActionButtonView: View {
                 .foregroundColor(.primary)
 
                 HStack {
-                    Image(systemName: "arrow.up")
-                        .imageScale(.medium)
+                    ActivityArrow(isPushingBranch: isPushingBranch)
                     Text("Push \(remote)")
                 }
                 .foregroundColor(.primary)
@@ -57,7 +68,15 @@ struct ToolbarPushOriginActionButtonView: View {
 
     func handleButton() {
         Task {
-            try? await self.repo.shell.push()
+            withAnimation(.interpolatingSpring(stiffness: 300, damping: 15)) {
+                isPushingBranch = true
+            }
+            let output = try await self.repo.shell.push()
+            print(output)
+            try await self.repo.refreshRepoState()
+            withAnimation(.interpolatingSpring(stiffness: 300, damping: 15)) {
+                isPushingBranch = false
+            }
         }
     }
 }
