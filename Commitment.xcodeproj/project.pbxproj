@@ -8,6 +8,201 @@
 
 /* Begin PBXBuildFile section */
 		8A02C1BD29ABD15B004DCA69 /* Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */; };
+		8A02C43B29AC1A4B004DCA69 /* git-mailsplit in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C37729AC1A4A004DCA69 /* git-mailsplit */; };
+		8A02C43C29AC1A4B004DCA69 /* git-fetch in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C37829AC1A4A004DCA69 /* git-fetch */; };
+		8A02C43D29AC1A4B004DCA69 /* git-lfs in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C37929AC1A4A004DCA69 /* git-lfs */; };
+		8A02C43E29AC1A4B004DCA69 /* git-version in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C37A29AC1A4A004DCA69 /* git-version */; };
+		8A02C43F29AC1A4B004DCA69 /* git-clean in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C37B29AC1A4A004DCA69 /* git-clean */; };
+		8A02C44029AC1A4B004DCA69 /* git-diff in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C37C29AC1A4A004DCA69 /* git-diff */; };
+		8A02C44129AC1A4B004DCA69 /* git-log in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C37D29AC1A4A004DCA69 /* git-log */; };
+		8A02C44229AC1A4B004DCA69 /* git-http-push in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C37E29AC1A4A004DCA69 /* git-http-push */; };
+		8A02C44329AC1A4B004DCA69 /* git-commit in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C37F29AC1A4A004DCA69 /* git-commit */; };
+		8A02C44429AC1A4B004DCA69 /* git-mergetool--lib in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38029AC1A4A004DCA69 /* git-mergetool--lib */; };
+		8A02C44529AC1A4B004DCA69 /* git-merge-index in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38129AC1A4A004DCA69 /* git-merge-index */; };
+		8A02C44629AC1A4B004DCA69 /* git-merge-recursive in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38229AC1A4A004DCA69 /* git-merge-recursive */; };
+		8A02C44729AC1A4B004DCA69 /* git-revert in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38329AC1A4A004DCA69 /* git-revert */; };
+		8A02C44829AC1A4B004DCA69 /* git-blame in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38429AC1A4A004DCA69 /* git-blame */; };
+		8A02C44929AC1A4B004DCA69 /* git-check-attr in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38529AC1A4A004DCA69 /* git-check-attr */; };
+		8A02C44A29AC1A4B004DCA69 /* git-stash in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38629AC1A4A004DCA69 /* git-stash */; };
+		8A02C44B29AC1A4B004DCA69 /* git-grep in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38729AC1A4A004DCA69 /* git-grep */; };
+		8A02C44C29AC1A4B004DCA69 /* git-clone in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38829AC1A4A004DCA69 /* git-clone */; };
+		8A02C44D29AC1A4B004DCA69 /* git-notes in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38929AC1A4A004DCA69 /* git-notes */; };
+		8A02C44E29AC1A4B004DCA69 /* git-unpack-objects in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38A29AC1A4A004DCA69 /* git-unpack-objects */; };
+		8A02C44F29AC1A4B004DCA69 /* git-remote-ftps in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38B29AC1A4A004DCA69 /* git-remote-ftps */; };
+		8A02C45029AC1A4B004DCA69 /* git-send-email in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38C29AC1A4A004DCA69 /* git-send-email */; };
+		8A02C45129AC1A4B004DCA69 /* git-update-ref in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38D29AC1A4A004DCA69 /* git-update-ref */; };
+		8A02C45229AC1A4B004DCA69 /* git-verify-tag in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38E29AC1A4A004DCA69 /* git-verify-tag */; };
+		8A02C45329AC1A4B004DCA69 /* git-cat-file in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C38F29AC1A4A004DCA69 /* git-cat-file */; };
+		8A02C45429AC1A4B004DCA69 /* git-ls-files in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39029AC1A4A004DCA69 /* git-ls-files */; };
+		8A02C45529AC1A4B004DCA69 /* git-read-tree in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39129AC1A4A004DCA69 /* git-read-tree */; };
+		8A02C45629AC1A4B004DCA69 /* git-mailinfo in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39229AC1A4A004DCA69 /* git-mailinfo */; };
+		8A02C45729AC1A4B004DCA69 /* git-receive-pack in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39329AC1A4A004DCA69 /* git-receive-pack */; };
+		8A02C45829AC1A4B004DCA69 /* git-merge-base in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39429AC1A4A004DCA69 /* git-merge-base */; };
+		8A02C45929AC1A4B004DCA69 /* git-add in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39529AC1A4A004DCA69 /* git-add */; };
+		8A02C45A29AC1A4B004DCA69 /* git-merge-resolve in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39629AC1A4A004DCA69 /* git-merge-resolve */; };
+		8A02C45B29AC1A4B004DCA69 /* git-remote-ext in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39729AC1A4A004DCA69 /* git-remote-ext */; };
+		8A02C45C29AC1A4B004DCA69 /* git-imap-send in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39829AC1A4A004DCA69 /* git-imap-send */; };
+		8A02C45D29AC1A4B004DCA69 /* git-symbolic-ref in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39929AC1A4A004DCA69 /* git-symbolic-ref */; };
+		8A02C45E29AC1A4B004DCA69 /* git-difftool--helper in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39A29AC1A4A004DCA69 /* git-difftool--helper */; };
+		8A02C45F29AC1A4B004DCA69 /* git-branch in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39B29AC1A4A004DCA69 /* git-branch */; };
+		8A02C46029AC1A4B004DCA69 /* git-commit-tree in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39C29AC1A4A004DCA69 /* git-commit-tree */; };
+		8A02C46129AC1A4B004DCA69 /* git-instaweb in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39D29AC1A4A004DCA69 /* git-instaweb */; };
+		8A02C46229AC1A4B004DCA69 /* git-interpret-trailers in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39E29AC1A4A004DCA69 /* git-interpret-trailers */; };
+		8A02C46329AC1A4B004DCA69 /* git-name-rev in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C39F29AC1A4A004DCA69 /* git-name-rev */; };
+		8A02C46429AC1A4B004DCA69 /* git-show-ref in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3A029AC1A4A004DCA69 /* git-show-ref */; };
+		8A02C46529AC1A4B004DCA69 /* git-checkout-index in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3A129AC1A4A004DCA69 /* git-checkout-index */; };
+		8A02C46629AC1A4B004DCA69 /* git-range-diff in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3A229AC1A4A004DCA69 /* git-range-diff */; };
+		8A02C46729AC1A4B004DCA69 /* git-show in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3A329AC1A4A004DCA69 /* git-show */; };
+		8A02C46829AC1A4B004DCA69 /* vimdiff in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3A529AC1A4A004DCA69 /* vimdiff */; };
+		8A02C46929AC1A4B004DCA69 /* codecompare in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3A629AC1A4A004DCA69 /* codecompare */; };
+		8A02C46A29AC1A4B004DCA69 /* bc in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3A729AC1A4A004DCA69 /* bc */; };
+		8A02C46B29AC1A4B004DCA69 /* nvimdiff in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3A829AC1A4A004DCA69 /* nvimdiff */; };
+		8A02C46C29AC1A4B004DCA69 /* emerge in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3A929AC1A4A004DCA69 /* emerge */; };
+		8A02C46D29AC1A4B004DCA69 /* diffuse in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3AA29AC1A4A004DCA69 /* diffuse */; };
+		8A02C46E29AC1A4B004DCA69 /* deltawalker in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3AB29AC1A4A004DCA69 /* deltawalker */; };
+		8A02C46F29AC1A4B004DCA69 /* tortoisemerge in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3AC29AC1A4A004DCA69 /* tortoisemerge */; };
+		8A02C47029AC1A4B004DCA69 /* kompare in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3AD29AC1A4A004DCA69 /* kompare */; };
+		8A02C47129AC1A4B004DCA69 /* p4merge in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3AE29AC1A4A004DCA69 /* p4merge */; };
+		8A02C47229AC1A4B004DCA69 /* ecmerge in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3AF29AC1A4A004DCA69 /* ecmerge */; };
+		8A02C47329AC1A4B004DCA69 /* kdiff3 in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B029AC1A4A004DCA69 /* kdiff3 */; };
+		8A02C47429AC1A4B004DCA69 /* smerge in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B129AC1A4A004DCA69 /* smerge */; };
+		8A02C47529AC1A4B004DCA69 /* winmerge in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B229AC1A4A004DCA69 /* winmerge */; };
+		8A02C47629AC1A4B004DCA69 /* gvimdiff in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B329AC1A4A004DCA69 /* gvimdiff */; };
+		8A02C47729AC1A4B004DCA69 /* guiffy in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B429AC1A4A004DCA69 /* guiffy */; };
+		8A02C47829AC1A4B004DCA69 /* tkdiff in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B529AC1A4A004DCA69 /* tkdiff */; };
+		8A02C47929AC1A4B004DCA69 /* meld in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B629AC1A4A004DCA69 /* meld */; };
+		8A02C47A29AC1A4B004DCA69 /* diffmerge in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B729AC1A4A004DCA69 /* diffmerge */; };
+		8A02C47B29AC1A4B004DCA69 /* araxis in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B829AC1A4A004DCA69 /* araxis */; };
+		8A02C47C29AC1A4B004DCA69 /* xxdiff in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3B929AC1A4A004DCA69 /* xxdiff */; };
+		8A02C47D29AC1A4B004DCA69 /* examdiff in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3BA29AC1A4A004DCA69 /* examdiff */; };
+		8A02C47E29AC1A4B004DCA69 /* opendiff in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3BB29AC1A4A004DCA69 /* opendiff */; };
+		8A02C47F29AC1A4B004DCA69 /* git-stage in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3BC29AC1A4A004DCA69 /* git-stage */; };
+		8A02C48029AC1A4B004DCA69 /* git-sh-setup in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3BD29AC1A4A004DCA69 /* git-sh-setup */; };
+		8A02C48129AC1A4B004DCA69 /* git-update-index in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3BE29AC1A4A004DCA69 /* git-update-index */; };
+		8A02C48229AC1A4B004DCA69 /* git-remote-fd in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3BF29AC1A4A004DCA69 /* git-remote-fd */; };
+		8A02C48329AC1A4B004DCA69 /* git-write-tree in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C029AC1A4A004DCA69 /* git-write-tree */; };
+		8A02C48429AC1A4B004DCA69 /* git-prune-packed in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C129AC1A4A004DCA69 /* git-prune-packed */; };
+		8A02C48529AC1A4B004DCA69 /* git-config in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C229AC1A4A004DCA69 /* git-config */; };
+		8A02C48629AC1A4B004DCA69 /* git-sh-i18n--envsubst in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C329AC1A4A004DCA69 /* git-sh-i18n--envsubst */; };
+		8A02C48729AC1A4B004DCA69 /* git-verify-commit in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C429AC1A4A004DCA69 /* git-verify-commit */; };
+		8A02C48829AC1A4B004DCA69 /* git-pull in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C529AC1A4A004DCA69 /* git-pull */; };
+		8A02C48929AC1A4B004DCA69 /* git-for-each-ref in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C629AC1A4A004DCA69 /* git-for-each-ref */; };
+		8A02C48A29AC1A4B004DCA69 /* git-pack-objects in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C729AC1A4A004DCA69 /* git-pack-objects */; };
+		8A02C48B29AC1A4B004DCA69 /* git-add--interactive in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C829AC1A4A004DCA69 /* git-add--interactive */; };
+		8A02C48C29AC1A4B004DCA69 /* git-bugreport in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3C929AC1A4A004DCA69 /* git-bugreport */; };
+		8A02C48D29AC1A4B004DCA69 /* git-hash-object in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3CA29AC1A4A004DCA69 /* git-hash-object */; };
+		8A02C48E29AC1A4B004DCA69 /* git-archimport in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3CB29AC1A4A004DCA69 /* git-archimport */; };
+		8A02C48F29AC1A4B004DCA69 /* git-prune in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3CC29AC1A4A004DCA69 /* git-prune */; };
+		8A02C49029AC1A4B004DCA69 /* git-format-patch in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3CD29AC1A4A004DCA69 /* git-format-patch */; };
+		8A02C49129AC1A4B004DCA69 /* git-ls-remote in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3CE29AC1A4A004DCA69 /* git-ls-remote */; };
+		8A02C49229AC1A4B004DCA69 /* git-update-server-info in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3CF29AC1A4A004DCA69 /* git-update-server-info */; };
+		8A02C49329AC1A4B004DCA69 /* git-pack-refs in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D029AC1A4A004DCA69 /* git-pack-refs */; };
+		8A02C49429AC1A4B004DCA69 /* git-tag in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D129AC1A4A004DCA69 /* git-tag */; };
+		8A02C49529AC1A4B004DCA69 /* git-replace in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D229AC1A4A004DCA69 /* git-replace */; };
+		8A02C49629AC1A4B004DCA69 /* git-mergetool in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D329AC1A4A004DCA69 /* git-mergetool */; };
+		8A02C49729AC1A4B004DCA69 /* git-whatchanged in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D429AC1A4A004DCA69 /* git-whatchanged */; };
+		8A02C49829AC1A4B004DCA69 /* git-sh-i18n in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D529AC1A4A004DCA69 /* git-sh-i18n */; };
+		8A02C49929AC1A4B004DCA69 /* git-show-branch in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D629AC1A4A004DCA69 /* git-show-branch */; };
+		8A02C49A29AC1A4B004DCA69 /* git-credential-store in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D729AC1A4A004DCA69 /* git-credential-store */; };
+		8A02C49B29AC1A4B004DCA69 /* git-diff-files in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D829AC1A4A004DCA69 /* git-diff-files */; };
+		8A02C49C29AC1A4B004DCA69 /* git-diff-index in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3D929AC1A4A004DCA69 /* git-diff-index */; };
+		8A02C49D29AC1A4B004DCA69 /* git-bisect in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3DA29AC1A4A004DCA69 /* git-bisect */; };
+		8A02C49E29AC1A4B004DCA69 /* git-request-pull in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3DB29AC1A4A004DCA69 /* git-request-pull */; };
+		8A02C49F29AC1A4B004DCA69 /* git-merge-ours in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3DC29AC1A4A004DCA69 /* git-merge-ours */; };
+		8A02C4A029AC1A4B004DCA69 /* git-init in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3DD29AC1A4A004DCA69 /* git-init */; };
+		8A02C4A129AC1A4B004DCA69 /* git-bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3DE29AC1A4A004DCA69 /* git-bundle */; };
+		8A02C4A229AC1A4B004DCA69 /* git-am in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3DF29AC1A4A004DCA69 /* git-am */; };
+		8A02C4A329AC1A4B004DCA69 /* git-merge-subtree in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E029AC1A4A004DCA69 /* git-merge-subtree */; };
+		8A02C4A429AC1A4B004DCA69 /* git-stripspace in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E129AC1A4A004DCA69 /* git-stripspace */; };
+		8A02C4A529AC1A4B004DCA69 /* git-fmt-merge-msg in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E229AC1A4A004DCA69 /* git-fmt-merge-msg */; };
+		8A02C4A629AC1A4B004DCA69 /* git-cherry in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E329AC1A4A004DCA69 /* git-cherry */; };
+		8A02C4A729AC1A4B004DCA69 /* git-difftool in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E429AC1A4A004DCA69 /* git-difftool */; };
+		8A02C4A829AC1A4B004DCA69 /* git-ls-tree in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E529AC1A4A004DCA69 /* git-ls-tree */; };
+		8A02C4A929AC1A4B004DCA69 /* git-cherry-pick in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E629AC1A4A004DCA69 /* git-cherry-pick */; };
+		8A02C4AA29AC1A4B004DCA69 /* git-upload-archive in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E729AC1A4A004DCA69 /* git-upload-archive */; };
+		8A02C4AB29AC1A4B004DCA69 /* git-unpack-file in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E829AC1A4A004DCA69 /* git-unpack-file */; };
+		8A02C4AC29AC1A4B004DCA69 /* git-reflog in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3E929AC1A4A004DCA69 /* git-reflog */; };
+		8A02C4AD29AC1A4B004DCA69 /* git-patch-id in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3EA29AC1A4A004DCA69 /* git-patch-id */; };
+		8A02C4AE29AC1A4B004DCA69 /* git-submodule in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3EB29AC1A4A004DCA69 /* git-submodule */; };
+		8A02C4AF29AC1A4B004DCA69 /* git-cvsimport in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3EC29AC1A4A004DCA69 /* git-cvsimport */; };
+		8A02C4B029AC1A4B004DCA69 /* git-fsck-objects in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3ED29AC1A4A004DCA69 /* git-fsck-objects */; };
+		8A02C4B129AC1A4B004DCA69 /* git-mktag in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3EE29AC1A4A004DCA69 /* git-mktag */; };
+		8A02C4B229AC1A4B004DCA69 /* git-remote-ftp in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3EF29AC1A4A004DCA69 /* git-remote-ftp */; };
+		8A02C4B329AC1A4B004DCA69 /* git-repack in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F029AC1A4A004DCA69 /* git-repack */; };
+		8A02C4B429AC1A4B004DCA69 /* git-column in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F129AC1A4A004DCA69 /* git-column */; };
+		8A02C4B529AC1A4B004DCA69 /* git-status in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F229AC1A4A004DCA69 /* git-status */; };
+		8A02C4B629AC1A4B004DCA69 /* git-restore in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F329AC1A4A004DCA69 /* git-restore */; };
+		8A02C4B729AC1A4B004DCA69 /* git-fsck in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F429AC1A4A004DCA69 /* git-fsck */; };
+		8A02C4B829AC1A4B004DCA69 /* git-quiltimport in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F529AC1A4A004DCA69 /* git-quiltimport */; };
+		8A02C4B929AC1A4B004DCA69 /* git-get-tar-commit-id in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F629AC1A4A004DCA69 /* git-get-tar-commit-id */; };
+		8A02C4BA29AC1A4B004DCA69 /* git-hook in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F729AC1A4A004DCA69 /* git-hook */; };
+		8A02C4BB29AC1A4B004DCA69 /* git-rev-list in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F829AC1A4A004DCA69 /* git-rev-list */; };
+		8A02C4BC29AC1A4B004DCA69 /* git-apply in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3F929AC1A4A004DCA69 /* git-apply */; };
+		8A02C4BD29AC1A4B004DCA69 /* git-credential-cache in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3FA29AC1A4A004DCA69 /* git-credential-cache */; };
+		8A02C4BE29AC1A4B004DCA69 /* git-checkout--worker in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3FB29AC1A4A004DCA69 /* git-checkout--worker */; };
+		8A02C4BF29AC1A4B004DCA69 /* git-check-ignore in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3FC29AC1A4A004DCA69 /* git-check-ignore */; };
+		8A02C4C029AC1A4B004DCA69 /* git-multi-pack-index in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3FD29AC1A4A004DCA69 /* git-multi-pack-index */; };
+		8A02C4C129AC1A4B004DCA69 /* git-daemon in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3FE29AC1A4A004DCA69 /* git-daemon */; };
+		8A02C4C229AC1A4B004DCA69 /* git-bisect--helper in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C3FF29AC1A4A004DCA69 /* git-bisect--helper */; };
+		8A02C4C329AC1A4B004DCA69 /* git-annotate in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40029AC1A4A004DCA69 /* git-annotate */; };
+		8A02C4C429AC1A4B004DCA69 /* git-rerere in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40129AC1A4A004DCA69 /* git-rerere */; };
+		8A02C4C529AC1A4B004DCA69 /* git-checkout in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40229AC1A4A004DCA69 /* git-checkout */; };
+		8A02C4C629AC1A4B004DCA69 /* git-credential in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40329AC1A4A004DCA69 /* git-credential */; };
+		8A02C4C729AC1A4B004DCA69 /* git-describe in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40429AC1A4A004DCA69 /* git-describe */; };
+		8A02C4C829AC1A4B004DCA69 /* git-credential-cache--daemon in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40529AC1A4A004DCA69 /* git-credential-cache--daemon */; };
+		8A02C4C929AC1A4B004DCA69 /* git-help in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40629AC1A4A004DCA69 /* git-help */; };
+		8A02C4CA29AC1A4B004DCA69 /* git-diagnose in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40729AC1A4A004DCA69 /* git-diagnose */; };
+		8A02C4CB29AC1A4B004DCA69 /* git-sparse-checkout in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40829AC1A4A004DCA69 /* git-sparse-checkout */; };
+		8A02C4CC29AC1A4B004DCA69 /* git-for-each-repo in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40929AC1A4A004DCA69 /* git-for-each-repo */; };
+		8A02C4CD29AC1A4B004DCA69 /* git-init-db in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40A29AC1A4A004DCA69 /* git-init-db */; };
+		8A02C4CE29AC1A4B004DCA69 /* git-submodule--helper in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40B29AC1A4A004DCA69 /* git-submodule--helper */; };
+		8A02C4CF29AC1A4B004DCA69 /* git-rm in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40C29AC1A4A004DCA69 /* git-rm */; };
+		8A02C4D029AC1A4B004DCA69 /* git-rev-parse in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40D29AC1A4A004DCA69 /* git-rev-parse */; };
+		8A02C4D129AC1A4B004DCA69 /* git-env--helper in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40E29AC1A4A004DCA69 /* git-env--helper */; };
+		8A02C4D229AC1A4B004DCA69 /* git-archive in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C40F29AC1A4A004DCA69 /* git-archive */; };
+		8A02C4D329AC1A4B004DCA69 /* git-fast-export in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41029AC1A4A004DCA69 /* git-fast-export */; };
+		8A02C4D429AC1A4B004DCA69 /* git-index-pack in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41129AC1A4A004DCA69 /* git-index-pack */; };
+		8A02C4D529AC1A4B004DCA69 /* git-merge in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41229AC1A4A004DCA69 /* git-merge */; };
+		8A02C4D629AC1A4B004DCA69 /* git-mktree in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41329AC1A4A004DCA69 /* git-mktree */; };
+		8A02C4D729AC1A4B004DCA69 /* git-worktree in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41429AC1A4A004DCA69 /* git-worktree */; };
+		8A02C4D829AC1A4B004DCA69 /* git-merge-one-file in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41529AC1A4A004DCA69 /* git-merge-one-file */; };
+		8A02C4D929AC1A4B004DCA69 /* git-remote-http in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41629AC1A4A004DCA69 /* git-remote-http */; };
+		8A02C4DA29AC1A4B004DCA69 /* git-switch in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41729AC1A4A004DCA69 /* git-switch */; };
+		8A02C4DB29AC1A4B004DCA69 /* git-fsmonitor--daemon in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41829AC1A4A004DCA69 /* git-fsmonitor--daemon */; };
+		8A02C4DC29AC1A4B004DCA69 /* git-fast-import in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41929AC1A4A004DCA69 /* git-fast-import */; };
+		8A02C4DD29AC1A4B004DCA69 /* git-web--browse in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41A29AC1A4A004DCA69 /* git-web--browse */; };
+		8A02C4DE29AC1A4B004DCA69 /* git-check-mailmap in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41B29AC1A4A004DCA69 /* git-check-mailmap */; };
+		8A02C4DF29AC1A4B004DCA69 /* git-cvsserver in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41C29AC1A4A004DCA69 /* git-cvsserver */; };
+		8A02C4E029AC1A4B004DCA69 /* git-shell in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41D29AC1A4A004DCA69 /* git-shell */; };
+		8A02C4E129AC1A4B004DCA69 /* git-cvsexportcommit in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41E29AC1A4A004DCA69 /* git-cvsexportcommit */; };
+		8A02C4E229AC1A4B004DCA69 /* git-http-fetch in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C41F29AC1A4A004DCA69 /* git-http-fetch */; };
+		8A02C4E329AC1A4B004DCA69 /* git-filter-branch in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42029AC1A4A004DCA69 /* git-filter-branch */; };
+		8A02C4E429AC1A4B004DCA69 /* git-var in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42129AC1A4A004DCA69 /* git-var */; };
+		8A02C4E529AC1A4B004DCA69 /* git-show-index in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42229AC1A4A004DCA69 /* git-show-index */; };
+		8A02C4E629AC1A4B004DCA69 /* git-upload-pack in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42329AC1A4A004DCA69 /* git-upload-pack */; };
+		8A02C4E729AC1A4B004DCA69 /* git-merge-tree in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42429AC1A4A004DCA69 /* git-merge-tree */; };
+		8A02C4E829AC1A4B004DCA69 /* git-reset in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42529AC1A4A004DCA69 /* git-reset */; };
+		8A02C4E929AC1A4B004DCA69 /* git-remote-https in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42629AC1A4A004DCA69 /* git-remote-https */; };
+		8A02C4EA29AC1A4B004DCA69 /* git-merge-octopus in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42729AC1A4A004DCA69 /* git-merge-octopus */; };
+		8A02C4EB29AC1A4B004DCA69 /* scalar in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42829AC1A4A004DCA69 /* scalar */; };
+		8A02C4EC29AC1A4B004DCA69 /* git-commit-graph in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42929AC1A4A004DCA69 /* git-commit-graph */; };
+		8A02C4ED29AC1A4B004DCA69 /* git-maintenance in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42A29AC1A4A004DCA69 /* git-maintenance */; };
+		8A02C4EE29AC1A4B004DCA69 /* git-shortlog in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42B29AC1A4A004DCA69 /* git-shortlog */; };
+		8A02C4EF29AC1A4B004DCA69 /* git-push in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42C29AC1A4A004DCA69 /* git-push */; };
+		8A02C4F029AC1A4B004DCA69 /* git-verify-pack in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42D29AC1A4A004DCA69 /* git-verify-pack */; };
+		8A02C4F129AC1A4B004DCA69 /* git-merge-file in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42E29AC1A4A004DCA69 /* git-merge-file */; };
+		8A02C4F229AC1A4B004DCA69 /* git-http-backend in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C42F29AC1A4A004DCA69 /* git-http-backend */; };
+		8A02C4F329AC1A4B004DCA69 /* git-fetch-pack in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43029AC1A4A004DCA69 /* git-fetch-pack */; };
+		8A02C4F429AC1A4B004DCA69 /* git-rebase in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43129AC1A4A004DCA69 /* git-rebase */; };
+		8A02C4F529AC1A4B004DCA69 /* git-mv in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43229AC1A4A004DCA69 /* git-mv */; };
+		8A02C4F629AC1A4B004DCA69 /* git in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43329AC1A4A004DCA69 /* git */; };
+		8A02C4F729AC1A4B004DCA69 /* git-gc in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43429AC1A4A004DCA69 /* git-gc */; };
+		8A02C4F829AC1A4B004DCA69 /* git-check-ref-format in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43529AC1A4A004DCA69 /* git-check-ref-format */; };
+		8A02C4F929AC1A4B004DCA69 /* git-count-objects in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43629AC1A4A004DCA69 /* git-count-objects */; };
+		8A02C4FA29AC1A4B004DCA69 /* git-diff-tree in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43729AC1A4A004DCA69 /* git-diff-tree */; };
+		8A02C4FB29AC1A4B004DCA69 /* git-remote in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43829AC1A4A004DCA69 /* git-remote */; };
+		8A02C4FC29AC1A4B004DCA69 /* git-send-pack in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43929AC1A4A004DCA69 /* git-send-pack */; };
+		8A02C4FD29AC1A4B004DCA69 /* git-pack-redundant in Resources */ = {isa = PBXBuildFile; fileRef = 8A02C43A29AC1A4A004DCA69 /* git-pack-redundant */; };
 		8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612529659EEE00D878DC /* GitDiff.swift */; };
 		8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612629659EEE00D878DC /* GitDiffHunkLineType.swift */; };
 		8A07612C29659EEE00D878DC /* GitDiffParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612729659EEE00D878DC /* GitDiffParser.swift */; };
@@ -246,6 +441,201 @@
 
 /* Begin PBXFileReference section */
 		8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmarks.swift; sourceTree = "<group>"; };
+		8A02C37729AC1A4A004DCA69 /* git-mailsplit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-mailsplit"; sourceTree = "<group>"; };
+		8A02C37829AC1A4A004DCA69 /* git-fetch */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-fetch"; sourceTree = "<group>"; };
+		8A02C37929AC1A4A004DCA69 /* git-lfs */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-lfs"; sourceTree = "<group>"; };
+		8A02C37A29AC1A4A004DCA69 /* git-version */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-version"; sourceTree = "<group>"; };
+		8A02C37B29AC1A4A004DCA69 /* git-clean */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-clean"; sourceTree = "<group>"; };
+		8A02C37C29AC1A4A004DCA69 /* git-diff */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-diff"; sourceTree = "<group>"; };
+		8A02C37D29AC1A4A004DCA69 /* git-log */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-log"; sourceTree = "<group>"; };
+		8A02C37E29AC1A4A004DCA69 /* git-http-push */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-http-push"; sourceTree = "<group>"; };
+		8A02C37F29AC1A4A004DCA69 /* git-commit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-commit"; sourceTree = "<group>"; };
+		8A02C38029AC1A4A004DCA69 /* git-mergetool--lib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "git-mergetool--lib"; sourceTree = "<group>"; };
+		8A02C38129AC1A4A004DCA69 /* git-merge-index */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-merge-index"; sourceTree = "<group>"; };
+		8A02C38229AC1A4A004DCA69 /* git-merge-recursive */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-merge-recursive"; sourceTree = "<group>"; };
+		8A02C38329AC1A4A004DCA69 /* git-revert */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-revert"; sourceTree = "<group>"; };
+		8A02C38429AC1A4A004DCA69 /* git-blame */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-blame"; sourceTree = "<group>"; };
+		8A02C38529AC1A4A004DCA69 /* git-check-attr */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-check-attr"; sourceTree = "<group>"; };
+		8A02C38629AC1A4A004DCA69 /* git-stash */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-stash"; sourceTree = "<group>"; };
+		8A02C38729AC1A4A004DCA69 /* git-grep */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-grep"; sourceTree = "<group>"; };
+		8A02C38829AC1A4A004DCA69 /* git-clone */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-clone"; sourceTree = "<group>"; };
+		8A02C38929AC1A4A004DCA69 /* git-notes */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-notes"; sourceTree = "<group>"; };
+		8A02C38A29AC1A4A004DCA69 /* git-unpack-objects */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-unpack-objects"; sourceTree = "<group>"; };
+		8A02C38B29AC1A4A004DCA69 /* git-remote-ftps */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-remote-ftps"; sourceTree = "<group>"; };
+		8A02C38C29AC1A4A004DCA69 /* git-send-email */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-send-email"; sourceTree = "<group>"; };
+		8A02C38D29AC1A4A004DCA69 /* git-update-ref */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-update-ref"; sourceTree = "<group>"; };
+		8A02C38E29AC1A4A004DCA69 /* git-verify-tag */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-verify-tag"; sourceTree = "<group>"; };
+		8A02C38F29AC1A4A004DCA69 /* git-cat-file */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-cat-file"; sourceTree = "<group>"; };
+		8A02C39029AC1A4A004DCA69 /* git-ls-files */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-ls-files"; sourceTree = "<group>"; };
+		8A02C39129AC1A4A004DCA69 /* git-read-tree */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-read-tree"; sourceTree = "<group>"; };
+		8A02C39229AC1A4A004DCA69 /* git-mailinfo */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-mailinfo"; sourceTree = "<group>"; };
+		8A02C39329AC1A4A004DCA69 /* git-receive-pack */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-receive-pack"; sourceTree = "<group>"; };
+		8A02C39429AC1A4A004DCA69 /* git-merge-base */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-merge-base"; sourceTree = "<group>"; };
+		8A02C39529AC1A4A004DCA69 /* git-add */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-add"; sourceTree = "<group>"; };
+		8A02C39629AC1A4A004DCA69 /* git-merge-resolve */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-merge-resolve"; sourceTree = "<group>"; };
+		8A02C39729AC1A4A004DCA69 /* git-remote-ext */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-remote-ext"; sourceTree = "<group>"; };
+		8A02C39829AC1A4A004DCA69 /* git-imap-send */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-imap-send"; sourceTree = "<group>"; };
+		8A02C39929AC1A4A004DCA69 /* git-symbolic-ref */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-symbolic-ref"; sourceTree = "<group>"; };
+		8A02C39A29AC1A4A004DCA69 /* git-difftool--helper */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-difftool--helper"; sourceTree = "<group>"; };
+		8A02C39B29AC1A4A004DCA69 /* git-branch */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-branch"; sourceTree = "<group>"; };
+		8A02C39C29AC1A4A004DCA69 /* git-commit-tree */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-commit-tree"; sourceTree = "<group>"; };
+		8A02C39D29AC1A4A004DCA69 /* git-instaweb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-instaweb"; sourceTree = "<group>"; };
+		8A02C39E29AC1A4A004DCA69 /* git-interpret-trailers */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-interpret-trailers"; sourceTree = "<group>"; };
+		8A02C39F29AC1A4A004DCA69 /* git-name-rev */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-name-rev"; sourceTree = "<group>"; };
+		8A02C3A029AC1A4A004DCA69 /* git-show-ref */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-show-ref"; sourceTree = "<group>"; };
+		8A02C3A129AC1A4A004DCA69 /* git-checkout-index */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-checkout-index"; sourceTree = "<group>"; };
+		8A02C3A229AC1A4A004DCA69 /* git-range-diff */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-range-diff"; sourceTree = "<group>"; };
+		8A02C3A329AC1A4A004DCA69 /* git-show */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-show"; sourceTree = "<group>"; };
+		8A02C3A529AC1A4A004DCA69 /* vimdiff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vimdiff; sourceTree = "<group>"; };
+		8A02C3A629AC1A4A004DCA69 /* codecompare */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = codecompare; sourceTree = "<group>"; };
+		8A02C3A729AC1A4A004DCA69 /* bc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bc; sourceTree = "<group>"; };
+		8A02C3A829AC1A4A004DCA69 /* nvimdiff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nvimdiff; sourceTree = "<group>"; };
+		8A02C3A929AC1A4A004DCA69 /* emerge */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = emerge; sourceTree = "<group>"; };
+		8A02C3AA29AC1A4A004DCA69 /* diffuse */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = diffuse; sourceTree = "<group>"; };
+		8A02C3AB29AC1A4A004DCA69 /* deltawalker */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deltawalker; sourceTree = "<group>"; };
+		8A02C3AC29AC1A4A004DCA69 /* tortoisemerge */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tortoisemerge; sourceTree = "<group>"; };
+		8A02C3AD29AC1A4A004DCA69 /* kompare */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kompare; sourceTree = "<group>"; };
+		8A02C3AE29AC1A4A004DCA69 /* p4merge */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = p4merge; sourceTree = "<group>"; };
+		8A02C3AF29AC1A4A004DCA69 /* ecmerge */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ecmerge; sourceTree = "<group>"; };
+		8A02C3B029AC1A4A004DCA69 /* kdiff3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kdiff3; sourceTree = "<group>"; };
+		8A02C3B129AC1A4A004DCA69 /* smerge */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = smerge; sourceTree = "<group>"; };
+		8A02C3B229AC1A4A004DCA69 /* winmerge */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = winmerge; sourceTree = "<group>"; };
+		8A02C3B329AC1A4A004DCA69 /* gvimdiff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gvimdiff; sourceTree = "<group>"; };
+		8A02C3B429AC1A4A004DCA69 /* guiffy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = guiffy; sourceTree = "<group>"; };
+		8A02C3B529AC1A4A004DCA69 /* tkdiff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tkdiff; sourceTree = "<group>"; };
+		8A02C3B629AC1A4A004DCA69 /* meld */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = meld; sourceTree = "<group>"; };
+		8A02C3B729AC1A4A004DCA69 /* diffmerge */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = diffmerge; sourceTree = "<group>"; };
+		8A02C3B829AC1A4A004DCA69 /* araxis */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = araxis; sourceTree = "<group>"; };
+		8A02C3B929AC1A4A004DCA69 /* xxdiff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xxdiff; sourceTree = "<group>"; };
+		8A02C3BA29AC1A4A004DCA69 /* examdiff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = examdiff; sourceTree = "<group>"; };
+		8A02C3BB29AC1A4A004DCA69 /* opendiff */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = opendiff; sourceTree = "<group>"; };
+		8A02C3BC29AC1A4A004DCA69 /* git-stage */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-stage"; sourceTree = "<group>"; };
+		8A02C3BD29AC1A4A004DCA69 /* git-sh-setup */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "git-sh-setup"; sourceTree = "<group>"; };
+		8A02C3BE29AC1A4A004DCA69 /* git-update-index */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-update-index"; sourceTree = "<group>"; };
+		8A02C3BF29AC1A4A004DCA69 /* git-remote-fd */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-remote-fd"; sourceTree = "<group>"; };
+		8A02C3C029AC1A4A004DCA69 /* git-write-tree */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-write-tree"; sourceTree = "<group>"; };
+		8A02C3C129AC1A4A004DCA69 /* git-prune-packed */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-prune-packed"; sourceTree = "<group>"; };
+		8A02C3C229AC1A4A004DCA69 /* git-config */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-config"; sourceTree = "<group>"; };
+		8A02C3C329AC1A4A004DCA69 /* git-sh-i18n--envsubst */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-sh-i18n--envsubst"; sourceTree = "<group>"; };
+		8A02C3C429AC1A4A004DCA69 /* git-verify-commit */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-verify-commit"; sourceTree = "<group>"; };
+		8A02C3C529AC1A4A004DCA69 /* git-pull */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-pull"; sourceTree = "<group>"; };
+		8A02C3C629AC1A4A004DCA69 /* git-for-each-ref */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-for-each-ref"; sourceTree = "<group>"; };
+		8A02C3C729AC1A4A004DCA69 /* git-pack-objects */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-pack-objects"; sourceTree = "<group>"; };
+		8A02C3C829AC1A4A004DCA69 /* git-add--interactive */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-add--interactive"; sourceTree = "<group>"; };
+		8A02C3C929AC1A4A004DCA69 /* git-bugreport */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-bugreport"; sourceTree = "<group>"; };
+		8A02C3CA29AC1A4A004DCA69 /* git-hash-object */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-hash-object"; sourceTree = "<group>"; };
+		8A02C3CB29AC1A4A004DCA69 /* git-archimport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-archimport"; sourceTree = "<group>"; };
+		8A02C3CC29AC1A4A004DCA69 /* git-prune */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-prune"; sourceTree = "<group>"; };
+		8A02C3CD29AC1A4A004DCA69 /* git-format-patch */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-format-patch"; sourceTree = "<group>"; };
+		8A02C3CE29AC1A4A004DCA69 /* git-ls-remote */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-ls-remote"; sourceTree = "<group>"; };
+		8A02C3CF29AC1A4A004DCA69 /* git-update-server-info */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-update-server-info"; sourceTree = "<group>"; };
+		8A02C3D029AC1A4A004DCA69 /* git-pack-refs */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-pack-refs"; sourceTree = "<group>"; };
+		8A02C3D129AC1A4A004DCA69 /* git-tag */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-tag"; sourceTree = "<group>"; };
+		8A02C3D229AC1A4A004DCA69 /* git-replace */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-replace"; sourceTree = "<group>"; };
+		8A02C3D329AC1A4A004DCA69 /* git-mergetool */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-mergetool"; sourceTree = "<group>"; };
+		8A02C3D429AC1A4A004DCA69 /* git-whatchanged */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-whatchanged"; sourceTree = "<group>"; };
+		8A02C3D529AC1A4A004DCA69 /* git-sh-i18n */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "git-sh-i18n"; sourceTree = "<group>"; };
+		8A02C3D629AC1A4A004DCA69 /* git-show-branch */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-show-branch"; sourceTree = "<group>"; };
+		8A02C3D729AC1A4A004DCA69 /* git-credential-store */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-credential-store"; sourceTree = "<group>"; };
+		8A02C3D829AC1A4A004DCA69 /* git-diff-files */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-diff-files"; sourceTree = "<group>"; };
+		8A02C3D929AC1A4A004DCA69 /* git-diff-index */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-diff-index"; sourceTree = "<group>"; };
+		8A02C3DA29AC1A4A004DCA69 /* git-bisect */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-bisect"; sourceTree = "<group>"; };
+		8A02C3DB29AC1A4A004DCA69 /* git-request-pull */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-request-pull"; sourceTree = "<group>"; };
+		8A02C3DC29AC1A4A004DCA69 /* git-merge-ours */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-merge-ours"; sourceTree = "<group>"; };
+		8A02C3DD29AC1A4A004DCA69 /* git-init */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-init"; sourceTree = "<group>"; };
+		8A02C3DE29AC1A4A004DCA69 /* git-bundle */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-bundle"; sourceTree = "<group>"; };
+		8A02C3DF29AC1A4A004DCA69 /* git-am */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-am"; sourceTree = "<group>"; };
+		8A02C3E029AC1A4A004DCA69 /* git-merge-subtree */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-merge-subtree"; sourceTree = "<group>"; };
+		8A02C3E129AC1A4A004DCA69 /* git-stripspace */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-stripspace"; sourceTree = "<group>"; };
+		8A02C3E229AC1A4A004DCA69 /* git-fmt-merge-msg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-fmt-merge-msg"; sourceTree = "<group>"; };
+		8A02C3E329AC1A4A004DCA69 /* git-cherry */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-cherry"; sourceTree = "<group>"; };
+		8A02C3E429AC1A4A004DCA69 /* git-difftool */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-difftool"; sourceTree = "<group>"; };
+		8A02C3E529AC1A4A004DCA69 /* git-ls-tree */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-ls-tree"; sourceTree = "<group>"; };
+		8A02C3E629AC1A4A004DCA69 /* git-cherry-pick */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-cherry-pick"; sourceTree = "<group>"; };
+		8A02C3E729AC1A4A004DCA69 /* git-upload-archive */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-upload-archive"; sourceTree = "<group>"; };
+		8A02C3E829AC1A4A004DCA69 /* git-unpack-file */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-unpack-file"; sourceTree = "<group>"; };
+		8A02C3E929AC1A4A004DCA69 /* git-reflog */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-reflog"; sourceTree = "<group>"; };
+		8A02C3EA29AC1A4A004DCA69 /* git-patch-id */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-patch-id"; sourceTree = "<group>"; };
+		8A02C3EB29AC1A4A004DCA69 /* git-submodule */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-submodule"; sourceTree = "<group>"; };
+		8A02C3EC29AC1A4A004DCA69 /* git-cvsimport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-cvsimport"; sourceTree = "<group>"; };
+		8A02C3ED29AC1A4A004DCA69 /* git-fsck-objects */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-fsck-objects"; sourceTree = "<group>"; };
+		8A02C3EE29AC1A4A004DCA69 /* git-mktag */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-mktag"; sourceTree = "<group>"; };
+		8A02C3EF29AC1A4A004DCA69 /* git-remote-ftp */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-remote-ftp"; sourceTree = "<group>"; };
+		8A02C3F029AC1A4A004DCA69 /* git-repack */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-repack"; sourceTree = "<group>"; };
+		8A02C3F129AC1A4A004DCA69 /* git-column */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-column"; sourceTree = "<group>"; };
+		8A02C3F229AC1A4A004DCA69 /* git-status */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-status"; sourceTree = "<group>"; };
+		8A02C3F329AC1A4A004DCA69 /* git-restore */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-restore"; sourceTree = "<group>"; };
+		8A02C3F429AC1A4A004DCA69 /* git-fsck */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-fsck"; sourceTree = "<group>"; };
+		8A02C3F529AC1A4A004DCA69 /* git-quiltimport */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-quiltimport"; sourceTree = "<group>"; };
+		8A02C3F629AC1A4A004DCA69 /* git-get-tar-commit-id */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-get-tar-commit-id"; sourceTree = "<group>"; };
+		8A02C3F729AC1A4A004DCA69 /* git-hook */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-hook"; sourceTree = "<group>"; };
+		8A02C3F829AC1A4A004DCA69 /* git-rev-list */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-rev-list"; sourceTree = "<group>"; };
+		8A02C3F929AC1A4A004DCA69 /* git-apply */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-apply"; sourceTree = "<group>"; };
+		8A02C3FA29AC1A4A004DCA69 /* git-credential-cache */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-credential-cache"; sourceTree = "<group>"; };
+		8A02C3FB29AC1A4A004DCA69 /* git-checkout--worker */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-checkout--worker"; sourceTree = "<group>"; };
+		8A02C3FC29AC1A4A004DCA69 /* git-check-ignore */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-check-ignore"; sourceTree = "<group>"; };
+		8A02C3FD29AC1A4A004DCA69 /* git-multi-pack-index */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-multi-pack-index"; sourceTree = "<group>"; };
+		8A02C3FE29AC1A4A004DCA69 /* git-daemon */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-daemon"; sourceTree = "<group>"; };
+		8A02C3FF29AC1A4A004DCA69 /* git-bisect--helper */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-bisect--helper"; sourceTree = "<group>"; };
+		8A02C40029AC1A4A004DCA69 /* git-annotate */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-annotate"; sourceTree = "<group>"; };
+		8A02C40129AC1A4A004DCA69 /* git-rerere */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-rerere"; sourceTree = "<group>"; };
+		8A02C40229AC1A4A004DCA69 /* git-checkout */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-checkout"; sourceTree = "<group>"; };
+		8A02C40329AC1A4A004DCA69 /* git-credential */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-credential"; sourceTree = "<group>"; };
+		8A02C40429AC1A4A004DCA69 /* git-describe */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-describe"; sourceTree = "<group>"; };
+		8A02C40529AC1A4A004DCA69 /* git-credential-cache--daemon */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-credential-cache--daemon"; sourceTree = "<group>"; };
+		8A02C40629AC1A4A004DCA69 /* git-help */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-help"; sourceTree = "<group>"; };
+		8A02C40729AC1A4A004DCA69 /* git-diagnose */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-diagnose"; sourceTree = "<group>"; };
+		8A02C40829AC1A4A004DCA69 /* git-sparse-checkout */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-sparse-checkout"; sourceTree = "<group>"; };
+		8A02C40929AC1A4A004DCA69 /* git-for-each-repo */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-for-each-repo"; sourceTree = "<group>"; };
+		8A02C40A29AC1A4A004DCA69 /* git-init-db */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-init-db"; sourceTree = "<group>"; };
+		8A02C40B29AC1A4A004DCA69 /* git-submodule--helper */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-submodule--helper"; sourceTree = "<group>"; };
+		8A02C40C29AC1A4A004DCA69 /* git-rm */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-rm"; sourceTree = "<group>"; };
+		8A02C40D29AC1A4A004DCA69 /* git-rev-parse */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-rev-parse"; sourceTree = "<group>"; };
+		8A02C40E29AC1A4A004DCA69 /* git-env--helper */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-env--helper"; sourceTree = "<group>"; };
+		8A02C40F29AC1A4A004DCA69 /* git-archive */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-archive"; sourceTree = "<group>"; };
+		8A02C41029AC1A4A004DCA69 /* git-fast-export */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-fast-export"; sourceTree = "<group>"; };
+		8A02C41129AC1A4A004DCA69 /* git-index-pack */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-index-pack"; sourceTree = "<group>"; };
+		8A02C41229AC1A4A004DCA69 /* git-merge */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-merge"; sourceTree = "<group>"; };
+		8A02C41329AC1A4A004DCA69 /* git-mktree */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-mktree"; sourceTree = "<group>"; };
+		8A02C41429AC1A4A004DCA69 /* git-worktree */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-worktree"; sourceTree = "<group>"; };
+		8A02C41529AC1A4A004DCA69 /* git-merge-one-file */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-merge-one-file"; sourceTree = "<group>"; };
+		8A02C41629AC1A4A004DCA69 /* git-remote-http */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-remote-http"; sourceTree = "<group>"; };
+		8A02C41729AC1A4A004DCA69 /* git-switch */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-switch"; sourceTree = "<group>"; };
+		8A02C41829AC1A4A004DCA69 /* git-fsmonitor--daemon */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-fsmonitor--daemon"; sourceTree = "<group>"; };
+		8A02C41929AC1A4A004DCA69 /* git-fast-import */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-fast-import"; sourceTree = "<group>"; };
+		8A02C41A29AC1A4A004DCA69 /* git-web--browse */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-web--browse"; sourceTree = "<group>"; };
+		8A02C41B29AC1A4A004DCA69 /* git-check-mailmap */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-check-mailmap"; sourceTree = "<group>"; };
+		8A02C41C29AC1A4A004DCA69 /* git-cvsserver */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-cvsserver"; sourceTree = "<group>"; };
+		8A02C41D29AC1A4A004DCA69 /* git-shell */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-shell"; sourceTree = "<group>"; };
+		8A02C41E29AC1A4A004DCA69 /* git-cvsexportcommit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-cvsexportcommit"; sourceTree = "<group>"; };
+		8A02C41F29AC1A4A004DCA69 /* git-http-fetch */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-http-fetch"; sourceTree = "<group>"; };
+		8A02C42029AC1A4A004DCA69 /* git-filter-branch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-filter-branch"; sourceTree = "<group>"; };
+		8A02C42129AC1A4A004DCA69 /* git-var */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-var"; sourceTree = "<group>"; };
+		8A02C42229AC1A4A004DCA69 /* git-show-index */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-show-index"; sourceTree = "<group>"; };
+		8A02C42329AC1A4A004DCA69 /* git-upload-pack */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-upload-pack"; sourceTree = "<group>"; };
+		8A02C42429AC1A4A004DCA69 /* git-merge-tree */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-merge-tree"; sourceTree = "<group>"; };
+		8A02C42529AC1A4A004DCA69 /* git-reset */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-reset"; sourceTree = "<group>"; };
+		8A02C42629AC1A4A004DCA69 /* git-remote-https */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-remote-https"; sourceTree = "<group>"; };
+		8A02C42729AC1A4A004DCA69 /* git-merge-octopus */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "git-merge-octopus"; sourceTree = "<group>"; };
+		8A02C42829AC1A4A004DCA69 /* scalar */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = scalar; sourceTree = "<group>"; };
+		8A02C42929AC1A4A004DCA69 /* git-commit-graph */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-commit-graph"; sourceTree = "<group>"; };
+		8A02C42A29AC1A4A004DCA69 /* git-maintenance */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-maintenance"; sourceTree = "<group>"; };
+		8A02C42B29AC1A4A004DCA69 /* git-shortlog */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-shortlog"; sourceTree = "<group>"; };
+		8A02C42C29AC1A4A004DCA69 /* git-push */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-push"; sourceTree = "<group>"; };
+		8A02C42D29AC1A4A004DCA69 /* git-verify-pack */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-verify-pack"; sourceTree = "<group>"; };
+		8A02C42E29AC1A4A004DCA69 /* git-merge-file */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-merge-file"; sourceTree = "<group>"; };
+		8A02C42F29AC1A4A004DCA69 /* git-http-backend */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-http-backend"; sourceTree = "<group>"; };
+		8A02C43029AC1A4A004DCA69 /* git-fetch-pack */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-fetch-pack"; sourceTree = "<group>"; };
+		8A02C43129AC1A4A004DCA69 /* git-rebase */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-rebase"; sourceTree = "<group>"; };
+		8A02C43229AC1A4A004DCA69 /* git-mv */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-mv"; sourceTree = "<group>"; };
+		8A02C43329AC1A4A004DCA69 /* git */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = git; sourceTree = "<group>"; };
+		8A02C43429AC1A4A004DCA69 /* git-gc */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-gc"; sourceTree = "<group>"; };
+		8A02C43529AC1A4A004DCA69 /* git-check-ref-format */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-check-ref-format"; sourceTree = "<group>"; };
+		8A02C43629AC1A4A004DCA69 /* git-count-objects */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-count-objects"; sourceTree = "<group>"; };
+		8A02C43729AC1A4A004DCA69 /* git-diff-tree */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-diff-tree"; sourceTree = "<group>"; };
+		8A02C43829AC1A4A004DCA69 /* git-remote */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-remote"; sourceTree = "<group>"; };
+		8A02C43929AC1A4A004DCA69 /* git-send-pack */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-send-pack"; sourceTree = "<group>"; };
+		8A02C43A29AC1A4A004DCA69 /* git-pack-redundant */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-pack-redundant"; sourceTree = "<group>"; };
 		8A07612529659EEE00D878DC /* GitDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiff.swift; sourceTree = "<group>"; };
 		8A07612629659EEE00D878DC /* GitDiffHunkLineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffHunkLineType.swift; sourceTree = "<group>"; };
 		8A07612729659EEE00D878DC /* GitDiffParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffParser.swift; sourceTree = "<group>"; };
@@ -508,6 +898,224 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A02C1C329AC1167004DCA69 /* git-arm64 */ = {
+			isa = PBXGroup;
+			children = (
+				8A02C37629AC1A4A004DCA69 /* git-core */,
+			);
+			path = "git-arm64";
+			sourceTree = "<group>";
+		};
+		8A02C37629AC1A4A004DCA69 /* git-core */ = {
+			isa = PBXGroup;
+			children = (
+				8A02C37729AC1A4A004DCA69 /* git-mailsplit */,
+				8A02C37829AC1A4A004DCA69 /* git-fetch */,
+				8A02C37929AC1A4A004DCA69 /* git-lfs */,
+				8A02C37A29AC1A4A004DCA69 /* git-version */,
+				8A02C37B29AC1A4A004DCA69 /* git-clean */,
+				8A02C37C29AC1A4A004DCA69 /* git-diff */,
+				8A02C37D29AC1A4A004DCA69 /* git-log */,
+				8A02C37E29AC1A4A004DCA69 /* git-http-push */,
+				8A02C37F29AC1A4A004DCA69 /* git-commit */,
+				8A02C38029AC1A4A004DCA69 /* git-mergetool--lib */,
+				8A02C38129AC1A4A004DCA69 /* git-merge-index */,
+				8A02C38229AC1A4A004DCA69 /* git-merge-recursive */,
+				8A02C38329AC1A4A004DCA69 /* git-revert */,
+				8A02C38429AC1A4A004DCA69 /* git-blame */,
+				8A02C38529AC1A4A004DCA69 /* git-check-attr */,
+				8A02C38629AC1A4A004DCA69 /* git-stash */,
+				8A02C38729AC1A4A004DCA69 /* git-grep */,
+				8A02C38829AC1A4A004DCA69 /* git-clone */,
+				8A02C38929AC1A4A004DCA69 /* git-notes */,
+				8A02C38A29AC1A4A004DCA69 /* git-unpack-objects */,
+				8A02C38B29AC1A4A004DCA69 /* git-remote-ftps */,
+				8A02C38C29AC1A4A004DCA69 /* git-send-email */,
+				8A02C38D29AC1A4A004DCA69 /* git-update-ref */,
+				8A02C38E29AC1A4A004DCA69 /* git-verify-tag */,
+				8A02C38F29AC1A4A004DCA69 /* git-cat-file */,
+				8A02C39029AC1A4A004DCA69 /* git-ls-files */,
+				8A02C39129AC1A4A004DCA69 /* git-read-tree */,
+				8A02C39229AC1A4A004DCA69 /* git-mailinfo */,
+				8A02C39329AC1A4A004DCA69 /* git-receive-pack */,
+				8A02C39429AC1A4A004DCA69 /* git-merge-base */,
+				8A02C39529AC1A4A004DCA69 /* git-add */,
+				8A02C39629AC1A4A004DCA69 /* git-merge-resolve */,
+				8A02C39729AC1A4A004DCA69 /* git-remote-ext */,
+				8A02C39829AC1A4A004DCA69 /* git-imap-send */,
+				8A02C39929AC1A4A004DCA69 /* git-symbolic-ref */,
+				8A02C39A29AC1A4A004DCA69 /* git-difftool--helper */,
+				8A02C39B29AC1A4A004DCA69 /* git-branch */,
+				8A02C39C29AC1A4A004DCA69 /* git-commit-tree */,
+				8A02C39D29AC1A4A004DCA69 /* git-instaweb */,
+				8A02C39E29AC1A4A004DCA69 /* git-interpret-trailers */,
+				8A02C39F29AC1A4A004DCA69 /* git-name-rev */,
+				8A02C3A029AC1A4A004DCA69 /* git-show-ref */,
+				8A02C3A129AC1A4A004DCA69 /* git-checkout-index */,
+				8A02C3A229AC1A4A004DCA69 /* git-range-diff */,
+				8A02C3A329AC1A4A004DCA69 /* git-show */,
+				8A02C3A429AC1A4A004DCA69 /* mergetools */,
+				8A02C3BC29AC1A4A004DCA69 /* git-stage */,
+				8A02C3BD29AC1A4A004DCA69 /* git-sh-setup */,
+				8A02C3BE29AC1A4A004DCA69 /* git-update-index */,
+				8A02C3BF29AC1A4A004DCA69 /* git-remote-fd */,
+				8A02C3C029AC1A4A004DCA69 /* git-write-tree */,
+				8A02C3C129AC1A4A004DCA69 /* git-prune-packed */,
+				8A02C3C229AC1A4A004DCA69 /* git-config */,
+				8A02C3C329AC1A4A004DCA69 /* git-sh-i18n--envsubst */,
+				8A02C3C429AC1A4A004DCA69 /* git-verify-commit */,
+				8A02C3C529AC1A4A004DCA69 /* git-pull */,
+				8A02C3C629AC1A4A004DCA69 /* git-for-each-ref */,
+				8A02C3C729AC1A4A004DCA69 /* git-pack-objects */,
+				8A02C3C829AC1A4A004DCA69 /* git-add--interactive */,
+				8A02C3C929AC1A4A004DCA69 /* git-bugreport */,
+				8A02C3CA29AC1A4A004DCA69 /* git-hash-object */,
+				8A02C3CB29AC1A4A004DCA69 /* git-archimport */,
+				8A02C3CC29AC1A4A004DCA69 /* git-prune */,
+				8A02C3CD29AC1A4A004DCA69 /* git-format-patch */,
+				8A02C3CE29AC1A4A004DCA69 /* git-ls-remote */,
+				8A02C3CF29AC1A4A004DCA69 /* git-update-server-info */,
+				8A02C3D029AC1A4A004DCA69 /* git-pack-refs */,
+				8A02C3D129AC1A4A004DCA69 /* git-tag */,
+				8A02C3D229AC1A4A004DCA69 /* git-replace */,
+				8A02C3D329AC1A4A004DCA69 /* git-mergetool */,
+				8A02C3D429AC1A4A004DCA69 /* git-whatchanged */,
+				8A02C3D529AC1A4A004DCA69 /* git-sh-i18n */,
+				8A02C3D629AC1A4A004DCA69 /* git-show-branch */,
+				8A02C3D729AC1A4A004DCA69 /* git-credential-store */,
+				8A02C3D829AC1A4A004DCA69 /* git-diff-files */,
+				8A02C3D929AC1A4A004DCA69 /* git-diff-index */,
+				8A02C3DA29AC1A4A004DCA69 /* git-bisect */,
+				8A02C3DB29AC1A4A004DCA69 /* git-request-pull */,
+				8A02C3DC29AC1A4A004DCA69 /* git-merge-ours */,
+				8A02C3DD29AC1A4A004DCA69 /* git-init */,
+				8A02C3DE29AC1A4A004DCA69 /* git-bundle */,
+				8A02C3DF29AC1A4A004DCA69 /* git-am */,
+				8A02C3E029AC1A4A004DCA69 /* git-merge-subtree */,
+				8A02C3E129AC1A4A004DCA69 /* git-stripspace */,
+				8A02C3E229AC1A4A004DCA69 /* git-fmt-merge-msg */,
+				8A02C3E329AC1A4A004DCA69 /* git-cherry */,
+				8A02C3E429AC1A4A004DCA69 /* git-difftool */,
+				8A02C3E529AC1A4A004DCA69 /* git-ls-tree */,
+				8A02C3E629AC1A4A004DCA69 /* git-cherry-pick */,
+				8A02C3E729AC1A4A004DCA69 /* git-upload-archive */,
+				8A02C3E829AC1A4A004DCA69 /* git-unpack-file */,
+				8A02C3E929AC1A4A004DCA69 /* git-reflog */,
+				8A02C3EA29AC1A4A004DCA69 /* git-patch-id */,
+				8A02C3EB29AC1A4A004DCA69 /* git-submodule */,
+				8A02C3EC29AC1A4A004DCA69 /* git-cvsimport */,
+				8A02C3ED29AC1A4A004DCA69 /* git-fsck-objects */,
+				8A02C3EE29AC1A4A004DCA69 /* git-mktag */,
+				8A02C3EF29AC1A4A004DCA69 /* git-remote-ftp */,
+				8A02C3F029AC1A4A004DCA69 /* git-repack */,
+				8A02C3F129AC1A4A004DCA69 /* git-column */,
+				8A02C3F229AC1A4A004DCA69 /* git-status */,
+				8A02C3F329AC1A4A004DCA69 /* git-restore */,
+				8A02C3F429AC1A4A004DCA69 /* git-fsck */,
+				8A02C3F529AC1A4A004DCA69 /* git-quiltimport */,
+				8A02C3F629AC1A4A004DCA69 /* git-get-tar-commit-id */,
+				8A02C3F729AC1A4A004DCA69 /* git-hook */,
+				8A02C3F829AC1A4A004DCA69 /* git-rev-list */,
+				8A02C3F929AC1A4A004DCA69 /* git-apply */,
+				8A02C3FA29AC1A4A004DCA69 /* git-credential-cache */,
+				8A02C3FB29AC1A4A004DCA69 /* git-checkout--worker */,
+				8A02C3FC29AC1A4A004DCA69 /* git-check-ignore */,
+				8A02C3FD29AC1A4A004DCA69 /* git-multi-pack-index */,
+				8A02C3FE29AC1A4A004DCA69 /* git-daemon */,
+				8A02C3FF29AC1A4A004DCA69 /* git-bisect--helper */,
+				8A02C40029AC1A4A004DCA69 /* git-annotate */,
+				8A02C40129AC1A4A004DCA69 /* git-rerere */,
+				8A02C40229AC1A4A004DCA69 /* git-checkout */,
+				8A02C40329AC1A4A004DCA69 /* git-credential */,
+				8A02C40429AC1A4A004DCA69 /* git-describe */,
+				8A02C40529AC1A4A004DCA69 /* git-credential-cache--daemon */,
+				8A02C40629AC1A4A004DCA69 /* git-help */,
+				8A02C40729AC1A4A004DCA69 /* git-diagnose */,
+				8A02C40829AC1A4A004DCA69 /* git-sparse-checkout */,
+				8A02C40929AC1A4A004DCA69 /* git-for-each-repo */,
+				8A02C40A29AC1A4A004DCA69 /* git-init-db */,
+				8A02C40B29AC1A4A004DCA69 /* git-submodule--helper */,
+				8A02C40C29AC1A4A004DCA69 /* git-rm */,
+				8A02C40D29AC1A4A004DCA69 /* git-rev-parse */,
+				8A02C40E29AC1A4A004DCA69 /* git-env--helper */,
+				8A02C40F29AC1A4A004DCA69 /* git-archive */,
+				8A02C41029AC1A4A004DCA69 /* git-fast-export */,
+				8A02C41129AC1A4A004DCA69 /* git-index-pack */,
+				8A02C41229AC1A4A004DCA69 /* git-merge */,
+				8A02C41329AC1A4A004DCA69 /* git-mktree */,
+				8A02C41429AC1A4A004DCA69 /* git-worktree */,
+				8A02C41529AC1A4A004DCA69 /* git-merge-one-file */,
+				8A02C41629AC1A4A004DCA69 /* git-remote-http */,
+				8A02C41729AC1A4A004DCA69 /* git-switch */,
+				8A02C41829AC1A4A004DCA69 /* git-fsmonitor--daemon */,
+				8A02C41929AC1A4A004DCA69 /* git-fast-import */,
+				8A02C41A29AC1A4A004DCA69 /* git-web--browse */,
+				8A02C41B29AC1A4A004DCA69 /* git-check-mailmap */,
+				8A02C41C29AC1A4A004DCA69 /* git-cvsserver */,
+				8A02C41D29AC1A4A004DCA69 /* git-shell */,
+				8A02C41E29AC1A4A004DCA69 /* git-cvsexportcommit */,
+				8A02C41F29AC1A4A004DCA69 /* git-http-fetch */,
+				8A02C42029AC1A4A004DCA69 /* git-filter-branch */,
+				8A02C42129AC1A4A004DCA69 /* git-var */,
+				8A02C42229AC1A4A004DCA69 /* git-show-index */,
+				8A02C42329AC1A4A004DCA69 /* git-upload-pack */,
+				8A02C42429AC1A4A004DCA69 /* git-merge-tree */,
+				8A02C42529AC1A4A004DCA69 /* git-reset */,
+				8A02C42629AC1A4A004DCA69 /* git-remote-https */,
+				8A02C42729AC1A4A004DCA69 /* git-merge-octopus */,
+				8A02C42829AC1A4A004DCA69 /* scalar */,
+				8A02C42929AC1A4A004DCA69 /* git-commit-graph */,
+				8A02C42A29AC1A4A004DCA69 /* git-maintenance */,
+				8A02C42B29AC1A4A004DCA69 /* git-shortlog */,
+				8A02C42C29AC1A4A004DCA69 /* git-push */,
+				8A02C42D29AC1A4A004DCA69 /* git-verify-pack */,
+				8A02C42E29AC1A4A004DCA69 /* git-merge-file */,
+				8A02C42F29AC1A4A004DCA69 /* git-http-backend */,
+				8A02C43029AC1A4A004DCA69 /* git-fetch-pack */,
+				8A02C43129AC1A4A004DCA69 /* git-rebase */,
+				8A02C43229AC1A4A004DCA69 /* git-mv */,
+				8A02C43329AC1A4A004DCA69 /* git */,
+				8A02C43429AC1A4A004DCA69 /* git-gc */,
+				8A02C43529AC1A4A004DCA69 /* git-check-ref-format */,
+				8A02C43629AC1A4A004DCA69 /* git-count-objects */,
+				8A02C43729AC1A4A004DCA69 /* git-diff-tree */,
+				8A02C43829AC1A4A004DCA69 /* git-remote */,
+				8A02C43929AC1A4A004DCA69 /* git-send-pack */,
+				8A02C43A29AC1A4A004DCA69 /* git-pack-redundant */,
+			);
+			path = "git-core";
+			sourceTree = "<group>";
+		};
+		8A02C3A429AC1A4A004DCA69 /* mergetools */ = {
+			isa = PBXGroup;
+			children = (
+				8A02C3A529AC1A4A004DCA69 /* vimdiff */,
+				8A02C3A629AC1A4A004DCA69 /* codecompare */,
+				8A02C3A729AC1A4A004DCA69 /* bc */,
+				8A02C3A829AC1A4A004DCA69 /* nvimdiff */,
+				8A02C3A929AC1A4A004DCA69 /* emerge */,
+				8A02C3AA29AC1A4A004DCA69 /* diffuse */,
+				8A02C3AB29AC1A4A004DCA69 /* deltawalker */,
+				8A02C3AC29AC1A4A004DCA69 /* tortoisemerge */,
+				8A02C3AD29AC1A4A004DCA69 /* kompare */,
+				8A02C3AE29AC1A4A004DCA69 /* p4merge */,
+				8A02C3AF29AC1A4A004DCA69 /* ecmerge */,
+				8A02C3B029AC1A4A004DCA69 /* kdiff3 */,
+				8A02C3B129AC1A4A004DCA69 /* smerge */,
+				8A02C3B229AC1A4A004DCA69 /* winmerge */,
+				8A02C3B329AC1A4A004DCA69 /* gvimdiff */,
+				8A02C3B429AC1A4A004DCA69 /* guiffy */,
+				8A02C3B529AC1A4A004DCA69 /* tkdiff */,
+				8A02C3B629AC1A4A004DCA69 /* meld */,
+				8A02C3B729AC1A4A004DCA69 /* diffmerge */,
+				8A02C3B829AC1A4A004DCA69 /* araxis */,
+				8A02C3B929AC1A4A004DCA69 /* xxdiff */,
+				8A02C3BA29AC1A4A004DCA69 /* examdiff */,
+				8A02C3BB29AC1A4A004DCA69 /* opendiff */,
+			);
+			path = mergetools;
+			sourceTree = "<group>";
+		};
 		8A07612429659EE400D878DC /* GitDiff */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +1332,13 @@
 				8A48D14127FDA8A0007803D2 /* Shell.swift */,
 				8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */,
 				8AFBD54329702A0600525BF7 /* Commit.swift */,
+				8ACCD20A297F265B0020BF84 /* GitReferenceList.swift */,
+				8ACCD28B297F265B0020BF84 /* RepositoryReferenceName.swift */,
+				8ACCD278297F265B0020BF84 /* GitFileStatusList.swift */,
+				8ACCD279297F265B0020BF84 /* GitFileStatus.swift */,
+				8ACCD288297F265B0020BF84 /* RepositoryReference.swift */,
+				8ACCD26C297F265B0020BF84 /* GitReference.swift */,
+				8ACCD20C297F265B0020BF84 /* GitReferenceName.swift */,
 				8AFBD54829702A4200525BF7 /* GitDiffLine.swift */,
 			);
 			path = Models;
@@ -751,6 +1366,7 @@
 		8AAF7B0A29AA803B0007CE8D /* Executables */ = {
 			isa = PBXGroup;
 			children = (
+				8A02C1C329AC1167004DCA69 /* git-arm64 */,
 			);
 			path = Executables;
 			sourceTree = "<group>";
@@ -780,9 +1396,7 @@
 		8ACCD209297F265B0020BF84 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8ACCD20A297F265B0020BF84 /* GitReferenceList.swift */,
 				8ACCD20B297F265B0020BF84 /* GitRepositoryErrorFormatter.swift */,
-				8ACCD20C297F265B0020BF84 /* GitReferenceName.swift */,
 				8ACCD20D297F265B0020BF84 /* Tasks */,
 				8ACCD25E297F265B0020BF84 /* GitCredentialsProvider.swift */,
 				8ACCD25F297F265B0020BF84 /* GitLogRecord.swift */,
@@ -792,10 +1406,7 @@
 				8ACCD263297F265B0020BF84 /* FileManagement */,
 				8ACCD26A297F265B0020BF84 /* GitRepository.swift */,
 				8ACCD26B297F265B0020BF84 /* GitRemoteList.swift */,
-				8ACCD26C297F265B0020BF84 /* GitReference.swift */,
 				8ACCD26D297F265B0020BF84 /* GitRepository */,
-				8ACCD278297F265B0020BF84 /* GitFileStatusList.swift */,
-				8ACCD279297F265B0020BF84 /* GitFileStatus.swift */,
 				8ACCD27A297F265B0020BF84 /* GitTagRecord.swift */,
 				8ACCD27B297F265B0020BF84 /* GitLogRecordList.swift */,
 				8ACCD27C297F265B0020BF84 /* GitTagRecordList.swift */,
@@ -1135,10 +1746,8 @@
 			children = (
 				8ACCD286297F265B0020BF84 /* RepositoryError.swift */,
 				8ACCD287297F265B0020BF84 /* CredentialsProvider.swift */,
-				8ACCD288297F265B0020BF84 /* RepositoryReference.swift */,
 				8ACCD289297F265B0020BF84 /* RepositoryDelegate.swift */,
 				8ACCD28A297F265B0020BF84 /* RepositoryTagRecord.swift */,
-				8ACCD28B297F265B0020BF84 /* RepositoryReferenceName.swift */,
 				8ACCD28C297F265B0020BF84 /* Repository.swift */,
 				8ACCD28D297F265B0020BF84 /* RepositoryRemote.swift */,
 				8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */,
@@ -1350,26 +1959,221 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A02C44229AC1A4B004DCA69 /* git-http-push in Resources */,
+				8A02C4BD29AC1A4B004DCA69 /* git-credential-cache in Resources */,
+				8A02C45B29AC1A4B004DCA69 /* git-remote-ext in Resources */,
+				8A02C47E29AC1A4B004DCA69 /* opendiff in Resources */,
+				8A02C48029AC1A4B004DCA69 /* git-sh-setup in Resources */,
+				8A02C4D929AC1A4B004DCA69 /* git-remote-http in Resources */,
+				8A02C49B29AC1A4B004DCA69 /* git-diff-files in Resources */,
+				8A02C4A229AC1A4B004DCA69 /* git-am in Resources */,
+				8A02C4A429AC1A4B004DCA69 /* git-stripspace in Resources */,
 				8A8C667D2964682B00A774D7 /* Inter-Italic.otf in Resources */,
+				8A02C45429AC1A4B004DCA69 /* git-ls-files in Resources */,
+				8A02C45E29AC1A4B004DCA69 /* git-difftool--helper in Resources */,
+				8A02C4D129AC1A4B004DCA69 /* git-env--helper in Resources */,
 				8A48D11827FD9E2E007803D2 /* Preview Assets.xcassets in Resources */,
+				8A02C46129AC1A4B004DCA69 /* git-instaweb in Resources */,
+				8A02C44D29AC1A4B004DCA69 /* git-notes in Resources */,
+				8A02C44029AC1A4B004DCA69 /* git-diff in Resources */,
+				8A02C47F29AC1A4B004DCA69 /* git-stage in Resources */,
+				8A02C4B329AC1A4B004DCA69 /* git-repack in Resources */,
 				8A8C66752964682B00A774D7 /* Inter-Light.otf in Resources */,
+				8A02C4AC29AC1A4B004DCA69 /* git-reflog in Resources */,
+				8A02C44B29AC1A4B004DCA69 /* git-grep in Resources */,
+				8A02C49329AC1A4B004DCA69 /* git-pack-refs in Resources */,
+				8A02C4DC29AC1A4B004DCA69 /* git-fast-import in Resources */,
+				8A02C4EB29AC1A4B004DCA69 /* scalar in Resources */,
+				8A02C49229AC1A4B004DCA69 /* git-update-server-info in Resources */,
+				8A02C4F529AC1A4B004DCA69 /* git-mv in Resources */,
+				8A02C4AB29AC1A4B004DCA69 /* git-unpack-file in Resources */,
+				8A02C44929AC1A4B004DCA69 /* git-check-attr in Resources */,
+				8A02C49C29AC1A4B004DCA69 /* git-diff-index in Resources */,
+				8A02C46229AC1A4B004DCA69 /* git-interpret-trailers in Resources */,
+				8A02C47329AC1A4B004DCA69 /* kdiff3 in Resources */,
+				8A02C4C129AC1A4B004DCA69 /* git-daemon in Resources */,
+				8A02C49D29AC1A4B004DCA69 /* git-bisect in Resources */,
+				8A02C48529AC1A4B004DCA69 /* git-config in Resources */,
 				8A8C667A2964682B00A774D7 /* Inter-BlackItalic.otf in Resources */,
+				8A02C4EC29AC1A4B004DCA69 /* git-commit-graph in Resources */,
 				8A8C66792964682B00A774D7 /* Inter-SemiBold.otf in Resources */,
+				8A02C4C729AC1A4B004DCA69 /* git-describe in Resources */,
+				8A02C48B29AC1A4B004DCA69 /* git-add--interactive in Resources */,
+				8A02C4B529AC1A4B004DCA69 /* git-status in Resources */,
+				8A02C48A29AC1A4B004DCA69 /* git-pack-objects in Resources */,
+				8A02C49729AC1A4B004DCA69 /* git-whatchanged in Resources */,
+				8A02C49129AC1A4B004DCA69 /* git-ls-remote in Resources */,
+				8A02C4FD29AC1A4B004DCA69 /* git-pack-redundant in Resources */,
+				8A02C4F629AC1A4B004DCA69 /* git in Resources */,
+				8A02C4EA29AC1A4B004DCA69 /* git-merge-octopus in Resources */,
+				8A02C4A129AC1A4B004DCA69 /* git-bundle in Resources */,
+				8A02C4B129AC1A4B004DCA69 /* git-mktag in Resources */,
+				8A02C4CF29AC1A4B004DCA69 /* git-rm in Resources */,
+				8A02C46B29AC1A4B004DCA69 /* nvimdiff in Resources */,
+				8A02C4DA29AC1A4B004DCA69 /* git-switch in Resources */,
+				8A02C4A629AC1A4B004DCA69 /* git-cherry in Resources */,
+				8A02C46829AC1A4B004DCA69 /* vimdiff in Resources */,
+				8A02C4D829AC1A4B004DCA69 /* git-merge-one-file in Resources */,
+				8A02C48D29AC1A4B004DCA69 /* git-hash-object in Resources */,
+				8A02C48129AC1A4B004DCA69 /* git-update-index in Resources */,
+				8A02C4F029AC1A4B004DCA69 /* git-verify-pack in Resources */,
+				8A02C4E129AC1A4B004DCA69 /* git-cvsexportcommit in Resources */,
+				8A02C4F829AC1A4B004DCA69 /* git-check-ref-format in Resources */,
+				8A02C4AF29AC1A4B004DCA69 /* git-cvsimport in Resources */,
+				8A02C4E029AC1A4B004DCA69 /* git-shell in Resources */,
+				8A02C48629AC1A4B004DCA69 /* git-sh-i18n--envsubst in Resources */,
+				8A02C4B429AC1A4B004DCA69 /* git-column in Resources */,
 				8A8C66742964682B00A774D7 /* Inter-Thin.otf in Resources */,
+				8A02C4CB29AC1A4B004DCA69 /* git-sparse-checkout in Resources */,
+				8A02C4F429AC1A4B004DCA69 /* git-rebase in Resources */,
+				8A02C44829AC1A4B004DCA69 /* git-blame in Resources */,
+				8A02C4B029AC1A4B004DCA69 /* git-fsck-objects in Resources */,
 				8A8C66832964682B00A774D7 /* Inter-LightItalic.otf in Resources */,
+				8A02C45C29AC1A4B004DCA69 /* git-imap-send in Resources */,
+				8A02C47429AC1A4B004DCA69 /* smerge in Resources */,
+				8A02C48329AC1A4B004DCA69 /* git-write-tree in Resources */,
+				8A02C4ED29AC1A4B004DCA69 /* git-maintenance in Resources */,
+				8A02C4D529AC1A4B004DCA69 /* git-merge in Resources */,
+				8A02C44729AC1A4B004DCA69 /* git-revert in Resources */,
+				8A02C4C429AC1A4B004DCA69 /* git-rerere in Resources */,
+				8A02C44C29AC1A4B004DCA69 /* git-clone in Resources */,
 				8A8C66782964682B00A774D7 /* Inter-Medium.otf in Resources */,
+				8A02C4E529AC1A4B004DCA69 /* git-show-index in Resources */,
+				8A02C47729AC1A4B004DCA69 /* guiffy in Resources */,
+				8A02C46C29AC1A4B004DCA69 /* emerge in Resources */,
+				8A02C48F29AC1A4B004DCA69 /* git-prune in Resources */,
 				8A8C66722964682B00A774D7 /* Inter-Regular.otf in Resources */,
+				8A02C4CA29AC1A4B004DCA69 /* git-diagnose in Resources */,
+				8A02C45F29AC1A4B004DCA69 /* git-branch in Resources */,
+				8A02C45229AC1A4B004DCA69 /* git-verify-tag in Resources */,
+				8A02C44129AC1A4B004DCA69 /* git-log in Resources */,
+				8A02C4C229AC1A4B004DCA69 /* git-bisect--helper in Resources */,
+				8A02C45729AC1A4B004DCA69 /* git-receive-pack in Resources */,
+				8A02C4B829AC1A4B004DCA69 /* git-quiltimport in Resources */,
+				8A02C44A29AC1A4B004DCA69 /* git-stash in Resources */,
+				8A02C46029AC1A4B004DCA69 /* git-commit-tree in Resources */,
+				8A02C4FA29AC1A4B004DCA69 /* git-diff-tree in Resources */,
+				8A02C44629AC1A4B004DCA69 /* git-merge-recursive in Resources */,
+				8A02C47029AC1A4B004DCA69 /* kompare in Resources */,
+				8A02C4E929AC1A4B004DCA69 /* git-remote-https in Resources */,
+				8A02C4D329AC1A4B004DCA69 /* git-fast-export in Resources */,
+				8A02C49429AC1A4B004DCA69 /* git-tag in Resources */,
+				8A02C49A29AC1A4B004DCA69 /* git-credential-store in Resources */,
+				8A02C46529AC1A4B004DCA69 /* git-checkout-index in Resources */,
+				8A02C4A729AC1A4B004DCA69 /* git-difftool in Resources */,
+				8A02C49029AC1A4B004DCA69 /* git-format-patch in Resources */,
+				8A02C4E829AC1A4B004DCA69 /* git-reset in Resources */,
+				8A02C4D429AC1A4B004DCA69 /* git-index-pack in Resources */,
+				8A02C49F29AC1A4B004DCA69 /* git-merge-ours in Resources */,
+				8A02C4DB29AC1A4B004DCA69 /* git-fsmonitor--daemon in Resources */,
+				8A02C47129AC1A4B004DCA69 /* p4merge in Resources */,
 				8A8C66762964682B00A774D7 /* Inter-V.ttf in Resources */,
+				8A02C4C329AC1A4B004DCA69 /* git-annotate in Resources */,
+				8A02C49529AC1A4B004DCA69 /* git-replace in Resources */,
+				8A02C4E729AC1A4B004DCA69 /* git-merge-tree in Resources */,
+				8A02C4E429AC1A4B004DCA69 /* git-var in Resources */,
+				8A02C4C629AC1A4B004DCA69 /* git-credential in Resources */,
 				8A8C66822964682B00A774D7 /* Inter-BoldItalic.otf in Resources */,
+				8A02C4C529AC1A4B004DCA69 /* git-checkout in Resources */,
+				8A02C4DD29AC1A4B004DCA69 /* git-web--browse in Resources */,
+				8A02C4AD29AC1A4B004DCA69 /* git-patch-id in Resources */,
 				8A8C667C2964682B00A774D7 /* Inter-Black.otf in Resources */,
+				8A02C46729AC1A4B004DCA69 /* git-show in Resources */,
+				8A02C4FB29AC1A4B004DCA69 /* git-remote in Resources */,
+				8A02C4EE29AC1A4B004DCA69 /* git-shortlog in Resources */,
+				8A02C46F29AC1A4B004DCA69 /* tortoisemerge in Resources */,
 				8A8C667F2964682B00A774D7 /* Inter-ThinItalic.otf in Resources */,
+				8A02C4A929AC1A4B004DCA69 /* git-cherry-pick in Resources */,
+				8A02C43E29AC1A4B004DCA69 /* git-version in Resources */,
 				8A48D11527FD9E2E007803D2 /* Assets.xcassets in Resources */,
+				8A02C4C929AC1A4B004DCA69 /* git-help in Resources */,
+				8A02C46A29AC1A4B004DCA69 /* bc in Resources */,
+				8A02C4D229AC1A4B004DCA69 /* git-archive in Resources */,
+				8A02C4D629AC1A4B004DCA69 /* git-mktree in Resources */,
+				8A02C43C29AC1A4B004DCA69 /* git-fetch in Resources */,
+				8A02C49829AC1A4B004DCA69 /* git-sh-i18n in Resources */,
+				8A02C47C29AC1A4B004DCA69 /* xxdiff in Resources */,
+				8A02C4B929AC1A4B004DCA69 /* git-get-tar-commit-id in Resources */,
+				8A02C4B629AC1A4B004DCA69 /* git-restore in Resources */,
 				8A8C66802964682B00A774D7 /* Inter-ExtraLight.otf in Resources */,
+				8A02C4E329AC1A4B004DCA69 /* git-filter-branch in Resources */,
+				8A02C47A29AC1A4B004DCA69 /* diffmerge in Resources */,
+				8A02C4AE29AC1A4B004DCA69 /* git-submodule in Resources */,
+				8A02C43B29AC1A4B004DCA69 /* git-mailsplit in Resources */,
+				8A02C4BE29AC1A4B004DCA69 /* git-checkout--worker in Resources */,
+				8A02C46429AC1A4B004DCA69 /* git-show-ref in Resources */,
+				8A02C45329AC1A4B004DCA69 /* git-cat-file in Resources */,
+				8A02C49E29AC1A4B004DCA69 /* git-request-pull in Resources */,
+				8A02C47229AC1A4B004DCA69 /* ecmerge in Resources */,
+				8A02C4AA29AC1A4B004DCA69 /* git-upload-archive in Resources */,
+				8A02C4D729AC1A4B004DCA69 /* git-worktree in Resources */,
+				8A02C44529AC1A4B004DCA69 /* git-merge-index in Resources */,
+				8A02C4CC29AC1A4B004DCA69 /* git-for-each-repo in Resources */,
+				8A02C4B729AC1A4B004DCA69 /* git-fsck in Resources */,
+				8A02C46929AC1A4B004DCA69 /* codecompare in Resources */,
+				8A02C49629AC1A4B004DCA69 /* git-mergetool in Resources */,
+				8A02C45029AC1A4B004DCA69 /* git-send-email in Resources */,
+				8A02C47629AC1A4B004DCA69 /* gvimdiff in Resources */,
+				8A02C47929AC1A4B004DCA69 /* meld in Resources */,
+				8A02C45D29AC1A4B004DCA69 /* git-symbolic-ref in Resources */,
+				8A02C4E629AC1A4B004DCA69 /* git-upload-pack in Resources */,
+				8A02C4BA29AC1A4B004DCA69 /* git-hook in Resources */,
+				8A02C44429AC1A4B004DCA69 /* git-mergetool--lib in Resources */,
+				8A02C4CE29AC1A4B004DCA69 /* git-submodule--helper in Resources */,
+				8A02C4F929AC1A4B004DCA69 /* git-count-objects in Resources */,
+				8A02C45A29AC1A4B004DCA69 /* git-merge-resolve in Resources */,
+				8A02C4F329AC1A4B004DCA69 /* git-fetch-pack in Resources */,
+				8A02C48E29AC1A4B004DCA69 /* git-archimport in Resources */,
 				8A8C66772964682B00A774D7 /* Inter-ExtraLightItalic.otf in Resources */,
+				8A02C48429AC1A4B004DCA69 /* git-prune-packed in Resources */,
+				8A02C4BB29AC1A4B004DCA69 /* git-rev-list in Resources */,
+				8A02C4A329AC1A4B004DCA69 /* git-merge-subtree in Resources */,
+				8A02C44E29AC1A4B004DCA69 /* git-unpack-objects in Resources */,
+				8A02C49929AC1A4B004DCA69 /* git-show-branch in Resources */,
 				8A8C66812964682B00A774D7 /* Inter-ExtraBoldItalic.otf in Resources */,
+				8A02C4FC29AC1A4B004DCA69 /* git-send-pack in Resources */,
+				8A02C47B29AC1A4B004DCA69 /* araxis in Resources */,
+				8A02C4BC29AC1A4B004DCA69 /* git-apply in Resources */,
+				8A02C48929AC1A4B004DCA69 /* git-for-each-ref in Resources */,
+				8A02C47D29AC1A4B004DCA69 /* examdiff in Resources */,
+				8A02C4BF29AC1A4B004DCA69 /* git-check-ignore in Resources */,
+				8A02C4E229AC1A4B004DCA69 /* git-http-fetch in Resources */,
+				8A02C4F229AC1A4B004DCA69 /* git-http-backend in Resources */,
+				8A02C4DF29AC1A4B004DCA69 /* git-cvsserver in Resources */,
+				8A02C45629AC1A4B004DCA69 /* git-mailinfo in Resources */,
 				8A8C667B2964682B00A774D7 /* Inter-MediumItalic.otf in Resources */,
+				8A02C45829AC1A4B004DCA69 /* git-merge-base in Resources */,
+				8A02C45529AC1A4B004DCA69 /* git-read-tree in Resources */,
+				8A02C48729AC1A4B004DCA69 /* git-verify-commit in Resources */,
+				8A02C4C829AC1A4B004DCA69 /* git-credential-cache--daemon in Resources */,
+				8A02C46629AC1A4B004DCA69 /* git-range-diff in Resources */,
+				8A02C4DE29AC1A4B004DCA69 /* git-check-mailmap in Resources */,
+				8A02C4D029AC1A4B004DCA69 /* git-rev-parse in Resources */,
+				8A02C48829AC1A4B004DCA69 /* git-pull in Resources */,
+				8A02C4F129AC1A4B004DCA69 /* git-merge-file in Resources */,
+				8A02C43F29AC1A4B004DCA69 /* git-clean in Resources */,
+				8A02C4CD29AC1A4B004DCA69 /* git-init-db in Resources */,
 				8A8C66712964682B00A774D7 /* Inter-Bold.otf in Resources */,
+				8A02C45929AC1A4B004DCA69 /* git-add in Resources */,
+				8A02C4A829AC1A4B004DCA69 /* git-ls-tree in Resources */,
+				8A02C47529AC1A4B004DCA69 /* winmerge in Resources */,
+				8A02C4EF29AC1A4B004DCA69 /* git-push in Resources */,
+				8A02C44329AC1A4B004DCA69 /* git-commit in Resources */,
+				8A02C44F29AC1A4B004DCA69 /* git-remote-ftps in Resources */,
+				8A02C4C029AC1A4B004DCA69 /* git-multi-pack-index in Resources */,
+				8A02C45129AC1A4B004DCA69 /* git-update-ref in Resources */,
+				8A02C43D29AC1A4B004DCA69 /* git-lfs in Resources */,
+				8A02C4A029AC1A4B004DCA69 /* git-init in Resources */,
 				8A8C667E2964682B00A774D7 /* Inter-ExtraBold.otf in Resources */,
+				8A02C48229AC1A4B004DCA69 /* git-remote-fd in Resources */,
+				8A02C46E29AC1A4B004DCA69 /* deltawalker in Resources */,
+				8A02C4A529AC1A4B004DCA69 /* git-fmt-merge-msg in Resources */,
+				8A02C4B229AC1A4B004DCA69 /* git-remote-ftp in Resources */,
+				8A02C48C29AC1A4B004DCA69 /* git-bugreport in Resources */,
+				8A02C4F729AC1A4B004DCA69 /* git-gc in Resources */,
+				8A02C46D29AC1A4B004DCA69 /* diffuse in Resources */,
+				8A02C46329AC1A4B004DCA69 /* git-name-rev in Resources */,
+				8A02C47829AC1A4B004DCA69 /* tkdiff in Resources */,
 				8A8C66732964682B00A774D7 /* Inter-SemiBoldItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

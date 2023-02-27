@@ -35,7 +35,7 @@ protocol TaskRequirable: AnyObject {
 class RepositoryTask {
     
     /// A path to git executable file on the disk
-    static var executablePath = "/usr/bin/git"
+    static var executablePath = Executable.git.url.path()
 
     // MARK: - Private
     private(set) weak var repository: GitRepository!
@@ -82,15 +82,15 @@ class RepositoryTask {
             commandLine.append("-C")
             commandLine.append(path)
         }
-        
+
         commandLine.append(__self.name)
         commandLine.append(contentsOf: parameters)
-        
-        // notify about a task 
+        // print(commandLine)
+        // notify about a task
         repository.delegate?.repository(repository, willStartTaskWithArguments: commandLine)
-        
+
         var environmentVariables = [String]()
-        
+
         // Git need to know $HOME environment variable
         if let home = getenv("HOME") {
             environmentVariables.append("HOME=\(String(cString:home))")
@@ -100,14 +100,14 @@ class RepositoryTask {
             if self?.output == nil {
                 self?.output = ""
             }
-            
+
             self?.output?.append(output)
-            
+
             DispatchQueue.main.async {
                 self?.__self.handle(output: output)
             }
         })
-        
+
         guard let process = process else {
             try __self.finish(terminationStatus: -1)
             return
@@ -117,10 +117,10 @@ class RepositoryTask {
             // Clean up
             repository.activeTask = nil
         }
-        
+
         try __self.finish(terminationStatus: process.terminationStatus)
     }
-    
+
     final func cancel() {
         process?.cancel()
         process = nil

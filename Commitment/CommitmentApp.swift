@@ -102,10 +102,13 @@ struct CommitmentApp: App {
                 guard let repo else { return }
 
                 self.repo = repo
-                repo.initializeFullRepo()
                 repo.refreshBranch()
                 repo.refreshDiffsAndStatus()
                 repo.startMonitor()
+                Task {
+                    let result = try? await repo.shell.diff()
+                    print("RESULT \(result)")
+                }
             })
 
         })

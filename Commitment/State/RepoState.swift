@@ -13,7 +13,6 @@ import Boutique
 class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     @Published var activity = ActivityState()
 
-    var repository: GitRepository?
     var shell: Shell
 
     var monitor: FolderContentMonitor? = nil
@@ -49,30 +48,23 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         self.commits = commits
         self.status = status
         self.diffs = diffs
-//         print("""
-// init RepoState: \(folderName) with:
-//     - \(commits.count) commits
-//     - \(status.count) status files
-//     - \(diffs.count) diffs
-// """)
+        print("""
+init RepoState: \(folderName) with:
+    - \(commits.count) commits
+    - \(status.count) status files
+    - \(diffs.count) diffs
+""")
     }
 
     deinit {
         monitor?.stop()
     }
 
-    func initializeFullRepo() {
-        guard let repo = try? GitRepository(atPath: path.path())  else {
-            print("can't open repo at \(path.absoluteString)")
-            return
-        }
-        self.repository = repo
-    }
-
     func startMonitor() {
         monitor = FolderContentMonitor(url: path, latency: 1) { [weak self] event in
             // TODO: Figure out better filtering... Perhaps based on .gitignore?
             // skip lock events
+            // print("[File Change] Refreshing Branch \(event.url.lastPathComponent) (\(event.change))")
             if event.filename == "index.lock", event.filename == ".DS_Store" {
                 return
             }
@@ -85,7 +77,9 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
                     self?.refreshBranch()
                 }
             }
-        
+
+            print("[File Change] TEMP \(event.url.lastPathComponent)")
+            self?.refreshDiffsAndStatus()
             if !isGitFolderChange {
                 // made a commit
                 Throttler.throttle( delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) {
@@ -114,12 +108,14 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     func refreshDiffsAndStatus() {
         /// TODO: this should run paralell
         /// Update on background thread
-        Task(priority: .background) {
+        Task {
             let diffs = try? await self.shell.diff()
-            let status = try? repository?.listStatus()
+            let status = try? await self.shell.status()
             let commits = try? await getCommits()
             let localCommits = try? await getLocalCommits()
             /// Publish on main thread
+
+            print("DIFFS: \(diffs)")
             await MainActor.run {
                 if let diffs {
                     self.diffs = diffs
@@ -137,7 +133,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     }
 
     private func getCommits() async throws -> [GitLogRecord]? {
-        let commits = try? repository?.listLogRecords().records
+        let commits = try? await self.shell.listLogRecords().records
         guard let commits else { return nil }
         return commits
     }
@@ -145,7 +141,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     private func getLocalCommits() async throws -> [GitLogRecord]? {
         let options = GitLogOptions()
         options.compareReference = .init(lhsReferenceName: "origin/HEAD", rhsReferenceName: "HEAD")
-        let localCommits = try? repository?.listLogRecords(options: options).records
+        let localCommits = try? await self.shell.listLogRecords(options: options).records
         guard let localCommits else { return nil }
 
         let updatedLocalCommits = localCommits.map { localCommit in
@@ -160,8 +156,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         /// Update on background thread
         Task(priority: .background) {
             let branch = try? await self.shell.branch()
-            let refs = try? repository?.listReferences()
-
+            let refs = try? await shell.listReferences()
             /// Publish on main thread
             await MainActor.run {
                 if let branch {

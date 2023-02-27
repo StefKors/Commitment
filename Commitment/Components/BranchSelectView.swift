@@ -32,7 +32,7 @@ struct BranchSelectView: View {
                     Task(priority: .background, operation: {
                         print("checkout branch \(repo.branches[index].name.localName)")
                         do {
-                            try repo.repository?.checkout(reference: repo.branches[index])
+                            // try await repo.shell.checkout(repo.branches[index].name.fullName)
                         } catch {
                             print(error.localizedDescription)
                         }
