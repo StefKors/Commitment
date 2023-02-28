@@ -10,6 +10,13 @@ import SwiftUI
 import Boutique
 // https://developer.apple.com/documentation/appkit/nscolor/3000782-controlaccentcolor
 
+extension Store where Item == RepoState {
+    // Initialize a Store
+    static let repositoryStore = Store<RepoState>(
+        storage: SQLiteStorageEngine.default(appendingPath: "RepositoryStore")
+    )
+}
+
 class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     @Published var activity = ActivityState()
 

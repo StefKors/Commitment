@@ -9,23 +9,56 @@ import SwiftUI
 
 struct SettingsWindow: View {
     private enum Tabs: Hashable {
-        case general, advanced
+        case general, advanced, credentials
     }
+
+    @State private var selectedMenu: Tabs = .general
+
     var body: some View {
-        TabView {
-            GeneralSettingsView()
-                .tabItem {
-                    Label("General", systemImage: "gear")
-                }
-                .tag(Tabs.general)
-            AdvancedSettingsView()
-                .tabItem {
-                    Label("Advanced", systemImage: "star")
-                }
-                .tag(Tabs.advanced)
+        HStack(spacing: 0) {
+            List(selection: $selectedMenu) {
+                HStack {
+                    Image(systemName: "slider.horizontal.3")
+                        .imageScale(.small)
+                        .fontWeight(.bold)
+                        .padding(4)
+                        .frame(width: 20, height: 20, alignment: .center)
+                        .background {
+                            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                                .fill(.blue)
+                                .shadow(radius: 2)
+                        }
+
+                    Text("Editor Defaults")
+                }.tag(Tabs.general)
+
+                HStack {
+                    Image(systemName: "key.fill")
+                        .imageScale(.small)
+                        .fontWeight(.bold)
+                        .padding(4)
+                        .frame(width: 20, height: 20, alignment: .center)
+                        .background {
+                            RoundedRectangle(cornerRadius: 6, style: .continuous)
+                                .fill(.black)
+                                .shadow(radius: 2)
+                        }
+
+                    Text("Credentials")
+                }.tag(Tabs.credentials)
+            }
+            .listStyle(.sidebar)
+            .frame(maxWidth: 200)
+
+            Divider()
+
+            ScrollView(.vertical) {
+                VStack(alignment: .leading, spacing: 12) {
+                    GeneralSettingsView()
+                    AdvancedSettingsView()
+                }.padding()
+            }
         }
-        .padding(20)
-        .frame(width: 375, height: 150)
     }
 }
 

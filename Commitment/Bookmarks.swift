@@ -34,6 +34,24 @@ class Bookmarks {
         return openPanel.url
     }
 
+    func openGitConfig() -> URL? {
+        let openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.title = "Select your .git-credentials file"
+        openPanel.resolvesAliases = true
+        openPanel.showsHiddenFiles = true
+        openPanel.directoryURL = URL(filePath: "~/.git-credentials")
+        openPanel.begin { (result) -> Void in
+            if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
+                let url = openPanel.url
+                self.storeFolderInBookmark(url: url!)
+            }
+        }
+        return openPanel.url
+    }
+
     func saveBookmarksData() throws {
         let path = getBookmarkPath()
         let data = try NSKeyedArchiver.archivedData(withRootObject: bookmarks, requiringSecureCoding: false)

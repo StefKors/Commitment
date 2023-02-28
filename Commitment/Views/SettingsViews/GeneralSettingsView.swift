@@ -21,26 +21,54 @@ struct GeneralSettingsView: View {
         "GitHub",
         "GitLab",
         "Bitbucket",
-        "sourcehut",
+        "SourceHut",
         "Radicle",
     ]
 
     var body: some View {
-        Form {
-            Picker(selection: $selectedExternalEditor, label: Text("External editor:")) {
-                ForEach(externalEditorPickerItems, id: \.self) { item in
-                    Text(item).tag(item as String?)
-                }
-            }
+        GroupBox(content: {
+            VStack {
+                HStack {
+                    Text("External Editor")
+                    Spacer()
 
-            Picker(selection: $selectedExternalGitProvider, label: Text("External Git Provider:")) {
-                ForEach(externalGitProviderPickerItems, id: \.self) { item in
-                    Text(item).tag(item as String?)
+                    Picker(selection: $selectedExternalEditor) {
+                        ForEach(externalEditorPickerItems, id: \.self) { item in
+                            Text(item)
+                                .tag(item as String?)
+                        }
+                    } label: { }
+                        .pickerStyle(.menu)
+                        .frame(maxWidth: 120)
                 }
+
+                Divider()
+
+                HStack {
+                    Text("External Git Provider")
+                    Spacer()
+                    Picker(selection: $selectedExternalGitProvider) {
+                        ForEach(externalGitProviderPickerItems, id: \.self) { item in
+                            Text(item).tag(item as String?)
+                        }
+                    } label: { }
+                        .pickerStyle(.menu)
+                        .frame(maxWidth: 120)
+                }
+            }.padding(6)
+        }, label: {
+            // Text("Credentials")
+            VStack(alignment: .leading) {
+                Text("Editor Defaults")
+                    .labelStyle(.titleOnly)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+
+                Text("Choose your default code editor")
+                    .foregroundColor(.secondary)
             }
-        }
-        .padding(20)
-        .frame(width: 350, height: 100)
+            .padding(.bottom, 6)
+        })
     }
 }
 

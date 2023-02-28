@@ -23,9 +23,11 @@ struct ActivityArrow: View {
 
 struct ToolbarPushOriginActionButtonView: View {
     @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var appModel: AppModel
     let remote: String = "origin"
 
     @State private var isPushingBranch: Bool = false
+    @State private var showMover: Bool = false
 
     var body: some View {
         Button(action: handleButton, label: {
@@ -64,20 +66,28 @@ struct ToolbarPushOriginActionButtonView: View {
             }
         })
         .buttonStyle(.plain)
+        .fileMover(isPresented: $showMover, file: URL(filePath: "~/.git-credentials")) { result in
+            print("moved file \(result)")
+        }
     }
 
     func handleButton() {
-        Task {
-            withAnimation(.interpolatingSpring(stiffness: 300, damping: 15)) {
-                isPushingBranch = true
-            }
-            let output = try await self.repo.shell.push()
-            print(output)
-            try await self.repo.refreshRepoState()
-            withAnimation(.interpolatingSpring(stiffness: 300, damping: 15)) {
-                isPushingBranch = false
-            }
-        }
+        // Task {
+        //     withAnimation(.interpolatingSpring(stiffness: 300, damping: 15)) {
+        //         isPushingBranch = true
+        //     }
+        //
+        //     let output = try await self.repo.shell.push()
+        //     print(output)
+        //
+        //     let path = try await self.repo.shell.execPath()
+        //     print(path)
+        //
+        //     try await self.repo.refreshRepoState()
+        //     withAnimation(.interpolatingSpring(stiffness: 300, damping: 15)) {
+        //         isPushingBranch = false
+        //     }
+        // }
     }
 }
 

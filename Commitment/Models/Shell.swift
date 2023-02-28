@@ -16,6 +16,7 @@ public struct ProcessError : Error {
 
 enum Executable: String {
     case git
+    case gitRemoteHttp = "git-remote-http"
 
     var url: URL {
         Bundle.main.url(forResource: self.rawValue, withExtension: "")!
@@ -50,7 +51,12 @@ class Shell {
 
         // let arguments = ["-C", location.path()]
         // print("arguments \(command)")
-
+        let execPath = Bundle.main.resourcePath ?? "" + "/" + "Executables/git-arm64/git-core"
+        print(execPath)
+        task.environment = [
+            // TODO: Support Intel
+            "GIT_EXEC_PATH": execPath
+        ]
         task.launchPath = executable.url.path()
         // task.executableURL = executable.url
         task.arguments = command
@@ -80,6 +86,12 @@ class Shell {
             try! task.run()
             // signposter.endInterval("run", state)
         }
+    }
+}
+
+extension Bundle {
+    func resourceURL(to path: String) -> URL? {
+        return URL(string: path, relativeTo: Bundle.main.resourceURL)
     }
 }
 
