@@ -16,6 +16,10 @@ extension Shell {
         try await self.run(.git, ["--help"])
     }
 
+    func listConfig() async throws -> String {
+        try await self.run(.git, ["config", "--list"])
+    }
+
     func execPath() async throws -> String {
         try await self.run(.git, ["--exec-path"])
     }

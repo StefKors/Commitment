@@ -45,12 +45,17 @@ struct CommitmentApp: App {
                 self.repo = repo
                 repo.refreshBranch()
                 Task {
-
                     
+                    let output = try? await repo.shell.listConfig()
+                    print(output)
                     try? await repo.refreshDiffsAndStatus()
                 }
                 repo.startMonitor()
             })
+            .task {
+                 FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+                // Bundle.main.resourcePath
+            }
 
         })
         // .windowStyle(.hiddenTitleBar)

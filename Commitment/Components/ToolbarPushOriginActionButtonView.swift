@@ -74,9 +74,22 @@ struct ToolbarPushOriginActionButtonView: View {
                 isPushingBranch = true
             }
 
-            let output = try await self.repo.shell.push()
-            print(output)
-            // 
+            let appHome = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true)
+
+            if let fromPath = Bundle.main.url(forResource: "", withExtension: ".gitconfig")?.absoluteString {
+                let toPath = appHome.absoluteString + ".gitconfig"
+                print("moving .gitconfig")
+                try? FileManager.default.moveItem(atPath: fromPath, toPath: toPath)
+            }
+
+            if let fromPath = Bundle.main.url(forResource: "", withExtension: ".git-credentials")?.absoluteString {
+                let toPath = appHome.absoluteString + ".git-credentials"
+                print("moving .gitconfig")
+                try? FileManager.default.moveItem(atPath: fromPath, toPath: toPath)
+            }
+            // let output = try await self.repo.shell.push()
+            // print(output)
+            //
             // let path = try await self.repo.shell.execPath()
             // print(path)
 

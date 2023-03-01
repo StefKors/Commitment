@@ -52,11 +52,14 @@ class Shell {
         // let arguments = ["-C", location.path()]
         // print("arguments \(command)")
         let execPath = Bundle.main.resourcePath ?? "" + "/" + "Executables/git-arm64/git-core"
+        let appHome = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true)
+        // print("apphome \(appHome.absoluteString)")
+
         // print(execPath)
         task.environment = [
             // TODO: Support Intel
             "GIT_CONFIG_NOSYSTEM": "true",
-            "HOME": execPath,
+            "HOME": appHome.absoluteString,
             "GIT_EXEC_PATH": execPath
         ]
         task.launchPath = executable.url.path()
