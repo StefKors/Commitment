@@ -8,44 +8,18 @@
 import SwiftUI
 
 struct SettingsWindow: View {
-    private enum Tabs: Hashable {
-        case general, advanced, credentials
+    enum Tabs: String, Hashable {
+        case General
+        case Credentials
     }
 
-    @State private var selectedMenu: Tabs = .general
+    @State private var selectedMenu: Tabs = .General
 
     var body: some View {
         HStack(spacing: 0) {
             List(selection: $selectedMenu) {
-                HStack {
-                    Image(systemName: "slider.horizontal.3")
-                        .imageScale(.small)
-                        .fontWeight(.bold)
-                        .padding(4)
-                        .frame(width: 20, height: 20, alignment: .center)
-                        .background {
-                            RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                .fill(.blue)
-                                .shadow(radius: 2)
-                        }
-
-                    Text("Editor Defaults")
-                }.tag(Tabs.general)
-
-                HStack {
-                    Image(systemName: "key.fill")
-                        .imageScale(.small)
-                        .fontWeight(.bold)
-                        .padding(4)
-                        .frame(width: 20, height: 20, alignment: .center)
-                        .background {
-                            RoundedRectangle(cornerRadius: 6, style: .continuous)
-                                .fill(.black)
-                                .shadow(radius: 2)
-                        }
-
-                    Text("Credentials")
-                }.tag(Tabs.credentials)
+                SettingsListItemView(tag: .General, image: "gear", fill: .gray)
+                SettingsListItemView(tag: .Credentials, image: "key.fill", fill: .black)
             }
             .listStyle(.sidebar)
             .frame(maxWidth: 200)
@@ -54,9 +28,15 @@ struct SettingsWindow: View {
 
             ScrollView(.vertical) {
                 VStack(alignment: .leading, spacing: 12) {
-                    GeneralSettingsView()
-                    AdvancedSettingsView()
-                }.padding()
+                    switch selectedMenu {
+                    case .General:
+                        GeneralSettingsView()
+                    case .Credentials:
+                        CredentialSettingsView()
+                    }
+                }
+                .padding()
+                .animation(.easeInOut(duration: 0.2), value: selectedMenu)
             }
         }
     }

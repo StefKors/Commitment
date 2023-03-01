@@ -219,6 +219,11 @@
 		8A0761302965A15200D878DC /* DiffRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612F2965A15200D878DC /* DiffRenderView.swift */; };
 		8A327EFC298E8F20008521B0 /* TouchbarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */; };
 		8A327EFE298E9081008521B0 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A327EFD298E9081008521B0 /* HeaderContentView.swift */; };
+		8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */; };
+		8A486DC029AFB83200FB00F7 /* SettingsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */; };
+		8A486DC229AFBCB700FB00F7 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DC129AFBCB700FB00F7 /* Animation.swift */; };
+		8A486DC429AFDD8200FB00F7 /* .git-credentials in Resources */ = {isa = PBXBuildFile; fileRef = 8A486DC329AFDD8100FB00F7 /* .git-credentials */; };
+		8A486DC629AFDFBB00FB00F7 /* .gitconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8A486DC529AFDFBB00FB00F7 /* .gitconfig */; };
 		8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */; };
 		8A48D11527FD9E2E007803D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A48D11427FD9E2E007803D2 /* Assets.xcassets */; };
 		8A48D11827FD9E2E007803D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A48D11727FD9E2E007803D2 /* Preview Assets.xcassets */; };
@@ -401,7 +406,7 @@
 		8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD50C296F2A5E00525BF7 /* AppIcon.swift */; };
 		8AFBD50F296F2A5F00525BF7 /* AccentGlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD50D296F2A5E00525BF7 /* AccentGlow.swift */; };
 		8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */; };
-		8AFBD52B296F2C1400525BF7 /* AdvancedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD51E296F2C1400525BF7 /* AdvancedSettingsView.swift */; };
+		8AFBD52B296F2C1400525BF7 /* CredentialSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD51E296F2C1400525BF7 /* CredentialSettingsView.swift */; };
 		8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD51F296F2C1400525BF7 /* GeneralSettingsView.swift */; };
 		8AFBD52D296F2C1400525BF7 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD522296F2C1400525BF7 /* AvatarView.swift */; };
 		8AFBD52E296F2C1400525BF7 /* SidebarFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD523296F2C1400525BF7 /* SidebarFooterView.swift */; };
@@ -659,6 +664,11 @@
 		8A07612F2965A15200D878DC /* DiffRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffRenderView.swift; sourceTree = "<group>"; };
 		8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchbarContentView.swift; sourceTree = "<group>"; };
 		8A327EFD298E9081008521B0 /* HeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContentView.swift; sourceTree = "<group>"; };
+		8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListItemView.swift; sourceTree = "<group>"; };
+		8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBox.swift; sourceTree = "<group>"; };
+		8A486DC129AFBCB700FB00F7 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		8A486DC329AFDD8100FB00F7 /* .git-credentials */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".git-credentials"; sourceTree = "<group>"; };
+		8A486DC529AFDFBB00FB00F7 /* .gitconfig */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitconfig; sourceTree = "<group>"; };
 		8A48D10D27FD9E2D007803D2 /* Commitment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Commitment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentApp.swift; sourceTree = "<group>"; };
 		8A48D11427FD9E2E007803D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -856,7 +866,7 @@
 		8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeStackView.swift; sourceTree = "<group>"; };
 		8AFBD50C296F2A5E00525BF7 /* AppIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		8AFBD50D296F2A5E00525BF7 /* AccentGlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccentGlow.swift; sourceTree = "<group>"; };
-		8AFBD51E296F2C1400525BF7 /* AdvancedSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSettingsView.swift; sourceTree = "<group>"; };
+		8AFBD51E296F2C1400525BF7 /* CredentialSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialSettingsView.swift; sourceTree = "<group>"; };
 		8AFBD51F296F2C1400525BF7 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		8AFBD522296F2C1400525BF7 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		8AFBD523296F2C1400525BF7 /* SidebarFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarFooterView.swift; sourceTree = "<group>"; };
@@ -1147,6 +1157,8 @@
 		8A48D10427FD9E2D007803D2 = {
 			isa = PBXGroup;
 			children = (
+				8A486DC329AFDD8100FB00F7 /* .git-credentials */,
+				8A486DC529AFDFBB00FB00F7 /* .gitconfig */,
 				8AAF7B0A29AA803B0007CE8D /* Executables */,
 				8A48D10F27FD9E2D007803D2 /* Commitment */,
 				8A48D12127FD9E2E007803D2 /* CommitmentTests */,
@@ -1261,6 +1273,8 @@
 				8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */,
 				8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */,
 				8A02C50429ACD3AA004DCA69 /* Rotation.swift */,
+				8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */,
+				8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1789,7 +1803,7 @@
 		8AFBD51D296F2C1400525BF7 /* SettingsViews */ = {
 			isa = PBXGroup;
 			children = (
-				8AFBD51E296F2C1400525BF7 /* AdvancedSettingsView.swift */,
+				8AFBD51E296F2C1400525BF7 /* CredentialSettingsView.swift */,
 				8AFBD51F296F2C1400525BF7 /* GeneralSettingsView.swift */,
 			);
 			path = SettingsViews;
@@ -1842,6 +1856,7 @@
 				8AC8EB49297586FC00365EB9 /* URL.swift */,
 				8A02C4FE29ACB0E7004DCA69 /* Array.swift */,
 				8A02C52229ADEE2A004DCA69 /* Color.swift */,
+				8A486DC129AFBCB700FB00F7 /* Animation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2114,6 +2129,7 @@
 				8A02C46A29AC1A4B004DCA69 /* bc in Resources */,
 				8A02C4D229AC1A4B004DCA69 /* git-archive in Resources */,
 				8A02C4D629AC1A4B004DCA69 /* git-mktree in Resources */,
+				8A486DC429AFDD8200FB00F7 /* .git-credentials in Resources */,
 				8A02C43C29AC1A4B004DCA69 /* git-fetch in Resources */,
 				8A02C49829AC1A4B004DCA69 /* git-sh-i18n in Resources */,
 				8A02C47C29AC1A4B004DCA69 /* xxdiff in Resources */,
@@ -2146,6 +2162,7 @@
 				8A02C4CE29AC1A4B004DCA69 /* git-submodule--helper in Resources */,
 				8A02C4F929AC1A4B004DCA69 /* git-count-objects in Resources */,
 				8A02C45A29AC1A4B004DCA69 /* git-merge-resolve in Resources */,
+				8A486DC629AFDFBB00FB00F7 /* .gitconfig in Resources */,
 				8A02C4F329AC1A4B004DCA69 /* git-fetch-pack in Resources */,
 				8A02C48E29AC1A4B004DCA69 /* git-archimport in Resources */,
 				8A8C66772964682B00A774D7 /* Inter-ExtraLightItalic.otf in Resources */,
@@ -2262,13 +2279,14 @@
 				8ACCD2BD297F265B0020BF84 /* StashApplyTask.swift in Sources */,
 				8ACCD299297F265B0020BF84 /* InitOptions.swift in Sources */,
 				8AFBD531296F2C1400525BF7 /* AddRepoView.swift in Sources */,
-				8AFBD52B296F2C1400525BF7 /* AdvancedSettingsView.swift in Sources */,
+				8AFBD52B296F2C1400525BF7 /* CredentialSettingsView.swift in Sources */,
 				8ACCD2D3297F265C0020BF84 /* GitFile.swift in Sources */,
 				8A97DC97299BB148001E25E1 /* String+HTMLEntities.swift in Sources */,
 				8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */,
 				8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */,
 				8ACCD295297F265B0020BF84 /* GitRepositoryErrorFormatter.swift in Sources */,
 				8ACCD2CE297F265C0020BF84 /* GitCredentialsProvider.swift in Sources */,
+				8A486DC029AFB83200FB00F7 /* SettingsBox.swift in Sources */,
 				8ACCD2AD297F265B0020BF84 /* CheckoutTask.swift in Sources */,
 				8ACCD2F5297F265C0020BF84 /* Repository.swift in Sources */,
 				8ACCD29C297F265B0020BF84 /* BranchTask.swift in Sources */,
@@ -2280,6 +2298,7 @@
 				8ACCD2C1297F265C0020BF84 /* GitStashListOptions.swift in Sources */,
 				8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */,
 				8ACCD2B1297F265B0020BF84 /* CleanOptions.swift in Sources */,
+				8A486DC229AFBCB700FB00F7 /* Animation.swift in Sources */,
 				8A97DC73299BA4C4001E25E1 /* HighlightedText.swift in Sources */,
 				8ACCD2EE297F265C0020BF84 /* FileManager+Utils.swift in Sources */,
 				8AFBD532296F2C1400525BF7 /* RepoSelectView.swift in Sources */,
@@ -2376,6 +2395,7 @@
 				8ACCD2BC297F265B0020BF84 /* CloneOptions.swift in Sources */,
 				8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */,
 				8ACCD2F4297F265C0020BF84 /* RepositoryReferenceName.swift in Sources */,
+				8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */,
 				8ACCD2CC297F265C0020BF84 /* GitTagListOptions.swift in Sources */,
 				8A0761302965A15200D878DC /* DiffRenderView.swift in Sources */,
 				8A02C51D29AD3DAB004DCA69 /* KeychainStorage.swift in Sources */,

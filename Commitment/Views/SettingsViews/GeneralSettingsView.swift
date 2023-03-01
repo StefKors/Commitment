@@ -39,7 +39,7 @@ struct GeneralSettingsView: View {
                         }
                     } label: { }
                         .pickerStyle(.menu)
-                        .frame(maxWidth: 120)
+                        .frame(maxWidth: 150)
                 }
 
                 Divider()
@@ -53,7 +53,7 @@ struct GeneralSettingsView: View {
                         }
                     } label: { }
                         .pickerStyle(.menu)
-                        .frame(maxWidth: 120)
+                        .frame(maxWidth: 80)
                 }
             }.padding(6)
         }, label: {

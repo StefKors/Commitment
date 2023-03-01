@@ -17,6 +17,12 @@ import Foundation
 import Foundation
 import SwiftUI
 
+class GitCredentialsOpenPanel: NSObject, NSOpenSavePanelDelegate {
+    func panel(_: Any, shouldEnable url: URL) -> Bool {
+        return url.lastPathComponent == ".git-credentials"
+    }
+}
+
 class Bookmarks {
     var bookmarks = [URL: Data]()
     func openFolderSelection() -> URL? {
@@ -36,20 +42,25 @@ class Bookmarks {
 
     func openGitConfig() -> URL? {
         let openPanel = NSOpenPanel()
+        let delegate = GitCredentialsOpenPanel()
+        openPanel.delegate = delegate
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
         openPanel.canChooseFiles = true
         openPanel.title = "Select your .git-credentials file"
         openPanel.resolvesAliases = true
         openPanel.showsHiddenFiles = true
-        openPanel.directoryURL = URL(filePath: "~/.git-credentials")
-        openPanel.begin { (result) -> Void in
-            if result.rawValue == NSApplication.ModalResponse.OK.rawValue {
-                let url = openPanel.url
-                self.storeFolderInBookmark(url: url!)
+        openPanel.directoryURL = URL(filePath: "~/")
+
+        let response = openPanel.runModal()
+        if response == .OK {
+            if let url = openPanel.url {
+                self.storeFolderInBookmark(url: url)
+                return url
             }
         }
-        return openPanel.url
+
+        return nil
     }
 
     func saveBookmarksData() throws {
