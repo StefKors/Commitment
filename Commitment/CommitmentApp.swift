@@ -45,8 +45,6 @@ struct CommitmentApp: App {
                 self.repo = repo
                 repo.refreshBranch()
                 Task {
-                    // let output = try? await repo.shell.setupCredentials(path: Bundle.main.resourcePath ?? "" + "/.git-credentials")
-                    // print("setup: \(output)")
                     try? await repo.refreshDiffsAndStatus()
                 }
                 repo.startMonitor()
