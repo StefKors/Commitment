@@ -59,7 +59,7 @@ class Shell {
         task.environment = [
             // TODO: Support Intel
             "GIT_CONFIG_NOSYSTEM": "true",
-            "HOME": appHome.absoluteString,
+            "HOME": appHome.path,
             "GIT_EXEC_PATH": execPath
         ]
         task.launchPath = executable.url.path()

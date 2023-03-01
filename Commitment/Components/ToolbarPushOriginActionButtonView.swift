@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeychainAccess
 
 struct ActivityArrow: View {
     let isPushingBranch: Bool
@@ -76,19 +77,40 @@ struct ToolbarPushOriginActionButtonView: View {
 
             let appHome = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true)
 
-            if let fromPath = Bundle.main.url(forResource: "", withExtension: ".gitconfig")?.absoluteString {
-                let toPath = appHome.absoluteString + ".gitconfig"
-                print("moving .gitconfig")
-                try? FileManager.default.moveItem(atPath: fromPath, toPath: toPath)
+            if let fromPath = Bundle.main.url(forResource: "", withExtension: ".gitconfig")?.path {
+                let toPath = appHome.path + "/.gitconfig"
+                print("creating .gitconfig at \(toPath)")
+
+                    let content = """
+[credential]
+    helper = store --file '\(appHome.path)/.git-credentials'
+"""
+                    FileManager.default.createFile(atPath: toPath, contents: content.data(using: .utf8))
+                    // do {
+                    //     try FileManager.default.moveItem(atPath: fromPath, toPath: toPath)
+                    // } catch {
+                    //     print(error.localizedDescription)
+                    // }
             }
 
-            if let fromPath = Bundle.main.url(forResource: "", withExtension: ".git-credentials")?.absoluteString {
-                let toPath = appHome.absoluteString + ".git-credentials"
-                print("moving .gitconfig")
-                try? FileManager.default.moveItem(atPath: fromPath, toPath: toPath)
+
+
+                let toPath = appHome.path + "/.git-credentials"
+                print("creating .gitconfig")
+                // do {
+
+
+            if let data = try Keychain().getData("passwords") {
+                let credentials = try JSONDecoder().decode(Credentials.self, from: data)
+                let content = credentials.values.map { cred -> String in
+                    cred.url.absoluteString
+                }.joined(separator: "\n")
+                FileManager.default.createFile(atPath: toPath, contents: content.data(using: .utf8))
             }
-            // let output = try await self.repo.shell.push()
+            // let output = try? await repo.shell.listConfig()
             // print(output)
+            // let output2 = try await self.repo.shell.push()
+            // print(output2)
             //
             // let path = try await self.repo.shell.execPath()
             // print(path)
