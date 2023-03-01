@@ -45,6 +45,8 @@ struct CommitmentApp: App {
                 self.repo = repo
                 repo.refreshBranch()
                 Task {
+
+                    
                     try? await repo.refreshDiffsAndStatus()
                 }
                 repo.startMonitor()
