@@ -47,6 +47,7 @@ enum ShellError: Error {
 
             for try await line in lines {
                 // Update output
+                print(output)
                 self.output = line
             }
 
