@@ -232,6 +232,10 @@
 		8A48D12F27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D12E27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift */; };
 		8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14127FDA8A0007803D2 /* Shell.swift */; };
 		8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14C27FDB6DF007803D2 /* BranchView.swift */; };
+		8A562CDB29B20053006C7E8A /* Shell+ProcessWithLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CDA29B20053006C7E8A /* Shell+ProcessWithLines.swift */; };
+		8A562CDD29B2007C006C7E8A /* Shell+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CDC29B2007C006C7E8A /* Shell+ViewModel.swift */; };
+		8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */; };
+		8A562CE129B200E6006C7E8A /* Shell+Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE029B200E6006C7E8A /* Shell+Run.swift */; };
 		8A5C64CF29797DB300CA8FE1 /* CommitHistorySidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */; };
 		8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */; };
 		8A5C64D129797DB300CA8FE1 /* ActiveChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */; };
@@ -681,6 +685,10 @@
 		8A48D12E27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A48D14127FDA8A0007803D2 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		8A48D14C27FDB6DF007803D2 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
+		8A562CDA29B20053006C7E8A /* Shell+ProcessWithLines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+ProcessWithLines.swift"; sourceTree = "<group>"; };
+		8A562CDC29B2007C006C7E8A /* Shell+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+ViewModel.swift"; sourceTree = "<group>"; };
+		8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Executable.swift"; sourceTree = "<group>"; };
+		8A562CE029B200E6006C7E8A /* Shell+Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Run.swift"; sourceTree = "<group>"; };
 		8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitHistorySidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesSidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesView.swift; sourceTree = "<group>"; };
@@ -1360,21 +1368,25 @@
 		8AA71063296D5BE0002F6C24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8AFBD5772971B09200525BF7 /* FileMonitor */,
-				8A48D14127FDA8A0007803D2 /* Shell.swift */,
-				8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */,
-				8A02C50229ACB9CF004DCA69 /* LogOptions.swift */,
 				8AFBD54329702A0600525BF7 /* Commit.swift */,
-				8ACCD27B297F265B0020BF84 /* GitLogRecordList.swift */,
-				8ACCD20A297F265B0020BF84 /* GitReferenceList.swift */,
-				8ACCD28B297F265B0020BF84 /* RepositoryReferenceName.swift */,
-				8ACCD278297F265B0020BF84 /* GitFileStatusList.swift */,
+				8AFBD5772971B09200525BF7 /* FileMonitor */,
+				8AFBD54829702A4200525BF7 /* GitDiffLine.swift */,
 				8ACCD279297F265B0020BF84 /* GitFileStatus.swift */,
+				8ACCD278297F265B0020BF84 /* GitFileStatusList.swift */,
+				8ACCD27B297F265B0020BF84 /* GitLogRecordList.swift */,
+				8ACCD26C297F265B0020BF84 /* GitReference.swift */,
+				8ACCD20A297F265B0020BF84 /* GitReferenceList.swift */,
+				8ACCD20C297F265B0020BF84 /* GitReferenceName.swift */,
+				8A02C50229ACB9CF004DCA69 /* LogOptions.swift */,
 				8A02C50029ACB801004DCA69 /* Remote.swift */,
 				8ACCD288297F265B0020BF84 /* RepositoryReference.swift */,
-				8ACCD26C297F265B0020BF84 /* GitReference.swift */,
-				8ACCD20C297F265B0020BF84 /* GitReferenceName.swift */,
-				8AFBD54829702A4200525BF7 /* GitDiffLine.swift */,
+				8ACCD28B297F265B0020BF84 /* RepositoryReferenceName.swift */,
+				8A48D14127FDA8A0007803D2 /* Shell.swift */,
+				8A562CE029B200E6006C7E8A /* Shell+Run.swift */,
+				8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */,
+				8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */,
+				8A562CDA29B20053006C7E8A /* Shell+ProcessWithLines.swift */,
+				8A562CDC29B2007C006C7E8A /* Shell+ViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2285,6 +2297,7 @@
 				8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */,
 				8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */,
 				8ACCD295297F265B0020BF84 /* GitRepositoryErrorFormatter.swift in Sources */,
+				8A562CE129B200E6006C7E8A /* Shell+Run.swift in Sources */,
 				8ACCD2CE297F265C0020BF84 /* GitCredentialsProvider.swift in Sources */,
 				8A486DC029AFB83200FB00F7 /* SettingsBox.swift in Sources */,
 				8ACCD2AD297F265B0020BF84 /* CheckoutTask.swift in Sources */,
@@ -2327,6 +2340,7 @@
 				8AFBD54E29703A9C00525BF7 /* DiffLineView.swift in Sources */,
 				8A992DF929A629F4001E26A3 /* CustomMenuView.swift in Sources */,
 				8ACCD2EA297F265C0020BF84 /* GitTagRecordList.swift in Sources */,
+				8A562CDD29B2007C006C7E8A /* Shell+ViewModel.swift in Sources */,
 				8ACCD29B297F265B0020BF84 /* BranchOptions.swift in Sources */,
 				8ACCD2B8297F265B0020BF84 /* RemoteUrlTask.swift in Sources */,
 				8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */,
@@ -2361,6 +2375,7 @@
 				8ACCD2F7297F265C0020BF84 /* RepositoryLogRecord.swift in Sources */,
 				8A02C50129ACB801004DCA69 /* Remote.swift in Sources */,
 				8ACCD2B9297F265B0020BF84 /* GitAddOptions.swift in Sources */,
+				8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */,
 				8ACCD2F6297F265C0020BF84 /* RepositoryRemote.swift in Sources */,
 				8ACCD2E5297F265C0020BF84 /* GitRepository+Init.swift in Sources */,
 				8ACCD2DD297F265C0020BF84 /* GitRepository+Status.swift in Sources */,
@@ -2430,6 +2445,7 @@
 				8ACCD2B6297F265B0020BF84 /* RemoteUrlChangeTask.swift in Sources */,
 				8AFBD5742971B08D00525BF7 /* FolderContentMonitor.swift in Sources */,
 				8A5C64D229797DB300CA8FE1 /* ActiveChangesMainView.swift in Sources */,
+				8A562CDB29B20053006C7E8A /* Shell+ProcessWithLines.swift in Sources */,
 				8ACCD2E8297F265C0020BF84 /* GitTagRecord.swift in Sources */,
 				8A327EFC298E8F20008521B0 /* TouchbarContentView.swift in Sources */,
 				8ACCD2A0297F265B0020BF84 /* MergeTask.swift in Sources */,

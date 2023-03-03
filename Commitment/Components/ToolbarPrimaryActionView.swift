@@ -13,7 +13,7 @@ struct ToolbarPrimaryActionView: View {
     var body: some View {
 
         if repo.commitsAhead > 0 {
-            ToolbarPushOriginActionButtonView()
+            ToolbarPushOriginActionButtonView(shell: ShellViewModel(shell: self.repo.shell))
         } else {
             ToolbarFetchOriginActionView()
         }
