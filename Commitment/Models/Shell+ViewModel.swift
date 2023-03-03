@@ -36,6 +36,7 @@ enum ShellError: Error {
             try await process.start()
             print("output 🔥🔥🔥🔥")
             guard let lines = await process.lines else {
+                print("output exit 🔥")
                 throw ShellError.NoProcessLines
             }
 

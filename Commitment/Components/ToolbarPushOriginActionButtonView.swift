@@ -88,7 +88,8 @@ struct ToolbarPushOriginActionButtonView: View {
             do {
                 let remote = try await self.repo.shell.remote()
                 let branch = try await self.repo.shell.branch()
-                await self.shell.run(.git, ["push", remote, branch], in: self.repo.shell.workspace)
+                await self.shell.run(.git, ["log", "--oneline"], in: self.repo.shell.workspace)
+                // await self.shell.run(.git, ["push", remote, branch], in: self.repo.shell.workspace)
                 try? await self.repo.refreshRepoState()
             } catch {
                 print("🦆 \(error.localizedDescription)")
