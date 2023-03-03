@@ -18,24 +18,18 @@ enum ShellError: Error {
     @Published var output: String? = nil
     @Published var isRunning: Bool = false
 
-    let shell: Shell
     private let signposter = OSSignposter()
-
-    init(shell: Shell) {
-        self.shell = shell
-    }
 
     func run(
         _ executable: Executable,
         _ command: [String],
-        in currentDirectoryURL: URL? = nil
+        in currentDirectoryURL: URL
     ) async {
         // Setup up state
         let signpostID = signposter.makeSignpostID()
         let state = signposter.beginInterval("run", id: signpostID)
         isRunning = true
-        let location = currentDirectoryURL ?? self.shell.workspace
-        let process = ProcessWithLines(executable, command, in: location)
+        let process = ProcessWithLines(executable, command, in: currentDirectoryURL)
 
         // Run action
         do {
@@ -61,11 +55,5 @@ enum ShellError: Error {
         // Finish up state
         isRunning = false
         self.signposter.endInterval("run", state)
-    }
-
-    func push() async throws {
-        let remote = try await self.shell.remote()
-        let branch = try await self.shell.branch()
-        await self.run(.git, ["push", remote, branch])
     }
 }

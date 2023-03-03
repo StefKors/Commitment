@@ -32,9 +32,9 @@ struct ActivityArrow: View {
 struct ToolbarPushOriginActionButtonView: View {
     @EnvironmentObject private var repo: RepoState
     @EnvironmentObject private var appModel: AppModel
-    let remote: String = "origin"
+    private let remote: String = "origin"
 
-    @StateObject var shell: ShellViewModel
+    @StateObject private var shell: ShellViewModel = .init()
 
     var body: some View {
         Button(action: handleButton, label: {
@@ -85,12 +85,14 @@ struct ToolbarPushOriginActionButtonView: View {
 
     func handleButton() {
         Task {
-            try? await shell.push()
+            let remote = try await self.repo.shell.remote()
+            let branch = try await self.repo.shell.branch()
+            await self.shell.run(.git, ["push", remote, branch], in: self.repo.shell.workspace)
             try? await self.repo.refreshRepoState()
         }
     }
 }
-// 
+//
 // struct ToolbarActionButtonView_Previews: PreviewProvider {
 //     static var previews: some View {
 //         // ToolbarPushOriginActionButtonView()
