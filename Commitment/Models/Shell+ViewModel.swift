@@ -34,14 +34,14 @@ enum ShellError: Error {
         // Run action
         do {
             try await process.start()
-            print("output 🔥🔥🔥🔥🔥🔥🔥")
+            print("output 🔥🔥🔥🔥")
             guard let lines = await process.lines else {
                 throw ShellError.NoProcessLines
             }
 
             for try await line in lines {
                 // Update output
-                print(output)
+                print("output 🔥🔥🔥🔥🔥🔥🔥 \(output)")
                 self.output = line
             }
 
