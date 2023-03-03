@@ -23,6 +23,57 @@ enum Executable: String {
     }
 }
 
+
+// https://stackoverflow.com/a/72122123/3199999
+// let process = ProcessWithLines(url: url)
+
+// try await process.start()
+// guard let lines = await process.lines else { return }
+//
+// for try await line in lines {
+//     print(line)
+// }
+
+// actor ProcessWithStream {
+//     private let process = Process()
+//     private let stdin = Pipe()
+//     private let stdout = Pipe()
+//     private let stderr = Pipe()
+//     private var buffer = Data()
+//
+//     init(url: URL) {
+//         process.standardInput = stdin
+//         process.standardOutput = stdout
+//         process.standardError = stderr
+//         process.executableURL = url
+//     }
+//
+//     func start() throws {
+//         try process.run()
+//     }
+//
+//     func terminate() {
+//         process.terminate()
+//     }
+//
+//     func send(_ string: String) {
+//         guard let data = "\(string)\n".data(using: .utf8) else { return }
+//         stdin.fileHandleForWriting.write(data)
+//     }
+//
+//     func stream() -> AsyncStream<Data> {
+//         AsyncStream(Data.self) { continuation in
+//             stdout.fileHandleForReading.readabilityHandler = { handler in
+//                 continuation.yield(handler.availableData)
+//             }
+//             process.terminationHandler = { handler in
+//                 continuation.finish()
+//             }
+//         }
+//     }
+// }
+
+
 class Shell {
     var workspace: URL
 
@@ -64,6 +115,7 @@ class Shell {
         ]
         task.launchPath = executable.url.path()
         // task.executableURL = executable.url
+        task.qualityOfService = .userInitiated
         task.arguments = command
         task.currentDirectoryURL = location
         return try await withCheckedThrowingContinuation { continuation in

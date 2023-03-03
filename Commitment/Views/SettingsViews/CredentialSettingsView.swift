@@ -94,7 +94,8 @@ struct CredentialSettingsView: View {
             .frame(alignment: .trailing)
         }
     }
-    
+
+    /// Use NSOpenPanel to open the users git config and update the stored credentials.
     func handleImportAction() {
         if let path = model.bookmarks.openGitConfig() {
             if let content = try? String(contentsOf: URL(filePath: path.path()), encoding: .utf8) {
@@ -106,13 +107,38 @@ struct CredentialSettingsView: View {
                         return Credential(url: url)
                     }
 
+                let newValues = Array(Set(oldPasswords + newPasswords))
+                writeGitConfig()
+                writeGitCredentials(newValues)
+
                 withAnimation(.easeOut(duration: 0.2)) {
-                    passwords = Credentials(values: Array(Set(oldPasswords + newPasswords)))
+                    passwords = Credentials(values: newValues)
                 }
             }
         } else {
             print("failed to get path")
         }
+    }
+
+    fileprivate func writeGitConfig() {
+        guard let appHome = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true) else { return }
+        let toConfigPath = appHome.path + "/.gitconfig"
+        print("creating .gitconfig at \(toConfigPath)")
+
+        let content = """
+[credential]
+    helper = store --file '\(appHome.path)/.git-credentials'
+"""
+        FileManager.default.createFile(atPath: toConfigPath, contents: content.data(using: .utf8))
+    }
+
+    fileprivate func writeGitCredentials(_ newPasswords: [Credential]) {
+        guard let appHome = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true) else { return }
+        let toCredsPath = appHome.path + "/.git-credentials"
+        let content = newPasswords.map { cred -> String in
+            cred.url.absoluteString
+        }.joined(separator: "\n")
+        FileManager.default.createFile(atPath: toCredsPath, contents: content.data(using: .utf8))
     }
 }
 
