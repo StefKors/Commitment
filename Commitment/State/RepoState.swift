@@ -103,6 +103,13 @@ init RepoState: \(folderName) with:
     func refreshRepoState() async throws {
         refreshBranch()
         try await refreshDiffsAndStatus()
+        updateLastFetched()
+    }
+
+    func updateLastFetched() {
+        if let attributes = try? FileManager.default.attributesOfItem(atPath: Bundle.main.resourcePath ?? "" + "/git/FETCH_HEAD") {
+            print(attributes)
+        }
     }
 
     /// Watch out for re-renders, can be slow

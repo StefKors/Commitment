@@ -53,12 +53,6 @@ struct ToolbarPushOriginActionButtonView: View {
                             Text("Last fetched just now")
                                 .foregroundColor(.secondary)
                         }
-                        if shell.isRunning {
-                            ProgressView(value: 2, total: 3)
-                                .progressViewStyle(.linear)
-                                .frame(width: 200, height: 50)
-                                .foregroundColor(.accentColor)
-                        }
                     }.frame(width: 170, alignment: .leading)
 
                     GroupBox {
@@ -93,12 +87,9 @@ struct ToolbarPushOriginActionButtonView: View {
             do {
                 shell.isRunning = true
                 let remote = try await self.repo.shell.remote()
-                progress += 1
                 let branch = try await self.repo.shell.branch()
-                progress += 1
                 // TODO showing progress output line by line isn't working for git push
                 await self.shell.run(.git, ["push", remote, branch], in: self.repo.shell.workspace)
-                progress += 1
                 try? await self.repo.refreshRepoState()
                 shell.isRunning = false
             } catch {
