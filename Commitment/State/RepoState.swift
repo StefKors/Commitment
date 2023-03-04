@@ -37,6 +37,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     @Published var status: [GitFileStatus] = []
     @Published var commits: [Commit] = []
     @Published var commitsAhead: Int = 0
+    @Published var lastFetchedDate: Date? = nil
 
     init(path: URL) {
         self.path = path
@@ -108,9 +109,7 @@ init RepoState: \(folderName) with:
 
     func updateLastFetched() {
         if let attributes = try? FileManager.default.attributesOfItem(atPath: Bundle.main.resourcePath ?? "" + "/git/FETCH_HEAD") {
-            print(attributes)
-            let modificationDate = attributes[.modificationDate] as? Date
-            print(modificationDate?.description)
+            self.lastFetchedDate = attributes[.modificationDate] as? Date
         }
     }
 
