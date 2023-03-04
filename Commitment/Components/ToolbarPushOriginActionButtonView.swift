@@ -35,7 +35,7 @@ struct ToolbarPushOriginActionButtonView: View {
     private let remote: String = "origin"
 
     @StateObject private var shell: ShellViewModel = .init()
-
+    @State private var progress: CGFloat = 0
     var body: some View {
         Button(action: handleButton, label: {
             ViewThatFits {
@@ -52,6 +52,9 @@ struct ToolbarPushOriginActionButtonView: View {
                         } else {
                             Text("Last fetched just now")
                                 .foregroundColor(.secondary)
+                        }
+                        if shell.isRunning {
+                            ProgressView(value: progress, total: 3)
                         }
                     }.frame(width: 170, alignment: .leading)
 
@@ -79,16 +82,22 @@ struct ToolbarPushOriginActionButtonView: View {
             }
         })
         .buttonStyle(.plain)
+        .animation(.easeIn(duration: 0.35), value: shell.isRunning)
     }
 
     func handleButton() {
         Task {
             do {
+                shell.isRunning = true
                 let remote = try await self.repo.shell.remote()
+                progress += 1
                 let branch = try await self.repo.shell.branch()
+                progress += 1
                 // TODO showing progress output line by line isn't working for git push
-                await self.shell.run(.git, ["push", "origin", "main"], in: self.repo.shell.workspace)
+                await self.shell.run(.git, ["push", remote, branch], in: self.repo.shell.workspace)
+                progress += 1
                 try? await self.repo.refreshRepoState()
+                shell.isRunning = false
             } catch {
                 print("🦆 \(error.localizedDescription)")
             }

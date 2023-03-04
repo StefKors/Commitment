@@ -28,7 +28,7 @@ enum ShellError: Error {
         // Setup up state
         let signpostID = signposter.makeSignpostID()
         let state = signposter.beginInterval("run", id: signpostID)
-        isRunning = true
+        // isRunning = true
         let process = ProcessWithLines(executable, command, in: currentDirectoryURL)
 
         // Run action
@@ -51,7 +51,7 @@ enum ShellError: Error {
         }
 
         // Finish up state
-        isRunning = false
+        // isRunning = false
         self.signposter.endInterval("run", state)
     }
 }
