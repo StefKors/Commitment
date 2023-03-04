@@ -108,7 +108,7 @@ init RepoState: \(folderName) with:
     }
 
     func updateLastFetched() async {
-        if let attributes = try? FileManager.default.attributesOfItem(atPath: Bundle.main.resourcePath ?? "" + "/git/FETCH_HEAD") {
+        if let attributes = try? FileManager.default.attributesOfItem(atPath: path.path() + "/.git/FETCH_HEAD") {
             await MainActor.run {
                 self.lastFetchedDate = attributes[.modificationDate] as? Date
             }
