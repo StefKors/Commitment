@@ -29,6 +29,27 @@ struct ActivityArrow: View {
     }
 }
 
+struct OutputLine: View {
+    let output: String?
+    let date: Date?
+    var body: some View {
+        if let output {
+            Text(output)
+                .lineLimit(1)
+                .foregroundColor(.secondary)
+                .contentTransition(.interpolate)
+                .animation(.easeIn(duration: 0.35), value: output)
+        } else {
+            if let date {
+                Group {
+                    Text("Last fetched ") + Text(date, format:
+                            .relative(presentation: .named))
+                }.foregroundColor(.secondary)
+            }
+        }
+    }
+}
+
 struct ToolbarPushOriginActionButtonView: View {
     @EnvironmentObject private var repo: RepoState
     @EnvironmentObject private var appModel: AppModel
@@ -43,20 +64,7 @@ struct ToolbarPushOriginActionButtonView: View {
                     ActivityArrow(isPushingBranch: shell.isRunning)
                     VStack(alignment: .leading) {
                         Text("Push \(remote)")
-                        if let output = shell.output {
-                            Text(output)
-                                .lineLimit(1)
-                                .foregroundColor(.secondary)
-                                .contentTransition(.interpolate)
-                                .animation(.easeIn(duration: 0.35), value: shell.output)
-                        } else {
-                            if let date = repo.lastFetchedDate {
-                                Group {
-                                    Text("Last fetched ") + Text(date, format:
-                                            .relative(presentation: .named))
-                                }.foregroundColor(.secondary)
-                            }
-                        }
+                        OutputLine(output: shell.output, date: repo.lastFetchedDate)
                     }.frame(width: 170, alignment: .leading)
 
                     GroupBox {
@@ -69,8 +77,7 @@ struct ToolbarPushOriginActionButtonView: View {
                     ActivityArrow(isPushingBranch: shell.isRunning)
                     VStack(alignment: .leading) {
                         Text("Push \(remote)")
-                        Text("Last fetched just now")
-                            .foregroundColor(.secondary)
+                        OutputLine(output: shell.output, date: repo.lastFetchedDate)
                     }
                 }
                 .foregroundColor(.primary)
