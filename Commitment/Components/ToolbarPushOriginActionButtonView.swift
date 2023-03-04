@@ -23,7 +23,7 @@ struct ToolbarPushOriginActionButtonView: View {
                     VStack(alignment: .leading) {
                         Text("Push \(remote)")
                         OutputLine(output: shell.output, date: repo.lastFetchedDate)
-                    }.frame(width: 170, alignment: .leading)
+                    }.frame(maxWidth: 190, alignment: .leading)
 
                     GroupBox {
                         Text(repo.commitsAhead.description)
