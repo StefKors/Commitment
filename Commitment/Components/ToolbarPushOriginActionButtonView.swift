@@ -51,10 +51,11 @@ struct ToolbarPushOriginActionButtonView: View {
                                 .animation(.easeIn(duration: 0.35), value: shell.output)
                         } else {
                             if let date = repo.lastFetchedDate {
-                                Text(date, style: .relative)
+                                Group {
+                                    Text("Last fetched ") + Text(date, format:
+                                            .relative(presentation: .named))
+                                }.foregroundColor(.secondary)
                             }
-                            // Text("Last fetched just now")
-                            //     .foregroundColor(.secondary)
                         }
                     }.frame(width: 170, alignment: .leading)
 

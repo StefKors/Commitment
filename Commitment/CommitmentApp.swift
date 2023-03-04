@@ -43,9 +43,8 @@ struct CommitmentApp: App {
                 guard let repo else { return }
 
                 self.repo = repo
-                repo.refreshBranch()
                 Task {
-                    try? await repo.refreshDiffsAndStatus()
+                    try? await repo.refreshRepoState()
                 }
                 repo.startMonitor()
             })
