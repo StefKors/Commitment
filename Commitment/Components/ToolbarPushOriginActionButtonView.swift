@@ -52,8 +52,6 @@ struct ToolbarPushOriginActionButtonView: View {
                         } else {
                             Text("Last fetched just now")
                                 .foregroundColor(.secondary)
-
-                            // .transition(.move(edge: .bottom))
                         }
                     }.frame(width: 170, alignment: .leading)
 
@@ -88,7 +86,7 @@ struct ToolbarPushOriginActionButtonView: View {
             do {
                 let remote = try await self.repo.shell.remote()
                 let branch = try await self.repo.shell.branch()
-                await self.shell.run(.git, ["log", "--oneline"], in: self.repo.shell.workspace)
+                // TODO showing progress output line by line isn't working for git push
                 await self.shell.run(.git, ["push", "origin", "main"], in: self.repo.shell.workspace)
                 try? await self.repo.refreshRepoState()
             } catch {
@@ -97,9 +95,9 @@ struct ToolbarPushOriginActionButtonView: View {
         }
     }
 }
-//
-// struct ToolbarActionButtonView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         // ToolbarPushOriginActionButtonView()
-//     }
-// }
+
+struct ToolbarActionButtonView_Previews: PreviewProvider {
+    static var previews: some View {
+        ToolbarPushOriginActionButtonView()
+    }
+}
