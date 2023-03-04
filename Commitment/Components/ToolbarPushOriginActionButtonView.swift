@@ -8,48 +8,6 @@
 import SwiftUI
 import KeychainAccess
 
-struct ActivityArrow: View {
-    let isPushingBranch: Bool
-    var body: some View {
-        ZStack {
-            if isPushingBranch {
-                Image(systemName: "arrow.2.circlepath")
-                    .imageScale(.medium)
-                    .rotation(isEnabled: true)
-                    .frame(width: 18, height: 18, alignment: .center)
-                    .transition(.opacity.animation(.easeInOut(duration: 0.2)))
-            } else {
-                Image(systemName: "arrow.up")
-                    .imageScale(.medium)
-                    .frame(width: 18, height: 18, alignment: .center)
-                    .transition(.opacity.animation(.easeInOut(duration: 0.1)))
-            }
-        }
-        .contentTransition(.interpolate)
-    }
-}
-
-struct OutputLine: View {
-    let output: String?
-    let date: Date?
-    var body: some View {
-        if let output {
-            Text(output)
-                .lineLimit(1)
-                .foregroundColor(.secondary)
-                .contentTransition(.interpolate)
-                .animation(.easeIn(duration: 0.35), value: output)
-        } else {
-            if let date {
-                Group {
-                    Text("Last fetched ") + Text(date, format:
-                            .relative(presentation: .named))
-                }.foregroundColor(.secondary)
-            }
-        }
-    }
-}
-
 struct ToolbarPushOriginActionButtonView: View {
     @EnvironmentObject private var repo: RepoState
     @EnvironmentObject private var appModel: AppModel
@@ -104,7 +62,7 @@ struct ToolbarPushOriginActionButtonView: View {
                 try? await self.repo.refreshRepoState()
                 shell.isRunning = false
             } catch {
-                print("🦆 \(error.localizedDescription)")
+                print(error.localizedDescription)
             }
         }
     }

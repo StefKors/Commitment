@@ -236,6 +236,8 @@
 		8A562CDD29B2007C006C7E8A /* Shell+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CDC29B2007C006C7E8A /* Shell+ViewModel.swift */; };
 		8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */; };
 		8A562CE129B200E6006C7E8A /* Shell+Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE029B200E6006C7E8A /* Shell+Run.swift */; };
+		8A562CE329B33F79006C7E8A /* ActivityArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE229B33F79006C7E8A /* ActivityArrow.swift */; };
+		8A562CE529B33F8D006C7E8A /* OutputLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE429B33F8D006C7E8A /* OutputLine.swift */; };
 		8A5C64CF29797DB300CA8FE1 /* CommitHistorySidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */; };
 		8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */; };
 		8A5C64D129797DB300CA8FE1 /* ActiveChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */; };
@@ -689,6 +691,8 @@
 		8A562CDC29B2007C006C7E8A /* Shell+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+ViewModel.swift"; sourceTree = "<group>"; };
 		8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Executable.swift"; sourceTree = "<group>"; };
 		8A562CE029B200E6006C7E8A /* Shell+Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Run.swift"; sourceTree = "<group>"; };
+		8A562CE229B33F79006C7E8A /* ActivityArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityArrow.swift; sourceTree = "<group>"; };
+		8A562CE429B33F8D006C7E8A /* OutputLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputLine.swift; sourceTree = "<group>"; };
 		8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitHistorySidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesSidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesView.swift; sourceTree = "<group>"; };
@@ -1264,11 +1268,13 @@
 				8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */,
 				8AFBD525296F2C1400525BF7 /* MD5+Gravitar.swift */,
 				8AFBD527296F2C1400525BF7 /* RepoSelectView.swift */,
+				8A562CE429B33F8D006C7E8A /* OutputLine.swift */,
 				8AFBD524296F2C1400525BF7 /* SidebarCommitLabelView.swift */,
 				8AFBD523296F2C1400525BF7 /* SidebarFooterView.swift */,
 				8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */,
 				8A8C665B296464E300A774D7 /* TextEditorView.swift */,
 				8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */,
+				8A562CE229B33F79006C7E8A /* ActivityArrow.swift */,
 				8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */,
 				8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */,
 				8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */,
@@ -2304,6 +2310,7 @@
 				8ACCD2F5297F265C0020BF84 /* Repository.swift in Sources */,
 				8ACCD29C297F265B0020BF84 /* BranchTask.swift in Sources */,
 				8ACCD2AC297F265B0020BF84 /* CheckoutOptions.swift in Sources */,
+				8A562CE329B33F79006C7E8A /* ActivityArrow.swift in Sources */,
 				8AFBD54729702A2C00525BF7 /* Collection.swift in Sources */,
 				8AFBD50F296F2A5F00525BF7 /* AccentGlow.swift in Sources */,
 				8A02C1BD29ABD15B004DCA69 /* Bookmarks.swift in Sources */,
@@ -2425,6 +2432,7 @@
 				8A97DC8F299BB148001E25E1 /* Sequence+Occurrences.swift in Sources */,
 				8AAF7AF829AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift in Sources */,
 				8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */,
+				8A562CE529B33F8D006C7E8A /* OutputLine.swift in Sources */,
 				8A6B649629730B380074B3C1 /* ContentPlaceholderView.swift in Sources */,
 				8ACCD2DA297F265C0020BF84 /* GitRemoteList.swift in Sources */,
 				8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */,
