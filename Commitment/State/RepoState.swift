@@ -109,6 +109,8 @@ init RepoState: \(folderName) with:
     func updateLastFetched() {
         if let attributes = try? FileManager.default.attributesOfItem(atPath: Bundle.main.resourcePath ?? "" + "/git/FETCH_HEAD") {
             print(attributes)
+            let modificationDate = attributes[.modificationDate]
+            print(modificationDate)
         }
     }
 
