@@ -54,7 +54,10 @@ struct ToolbarPushOriginActionButtonView: View {
                                 .foregroundColor(.secondary)
                         }
                         if shell.isRunning {
-                            ProgressView(value: progress, total: 3)
+                            ProgressView(value: 2, total: 3)
+                                .progressViewStyle(.linear)
+                                .frame(width: 200, height: 50)
+                                .foregroundColor(.accentColor)
                         }
                     }.frame(width: 170, alignment: .leading)
 

@@ -24,7 +24,8 @@ struct ToolbarContentView: View {
             Divider()
             Spacer()
         }
-        .frame(height: 50)
+        // .frame(height: 50)
+        .frame(height: 70)
         .padding(.horizontal, 10)
         .truncationMode(.head)
         .lineLimit(1)
