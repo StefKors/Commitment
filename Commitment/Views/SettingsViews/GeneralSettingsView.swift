@@ -13,7 +13,11 @@ struct GeneralSettingsView: View {
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
 
     private var externalEditorPickerItems: [ExternalEditor] {
-        ExternalEditors().editors
+        ExternalEditors().editors.filter { editor in
+            editor.bundleIdentifiers.first { identifier in
+                NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) != nil
+            } != nil
+        }
     }
 
     private let externalGitProviderPickerItems = [

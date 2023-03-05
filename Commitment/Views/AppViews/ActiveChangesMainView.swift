@@ -24,14 +24,13 @@ struct ActiveChangesMainView: View {
 
             ZStack {
                 Rectangle().fill(.clear)
-                ContentPlaceholderView()
-                // if let fileStatus, !repo.diffs.isEmpty {
-                //     FileDiffChangesView(fileStatus: fileStatus, diff: diff)
-                // } else if !isLoading {
-                //     ContentPlaceholderView()
-                // } else {
-                //     EmptyView()
-                // }
+                if let fileStatus, !repo.diffs.isEmpty {
+                    FileDiffChangesView(fileStatus: fileStatus, diff: diff)
+                } else if !isLoading {
+                    ContentPlaceholderView()
+                } else {
+                    EmptyView()
+                }
             }.layoutPriority(1)
         }.task(id: id, priority: .userInitiated, {
             let status = repo.status.first(with: id)
