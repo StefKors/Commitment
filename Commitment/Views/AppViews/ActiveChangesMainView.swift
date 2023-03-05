@@ -13,6 +13,7 @@ struct ActiveChangesMainView: View {
     let diffs: [GitDiff] = []
     @State private var fileStatus: GitFileStatus?
     @State private var diff: GitDiff?
+    @State private var isLoading: Bool = true
 
     var body: some View {
         VStack(spacing: 0) {
@@ -26,6 +27,8 @@ struct ActiveChangesMainView: View {
 
                 if let fileStatus, !repo.diffs.isEmpty {
                     FileDiffChangesView(fileStatus: fileStatus, diff: diff)
+                } else if !isLoading {
+                    ContentPlaceholderView()
                 } else {
                     EmptyView()
                 }
@@ -36,6 +39,7 @@ struct ActiveChangesMainView: View {
             if let id {
                 self.diff = repo.diffs.fileStatus(for: id)
             }
+            isLoading = false
         })
     }
 }

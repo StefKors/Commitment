@@ -62,7 +62,7 @@ struct DiffLineView: View {
                 }
             }
             .frame(width: 30)
-            .font(.system(size: 11))
+            .font(.system(size: 8))
             
             ZStack(alignment: .leading) {
                 colorOpaque
