@@ -75,6 +75,26 @@ struct PushChangesRepoPlaceholder: View {
     }
 }
 
+struct GoCodeRepoPlaceholder: View {
+    @EnvironmentObject private var repo: RepoState
+    @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
+
+    var body: some View {
+        GroupBox {
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Make something great!")
+                        .fontWeight(.semibold)
+
+                    GitFileStatusView(fileStatus: GitFileStatus(path: "sdflkjsdflkjsdflk", state: "M"))
+                }
+            }
+            .scenePadding()
+        }
+        .groupBoxStyle(AccentBorderGroupBoxStyle())
+    }
+}
+
 struct OpenRepoInEditorPlaceholder: View {
     @EnvironmentObject var model: AppModel
     @EnvironmentObject private var repo: RepoState
@@ -150,8 +170,12 @@ struct ContentPlaceholderView: View {
                     .frame(minWidth: 400, maxWidth: 600)
 
                     VStack(alignment: .leading, spacing: 10) {
-                        PushChangesRepoPlaceholder()
-                            .disabled(repo.commitsAhead == 0)
+                        if repo.commitsAhead > 0 {
+                            PushChangesRepoPlaceholder()
+                        } else {
+                            GoCodeRepoPlaceholder()
+                        }
+
 
                         OpenRepoInEditorPlaceholder()
 
