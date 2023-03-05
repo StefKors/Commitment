@@ -47,6 +47,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
             }
         }
     }
+
     @Published var commits: [Commit] = [] {
         // set default view
         didSet {
