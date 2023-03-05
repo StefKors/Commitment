@@ -12,11 +12,10 @@ struct TextEditorView: View {
     @EnvironmentObject private var repo: RepoState
 
     // @FocusState private var titleFieldIsFocused: Bool
-    @State private var commitTitle: String = ""
+    @SceneStorage("commitTitle") private var commitTitle: String = ""
     private let placeholderTitle: String = "Summary (Required)"
 
-    // @FocusState private var bodyFieldIsFocused: Bool
-    @State private var commitBody: String = ""
+    @SceneStorage("commitBody") private var commitBody: String = ""
     private let placeholderBody: String = "Body"
 
 
