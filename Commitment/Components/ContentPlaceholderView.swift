@@ -16,7 +16,6 @@ struct ContentPlaceholderView: View {
         ScrollView(.vertical) {
             HStack {
                 VStack(alignment: .leading, spacing: 20) {
-                    Spacer()
                     VStack(alignment: .leading, spacing: 10) {
                         Text("No local changes")
                             .font(.largeTitle)
