@@ -30,7 +30,7 @@ struct ContentPlaceholderView: View {
                         GroupBox {
                             HStack {
                                 VStack(alignment: .leading, spacing: 10) {
-                                    Text("Publish your repository to \(model.editor.name)")
+                                    Text("Publish your repository to \(selectedExternalGitProvider)")
                                         .fontWeight(.semibold)
                                     Text("This repository is currently only available on your local machine. By publishing it on \(selectedExternalGitProvider) you can share it, and collaborate with others.")
                                         .foregroundStyle(.secondary)
