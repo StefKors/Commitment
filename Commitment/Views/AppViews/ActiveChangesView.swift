@@ -24,7 +24,8 @@ struct ActiveChangesView: View {
                     AddRepoView()
                 }
             })
-        ActiveChangesMainView(fileStatus: nil) // You won't see this in practice (with a default selection)
+
+        ActiveChangesMainView(id: repo.view.activeChangesSelection)
             .frame(minWidth: 300)
     }
 }

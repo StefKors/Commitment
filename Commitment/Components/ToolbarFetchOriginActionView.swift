@@ -10,6 +10,7 @@ import SwiftUI
 struct ToolbarFetchOriginActionView: View {
     @EnvironmentObject private var repo: RepoState
     let remote: String = "origin"
+    @StateObject private var shell: ShellViewModel = .init()
 
     // TODO: implement
     var body: some View {
@@ -21,19 +22,21 @@ struct ToolbarFetchOriginActionView: View {
 
                     VStack(alignment: .leading) {
                         Text("Fetch \(remote)")
-                        Text("Last fetched just now")
-                            .foregroundColor(.secondary)
+                        OutputLine(output: shell.output, date: repo.lastFetchedDate)
                     }
                 }
                 .foregroundColor(.primary)
             }
         })
         .buttonStyle(.plain)
-        .disabled(true)
+        // .disabled(true)
     }
 
     func handleButton() {
         Task {
+            shell.isRunning = true
+            await self.shell.run(.git, ["fetch", "origin", "main"], in: repo.shell.workspace)
+            shell.isRunning = false
             // try? await self.repo.shell.push()
         }
     }

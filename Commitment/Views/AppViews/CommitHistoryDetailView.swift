@@ -9,21 +9,34 @@ import SwiftUI
 
 
 struct CommitHistoryDetailView: View {
+    @EnvironmentObject private var repo: RepoState
+    let fileStatusId: GitFileStatus.ID?
+    let files: [GitFileStatus]
     let diffs: [GitDiff]
-    let fileStatus: GitFileStatus?
+    
     @State private var diff: GitDiff?
-
+    @State private var file: GitFileStatus?
+    
     var body: some View {
-        Group {
-            if let diff, let fileStatus {
-                FileDiffChangesView(fileStatus: fileStatus, diff: diff)
+        ZStack {
+            Rectangle().fill(.clear)
+            
+            if let file {
+                FileDiffChangesView(fileStatus: file, diff: diff)
+                    .tag(file.id)
+                
             } else {
                 EmptyView()
             }
-        }.task(priority: .userInitiated, {
-            if let fileStatus {
-                self.diff = diffs.fileStatus(for: fileStatus.id)
-            }
-        })
+        }
+        .layoutPriority(1)
+        .task(id: fileStatusId, priority: .userInitiated) {
+            self.file = files.first(with: fileStatusId)
+            print("run for fileStatusId \(files.count), \(file != nil)")
+        }
+        .task(id: fileStatusId, priority: .userInitiated) {
+            self.diff = diffs.fileStatus(for: fileStatusId)
+            print("run for fileStatusId \(diffs.count), \(diff != nil)")
+        }
     }
 }

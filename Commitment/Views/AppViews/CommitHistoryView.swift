@@ -23,9 +23,7 @@ struct CommitHistoryView: View {
                     AddRepoView()
                 }
             })
-        CommitHistoryMainView() // You won't see this in practice (with a default selection)
-            .frame(minWidth: 300)
-        CommitHistoryDetailView(diffs: [], fileStatus: nil)
+        CommitHistoryMainView(id: repo.view.activeCommitSelection)
             .frame(minWidth: 300)
     }
 }

@@ -20,22 +20,11 @@ actor ProcessWithLines: ObservableObject {
         _ command: [String],
         in currentDirectoryURL: URL
     ) {
-        self.process = Shell.setup(Process(), executable, command, in: currentDirectoryURL)
-        process.standardInput = stdin
-        process.standardOutput = stdout
-        process.standardError = stderr
-        let execPath = Bundle.main.resourcePath ?? "" + "/" + "Executables/git-arm64/git-core"
-        let appHome = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true)
-        process.environment = [
-            // TODO: Support Intel
-            "GIT_CONFIG_NOSYSTEM": "true",
-            "HOME": appHome.path,
-            "GIT_EXEC_PATH": execPath
-        ]
-        process.launchPath = executable.url.path()
-        process.qualityOfService = .userInitiated
-        process.currentDirectoryURL = currentDirectoryURL
-        process.arguments = command
+        let task = Shell.setup(Process(), executable, command, in: currentDirectoryURL)
+        task.standardInput = stdin
+        task.standardOutput = stdout
+        task.standardError = stderr
+        self.process = task
     }
 
     func start() throws {
@@ -48,6 +37,7 @@ actor ProcessWithLines: ObservableObject {
     }
 
     func send(_ string: String) {
+        print("send? \(string)")
         guard let data = "\(string)\n".data(using: .utf8) else { return }
         stdin.fileHandleForWriting.write(data)
     }

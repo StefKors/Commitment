@@ -238,6 +238,7 @@
 		8A562CE129B200E6006C7E8A /* Shell+Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE029B200E6006C7E8A /* Shell+Run.swift */; };
 		8A562CE329B33F79006C7E8A /* ActivityArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE229B33F79006C7E8A /* ActivityArrow.swift */; };
 		8A562CE529B33F8D006C7E8A /* OutputLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE429B33F8D006C7E8A /* OutputLine.swift */; };
+		8A562CE729B4C335006C7E8A /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE629B4C335006C7E8A /* ViewState.swift */; };
 		8A5C64CF29797DB300CA8FE1 /* CommitHistorySidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */; };
 		8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */; };
 		8A5C64D129797DB300CA8FE1 /* ActiveChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */; };
@@ -693,6 +694,7 @@
 		8A562CE029B200E6006C7E8A /* Shell+Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Run.swift"; sourceTree = "<group>"; };
 		8A562CE229B33F79006C7E8A /* ActivityArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityArrow.swift; sourceTree = "<group>"; };
 		8A562CE429B33F8D006C7E8A /* OutputLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputLine.swift; sourceTree = "<group>"; };
+		8A562CE629B4C335006C7E8A /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitHistorySidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesSidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesView.swift; sourceTree = "<group>"; };
@@ -1886,6 +1888,7 @@
 				8AFBD535296F2C4300525BF7 /* RepoState.swift */,
 				8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */,
 				8A02C52029ADEDA9004DCA69 /* AppModel.swift */,
+				8A562CE629B4C335006C7E8A /* ViewState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -2424,6 +2427,7 @@
 				8A97DC95299BB148001E25E1 /* String+Removing.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,
 				8ACCD2C9297F265C0020BF84 /* CheckReferenceTask.swift in Sources */,
+				8A562CE729B4C335006C7E8A /* ViewState.swift in Sources */,
 				8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */,
 				8ACCD2A1297F265B0020BF84 /* MergeOptions.swift in Sources */,
 				8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */,

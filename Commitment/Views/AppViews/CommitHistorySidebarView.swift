@@ -11,16 +11,11 @@ import SwiftUI
 struct CommitHistorySidebarView: View {
     @EnvironmentObject private var repo: RepoState
 
-    @State private var activeCommitSelection: Commit.ID? = nil
-
     var body: some View {
-        List(selection: $activeCommitSelection) {
+        List(selection: $repo.view.activeCommitSelection) {
             ForEach(repo.commits) { commit in
-                NavigationLink(destination: {
-                    CommitHistoryMainView(commitId: activeCommitSelection)
-                }, label: {
-                    SidebarCommitLabelView(commit: commit)
-                })
+                SidebarCommitLabelView(commit: commit)
+                    .tag(commit)
             }
         }.listStyle(SidebarListStyle())
     }

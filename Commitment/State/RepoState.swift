@@ -19,6 +19,7 @@ extension Store where Item == RepoState {
 
 class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     @Published var activity = ActivityState()
+    @Published var view = ViewState()
 
     var shell: Shell
 
@@ -34,7 +35,13 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     var branches: [RepositoryReference] = []
 
     @Published var diffs: [GitDiff] = []
-    @Published var status: [GitFileStatus] = []
+    @Published var status: [GitFileStatus] = [] {
+        didSet {
+            if view.activeChangesSelection == nil {
+                view.activeChangesSelection = status.first?.id
+            }
+        }
+    }
     @Published var commits: [Commit] = []
     @Published var commitsAhead: Int = 0
     @Published var lastFetchedDate: Date? = nil
