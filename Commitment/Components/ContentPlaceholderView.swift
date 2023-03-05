@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ContentPlaceholderView: View {
+    @EnvironmentObject var model: AppModel
     @EnvironmentObject private var repo: RepoState
-    @AppStorage("SelectedExternalEditor") private var selectedExternalEditor: String = "Visual Studio Code"
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
 
     var body: some View {
         ScrollView(.vertical) {
-            HStack {
+            HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 20) {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("No local changes")
@@ -30,7 +30,7 @@ struct ContentPlaceholderView: View {
                         GroupBox {
                             HStack {
                                 VStack(alignment: .leading, spacing: 10) {
-                                    Text("Publish your repository to \(selectedExternalGitProvider)")
+                                    Text("Publish your repository to \(model.editor.name)")
                                         .fontWeight(.semibold)
                                     Text("This repository is currently only available on your local machine. By publishing it on \(selectedExternalGitProvider) you can share it, and collaborate with others.")
                                         .foregroundStyle(.secondary)
@@ -63,12 +63,12 @@ struct ContentPlaceholderView: View {
                                     }.foregroundStyle(.secondary)
                                 }
                                 Spacer()
-                                Button("Open in \(selectedExternalEditor)", action: {
-                                    repo.path.showInFinder()
+                                Button("Open in \(model.editor.name)", action: {
+                                    repo.path.openInEditor(model.editor)
                                 })
                             }
                             .scenePadding()
-                        }.disabled(true)
+                        }
 
                         GroupBox {
                             HStack {
@@ -90,12 +90,9 @@ struct ContentPlaceholderView: View {
                             .scenePadding()
                         }
                     }
-                    .frame(minWidth: 400, maxWidth: 600)
+                    .frame(minWidth: 400, maxWidth: 600, alignment: .topLeading)
                 }
-                .lineLimit(1...6)
-                // .frame(width: 650, alignment: .leading)
                 .padding()
-                Spacer()
             }
         }.scenePadding()
     }

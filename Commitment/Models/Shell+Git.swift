@@ -155,7 +155,6 @@ extension Shell {
                 let fileState = String(trimmedLine.prefix(2))
                 trimmedLine.removeFirst(2)
                 var fileName = trimmedLine.trimmingCharacters(in: .whitespaces)
-                print(fileState)
                 // When file name contains spaces, need to ensure leading and trailing quoes escapes are removed
                 fileName = fileName.trimmingCharacters(in: CharacterSet(charactersIn: "\"\\"))
 

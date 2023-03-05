@@ -6,16 +6,15 @@
 //
 
 import SwiftUI
+import Boutique
 
 struct GeneralSettingsView: View {
-    @AppStorage("SelectedExternalEditor") private var selectedExternalEditor: String = "Visual Studio Code"
+    @EnvironmentObject var appModel: AppModel
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
 
-    private let externalEditorPickerItems = [
-        "Visual Studio Code",
-        "WebStorm",
-        "Xcode",
-    ]
+    private var externalEditorPickerItems: [ExternalEditor] {
+        ExternalEditors().editors
+    }
 
     private let externalGitProviderPickerItems = [
         "GitHub",
@@ -31,15 +30,14 @@ struct GeneralSettingsView: View {
                 HStack {
                     Text("External Editor")
                     Spacer()
-
-                    Picker(selection: $selectedExternalEditor) {
-                        ForEach(externalEditorPickerItems, id: \.self) { item in
-                            Text(item)
-                                .tag(item as String?)
+                    
+                    Picker("Editor Picker", selection: appModel.$editor.binding) {
+                        ForEach(externalEditorPickerItems, id: \.name) { item in
+                            Text(item.name).tag(item)
                         }
-                    } label: { }
-                        .pickerStyle(.menu)
-                        .frame(maxWidth: 150)
+                    }
+                    .labelsHidden()
+                    .frame(maxWidth: 150)
                 }
 
                 Divider()
@@ -47,13 +45,14 @@ struct GeneralSettingsView: View {
                 HStack {
                     Text("External Git Provider")
                     Spacer()
-                    Picker(selection: $selectedExternalGitProvider) {
+                    Picker("Git Provider", selection: $selectedExternalGitProvider) {
                         ForEach(externalGitProviderPickerItems, id: \.self) { item in
                             Text(item).tag(item as String?)
                         }
-                    } label: { }
-                        .pickerStyle(.menu)
-                        .frame(maxWidth: 80)
+                    }
+                    .labelsHidden()
+                    .pickerStyle(.menu)
+                    .frame(maxWidth: 80)
                 }
             }.padding(6)
         }, label: {

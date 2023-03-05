@@ -11,6 +11,7 @@ import Foundation
 
 class AppModel: ObservableObject {
     static let shared = AppModel()
+    @StoredValue(key: "Editor") var editor: ExternalEditor = .xcode
     @StoredValue(key: "WindowMode") var windowMode: SplitModeOptions = .history
     @StoredValue(key: "ActiveRepository") var activeRepositoryId: RepoState.ID? = nil
     /// Creates a @Stored property to handle an in-memory and on-disk cache of type.

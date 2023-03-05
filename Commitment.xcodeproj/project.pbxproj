@@ -239,6 +239,7 @@
 		8A562CE329B33F79006C7E8A /* ActivityArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE229B33F79006C7E8A /* ActivityArrow.swift */; };
 		8A562CE529B33F8D006C7E8A /* OutputLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE429B33F8D006C7E8A /* OutputLine.swift */; };
 		8A562CE729B4C335006C7E8A /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE629B4C335006C7E8A /* ViewState.swift */; };
+		8A562CE929B4DE58006C7E8A /* ExternalEditors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE829B4DE58006C7E8A /* ExternalEditors.swift */; };
 		8A5C64CF29797DB300CA8FE1 /* CommitHistorySidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */; };
 		8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */; };
 		8A5C64D129797DB300CA8FE1 /* ActiveChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */; };
@@ -695,6 +696,7 @@
 		8A562CE229B33F79006C7E8A /* ActivityArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityArrow.swift; sourceTree = "<group>"; };
 		8A562CE429B33F8D006C7E8A /* OutputLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputLine.swift; sourceTree = "<group>"; };
 		8A562CE629B4C335006C7E8A /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		8A562CE829B4DE58006C7E8A /* ExternalEditors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalEditors.swift; sourceTree = "<group>"; };
 		8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitHistorySidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesSidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesView.swift; sourceTree = "<group>"; };
@@ -1395,6 +1397,7 @@
 				8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */,
 				8A562CDA29B20053006C7E8A /* Shell+ProcessWithLines.swift */,
 				8A562CDC29B2007C006C7E8A /* Shell+ViewModel.swift */,
+				8A562CE829B4DE58006C7E8A /* ExternalEditors.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2326,6 +2329,7 @@
 				8ACCD2EE297F265C0020BF84 /* FileManager+Utils.swift in Sources */,
 				8AFBD532296F2C1400525BF7 /* RepoSelectView.swift in Sources */,
 				8ACCD2C5297F265C0020BF84 /* RepositoryTask.swift in Sources */,
+				8A562CE929B4DE58006C7E8A /* ExternalEditors.swift in Sources */,
 				8ACCD2C7297F265C0020BF84 /* GitLogOptions.swift in Sources */,
 				8A97DC93299BB148001E25E1 /* Substring+HasSuffix.swift in Sources */,
 				8ACCD298297F265B0020BF84 /* CommitOptions.swift in Sources */,

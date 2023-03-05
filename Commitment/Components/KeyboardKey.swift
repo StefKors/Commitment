@@ -15,7 +15,7 @@ struct KeyboardKey: View {
         RoundedRectangle(cornerRadius: 4, style: .continuous)
             .fill(Color("KeySides"))
             .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
-            .shadow(radius: isHovering ? 4 : 6, y: 2)
+            .shadow(radius: isHovering ? 2 : 4, y: 2)
             .overlay(content: {
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
                     .stroke(Color("KeyBorder"), lineWidth: 1)
