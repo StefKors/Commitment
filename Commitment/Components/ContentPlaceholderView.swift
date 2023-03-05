@@ -7,6 +7,119 @@
 
 import SwiftUI
 
+struct PublishRepoPlaceholder: View {
+    @EnvironmentObject private var repo: RepoState
+    @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
+
+    var body: some View {
+        GroupBox {
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Publish your repository to \(selectedExternalGitProvider)")
+                        .fontWeight(.semibold)
+                    Text("This repository is currently only available on your local machine. By publishing it on \(selectedExternalGitProvider) you can share it, and collaborate with others.")
+                        .foregroundStyle(.secondary)
+                    HStack {
+                        Text("Always available in the toolbar for local repositories or")
+                        KeyboardKey(key: "⌘")
+                        KeyboardKey(key: "P")
+                    }.foregroundStyle(.secondary)
+                }
+                Spacer()
+                Button("Publish repository", action: {
+                    repo.path.showInFinder()
+                })
+            }
+            .scenePadding()
+        }
+        .groupBoxStyle(AccentBorderGroupBoxStyle())
+    }
+}
+
+struct PushChangesRepoPlaceholder: View {
+    @EnvironmentObject private var repo: RepoState
+    @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
+
+    var body: some View {
+        GroupBox {
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Publish your repository to \(selectedExternalGitProvider)")
+                        .fontWeight(.semibold)
+                    Text("This repository is currently only available on your local machine. By publishing it on \(selectedExternalGitProvider) you can share it, and collaborate with others.")
+                        .foregroundStyle(.secondary)
+                    HStack {
+                        Text("Always available in the toolbar for local repositories or")
+                        KeyboardKey(key: "⌘")
+                        KeyboardKey(key: "P")
+                    }.foregroundStyle(.secondary)
+                }
+                Spacer()
+                Button("Publish repository", action: {
+                    repo.path.showInFinder()
+                })
+            }
+            .scenePadding()
+        }
+        .groupBoxStyle(AccentBorderGroupBoxStyle())
+    }
+}
+
+struct OpenRepoInEditorPlaceholder: View {
+    @EnvironmentObject var model: AppModel
+    @EnvironmentObject private var repo: RepoState
+
+    var body: some View {
+        GroupBox {
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Open repository in your external editor")
+                        .fontWeight(.semibold)
+                    HStack {
+                        Text("Repository menu or")
+                        KeyboardKey(key: "⌘")
+                        KeyboardKey(key: "⇧")
+                        KeyboardKey(key: "A")
+                    }.foregroundStyle(.secondary)
+                }
+                Spacer()
+                Button("Open in \(model.editor.name)", action: {
+                    repo.path.openInEditor(model.editor)
+                })
+            }
+            .scenePadding()
+        }
+    }
+}
+
+struct OpenRepoInFinderPlaceholder: View {
+    @EnvironmentObject var model: AppModel
+    @EnvironmentObject private var repo: RepoState
+
+    var body: some View {
+        GroupBox {
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("View files of your repository in Finder")
+                        .fontWeight(.semibold)
+                    HStack {
+                        Text("Repository menu or")
+                        KeyboardKey(key: "⌘")
+                        KeyboardKey(key: "⇧")
+                        KeyboardKey(key: "F")
+                    }.foregroundStyle(.secondary)
+                }
+                Spacer()
+                Button("Show in Finder", action: {
+                    repo.path.showInFinder()
+                })
+            }
+            .scenePadding()
+        }
+    }
+}
+
+
 struct ContentPlaceholderView: View {
     @EnvironmentObject var model: AppModel
     @EnvironmentObject private var repo: RepoState
@@ -27,68 +140,12 @@ struct ContentPlaceholderView: View {
                     .frame(minWidth: 400, maxWidth: 600)
 
                     VStack(alignment: .leading, spacing: 10) {
-                        GroupBox {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text("Publish your repository to \(selectedExternalGitProvider)")
-                                        .fontWeight(.semibold)
-                                    Text("This repository is currently only available on your local machine. By publishing it on \(selectedExternalGitProvider) you can share it, and collaborate with others.")
-                                        .foregroundStyle(.secondary)
-                                    HStack {
-                                        Text("Always available in the toolbar for local repositories or")
-                                        KeyboardKey(key: "⌘")
-                                        KeyboardKey(key: "P")
-                                    }.foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                Button("Publish repository", action: {
-                                    repo.path.showInFinder()
-                                })
-                            }
-                            .scenePadding()
-                        }
-                        .groupBoxStyle(AccentBorderGroupBoxStyle())
-                        .disabled(true)
+                        PushChangesRepoPlaceholder()
+                            .disabled(repo.commitsAhead == 0)
 
-                        GroupBox {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text("Open repository in your external editor")
-                                        .fontWeight(.semibold)
-                                    HStack {
-                                        Text("Repository menu or")
-                                        KeyboardKey(key: "⌘")
-                                        KeyboardKey(key: "⇧")
-                                        KeyboardKey(key: "A")
-                                    }.foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                Button("Open in \(model.editor.name)", action: {
-                                    repo.path.openInEditor(model.editor)
-                                })
-                            }
-                            .scenePadding()
-                        }
+                        OpenRepoInEditorPlaceholder()
 
-                        GroupBox {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text("View files of your repository in Finder")
-                                        .fontWeight(.semibold)
-                                    HStack {
-                                        Text("Repository menu or")
-                                        KeyboardKey(key: "⌘")
-                                        KeyboardKey(key: "⇧")
-                                        KeyboardKey(key: "F")
-                                    }.foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                Button("Show in Finder", action: {
-                                    repo.path.showInFinder()
-                                })
-                            }
-                            .scenePadding()
-                        }
+                        OpenRepoInFinderPlaceholder()
                     }
                     .frame(minWidth: 400, maxWidth: 600, alignment: .topLeading)
                 }
