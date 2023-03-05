@@ -92,7 +92,7 @@ struct ContentPlaceholderView: View {
                     }
                     .frame(minWidth: 400, maxWidth: 600)
                 }
-                .lineLimit(1...3)
+                .lineLimit(1...6)
                 // .frame(width: 650, alignment: .leading)
                 .padding()
                 Spacer()
