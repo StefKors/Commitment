@@ -11,7 +11,6 @@ struct TextEditorView: View {
     let isDisabled: Bool
     @EnvironmentObject private var repo: RepoState
 
-    // @FocusState private var titleFieldIsFocused: Bool
     @SceneStorage("commitTitle") private var commitTitle: String = ""
     private let placeholderTitle: String = "Summary (Required)"
 

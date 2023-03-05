@@ -152,9 +152,10 @@ extension Shell {
             .compactMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }
                 var trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
-                let fileState = String(trimmedLine.removeFirst())
+                let fileState = String(trimmedLine.prefix(2))
+                trimmedLine.removeFirst(2)
                 var fileName = trimmedLine.trimmingCharacters(in: .whitespaces)
-
+                print(fileState)
                 // When file name contains spaces, need to ensure leading and trailing quoes escapes are removed
                 fileName = fileName.trimmingCharacters(in: CharacterSet(charactersIn: "\"\\"))
 
