@@ -21,49 +21,37 @@ struct TextEditorView: View {
 
 
     var body: some View {
-            VStack {
-                // GroupBox {
-                // TODO: limit to 50 chars
-                    TextField("CommitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
-                        .lineLimit(1)
-                        .multilineTextAlignment(.leading)
-                        // .textFieldStyle(.roundedBorder)
-                        .onSubmit { handleSubmit() }
-                        // .focused($titleFieldIsFocused)
-                        // .padding()
-                        // .background(.thinMaterial)
-                        // .background(
-                        //     RoundedRectangle(cornerRadius: 5)
-                        //         .stroke(.separator, lineWidth: 1)
-                        // )
-                // }.groupBoxStyle(MaterialAccentBorderGroupBoxStyle(isActive: titleFieldIsFocused))
+        Form {
+            TextField("CommitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
+                .lineLimit(1)
+                .multilineTextAlignment(.leading)
 
-                // GroupBox {
-                    TextField("Commitbody", text: $commitBody, prompt: Text(placeholderBody), axis: .vertical)
-                        .lineLimit(3...20)
-                        .multilineTextAlignment(.leading)
-                        // .textFieldStyle(.roundedBorder)
-                        .onSubmit { handleSubmit() }
-                        // .focused($bodyFieldIsFocused)
-                // }.groupBoxStyle(MaterialAccentBorderGroupBoxStyle(isActive: bodyFieldIsFocused))
+                .onSubmit { handleSubmit() }
+                .textFieldStyle(.roundedBorder)
 
-                Button(action: { handleSubmit() }) {
-                    Spacer()
-                    Text("Commit")
-                    Text("to")
-                    Text(repo.branch)
-                        .fontWeight(.bold)
-                    Spacer()
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(isDisabled)
+            TextField("Commitbody", text: $commitBody, prompt: Text(placeholderBody), axis: .vertical)
+                .textFieldStyle(.roundedBorder)
+                .lineLimit(3...20)
+                .multilineTextAlignment(.leading)
+                .onSubmit { handleSubmit() }
+
+            Button(action: { handleSubmit() }) {
+                Spacer()
+                Text("Commit")
+                Text("to")
+                Text(repo.branch)
+                    .fontWeight(.bold)
+                Spacer()
             }
-            .padding(.horizontal)
-            .padding(.bottom)
+            .buttonStyle(.borderedProminent)
+            .disabled(isDisabled)
+        }
+        .labelsHidden()
+        .padding(.horizontal)
+        .padding(.bottom)
     }
 
     func handleSubmit() {
-        // TODO: handle is disabled
         Task { @MainActor in
             if !commitTitle.isEmpty, !commitBody.isEmpty {
                 try? await repo.shell.commit(title: commitTitle, message: commitBody)
@@ -74,8 +62,9 @@ struct TextEditorView: View {
                 commitTitle = ""
             }
 
-            try? await repo.refreshRepoState()
-
+            withAnimation(.easeInOut) {
+                try? await repo.refreshRepoState()
+            }
         }
     }
 }
