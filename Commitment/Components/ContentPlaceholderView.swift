@@ -44,19 +44,29 @@ struct PushChangesRepoPlaceholder: View {
         GroupBox {
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Publish your repository to \(selectedExternalGitProvider)")
+                    Text("Push commits to the origin remote")
                         .fontWeight(.semibold)
-                    Text("This repository is currently only available on your local machine. By publishing it on \(selectedExternalGitProvider) you can share it, and collaborate with others.")
+                    Text("You have \(repo.commitsAhead) local commit waiting to be pushed to \(selectedExternalGitProvider).")
                         .foregroundStyle(.secondary)
                     HStack {
-                        Text("Always available in the toolbar for local repositories or")
+                        Text("Always available in the toolbar for local commits or")
                         KeyboardKey(key: "⌘")
                         KeyboardKey(key: "P")
                     }.foregroundStyle(.secondary)
                 }
                 Spacer()
-                Button("Publish repository", action: {
-                    repo.path.showInFinder()
+                Button("Push commits", action: {
+                    Task {
+                        // TODO: a way to show progress in toolbar button
+                        do {
+                            let remote = try await self.repo.shell.remote()
+                            let branch = try await self.repo.shell.branch()
+                            try? await self.repo.shell.run(.git, ["push", remote, branch], in: self.repo.shell.workspace)
+                            try? await self.repo.refreshRepoState()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
                 })
             }
             .scenePadding()
