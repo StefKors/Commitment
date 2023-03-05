@@ -36,13 +36,21 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
 
     @Published var diffs: [GitDiff] = []
     @Published var status: [GitFileStatus] = [] {
+        // set default view
         didSet {
             if view.activeChangesSelection == nil {
                 view.activeChangesSelection = status.first?.id
             }
         }
     }
-    @Published var commits: [Commit] = []
+    @Published var commits: [Commit] = [] {
+        // set default view
+        didSet {
+            if view.activeCommitSelection == nil {
+                view.activeCommitSelection = commits.first?.id
+            }
+        }
+    }
     @Published var commitsAhead: Int = 0
     @Published var lastFetchedDate: Date? = nil
 
