@@ -40,6 +40,10 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         didSet {
             if view.activeChangesSelection == nil {
                 view.activeChangesSelection = status.first?.id
+            } else if !status.contains(where: { filestatus in
+                view.activeChangesSelection != filestatus.id
+            }) {
+                view.activeChangesSelection = status.first?.id
             }
         }
     }
@@ -48,6 +52,10 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         didSet {
             if view.activeCommitSelection == nil {
                 view.activeCommitSelection = commits.first?.id
+            } else if !commits.contains(where: { commit in
+                view.activeCommitSelection != commit.id
+            }) {
+                view.activeCommitSelection = status.first?.id
             }
         }
     }
