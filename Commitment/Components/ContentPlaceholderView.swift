@@ -83,11 +83,17 @@ struct GoCodeRepoPlaceholder: View {
         GroupBox {
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Make something great!")
+                    Text("Go make something great!")
                         .fontWeight(.semibold)
-
-                    GitFileStatusView(fileStatus: GitFileStatus(path: "sdflkjsdflkjsdflk", state: "M"))
+                    Text("Meanwhile Commitment will keep an eye out for changes.")
+                        .foregroundStyle(.secondary)
                 }
+                Spacer()
+
+                Image(systemName: "wand.and.stars.inverse")
+                    .resizable()
+                    .frame(width: 25, height: 25)
+                    .foregroundColor(.accentColor)
             }
             .scenePadding()
         }
@@ -175,7 +181,6 @@ struct ContentPlaceholderView: View {
                         } else {
                             GoCodeRepoPlaceholder()
                         }
-
 
                         OpenRepoInEditorPlaceholder()
 
