@@ -46,9 +46,9 @@ struct PushChangesRepoPlaceholder: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Push commits to the origin remote")
                         .fontWeight(.semibold)
-
+                    Text("You have \(repo.commitsAhead) local commit waiting to be pushed to \(selectedExternalGitProvider).")
+                        .foregroundStyle(.secondary)
                     HStack {
-                        Text("You have \(repo.commitsAhead) local commit waiting to be pushed to \(selectedExternalGitProvider).") +
                         Text("Always available in the toolbar for local commits or")
                         KeyboardKey(key: "⌘")
                         KeyboardKey(key: "P")
