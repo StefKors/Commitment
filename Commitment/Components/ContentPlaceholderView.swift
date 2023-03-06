@@ -10,7 +10,7 @@ import SwiftUI
 struct PublishRepoPlaceholder: View {
     @EnvironmentObject private var repo: RepoState
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-
+    
     var body: some View {
         GroupBox {
             HStack {
@@ -39,7 +39,7 @@ struct PublishRepoPlaceholder: View {
 struct PushChangesRepoPlaceholder: View {
     @EnvironmentObject private var repo: RepoState
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-
+    
     var body: some View {
         GroupBox {
             HStack {
@@ -78,7 +78,7 @@ struct PushChangesRepoPlaceholder: View {
 struct GoCodeRepoPlaceholder: View {
     @EnvironmentObject private var repo: RepoState
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-
+    
     var body: some View {
         GroupBox {
             HStack {
@@ -89,7 +89,7 @@ struct GoCodeRepoPlaceholder: View {
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
-
+                
                 Image(systemName: "wand.and.stars.inverse")
                     .resizable()
                     .frame(width: 25, height: 25)
@@ -104,7 +104,7 @@ struct GoCodeRepoPlaceholder: View {
 struct OpenRepoInEditorPlaceholder: View {
     @EnvironmentObject var model: AppModel
     @EnvironmentObject private var repo: RepoState
-
+    
     var body: some View {
         GroupBox {
             HStack {
@@ -131,7 +131,7 @@ struct OpenRepoInEditorPlaceholder: View {
 struct OpenRepoInFinderPlaceholder: View {
     @EnvironmentObject var model: AppModel
     @EnvironmentObject private var repo: RepoState
-
+    
     var body: some View {
         GroupBox {
             HStack {
@@ -160,34 +160,34 @@ struct ContentPlaceholderView: View {
     @EnvironmentObject var model: AppModel
     @EnvironmentObject private var repo: RepoState
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-
+    
     var body: some View {
         ScrollView(.vertical) {
-                VStack(alignment: .leading, spacing: 20) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("No local changes")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .fixedSize(horizontal: true, vertical: false)
-                        Text("There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:")
-                            .lineSpacing(4)
-                    }
-                    .frame(minWidth: 400, maxWidth: 600)
-
-                    VStack(alignment: .leading, spacing: 10) {
-                        if repo.commitsAhead > 0 {
-                            PushChangesRepoPlaceholder()
-                        } else {
-                            GoCodeRepoPlaceholder()
-                        }
-
-                        OpenRepoInEditorPlaceholder()
-
-                        OpenRepoInFinderPlaceholder()
-                    }
-                    .frame(minWidth: 400, maxWidth: 600, alignment: .topLeading)
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("No local changes")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .fixedSize(horizontal: true, vertical: false)
+                    Text("There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:")
+                        .lineSpacing(4)
                 }
-                .padding()
+                .frame(minWidth: 400, maxWidth: 600)
+                
+                VStack(alignment: .leading, spacing: 10) {
+                    if repo.commitsAhead > 0 {
+                        PushChangesRepoPlaceholder()
+                    } else {
+                        GoCodeRepoPlaceholder()
+                    }
+                    
+                    OpenRepoInEditorPlaceholder()
+                    
+                    OpenRepoInFinderPlaceholder()
+                }
+                .frame(minWidth: 400, maxWidth: 600, alignment: .topLeading)
+            }
+            .padding()
         }.scenePadding()
     }
 }
