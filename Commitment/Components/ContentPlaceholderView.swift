@@ -163,7 +163,6 @@ struct ContentPlaceholderView: View {
 
     var body: some View {
         ScrollView(.vertical) {
-            HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 20) {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("No local changes")
@@ -189,7 +188,6 @@ struct ContentPlaceholderView: View {
                     .frame(minWidth: 400, maxWidth: 600, alignment: .topLeading)
                 }
                 .padding()
-            }
         }.scenePadding()
     }
 }
