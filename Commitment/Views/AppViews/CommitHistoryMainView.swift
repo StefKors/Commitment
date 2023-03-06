@@ -33,8 +33,8 @@ struct CommitHistoryMainView: View {
                     }
                 }
                 .listStyle(SidebarListStyle())
-                .frame(minWidth: 300)
             }
+            .frame(minWidth: 300, idealWidth: 300, maxWidth: 500)
             .task(id: id, priority: .userInitiated) {
                 if let id {
                     // TODO: is this the right way to do paralell?
@@ -42,13 +42,14 @@ struct CommitHistoryMainView: View {
                         self.diffs = diffs
                     }
 
-                    if let files = try? await repo.shell.show(at: id) {
-                        self.files = files
+                    if let newFiles = try? await repo.shell.show(at: id) {
+                        repo.view.activeCommitFileSelection = nil
+                        self.files = newFiles
                     }
                 }
             }
 
-            CommitHistoryDetailView(fileStatusId: repo.view.activeCommitFileSelection, files: files, diffs: diffs)
+            CommitHistoryDetailView(commitId: id, fileStatusId: repo.view.activeCommitFileSelection, files: files, diffs: diffs)
                 .frame(minWidth: 300)
         }
     }

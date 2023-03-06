@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CommitHistoryDetailView: View {
     @EnvironmentObject private var repo: RepoState
+    let commitId: Commit.ID?
     let fileStatusId: GitFileStatus.ID?
     let files: [GitFileStatus]
     let diffs: [GitDiff]
@@ -30,13 +31,13 @@ struct CommitHistoryDetailView: View {
             }
         }
         .layoutPriority(1)
-        .task(id: fileStatusId, priority: .userInitiated) {
+        .task(id: commitId, priority: .userInitiated) {
             self.file = files.first(with: fileStatusId)
-            print("run for fileStatusId \(files.count), \(file != nil)")
+            self.diff = diffs.fileStatus(for: fileStatusId)
         }
         .task(id: fileStatusId, priority: .userInitiated) {
+            self.file = files.first(with: fileStatusId)
             self.diff = diffs.fileStatus(for: fileStatusId)
-            print("run for fileStatusId \(diffs.count), \(diff != nil)")
         }
     }
 }
