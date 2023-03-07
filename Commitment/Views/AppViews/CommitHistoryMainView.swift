@@ -33,6 +33,7 @@ struct CommitHistoryMainView: View {
                     }
                 }
                 .listStyle(SidebarListStyle())
+                .ignoresSafeArea(.all, edges: .top)
             }
             .frame(minWidth: 300, idealWidth: 300, maxWidth: 500)
             .task(id: id, priority: .userInitiated) {
@@ -50,6 +51,7 @@ struct CommitHistoryMainView: View {
             }
 
             CommitHistoryDetailView(commitId: id, fileStatusId: repo.view.activeCommitFileSelection, files: files, diffs: diffs)
+                .ignoresSafeArea(.all, edges: .top)
                 .frame(minWidth: 300)
         }
     }

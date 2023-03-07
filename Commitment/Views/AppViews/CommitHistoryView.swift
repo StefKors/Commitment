@@ -24,6 +24,7 @@ struct CommitHistoryView: View {
                 }
             })
         CommitHistoryMainView(id: repo.view.activeCommitSelection)
+            .ignoresSafeArea(.all, edges: .top)
             .frame(minWidth: 300)
     }
 }

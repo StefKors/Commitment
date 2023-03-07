@@ -298,6 +298,8 @@
 		8AAF7AF829AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */; };
 		8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */; };
 		8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */; };
+		8AC7B8DF29B750D500AB2728 /* Menu in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC7B8DE29B750D500AB2728 /* Menu */; };
+		8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC7B8E129B751C700AB2728 /* WindowManagement */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
 		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
@@ -919,7 +921,9 @@
 				8A02C51B29AD3D67004DCA69 /* KeychainAccess in Frameworks */,
 				8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */,
 				8A97DDA3299BC76A001E25E1 /* Splash in Frameworks */,
+				8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */,
 				8A76E76929802F700033B978 /* Boutique in Frameworks */,
+				8AC7B8DF29B750D500AB2728 /* Menu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1927,6 +1931,8 @@
 				8A76E76829802F700033B978 /* Boutique */,
 				8A97DDA2299BC76A001E25E1 /* Splash */,
 				8A02C51A29AD3D67004DCA69 /* KeychainAccess */,
+				8AC7B8DE29B750D500AB2728 /* Menu */,
+				8AC7B8E129B751C700AB2728 /* WindowManagement */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -2005,6 +2011,8 @@
 				8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */,
 				8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */,
 				8A02C51929AD3D67004DCA69 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				8AC7B8DD29B750D500AB2728 /* XCRemoteSwiftPackageReference "Menu" */,
+				8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -2840,6 +2848,22 @@
 				kind = branch;
 			};
 		};
+		8AC7B8DD29B750D500AB2728 /* XCRemoteSwiftPackageReference "Menu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/funcompany/Menu.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Wouter01/SwiftUI-WindowManagement.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		8AFBD51A296F2BF600525BF7 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
@@ -2865,6 +2889,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */;
 			productName = Splash;
+		};
+		8AC7B8DE29B750D500AB2728 /* Menu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AC7B8DD29B750D500AB2728 /* XCRemoteSwiftPackageReference "Menu" */;
+			productName = Menu;
+		};
+		8AC7B8E129B751C700AB2728 /* WindowManagement */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */;
+			productName = WindowManagement;
 		};
 		8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -32,7 +32,8 @@ struct ActiveChangesMainView: View {
                     EmptyView()
                 }
             }.layoutPriority(1)
-        }.task(id: id, priority: .userInitiated, {
+        }
+        .task(id: id, priority: .userInitiated, {
             let status = repo.status.first(with: id)
             self.fileStatus = status
             if let id {

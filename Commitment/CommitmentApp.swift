@@ -8,7 +8,10 @@
 import SwiftUI
 import Boutique
 import Foundation
+import WindowManagement
 
+// https://github.com/Wouter01/SwiftUI-WindowManagement
+// NSWindow.alwaysUseActiveAppearance = true
 /// theming?
 // /.foregroundStyle(.blue, .green, Gradient(colors: [.red, .yellow]))
 // /.backgroundStyle(.pink)
@@ -21,8 +24,12 @@ struct CommitmentApp: App {
     @StateObject var appModel: AppModel = .shared
     @State private var repo: RepoState?
 
+    init() {
+        NSWindow.alwaysUseActiveAppearance = true
+    }
+
     var body: some Scene {
-        Window("Commitment", id: "main window", content: {
+        Window("Commitment", id: "MainWindow", content: {
             Group {
                 if appModel.repos.isEmpty {
                     // Appicon view is slow?
@@ -32,6 +39,7 @@ struct CommitmentApp: App {
                     // .navigationTitle("Commitment")
                 } else if let repo {
                     RepoWindow()
+                        .ignoresSafeArea(.all, edges: .top)
                         .environmentObject(repo)
                 } else {
                     EmptyView()
@@ -54,8 +62,12 @@ struct CommitmentApp: App {
             }
 
         })
+        .register("MainWindow")
+        .titlebarAppearsTransparent(true)
+        .windowToolbarStyle(.unifiedCompact(showsTitle: false))
+        .windowStyle(.hiddenTitleBar)
         // .windowStyle(.hiddenTitleBar)
-        .windowToolbarStyle(.unifiedCompact(showsTitle: true))
+        // .windowToolbarStyle(.unifiedCompact(showsTitle: true))
         .windowResizability(.contentMinSize)
         .commands {
             SidebarCommands()

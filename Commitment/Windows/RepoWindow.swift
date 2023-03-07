@@ -21,7 +21,7 @@ struct RepoWindow: View {
             // .navigationDocument(URL(fileURLWithPath: state.repo.path.absoluteString, isDirectory: true))
                 .toolbar(content: {
                     ToolbarItemGroup(placement: .keyboard, content: {
-                                TouchbarContentView()
+                        TouchbarContentView()
                     })
                 })
         }

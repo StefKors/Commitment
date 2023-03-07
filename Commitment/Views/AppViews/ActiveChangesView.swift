@@ -26,6 +26,7 @@ struct ActiveChangesView: View {
             })
 
         ActiveChangesMainView(id: repo.view.activeChangesSelection)
+            .ignoresSafeArea(.all, edges: .top)
             .frame(minWidth: 300)
     }
 }

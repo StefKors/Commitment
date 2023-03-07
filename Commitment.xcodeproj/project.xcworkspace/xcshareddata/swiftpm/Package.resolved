@@ -19,12 +19,30 @@
       }
     },
     {
+      "identity" : "eventmonitor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iSapozhnik/EventMonitor",
+      "state" : {
+        "revision" : "bdc9ef02a3ab465af9b8eb932459fa5517eaf1d5",
+        "version" : "1.0.1"
+      }
+    },
+    {
       "identity" : "keychainaccess",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
       "state" : {
         "branch" : "master",
         "revision" : "ecb18d8ce4d88277cc4fb103973352d91e18c535"
+      }
+    },
+    {
+      "identity" : "menu",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/funcompany/Menu.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "022da603487917e082aa4fdbe36af2bd34df3fcb"
       }
     },
     {
@@ -61,6 +79,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "f94be38411297c71aa8df69c6875127e6d8d7a92"
+      }
+    },
+    {
+      "identity" : "swiftui-windowmanagement",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Wouter01/SwiftUI-WindowManagement.git",
+      "state" : {
+        "revision" : "ed13ad41f090d3969307ac8ec01a56a0031b2b17",
+        "version" : "1.1.0"
       }
     }
   ],

@@ -22,7 +22,7 @@ struct FileRenderView: View {
         Group {
             if finishedFetching {
                 FileView(fileStatus: fileStatus) {
-                    if let lines {
+                    if !lines.isEmpty {
                         ForEach(lines, id: \.id) { line in
                             DiffLineView(line: line)
                                 .id(line.id)
