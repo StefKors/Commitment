@@ -43,6 +43,7 @@ struct TextEditorView: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(isDisabled)
+            .keyboardShortcut(.return, modifiers: .command)
         }
         .labelsHidden()
         .padding(.horizontal)
