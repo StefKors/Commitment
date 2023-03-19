@@ -150,6 +150,7 @@ struct OpenRepoInFinderPlaceholder: View {
                 Button("Show in Finder", action: {
                     repo.path.showInFinder()
                 })
+                .keyboardShortcut("f", modifiers: [.command, .shift])
             }
             .scenePadding()
         }
