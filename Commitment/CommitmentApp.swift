@@ -23,6 +23,7 @@ import WindowManagement
 struct CommitmentApp: App {
     @StateObject var appModel: AppModel = .shared
     @State private var repo: RepoState?
+    @State private var isPresented: Bool = false
 
     init() {
         NSWindow.alwaysUseActiveAppearance = true
@@ -31,18 +32,20 @@ struct CommitmentApp: App {
     var body: some Scene {
         Window("Commitment", id: "MainWindow", content: {
             Group {
-                if appModel.repos.isEmpty {
-                    // Appicon view is slow?
-                    // repos list is slow?
-                    WelcomeWindow()
-                        .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
-                    // .navigationTitle("Commitment")
-                } else if let repo {
+                if let repo {
                     RepoWindow()
                         .ignoresSafeArea(.all, edges: .top)
                         .environmentObject(repo)
                 } else {
                     EmptyView()
+                        .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
+                        .onAppear() {
+                            isPresented = true
+                        }
+                        .sheet(isPresented: $isPresented) {
+                            WelcomeWindow()
+                                .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
+                        }
                 }
             }
             .environmentObject(appModel)

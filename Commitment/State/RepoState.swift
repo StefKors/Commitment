@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Boutique
+import Algorithms
 // https://developer.apple.com/documentation/appkit/nscolor/3000782-controlaccentcolor
 
 extension Store where Item == RepoState {
@@ -183,7 +184,7 @@ init RepoState: \(folderName) with:
                 if let branch {
                     self.branch = branch
                 }
-                self.branches = refs?.uniqued().sorted(by: { branchA, branchB in
+                self.branches = refs?.uniqued(on: \.id).sorted(by: { branchA, branchB in
                     return branchA.date > branchB.date
                 }) ?? []
             }

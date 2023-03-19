@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppIcon: View {
-    private let image: NSImage? = NSImage(named: "AppIcon-Dark") //?? NSImage(named: "AppIcon")
+    private let image: NSImage? = NSImage(named: "AppIcon") //?? NSImage(named: "AppIcon")
     var body: some View {
         if let image {
             Image(nsImage: image)

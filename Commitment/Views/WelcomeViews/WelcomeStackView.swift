@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WelcomeStackView: View {
+    @EnvironmentObject var appModel: AppModel
+    @Environment(\.dismiss) var dismiss
     private let appVersion: String = "Build: \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")"
     private let appBuild: String = "Version: \(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "")"
 
@@ -29,6 +31,16 @@ struct WelcomeStackView: View {
                 PillView(label: appBuild)
                 PillView(label: appVersion)
             }
+
+            ListItem(
+                label: "Add Local Repository",
+                subLabel: "Click here",
+                systemImage: "plus.rectangle.on.folder.fill"
+            ).onTapGesture {
+                appModel.openRepo()
+                dismiss()
+            }
+            .padding(.top, 30)
         }
     }
 }

@@ -17,7 +17,7 @@
 
 import Foundation
 
-class GitReference: RepositoryReference, Codable, Identifiable, Hashable {
+class GitReference: RepositoryReference, Codable, Identifiable, Hashable, Equatable {
     static func == (lhs: GitReference, rhs: GitReference) -> Bool {
         lhs.id == rhs.id
     }
