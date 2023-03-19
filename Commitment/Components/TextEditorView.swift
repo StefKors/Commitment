@@ -50,7 +50,6 @@ struct TextEditorView: View {
         .padding(.bottom)
     }
 
-    
     func handleSubmit() {
         Task { @MainActor in
             if !commitTitle.isEmpty, !commitBody.isEmpty {
