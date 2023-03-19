@@ -86,12 +86,14 @@ fileprivate struct _CustomMenu<Label: View, Menu: View>: View {
     @ViewBuilder var menu: () -> Menu
     @ViewBuilder var label: () -> Label
     @State private var scrollViewContentSize: CGSize = .zero
+    @FocusState private var hasFocus: Bool
     @ViewBuilder
     var body: some View {
         label()
             .onTapGesture {
                 isExpanded.toggle()
             }
+            .focused($hasFocus)
             .overlay(alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
                 // TODO: fix custom menuview to support optional views
                 Group {

@@ -15,7 +15,7 @@ struct CustomMenuButtonStyle: ButtonStyle {
         if !isEnabled {
             return Color.clear
         } else if isHovering {
-            return Color.accentColor
+            return Color(.selectedContentBackgroundColor)
         } else {
             return Color.clear
         }
@@ -34,14 +34,11 @@ struct CustomMenuButtonStyle: ButtonStyle {
             configuration.label
                 .foregroundColor(textColor)
         }
-        .padding(6)
-        // .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+        .padding(EdgeInsets(top: 6, leading: 4, bottom: 6, trailing: 4))
         .background {
             RoundedRectangle(cornerRadius: 6)
                 .fill(fillColor)
         }
-        .saturation(isEnabled ? 1 : 0)
-        .opacity(isEnabled ? 1 : 0.5)
         .onHover(perform: { hoverState in
             isHovering = hoverState
         })

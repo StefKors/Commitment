@@ -17,7 +17,20 @@
 
 import Foundation
 
-class GitReference: RepositoryReference, Codable {
+class GitReference: RepositoryReference, Codable, Identifiable, Hashable {
+    static func == (lhs: GitReference, rhs: GitReference) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(parentId)
+        hasher.combine(active)
+        hasher.combine(author)
+        hasher.combine(date)
+        hasher.combine(message)
+        hasher.combine(path)
+    }
     
     var id: String
     var parentId: String?

@@ -133,17 +133,14 @@ extension Shell {
     ///
     /// - Returns: GitReferenceList - a list of references
     /// - Throws: An exception in case any error occured
-    func listReferences() async throws -> GitReferenceList {
+    func listReferences() async throws -> [GitReference] {
         // TODO: CHECK if works
         let output = try await self.run(.git, ["for-each-ref", "--format={$(^QUOTES^)$path$(^QUOTES^)$:$(^QUOTES^)$%(refname)$(^QUOTES^)$,$(^QUOTES^)$id$(^QUOTES^)$:$(^QUOTES^)$%(objectname)$(^QUOTES^)$,$(^QUOTES^)$author$(^QUOTES^)$:$(^QUOTES^)$%(authorname)$(^QUOTES^)$,$(^QUOTES^)$parentId$(^QUOTES^)$:$(^QUOTES^)$%(parent)$(^QUOTES^)$,$(^QUOTES^)$date$(^QUOTES^)$:$(^QUOTES^)$%(creatordate:iso8601-strict)$(^QUOTES^)$,$(^QUOTES^)$message$(^QUOTES^)$:$(^QUOTES^)$%(contents)$(^QUOTES^)$,$(^QUOTES^)$active$(^QUOTES^)$:%(if)%(HEAD)%(then)true%(else)false%(end)}$(END_OF_LINE)$"])
 
         let decoder = GitFormatDecoder()
-        let objects: [GitReference] = decoder.decode(output)
-
-        var references = [RepositoryReference]()
-        references.append(contentsOf: objects)
-
-        return GitReferenceList(references)
+        let result: [GitReference] = decoder.decode(output)
+        print(result)
+        return result
     }
 
     func status() async throws -> [GitFileStatus] {

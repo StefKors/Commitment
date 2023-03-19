@@ -7,62 +7,96 @@
 
 import SwiftUI
 
+struct BranchSelectButtonView: View {
+    @EnvironmentObject private var repo: RepoState
+
+    var body: some View {
+        HStack {
+            Image("git-branch-16")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 16, height: 16)
+                .foregroundColor(.primary)
+            VStack(alignment: .leading) {
+                Text("Current Branch")
+                    .foregroundColor(.secondary)
+                Text(self.repo.branch)
+                    .foregroundColor(.primary)
+            }
+        }
+    }
+}
+
 struct BranchSelectView: View {
     @EnvironmentObject private var repo: RepoState
     var placeholder = "Select Branch"
     @State private var searchText: String = ""
-    
+    @State private var isPresented: Bool = false
+    var filteredRepos: [GitReference] {
+        if searchText.isEmpty {
+            return self.repo.branches
+        } else {
+            return self.repo.branches.filter({ branch in
+                branch.name.localName.localizedCaseInsensitiveContains(searchText)
+            })
+        }
+    }
+
     var body: some View {
 
-        CustomMenu {
-            HStack {
-                TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
-                    .textFieldStyle(.roundedBorder)
-                    .font(.body)
-
-                Button("Create Branch", action: {
-                    // TODO:
-                })
-                .buttonStyle(.bordered)
+        BranchSelectButtonView()
+            .contentShape(Rectangle())
+            .onTapGesture {
+                isPresented = true
             }
-            .padding(.bottom)
+            .popover(isPresented: $isPresented, attachmentAnchor: .point(.bottom), arrowEdge: .bottom, content: {
+                VStack(spacing: 0) {
+                    TextField("Branch Search", text: $searchText, prompt: Text("Filter"))
+                        .textFieldStyle(.roundedBorder)
+                        .font(.body)
+                        .overlay(alignment: .trailing) {
+                            if !searchText.isEmpty {
+                                Button(action: {
+                                    self.searchText = ""
+                                }) {
+                                    Image(systemName: "multiply.circle.fill")
+                                        .foregroundColor(.secondary)
+                                        .padding(.trailing, 4)
+                                }.buttonStyle(.plain)
+                            }
+                        }
 
-            ForEach(repo.branches.indices, id: \.self){ index in
-                Button(action: {
-                    Task(priority: .userInitiated, operation: { @MainActor in
-                        do {
-                            let name = repo.branches[index].name.localName
-                            print("checkout branch \(name)")
-                            try await repo.shell.checkout(name)
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                        try await repo.refreshRepoState()
-                    })
-                }, label: {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(repo.branches[index].name.localName)
-                        }
-                        Spacer()
+                    ForEach(repo.branches) { branch in
+                        Button(action: {
+                            Task(priority: .userInitiated, operation: { @MainActor in
+                                do {
+                                    let name = branch.name.fullName
+                                    print("checkout branch \(name)")
+                                    try await repo.shell.checkout(name)
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
+                                try await repo.refreshRepoState()
+                            })
+                        }, label: {
+                            HStack {
+                                Image("git-branch-16")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 16, height: 16)
+                                    .foregroundColor(.primary)
+                                Text(branch.name.localName)
+                                Spacer()
+                            }
+                        })
+                        .buttonStyle(.customButtonStyle)
                     }
-                })
-            }
-        } label: {
-            HStack {
-                Image("git-branch-16")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 16, height: 16)
-                    .foregroundColor(.primary)
-                VStack(alignment: .leading) {
-                    Text("Current Branch")
-                        .foregroundColor(.secondary)
-                    Text(self.repo.branch)
-                        .foregroundColor(.primary)
                 }
-            }
-        }
+                .truncationMode(.tail)
+                .frame(maxWidth: 300)
+                .padding(.vertical, 4)
+                .padding(.horizontal, 4)
+            })
     }
 
     func createBranch() {

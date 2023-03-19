@@ -19,13 +19,7 @@ struct SidebarCommitLabelView: View {
                 HStack() {
                     AvatarView(email: commit.authorEmail)
                     Text(commit.authorName) + Text(" · ") +
-                    // GroupBox {
                     Text(commit.commiterDate.formatted())
-                    // }.font(.system(size: 8))
-                    // .background(
-                    //     RoundedRectangle(cornerRadius: 4)
-                    //         .fill(.secondary)
-                    // )
                 }.foregroundColor(.secondary)
             }
             if commit.isLocal ?? false {

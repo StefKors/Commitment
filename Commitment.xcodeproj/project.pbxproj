@@ -254,6 +254,7 @@
 		8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */; };
 		8A6C4C4D298BEF49009377C0 /* ToolbarActionUpdateMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */; };
 		8A76E76929802F700033B978 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8A76E76829802F700033B978 /* Boutique */; };
+		8A7FBF6F29C340260032E394 /* LazyContentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */; };
 		8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C665B296464E300A774D7 /* TextEditorView.swift */; };
 		8A8C66712964682B00A774D7 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665E2964682B00A774D7 /* Inter-Bold.otf */; };
 		8A8C66722964682B00A774D7 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665F2964682B00A774D7 /* Inter-Regular.otf */; };
@@ -298,6 +299,7 @@
 		8AAF7AF829AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */; };
 		8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */; };
 		8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */; };
+		8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */; };
 		8AC7B8DF29B750D500AB2728 /* Menu in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC7B8DE29B750D500AB2728 /* Menu */; };
 		8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC7B8E129B751C700AB2728 /* WindowManagement */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
@@ -712,6 +714,7 @@
 		8A6B649929730FD50074B3C1 /* FileRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRenderView.swift; sourceTree = "<group>"; };
 		8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDiffChangesView.swift; sourceTree = "<group>"; };
 		8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarActionUpdateMain.swift; sourceTree = "<group>"; };
+		8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyContentWindow.swift; sourceTree = "<group>"; };
 		8A8C665B296464E300A774D7 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		8A8C665E2964682B00A774D7 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
 		8A8C665F2964682B00A774D7 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
@@ -769,6 +772,7 @@
 		8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPrimaryActionView.swift; sourceTree = "<group>"; };
 		8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarFetchOriginActionView.swift; sourceTree = "<group>"; };
 		8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Git.swift"; sourceTree = "<group>"; };
+		8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewDebugging.swift; sourceTree = "<group>"; };
 		8AC8EB49297586FC00365EB9 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
@@ -1857,6 +1861,7 @@
 				8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */,
 				8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */,
 				8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */,
+				8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -1884,6 +1889,7 @@
 				8A02C4FE29ACB0E7004DCA69 /* Array.swift */,
 				8A02C52229ADEE2A004DCA69 /* Color.swift */,
 				8A486DC129AFBCB700FB00F7 /* Animation.swift */,
+				8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2301,6 +2307,7 @@
 				8ACCD2B7297F265B0020BF84 /* RemoteAddTask.swift in Sources */,
 				8ACCD2CF297F265C0020BF84 /* GitLogRecord.swift in Sources */,
 				8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */,
+				8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */,
 				8ACCD2E4297F265C0020BF84 /* GitRepository+Tag.swift in Sources */,
 				8AFBD57D2971D14700525BF7 /* CheckoutProgressIconView.swift in Sources */,
 				8ACCD2A9297F265B0020BF84 /* CherryTask.swift in Sources */,
@@ -2472,6 +2479,7 @@
 				8A562CDB29B20053006C7E8A /* Shell+ProcessWithLines.swift in Sources */,
 				8ACCD2E8297F265C0020BF84 /* GitTagRecord.swift in Sources */,
 				8A327EFC298E8F20008521B0 /* TouchbarContentView.swift in Sources */,
+				8A7FBF6F29C340260032E394 /* LazyContentWindow.swift in Sources */,
 				8ACCD2A0297F265B0020BF84 /* MergeTask.swift in Sources */,
 				8ACCD2D0297F265C0020BF84 /* GitStashRecord.swift in Sources */,
 				8AFBD52F296F2C1400525BF7 /* SidebarCommitLabelView.swift in Sources */,

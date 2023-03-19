@@ -17,7 +17,10 @@
 
 import Foundation
 
-struct GitReferenceName: RepositoryReferenceName {
+struct GitReferenceName: RepositoryReferenceName, Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(path)
+    }
 
     var path: String
     

@@ -32,7 +32,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     }
 
     var branch: String = ""
-    var branches: [RepositoryReference] = []
+    var branches: [GitReference] = []
 
     @Published var diffs: [GitDiff] = []
     @Published var status: [GitFileStatus] = [] {
@@ -183,7 +183,7 @@ init RepoState: \(folderName) with:
                 if let branch {
                     self.branch = branch
                 }
-                self.branches = refs?.localBranches.sorted(by: { branchA, branchB in
+                self.branches = refs?.uniqued().sorted(by: { branchA, branchB in
                     return branchA.date > branchB.date
                 }) ?? []
             }
