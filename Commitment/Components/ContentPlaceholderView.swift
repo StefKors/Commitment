@@ -122,6 +122,7 @@ struct OpenRepoInEditorPlaceholder: View {
                 Button("Open in \(model.editor.name)", action: {
                     repo.path.openInEditor(model.editor)
                 })
+                .keyboardShortcut(.init("a", modifiers: [.command, .shift]))
             }
             .scenePadding()
         }
