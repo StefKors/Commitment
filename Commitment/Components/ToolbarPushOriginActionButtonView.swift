@@ -49,6 +49,7 @@ struct ToolbarPushOriginActionButtonView: View {
         })
         .buttonStyle(.plain)
         .animation(.easeIn(duration: 0.35), value: shell.isRunning)
+        .keyboardShortcut(.init("p", modifiers: .command))
     }
 
     func handleButton() {
