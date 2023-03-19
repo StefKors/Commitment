@@ -217,6 +217,7 @@
 		8A07612D29659EEE00D878DC /* GitDiffHunkLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612829659EEE00D878DC /* GitDiffHunkLine.swift */; };
 		8A07612E29659EEE00D878DC /* GitDiffHunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612929659EEE00D878DC /* GitDiffHunk.swift */; };
 		8A0761302965A15200D878DC /* DiffRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612F2965A15200D878DC /* DiffRenderView.swift */; };
+		8A1F2DAF29C7BC7200E3C3F6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A1F2DAE29C7BC7200E3C3F6 /* Credits.rtf */; };
 		8A327EFC298E8F20008521B0 /* TouchbarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */; };
 		8A327EFE298E9081008521B0 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A327EFD298E9081008521B0 /* HeaderContentView.swift */; };
 		8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */; };
@@ -674,6 +675,7 @@
 		8A07612829659EEE00D878DC /* GitDiffHunkLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffHunkLine.swift; sourceTree = "<group>"; };
 		8A07612929659EEE00D878DC /* GitDiffHunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffHunk.swift; sourceTree = "<group>"; };
 		8A07612F2965A15200D878DC /* DiffRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffRenderView.swift; sourceTree = "<group>"; };
+		8A1F2DAE29C7BC7200E3C3F6 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchbarContentView.swift; sourceTree = "<group>"; };
 		8A327EFD298E9081008521B0 /* HeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContentView.swift; sourceTree = "<group>"; };
 		8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListItemView.swift; sourceTree = "<group>"; };
@@ -1181,6 +1183,7 @@
 		8A48D10427FD9E2D007803D2 = {
 			isa = PBXGroup;
 			children = (
+				8A1F2DAE29C7BC7200E3C3F6 /* Credits.rtf */,
 				8A486DC329AFDD8100FB00F7 /* .git-credentials */,
 				8A486DC529AFDFBB00FB00F7 /* .gitconfig */,
 				8AAF7B0A29AA803B0007CE8D /* Executables */,
@@ -2082,6 +2085,7 @@
 				8A02C49129AC1A4B004DCA69 /* git-ls-remote in Resources */,
 				8A02C4FD29AC1A4B004DCA69 /* git-pack-redundant in Resources */,
 				8A02C4F629AC1A4B004DCA69 /* git in Resources */,
+				8A1F2DAF29C7BC7200E3C3F6 /* Credits.rtf in Resources */,
 				8A02C4EA29AC1A4B004DCA69 /* git-merge-octopus in Resources */,
 				8A02C4A129AC1A4B004DCA69 /* git-bundle in Resources */,
 				8A02C4B129AC1A4B004DCA69 /* git-mktag in Resources */,
