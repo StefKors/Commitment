@@ -17,7 +17,8 @@ import WindowManagement
 // /.backgroundStyle(.pink)
 
 
-
+// CLI tool for controlling the app
+// https://www.youtube.com/watch?v=hPEDjbb_BD0
 // https://reichel.dev/blog/swift-global-key-binding.html#install-hotkey
 @main
 struct CommitmentApp: App {
