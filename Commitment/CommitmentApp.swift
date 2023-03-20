@@ -23,8 +23,7 @@ import WindowManagement
 @main
 struct CommitmentApp: App {
     @StateObject var appModel: AppModel = .shared
-    @State private var repo: RepoState?
-    @State private var isPresented: Bool = false
+    @State private var repo: RepoState? = nil
 
     init() {
         NSWindow.alwaysUseActiveAppearance = true
@@ -38,15 +37,7 @@ struct CommitmentApp: App {
                         .ignoresSafeArea(.all, edges: .top)
                         .environmentObject(repo)
                 } else {
-                    EmptyView()
-                        .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
-                        .onAppear() {
-                            isPresented = true
-                        }
-                        .sheet(isPresented: $isPresented) {
-                            WelcomeWindow()
-                                .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
-                        }
+                    WelcomeSheet()
                 }
             }
             .environmentObject(appModel)
@@ -56,15 +47,14 @@ struct CommitmentApp: App {
 
                 self.repo = repo
                 Task {
-                    try? await repo.refreshRepoState()
+                    do {
+                        try await repo.refreshRepoState()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 }
                 repo.startMonitor()
             })
-            .task {
-                 FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-                // Bundle.main.resourcePath
-            }
-
         })
         .register("MainWindow")
         .titlebarAppearsTransparent(true)

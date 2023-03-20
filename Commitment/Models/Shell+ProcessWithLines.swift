@@ -20,7 +20,7 @@ actor ProcessWithLines: ObservableObject {
         _ command: [String],
         in currentDirectoryURL: URL
     ) {
-        let task = Shell.setup(Process(), executable, command, in: currentDirectoryURL)
+        let task = try! Shell.setup(Process(), executable, command, in: currentDirectoryURL)
         task.standardInput = stdin
         task.standardOutput = stdout
         task.standardError = stderr

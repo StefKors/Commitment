@@ -221,6 +221,7 @@
 		8A34218E29C867340001E58B /* git-remote in Resources */ = {isa = PBXBuildFile; fileRef = 8A3420C529C867340001E58B /* git-remote */; };
 		8A34218F29C867340001E58B /* git-send-pack in Resources */ = {isa = PBXBuildFile; fileRef = 8A3420C629C867340001E58B /* git-send-pack */; };
 		8A34219029C867340001E58B /* git-pack-redundant in Resources */ = {isa = PBXBuildFile; fileRef = 8A3420CC29C867340001E58B /* git-pack-redundant */; };
+		8A34219529C876B30001E58B /* WelcomeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34219429C876B30001E58B /* WelcomeSheet.swift */; };
 		8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */; };
 		8A486DC029AFB83200FB00F7 /* SettingsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */; };
 		8A486DC229AFBCB700FB00F7 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DC129AFBCB700FB00F7 /* Animation.swift */; };
@@ -465,19 +466,6 @@
 			remoteInfo = Commitment;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		8A976D7E29C7C9AA00D17E06 /* Embed Helper Tools */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Helper Tools";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmarks.swift; sourceTree = "<group>"; };
@@ -863,6 +851,7 @@
 		8A3420CC29C867340001E58B /* git-pack-redundant */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = "git-pack-redundant"; sourceTree = "<group>"; };
 		8A3420CD29C867340001E58B /* git-imap-send.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "git-imap-send.entitlements"; sourceTree = "<group>"; };
 		8A34219229C86A810001E58B /* signExecutables.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = signExecutables.sh; sourceTree = "<group>"; };
+		8A34219429C876B30001E58B /* WelcomeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSheet.swift; sourceTree = "<group>"; };
 		8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListItemView.swift; sourceTree = "<group>"; };
 		8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBox.swift; sourceTree = "<group>"; };
 		8A486DC129AFBCB700FB00F7 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -2230,6 +2219,7 @@
 				8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */,
 				8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */,
 				8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */,
+				8A34219429C876B30001E58B /* WelcomeSheet.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -2294,7 +2284,6 @@
 				8A48D10927FD9E2D007803D2 /* Sources */,
 				8A48D10A27FD9E2D007803D2 /* Frameworks */,
 				8A48D10B27FD9E2D007803D2 /* Resources */,
-				8A976D7E29C7C9AA00D17E06 /* Embed Helper Tools */,
 			);
 			buildRules = (
 			);
@@ -2840,6 +2829,7 @@
 				8ACCD2B3297F265B0020BF84 /* FetchTask.swift in Sources */,
 				8ACCD2A6297F265B0020BF84 /* ResetTask.swift in Sources */,
 				8ACCD292297F265B0020BF84 /* GitFormatEncoder.swift in Sources */,
+				8A34219529C876B30001E58B /* WelcomeSheet.swift in Sources */,
 				8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */,
 				8ACCD2DB297F265C0020BF84 /* GitReference.swift in Sources */,
 				8A07612E29659EEE00D878DC /* GitDiffHunk.swift in Sources */,

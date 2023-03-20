@@ -29,9 +29,9 @@ class Shell {
         _ executable: Executable,
         _ command: [String],
         in currentDirectoryURL: URL
-    ) -> Process {
+    ) throws -> Process {
         let execPath = Bundle.main.resourcePath ?? "" + "/" + "Executables/git-arm64/git-core"
-        let appHome = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true)
+        let appHome = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true)
         process.environment = [
             // TODO: Support Intel
             "GIT_CONFIG_NOSYSTEM": "true",

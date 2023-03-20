@@ -19,7 +19,7 @@ extension Shell {
         let signpostID = signposter.makeSignpostID()
         let state = signposter.beginInterval("run", id: signpostID)
 
-        let process = Shell.setup(Process(), executable, command, in: location)
+        let process = try Shell.setup(Process(), executable, command, in: location)
         let pipe = Pipe()
         process.standardOutput = pipe
         process.standardError = pipe

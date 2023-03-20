@@ -128,7 +128,7 @@ init RepoState: \(folderName) with:
     /// Watch out for re-renders, can be slow
     func refreshRepoState() async throws {
         refreshBranch()
-        try await refreshDiffsAndStatus()
+        try? await refreshDiffsAndStatus()
         await updateLastFetched()
     }
 

@@ -157,7 +157,7 @@ extension Shell {
             }
     }
 
-    func log(options: LogOptions = LogOptions.default, isLocal: Bool = false) async throws -> [Commit] {
+    func log(options: LogOptions = LogOptions.default, isLocal: Bool = false, limit: Int = 100) async throws -> [Commit] {
         // Check whether a reference is provided
         if let reference = options.reference, reference.remote == nil {
             // Reference is provided, but it is required to take the first available remote
@@ -168,7 +168,7 @@ extension Shell {
             }
         }
 
-        let args = ["--no-pager", "log", "--pretty=$:$%H $:$%h $:$%an $:$%ae $:$%s $:$%B $:$%cI $:$%D$(END_OF_LINE)"]
+        let args = ["--no-pager", "log", "-n", limit.description, "--pretty=$:$%H $:$%h $:$%an $:$%ae $:$%s $:$%B $:$%cI $:$%D$(END_OF_LINE)"]
 
         let opts: [String] = options.toArguments()
 
