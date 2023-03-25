@@ -26,9 +26,12 @@ struct GitFileStatusView: View {
                     Text(label.deletingLastPathComponent().path().removingPercentEncoding ?? "")
                         .truncationMode(.tail)
                         .foregroundColor(.secondary)
+                        .frame(minWidth: 0)
+                        .layoutPriority(1)
                     
                     Text(label.lastPathComponent.removingPercentEncoding ?? "")
-                        .fixedSize()
+                        .truncationMode(.middle)
+                        .layoutPriority(2)
                     
                     if labels.count > 1, label == labels.first {
                         Image(systemName: "arrow.right.square")
