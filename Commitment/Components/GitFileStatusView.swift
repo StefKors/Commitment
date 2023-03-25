@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct GitFileStatusView: View {
     internal init(fileStatus: GitFileStatus) {
         self.fileStatus = fileStatus
@@ -18,21 +17,13 @@ struct GitFileStatusView: View {
     var fileStatus: GitFileStatus
     let labels: [URL]
 
-    // improve resizing this view with .layoutPriority(1)
     var body: some View {
         HStack(alignment: .center) {
             HStack(spacing: .zero, content: {
                 ForEach(labels, id: \.self) { label in
-                    Text(label.deletingLastPathComponent().path().removingPercentEncoding ?? "")
-                        .truncationMode(.tail)
-                        .foregroundColor(.secondary)
-                        .frame(minWidth: 0)
-                        .layoutPriority(1)
-                    
-                    Text(label.lastPathComponent.removingPercentEncoding ?? "")
-                        .truncationMode(.middle)
-                        .layoutPriority(2)
-                    
+                    GitFileStatusLabelView(label: label)
+
+                    /// Show arrow right icon for moved files
                     if labels.count > 1, label == labels.first {
                         Image(systemName: "arrow.right.square")
                             .padding(.horizontal, 8)

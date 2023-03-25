@@ -222,6 +222,7 @@
 		8A34218F29C867340001E58B /* git-send-pack in Resources */ = {isa = PBXBuildFile; fileRef = 8A3420C629C867340001E58B /* git-send-pack */; };
 		8A34219029C867340001E58B /* git-pack-redundant in Resources */ = {isa = PBXBuildFile; fileRef = 8A3420CC29C867340001E58B /* git-pack-redundant */; };
 		8A34219529C876B30001E58B /* WelcomeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34219429C876B30001E58B /* WelcomeSheet.swift */; };
+		8A3421DC29CF08BE0001E58B /* GitFileStatusLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421DB29CF08BE0001E58B /* GitFileStatusLabelView.swift */; };
 		8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */; };
 		8A486DC029AFB83200FB00F7 /* SettingsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */; };
 		8A486DC229AFBCB700FB00F7 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DC129AFBCB700FB00F7 /* Animation.swift */; };
@@ -852,6 +853,7 @@
 		8A3420CD29C867340001E58B /* git-imap-send.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "git-imap-send.entitlements"; sourceTree = "<group>"; };
 		8A34219229C86A810001E58B /* signExecutables.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = signExecutables.sh; sourceTree = "<group>"; };
 		8A34219429C876B30001E58B /* WelcomeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSheet.swift; sourceTree = "<group>"; };
+		8A3421DB29CF08BE0001E58B /* GitFileStatusLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStatusLabelView.swift; sourceTree = "<group>"; };
 		8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListItemView.swift; sourceTree = "<group>"; };
 		8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBox.swift; sourceTree = "<group>"; };
 		8A486DC129AFBCB700FB00F7 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -1633,6 +1635,7 @@
 				8A6B649929730FD50074B3C1 /* FileRenderView.swift */,
 				8A6B649729730E560074B3C1 /* FileView.swift */,
 				8AFBD55D29704F7000525BF7 /* GitFileStatusView.swift */,
+				8A3421DB29CF08BE0001E58B /* GitFileStatusLabelView.swift */,
 				8A327EFD298E9081008521B0 /* HeaderContentView.swift */,
 				8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */,
 				8AFBD525296F2C1400525BF7 /* MD5+Gravitar.swift */,
@@ -2771,6 +2774,7 @@
 				8ACCD2DD297F265C0020BF84 /* GitRepository+Status.swift in Sources */,
 				8AFBD52D296F2C1400525BF7 /* AvatarView.swift in Sources */,
 				8ACCD293297F265B0020BF84 /* GitOutputParser.swift in Sources */,
+				8A3421DC29CF08BE0001E58B /* GitFileStatusLabelView.swift in Sources */,
 				8AFBD57B2971CAC500525BF7 /* BranchSelectView.swift in Sources */,
 				8A5C64D629797DB300CA8FE1 /* CommitHistoryMainView.swift in Sources */,
 				8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */,
