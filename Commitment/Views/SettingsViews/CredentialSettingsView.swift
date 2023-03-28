@@ -56,6 +56,8 @@ struct CredentialView: View {
                 } label: {
                     Label("Delete", systemImage: "trash")
                 }
+                .tint(.red)
+                .buttonStyle(.borderedProminent)
             } else {
                 Image(systemName: "info.circle")
                     .imageScale(.large)
@@ -76,7 +78,7 @@ struct CredentialSettingsView: View {
     var body: some View {
         SettingsBox(
             label: "Credentials",
-            sublabel: "Your git credentials can be parsed and imported from an .git-credentials file. Click import to get started."
+            sublabel: "Your git credentials can be parsed and imported from an `.git-credentials` file. Click import to get started."
         ) {
             if let passwords {
                 VStack(alignment: .leading, spacing: 10) {
@@ -94,7 +96,7 @@ struct CredentialSettingsView: View {
             .frame(alignment: .trailing)
         }
     }
-
+    
     /// Use NSOpenPanel to open the users git config and update the stored credentials.
     func handleImportAction() {
         if let path = model.bookmarks.openGitConfig() {
@@ -106,11 +108,11 @@ struct CredentialSettingsView: View {
                         guard let url = URL(string: String(line)) else { return nil }
                         return Credential(url: url)
                     }
-
+                
                 let newValues = Array(Set(oldPasswords + newPasswords))
                 writeGitConfig()
                 writeGitCredentials(newValues)
-
+                
                 withAnimation(.easeOut(duration: 0.2)) {
                     passwords = Credentials(values: newValues)
                 }
@@ -119,19 +121,19 @@ struct CredentialSettingsView: View {
             print("failed to get path")
         }
     }
-
+    
     fileprivate func writeGitConfig() {
         guard let appHome = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true) else { return }
         let toConfigPath = appHome.path + "/.gitconfig"
         print("creating .gitconfig at \(toConfigPath)")
-
+        
         let content = """
 [credential]
     helper = store --file '\(appHome.path)/.git-credentials'
 """
         FileManager.default.createFile(atPath: toConfigPath, contents: content.data(using: .utf8))
     }
-
+    
     fileprivate func writeGitCredentials(_ newPasswords: [Credential]) {
         guard let appHome = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true) else { return }
         let toCredsPath = appHome.path + "/.git-credentials"
@@ -142,7 +144,7 @@ struct CredentialSettingsView: View {
     }
 }
 
-struct AdvancedSettingsView_Previews: PreviewProvider {
+struct CredentialSettingsView_Previews: PreviewProvider {
     // Credentials(values: [
     //     Credential(url: URL(string:"https://stefstefstef:sdflkjsdfJstaRpyj3sdlkjdsflkjsdf8D@github.com")!),
     //     Credential(url: URL(string:"https://nemo:ghsdflkjsdfkJstaRpsdflkjfjdsflkjsdf8D@bitbucket.com")!),

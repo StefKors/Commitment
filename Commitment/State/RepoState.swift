@@ -63,6 +63,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     }
     @Published var commitsAhead: Int = 0
     @Published var lastFetchedDate: Date? = nil
+    @Published var lastUpdate: Date? = nil
 
     init(path: URL) {
         self.path = path
@@ -85,6 +86,7 @@ init RepoState: \(folderName) with:
     - \(commits.count) commits
     - \(status.count) status files
     - \(diffs.count) diffs
+    - \(self.id)
 """)
     }
 
@@ -155,6 +157,7 @@ init RepoState: \(folderName) with:
                 self.commits = mergedCommits
                 self.commitsAhead = localCommits.count
             }
+            self.lastUpdate = .now
         }
     }
 
@@ -193,6 +196,10 @@ init RepoState: \(folderName) with:
 
     func readFile(at path: String) throws -> String {
         try String(contentsOf: URL(filePath: path), encoding: .utf8)
+    }
+
+    func readFile(at url: URL) throws -> String {
+        try String(contentsOf: url, encoding: .utf8)
     }
 
     static func == (lhs: RepoState, rhs: RepoState) -> Bool {

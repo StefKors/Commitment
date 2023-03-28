@@ -10,13 +10,13 @@ import SwiftUI
 struct SettingsBox<Content: View>: View {
     let ContainerContent: Content
     let label: String
-    let sublabel: String
+    let sublabel: AttributedString
 
     /// Creates a SettingsBox with custom content and label.
     init(label: String, sublabel: String, @ViewBuilder content: () -> Content) {
         self.ContainerContent = content()
         self.label = label
-        self.sublabel = sublabel
+        self.sublabel = try! AttributedString(markdown: sublabel)
     }
 
     var body: some View {
@@ -25,7 +25,6 @@ struct SettingsBox<Content: View>: View {
                 ContainerContent
             }.padding(6)
         }, label: {
-            // Text("Credentials")
             VStack(alignment: .leading) {
                 Text(label)
                     .labelStyle(.titleOnly)
@@ -46,7 +45,6 @@ struct SettingsBox_Previews: PreviewProvider {
             label: "Account Credentials",
             sublabel: "Your git credentials can be parsed and imported from an .git-credentials file. Click import to get started."
         ) {
-
             HStack {
                 Text("one")
                 Spacer()

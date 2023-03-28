@@ -4,6 +4,8 @@
 <dict>
 	<key>NSAppleScriptEnabled</key>
 	<true/>
+	<key>NSDockTilePlugIn</key>
+	<string>CommitmentDockTilePlugIn</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Fonts/Inter-Regular.otf</string>

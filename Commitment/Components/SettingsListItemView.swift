@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsListItemView: View {
+    @Environment(\.colorScheme) private var colorScheme
     let tag: SettingsWindow.Tabs
     let image: String
     let fill: Color
@@ -19,15 +20,21 @@ struct SettingsListItemView: View {
                 .fontWeight(.bold)
                 .frame(width: 20, height: 20, alignment: .center)
                 .background {
-                    RoundedRectangle(cornerRadius: 6, style: .continuous)
-                        .fill(fill)
-                        .shadow(radius: 2)
-
+                    LinearGradient(colors: [
+                        fill.lighter(by: 20),
+                        fill
+                    ], startPoint: .top, endPoint: .bottom)
+                    .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                    // .fill(fill)
+                    .shadow(color: colorScheme == .dark ? Color.gray : .black.opacity(0.7), radius: 2, y: 1)
+                    .border(fill.darker(by: 10), width: 1, cornerRadius: 6)
                 }
-                .padding(.leading, 3)
+                .padding(.leading, 4)
 
-            Text(tag.rawValue.capitalized)
-        }.tag(tag)
+            Text(tag.rawValue)
+        }
+        .padding(.vertical, 1)
+        .tag(tag)
     }
 }
 

@@ -23,6 +23,12 @@ class GitCredentialsOpenPanel: NSObject, NSOpenSavePanelDelegate {
     }
 }
 
+class SSHKeyOpenPanel: NSObject, NSOpenSavePanelDelegate {
+    func panel(_: Any, shouldEnable url: URL) -> Bool {
+        return url.lastPathComponent == ".pub"
+    }
+}
+
 class Bookmarks {
     var bookmarks = [URL: Data]()
     func openFolderSelection() -> URL? {
@@ -51,6 +57,29 @@ class Bookmarks {
         openPanel.resolvesAliases = true
         openPanel.showsHiddenFiles = true
         openPanel.directoryURL = URL(filePath: "~/")
+
+        let response = openPanel.runModal()
+        if response == .OK {
+            if let url = openPanel.url {
+                self.storeFolderInBookmark(url: url)
+                return url
+            }
+        }
+
+        return nil
+    }
+
+    func openSSHKey() -> URL? {
+        let openPanel = NSOpenPanel()
+        let delegate = SSHKeyOpenPanel()
+        openPanel.delegate = delegate
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.title = "Select your ssh.pub key"
+        openPanel.resolvesAliases = true
+        openPanel.showsHiddenFiles = true
+        openPanel.directoryURL = URL(filePath: "~/.ssh/")
 
         let response = openPanel.runModal()
         if response == .OK {
@@ -108,7 +137,7 @@ class Bookmarks {
         }
         if let url = restoredUrl {
             if isStale {
-                Swift.print ("URL is stale")
+                Swift.print ("URL is stale (\(url.description))")
             } else {
                 if !url.startAccessingSecurityScopedResource() {
                     Swift.print ("Couldn't access: \(url.path)")

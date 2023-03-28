@@ -14,8 +14,8 @@ struct TouchbarContentView: View {
                 RepoSelectView()
                 Image(systemName: "chevron.compact.right")
                 BranchSelectView()
-                Image(systemName: "chevron.compact.right")
-                DiffSummaryView()
+                // Image(systemName: "chevron.compact.right")
+                // DiffSummaryView()
             }
         }
     }

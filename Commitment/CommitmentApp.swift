@@ -19,11 +19,14 @@ import WindowManagement
 
 // CLI tool for controlling the app
 // https://www.youtube.com/watch?v=hPEDjbb_BD0
-// https://reichel.dev/blog/swift-global-key-binding.html#install-hotkey
 @main
 struct CommitmentApp: App {
+    @NSApplicationDelegateAdaptor private var appDelegate: CommitmentAppDelegate
     @StateObject var appModel: AppModel = .shared
     @State private var repo: RepoState? = nil
+    @Environment(\.window) private var window
+
+    @State private var selectedRepo: RepoState.ID? = nil
 
     init() {
         NSWindow.alwaysUseActiveAppearance = true
@@ -66,6 +69,69 @@ struct CommitmentApp: App {
         .commands {
             SidebarCommands()
         }
+
+        WindowGroup("Commit", id: "CommitWindow", for: RepoState.ID.self) { $repoID in
+            let id = "file:///Users/stefkors/Developer/Commitment"
+            ZStack {
+                // Rectangle().fill(.regularMaterial)
+                GroupBox {
+                    ZStack {
+                        Rectangle().fill(.clear)
+                        CommitHotKeyWindow(id: id)
+                            .environmentObject(appModel)
+                    }
+                    // .scenePadding(.top)
+                }
+                .scrollIndicators(.hidden)
+                .groupBoxStyle(HotKeyAccentBorderGroupBoxStyle())
+                .padding(12)
+            }
+            .safeAreaInset(edge: .top, content: {
+                HStack {
+                    ForEach(appModel.repos.sorted(by: { repoA, repoB in
+                        // todo: improve this mess
+                        if let dateA = repoA.lastUpdate, let dateB = repoB.lastUpdate {
+                            return dateA > dateB
+                        }
+
+                        return false
+                    }).suffix(5), id: \.id) { repo in
+                        if repo.id == appModel.activeRepositoryId {
+                            Button(repo.folderName) {
+                                appModel.$activeRepositoryId.set(repo.id)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .padding(0)
+                        } else {
+                            Button(repo.folderName) {
+                                appModel.$activeRepositoryId.set(repo.id)
+                            }
+                            .buttonStyle(.bordered)
+                            .padding(0)
+                        }
+                    }
+                }
+                .padding(0)
+                .scenePadding(.top)
+            })
+            .background(.regularMaterial, ignoresSafeAreaEdges: .top)
+            .edgesIgnoringSafeArea(.top)
+            // .frame(width: 1000, height: 600)
+        }
+        .register("CommitWindow")
+        .titlebarAppearsTransparent(true)
+        .windowStyle(.hiddenTitleBar)
+        .defaultSize(width: 1000, height: 600)
+        .windowResizability(.contentSize)
+        // .windowResizability(.contentMinSize)
+        .windowButton(.miniaturizeButton, hidden: true)
+        .windowButton(.zoomButton, hidden: true)
+        .windowButton(.closeButton, hidden: true)
+        .backgroundColor(.clear)
+        .movableByBackground(true)
+        // .movable(false)
+        .defaultPosition(.center)
+
 
         Settings {
             SettingsWindow()

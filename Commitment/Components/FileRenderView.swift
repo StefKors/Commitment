@@ -19,7 +19,7 @@ struct FileRenderView: View {
     @State private var finishedFetching: Bool = false
 
     var body: some View {
-        Group {
+        VStack {
             if finishedFetching {
                 FileView(fileStatus: fileStatus) {
                     if !lines.isEmpty {
@@ -34,11 +34,24 @@ struct FileRenderView: View {
             }
         }
         .id(fileStatus.path)
-        .task {
+        .task(id: fileStatus) {
+            print("will fetch")
             self.path = String(fileStatus.path.split(separator: " -> ").last ?? "")
+            let fullFileURL = URL(fileURLWithPath: path, isDirectory: false, relativeTo: repo.path)
+            print("will fetch path: \(fullFileURL.absoluteString)")
             do {
-                self.lines = try await repo.shell.show(file: path, defaultType: fileStatus.diffModificationState)
-                self.content = try repo.readFile(at: path)
+                self.content = try repo.readFile(at: fullFileURL)
+                self.lines = content
+                    .split(separator: "\n")
+                    .enumerated()
+                    .map({ (index, line) in
+                        return GitDiffHunkLine(
+                            type: fileStatus.diffModificationState,
+                            text: String(line),
+                            oldLineNumber: index,
+                            newLineNumber: index
+                        )
+                    })
                 self.finishedFetching = true
             } catch {
                 print("Failed at FileRenderView: \(error.localizedDescription)")

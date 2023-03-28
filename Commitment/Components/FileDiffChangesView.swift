@@ -16,13 +16,14 @@ struct FileDiffChangesView: View {
         ScrollView(.vertical) {
             if let diff {
                 DiffRenderView(fileStatus: fileStatus, diff: diff)
-                    .scenePadding()
+                    // .padding([.top, .leading])
+                    .padding()
             } else {
                 FileRenderView(fileStatus: fileStatus)
-                    .scenePadding()
+                    // .padding([.top, .leading])
+                    .padding()
             }
         }
-
     }
 }
 //

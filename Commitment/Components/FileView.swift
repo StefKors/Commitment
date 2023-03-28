@@ -32,11 +32,13 @@ struct FileView<Content: View>: View {
             }
             .fontDesign(.monospaced)
         })
-        .overlay(
-            RoundedRectangle(cornerRadius: 6)
-                .stroke(.separator, lineWidth: 2)
-        )
         .clipShape(RoundedRectangle(cornerRadius: 6))
+        // .clipShape(ContainerRelativeShape())
+        .overlay(
+            // ContainerRelativeShape()
+            RoundedRectangle(cornerRadius: 6)
+                .stroke(.separator, lineWidth: 1)
+        )
     }
 
 }

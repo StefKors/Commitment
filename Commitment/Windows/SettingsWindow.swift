@@ -11,6 +11,7 @@ struct SettingsWindow: View {
     enum Tabs: String, Hashable {
         case General
         case Credentials
+        case SSH = "SSH Keys"
     }
 
     @State private var selectedMenu: Tabs = .General
@@ -19,7 +20,8 @@ struct SettingsWindow: View {
         HStack(spacing: 0) {
             List(selection: $selectedMenu) {
                 SettingsListItemView(tag: .General, image: "gear", fill: .gray)
-                SettingsListItemView(tag: .Credentials, image: "key.fill", fill: .black)
+                SettingsListItemView(tag: .Credentials, image: "key.fill", fill: .gray.darker(by: 30))
+                SettingsListItemView(tag: .SSH, image: "lock.doc", fill: .orange)
             }
             .listStyle(.sidebar)
             .frame(maxWidth: 200)
@@ -33,6 +35,8 @@ struct SettingsWindow: View {
                         GeneralSettingsView()
                     case .Credentials:
                         CredentialSettingsView()
+                    case .SSH:
+                        SSHKeysSettingsView()
                     }
                 }
                 .padding()

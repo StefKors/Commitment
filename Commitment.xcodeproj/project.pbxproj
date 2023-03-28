@@ -223,6 +223,13 @@
 		8A34219029C867340001E58B /* git-pack-redundant in Resources */ = {isa = PBXBuildFile; fileRef = 8A3420CC29C867340001E58B /* git-pack-redundant */; };
 		8A34219529C876B30001E58B /* WelcomeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34219429C876B30001E58B /* WelcomeSheet.swift */; };
 		8A3421DC29CF08BE0001E58B /* GitFileStatusLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421DB29CF08BE0001E58B /* GitFileStatusLabelView.swift */; };
+		8A3421DE29CF0D2B0001E58B /* SSHKeysSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421DD29CF0D2B0001E58B /* SSHKeysSettingsView.swift */; };
+		8A3421E629D19A9E0001E58B /* CommitmentAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */; };
+		8A3421E829D1B3CE0001E58B /* CommitHotKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421E729D1B3CE0001E58B /* CommitHotKeyWindow.swift */; };
+		8A3421EA29D1BD0D0001E58B /* HotKeyActiveChangesSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421E929D1BD0D0001E58B /* HotKeyActiveChangesSidebarView.swift */; };
+		8A3421EC29D3008B0001E58B /* HotKeyActiveChangesMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421EB29D3008B0001E58B /* HotKeyActiveChangesMainView.swift */; };
+		8A3421EE29D30FDD0001E58B /* HotKeyAccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421ED29D30FDD0001E58B /* HotKeyAccentBorderGroupBoxStyle.swift */; };
+		8A3421F029D323C10001E58B /* ToolbarOpenCommitWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */; };
 		8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */; };
 		8A486DC029AFB83200FB00F7 /* SettingsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */; };
 		8A486DC229AFBCB700FB00F7 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DC129AFBCB700FB00F7 /* Animation.swift */; };
@@ -854,6 +861,13 @@
 		8A34219229C86A810001E58B /* signExecutables.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = signExecutables.sh; sourceTree = "<group>"; };
 		8A34219429C876B30001E58B /* WelcomeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeSheet.swift; sourceTree = "<group>"; };
 		8A3421DB29CF08BE0001E58B /* GitFileStatusLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStatusLabelView.swift; sourceTree = "<group>"; };
+		8A3421DD29CF0D2B0001E58B /* SSHKeysSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHKeysSettingsView.swift; sourceTree = "<group>"; };
+		8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentAppDelegate.swift; sourceTree = "<group>"; };
+		8A3421E729D1B3CE0001E58B /* CommitHotKeyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitHotKeyWindow.swift; sourceTree = "<group>"; };
+		8A3421E929D1BD0D0001E58B /* HotKeyActiveChangesSidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyActiveChangesSidebarView.swift; sourceTree = "<group>"; };
+		8A3421EB29D3008B0001E58B /* HotKeyActiveChangesMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyActiveChangesMainView.swift; sourceTree = "<group>"; };
+		8A3421ED29D30FDD0001E58B /* HotKeyAccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotKeyAccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
+		8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarOpenCommitWindowView.swift; sourceTree = "<group>"; };
 		8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListItemView.swift; sourceTree = "<group>"; };
 		8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBox.swift; sourceTree = "<group>"; };
 		8A486DC129AFBCB700FB00F7 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -1570,6 +1584,7 @@
 				8A48D11427FD9E2E007803D2 /* Assets.xcassets */,
 				8A48D11927FD9E2E007803D2 /* Commitment.entitlements */,
 				8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */,
+				8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */,
 				8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */,
 				8A02C51C29AD3DAB004DCA69 /* KeychainStorage.swift */,
 				8A8C6658296464A700A774D7 /* Components */,
@@ -1615,6 +1630,7 @@
 			isa = PBXGroup;
 			children = (
 				8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */,
+				8A3421ED29D30FDD0001E58B /* HotKeyAccentBorderGroupBoxStyle.swift */,
 				8AAF7AF529A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift */,
 				8AFBD50D296F2A5E00525BF7 /* AccentGlow.swift */,
 				8AFBD526296F2C1400525BF7 /* AddRepoView.swift */,
@@ -1651,6 +1667,7 @@
 				8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */,
 				8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */,
 				8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */,
+				8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */,
 				8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */,
 				8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */,
 				8A97DDA4299BCA7A001E25E1 /* Theme+Light+Dark.swift */,
@@ -2195,6 +2212,7 @@
 			isa = PBXGroup;
 			children = (
 				8AFBD51E296F2C1400525BF7 /* CredentialSettingsView.swift */,
+				8A3421DD29CF0D2B0001E58B /* SSHKeysSettingsView.swift */,
 				8AFBD51F296F2C1400525BF7 /* GeneralSettingsView.swift */,
 			);
 			path = SettingsViews;
@@ -2204,7 +2222,9 @@
 			isa = PBXGroup;
 			children = (
 				8A5C64CA29797DB300CA8FE1 /* ActiveChangesMainView.swift */,
+				8A3421EB29D3008B0001E58B /* HotKeyActiveChangesMainView.swift */,
 				8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */,
+				8A3421E929D1BD0D0001E58B /* HotKeyActiveChangesSidebarView.swift */,
 				8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */,
 				8A5C64CD29797DB300CA8FE1 /* CommitHistoryDetailView.swift */,
 				8A5C64CE29797DB300CA8FE1 /* CommitHistoryMainView.swift */,
@@ -2223,6 +2243,7 @@
 				8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */,
 				8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */,
 				8A34219429C876B30001E58B /* WelcomeSheet.swift */,
+				8A3421E729D1B3CE0001E58B /* CommitHotKeyWindow.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -2676,6 +2697,7 @@
 				8AFBD57D2971D14700525BF7 /* CheckoutProgressIconView.swift in Sources */,
 				8ACCD2A9297F265B0020BF84 /* CherryTask.swift in Sources */,
 				8ACCD2D7297F265C0020BF84 /* GitFileStorage.swift in Sources */,
+				8A3421EE29D30FDD0001E58B /* HotKeyAccentBorderGroupBoxStyle.swift in Sources */,
 				8ACCD2EB297F265C0020BF84 /* GitRemote.swift in Sources */,
 				8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */,
 				8ACCD2A8297F265B0020BF84 /* GitCherryResult.swift in Sources */,
@@ -2737,6 +2759,7 @@
 				8ACCD29B297F265B0020BF84 /* BranchOptions.swift in Sources */,
 				8ACCD2B8297F265B0020BF84 /* RemoteUrlTask.swift in Sources */,
 				8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */,
+				8A3421EC29D3008B0001E58B /* HotKeyActiveChangesMainView.swift in Sources */,
 				8ACCD2C0297F265C0020BF84 /* GitStashDropOptions.swift in Sources */,
 				8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */,
 				8ACCD2E0297F265C0020BF84 /* GitRepository+Reference.swift in Sources */,
@@ -2751,6 +2774,7 @@
 				8ACCD2BE297F265C0020BF84 /* GitStashApplyOptions.swift in Sources */,
 				8A07612C29659EEE00D878DC /* GitDiffParser.swift in Sources */,
 				8AFBD54429702A0600525BF7 /* Commit.swift in Sources */,
+				8A3421EA29D1BD0D0001E58B /* HotKeyActiveChangesSidebarView.swift in Sources */,
 				8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */,
 				8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */,
 				8ACCD2A3297F265B0020BF84 /* GitPullOptions.swift in Sources */,
@@ -2766,8 +2790,10 @@
 				8ACCD2AE297F265B0020BF84 /* PushTask.swift in Sources */,
 				8ACCD2F1297F265C0020BF84 /* RepositoryReference.swift in Sources */,
 				8ACCD2F7297F265C0020BF84 /* RepositoryLogRecord.swift in Sources */,
+				8A3421F029D323C10001E58B /* ToolbarOpenCommitWindowView.swift in Sources */,
 				8A02C50129ACB801004DCA69 /* Remote.swift in Sources */,
 				8ACCD2B9297F265B0020BF84 /* GitAddOptions.swift in Sources */,
+				8A3421DE29CF0D2B0001E58B /* SSHKeysSettingsView.swift in Sources */,
 				8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */,
 				8ACCD2F6297F265C0020BF84 /* RepositoryRemote.swift in Sources */,
 				8ACCD2E5297F265C0020BF84 /* GitRepository+Init.swift in Sources */,
@@ -2825,6 +2851,7 @@
 				8ACCD2DA297F265C0020BF84 /* GitRemoteList.swift in Sources */,
 				8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */,
 				8A02C4FF29ACB0E7004DCA69 /* Array.swift in Sources */,
+				8A3421E829D1B3CE0001E58B /* CommitHotKeyWindow.swift in Sources */,
 				8ACCD29F297F265B0020BF84 /* CherryPickOptions.swift in Sources */,
 				8AFBD5752971B08D00525BF7 /* FolderContentChangeEvent.swift in Sources */,
 				8ACCD2F8297F265C0020BF84 /* RepositoryStashRecord.swift in Sources */,
@@ -2844,6 +2871,7 @@
 				8A5C64D229797DB300CA8FE1 /* ActiveChangesMainView.swift in Sources */,
 				8A562CDB29B20053006C7E8A /* Shell+ProcessWithLines.swift in Sources */,
 				8ACCD2E8297F265C0020BF84 /* GitTagRecord.swift in Sources */,
+				8A3421E629D19A9E0001E58B /* CommitmentAppDelegate.swift in Sources */,
 				8A327EFC298E8F20008521B0 /* TouchbarContentView.swift in Sources */,
 				8A7FBF6F29C340260032E394 /* LazyContentWindow.swift in Sources */,
 				8ACCD2A0297F265B0020BF84 /* MergeTask.swift in Sources */,

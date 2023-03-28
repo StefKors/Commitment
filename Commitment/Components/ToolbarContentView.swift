@@ -14,15 +14,22 @@ struct ToolbarContentView: View {
     /// TODO: Fix blinking when switching view
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
-            RepoSelectView()
-            Divider()
-            BranchSelectView()
-            Divider()
-            ToolbarPrimaryActionView()
-            Divider()
-            ToolbarActionUpdateMain()
-            Divider()
-            Spacer()
+            Group {
+                RepoSelectView()
+                Divider()
+                BranchSelectView()
+                Divider()
+                ToolbarPrimaryActionView()
+                Divider()
+            }
+
+            Group {
+                ToolbarActionUpdateMain()
+                Divider()
+                ToolbarOpenCommitWindowView()
+                Divider()
+                Spacer()
+            }
         }
         .frame(height: 50)
         .padding(.horizontal, 10)
