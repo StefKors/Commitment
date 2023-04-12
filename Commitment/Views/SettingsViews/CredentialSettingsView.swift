@@ -103,7 +103,7 @@ struct CredentialSettingsView: View {
             if let content = try? String(contentsOf: URL(filePath: path.path()), encoding: .utf8) {
                 let oldPasswords = passwords?.values ?? []
                 let newPasswords = content
-                    .split(separator: "\n")
+                    .lines
                     .compactMap { line -> Credential? in
                         guard let url = URL(string: String(line)) else { return nil }
                         return Credential(url: url)

@@ -90,7 +90,7 @@ extension Shell {
     /// Probably not performant
     func show(file: String, defaultType: GitDiffHunkLineType = .unchanged) async throws -> [GitDiffHunkLine] {
         return try await self.show(file: file)
-            .split(separator: "\n")
+            .lines
             .enumerated()
             .map({ (index, line) in
                 return GitDiffHunkLine(
@@ -104,7 +104,7 @@ extension Shell {
 
     func show(at commit: String) async throws -> [GitFileStatus] {
         return try await self.run(.git, ["show", "--oneline", "--name-status", "--no-color", commit])
-            .split(separator: "\n")
+            .lines
             .compactMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }
                 let splits = line.split(separator: "\t")
@@ -143,7 +143,7 @@ extension Shell {
 
     func status() async throws -> [GitFileStatus] {
         try await self.run(.git, ["status", "--porcelain"])
-            .split(separator: "\n")
+            .lines
             .compactMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }
                 var trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -203,7 +203,7 @@ extension Shell {
     /// - Returns: all remotes
     func remotes() async throws -> [String] {
         try await self.run(.git, ["remote"])
-            .split(separator: "\n")
+            .lines
             .compactMap({ subStr in
                 String(subStr).trimmingCharacters(in: .whitespacesAndNewlines)
             })

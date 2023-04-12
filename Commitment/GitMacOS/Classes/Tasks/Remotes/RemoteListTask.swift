@@ -44,7 +44,7 @@ class RemoteListTask: RepositoryTask, TaskRequirable {
         }
         
         // parse remotes. Each remote is divided by a new line
-        let remotes = self.output?.trimmingCharacters(in: .whitespacesAndNewlines).split(separator: "\n")
+        let remotes = self.output?.trimmingCharacters(in: .whitespacesAndNewlines).lines
         
         for remoteName in remotes ?? [] {
             remoteNames.append(String(remoteName))

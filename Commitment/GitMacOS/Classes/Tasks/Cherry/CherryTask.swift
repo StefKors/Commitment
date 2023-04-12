@@ -40,7 +40,7 @@ class CherryTask: RepositoryTask, TaskRequirable {
         var revisions: [GitCherryRevision] = []
         
         if let output = self.output {
-            for line in output.split(separator: "\n") {
+            for line in output.lines {
                 guard line.count > 2 else { continue }
                 
                 let sign = String(line.prefix(1))

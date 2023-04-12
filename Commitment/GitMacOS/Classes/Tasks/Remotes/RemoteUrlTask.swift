@@ -60,7 +60,7 @@ class RemoteUrlTask: RepositoryTask, TaskRequirable {
         }
         
         // parse URLs
-        let remotes = self.output?.trimmingCharacters(in: .whitespacesAndNewlines).split(separator: "\n")
+        let remotes = self.output?.trimmingCharacters(in: .whitespacesAndNewlines).lines
         
         for remoteUrl in remotes ?? [] {
             guard let url = URL(string: String(remoteUrl)) else {

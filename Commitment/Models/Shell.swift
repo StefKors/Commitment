@@ -59,7 +59,7 @@ extension Bundle {
 }
 
 extension String {
-    var lines: [String.SubSequence] {
-        self.split(separator: "\n")
+    var lines: [String] {
+        self.components(separatedBy: "\n")
     }
 }

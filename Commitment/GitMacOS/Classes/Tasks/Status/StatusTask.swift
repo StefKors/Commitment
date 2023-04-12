@@ -37,7 +37,7 @@ class StatusTask: RepositoryTask, TaskRequirable {
         status = GitFileStatusList()
         
         if let output = self.output {
-            for line in output.split(separator: "\n") {
+            for line in output.lines {
                 guard line.count > 3 else { continue }
                 
                 let fileState = String(line.prefix(2))

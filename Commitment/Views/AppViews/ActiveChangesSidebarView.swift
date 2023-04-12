@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ActiveChangesSidebarView: View {
     @EnvironmentObject private var repo: RepoState
-    
+
     var body: some View {
         VStack {
             List(selection: $repo.view.activeChangesSelection) {
@@ -24,9 +24,11 @@ struct ActiveChangesSidebarView: View {
             .onDeleteCommand {
                 print("todo: discard changes delete command")
             }
-            
+
             Divider()
             TextEditorView(isDisabled: repo.diffs.isEmpty)
+
+            UndoActivityView()
         }
     }
 }

@@ -20,6 +20,7 @@ extension Store where Item == RepoState {
 
 class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     @Published var activity = ActivityState()
+    @Published var undo = UndoState()
     @Published var view = ViewState()
 
     var shell: Shell

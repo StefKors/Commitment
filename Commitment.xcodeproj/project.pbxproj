@@ -425,6 +425,8 @@
 		8AD9B5D029E6C28500631337 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5CF29E6C28500631337 /* Commands.swift */; };
 		8AD9B5D229E6C31100631337 /* ActiveChangesContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */; };
 		8AD9B5D429E6C7CB00631337 /* RepoState+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */; };
+		8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E129E6D77600631337 /* UndoState.swift */; };
+		8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */; };
 		8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */; };
 		8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD506296F2A4000525BF7 /* PillView.swift */; };
 		8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */; };
@@ -1080,6 +1082,8 @@
 		8AD9B5CF29E6C28500631337 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChangesContextMenu.swift; sourceTree = "<group>"; };
 		8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepoState+Commands.swift"; sourceTree = "<group>"; };
+		8AD9B5E129E6D77600631337 /* UndoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoState.swift; sourceTree = "<group>"; };
+		8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActivityView.swift; sourceTree = "<group>"; };
 		8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPushOriginActionButtonView.swift; sourceTree = "<group>"; };
 		8AFBD506296F2A4000525BF7 /* PillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRepoListView.swift; sourceTree = "<group>"; };
@@ -1680,6 +1684,7 @@
 				8A97DDA4299BCA7A001E25E1 /* Theme+Light+Dark.swift */,
 				8A992DF829A629F4001E26A3 /* CustomMenuView.swift */,
 				8A992DFE29A64867001E26A3 /* CustomMenuButtonStyle.swift */,
+				8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */,
 				8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */,
 				8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */,
 				8A02C50429ACD3AA004DCA69 /* Rotation.swift */,
@@ -2291,6 +2296,7 @@
 				8AFBD535296F2C4300525BF7 /* RepoState.swift */,
 				8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */,
 				8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */,
+				8AD9B5E129E6D77600631337 /* UndoState.swift */,
 				8A02C52029ADEDA9004DCA69 /* AppModel.swift */,
 				8A562CE629B4C335006C7E8A /* ViewState.swift */,
 			);
@@ -2705,6 +2711,7 @@
 				8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */,
 				8ACCD2E4297F265C0020BF84 /* GitRepository+Tag.swift in Sources */,
 				8AFBD57D2971D14700525BF7 /* CheckoutProgressIconView.swift in Sources */,
+				8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */,
 				8ACCD2A9297F265B0020BF84 /* CherryTask.swift in Sources */,
 				8ACCD2D7297F265C0020BF84 /* GitFileStorage.swift in Sources */,
 				8A3421EE29D30FDD0001E58B /* HotKeyAccentBorderGroupBoxStyle.swift in Sources */,
@@ -2894,6 +2901,7 @@
 				8ACCD2B2297F265B0020BF84 /* GitFetchOptions.swift in Sources */,
 				8ACCD296297F265B0020BF84 /* GitReferenceName.swift in Sources */,
 				8ACCD2A2297F265B0020BF84 /* ReferencesTask.swift in Sources */,
+				8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */,
 				8ACCD2AF297F265B0020BF84 /* GitPushOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

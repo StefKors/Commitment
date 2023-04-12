@@ -42,7 +42,7 @@ struct FileRenderView: View {
             do {
                 self.content = try repo.readFile(at: fullFileURL)
                 self.lines = content
-                    .split(separator: "\n")
+                    .components(separatedBy: "\n")
                     .enumerated()
                     .map({ (index, line) in
                         return GitDiffHunkLine(
