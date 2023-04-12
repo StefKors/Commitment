@@ -39,6 +39,7 @@ struct CommitmentApp: App {
                     RepoWindow()
                         .ignoresSafeArea(.all, edges: .top)
                         .environmentObject(repo)
+                        .focusedSceneValue(\.repo, $repo)
                 } else {
                     WelcomeSheet()
                 }
@@ -68,6 +69,7 @@ struct CommitmentApp: App {
         .windowResizability(.contentMinSize)
         .commands {
             SidebarCommands()
+            AppCommands()
         }
 
         WindowGroup("Commit", id: "CommitWindow", for: RepoState.ID.self) { $repoID in
