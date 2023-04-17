@@ -10,20 +10,36 @@ import SwiftUI
 struct TextEditorView: View {
     let isDisabled: Bool
     @EnvironmentObject private var repo: RepoState
+    // SceneStorage doesn't work well with textfield...
+    // @SceneStorage("commitTitle") private var commitTitle: String = ""
+    @State private var commitTitle: String = ""
 
-    @SceneStorage("commitTitle") private var commitTitle: String = ""
-    private let placeholderTitle: String = "Summary (Required)"
+    private var quickCommitTitle: String? {
+        if repo.status.count == 1, let first = repo.status.first, let str = first.path.split(separator: " -> ").last {
+            let url = URL(filePath: String(str))
+            return "Update \(url.lastPathComponent)"
+        }
 
-    @SceneStorage("commitBody") private var commitBody: String = ""
+        return nil
+    }
+    private var placeholderTitle: String {
+        if let title = quickCommitTitle {
+            return title
+        }
+
+        return "Summary (Required)"
+    }
+
+    // SceneStorage doesn't work well with textfield...
+    // @SceneStorage("commitBody") private var commitBody: String = ""
+    @State private var commitBody: String = ""
     private let placeholderBody: String = "Body"
-
 
     var body: some View {
         Form {
             TextField("CommitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
                 .lineLimit(1)
                 .multilineTextAlignment(.leading)
-
                 .onSubmit { handleSubmit() }
                 .textFieldStyle(.roundedBorder)
 
@@ -57,6 +73,9 @@ struct TextEditorView: View {
                 commitBody = ""
             } else if !commitTitle.isEmpty {
                 try? await repo.shell.commit(message: commitTitle)
+                commitTitle = ""
+            } else if let title = quickCommitTitle {
+                try? await repo.shell.commit(message: title)
                 commitTitle = ""
             }
 
