@@ -26,7 +26,7 @@ struct ToolbarPushOriginActionButtonView: View {
                     }.frame(maxWidth: 190, alignment: .leading)
 
                     GroupBox {
-                        Text(repo.commitsAhead.description)
+                        Text(repo.commitsAhead.count.description)
                     }
                 }
                 .foregroundColor(.primary)

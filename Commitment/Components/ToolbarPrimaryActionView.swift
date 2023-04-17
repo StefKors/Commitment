@@ -12,7 +12,7 @@ struct ToolbarPrimaryActionView: View {
 
     var body: some View {
 
-        if repo.commitsAhead > 0 {
+        if repo.commitsAhead.count > 0 {
             ToolbarPushOriginActionButtonView()
         } else {
             ToolbarFetchOriginActionView()

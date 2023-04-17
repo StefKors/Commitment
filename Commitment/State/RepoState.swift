@@ -62,7 +62,7 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
             }
         }
     }
-    @Published var commitsAhead: Int = 0
+    @Published var commitsAhead: [Commit] = []
     @Published var lastFetchedDate: Date? = nil
     @Published var lastUpdate: Date? = nil
 
@@ -156,7 +156,7 @@ init RepoState: \(folderName) with:
             if let commits, let localCommits {
                 let mergedCommits = commits.merge(localCommits)
                 self.commits = mergedCommits
-                self.commitsAhead = localCommits.count
+                self.commitsAhead = localCommits
             }
             self.lastUpdate = .now
         }

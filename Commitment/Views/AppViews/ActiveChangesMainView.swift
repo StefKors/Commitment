@@ -26,6 +26,8 @@ struct ActiveChangesMainView: View {
                 Rectangle().fill(.clear)
                 if let fileStatus {
                     FileDiffChangesView(fileStatus: fileStatus, diff: diff)
+                } else if repo.commitsAhead.count > 0 {
+                    PendingCommitSummaryView()
                 } else if !isLoading {
                     ContentPlaceholderView()
                 } else {

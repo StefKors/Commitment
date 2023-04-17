@@ -423,6 +423,8 @@
 		8ACCD2F7297F265C0020BF84 /* RepositoryLogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */; };
 		8ACCD2F8297F265C0020BF84 /* RepositoryStashRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28F297F265B0020BF84 /* RepositoryStashRecord.swift */; };
 		8AD1087F29ED4B9D000FFD70 /* UndoActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */; };
+		8AD1088129ED6AF7000FFD70 /* PendingCommitSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088029ED6AF7000FFD70 /* PendingCommitSummaryView.swift */; };
+		8AD1088329ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088229ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift */; };
 		8AD9B5D029E6C28500631337 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5CF29E6C28500631337 /* Commands.swift */; };
 		8AD9B5D229E6C31100631337 /* ActiveChangesContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */; };
 		8AD9B5D429E6C7CB00631337 /* RepoState+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */; };
@@ -1082,6 +1084,8 @@
 		8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryLogRecord.swift; sourceTree = "<group>"; };
 		8ACCD28F297F265B0020BF84 /* RepositoryStashRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryStashRecord.swift; sourceTree = "<group>"; };
 		8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoActionButtonStyle.swift; sourceTree = "<group>"; };
+		8AD1088029ED6AF7000FFD70 /* PendingCommitSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCommitSummaryView.swift; sourceTree = "<group>"; };
+		8AD1088229ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCommitSummaryItemView.swift; sourceTree = "<group>"; };
 		8AD9B5CF29E6C28500631337 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChangesContextMenu.swift; sourceTree = "<group>"; };
 		8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepoState+Commands.swift"; sourceTree = "<group>"; };
@@ -1683,6 +1687,8 @@
 				8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */,
 				8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */,
 				8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */,
+				8AD1088029ED6AF7000FFD70 /* PendingCommitSummaryView.swift */,
+				8AD1088229ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift */,
 				8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */,
 				8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */,
 				8A97DDA4299BCA7A001E25E1 /* Theme+Light+Dark.swift */,
@@ -2684,6 +2690,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AD1088129ED6AF7000FFD70 /* PendingCommitSummaryView.swift in Sources */,
 				8ACCD2CD297F265C0020BF84 /* GitTagOptions.swift in Sources */,
 				8ACCD291297F265B0020BF84 /* IndexIterator.swift in Sources */,
 				8AD9B5D229E6C31100631337 /* ActiveChangesContextMenu.swift in Sources */,
@@ -2837,6 +2844,7 @@
 				8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */,
 				8ACCD2AB297F265B0020BF84 /* GitStatusOptions.swift in Sources */,
 				8A992DFD29A63B36001E26A3 /* OverlayAlignmentView.swift in Sources */,
+				8AD1088329ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift in Sources */,
 				8ACCD2C4297F265C0020BF84 /* StashTask.swift in Sources */,
 				8AFBD55E29704F7000525BF7 /* GitFileStatusView.swift in Sources */,
 				8ACCD2DF297F265C0020BF84 /* GitRepository+Cherry.swift in Sources */,

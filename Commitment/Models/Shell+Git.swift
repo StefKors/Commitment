@@ -240,6 +240,11 @@ extension Shell {
             throw URLError.cantCreateURLFrom(string: result)
         }
     }
+
+    func stats(for sha: String) async throws -> String {
+        let result = try await self.run(.git, ["diff", "--shortstat"])
+        return result
+    }
 }
 
 enum URLError: Error {

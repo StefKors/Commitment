@@ -40,6 +40,10 @@ struct Commit: Equatable, Codable, Hashable, Identifiable {
     var isLocal: Bool? = nil
 }
 
+extension Commit {
+    // static let sample = Commit
+}
+
 extension Collection where Element == Commit {
     func merge(_ second: [Commit]) -> [Commit] {
         var secondCopy = second

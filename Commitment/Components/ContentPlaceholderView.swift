@@ -46,7 +46,7 @@ struct PushChangesRepoPlaceholder: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Push commits to the origin remote")
                         .fontWeight(.semibold)
-                    Text("You have \(repo.commitsAhead) local commit waiting to be pushed to \(selectedExternalGitProvider).")
+                    Text("You have \(repo.commitsAhead.count) local commit waiting to be pushed to \(selectedExternalGitProvider).")
                         .foregroundStyle(.secondary)
                     HStack {
                         Text("Always available in the toolbar for local commits or")
@@ -177,7 +177,7 @@ struct ContentPlaceholderView: View {
                 .frame(minWidth: 400, maxWidth: 600)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    if repo.commitsAhead > 0 {
+                    if repo.commitsAhead.count > 0 {
                         PushChangesRepoPlaceholder()
                     } else {
                         GoCodeRepoPlaceholder()
