@@ -39,6 +39,7 @@ struct CommitmentApp: App {
                     RepoWindow()
                         .ignoresSafeArea(.all, edges: .top)
                         .environmentObject(repo)
+                        .environmentObject(repo.undo)
                         .focusedSceneValue(\.repo, $repo)
                 } else {
                     WelcomeSheet()

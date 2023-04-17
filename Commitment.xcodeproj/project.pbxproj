@@ -427,6 +427,7 @@
 		8AD9B5D429E6C7CB00631337 /* RepoState+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */; };
 		8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E129E6D77600631337 /* UndoState.swift */; };
 		8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */; };
+		8AD9B5E829E6DC1500631337 /* UndoActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E729E6DC1500631337 /* UndoActionView.swift */; };
 		8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */; };
 		8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD506296F2A4000525BF7 /* PillView.swift */; };
 		8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */; };
@@ -1084,6 +1085,7 @@
 		8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepoState+Commands.swift"; sourceTree = "<group>"; };
 		8AD9B5E129E6D77600631337 /* UndoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoState.swift; sourceTree = "<group>"; };
 		8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActivityView.swift; sourceTree = "<group>"; };
+		8AD9B5E729E6DC1500631337 /* UndoActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActionView.swift; sourceTree = "<group>"; };
 		8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPushOriginActionButtonView.swift; sourceTree = "<group>"; };
 		8AFBD506296F2A4000525BF7 /* PillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRepoListView.swift; sourceTree = "<group>"; };
@@ -1685,6 +1687,7 @@
 				8A992DF829A629F4001E26A3 /* CustomMenuView.swift */,
 				8A992DFE29A64867001E26A3 /* CustomMenuButtonStyle.swift */,
 				8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */,
+				8AD9B5E729E6DC1500631337 /* UndoActionView.swift */,
 				8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */,
 				8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */,
 				8A02C50429ACD3AA004DCA69 /* Rotation.swift */,
@@ -2742,6 +2745,7 @@
 				8A02C52329ADEE2A004DCA69 /* Color.swift in Sources */,
 				8ACCD2C1297F265C0020BF84 /* GitStashListOptions.swift in Sources */,
 				8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */,
+				8AD9B5E829E6DC1500631337 /* UndoActionView.swift in Sources */,
 				8ACCD2B1297F265B0020BF84 /* CleanOptions.swift in Sources */,
 				8A486DC229AFBCB700FB00F7 /* Animation.swift in Sources */,
 				8A97DC73299BA4C4001E25E1 /* HighlightedText.swift in Sources */,

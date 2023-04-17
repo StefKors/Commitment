@@ -25,10 +25,14 @@ struct ActiveChangesSidebarView: View {
                 print("todo: discard changes delete command")
             }
 
-            Divider()
-            TextEditorView(isDisabled: repo.diffs.isEmpty)
 
-            UndoActivityView()
+
+            Divider()
+            VStack {
+                TextEditorView(isDisabled: repo.diffs.isEmpty)
+                UndoActivityView()
+            }
+            .padding(.bottom)
         }
     }
 }

@@ -47,7 +47,6 @@ struct TextEditorView: View {
         }
         .labelsHidden()
         .padding(.horizontal)
-        .padding(.bottom)
     }
 
     func handleSubmit() {
