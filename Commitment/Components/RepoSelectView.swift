@@ -91,7 +91,7 @@ struct RepoSelectView: View {
                                 Spacer()
                             }
                         })
-                        .buttonStyle(.customButtonStyle)
+                        .buttonStyle(.toolbarMenuButtonStyle)
                     }
                 }
                 .truncationMode(.tail)

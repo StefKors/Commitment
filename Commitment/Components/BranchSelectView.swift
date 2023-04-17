@@ -89,7 +89,7 @@ struct BranchSelectView: View {
                                 Spacer()
                             }
                         })
-                        .buttonStyle(.customButtonStyle)
+                        .buttonStyle(.toolbarMenuButtonStyle)
                     }
                 }
                 .truncationMode(.tail)

@@ -11,6 +11,8 @@ struct GitFileStatusLabelView: View {
     // For example: "Commitment/Views/Components/GitView.swift"
     let label: URL
 
+    let isRename: Bool
+
     // For example: "Commitment/Views/Components/"
     var relativePath: String {
         label.deletingLastPathComponent().path(percentEncoded: false)
@@ -34,11 +36,13 @@ struct GitFileStatusLabelView: View {
 
     var body: some View {
         HStack(spacing: 0) {
-            Text(relativePath)
-                .truncationMode(.tail)
-                .foregroundColor(.secondary)
-                .frame(minWidth: 20)
-                .layoutPriority(1)
+            if !isRename {
+                Text(relativePath)
+                    .truncationMode(.tail)
+                    .foregroundColor(.secondary)
+                    .frame(minWidth: 20)
+                    .layoutPriority(1)
+            }
 
             Text(name)
                 .truncationMode(.tail)
@@ -52,6 +56,6 @@ struct GitFileStatusLabelView: View {
 
 struct GitFileStatusLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        GitFileStatusLabelView(label: URL(string: "Commitment/Views/Components/GitView.swift")!)
+        GitFileStatusLabelView(label: URL(string: "Commitment/Views/Components/GitView.swift")!, isRename: false)
     }
 }

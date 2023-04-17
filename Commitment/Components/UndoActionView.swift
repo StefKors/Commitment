@@ -12,15 +12,15 @@ struct UndoActionView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                // Text("Revert \(action.type.rawValue.capitalized)")
-                Text("Revert \(action.arguments.first ?? "")")
-                Text("\(action.type.rawValue.capitalized)ed \(action.createdAt.formatted(.relative(presentation: .named)))")
+                Text("Revert \(action.type.rawValue.capitalized)")
+                Text("\(action.createdAt.formatted(.relative(presentation: .named)))")
                     .foregroundColor(.secondary)
             }
             Spacer(minLength: 20)
             Button("Undo", action: {
                 print("Todo: handle undo action")
             })
+            .buttonStyle(.undo)
         }
         .padding(.vertical, 5)
         .padding(.horizontal, 8)
@@ -41,8 +41,8 @@ extension View {
 }
 
 struct UndoActionView_Previews: PreviewProvider {
-    static let action: UndoAction = .sample
-    static let samples: [UndoAction] = [.sample, .sample, .sample, .sample]
+    static let action: UndoAction = .sampleDiscardChanges
+    static let samples: [UndoAction] = [.sampleDiscardChanges, .sample, .sampleDiscardChanges, .sample]
 
     static var previews: some View {
         UndoActionView(action: action)

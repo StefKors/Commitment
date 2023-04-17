@@ -1,5 +1,5 @@
 //
-//  CustomMenuButtonStyle.swift
+//  ToolbarMenuButtonStyle.swift
 //  Commitment
 //
 //  Created by Stef Kors on 22/02/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomMenuButtonStyle: ButtonStyle {
+struct ToolbarMenuButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) var isEnabled
     @State var isHovering: Bool = false
 
@@ -46,22 +46,29 @@ struct CustomMenuButtonStyle: ButtonStyle {
     }
 }
 
-extension ButtonStyle where Self == CustomMenuButtonStyle {
+extension ButtonStyle where Self == ToolbarMenuButtonStyle {
     /// Custom button style for the CustomMenu component
-    static var customButtonStyle: CustomMenuButtonStyle { .init() }
+    static var toolbarMenuButtonStyle: ToolbarMenuButtonStyle { .init() }
 }
 
-struct CustomMenuButtonStyle_Previews: PreviewProvider {
+struct ToolbarMenuButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
-        Button("Click Here!", action: {})
-            .buttonStyle(.customButtonStyle)
-            .padding()
-            .previewDisplayName("Default")
+        VStack {
+            Button("Click Here! (Default)", action: {})
+                .buttonStyle(.toolbarMenuButtonStyle)
+                .padding()
+                .previewDisplayName("Default")
 
-        Button("Click Here!", action: {})
-            .buttonStyle(.customButtonStyle)
-            .padding()
-            .disabled(true)
-            .previewDisplayName("Disabled")
+            Button("Click Here! (Hover)", action: {})
+                .buttonStyle(ToolbarMenuButtonStyle(isHovering: true))
+                .padding()
+                .previewDisplayName("Hover")
+
+            Button("Click Here! (Disabled)", action: {})
+                .buttonStyle(.toolbarMenuButtonStyle)
+                .padding()
+                .disabled(true)
+                .previewDisplayName("Disabled")
+        }
     }
 }

@@ -11,6 +11,7 @@ struct GitFileStatusView: View {
     internal init(fileStatus: GitFileStatus) {
         self.fileStatus = fileStatus
         // slow here?
+        // handles renamed
         self.labels = fileStatus.path.split(separator: " -> ").compactMap({ URL(filePath: String($0)) })
     }
     
@@ -21,12 +22,13 @@ struct GitFileStatusView: View {
         HStack(alignment: .center) {
             HStack(spacing: .zero, content: {
                 ForEach(labels, id: \.self) { label in
-                    GitFileStatusLabelView(label: label)
+                    let isRename = labels.count > 1
+                    GitFileStatusLabelView(label: label, isRename: isRename)
 
                     /// Show arrow right icon for moved files
-                    if labels.count > 1, label == labels.first {
+                    if isRename, label == labels.first {
                         Image(systemName: "arrow.right.square")
-                            .padding(.horizontal, 8)
+                            .padding(.horizontal, 4)
                             .foregroundColor(.blue)
                     }
                 }

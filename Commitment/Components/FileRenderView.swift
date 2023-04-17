@@ -36,6 +36,7 @@ struct FileRenderView: View {
         .id(fileStatus.path)
         .task(id: fileStatus) {
             print("will fetch")
+            // handles renamed
             self.path = String(fileStatus.path.split(separator: " -> ").last ?? "")
             let fullFileURL = URL(fileURLWithPath: path, isDirectory: false, relativeTo: repo.path)
             print("will fetch path: \(fullFileURL.absoluteString)")

@@ -302,7 +302,7 @@
 		8A992DF929A629F4001E26A3 /* CustomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DF829A629F4001E26A3 /* CustomMenuView.swift */; };
 		8A992DFB29A62C8B001E26A3 /* StatefulPreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */; };
 		8A992DFD29A63B36001E26A3 /* OverlayAlignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */; };
-		8A992DFF29A64867001E26A3 /* CustomMenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFE29A64867001E26A3 /* CustomMenuButtonStyle.swift */; };
+		8A992DFF29A64867001E26A3 /* ToolbarMenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFE29A64867001E26A3 /* ToolbarMenuButtonStyle.swift */; };
 		8AAF7AEC29A6CEAE0007CE8D /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */; };
 		8AAF7AEE29A6D9600007CE8D /* HunkHeaderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AED29A6D9600007CE8D /* HunkHeaderLineView.swift */; };
 		8AAF7AF029A77E9F0007CE8D /* ActivityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */; };
@@ -422,6 +422,7 @@
 		8ACCD2F6297F265C0020BF84 /* RepositoryRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28D297F265B0020BF84 /* RepositoryRemote.swift */; };
 		8ACCD2F7297F265C0020BF84 /* RepositoryLogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */; };
 		8ACCD2F8297F265C0020BF84 /* RepositoryStashRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28F297F265B0020BF84 /* RepositoryStashRecord.swift */; };
+		8AD1087F29ED4B9D000FFD70 /* UndoActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */; };
 		8AD9B5D029E6C28500631337 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5CF29E6C28500631337 /* Commands.swift */; };
 		8AD9B5D229E6C31100631337 /* ActiveChangesContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */; };
 		8AD9B5D429E6C7CB00631337 /* RepoState+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */; };
@@ -949,7 +950,7 @@
 		8A992DF829A629F4001E26A3 /* CustomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuView.swift; sourceTree = "<group>"; };
 		8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewContainer.swift; sourceTree = "<group>"; };
 		8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAlignmentView.swift; sourceTree = "<group>"; };
-		8A992DFE29A64867001E26A3 /* CustomMenuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuButtonStyle.swift; sourceTree = "<group>"; };
+		8A992DFE29A64867001E26A3 /* ToolbarMenuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarMenuButtonStyle.swift; sourceTree = "<group>"; };
 		8AAD63E72976A88500C7D1BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8AAD63E92976A88500C7D1BB /* Screenshot-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-dark.png"; sourceTree = "<group>"; };
 		8AAD63EA2976A88500C7D1BB /* watchos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchos.svg; sourceTree = "<group>"; };
@@ -1080,6 +1081,7 @@
 		8ACCD28D297F265B0020BF84 /* RepositoryRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryRemote.swift; sourceTree = "<group>"; };
 		8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryLogRecord.swift; sourceTree = "<group>"; };
 		8ACCD28F297F265B0020BF84 /* RepositoryStashRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryStashRecord.swift; sourceTree = "<group>"; };
+		8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoActionButtonStyle.swift; sourceTree = "<group>"; };
 		8AD9B5CF29E6C28500631337 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChangesContextMenu.swift; sourceTree = "<group>"; };
 		8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepoState+Commands.swift"; sourceTree = "<group>"; };
@@ -1685,7 +1687,8 @@
 				8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */,
 				8A97DDA4299BCA7A001E25E1 /* Theme+Light+Dark.swift */,
 				8A992DF829A629F4001E26A3 /* CustomMenuView.swift */,
-				8A992DFE29A64867001E26A3 /* CustomMenuButtonStyle.swift */,
+				8A992DFE29A64867001E26A3 /* ToolbarMenuButtonStyle.swift */,
+				8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */,
 				8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */,
 				8AD9B5E729E6DC1500631337 /* UndoActionView.swift */,
 				8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */,
@@ -2727,6 +2730,7 @@
 				8AFBD531296F2C1400525BF7 /* AddRepoView.swift in Sources */,
 				8AFBD52B296F2C1400525BF7 /* CredentialSettingsView.swift in Sources */,
 				8ACCD2D3297F265C0020BF84 /* GitFile.swift in Sources */,
+				8AD1087F29ED4B9D000FFD70 /* UndoActionButtonStyle.swift in Sources */,
 				8A97DC97299BB148001E25E1 /* String+HTMLEntities.swift in Sources */,
 				8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */,
 				8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */,
@@ -2770,7 +2774,7 @@
 				8ACCD2DE297F265C0020BF84 /* GitRepository+CherryPick.swift in Sources */,
 				8ACCD2BF297F265C0020BF84 /* StashDropTask.swift in Sources */,
 				8A97DC91299BB148001E25E1 /* Int+IsOdd.swift in Sources */,
-				8A992DFF29A64867001E26A3 /* CustomMenuButtonStyle.swift in Sources */,
+				8A992DFF29A64867001E26A3 /* ToolbarMenuButtonStyle.swift in Sources */,
 				8ACCD2D6297F265C0020BF84 /* FileCoder.swift in Sources */,
 				8ACCD2D5297F265C0020BF84 /* FileStorage.swift in Sources */,
 				8ACCD2CB297F265C0020BF84 /* TagTask.swift in Sources */,

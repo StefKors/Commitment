@@ -102,7 +102,7 @@ fileprivate struct _CustomMenu<Label: View, Menu: View>: View {
                             VStack(alignment: .leading, spacing: 0) {
                                 menu()
                                     .frame(minWidth: 300)
-                                    .buttonStyle(.customButtonStyle)
+                                    .buttonStyle(.toolbarMenuButtonStyle)
                             }
                             .background(
                                 GeometryReader { geo -> Color in

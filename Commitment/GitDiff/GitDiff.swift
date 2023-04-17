@@ -112,6 +112,7 @@ extension Collection where Element == GitDiff {
     func fileStatus(for fileId: GitFileStatus.ID?) -> GitDiff? {
         guard let fileId else { return nil }
         // Gets file path while supporting renamed/moved files
+        // handles renamed
         guard let filePath = fileId.split(separator: " -> ").last else { return nil }
         let path = String(filePath)
         return self.first { diff in

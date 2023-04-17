@@ -38,7 +38,7 @@ extension RepoState {
             let commands = ["stash", "push", "--include-untracked", "-m", message, path]
             _ = try? await shell.run(.git, commands)
 
-            withAnimation(.stiffBounce) {
+            await MainActor.run {
                 let action = UndoAction(type: .stash, arguments: commands)
                 self.undo.stack.append(action)
             }
