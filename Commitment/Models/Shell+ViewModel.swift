@@ -34,7 +34,6 @@ enum ShellError: Error {
         // Run action
         do {
             try await process.start()
-            print("starting")
             guard let lines = await process.lines else {
                 print("throw?")
                 throw ShellError.NoProcessLines
@@ -46,7 +45,6 @@ enum ShellError: Error {
                 self.output = line
             }
 
-            print("finsh")
             // Reset output
             self.output = nil
         } catch {

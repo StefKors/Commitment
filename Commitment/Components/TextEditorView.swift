@@ -51,12 +51,18 @@ struct TextEditorView: View {
                 .onSubmit { handleSubmit() }
 
             Button(action: { handleSubmit() }) {
-                Spacer()
                 Text("Commit")
                 Text("to")
                 Text(repo.branch)
                     .fontWeight(.bold)
                 Spacer()
+                HStack(spacing: 0) {
+                    Image(systemName: "command")
+                    Image(systemName: "return")
+                }
+                .fontWeight(.semibold)
+                .opacity(0.8)
+                .imageScale(.small)
             }
             .buttonStyle(.borderedProminent)
             .disabled(isDisabled)
