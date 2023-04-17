@@ -242,7 +242,7 @@ extension Shell {
     }
 
     func stats(for sha: String) async throws -> String {
-        let result = try await self.run(.git, ["diff", "--shortstat"])
+        let result = try await self.run(.git, ["diff", "--shortstat", sha])
         return result
     }
 }
