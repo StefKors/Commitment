@@ -16,11 +16,11 @@ struct PendingCommitSummaryItemView: View {
             Text(commit.shortHash)
             Text(line)
         }
-            .task {
-                if let result = try? await repo.shell.stats(for: commit.hash) {
-                    line = result
-                }
+        .task(id: commit.hash) {
+            if let result = try? await repo.shell.stats(for: commit.hash) {
+                line = result
             }
+        }
     }
 }
 

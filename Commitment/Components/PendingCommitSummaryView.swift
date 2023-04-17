@@ -15,6 +15,7 @@ struct PendingCommitSummaryView: View {
         VStack {
             ForEach(repo.commitsAhead) { commit in
                 PendingCommitSummaryItemView(commit: commit)
+                    .id(commit.hash)
             }
         }
         Text("results")
