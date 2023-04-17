@@ -12,7 +12,10 @@ struct PendingCommitSummaryItemView: View {
     let commit: Commit
     @State var line: String = ""
     var body: some View {
-        Text(line)
+        VStack {
+            Text(commit.shortHash)
+            Text(line)
+        }
             .task {
                 if let result = try? await repo.shell.stats(for: commit.hash) {
                     line = result
