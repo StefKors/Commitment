@@ -22,6 +22,7 @@ struct TextEditorView: View {
 
         return nil
     }
+
     private var placeholderTitle: String {
         if let title = quickCommitTitle {
             return title
