@@ -35,10 +35,13 @@ struct PendingCommitSummaryView: View {
                 })
                 .buttonStyle(.borderedProminent)
             }
-
-            ForEach(repo.commitsAhead) { commit in
-                PendingCommitSummaryItemView(commit: commit)
-                    .id(commit.hash)
+            ScrollView(.vertical) {
+                VStack {
+                    ForEach(repo.commitsAhead) { commit in
+                        PendingCommitSummaryItemView(commit: commit)
+                            .id(commit.hash)
+                    }
+                }
             }
         }
         .frame(maxWidth: 400)
