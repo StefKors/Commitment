@@ -13,12 +13,36 @@ struct PendingCommitSummaryView: View {
 
     var body: some View {
         VStack {
+            HStack {
+                Text("Pending Commits")
+                    .labelStyle(.titleOnly)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+
+                Spacer()
+                Button("Push commits", action: {
+                    Task {
+                        // TODO: a way to show progress in toolbar button
+                        do {
+                            let remote = try await self.repo.shell.remote()
+                            let branch = try await self.repo.shell.branch()
+                            try? await self.repo.shell.run(.git, ["push", remote, branch], in: self.repo.shell.workspace)
+                            try? await self.repo.refreshRepoState()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
+                })
+                .buttonStyle(.borderedProminent)
+            }
+
             ForEach(repo.commitsAhead) { commit in
                 PendingCommitSummaryItemView(commit: commit)
                     .id(commit.hash)
             }
         }
-        Text("results")
+        .frame(maxWidth: 400)
+        .padding()
    
     }
 }
