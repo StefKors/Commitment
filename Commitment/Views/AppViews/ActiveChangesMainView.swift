@@ -22,7 +22,6 @@ struct ActiveChangesMainView: View {
 
             Divider()
 
-            PendingCommitSummaryView()
             ZStack {
                 Rectangle().fill(.clear)
                 if let fileStatus {
