@@ -10,16 +10,21 @@ import SwiftUI
 struct PendingCommitSummaryItemView: View {
     @EnvironmentObject private var repo: RepoState
     let commit: Commit
-    @State var line: String = ""
+    @State var line: String?
     var body: some View {
         GroupBox {
             VStack(alignment: .leading) {
                 // Text(commit.subject)
                 SidebarCommitLabelView(commit: commit)
-                HStack {
-                    Image("file-diff")
-                    Text(line)
-                    Spacer()
+                if let line {
+                    HStack {
+                        Image("file-diff")
+                        Text(line)
+                        Spacer()
+                    }
+                } else {
+                    ProgressView()
+                        .progressViewStyle(.linear)
                 }
             }
             .padding(4)

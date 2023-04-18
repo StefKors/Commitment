@@ -12,6 +12,9 @@ struct ToolbarContentView: View {
     /// TODO: Handle view that fits
     /// TODO: improve menu...
     /// TODO: Fix blinking when switching view
+
+    @AppStorage("CommitWindow") private var commitWindow: Bool = false
+    
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
             Group {
@@ -23,13 +26,16 @@ struct ToolbarContentView: View {
                 Divider()
             }
 
-            Group {
-                ToolbarActionUpdateMain()
-                Divider()
-                ToolbarOpenCommitWindowView()
-                Divider()
-                Spacer()
+            if commitWindow {
+                Group {
+                    ToolbarActionUpdateMain()
+                    Divider()
+                    ToolbarOpenCommitWindowView()
+                    Divider()
+                }
             }
+
+            Spacer()
         }
         .frame(height: 50)
         .padding(.horizontal, 10)
