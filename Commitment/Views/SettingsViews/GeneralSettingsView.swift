@@ -29,7 +29,10 @@ struct GeneralSettingsView: View {
     ]
 
     var body: some View {
-        GroupBox(content: {
+        SettingsBox(
+            label: "Editor Defaults",
+            sublabel: "Choose your default code editor"
+        ) {
             VStack {
                 HStack {
                     Text("External Editor")
@@ -59,19 +62,7 @@ struct GeneralSettingsView: View {
                     .frame(maxWidth: 80)
                 }
             }.padding(6)
-        }, label: {
-            // Text("Credentials")
-            VStack(alignment: .leading) {
-                Text("Editor Defaults")
-                    .labelStyle(.titleOnly)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-
-                Text("Choose your default code editor")
-                    .foregroundColor(.secondary)
-            }
-            .padding(.bottom, 6)
-        })
+        }
     }
 }
 

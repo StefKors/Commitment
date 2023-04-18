@@ -42,3 +42,16 @@ struct AppCommands: Commands {
         }
     }
 }
+
+struct OverrideCommands: Commands {
+    @Environment(\.openWindow) var openWindow
+
+    var body: some Commands {
+        CommandGroup(replacing: .appSettings) {
+            Button("Settings...") {
+                openWindow(id: "settings")
+            }
+            .keyboardShortcut(",")
+        }
+    }
+}

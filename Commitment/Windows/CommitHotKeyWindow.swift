@@ -8,7 +8,8 @@
 import SwiftUI
 import Boutique
 import WindowManagement
-
+// Inspo:
+// https://twitter.com/RobSwish/status/1648109017867206657
 // https://reichel.dev/blog/swift-global-key-binding.html#install-hotkey
 struct CommitHotKeyWindow: View {
     @Environment(\.scenePhase) private var scenePhase

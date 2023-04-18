@@ -114,12 +114,12 @@ init RepoState: \(folderName) with:
             }
             if !isGitFolderChange {
                 Throttler.throttle( delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) { [weak self] in
-                    self?.activity.start(.isRefreshingState)
-                    print("[File Change] \(event.url.lastPathComponent)")
                     Task(priority: .userInitiated, operation: { [weak self] in
+                        await self?.activity.start(.isRefreshingState)
+                        print("[File Change] \(event.url.lastPathComponent)")
                         try? await self?.refreshDiffsAndStatus()
                         try? await AppModel.shared.saveRepo(repo: self)
-                        self?.activity.finish(.isRefreshingState)
+                        await self?.activity.finish(.isRefreshingState)
                     })
                 }
             }

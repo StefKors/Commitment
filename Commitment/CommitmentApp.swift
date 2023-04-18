@@ -71,6 +71,7 @@ struct CommitmentApp: App {
         .commands {
             SidebarCommands()
             AppCommands()
+            OverrideCommands()
         }
 
         WindowGroup("Commit", id: "CommitWindow", for: RepoState.ID.self) { $repoID in
@@ -135,15 +136,15 @@ struct CommitmentApp: App {
         // .movable(false)
         .defaultPosition(.center)
 
-
-        Settings {
+        Window("Settings", id: "settings") {
             SettingsWindow()
                 .frame(width: 650, height: 400)
                 .environmentObject(appModel)
+                .hideSidebarToggle()
         }
         .windowStyle(.automatic)
         .windowToolbarStyle(.unified)
-        .windowResizability(.automatic)
+        .windowResizability(.contentSize)
         .defaultSize(width: 650, height: 400)
     }
 }

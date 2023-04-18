@@ -13,10 +13,11 @@ struct PendingCommitSummaryItemView: View {
     @State var line: String = ""
     var body: some View {
         VStack {
+            Image("file-diff")
             Text(commit.shortHash)
             Text(line)
         }
-        .task(id: commit.hash) {
+        .task(id: commit.hash, priority: .medium) {
             if let result = try? await repo.shell.stats(for: commit.hash) {
                 line = result
             }

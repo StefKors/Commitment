@@ -22,11 +22,10 @@ struct ActiveChangesMainView: View {
 
             Divider()
 
+            PendingCommitSummaryView()
             ZStack {
                 Rectangle().fill(.clear)
                 if let fileStatus {
-                    PendingCommitSummaryView()
-
                     FileDiffChangesView(fileStatus: fileStatus, diff: diff)
                 } else if repo.commitsAhead.count > 0 {
                     PendingCommitSummaryView()

@@ -77,7 +77,7 @@ struct CredentialSettingsView: View {
     
     var body: some View {
         SettingsBox(
-            label: "Credentials",
+            label: "Git-Credentials File",
             sublabel: "Your git credentials can be parsed and imported from an `.git-credentials` file. Click import to get started."
         ) {
             if let passwords {

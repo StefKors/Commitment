@@ -12,22 +12,34 @@ struct SettingsWindow: View {
         case General
         case Credentials
         case SSH = "SSH Keys"
+        case Beta = "Beta Features"
     }
 
     @State private var selectedMenu: Tabs = .General
+    // TODO: Implement Searchable
+    // @State private var searchText: String = ""
 
     var body: some View {
-        HStack(spacing: 0) {
+        NavigationSplitView {
             List(selection: $selectedMenu) {
                 SettingsListItemView(tag: .General, image: "gear", fill: .gray)
                 SettingsListItemView(tag: .Credentials, image: "key.fill", fill: .gray.darker(by: 30))
                 SettingsListItemView(tag: .SSH, image: "lock.doc", fill: .orange)
+                SettingsListItemView(tag: .Beta, image: "testtube.2", fill: .blue)
             }
             .listStyle(.sidebar)
-            .frame(maxWidth: 200)
+            // .frame(maxWidth: 200)
+            .navigationSplitViewColumnWidth(215)
+            // TODO: Implement Searchable
+            // .safeAreaInset(edge: .top, spacing: 0) {
+            //     List {}
+            //         .frame(height: 35)
+            //         .searchable(text: $searchText, placement: .sidebar, prompt: "Search")
+            //         .scrollDisabled(true)
+            // }
 
-            Divider()
 
+        } detail: {
             ScrollView(.vertical) {
                 VStack(alignment: .leading, spacing: 12) {
                     switch selectedMenu {
@@ -37,11 +49,15 @@ struct SettingsWindow: View {
                         CredentialSettingsView()
                     case .SSH:
                         SSHKeysSettingsView()
+                    case .Beta:
+                        BetaSettingsView()
                     }
                 }
-                .padding()
                 .animation(.easeInOut(duration: 0.2), value: selectedMenu)
+                .padding()
             }
+            .navigationTitle(selectedMenu.rawValue)
+            .hideSidebarToggle()
         }
     }
 }

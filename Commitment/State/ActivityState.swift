@@ -22,11 +22,11 @@ class ActivityState: ObservableObject {
         .isPushingBranch: false
     ]
 
-    func start(_ activity: Activity) {
+    @MainActor func start(_ activity: Activity) {
         current[activity] = true
     }
 
-    func finish(_ activity: Activity) {
+    @MainActor func finish(_ activity: Activity) {
         current[activity] = false
     }
 }

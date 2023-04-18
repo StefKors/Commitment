@@ -425,6 +425,8 @@
 		8AD1087F29ED4B9D000FFD70 /* UndoActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */; };
 		8AD1088129ED6AF7000FFD70 /* PendingCommitSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088029ED6AF7000FFD70 /* PendingCommitSummaryView.swift */; };
 		8AD1088329ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088229ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift */; };
+		8AD1088529EEB144000FFD70 /* BetaSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088429EEB144000FFD70 /* BetaSettingsView.swift */; };
+		8AD1088729EEB82A000FFD70 /* View+HideSidebarToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088629EEB82A000FFD70 /* View+HideSidebarToggle.swift */; };
 		8AD9B5D029E6C28500631337 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5CF29E6C28500631337 /* Commands.swift */; };
 		8AD9B5D229E6C31100631337 /* ActiveChangesContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */; };
 		8AD9B5D429E6C7CB00631337 /* RepoState+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */; };
@@ -1086,6 +1088,8 @@
 		8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoActionButtonStyle.swift; sourceTree = "<group>"; };
 		8AD1088029ED6AF7000FFD70 /* PendingCommitSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCommitSummaryView.swift; sourceTree = "<group>"; };
 		8AD1088229ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCommitSummaryItemView.swift; sourceTree = "<group>"; };
+		8AD1088429EEB144000FFD70 /* BetaSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaSettingsView.swift; sourceTree = "<group>"; };
+		8AD1088629EEB82A000FFD70 /* View+HideSidebarToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+HideSidebarToggle.swift"; sourceTree = "<group>"; };
 		8AD9B5CF29E6C28500631337 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChangesContextMenu.swift; sourceTree = "<group>"; };
 		8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepoState+Commands.swift"; sourceTree = "<group>"; };
@@ -2239,6 +2243,7 @@
 				8AFBD51E296F2C1400525BF7 /* CredentialSettingsView.swift */,
 				8A3421DD29CF0D2B0001E58B /* SSHKeysSettingsView.swift */,
 				8AFBD51F296F2C1400525BF7 /* GeneralSettingsView.swift */,
+				8AD1088429EEB144000FFD70 /* BetaSettingsView.swift */,
 			);
 			path = SettingsViews;
 			sourceTree = "<group>";
@@ -2292,6 +2297,7 @@
 				8A97DC81299BB148001E25E1 /* Sequence */,
 				8A97DC88299BB148001E25E1 /* Strings */,
 				8AFBD54629702A2C00525BF7 /* Collection.swift */,
+				8AD1088629EEB82A000FFD70 /* View+HideSidebarToggle.swift */,
 				8AC8EB49297586FC00365EB9 /* URL.swift */,
 				8A02C4FE29ACB0E7004DCA69 /* Array.swift */,
 				8A02C52229ADEE2A004DCA69 /* Color.swift */,
@@ -2729,6 +2735,7 @@
 				8ACCD2D7297F265C0020BF84 /* GitFileStorage.swift in Sources */,
 				8A3421EE29D30FDD0001E58B /* HotKeyAccentBorderGroupBoxStyle.swift in Sources */,
 				8ACCD2EB297F265C0020BF84 /* GitRemote.swift in Sources */,
+				8AD1088529EEB144000FFD70 /* BetaSettingsView.swift in Sources */,
 				8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */,
 				8AD9B5D029E6C28500631337 /* Commands.swift in Sources */,
 				8ACCD2A8297F265B0020BF84 /* GitCherryResult.swift in Sources */,
@@ -2870,6 +2877,7 @@
 				8A02C51D29AD3DAB004DCA69 /* KeychainStorage.swift in Sources */,
 				8A97DC95299BB148001E25E1 /* String+Removing.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,
+				8AD1088729EEB82A000FFD70 /* View+HideSidebarToggle.swift in Sources */,
 				8ACCD2C9297F265C0020BF84 /* CheckReferenceTask.swift in Sources */,
 				8A562CE729B4C335006C7E8A /* ViewState.swift in Sources */,
 				8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */,

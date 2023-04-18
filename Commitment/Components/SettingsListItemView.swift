@@ -17,6 +17,7 @@ struct SettingsListItemView: View {
             Image(systemName: image)
                 .foregroundColor(.white)
                 .imageScale(.small)
+                .symbolRenderingMode(.hierarchical)
                 .fontWeight(.bold)
                 .frame(width: 20, height: 20, alignment: .center)
                 .background {
@@ -25,15 +26,13 @@ struct SettingsListItemView: View {
                         fill
                     ], startPoint: .top, endPoint: .bottom)
                     .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
-                    // .fill(fill)
-                    .shadow(color: colorScheme == .dark ? Color.gray : .black.opacity(0.7), radius: 2, y: 1)
+                    .shadow(color: Color.black.opacity(0.7), radius: 2, y: 1)
                     .border(fill.darker(by: 10), width: 1, cornerRadius: 6)
                 }
                 .padding(.leading, 4)
 
             Text(tag.rawValue)
         }
-        .padding(.vertical, 1)
         .tag(tag)
     }
 }
