@@ -52,7 +52,7 @@ class Shell: ObservableObject {
         ]
 
         if let appHome {
-            envConfig["HOME"] = appHome.path()
+            envConfig["HOME"] = appHome.path(percentEncoded: false)
         }
 
         process.environment = envConfig
