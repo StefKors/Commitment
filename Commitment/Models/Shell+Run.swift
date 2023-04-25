@@ -44,7 +44,7 @@ extension Shell {
                 }
             }
 
-            try! process.run()
+            try? process.run()
         }
     }
 }

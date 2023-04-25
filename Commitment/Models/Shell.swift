@@ -29,15 +29,21 @@ class Shell {
         _ executable: Executable,
         _ command: [String],
         in currentDirectoryURL: URL
-    ) throws -> Process {
+    ) -> Process {
         let execPath = Bundle.main.resourcePath ?? "" + "/" + "Executables/git-arm64/git-core"
-        let appHome = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true)
-        process.environment = [
+        let appHome = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true)
+
+        var envConfig = [
             // TODO: Support Intel
             "GIT_CONFIG_NOSYSTEM": "true",
-            "HOME": appHome.path,
             "GIT_EXEC_PATH": execPath
         ]
+
+        if let appHome {
+            envConfig["HOME"] = appHome.path()
+        }
+
+        process.environment = envConfig
         process.launchPath = executable.url.path()
         process.qualityOfService = .userInitiated
         process.arguments = command

@@ -10,13 +10,15 @@ import SwiftUI
 struct SettingsBox<Content: View>: View {
     let ContainerContent: Content
     let label: String
-    let sublabel: AttributedString
+    var sublabel: AttributedString? = nil
 
     /// Creates a SettingsBox with custom content and label.
-    init(label: String, sublabel: String, @ViewBuilder content: () -> Content) {
+    init(label: String, sublabel: String?, @ViewBuilder content: () -> Content) {
         self.ContainerContent = content()
         self.label = label
-        self.sublabel = try! AttributedString(markdown: sublabel)
+        if let sublabel {
+            self.sublabel = try? AttributedString(markdown: sublabel)
+        }
     }
 
     var body: some View {
@@ -31,8 +33,10 @@ struct SettingsBox<Content: View>: View {
                     .font(.title3)
                     .fontWeight(.semibold)
 
-                Text(sublabel)
-                    .foregroundColor(.secondary)
+                if let sublabel {
+                    Text(sublabel)
+                        .foregroundColor(.secondary)
+                }
             }
             .padding(.bottom, 6)
         })

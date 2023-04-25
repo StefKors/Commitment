@@ -17,14 +17,16 @@ internal class GitDiffParser {
     /// - Group 4: The header new file line span. If not present it defaults to 1.
     /// - Group 5: The change delta, either "+", "-" or " ".
     /// - Group 6: The line itself.
-    let regex = try! NSRegularExpression(
-        pattern: "^(?:(?:@@ -(\\d+),?(\\d+)? \\+(\\d+),?(\\d+)? @@)|([-+\\s])(.*))",
-        options: [])
+    var regex: NSRegularExpression? = nil
     
     let unifiedDiff: String
     
     init(unifiedDiff: String) {
         self.unifiedDiff = unifiedDiff
+        self.regex = try? NSRegularExpression(
+            pattern: "^(?:(?:@@ -(\\d+),?(\\d+)? \\+(\\d+),?(\\d+)? @@)|([-+\\s])(.*))",
+            options: []
+        )
     }
     
     func parse() throws -> (addedFile: String, removedFile: String, hunks: [GitDiffHunk]) {
@@ -52,7 +54,7 @@ internal class GitDiffParser {
                 return
             }
 
-            if let match = self.regex.firstMatch(in: line, options: [], range: NSMakeRange(0, line.utf16.count)) {
+            if let match = self.regex?.firstMatch(in: line, options: [], range: NSMakeRange(0, line.utf16.count)) {
                 
                 if let oldLineStartString = match.group(1, in: line), let oldLineStart = Int(oldLineStartString),
                     let newLineStartString = match.group(3, in: line), let newLineStart = Int(newLineStartString) {

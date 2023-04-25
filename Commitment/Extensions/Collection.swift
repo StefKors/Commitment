@@ -42,7 +42,7 @@ extension Collection {
             return []
         }
 
-        return await try Task.withGroup(resultType: (Int, T).self) { group in
+        return try await withThrowingTaskGroup(of: (Int, T).self) { group in
             var result = Array<T?>(repeatElement(nil, count: n))
 
             var i = self.startIndex
@@ -51,8 +51,8 @@ extension Collection {
             func submitNext() async throws {
                 if i == self.endIndex { return }
 
-                await group.add { [submitted, i] in
-                    let value = await try transform(self[i])
+                group.addTask { [submitted, i] in
+                    let value = try await transform(self[i])
                     return (submitted, value)
                 }
                 submitted += 1
@@ -61,15 +61,15 @@ extension Collection {
 
             // submit first initial tasks
             for _ in 0..<parallelism {
-                await try submitNext()
+                try await submitNext()
             }
 
             // as each task completes, submit a new task until we run out of work
-            while let (index, taskResult) = await try! group.next() {
+            while let (index, taskResult) = try await group.next() {
                 result[index] = taskResult
 
-                await try Task.checkCancellation()
-                await try submitNext()
+                try Task.checkCancellation()
+                try await submitNext()
             }
 
             assert(result.count == n)

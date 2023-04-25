@@ -102,8 +102,8 @@ index c8ecb36..0000000
         static let addedFile: String = """
 """
 
-        static func toDiff(_ unifiedDiff: String) -> GitDiff {
-            return try! GitDiff(unifiedDiff: unifiedDiff)!
+        static func toDiff(_ unifiedDiff: String) -> GitDiff? {
+            return try? GitDiff(unifiedDiff: unifiedDiff)!
         }
     }
 }

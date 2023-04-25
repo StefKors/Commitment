@@ -80,7 +80,7 @@ public struct GitDiffHunk: Identifiable, Codable, Equatable {
 extension GitDiffHunk {
     struct Preview {
         static var versionBump: GitDiffHunk {
-            return GitDiff.Preview.toDiff(GitDiff.Preview.versionBump).hunks.first!
+            return GitDiff.Preview.toDiff(GitDiff.Preview.versionBump)!.hunks.first!
         }
     }
 }
