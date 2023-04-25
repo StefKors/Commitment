@@ -110,7 +110,7 @@ struct CredentialSettingsView: View {
                     }
                 
                 let newValues = Array(Set(oldPasswords + newPasswords))
-                writeGitConfig()
+                writeGitConfig(newValues)
                 writeGitCredentials(newValues)
                 
                 withAnimation(.easeOut(duration: 0.2)) {
@@ -122,15 +122,22 @@ struct CredentialSettingsView: View {
         }
     }
     
-    fileprivate func writeGitConfig() {
+    fileprivate func writeGitConfig(_ newPasswords: [Credential]) {
         guard let appHome = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true) else { return }
         let toConfigPath = appHome.path + "/.gitconfig"
         print("creating .gitconfig at \(toConfigPath)")
         
-        let content = """
+        var content = """
 [credential]
     helper = store --file '\(appHome.path)/.git-credentials'
 """
+        if let user = newPasswords.first?.user {
+            content.append("""
+
+[user]
+    name = \(user)
+""")
+        }
         FileManager.default.createFile(atPath: toConfigPath, contents: content.data(using: .utf8))
     }
     

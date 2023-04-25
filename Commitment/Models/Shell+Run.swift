@@ -69,9 +69,9 @@ extension Shell {
         ]
 
         if let appHome {
-            envConfig["HOME"] = appHome.path()
+            envConfig["HOME"] = appHome.path(percentEncoded: false)
         }
-
+        print(envConfig.description)
         process = Process()
         let stdout = Pipe()
         // let stdin = Pipe()
