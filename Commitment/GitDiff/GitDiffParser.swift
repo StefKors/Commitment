@@ -122,7 +122,7 @@ internal class GitDiffParser {
         
         guard let added = addedFile, let removed = removedFile else {
             if let file = unifiedDiff.split(separator: " b/").first {
-                return (addedFile: "filed file", removedFile: "failed file", hunks: [])
+                return (addedFile: "failed file", removedFile: "failed file", hunks: [])
             } else {
                 fatalError("Couldn't find +++ &/or --- files")
             }
