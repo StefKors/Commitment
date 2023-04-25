@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeychainAccess
 
 struct RepoWindow: View {
     // The user activity type representing this view.
@@ -14,7 +15,9 @@ struct RepoWindow: View {
     @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var repo: RepoState
     @EnvironmentObject private var model: AppModel
-
+    // TODO: onboarding
+    // @State private var showOnboarding: Bool = false
+    // @KeychainStorage("passwords") private var passwords: Credentials? = nil
     var body: some View {
         HStack {
             MainRepoContentView()
@@ -47,5 +50,14 @@ struct RepoWindow: View {
                 print("TODO: handle default scenePhase")
             }
         }
+        // .task {
+        //     print("\(passwords.debugDescription)")
+        //     if passwords == nil || passwords?.values.isEmpty == true {
+        //         showOnboarding = true
+        //     }
+        // }
+        // .sheet(isPresented: $showOnboarding) {
+        //     OnboardingWindow()
+        // }
     }
 }

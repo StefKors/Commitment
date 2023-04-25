@@ -24,7 +24,7 @@
 		8A0761302965A15200D878DC /* DiffRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612F2965A15200D878DC /* DiffRenderView.swift */; };
 		8A1F2DAF29C7BC7200E3C3F6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A1F2DAE29C7BC7200E3C3F6 /* Credits.rtf */; };
 		8A1F2DB229C7C15C00E3C3F6 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8A1F2DB129C7C15C00E3C3F6 /* Algorithms */; };
-		8A29E27D29F7DF340049CBC8 /* SwiftShell in Frameworks */ = {isa = PBXBuildFile; productRef = 8A29E27C29F7DF340049CBC8 /* SwiftShell */; };
+		8A29E28129F815620049CBC8 /* OnboardingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A29E28029F815620049CBC8 /* OnboardingWindow.swift */; };
 		8A327EFC298E8F20008521B0 /* TouchbarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */; };
 		8A327EFE298E9081008521B0 /* HeaderContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A327EFD298E9081008521B0 /* HeaderContentView.swift */; };
 		8A3420CE29C867340001E58B /* git-mailsplit in Resources */ = {isa = PBXBuildFile; fileRef = 8A341F6129C867330001E58B /* git-mailsplit */; };
@@ -502,6 +502,7 @@
 		8A07612929659EEE00D878DC /* GitDiffHunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffHunk.swift; sourceTree = "<group>"; };
 		8A07612F2965A15200D878DC /* DiffRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffRenderView.swift; sourceTree = "<group>"; };
 		8A1F2DAE29C7BC7200E3C3F6 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		8A29E28029F815620049CBC8 /* OnboardingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWindow.swift; sourceTree = "<group>"; };
 		8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchbarContentView.swift; sourceTree = "<group>"; };
 		8A327EFD298E9081008521B0 /* HeaderContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContentView.swift; sourceTree = "<group>"; };
 		8A341F6029C867330001E58B /* git-add--interactive.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "git-add--interactive.entitlements"; sourceTree = "<group>"; };
@@ -1142,7 +1143,6 @@
 				8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */,
 				8A76E76929802F700033B978 /* Boutique in Frameworks */,
 				8AC7B8DF29B750D500AB2728 /* Menu in Frameworks */,
-				8A29E27D29F7DF340049CBC8 /* SwiftShell in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2273,6 +2273,7 @@
 				8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */,
 				8A34219429C876B30001E58B /* WelcomeSheet.swift */,
 				8A3421E729D1B3CE0001E58B /* CommitHotKeyWindow.swift */,
+				8A29E28029F815620049CBC8 /* OnboardingWindow.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -2354,7 +2355,6 @@
 				8AC7B8DE29B750D500AB2728 /* Menu */,
 				8AC7B8E129B751C700AB2728 /* WindowManagement */,
 				8A1F2DB129C7C15C00E3C3F6 /* Algorithms */,
-				8A29E27C29F7DF340049CBC8 /* SwiftShell */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -2436,7 +2436,6 @@
 				8AC7B8DD29B750D500AB2728 /* XCRemoteSwiftPackageReference "Menu" */,
 				8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
 				8A1F2DB029C7C15C00E3C3F6 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
-				8A29E27B29F7DF340049CBC8 /* XCRemoteSwiftPackageReference "SwiftShell" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -2803,6 +2802,7 @@
 				8A3421EC29D3008B0001E58B /* HotKeyActiveChangesMainView.swift in Sources */,
 				8ACCD2C0297F265C0020BF84 /* GitStashDropOptions.swift in Sources */,
 				8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */,
+				8A29E28129F815620049CBC8 /* OnboardingWindow.swift in Sources */,
 				8ACCD2E0297F265C0020BF84 /* GitRepository+Reference.swift in Sources */,
 				8ACCD2D1297F265C0020BF84 /* GitMergeStatus.swift in Sources */,
 				8ACCD2E6297F265C0020BF84 /* GitFileStatusList.swift in Sources */,
@@ -3286,14 +3286,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		8A29E27B29F7DF340049CBC8 /* XCRemoteSwiftPackageReference "SwiftShell" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kareman/SwiftShell";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mergesort/Boutique.git";
@@ -3346,11 +3338,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A1F2DB029C7C15C00E3C3F6 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
-		};
-		8A29E27C29F7DF340049CBC8 /* SwiftShell */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A29E27B29F7DF340049CBC8 /* XCRemoteSwiftPackageReference "SwiftShell" */;
-			productName = SwiftShell;
 		};
 		8A76E76829802F700033B978 /* Boutique */ = {
 			isa = XCSwiftPackageProductDependency;
