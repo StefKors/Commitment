@@ -17,6 +17,7 @@ struct OutputLine: View {
                 .foregroundColor(.secondary)
                 .contentTransition(.interpolate)
                 .animation(.easeIn(duration: 0.35), value: output)
+                .help(output)
         } else {
             if let date {
                 Group {
