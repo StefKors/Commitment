@@ -18,6 +18,7 @@ extension Store where Item == RepoState {
     )
 }
 
+@MainActor
 class RepoState: Codable, Equatable, Identifiable, ObservableObject {
     @Published var activity = ActivityState()
     @Published var undo = UndoState()

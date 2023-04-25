@@ -36,7 +36,7 @@ extension RepoState {
                 message = "Discard Change to \(fileName)"
             }
             let commands = ["stash", "push", "--include-untracked", "-m", message, path]
-            _ = try? await shell.run(.git, commands)
+            _ = try? await shell.runTask(.git, commands)
 
             await MainActor.run {
                 let action = UndoAction(type: .stash, arguments: commands)
@@ -45,6 +45,7 @@ extension RepoState {
         }
     }
 
+    // TODO: finish this
     func discardAllChanges() async {
         // _ = try? await shell.run(.git, ["restore", "."])
     }

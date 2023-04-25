@@ -14,14 +14,26 @@ public struct ProcessError : Error {
     public var output:String
 }
 
-class Shell {
+@MainActor
+class Shell: ObservableObject {
+    @Published var output: String? = nil
+
     var workspace: URL
+
+    var process: Process = .init()
+    var isRunning: Bool {
+        process.isRunning
+    }
 
     // Create a signposter that uses the default subsystem and category.
     internal let signposter = OSSignposter()
 
     init(workspace: String) {
         self.workspace = URL(filePath: workspace, directoryHint: .isDirectory)
+    }
+
+    convenience init(workspace: URL) {
+        self.init(workspace: workspace.path())
     }
 
     static func setup(

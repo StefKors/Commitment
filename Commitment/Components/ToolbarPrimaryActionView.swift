@@ -13,9 +13,9 @@ struct ToolbarPrimaryActionView: View {
     var body: some View {
 
         if repo.commitsAhead.count > 0 {
-            ToolbarPushOriginActionButtonView()
+            ToolbarPushOriginActionButtonView(workspace: repo.shell.workspace)
         } else {
-            ToolbarFetchOriginActionView()
+            ToolbarFetchOriginActionView(workspace: repo.shell.workspace)
         }
     }
 }

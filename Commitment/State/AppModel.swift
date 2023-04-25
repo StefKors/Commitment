@@ -39,6 +39,7 @@ class AppModel: ObservableObject {
         try await self.$repos.removeAll()
     }
 
+    @MainActor
     func openRepo() {
         let openPanel = NSOpenPanel()
         openPanel.message = "Add repo"

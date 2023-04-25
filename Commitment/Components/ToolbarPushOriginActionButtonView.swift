@@ -9,11 +9,15 @@ import SwiftUI
 import KeychainAccess
 
 struct ToolbarPushOriginActionButtonView: View {
+    internal init(workspace: URL) {
+        self._shell = StateObject(wrappedValue: Shell(workspace: workspace))
+    }
+
     @EnvironmentObject private var repo: RepoState
     @EnvironmentObject private var appModel: AppModel
     private let remote: String = "origin"
 
-    @StateObject private var shell: ShellViewModel = .init()
+    @StateObject private var shell: Shell
     @State private var progress: CGFloat = 0
     var body: some View {
         Button(action: handleButton, label: {
@@ -55,13 +59,10 @@ struct ToolbarPushOriginActionButtonView: View {
     func handleButton() {
         Task {
             do {
-                shell.isRunning = true
                 let remote = try await self.repo.shell.remote()
                 let branch = try await self.repo.shell.branch()
-                // TODO showing progress output line by line isn't working for git push
-                await self.shell.run(.git, ["push", remote, branch], in: self.repo.shell.workspace)
-                try? await self.repo.refreshRepoState()
-                shell.isRunning = false
+                await self.shell.runActivity(.git, ["push", remote, branch], in: self.repo.shell.workspace)
+                try await self.repo.refreshRepoState()
             } catch {
                 print(error.localizedDescription)
             }
@@ -69,8 +70,8 @@ struct ToolbarPushOriginActionButtonView: View {
     }
 }
 
-struct ToolbarActionButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-        ToolbarPushOriginActionButtonView()
-    }
-}
+// struct ToolbarActionButtonView_Previews: PreviewProvider {
+//     static var previews: some View {
+//         ToolbarPushOriginActionButtonView()
+//     }
+// }

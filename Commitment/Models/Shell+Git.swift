@@ -9,57 +9,57 @@ import Foundation
 
 extension Shell {
     func version() async throws -> String {
-        try await self.run(.git, ["-v"])
+        try await self.runTask(.git, ["-v"])
     }
 
     func help() async throws -> String {
-        try await self.run(.git, ["--help"])
+        try await self.runTask(.git, ["--help"])
     }
 
     func listConfig() async throws -> String {
-        try await self.run(.git, ["config", "--list"])
+        try await self.runTask(.git, ["config", "--list"])
     }
 
     func execPath() async throws -> String {
-        try await self.run(.git, ["--exec-path"])
+        try await self.runTask(.git, ["--exec-path"])
     }
 
     func branch() async throws -> String {
-        try await self.run(.git, ["branch", "--show-current"])
+        try await self.runTask(.git, ["branch", "--show-current"])
     }
 
     func add(files: [String]? = nil) async throws {
         guard let files else {
             // Add everything
-            try await self.run(.git, ["add", "."])
+            try await self.runTask(.git, ["add", "."])
             return
         }
 
         // Stage provided file paths
         for file in files {
             // Stage file
-            try await self.run(.git, ["add", file])
+            try await self.runTask(.git, ["add", file])
         }
     }
 
     func commit(title: String, message: String) async throws {
         try await self.add()
-        try await self.run(.git, ["commit", "-m", title, "-m", message])
+        try await self.runTask(.git, ["commit", "-m", title, "-m", message])
     }
 
     func commit(message: String) async throws {
         try await self.add()
-        try await self.run(.git, ["commit", "-m", message])
+        try await self.runTask(.git, ["commit", "-m", message])
     }
 
     func push() async throws -> String {
         let remote = try await self.remote()
         let branch = try await self.branch()
-        return try await self.run(.git, ["push", remote, branch])
+        return try await self.runTask(.git, ["push", remote, branch])
     }
 
     func diff() async throws -> [GitDiff] {
-        let diff = try await self.run(.git, ["diff"])
+        let diff = try await self.runTask(.git, ["diff"])
         return diff
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
@@ -69,7 +69,7 @@ extension Shell {
 
     func diff(at commitA: String) async throws -> [GitDiff] {
         let commitB = try await self.SHAbefore(SHA: commitA)
-        return try await self.run(.git, ["diff", "\(commitB)..\(commitA)", "--no-ext-diff", "--no-color", "--find-renames"])
+        return try await self.runTask(.git, ["diff", "\(commitB)..\(commitA)", "--no-ext-diff", "--no-color", "--find-renames"])
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
                 return try? GitDiff(unifiedDiff: String(diffSegment))
@@ -77,7 +77,7 @@ extension Shell {
     }
 
     func show(file: String) async throws -> String {
-        let result = try await self.run(.git, ["show", "--textconv", "HEAD:\(file)"])
+        let result = try await self.runTask(.git, ["show", "--textconv", "HEAD:\(file)"])
 
         // still handle files not in git history
         if result.starts(with: "fatal: path") {
@@ -103,7 +103,7 @@ extension Shell {
     }
 
     func show(at commit: String) async throws -> [GitFileStatus] {
-        return try await self.run(.git, ["show", "--oneline", "--name-status", "--no-color", commit])
+        return try await self.runTask(.git, ["show", "--oneline", "--name-status", "--no-color", commit])
             .lines
             .compactMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }
@@ -122,11 +122,11 @@ extension Shell {
     }
 
     func SHAbefore(SHA: String) async throws -> String {
-        try await self.run(.git, ["rev-parse", "\(SHA)~1"])
+        try await self.runTask(.git, ["rev-parse", "\(SHA)~1"])
     }
 
     func fetch(branch: String) async throws {
-        try await self.run(.git, ["fetch", "origin", "\(branch):\(branch)"])
+        try await self.runTask(.git, ["fetch", "origin", "\(branch):\(branch)"])
     }
 
     /// Fetches a list of references in this repository
@@ -135,14 +135,14 @@ extension Shell {
     /// - Throws: An exception in case any error occured
     func listReferences() async throws -> [GitReference] {
         // TODO: CHECK if works
-        let output = try await self.run(.git, ["for-each-ref", "--format={$(^QUOTES^)$path$(^QUOTES^)$:$(^QUOTES^)$%(refname)$(^QUOTES^)$,$(^QUOTES^)$id$(^QUOTES^)$:$(^QUOTES^)$%(objectname)$(^QUOTES^)$,$(^QUOTES^)$author$(^QUOTES^)$:$(^QUOTES^)$%(authorname)$(^QUOTES^)$,$(^QUOTES^)$parentId$(^QUOTES^)$:$(^QUOTES^)$%(parent)$(^QUOTES^)$,$(^QUOTES^)$date$(^QUOTES^)$:$(^QUOTES^)$%(creatordate:iso8601-strict)$(^QUOTES^)$,$(^QUOTES^)$message$(^QUOTES^)$:$(^QUOTES^)$%(contents)$(^QUOTES^)$,$(^QUOTES^)$active$(^QUOTES^)$:%(if)%(HEAD)%(then)true%(else)false%(end)}$(END_OF_LINE)$"])
+        let output = try await self.runTask(.git, ["for-each-ref", "--format={$(^QUOTES^)$path$(^QUOTES^)$:$(^QUOTES^)$%(refname)$(^QUOTES^)$,$(^QUOTES^)$id$(^QUOTES^)$:$(^QUOTES^)$%(objectname)$(^QUOTES^)$,$(^QUOTES^)$author$(^QUOTES^)$:$(^QUOTES^)$%(authorname)$(^QUOTES^)$,$(^QUOTES^)$parentId$(^QUOTES^)$:$(^QUOTES^)$%(parent)$(^QUOTES^)$,$(^QUOTES^)$date$(^QUOTES^)$:$(^QUOTES^)$%(creatordate:iso8601-strict)$(^QUOTES^)$,$(^QUOTES^)$message$(^QUOTES^)$:$(^QUOTES^)$%(contents)$(^QUOTES^)$,$(^QUOTES^)$active$(^QUOTES^)$:%(if)%(HEAD)%(then)true%(else)false%(end)}$(END_OF_LINE)$"])
 
         let decoder = GitFormatDecoder()
         return decoder.decode(output)
     }
 
     func status() async throws -> [GitFileStatus] {
-        try await self.run(.git, ["status", "--porcelain"])
+        try await self.runTask(.git, ["status", "--porcelain"])
             .lines
             .compactMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }
@@ -172,7 +172,7 @@ extension Shell {
 
         let opts: [String] = options.toArguments()
 
-        return try await self.run(.git, args + opts)
+        return try await self.runTask(.git, args + opts)
             .split(separator: "$(END_OF_LINE)")
             .compactMap({ line -> Commit? in
                 let parts = line
@@ -196,13 +196,13 @@ extension Shell {
     }
 
     func checkout(_ branch: String) async throws {
-        try await self.run(.git, ["switch", branch])
+        try await self.runTask(.git, ["switch", branch])
     }
 
     /// run `git remote`
     /// - Returns: all remotes
     func remotes() async throws -> [String] {
-        try await self.run(.git, ["remote"])
+        try await self.runTask(.git, ["remote"])
             .lines
             .compactMap({ subStr in
                 String(subStr).trimmingCharacters(in: .whitespacesAndNewlines)
@@ -229,11 +229,11 @@ extension Shell {
     }
 
     func remoteUrl(for name: String) async throws -> String {
-        try await self.run(.git, ["remote", "get-url", "--all", name])
+        try await self.runTask(.git, ["remote", "get-url", "--all", name])
     }
 
     func remoteUrl(for name: String) async throws -> URL {
-        let result = try await self.run(.git, ["remote", "get-url", "--all", name])
+        let result = try await self.runTask(.git, ["remote", "get-url", "--all", name])
         if let url = URL(string: result) {
             return url
         } else {
@@ -242,7 +242,7 @@ extension Shell {
     }
 
     func stats(for sha: String) async throws -> String {
-        let result = try await self.run(.git, ["diff", "--shortstat", sha])
+        let result = try await self.runTask(.git, ["diff", "--shortstat", sha])
         return result
     }
 }

@@ -10,7 +10,11 @@ import SwiftUI
 struct ToolbarFetchOriginActionView: View {
     @EnvironmentObject private var repo: RepoState
     let remote: String = "origin"
-    @StateObject private var shell: ShellViewModel = .init()
+    @StateObject private var shell: Shell
+
+    internal init(workspace: URL) {
+        self._shell = StateObject(wrappedValue: Shell(workspace: workspace))
+    }
 
     // TODO: implement
     var body: some View {
@@ -34,9 +38,9 @@ struct ToolbarFetchOriginActionView: View {
 
     func handleButton() {
         Task {
-            shell.isRunning = true
-            await self.shell.run(.git, ["fetch", "origin", "main"], in: repo.shell.workspace)
-            shell.isRunning = false
+            // shell.isRunning = true
+            await self.shell.runActivity(.git, ["fetch", "origin", "main"], in: repo.shell.workspace)
+            // shell.isRunning = false
             // try? await self.repo.shell.push()
         }
     }
@@ -44,6 +48,6 @@ struct ToolbarFetchOriginActionView: View {
 
 struct ToolbarFetchOriginActionView_Previews: PreviewProvider {
     static var previews: some View {
-        ToolbarFetchOriginActionView()
+        ToolbarFetchOriginActionView(workspace: .temporaryDirectory)
     }
 }
