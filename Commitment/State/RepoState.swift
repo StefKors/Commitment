@@ -64,7 +64,9 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         }
     }
     @Published var commitsAhead: [Commit] = []
-    @Published var lastFetchedDate: Date? = nil
+    var lastFetchedDate: Date? {
+        commits.first?.commiterDate
+    }
     @Published var lastUpdate: Date? = nil
 
     init(path: URL) {
@@ -133,15 +135,6 @@ init RepoState: \(folderName) with:
     func refreshRepoState() async throws {
         refreshBranch()
         try? await refreshDiffsAndStatus()
-        await updateLastFetched()
-    }
-
-    func updateLastFetched() async {
-        if let attributes = try? FileManager.default.attributesOfItem(atPath: path.path() + "/.git/FETCH_HEAD") {
-            await MainActor.run {
-                self.lastFetchedDate = attributes[.modificationDate] as? Date
-            }
-        }
     }
 
     /// Watch out for re-renders, can be slow
