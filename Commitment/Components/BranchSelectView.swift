@@ -87,6 +87,8 @@ struct BranchSelectView: View {
                                     .foregroundColor(.primary)
                                 Text(branch.name.localName)
                                 Spacer()
+                                Text(branch.date, format: .relative(presentation: .named))
+                                    .foregroundColor(.secondary)
                             }
                         })
                         .buttonStyle(.toolbarMenuButtonStyle)
