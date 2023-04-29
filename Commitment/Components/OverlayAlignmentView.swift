@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct OverlayAlignment<OverlayContent: View>: ViewModifier {
+    @Binding var isPresented: Bool
     let alignment: Alignment
     let relativePos: UnitPoint
     let extendHorizontally: Bool
@@ -18,7 +19,14 @@ struct OverlayAlignment<OverlayContent: View>: ViewModifier {
         content
             .alignmentGuide(alignment.horizontal, computeValue: { $0.width * relativePos.x })
             .alignmentGuide(alignment.vertical, computeValue: { $0.height * relativePos.y })
-            .overlay(overlayContent().fixedSize(horizontal: extendHorizontally, vertical: false), alignment: alignment)
+            .zIndex(99)
+            .overlay(alignment: alignment, content: {
+                if isPresented {
+                    overlayContent()
+                        .fixedSize(horizontal: extendHorizontally, vertical: false)
+                        .zIndex(999)
+                }
+            })
     }
 }
 
@@ -30,6 +38,23 @@ extension View {
         _ overlayContent: @escaping () -> OverlayContent
     ) -> some View where OverlayContent: View {
         modifier(OverlayAlignment(
+            isPresented: .constant(true),
+            alignment: alignment,
+            relativePos: relativePos,
+            extendHorizontally: extendHorizontally,
+            overlayContent: overlayContent
+        ))
+    }
+
+    func overlay<OverlayContent>(
+        isPresented: Binding<Bool>,
+        alignment: Alignment,
+        relativePos: UnitPoint = .center,
+        extendHorizontally: Bool = false,
+        _ overlayContent: @escaping () -> OverlayContent
+    ) -> some View where OverlayContent: View {
+        modifier(OverlayAlignment(
+            isPresented: isPresented,
             alignment: alignment,
             relativePos: relativePos,
             extendHorizontally: extendHorizontally,

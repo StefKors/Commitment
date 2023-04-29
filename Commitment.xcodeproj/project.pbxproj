@@ -311,6 +311,9 @@
 		8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */; };
 		8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */; };
 		8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */; };
+		8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */; };
+		8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB629FBD1EC00CBDA41 /* View.swift */; };
+		8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */; };
 		8AC7B8DF29B750D500AB2728 /* Menu in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC7B8DE29B750D500AB2728 /* Menu */; };
 		8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC7B8E129B751C700AB2728 /* WindowManagement */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
@@ -976,6 +979,9 @@
 		8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarFetchOriginActionView.swift; sourceTree = "<group>"; };
 		8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Git.swift"; sourceTree = "<group>"; };
 		8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewDebugging.swift; sourceTree = "<group>"; };
+		8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
+		8ABB9FB629FBD1EC00CBDA41 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
 		8AC8EB49297586FC00365EB9 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
@@ -1703,6 +1709,7 @@
 				8AD9B5E729E6DC1500631337 /* UndoActionView.swift */,
 				8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */,
 				8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */,
+				8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */,
 				8A02C50429ACD3AA004DCA69 /* Rotation.swift */,
 				8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */,
 				8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */,
@@ -2301,6 +2308,8 @@
 				8AC8EB49297586FC00365EB9 /* URL.swift */,
 				8A02C4FE29ACB0E7004DCA69 /* Array.swift */,
 				8A02C52229ADEE2A004DCA69 /* Color.swift */,
+				8ABB9FB629FBD1EC00CBDA41 /* View.swift */,
+				8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */,
 				8A486DC129AFBCB700FB00F7 /* Animation.swift */,
 				8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */,
 			);
@@ -2698,6 +2707,7 @@
 			files = (
 				8AD1088129ED6AF7000FFD70 /* PendingCommitSummaryView.swift in Sources */,
 				8ACCD2CD297F265C0020BF84 /* GitTagOptions.swift in Sources */,
+				8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */,
 				8ACCD291297F265B0020BF84 /* IndexIterator.swift in Sources */,
 				8AD9B5D229E6C31100631337 /* ActiveChangesContextMenu.swift in Sources */,
 				8ACCD2D8297F265C0020BF84 /* File.swift in Sources */,
@@ -2908,6 +2918,7 @@
 				8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */,
 				8ACCD2DB297F265C0020BF84 /* GitReference.swift in Sources */,
 				8A07612E29659EEE00D878DC /* GitDiffHunk.swift in Sources */,
+				8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */,
 				8AFBD536296F2C4300525BF7 /* RepoState.swift in Sources */,
 				8A02C50329ACB9CF004DCA69 /* LogOptions.swift in Sources */,
 				8ACCD2B6297F265B0020BF84 /* RemoteUrlChangeTask.swift in Sources */,
@@ -2917,6 +2928,7 @@
 				8A3421E629D19A9E0001E58B /* CommitmentAppDelegate.swift in Sources */,
 				8A327EFC298E8F20008521B0 /* TouchbarContentView.swift in Sources */,
 				8A7FBF6F29C340260032E394 /* LazyContentWindow.swift in Sources */,
+				8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */,
 				8ACCD2A0297F265B0020BF84 /* MergeTask.swift in Sources */,
 				8ACCD2D0297F265C0020BF84 /* GitStashRecord.swift in Sources */,
 				8AFBD52F296F2C1400525BF7 /* SidebarCommitLabelView.swift in Sources */,
@@ -3105,7 +3117,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=30 -Xfrontend -warn-long-expression-type-checking=30";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.Commitment;
@@ -3141,7 +3153,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=30 -Xfrontend -warn-long-expression-type-checking=30";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.Commitment;

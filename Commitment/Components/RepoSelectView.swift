@@ -50,7 +50,7 @@ struct RepoSelectView: View {
             .onTapGesture {
                 isPresented.toggle()
             }
-            .popover(isPresented: $isPresented, attachmentAnchor: .point(.bottom), arrowEdge: .bottom, content: {
+            .overlay(isPresented: $isPresented, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
                 VStack(spacing: 0) {
                     TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
                         .textFieldStyle(.roundedBorder)
@@ -79,14 +79,15 @@ struct RepoSelectView: View {
                                 VStack(alignment: .leading) {
                                     HStack {
                                         Text(repo.folderName)
+                                            .foregroundStyle(.primary)
                                         if let date = repo.lastFetchedDate {
                                             Spacer()
                                             Text(date, format: .relative(presentation: .named))
-                                                .foregroundColor(.secondary)
+                                                .foregroundStyle(.secondary)
                                         }
                                     }
                                     Text(repo.branch)
-                                        .foregroundColor(.secondary)
+                                        .foregroundStyle(.secondary)
                                 }
                                 Spacer()
                             }
@@ -98,7 +99,10 @@ struct RepoSelectView: View {
                 .frame(maxWidth: 300)
                 .padding(.vertical, 4)
                 .padding(.horizontal, 4)
-            })
+                .background(.ultraThinMaterial)
+                .cornerRadius(6)
+                .shadow(radius: 15)
+            }
             .onReceive(appModel.$repos.$items, perform: {
                 // Filtering can happen here
                 self.repos = $0

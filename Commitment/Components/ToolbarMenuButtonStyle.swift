@@ -21,7 +21,7 @@ struct ToolbarMenuButtonStyle: ButtonStyle {
         }
     }
 
-    var textColor: Color {
+    var textColorPrimary: Color {
         if isHovering {
             return Color.white
         } else {
@@ -29,10 +29,18 @@ struct ToolbarMenuButtonStyle: ButtonStyle {
         }
     }
 
+    var textColorSecondary: Color {
+        if isHovering {
+            return Color.white.darker()
+        } else {
+            return Color.secondary
+        }
+    }
+
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
-                .foregroundColor(textColor)
+                .foregroundStyle(textColorPrimary, textColorSecondary)
         }
         .padding(EdgeInsets(top: 6, leading: 4, bottom: 6, trailing: 4))
         .background {

@@ -16,6 +16,7 @@ class AppModel: ObservableObject {
     @StoredValue(key: "ActiveRepository") var activeRepositoryId: RepoState.ID? = nil
     /// Creates a @Stored property to handle an in-memory and on-disk cache of type.
     @Stored(in: .repositoryStore) var repos
+    @Published var isRepoSelectOpen: Bool = false
 
     let bookmarks: Bookmarks = .init()
     init() {
@@ -62,5 +63,9 @@ class AppModel: ObservableObject {
         }
 
         return
+    }
+
+    func dismissModal() {
+        self.isRepoSelectOpen = false
     }
 }

@@ -28,7 +28,7 @@ extension VerticalAlignment {
 }
 
 extension Alignment {
-    static let custom = Alignment(
+    fileprivate static let custom = Alignment(
         horizontal: .custom,
         vertical: .custom
     )
