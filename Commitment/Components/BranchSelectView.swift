@@ -16,22 +16,22 @@ struct BranchSelectButtonView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 16, height: 16)
-                .foregroundColor(.primary)
+                .foregroundStyle(.primary)
             VStack(alignment: .leading) {
                 Text("Current Branch")
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
                 Text(self.repo.branch)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)
             }
         }
     }
 }
 
 struct BranchSelectView: View {
+    @EnvironmentObject var model: AppModel
     @EnvironmentObject private var repo: RepoState
     var placeholder = "Select Branch"
     @State private var searchText: String = ""
-    @State private var isPresented: Bool = false
     var filteredRepos: [GitReference] {
         if searchText.isEmpty {
             return self.repo.branches
@@ -47,9 +47,9 @@ struct BranchSelectView: View {
         BranchSelectButtonView()
             .contentShape(Rectangle())
             .onTapGesture {
-                isPresented = true
+                model.isBranchSelectOpen.toggle()
             }
-            .popover(isPresented: $isPresented, attachmentAnchor: .point(.bottom), arrowEdge: .bottom, content: {
+            .overlay(isPresented: $model.isBranchSelectOpen, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
                 VStack(spacing: 0) {
                     TextField("Branch Search", text: $searchText, prompt: Text("Filter"))
                         .textFieldStyle(.roundedBorder)
@@ -60,7 +60,7 @@ struct BranchSelectView: View {
                                     self.searchText = ""
                                 }) {
                                     Image(systemName: "multiply.circle.fill")
-                                        .foregroundColor(.secondary)
+                                        .foregroundStyle(.secondary)
                                         .padding(.trailing, 4)
                                 }.buttonStyle(.plain)
                             }
@@ -84,11 +84,12 @@ struct BranchSelectView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 16, height: 16)
-                                    .foregroundColor(.primary)
+                                    .foregroundStyle(.primary)
                                 Text(branch.name.localName)
+                                    .foregroundStyle(.primary)
                                 Spacer()
                                 Text(branch.date, format: .relative(presentation: .named))
-                                    .foregroundColor(.secondary)
+                                    .foregroundStyle(.secondary)
                             }
                         })
                         .buttonStyle(.toolbarMenuButtonStyle)
@@ -98,7 +99,11 @@ struct BranchSelectView: View {
                 .frame(maxWidth: 300)
                 .padding(.vertical, 4)
                 .padding(.horizontal, 4)
-            })
+                .background(.ultraThinMaterial)
+                .cornerRadius(6)
+                .overlay(RoundedRectangle(cornerRadius: 6).stroke(.separator, lineWidth: 1))
+                .shadow(radius: 15)
+            }
     }
 
     func createBranch() {

@@ -41,16 +41,15 @@ struct RepoSelectView: View {
         }
     }
     @State private var searchText: String = ""
-    @State private var isPresented: Bool = false
     var placeholder = "Select Repo"
 
     var body: some View {
         RepoSelectMenuButton()
             .contentShape(Rectangle())
             .onTapGesture {
-                isPresented.toggle()
+                appModel.isRepoSelectOpen.toggle()
             }
-            .overlay(isPresented: $isPresented, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
+            .overlay(isPresented: $appModel.isRepoSelectOpen, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
                 VStack(spacing: 0) {
                     TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
                         .textFieldStyle(.roundedBorder)
@@ -70,7 +69,7 @@ struct RepoSelectView: View {
                     ForEach(filteredRepos) { repo in
                         Button(action: {
                             appModel.$activeRepositoryId.set(repo.id)
-                            isPresented = false
+                            appModel.isRepoSelectOpen = false
                             Task {
                                 try? await repo.refreshRepoState()
                             }
@@ -101,6 +100,7 @@ struct RepoSelectView: View {
                 .padding(.horizontal, 4)
                 .background(.ultraThinMaterial)
                 .cornerRadius(6)
+                .overlay(RoundedRectangle(cornerRadius: 6).stroke(.separator, lineWidth: 1))
                 .shadow(radius: 15)
             }
             .onReceive(appModel.$repos.$items, perform: {
