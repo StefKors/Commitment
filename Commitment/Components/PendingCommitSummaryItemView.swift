@@ -14,16 +14,20 @@ enum CommitSummary: Error {
 struct PendingCommitSummaryItemView: View {
     @EnvironmentObject private var repo: RepoState
     let commit: Commit
-    @State var line: String?
+    @State var stats: GitFileStats?
     var body: some View {
         GroupBox {
             VStack(alignment: .leading) {
                 // Text(commit.subject)
                 SidebarCommitLabelView(commit: commit)
-                if let line {
+                if let stats {
                     HStack {
                         Image("file-diff")
-                        Text(line)
+                        Text("\(stats.fileChanged) files changed")
+                        Text("\(stats.insertions) +++")
+                            .foregroundColor(Color("GitHubDiffGreenBright"))
+                        Text("\(stats.deletions) ---")
+                            .foregroundColor(Color("GitHubDiffRedBright"))
                         Spacer()
                     }
                 } else {
@@ -35,11 +39,7 @@ struct PendingCommitSummaryItemView: View {
         }
         .task(id: commit.hash, priority: .medium) {
             do {
-                let result = try await repo.shell.stats(for: commit.hash)
-                if result.isEmpty {
-                    throw CommitSummary.emptyString
-                }
-                line = result
+                stats = try await repo.shell.stats(for: commit.hash)
             } catch {
                 fatalError(error.localizedDescription)
             }

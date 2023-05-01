@@ -242,8 +242,14 @@ extension Shell {
     }
 
     func stats(for sha: String) async throws -> String {
-        let result = try await self.runTask(.git, ["diff", "--shortstat", sha])
-        return result
+        let shaBefore = try await self.SHAbefore(SHA: sha)
+        return try await self.runTask(.git, ["diff", "--shortstat", shaBefore, sha])
+    }
+
+    func stats(for sha: String) async throws -> GitFileStats {
+        let shaBefore = try await self.SHAbefore(SHA: sha)
+        let result = try await self.runTask(.git, ["diff", "--shortstat", shaBefore, sha])
+        return GitFileStats(result)
     }
 }
 

@@ -430,6 +430,7 @@
 		8AD1088329ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088229ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift */; };
 		8AD1088529EEB144000FFD70 /* BetaSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088429EEB144000FFD70 /* BetaSettingsView.swift */; };
 		8AD1088729EEB82A000FFD70 /* View+HideSidebarToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088629EEB82A000FFD70 /* View+HideSidebarToggle.swift */; };
+		8AD35DAF29FFD97C00929A30 /* GitFileStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD35DAE29FFD97C00929A30 /* GitFileStats.swift */; };
 		8AD9B5D029E6C28500631337 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5CF29E6C28500631337 /* Commands.swift */; };
 		8AD9B5D229E6C31100631337 /* ActiveChangesContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */; };
 		8AD9B5D429E6C7CB00631337 /* RepoState+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */; };
@@ -1096,6 +1097,7 @@
 		8AD1088229ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCommitSummaryItemView.swift; sourceTree = "<group>"; };
 		8AD1088429EEB144000FFD70 /* BetaSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetaSettingsView.swift; sourceTree = "<group>"; };
 		8AD1088629EEB82A000FFD70 /* View+HideSidebarToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+HideSidebarToggle.swift"; sourceTree = "<group>"; };
+		8AD35DAE29FFD97C00929A30 /* GitFileStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStats.swift; sourceTree = "<group>"; };
 		8AD9B5CF29E6C28500631337 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChangesContextMenu.swift; sourceTree = "<group>"; };
 		8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepoState+Commands.swift"; sourceTree = "<group>"; };
@@ -1803,6 +1805,7 @@
 				8AFBD5772971B09200525BF7 /* FileMonitor */,
 				8AFBD54829702A4200525BF7 /* GitDiffLine.swift */,
 				8ACCD279297F265B0020BF84 /* GitFileStatus.swift */,
+				8AD35DAE29FFD97C00929A30 /* GitFileStats.swift */,
 				8ACCD278297F265B0020BF84 /* GitFileStatusList.swift */,
 				8ACCD27B297F265B0020BF84 /* GitLogRecordList.swift */,
 				8ACCD26C297F265B0020BF84 /* GitReference.swift */,
@@ -2898,6 +2901,7 @@
 				8A6B649829730E560074B3C1 /* FileView.swift in Sources */,
 				8A97DC8F299BB148001E25E1 /* Sequence+Occurrences.swift in Sources */,
 				8AAF7AF829AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift in Sources */,
+				8AD35DAF29FFD97C00929A30 /* GitFileStats.swift in Sources */,
 				8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */,
 				8A562CE529B33F8D006C7E8A /* OutputLine.swift in Sources */,
 				8A6B649629730B380074B3C1 /* ContentPlaceholderView.swift in Sources */,
