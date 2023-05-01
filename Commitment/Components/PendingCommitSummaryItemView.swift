@@ -30,8 +30,11 @@ struct PendingCommitSummaryItemView: View {
             .padding(4)
         }
         .task(id: commit.hash, priority: .medium) {
-            if let result = try? await repo.shell.stats(for: commit.hash) {
+            do {
+                let result = try await repo.shell.stats(for: commit.hash)
                 line = result
+            } catch {
+                print(error.localizedDescription)
             }
         }
     }
