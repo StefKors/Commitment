@@ -26,7 +26,6 @@ struct CommitmentApp: App {
     @StateObject var appModel: AppModel = .shared
     @State private var repo: RepoState? = nil
     @Environment(\.window) private var window
-
     @State private var selectedRepo: RepoState.ID? = nil
 
     init() {
