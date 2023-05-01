@@ -41,7 +41,7 @@ struct PendingCommitSummaryItemView: View {
                 }
                 line = result
             } catch {
-                print(error.localizedDescription)
+                fatalError(error.localizedDescription)
             }
         }
     }
