@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum CommitSummary: Error {
+    case emptyString
+}
+
 struct PendingCommitSummaryItemView: View {
     @EnvironmentObject private var repo: RepoState
     let commit: Commit
@@ -32,6 +36,9 @@ struct PendingCommitSummaryItemView: View {
         .task(id: commit.hash, priority: .medium) {
             do {
                 let result = try await repo.shell.stats(for: commit.hash)
+                if result.isEmpty {
+                    throw CommitSummary.emptyString
+                }
                 line = result
             } catch {
                 print(error.localizedDescription)
