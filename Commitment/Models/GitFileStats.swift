@@ -9,40 +9,40 @@ import Foundation
 import RegexBuilder
 
 
-struct GitFileStats: Codable {
-    // 2 files changed, 5 insertions(+), 2 deletions(-)
+public struct GitFileStats: Codable {
+    // 4    1    Commitment/Views/AppViews/ActiveChangesMainView.swift
     init(_ input: String) {
         self.raw = input
 
         let separator: Regex<Substring> = /\s{1,}/
+        let anyUntilEndOfLine: Regex<Substring> = /.*/
         let matcher: Regex = Regex {
             Capture(
-                One(.digit)
+                OneOrMore(.digit)
             )
             separator
             Capture(
-                OneOrMore(.word)
+                OneOrMore(.digit)
+            )
+            separator
+            Capture(
+                anyUntilEndOfLine
             )
         }
 
         let matches = input.matches(of: matcher)
         for match in matches {
-            let (_, digit, words) = match.output
-            if words.contains("file") {
-                self.fileChanged = Int(String(digit)) ?? 0
-            }
+            let (_, insertions, deletions, file) = match.output
 
-            if words.contains("insertion") {
-                self.insertions = Int(String(digit)) ?? 0
-            }
+            self.insertions = Int(String(insertions)) ?? 0
 
-            if words.contains("deletion") {
-                self.deletions = Int(String(digit)) ?? 0
-            }
+            self.deletions = Int(String(deletions)) ?? 0
+
+            self.fileChanged = String(file)
         }
     }
 
-    var fileChanged: Int = 0
+    var fileChanged: String?
     var insertions: Int = 0
     var deletions: Int = 0
     let raw: String

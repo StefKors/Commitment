@@ -13,16 +13,21 @@ struct FileDiffChangesView: View {
     var diff: GitDiff?
 
     var body: some View {
-        ScrollView(.vertical) {
-            if let diff {
-                DiffRenderView(fileStatus: fileStatus, diff: diff)
+        ZStack(alignment: .bottomTrailing) {
+            ScrollView(.vertical) {
+                if let diff {
+                    DiffRenderView(fileStatus: fileStatus, diff: diff)
                     // .padding([.top, .leading])
-                    .padding()
-            } else {
-                FileRenderView(fileStatus: fileStatus)
+                        .padding()
+                } else {
+                    FileRenderView(fileStatus: fileStatus)
                     // .padding([.top, .leading])
-                    .padding()
+                        .padding()
+                }
             }
+
+            FileStatsView(stats: fileStatus.stats)
+                .padding()
         }
     }
 }

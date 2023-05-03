@@ -26,7 +26,6 @@ struct FileView<Content: View>: View {
             })
             .background(.separator)
 
-
             VStack(alignment: .leading, spacing: 0) {
                 content()
             }
@@ -40,7 +39,6 @@ struct FileView<Content: View>: View {
                 .stroke(.separator, lineWidth: 1)
         )
     }
-
 }
 
 // struct FileView_Previews: PreviewProvider {

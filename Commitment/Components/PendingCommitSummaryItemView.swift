@@ -14,7 +14,7 @@ enum CommitSummary: Error {
 struct PendingCommitSummaryItemView: View {
     @EnvironmentObject private var repo: RepoState
     let commit: Commit
-    @State var stats: GitFileStats?
+    @State var stats: GitCommitStats?
     var body: some View {
         GroupBox {
             VStack(alignment: .leading) {
@@ -24,7 +24,7 @@ struct PendingCommitSummaryItemView: View {
                     HStack {
                         Image("file-diff")
                             .imageScale(.small)
-                        Text("\(stats.fileChanged) files changed")
+                        Text("\(stats.filesChanged) files changed")
                         Text("\(stats.insertions) +++")
                             .foregroundColor(Color("GitHubDiffGreenBright"))
                         Text("\(stats.deletions) ---")
@@ -41,6 +41,8 @@ struct PendingCommitSummaryItemView: View {
         .task(id: commit.hash, priority: .medium) {
             do {
                 stats = try await repo.shell.stats(for: commit.hash)
+                let numstat = try await repo.shell.numStat(for: commit.hash)
+                print(numstat)
             } catch {
                 fatalError(error.localizedDescription)
             }

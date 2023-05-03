@@ -19,9 +19,10 @@
 public class GitFileStatus: Codable {
 
     // MARK: - Init
-    internal init(path: String, state: String) {
+    internal init(path: String, state: String, sha: String? = nil, stats: GitFileStats? = nil) {
         self.path = path
-        
+        self.sha = sha
+        self.stats = stats
         var lhs: String
         var rhs: String
         
@@ -39,6 +40,11 @@ public class GitFileStatus: Codable {
     /// A path to the file on the disk including file name.
     /// File path is always relative to a repository root.
     public private(set) var path: String
+
+    // Commit SHA from which the status was created
+    public private(set) var sha: String?
+
+    public private(set) var stats: GitFileStats?
     
     /// Current file state
     public private(set) var state: State

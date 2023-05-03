@@ -105,7 +105,7 @@ extension Shell {
     func show(at commit: String) async throws -> [GitFileStatus] {
         return try await self.runTask(.git, ["show", "--oneline", "--name-status", "--no-color", commit])
             .lines
-            .compactMap { line -> GitFileStatus? in
+            .parallelMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }
                 let splits = line.split(separator: "\t")
                 // only use the actual file change liens
@@ -116,9 +116,9 @@ extension Shell {
 
                 // When file name contains spaces, need to ensure leading and trailing quoes escapes are removed
                 fileName = fileName.trimmingCharacters(in: CharacterSet(charactersIn: "\"\\"))
-
-                return GitFileStatus(path: fileName, state: fileState)
-            }
+                let stats = try await self.numStat(sha: commit, file: fileName)
+                return GitFileStatus(path: fileName, state: fileState, sha: commit, stats: stats)
+            }.compactMap({$0})
     }
 
     func SHAbefore(SHA: String) async throws -> String {
@@ -246,10 +246,24 @@ extension Shell {
         return try await self.runTask(.git, ["diff", "--shortstat", shaBefore, sha])
     }
 
-    func stats(for sha: String) async throws -> GitFileStats {
+    func stats(for sha: String) async throws -> GitCommitStats {
         let shaBefore = try await self.SHAbefore(SHA: sha)
-        let result = try await self.runTask(.git, ["diff", "--shortstat", shaBefore, sha])
-        return GitFileStats(result)
+        let output = try await self.runTask(.git, ["diff", "--shortstat", shaBefore, sha])
+        return GitCommitStats(output)
+    }
+
+    func numStat(for sha: String) async throws -> [GitFileStats] {
+        let shaBefore = try await self.SHAbefore(SHA: sha)
+        let output = try await self.runTask(.git, ["diff", "--numstat", shaBefore, sha])
+        return output.lines.compactMap { line in
+            return GitFileStats(line)
+        }
+    }
+
+    func numStat(sha: String, file: String) async throws -> GitFileStats {
+        let shaBefore = try await self.SHAbefore(SHA: sha)
+        let output = try await self.runTask(.git, ["diff", "--numstat", shaBefore, sha, file])
+        return GitFileStats(output)
     }
 }
 
