@@ -23,6 +23,7 @@ struct PendingCommitSummaryItemView: View {
                 if let stats {
                     HStack {
                         Image("file-diff")
+                            .imageScale(.small)
                         Text("\(stats.fileChanged) files changed")
                         Text("\(stats.insertions) +++")
                             .foregroundColor(Color("GitHubDiffGreenBright"))

@@ -6,20 +6,46 @@
 //
 
 import Foundation
+import RegexBuilder
+
 
 struct GitFileStats: Codable {
     // 2 files changed, 5 insertions(+), 2 deletions(-)
     init(_ input: String) {
-        print(input)
-        let parts = input.components(separatedBy: ",")
-        self.fileChanged = parts[safe: 0]?.firstCharInt() ?? 0
-        self.insertions = parts[safe: 1]?.firstCharInt() ?? 0
-        self.deletions = parts[safe: 2]?.firstCharInt() ?? 0
+        self.raw = input
+
+        let separator: Regex<Substring> = /\s{1,}/
+        let matcher: Regex = Regex {
+            Capture(
+                One(.digit)
+            )
+            separator
+            Capture(
+                OneOrMore(.word)
+            )
+        }
+
+        let matches = input.matches(of: matcher)
+        for match in matches {
+            let (_, digit, words) = match.output
+            if words.contains("file") {
+                self.fileChanged = Int(String(digit)) ?? 0
+            }
+
+            if words.contains("insertion") {
+                self.insertions = Int(String(digit)) ?? 0
+            }
+
+            if words.contains("deletion") {
+                self.deletions = Int(String(digit)) ?? 0
+            }
+        }
     }
 
-    let fileChanged: Int
-    let insertions: Int
-    let deletions: Int
+    var fileChanged: Int = 0
+    var insertions: Int = 0
+    var deletions: Int = 0
+    let raw: String
 }
 
 extension String {
@@ -40,7 +66,7 @@ extension String.SubSequence {
     /// - Returns: Number or nil
     func firstCharInt() -> Int? {
         if let changed = self.trimmingCharacters(in: .whitespaces).first,
-            let value = Int(String(changed)) {
+           let value = Int(String(changed)) {
             return value
         }
         return nil
