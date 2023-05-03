@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PendingCommitSummaryView: View {
     @EnvironmentObject private var repo: RepoState
-    // let SHA: String
 
     var body: some View {
         VStack {
