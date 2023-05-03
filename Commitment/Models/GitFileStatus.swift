@@ -32,6 +32,7 @@ public class GitFileStatus: Codable {
         } else {
             lhs = ModificationState.unknown.rawValue
             rhs = ModificationState.unknown.rawValue
+            
         }
         
         self.state = State(lhs: lhs, rhs: rhs)
