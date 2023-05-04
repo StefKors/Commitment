@@ -10,6 +10,7 @@ import SwiftUI
 enum UndoActionType: String {
     case stash
     case discardChanges = "Discard Changes"
+    case commit
 }
 
 struct UndoAction: Identifiable, Equatable {

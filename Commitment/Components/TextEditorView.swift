@@ -74,16 +74,24 @@ struct TextEditorView: View {
 
     func handleSubmit() {
         Task { @MainActor in
+            var action: UndoAction?
             if !commitTitle.isEmpty, !commitBody.isEmpty {
                 try? await repo.shell.commit(title: commitTitle, message: commitBody)
+                action = UndoAction(type: .commit, arguments: ["commit", "-m", commitTitle, "-m", commitBody])
                 commitTitle = ""
                 commitBody = ""
             } else if !commitTitle.isEmpty {
                 try? await repo.shell.commit(message: commitTitle)
+                action = UndoAction(type: .commit, arguments: ["commit", "-m", commitTitle])
                 commitTitle = ""
             } else if let title = quickCommitTitle {
                 try? await repo.shell.commit(message: title)
+                action = UndoAction(type: .commit, arguments: ["commit", "-m", title])
                 commitTitle = ""
+            }
+
+            if let action {
+                repo.undo.stack.append(action)
             }
 
             try? await repo.refreshRepoState()
