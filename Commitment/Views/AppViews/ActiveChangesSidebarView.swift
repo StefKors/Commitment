@@ -27,11 +27,13 @@ struct ActiveChangesSidebarView: View {
                             .keyboardShortcut(.delete)
                         }
                         .tag(fileStatus.id)
-                                    }
+                }
             }
             .listStyle(SidebarListStyle())
             .onDeleteCommand {
-                print("todo: discard changes delete command")
+                Task {
+                    await repo.discardActiveChange()
+                }
             }
 
             ActiveChangesStatsView()
