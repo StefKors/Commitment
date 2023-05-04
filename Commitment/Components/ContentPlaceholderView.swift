@@ -107,7 +107,7 @@ struct GoCodeRepoPlaceholder: View {
 }
 
 struct OpenRepoInEditorPlaceholder: View {
-    @EnvironmentObject var model: AppModel
+    @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var repo: RepoState
     
     var body: some View {
@@ -135,7 +135,7 @@ struct OpenRepoInEditorPlaceholder: View {
 }
 
 struct OpenRepoInFinderPlaceholder: View {
-    @EnvironmentObject var model: AppModel
+    @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var repo: RepoState
     
     var body: some View {
@@ -164,7 +164,7 @@ struct OpenRepoInFinderPlaceholder: View {
 
 
 struct ContentPlaceholderView: View {
-    @EnvironmentObject var model: AppModel
+    @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var repo: RepoState
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
     
