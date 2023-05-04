@@ -24,9 +24,9 @@ struct UndoActionView: View {
         }
         .padding(.vertical, 5)
         .padding(.horizontal, 8)
-        .background(.background)
+        .background(.thinMaterial)
         .cornerRadius(4)
-        .shadow(color: Color.black.lighter(by: 50).opacity(0.4), radius: 6, y: 3)
+        .shadow(radius: 4, y: 2)
 
     }
 }

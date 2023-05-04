@@ -24,6 +24,7 @@ struct UndoActionButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
+                .font(.system(size: 11))
         }
         .padding(EdgeInsets(top: 6, leading: 4, bottom: 6, trailing: 4))
         .background {

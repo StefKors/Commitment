@@ -40,6 +40,7 @@ struct ToolbarFetchOriginActionView: View {
         Task {
             // shell.isRunning = true
             await self.shell.runActivity(.git, ["fetch", "origin", "main"], in: repo.shell.workspace)
+            shell.output = nil
             // shell.isRunning = false
             // try? await self.repo.shell.push()
         }

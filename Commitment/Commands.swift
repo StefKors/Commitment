@@ -31,13 +31,6 @@ struct AppCommands: Commands {
                     Text ("Discard All Changes")
                 }
                 .keyboardShortcut(.delete, modifiers: [.command, .shift])
-
-
-                Button (action: {
-                    print ("todo: handle action" )
-                }) {
-                    Text("Another action" )
-                }
             }
         }
     }

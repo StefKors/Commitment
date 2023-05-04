@@ -16,9 +16,18 @@ struct ActiveChangesSidebarView: View {
             List(selection: $repo.view.activeChangesSelection) {
                 ForEach(repo.status, id: \.id) { fileStatus in
                     GitFileStatusView(fileStatus: fileStatus)
+                        .contextMenu {
+                            Button {
+                                Task {
+                                    await repo.discardActiveChange(path: fileStatus.path)
+                                }
+                            } label: {
+                                Text("Discard Changes")
+                            }
+                            .keyboardShortcut(.delete)
+                        }
                         .tag(fileStatus.id)
-                        .activeChangesContextMenu()
-                }
+                                    }
             }
             .listStyle(SidebarListStyle())
             .onDeleteCommand {

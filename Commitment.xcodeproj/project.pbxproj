@@ -438,7 +438,6 @@
 		8AD1088729EEB82A000FFD70 /* View+HideSidebarToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088629EEB82A000FFD70 /* View+HideSidebarToggle.swift */; };
 		8AD35DAF29FFD97C00929A30 /* GitFileStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD35DAE29FFD97C00929A30 /* GitFileStats.swift */; };
 		8AD9B5D029E6C28500631337 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5CF29E6C28500631337 /* Commands.swift */; };
-		8AD9B5D229E6C31100631337 /* ActiveChangesContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */; };
 		8AD9B5D429E6C7CB00631337 /* RepoState+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */; };
 		8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E129E6D77600631337 /* UndoState.swift */; };
 		8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */; };
@@ -1111,7 +1110,6 @@
 		8AD1088629EEB82A000FFD70 /* View+HideSidebarToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+HideSidebarToggle.swift"; sourceTree = "<group>"; };
 		8AD35DAE29FFD97C00929A30 /* GitFileStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStats.swift; sourceTree = "<group>"; };
 		8AD9B5CF29E6C28500631337 /* Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
-		8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChangesContextMenu.swift; sourceTree = "<group>"; };
 		8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RepoState+Commands.swift"; sourceTree = "<group>"; };
 		8AD9B5E129E6D77600631337 /* UndoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoState.swift; sourceTree = "<group>"; };
 		8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActivityView.swift; sourceTree = "<group>"; };
@@ -1676,7 +1674,6 @@
 			children = (
 				8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */,
 				8AFBD50D296F2A5E00525BF7 /* AccentGlow.swift */,
-				8AD9B5D129E6C31100631337 /* ActiveChangesContextMenu.swift */,
 				8A6842302A02F4BF0063CBE6 /* ActiveChangesStatsView.swift */,
 				8A562CE229B33F79006C7E8A /* ActivityArrow.swift */,
 				8AFBD526296F2C1400525BF7 /* AddRepoView.swift */,
@@ -2730,7 +2727,6 @@
 				8ACCD2CD297F265C0020BF84 /* GitTagOptions.swift in Sources */,
 				8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */,
 				8ACCD291297F265B0020BF84 /* IndexIterator.swift in Sources */,
-				8AD9B5D229E6C31100631337 /* ActiveChangesContextMenu.swift in Sources */,
 				8ACCD2D8297F265C0020BF84 /* File.swift in Sources */,
 				8ACCD2F2297F265C0020BF84 /* RepositoryDelegate.swift in Sources */,
 				8ACCD2E9297F265C0020BF84 /* GitLogRecordList.swift in Sources */,
