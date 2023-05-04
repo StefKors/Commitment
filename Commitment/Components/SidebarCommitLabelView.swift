@@ -30,6 +30,11 @@ struct SidebarCommitLabelView: View {
                 }
             }
         }
+        .contextMenu {
+            Button("Copy SHA") {
+                copyToPasteboard(text: commit.hash)
+            }
+        }
     }
 }
 
