@@ -17,6 +17,8 @@ struct UndoActionView: View {
                 if let subtitle = action.subtitle {
                     Text(subtitle)
                         .foregroundColor(.secondary)
+                        .lineLimit(1)
+                        .help(subtitle)
                 }
             }
             Spacer(minLength: 20)
@@ -58,8 +60,8 @@ extension View {
 }
 
 struct UndoActionView_Previews: PreviewProvider {
-    static let action: UndoAction = .sampleDiscardChanges
-    static let samples: [UndoAction] = [.sampleDiscardChanges, .sample, .sampleDiscardChanges, .sample]
+    static let action: UndoAction = .sampleCommit
+    static let samples: [UndoAction] = [.sampleCommit, .sampleDiscardChanges, .sample, .sampleDiscardChanges, .sample]
 
     static var previews: some View {
         UndoActionView(action: action)

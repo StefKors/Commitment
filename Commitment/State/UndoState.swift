@@ -25,6 +25,7 @@ extension UndoAction {
     static var sample = UndoAction(type: .stash, arguments: ["stash", "push", "--include-untracked", "-m", "Discard Change to UndoState.swift", "Commitment/State/UndoState.swift"])
     static var sampleStash = Self.sample
     static var sampleDiscardChanges = UndoAction(type: .discardChanges, arguments: ["stash", "push", "--include-untracked", "-m", "Discard Change to UndoState.swift", "Commitment/State/UndoState.swift"])
+    static var sampleCommit = UndoAction(type: .commit, arguments: ["commit", "-m", "Add profile picture view to commit sidebar panel"], subtitle: "Add profile picture view to commit sidebar panel")
 }
 
 class UndoState: ObservableObject {
