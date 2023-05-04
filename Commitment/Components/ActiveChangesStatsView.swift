@@ -14,9 +14,6 @@ struct ActiveChangesStatsView: View {
         VStack {
             if let stats {
                 HStack(spacing: 8) {
-                    // Image("file-diff")
-                    //     .imageScale(.small)
-                    //     .foregroundColor(.secondary)
                     Text("^[\(Int(stats.filesChanged)) file](inflect: true) changed")
                         .foregroundColor(.secondary)
                     Text("+\(stats.insertions)")

@@ -12,7 +12,9 @@ struct PendingCommitSummaryView: View {
 
     var body: some View {
         ZStack {
-            let items = repo.commitsAhead.suffix(3)
+            let items = repo.commitsAhead.sorted(by: { A, B in
+                return A.commiterDate < B.commiterDate
+            }).suffix(3)
             ForEach(Array(zip(items.indices, items)), id: \.0) { index, commit in
                 PendingCommitSummaryItemView(commit: commit)
                     .stacked(at: index, in: repo.commitsAhead.count)
@@ -23,9 +25,9 @@ struct PendingCommitSummaryView: View {
         }
     }
 }
-// 
-// struct PendingCommitSummaryView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         // PendingCommitSummaryView()
-//     }
-// }
+
+struct PendingCommitSummaryView_Previews: PreviewProvider {
+    static var previews: some View {
+        PendingCommitSummaryView()
+    }
+}

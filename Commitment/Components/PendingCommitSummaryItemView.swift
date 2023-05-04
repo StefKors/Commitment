@@ -18,7 +18,6 @@ struct PendingCommitSummaryItemView: View {
     var body: some View {
         GroupBox {
             VStack(alignment: .leading) {
-                // Text(commit.subject)
                 SidebarCommitLabelView(commit: commit)
                 if let stats {
                     HStack {
