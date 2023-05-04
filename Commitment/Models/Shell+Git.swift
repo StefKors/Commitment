@@ -159,7 +159,7 @@ extension Shell {
             .compactMap({$0})
     }
 
-    func log(options: LogOptions = LogOptions.default, isLocal: Bool = false, limit: Int = 100) async throws -> [Commit] {
+    func log(options: LogOptions = LogOptions.default, isLocal: Bool = false, limit: Int? = nil) async throws -> [Commit] {
         // Check whether a reference is provided
         if let reference = options.reference, reference.remote == nil {
             // Reference is provided, but it is required to take the first available remote
@@ -170,11 +170,17 @@ extension Shell {
             }
         }
 
-        let args = ["--no-pager", "log", "-n", limit.description, "--pretty=$:$%H $:$%h $:$%an $:$%ae $:$%s $:$%B $:$%cI $:$%D$(END_OF_LINE)"]
+        let args = ["--no-pager", "log"]
+
+        var limitArgs: [String] = []
+        if let limit {
+            limitArgs = ["-n", limit.description]
+        }
 
         let opts: [String] = options.toArguments()
+        let format = ["--pretty=$:$%H $:$%h $:$%an $:$%ae $:$%s $:$%B $:$%cI $:$%D$(END_OF_LINE)"]
 
-        return try await self.runTask(.git, args + opts)
+        return try await self.runTask(.git, args + limitArgs + format + opts)
             .split(separator: "$(END_OF_LINE)")
             .compactMap({ line -> Commit? in
                 let parts = line
