@@ -31,3 +31,11 @@ extension UndoAction {
 class UndoState: ObservableObject {
     @Published var stack: [UndoAction] = []
 }
+
+extension Collection where Element == UndoAction {
+    func filters(allOf type: UndoActionType) -> [UndoAction] {
+        return self.filter({ item in
+            return item.type != type
+        })
+    }
+}

@@ -59,9 +59,8 @@ struct ToolbarPushOriginActionButtonView: View {
     func handleButton() {
         Task {
             do {
-                let remote = try await self.repo.shell.remote()
-                let branch = try await self.repo.shell.branch()
-                await self.shell.runActivity(.git, ["push", remote, branch], in: self.repo.shell.workspace)
+                _ = try await self.repo.shell.push()
+                self.repo.undo.stack = self.repo.undo.stack.filters(allOf: .commit)
                 try await self.repo.refreshRepoState()
             } catch {
                 print(error.localizedDescription)

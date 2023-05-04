@@ -61,9 +61,8 @@ struct PushChangesRepoPlaceholder: View {
                             // TODO: a way to show progress in toolbar button
                             // TODO: Convert to activity
                             do {
-                                let remote = try await self.repo.shell.remote()
-                                let branch = try await self.repo.shell.branch()
-                                try? await self.repo.shell.runTask(.git, ["push", remote, branch], in: self.repo.shell.workspace)
+                                _ = try await self.repo.shell.push()
+                                self.repo.undo.stack = self.repo.undo.stack.filters(allOf: .commit)
                                 try? await self.repo.refreshRepoState()
                             } catch {
                                 print(error.localizedDescription)
