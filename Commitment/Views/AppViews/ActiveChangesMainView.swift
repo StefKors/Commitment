@@ -26,7 +26,7 @@ struct ActiveChangesMainView: View {
                 Rectangle().fill(.clear)
                 if let fileStatus {
                     FileDiffChangesView(fileStatus: fileStatus, diff: diff)
-                } else if repo.commitsAhead.count > 0 {
+                } else if !isLoading && repo.commitsAhead.count > 0 {
                     PendingCommitSummaryView()
                 } else if !isLoading {
                     ContentPlaceholderView()
@@ -36,15 +36,25 @@ struct ActiveChangesMainView: View {
             }.layoutPriority(1)
         }
         .task(id: id, priority: .userInitiated, {
-            let status = repo.status.first(with: id)
-            self.fileStatus = status
-            if status?.state.index.isAny(of: [.added, .deleted]) == true {
-                self.diff = nil
-            } else if let id {
-                self.diff = repo.diffs.fileStatus(for: id)
-            }
+            await getDiffs()
             isLoading = false
         })
+        .onChange(of: repo.lastUpdate) { _ in
+            Task {
+                await getDiffs()
+            }
+        }
+    }
+
+    func getDiffs() async {
+        guard isLoading == false else { return }
+        let status = repo.status.first(with: id)
+        self.fileStatus = status
+        if status?.state.index.isAny(of: [.added, .deleted]) == true {
+            self.diff = nil
+        } else if let id {
+            self.diff = repo.diffs.fileStatus(for: id)
+        }
     }
 }
 

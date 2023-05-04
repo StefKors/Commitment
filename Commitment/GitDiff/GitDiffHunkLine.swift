@@ -28,7 +28,7 @@ public struct GitDiffHunkLine: Identifiable, Codable, Equatable {
         self.oldLineNumber = oldLineNumber
         self.newLineNumber = newLineNumber
 
-        self.id = "\(self.oldLineNumber ?? 0)-\(self.newLineNumber ?? 0)-\(self.type)"
+        self.id = "\(self.oldLineNumber ?? 0)-\(self.newLineNumber ?? 0)-\(self.type)-\(self.text)"
 
         switch type {
         case .addition: self.description = "+\(text)"

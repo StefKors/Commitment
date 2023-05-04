@@ -33,30 +33,32 @@ struct FileRenderView: View {
                 }
             }
         }
-        .id(fileStatus.path)
-        .task(id: fileStatus) {
-            print("will fetch")
-            // handles renamed
-            self.path = String(fileStatus.path.split(separator: " -> ").last ?? "")
-            let fullFileURL = URL(fileURLWithPath: path, isDirectory: false, relativeTo: repo.path)
-            print("will fetch path: \(fullFileURL.absoluteString)")
-            do {
-                self.content = try repo.readFile(at: fullFileURL)
-                self.lines = content
-                    .components(separatedBy: "\n")
-                    .enumerated()
-                    .map({ (index, line) in
-                        return GitDiffHunkLine(
-                            type: fileStatus.diffModificationState,
-                            text: String(line),
-                            oldLineNumber: index,
-                            newLineNumber: index
-                        )
-                    })
-                self.finishedFetching = true
-            } catch {
-                print("Failed at FileRenderView: \(error.localizedDescription)")
-            }
+        // .id(fileStatus)
+        .task(id: repo.lastUpdate) {
+            await handleGetFileStatus()
+        }
+    }
+
+    func handleGetFileStatus() async {
+        // handles renamed
+        self.path = String(fileStatus.path.split(separator: " -> ").last ?? "")
+        let fullFileURL = URL(fileURLWithPath: path, isDirectory: false, relativeTo: repo.path)
+        do {
+            self.content = try repo.readFile(at: fullFileURL)
+            self.lines = content
+                .components(separatedBy: "\n")
+                .enumerated()
+                .map({ (index, line) in
+                    return GitDiffHunkLine(
+                        type: fileStatus.diffModificationState,
+                        text: String(line),
+                        oldLineNumber: index,
+                        newLineNumber: index
+                    )
+                })
+            self.finishedFetching = true
+        } catch {
+            print("Failed at FileRenderView: \(error.localizedDescription)")
         }
     }
 }

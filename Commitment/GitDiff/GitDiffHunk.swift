@@ -16,7 +16,7 @@ public struct GitDiffHunk: Identifiable, Codable, Equatable {
         lhs.lines == rhs.lines
     }
 
-    public let id: UUID
+    public let id: String
 
     public let oldLineStart: Int
     
@@ -40,11 +40,11 @@ public struct GitDiffHunk: Identifiable, Codable, Equatable {
         header: String?,
         lines: [GitDiffHunkLine]
     ) {
-        self.id = UUID()
         self.header = header ?? "@@ -\(oldLineStart),\(oldLineSpan) +\(newLineStart),\(newLineSpan) @@"
         self.description = lines.reduce(into: self.header) {
             $0 += "\n\($1.description)"
         }
+        self.id = self.description
         self.oldLineStart = oldLineStart
         self.oldLineSpan = oldLineSpan
         self.newLineStart = newLineStart

@@ -15,14 +15,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+import Foundation
+
 /// Describes a single file status
-public class GitFileStatus: Codable {
+public class GitFileStatus: Codable, Identifiable {
 
     // MARK: - Init
     internal init(path: String, state: String, sha: String? = nil, stats: GitFileStats? = nil) {
         self.path = path
         self.sha = sha
         self.stats = stats
+        // self.id = UUID().uuidString
         var lhs: String
         var rhs: String
         
@@ -36,6 +39,10 @@ public class GitFileStatus: Codable {
         }
         
         self.state = State(lhs: lhs, rhs: rhs)
+    }
+
+    public var id: String {
+        self.path
     }
     
     /// A path to the file on the disk including file name.
@@ -194,11 +201,5 @@ extension GitFileStatus: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(path)
         hasher.combine(state)
-    }
-}
-
-extension GitFileStatus: Identifiable {
-    public var id: String {
-        self.path
     }
 }

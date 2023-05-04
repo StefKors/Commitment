@@ -27,7 +27,7 @@ struct FileStatsView: View {
                 .background(.thinMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
                 .fontDesign(.monospaced)
-                .shadow(radius: 15)
+                .shadow(radius: 4, y: 2)
                 .padding()
             }
         }
