@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct CommitHistoryMainView: View {
+    @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var repo: RepoState
     var id: Commit.ID? = nil
 
@@ -29,6 +30,40 @@ struct CommitHistoryMainView: View {
                 List(selection: $repo.view.activeCommitFileSelection) {
                     ForEach(files) { fileStatus in
                         GitFileStatusView(fileStatus: fileStatus)
+                            .contextMenu {
+                                Button("Reveal in Finder") {
+                                    if let last = fileStatus.path.split(separator: " -> ").last {
+                                        let fullPath = repo.path.appending(path: last)
+                                        fullPath.showInFinder()
+                                    }
+                                }
+                                .keyboardShortcut("o")
+
+                                Button("Open in \(model.editor.name)") {
+                                    if let last = fileStatus.path.split(separator: " -> ").last {
+                                        let fullPath = repo.path.appending(path: last)
+                                        fullPath.openInEditor(model.editor)
+                                    }
+                                }
+                                .keyboardShortcut("o", modifiers: [.command, .shift])
+
+                                Divider()
+
+                                Button("Copy File Path") {
+                                    if let last = fileStatus.path.split(separator: " -> ").last {
+                                        let fullPath = repo.path.appending(path: last)
+                                        copyToPasteboard(text: fullPath.relativePath)
+                                    }
+                                }
+                                .keyboardShortcut("c")
+
+                                Button("Copy Relative File Path") {
+                                    if let last = fileStatus.path.split(separator: " -> ").last {
+                                        copyToPasteboard(text: String(last))
+                                    }
+                                }
+                                .keyboardShortcut("c", modifiers: [.command, .shift])
+                            }
                             .tag(fileStatus.id)
                     }
                 }
