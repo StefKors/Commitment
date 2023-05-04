@@ -77,16 +77,16 @@ struct TextEditorView: View {
             var action: UndoAction?
             if !commitTitle.isEmpty, !commitBody.isEmpty {
                 try? await repo.shell.commit(title: commitTitle, message: commitBody)
-                action = UndoAction(type: .commit, arguments: ["commit", "-m", commitTitle, "-m", commitBody])
+                action = UndoAction(type: .commit, arguments: ["commit", "-m", commitTitle, "-m", commitBody], subtitle: commitTitle)
                 commitTitle = ""
                 commitBody = ""
             } else if !commitTitle.isEmpty {
                 try? await repo.shell.commit(message: commitTitle)
-                action = UndoAction(type: .commit, arguments: ["commit", "-m", commitTitle])
+                action = UndoAction(type: .commit, arguments: ["commit", "-m", commitTitle], subtitle: commitTitle)
                 commitTitle = ""
             } else if let title = quickCommitTitle {
                 try? await repo.shell.commit(message: title)
-                action = UndoAction(type: .commit, arguments: ["commit", "-m", title])
+                action = UndoAction(type: .commit, arguments: ["commit", "-m", title], subtitle: title)
                 commitTitle = ""
             }
 

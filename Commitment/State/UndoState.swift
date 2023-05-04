@@ -18,6 +18,7 @@ struct UndoAction: Identifiable, Equatable {
     let arguments: [String]
     let id: UUID = .init()
     let createdAt: Date = .now
+    var subtitle: String? = nil
 }
 
 extension UndoAction {

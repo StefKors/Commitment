@@ -13,9 +13,11 @@ struct UndoActionView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("Revert \(action.type.rawValue.capitalized)")
-                Text("\(action.createdAt.formatted(.relative(presentation: .named)))")
-                    .foregroundColor(.secondary)
+                Text("\(action.type.rawValue.capitalized)") + Text("\(action.createdAt.formatted(.relative(presentation: .named)))")
+                if let subtitle = action.subtitle {
+                    Text(subtitle)
+                        .foregroundColor(.secondary)
+                }
             }
             Spacer(minLength: 20)
             Button("Undo", action: {
