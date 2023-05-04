@@ -288,6 +288,18 @@ extension Shell {
         let output = try await self.runTask(.git, ["diff", "--numstat", file])
         return GitFileStats(output)
     }
+
+    func undoLastCommit() async throws {
+        try await self.runTask(.git, ["reset", "--soft", "HEAD~1"])
+    }
+
+    func applyLastStash() async throws {
+        try await self.applyStash(0)
+    }
+
+    func applyStash(_ number: Int) async throws {
+        try await self.runTask(.git, ["stash", "apply", number.description])
+    }
 }
 
 enum URLError: Error {

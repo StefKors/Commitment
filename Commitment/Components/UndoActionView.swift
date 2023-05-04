@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UndoActionView: View {
+    @EnvironmentObject private var repo: RepoState
     let action: UndoAction
     var body: some View {
         HStack {
@@ -18,7 +19,21 @@ struct UndoActionView: View {
             }
             Spacer(minLength: 20)
             Button("Undo", action: {
-                print("Todo: handle undo action")
+                Task {
+                    switch action.type {
+                    case .stash:
+                        try await repo.shell.applyLastStash()
+                        self.repo.undo.stack.removeLast()
+                    case .discardChanges:
+                        try await repo.shell.applyLastStash()
+                        self.repo.undo.stack.removeLast()
+                    case .commit:
+                        try await repo.shell.undoLastCommit()
+                        self.repo.undo.stack.removeLast()
+                    }
+
+                    try await self.repo.refreshDiffsAndStatus()
+                }
             })
             .buttonStyle(.undo)
         }

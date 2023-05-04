@@ -105,3 +105,8 @@ struct TextEditorView_Previews: PreviewProvider {
         TextEditorView(isDisabled: true)
     }
 }
+
+
+
+
+

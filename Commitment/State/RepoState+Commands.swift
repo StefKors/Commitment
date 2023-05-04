@@ -39,7 +39,7 @@ extension RepoState {
             _ = try? await shell.runTask(.git, commands)
 
             await MainActor.run {
-                let action = UndoAction(type: .stash, arguments: commands)
+                let action = UndoAction(type: .discardChanges, arguments: commands)
                 self.undo.stack.append(action)
             }
         }
@@ -60,7 +60,7 @@ extension RepoState {
             _ = try? await shell.runTask(.git, commands)
 
             await MainActor.run {
-                let action = UndoAction(type: .stash, arguments: commands)
+                let action = UndoAction(type: .discardChanges, arguments: commands)
                 self.undo.stack.append(action)
             }
         }
