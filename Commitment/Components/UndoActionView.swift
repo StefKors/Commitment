@@ -13,10 +13,13 @@ struct UndoActionView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("\(action.type.rawValue.capitalized)ed ") + Text("\(action.createdAt.formatted(.relative(presentation: .named, unitsStyle: .wide)))")
+                Group {
+                    Text("\(action.type.rawValue.capitalized)ed ") + Text("\(action.createdAt.formatted(.relative(presentation: .named, unitsStyle: .wide)))")
+                }
+                .foregroundColor(.secondary)
+
                 if let subtitle = action.subtitle {
                     Text(subtitle)
-                        .foregroundColor(.secondary)
                         .lineLimit(1)
                         .help(subtitle)
                 }
