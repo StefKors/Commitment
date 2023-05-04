@@ -175,14 +175,12 @@ struct ContentPlaceholderView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     if repo.commitsAhead.count > 0 {
                         HStack {
-                            Text("^[\(Int(repo.commitsAhead.count)) Commits](inflect: true) ahead of remote")
+                            Text("\(repo.commitsAhead.count) commits ahead of remote")
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .fixedSize(horizontal: true, vertical: false)
                             Spacer()
                         }
-                        Text("When you're ready, push your changes to the remote \(repo.branch) branch")
-                            .lineSpacing(4)
                     } else {
                         Text("No local changes")
                             .font(.largeTitle)
