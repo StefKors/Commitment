@@ -12,7 +12,7 @@ struct ActiveChangesStatsView: View {
     @State private var stats: GitCommitStats?
     var body: some View {
         VStack {
-            if let stats {
+            if let stats, stats.filesChanged > 0 {
                 HStack(spacing: 8) {
                     Text("^[\(Int(stats.filesChanged)) file](inflect: true) changed")
                         .foregroundColor(.secondary)
