@@ -25,7 +25,9 @@ struct ActiveChangesMainView: View {
             ZStack {
                 Rectangle().fill(.clear)
                 if let fileStatus {
-                    FileDiffChangesView(fileStatus: fileStatus, diff: diff)
+
+                    ContentPlaceholderView()
+                    // FileDiffChangesView(fileStatus: fileStatus, diff: diff)
                 } else if !isLoading && repo.commitsAhead.count > 0 {
                     PendingCommitSummaryView()
                 } else if !isLoading {

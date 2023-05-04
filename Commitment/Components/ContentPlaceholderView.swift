@@ -42,33 +42,38 @@ struct PushChangesRepoPlaceholder: View {
     
     var body: some View {
         GroupBox {
-            HStack {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Push commits to the origin remote")
-                        .fontWeight(.semibold)
-                    Text("You have \(repo.commitsAhead.count) local commit waiting to be pushed to \(selectedExternalGitProvider).")
-                        .foregroundStyle(.secondary)
-                    HStack {
-                        Text("Always available in the toolbar for local commits or")
-                        KeyboardKey(key: "⌘")
-                        KeyboardKey(key: "P")
-                    }.foregroundStyle(.secondary)
-                }
-                Spacer()
-                Button("Push commits", action: {
-                    Task {
-                        // TODO: a way to show progress in toolbar button
-                        // TODO: Convert to activity
-                        do {
-                            let remote = try await self.repo.shell.remote()
-                            let branch = try await self.repo.shell.branch()
-                            try? await self.repo.shell.runTask(.git, ["push", remote, branch], in: self.repo.shell.workspace)
-                            try? await self.repo.refreshRepoState()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
+            VStack {
+                HStack {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Push commits to the origin remote")
+                            .fontWeight(.semibold)
+                        Text("You have \(repo.commitsAhead.count) local commit waiting to be pushed to \(selectedExternalGitProvider).")
+                            .foregroundStyle(.secondary)
+                        HStack {
+                            Text("Always available in the toolbar for local commits or")
+                            KeyboardKey(key: "⌘")
+                            KeyboardKey(key: "P")
+                        }.foregroundStyle(.secondary)
                     }
-                })
+                    Spacer()
+                    Button("Push commits", action: {
+                        Task {
+                            // TODO: a way to show progress in toolbar button
+                            // TODO: Convert to activity
+                            do {
+                                let remote = try await self.repo.shell.remote()
+                                let branch = try await self.repo.shell.branch()
+                                try? await self.repo.shell.runTask(.git, ["push", remote, branch], in: self.repo.shell.workspace)
+                                try? await self.repo.refreshRepoState()
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                        }
+                    })
+                }
+                .padding(.bottom, 4)
+
+                PendingCommitSummaryView()
             }
             .scenePadding()
         }
@@ -168,12 +173,24 @@ struct ContentPlaceholderView: View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 20) {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("No local changes")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .fixedSize(horizontal: true, vertical: false)
-                    Text("There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:")
-                        .lineSpacing(4)
+                    if repo.commitsAhead.count > 0 {
+                        HStack {
+                            Text("^[\(Int(repo.commitsAhead.count)) Commits](inflect: true) ahead of remote")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                                .fixedSize(horizontal: true, vertical: false)
+                            Spacer()
+                        }
+                        Text("When you're ready, push your changes to the remote \(repo.branch) branch")
+                            .lineSpacing(4)
+                    } else {
+                        Text("No local changes")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .fixedSize(horizontal: true, vertical: false)
+                        Text("There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:")
+                            .lineSpacing(4)
+                    }
                 }
                 .frame(minWidth: 400, maxWidth: 600)
                 

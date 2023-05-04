@@ -11,41 +11,16 @@ struct PendingCommitSummaryView: View {
     @EnvironmentObject private var repo: RepoState
 
     var body: some View {
-        VStack {
-            HStack {
-                Text("Pending Commits")
-                    .labelStyle(.titleOnly)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-
-                Spacer()
-                Button("Push commits", action: {
-                    Task {
-                        // TODO: a way to show progress in toolbar button
-                        do {
-                            let remote = try await self.repo.shell.remote()
-                            let branch = try await self.repo.shell.branch()
-                            try? await self.repo.shell.runTask(.git, ["push", remote, branch], in: self.repo.shell.workspace)
-                            try? await self.repo.refreshRepoState()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                    }
-                })
-                .buttonStyle(.borderedProminent)
-            }
-            ScrollView(.vertical) {
-                VStack {
-                    ForEach(repo.commitsAhead) { commit in
-                        PendingCommitSummaryItemView(commit: commit)
-                            .id(commit.hash)
-                    }
-                }
+        ZStack {
+            let items = repo.commitsAhead.suffix(3)
+            ForEach(Array(zip(items.indices, items)), id: \.0) { index, commit in
+                PendingCommitSummaryItemView(commit: commit)
+                    .stacked(at: index, in: repo.commitsAhead.count)
+                    .id(commit.hash)
+                    .transition(.opacity.animation(.stiffBounce).combined(with: .scale.animation(.interpolatingSpring(stiffness: 1000, damping: 80))))
+                    .animation(.stiffBounce, value: items)
             }
         }
-        .frame(maxWidth: 400)
-        .padding()
-   
     }
 }
 // 

@@ -13,7 +13,7 @@ struct HotKeyAccentBorderGroupBoxStyle: GroupBoxStyle {
             .background(.background.opacity(0.8))
             // .background(.background)
             .clipShape(ContainerRelativeShape())
-            .clipShape(RoundedRectangle(cornerRadius: 6))
+            .clipShape(RoundedRectangle(cornerRadius: 4))
             .border(Color.accentColor, width: 1, cornerRadius: 6)
             .buttonStyle(.borderedProminent)
             .shadow(radius: 10)

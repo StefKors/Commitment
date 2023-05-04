@@ -38,6 +38,9 @@ struct PendingCommitSummaryItemView: View {
             }
             .padding(4)
         }
+        .background(.bar)
+        .clipShape(RoundedRectangle(cornerRadius: 2))
+        .shadow(color: .black.opacity(0.1), radius: 4,  y: 2)
         .task(id: commit.hash, priority: .medium) {
             do {
                 stats = try await repo.shell.stats(for: commit.hash)

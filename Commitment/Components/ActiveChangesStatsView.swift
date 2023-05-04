@@ -17,7 +17,7 @@ struct ActiveChangesStatsView: View {
                     // Image("file-diff")
                     //     .imageScale(.small)
                     //     .foregroundColor(.secondary)
-                    Text("\(stats.filesChanged) files changed")
+                    Text("^[\(Int(stats.filesChanged)) file](inflect: true) changed")
                         .foregroundColor(.secondary)
                     Text("+\(stats.insertions)")
                         .foregroundColor(Color("GitHubDiffGreenBright"))

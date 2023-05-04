@@ -1,0 +1,276 @@
+/* No comment provided by engineer. */
+"" = "";
+
+/* No comment provided by engineer. */
+" · " = " · ";
+
+/* No comment provided by engineer. */
+"-%lld" = "-%lld";
+
+/* No comment provided by engineer. */
+"(Default)" = "(Default)";
+
+/* No comment provided by engineer. */
+"(Disabled)" = "(Disabled)";
+
+/* No comment provided by engineer. */
+"%@" = "%@";
+
+/* No comment provided by engineer. */
+"%lld ---" = "%lld ---";
+
+/* No comment provided by engineer. */
+"%lld +++" = "%lld +++";
+
+/* No comment provided by engineer. */
+"%lld files changed" = "%lld files changed";
+
+/* No comment provided by engineer. */
+"^[%lld Commit](inflect: true, inflectionAlternative: Commits) ahead of remote" = "^[%lld Commit](inflect: true, inflectionAlternative: Commits) ahead of remote";
+
+/* No comment provided by engineer. */
+"+%lld" = "+%lld";
+
+/* No comment provided by engineer. */
+"999 ---" = "999 ---";
+
+/* No comment provided by engineer. */
+"999 +++" = "999 +++";
+
+/* No comment provided by engineer. */
+"Active Changes" = "Active Changes";
+
+/* No comment provided by engineer. */
+"Add folder" = "Add folder";
+
+/* No comment provided by engineer. */
+"Always available in the toolbar for local commits or" = "Always available in the toolbar for local commits or";
+
+/* No comment provided by engineer. */
+"Always available in the toolbar for local repositories or" = "Always available in the toolbar for local repositories or";
+
+/* No comment provided by engineer. */
+"Another action" = "Another action";
+
+/* No comment provided by engineer. */
+"Authenticate with remote git servers by importing your .git-config file." = "Authenticate with remote git servers by importing your .git-config file.";
+
+/* No comment provided by engineer. */
+"Branch Search" = "Branch Search";
+
+/* No comment provided by engineer. */
+"Checkout in progress" = "Checkout in progress";
+
+/* No comment provided by engineer. */
+"Click Here! (Default)" = "Click Here! (Default)";
+
+/* No comment provided by engineer. */
+"Click Here! (Disabled)" = "Click Here! (Disabled)";
+
+/* No comment provided by engineer. */
+"Click Here! (Hover)" = "Click Here! (Hover)";
+
+/* No comment provided by engineer. */
+"Commands.swift" = "Commands.swift";
+
+/* No comment provided by engineer. */
+"Commit" = "Commit";
+
+/* No comment provided by engineer. */
+"Commitbody" = "Commitbody";
+
+/* No comment provided by engineer. */
+"Commitment" = "Commitment";
+
+/* No comment provided by engineer. */
+"CommitTitle" = "CommitTitle";
+
+/* No comment provided by engineer. */
+"CommitWindow" = "CommitWindow";
+
+/* No comment provided by engineer. */
+"Content" = "Content";
+
+/* No comment provided by engineer. */
+"Could not read file at %@" = "Could not read file at %@";
+
+/* No comment provided by engineer. */
+"Credentials" = "Credentials";
+
+/* No comment provided by engineer. */
+"Current Branch" = "Current Branch";
+
+/* No comment provided by engineer. */
+"Current Repository" = "Current Repository";
+
+/* No comment provided by engineer. */
+"Delete" = "Delete";
+
+/* No comment provided by engineer. */
+"Discard All Changes" = "Discard All Changes";
+
+/* No comment provided by engineer. */
+"Discard Changes" = "Discard Changes";
+
+/* No comment provided by engineer. */
+"Discard Selected File Changes" = "Discard Selected File Changes";
+
+/* No comment provided by engineer. */
+"Editor Picker" = "Editor Picker";
+
+/* No comment provided by engineer. */
+"Example" = "Example";
+
+/* No comment provided by engineer. */
+"External Editor" = "External Editor";
+
+/* No comment provided by engineer. */
+"External Git Provider" = "External Git Provider";
+
+/* No comment provided by engineer. */
+"Fetch %@" = "Fetch %@";
+
+/* No comment provided by engineer. */
+"Filter" = "Filter";
+
+/* No comment provided by engineer. */
+"four" = "four";
+
+/* No comment provided by engineer. */
+"Git Provider" = "Git Provider";
+
+/* No comment provided by engineer. */
+"Global Commit Window" = "Global Commit Window";
+
+/* No comment provided by engineer. */
+"Go make something great!" = "Go make something great!";
+
+/* No comment provided by engineer. */
+"hasLoaded:%@" = "hasLoaded:%@";
+
+/* No comment provided by engineer. */
+"I'm a floating panel. Click anywhere to dismiss me." = "I'm a floating panel. Click anywhere to dismiss me.";
+
+/* No comment provided by engineer. */
+"Import" = "Import";
+
+/* No comment provided by engineer. */
+"is loading" = "is loading";
+
+/* No comment provided by engineer. */
+"label" = "label";
+
+/* No comment provided by engineer. */
+"Last fetched " = "Last fetched ";
+
+/* No comment provided by engineer. */
+"Meanwhile Commitment will keep an eye out for changes." = "Meanwhile Commitment will keep an eye out for changes.";
+
+/* No comment provided by engineer. */
+"No local changes" = "No local changes";
+
+/* No comment provided by engineer. */
+"one" = "one";
+
+/* No comment provided by engineer. */
+"Open Commit Window" = "Open Commit Window";
+
+/* No comment provided by engineer. */
+"Open in %@" = "Open in %@";
+
+/* No comment provided by engineer. */
+"Open repository in your external editor" = "Open repository in your external editor";
+
+/* No comment provided by engineer. */
+"Pending Commits" = "Pending Commits";
+
+/* No comment provided by engineer. */
+"Present panel" = "Present panel";
+
+/* No comment provided by engineer. */
+"Press %@" = "Press %@";
+
+/* No comment provided by engineer. */
+"Publish repository" = "Publish repository";
+
+/* No comment provided by engineer. */
+"Publish your repository to %@" = "Publish your repository to %@";
+
+/* No comment provided by engineer. */
+"Push %@" = "Push %@";
+
+/* No comment provided by engineer. */
+"Push commits" = "Push commits";
+
+/* No comment provided by engineer. */
+"Push commits to the origin remote" = "Push commits to the origin remote";
+
+/* No comment provided by engineer. */
+"Refresh in background" = "Refresh in background";
+
+/* No comment provided by engineer. */
+"Repo Search" = "Repo Search";
+
+/* No comment provided by engineer. */
+"Repository menu or" = "Repository menu or";
+
+/* No comment provided by engineer. */
+"Revert %@" = "Revert %@";
+
+/* No comment provided by engineer. */
+"Settings" = "Settings";
+
+/* No comment provided by engineer. */
+"Settings..." = "Settings...";
+
+/* No comment provided by engineer. */
+"Show in Finder" = "Show in Finder";
+
+/* No comment provided by engineer. */
+"ta daaa" = "ta daaa";
+
+/* No comment provided by engineer. */
+"test" = "test";
+
+/* No comment provided by engineer. */
+"test first with long title" = "test first with long title";
+
+/* No comment provided by engineer. */
+"test last" = "test last";
+
+/* No comment provided by engineer. */
+"There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:" = "There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:";
+
+/* No comment provided by engineer. */
+"This repository is currently only available on your local machine. By publishing it on %@ you can share it, and collaborate with others." = "This repository is currently only available on your local machine. By publishing it on %@ you can share it, and collaborate with others.";
+
+/* No comment provided by engineer. */
+"three" = "three";
+
+/* No comment provided by engineer. */
+"to" = "to";
+
+/* No comment provided by engineer. */
+"two" = "two";
+
+/* No comment provided by engineer. */
+"undo" = "undo";
+
+/* No comment provided by engineer. */
+"Undo" = "Undo";
+
+/* No comment provided by engineer. */
+"Update Main" = "Update Main";
+
+/* No comment provided by engineer. */
+"View files of your repository in Finder" = "View files of your repository in Finder";
+
+/* No comment provided by engineer. */
+"Welcome to " = "Welcome to ";
+
+/* No comment provided by engineer. */
+"When you're ready, push your changes to the remote %@ branch" = "When you're ready, push your changes to the remote %@ branch";
+
+/* No comment provided by engineer. */
+"You have %lld local commit waiting to be pushed to %@." = "You have %lld local commit waiting to be pushed to %@.";
+

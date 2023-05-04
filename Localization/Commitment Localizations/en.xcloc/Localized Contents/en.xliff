@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Commitment/en.lproj/InfoPlist.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>Commitment</source>
+        <target>Commitment</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>Commitment</source>
+        <target>Commitment</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSHumanReadableCopyright" xml:space="preserve">
+        <source/>
+        <target/>
+        <note>Copyright (human-readable)</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Commitment/en.lproj/Localizable.strings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="14.3" build-num="14E222b"/>
+    </header>
+    <body>
+      <trans-unit id=" · " xml:space="preserve">
+        <source> · </source>
+        <target> · </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%@" xml:space="preserve">
+        <source>%@</source>
+        <target>%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%lld +++" xml:space="preserve">
+        <source>%lld +++</source>
+        <target>%lld +++</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%lld ---" xml:space="preserve">
+        <source>%lld ---</source>
+        <target>%lld ---</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="%lld files changed" xml:space="preserve">
+        <source>%lld files changed</source>
+        <target>%lld files changed</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="(Default)" xml:space="preserve">
+        <source>(Default)</source>
+        <target>(Default)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="(Disabled)" xml:space="preserve">
+        <source>(Disabled)</source>
+        <target>(Disabled)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="+%lld" xml:space="preserve">
+        <source>+%lld</source>
+        <target>+%lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="-%lld" xml:space="preserve">
+        <source>-%lld</source>
+        <target>-%lld</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="999 +++" xml:space="preserve">
+        <source>999 +++</source>
+        <target>999 +++</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="999 ---" xml:space="preserve">
+        <source>999 ---</source>
+        <target>999 ---</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Active Changes" xml:space="preserve">
+        <source>Active Changes</source>
+        <target>Active Changes</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Add folder" xml:space="preserve">
+        <source>Add folder</source>
+        <target>Add folder</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Always available in the toolbar for local commits or" xml:space="preserve">
+        <source>Always available in the toolbar for local commits or</source>
+        <target>Always available in the toolbar for local commits or</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Always available in the toolbar for local repositories or" xml:space="preserve">
+        <source>Always available in the toolbar for local repositories or</source>
+        <target>Always available in the toolbar for local repositories or</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Another action" xml:space="preserve">
+        <source>Another action</source>
+        <target>Another action</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Authenticate with remote git servers by importing your .git-config file." xml:space="preserve">
+        <source>Authenticate with remote git servers by importing your .git-config file.</source>
+        <target>Authenticate with remote git servers by importing your .git-config file.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Branch Search" xml:space="preserve">
+        <source>Branch Search</source>
+        <target>Branch Search</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Checkout in progress" xml:space="preserve">
+        <source>Checkout in progress</source>
+        <target>Checkout in progress</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Click Here! (Default)" xml:space="preserve">
+        <source>Click Here! (Default)</source>
+        <target>Click Here! (Default)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Click Here! (Disabled)" xml:space="preserve">
+        <source>Click Here! (Disabled)</source>
+        <target>Click Here! (Disabled)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Click Here! (Hover)" xml:space="preserve">
+        <source>Click Here! (Hover)</source>
+        <target>Click Here! (Hover)</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Commands.swift" xml:space="preserve">
+        <source>Commands.swift</source>
+        <target>Commands.swift</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Commit" xml:space="preserve">
+        <source>Commit</source>
+        <target>Commit</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CommitTitle" xml:space="preserve">
+        <source>CommitTitle</source>
+        <target>CommitTitle</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="CommitWindow" xml:space="preserve">
+        <source>CommitWindow</source>
+        <target>CommitWindow</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Commitbody" xml:space="preserve">
+        <source>Commitbody</source>
+        <target>Commitbody</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Commitment" xml:space="preserve">
+        <source>Commitment</source>
+        <target>Commitment</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Content" xml:space="preserve">
+        <source>Content</source>
+        <target>Content</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Could not read file at %@" xml:space="preserve">
+        <source>Could not read file at %@</source>
+        <target>Could not read file at %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Credentials" xml:space="preserve">
+        <source>Credentials</source>
+        <target>Credentials</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Current Branch" xml:space="preserve">
+        <source>Current Branch</source>
+        <target>Current Branch</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Current Repository" xml:space="preserve">
+        <source>Current Repository</source>
+        <target>Current Repository</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Delete" xml:space="preserve">
+        <source>Delete</source>
+        <target>Delete</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Discard All Changes" xml:space="preserve">
+        <source>Discard All Changes</source>
+        <target>Discard All Changes</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Discard Changes" xml:space="preserve">
+        <source>Discard Changes</source>
+        <target>Discard Changes</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Discard Selected File Changes" xml:space="preserve">
+        <source>Discard Selected File Changes</source>
+        <target>Discard Selected File Changes</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Editor Picker" xml:space="preserve">
+        <source>Editor Picker</source>
+        <target>Editor Picker</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Example" xml:space="preserve">
+        <source>Example</source>
+        <target>Example</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="External Editor" xml:space="preserve">
+        <source>External Editor</source>
+        <target>External Editor</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="External Git Provider" xml:space="preserve">
+        <source>External Git Provider</source>
+        <target>External Git Provider</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Fetch %@" xml:space="preserve">
+        <source>Fetch %@</source>
+        <target>Fetch %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Filter" xml:space="preserve">
+        <source>Filter</source>
+        <target>Filter</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Git Provider" xml:space="preserve">
+        <source>Git Provider</source>
+        <target>Git Provider</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Global Commit Window" xml:space="preserve">
+        <source>Global Commit Window</source>
+        <target>Global Commit Window</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Go make something great!" xml:space="preserve">
+        <source>Go make something great!</source>
+        <target>Go make something great!</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="I'm a floating panel. Click anywhere to dismiss me." xml:space="preserve">
+        <source>I'm a floating panel. Click anywhere to dismiss me.</source>
+        <target>I'm a floating panel. Click anywhere to dismiss me.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Import" xml:space="preserve">
+        <source>Import</source>
+        <target>Import</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Last fetched " xml:space="preserve">
+        <source>Last fetched </source>
+        <target>Last fetched </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Meanwhile Commitment will keep an eye out for changes." xml:space="preserve">
+        <source>Meanwhile Commitment will keep an eye out for changes.</source>
+        <target>Meanwhile Commitment will keep an eye out for changes.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="No local changes" xml:space="preserve">
+        <source>No local changes</source>
+        <target>No local changes</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Open Commit Window" xml:space="preserve">
+        <source>Open Commit Window</source>
+        <target>Open Commit Window</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Open in %@" xml:space="preserve">
+        <source>Open in %@</source>
+        <target>Open in %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Open repository in your external editor" xml:space="preserve">
+        <source>Open repository in your external editor</source>
+        <target>Open repository in your external editor</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Pending Commits" xml:space="preserve">
+        <source>Pending Commits</source>
+        <target>Pending Commits</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Present panel" xml:space="preserve">
+        <source>Present panel</source>
+        <target>Present panel</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Press %@" xml:space="preserve">
+        <source>Press %@</source>
+        <target>Press %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Publish repository" xml:space="preserve">
+        <source>Publish repository</source>
+        <target>Publish repository</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Publish your repository to %@" xml:space="preserve">
+        <source>Publish your repository to %@</source>
+        <target>Publish your repository to %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Push %@" xml:space="preserve">
+        <source>Push %@</source>
+        <target>Push %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Push commits" xml:space="preserve">
+        <source>Push commits</source>
+        <target>Push commits</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Push commits to the origin remote" xml:space="preserve">
+        <source>Push commits to the origin remote</source>
+        <target>Push commits to the origin remote</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Refresh in background" xml:space="preserve">
+        <source>Refresh in background</source>
+        <target>Refresh in background</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Repo Search" xml:space="preserve">
+        <source>Repo Search</source>
+        <target>Repo Search</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Repository menu or" xml:space="preserve">
+        <source>Repository menu or</source>
+        <target>Repository menu or</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Revert %@" xml:space="preserve">
+        <source>Revert %@</source>
+        <target>Revert %@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Settings" xml:space="preserve">
+        <source>Settings</source>
+        <target>Settings</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Settings..." xml:space="preserve">
+        <source>Settings...</source>
+        <target>Settings...</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Show in Finder" xml:space="preserve">
+        <source>Show in Finder</source>
+        <target>Show in Finder</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:" xml:space="preserve">
+        <source>There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:</source>
+        <target>There are no uncommited changes in this repository. Here are some friendly suggestions for what to do next:</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="This repository is currently only available on your local machine. By publishing it on %@ you can share it, and collaborate with others." xml:space="preserve">
+        <source>This repository is currently only available on your local machine. By publishing it on %@ you can share it, and collaborate with others.</source>
+        <target>This repository is currently only available on your local machine. By publishing it on %@ you can share it, and collaborate with others.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Undo" xml:space="preserve">
+        <source>Undo</source>
+        <target>Undo</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Update Main" xml:space="preserve">
+        <source>Update Main</source>
+        <target>Update Main</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="View files of your repository in Finder" xml:space="preserve">
+        <source>View files of your repository in Finder</source>
+        <target>View files of your repository in Finder</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="Welcome to " xml:space="preserve">
+        <source>Welcome to </source>
+        <target>Welcome to </target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="When you're ready, push your changes to the remote %@ branch" xml:space="preserve">
+        <source>When you're ready, push your changes to the remote %@ branch</source>
+        <target>When you're ready, push your changes to the remote %@ branch</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="You have %lld local commit waiting to be pushed to %@." xml:space="preserve">
+        <source>You have %lld local commit waiting to be pushed to %@.</source>
+        <target>You have %lld local commit waiting to be pushed to %@.</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="^[%lld Commit](inflect: true, inflectionAlternative: Commits) ahead of remote" xml:space="preserve">
+        <source>^[%lld Commit](inflect: true, inflectionAlternative: Commits) ahead of remote</source>
+        <target>^[%lld Commit](inflect: true, inflectionAlternative: Commits) ahead of remote</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="four" xml:space="preserve">
+        <source>four</source>
+        <target>four</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="hasLoaded:%@" xml:space="preserve">
+        <source>hasLoaded:%@</source>
+        <target>hasLoaded:%@</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="is loading" xml:space="preserve">
+        <source>is loading</source>
+        <target>is loading</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="label" xml:space="preserve">
+        <source>label</source>
+        <target>label</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="one" xml:space="preserve">
+        <source>one</source>
+        <target>one</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="ta daaa" xml:space="preserve">
+        <source>ta daaa</source>
+        <target>ta daaa</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="test" xml:space="preserve">
+        <source>test</source>
+        <target>test</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="test first with long title" xml:space="preserve">
+        <source>test first with long title</source>
+        <target>test first with long title</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="test last" xml:space="preserve">
+        <source>test last</source>
+        <target>test last</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="three" xml:space="preserve">
+        <source>three</source>
+        <target>three</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="to" xml:space="preserve">
+        <source>to</source>
+        <target>to</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="two" xml:space="preserve">
+        <source>two</source>
+        <target>two</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+      <trans-unit id="undo" xml:space="preserve">
+        <source>undo</source>
+        <target>undo</target>
+        <note>No comment provided by engineer.</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
