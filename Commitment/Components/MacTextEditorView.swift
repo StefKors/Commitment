@@ -140,7 +140,7 @@ final class CustomTextView: NSView {
         layoutManager.addTextContainer(textContainer)
 
         let paragraphStyle = NSMutableParagraphStyle()
-        let lineSpacing: CGFloat = 8.5
+        let lineSpacing: CGFloat = 6.5
         paragraphStyle.lineSpacing = lineSpacing
 
         let textView = NSTextView(frame: .zero, textContainer: textContainer)

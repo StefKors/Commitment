@@ -66,9 +66,9 @@ struct QuickCommitPanelView: View {
         }, sidebar: {
             VStack {
                 Form {
-                    TextField("commitTitle", text: $commitTitle, prompt: Text("Change several files to be different than before"), axis: .vertical)
+                    TextField("commitTitle", text: $commitTitle, prompt: Text("Summary (required)"), axis: .vertical)
                         .textFieldStyle(.plain)
-                        .font(.system(size: 18).leading(.loose))
+                        .font(.system(size: 16).leading(.loose))
                         .focused($focusedField, equals: .commitTitle)
                         .labelsHidden()
                         .task {
@@ -144,11 +144,12 @@ struct QuickCommitPanelView: View {
             }
         }, footer: {
             HStack {
-                Text("8 files changed")
-                Text("+15")
-                    .foregroundColor(Color("GitHubDiffGreenBright"))
-                Text("-3")
-                    .foregroundColor(Color("GitHubDiffRedBright"))
+                ActiveChangesStatsView()
+                // Text("8 files changed")
+                // Text("+15")
+                //     .foregroundColor(Color("GitHubDiffGreenBright"))
+                // Text("-3")
+                //     .foregroundColor(Color("GitHubDiffRedBright"))
                 Spacer()
                 Button {
                     //

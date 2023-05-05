@@ -58,7 +58,7 @@ class FloatingPanel<Content: View>: NSPanel {
         /// The safe area is ignored because the title bar still interferes with the geometry
         contentView = NSHostingView(rootView:
                                         ZStack {
-            Rectangle().fill(.ultraThinMaterial)
+            Rectangle().fill(.thinMaterial)
             view()
         }
             .ignoresSafeArea()

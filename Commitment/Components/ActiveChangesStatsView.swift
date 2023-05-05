@@ -15,12 +15,30 @@ struct ActiveChangesStatsView: View {
             if let stats, stats.filesChanged > 0 {
                 HStack(spacing: 8) {
                     Text("^[\(Int(stats.filesChanged)) file](inflect: true) changed")
-                        .foregroundColor(.secondary)
-                    Text("+\(stats.insertions)")
-                        .foregroundColor(Color("GitHubDiffGreenBright"))
-                        .frame(maxHeight: 16)
-                    Text("-\(stats.deletions)")
-                        .foregroundColor(Color("GitHubDiffRedBright"))
+                        .foregroundStyle(.secondary)
+
+                    HStack(spacing: 2) {
+                        Text("+\(stats.insertions)")
+                            .foregroundStyle(Color("GitHubDiffGreenBright"))
+                        Text("-\(stats.deletions)")
+                            .foregroundStyle(Color("GitHubDiffRedBright"))
+                    }
+
+                    HStack(spacing: 2) {
+                        ForEach(Array(zip(stats.blocks.indices, stats.blocks)), id: \.0) { (index, block) in
+                            let size: CGFloat = 10
+                            switch block {
+                            case .addition:
+                                RoundedRectangle(cornerRadius: 2, style: .continuous)
+                                    .fill(Color("GitHubDiffGreenBright"))
+                                    .frame(width: size, height: size)
+                            case .deletion:
+                                RoundedRectangle(cornerRadius: 2, style: .continuous)
+                                    .fill(Color("GitHubDiffRedBright"))
+                                    .frame(width: size, height: size)
+                            }
+                        }
+                    }
                 }
             }
         }

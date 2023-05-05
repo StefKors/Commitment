@@ -326,7 +326,6 @@
 		8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */; };
 		8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB629FBD1EC00CBDA41 /* View.swift */; };
 		8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */; };
-		8AC7B8DF29B750D500AB2728 /* Menu in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC7B8DE29B750D500AB2728 /* Menu */; };
 		8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC7B8E129B751C700AB2728 /* WindowManagement */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
@@ -1172,7 +1171,6 @@
 				8A97DDA3299BC76A001E25E1 /* Splash in Frameworks */,
 				8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */,
 				8A76E76929802F700033B978 /* Boutique in Frameworks */,
-				8AC7B8DF29B750D500AB2728 /* Menu in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2396,7 +2394,6 @@
 				8A76E76829802F700033B978 /* Boutique */,
 				8A97DDA2299BC76A001E25E1 /* Splash */,
 				8A02C51A29AD3D67004DCA69 /* KeychainAccess */,
-				8AC7B8DE29B750D500AB2728 /* Menu */,
 				8AC7B8E129B751C700AB2728 /* WindowManagement */,
 				8A1F2DB129C7C15C00E3C3F6 /* Algorithms */,
 				8A68425B2A052B230063CBE6 /* KeyboardShortcuts */,
@@ -2478,7 +2475,6 @@
 				8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */,
 				8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */,
 				8A02C51929AD3D67004DCA69 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				8AC7B8DD29B750D500AB2728 /* XCRemoteSwiftPackageReference "Menu" */,
 				8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
 				8A1F2DB029C7C15C00E3C3F6 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				8A68425A2A052B230063CBE6 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
@@ -3372,14 +3368,6 @@
 				kind = branch;
 			};
 		};
-		8AC7B8DD29B750D500AB2728 /* XCRemoteSwiftPackageReference "Menu" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/funcompany/Menu.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Wouter01/SwiftUI-WindowManagement.git";
@@ -3423,11 +3411,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */;
 			productName = Splash;
-		};
-		8AC7B8DE29B750D500AB2728 /* Menu */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AC7B8DD29B750D500AB2728 /* XCRemoteSwiftPackageReference "Menu" */;
-			productName = Menu;
 		};
 		8AC7B8E129B751C700AB2728 /* WindowManagement */ = {
 			isa = XCSwiftPackageProductDependency;
