@@ -7,6 +7,7 @@
 
 import SwiftUI
 import KeychainAccess
+import KeyboardShortcuts
 
 struct RepoWindow: View {
     // The user activity type representing this view.
@@ -18,6 +19,7 @@ struct RepoWindow: View {
     // TODO: onboarding
     // @State private var showOnboarding: Bool = false
     // @KeychainStorage("passwords") private var passwords: Credentials? = nil
+    @State private var showPanel: Bool = false
     var body: some View {
         HStack {
             MainRepoContentView()
@@ -28,6 +30,14 @@ struct RepoWindow: View {
                     })
                 })
         }
+        .floatingPanel(isPresented: $showPanel) {
+            QuickCommitPanelView()
+                .environmentObject(repo)
+                .environmentObject(model)
+        }
+        .onKeyboardShortcut(.toggleUnicornMode, type: .keyDown, perform: {
+            self.showPanel.toggle()
+        })
         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
         // .navigationTitle(repo.folderName)
         // .navigationSubtitle(repo.branch)

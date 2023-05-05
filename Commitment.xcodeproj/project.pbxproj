@@ -264,6 +264,12 @@
 		8A68422F2A02F1840063CBE6 /* FileStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A68422E2A02F1840063CBE6 /* FileStatsView.swift */; };
 		8A6842312A02F4BF0063CBE6 /* ActiveChangesStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6842302A02F4BF0063CBE6 /* ActiveChangesStatsView.swift */; };
 		8A6842392A03E25D0063CBE6 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6842382A03E25D0063CBE6 /* Pasteboard.swift */; };
+		8A6842592A0529BA0063CBE6 /* QuickCommitPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6842582A0529BA0063CBE6 /* QuickCommitPanelView.swift */; };
+		8A68425C2A052B230063CBE6 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 8A68425B2A052B230063CBE6 /* KeyboardShortcuts */; };
+		8A68425E2A052B430063CBE6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A68425D2A052B430063CBE6 /* Constants.swift */; };
+		8A6842602A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A68425F2A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift */; };
+		8A6842622A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6842612A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift */; };
+		8A6842642A053D8B0063CBE6 /* MacTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6842632A053D8B0063CBE6 /* MacTextEditorView.swift */; };
 		8A6B649429730B070074B3C1 /* SplitModeToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */; };
 		8A6B649629730B380074B3C1 /* ContentPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */; };
 		8A6B649829730E560074B3C1 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649729730E560074B3C1 /* FileView.swift */; };
@@ -926,6 +932,11 @@
 		8A68422E2A02F1840063CBE6 /* FileStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStatsView.swift; sourceTree = "<group>"; };
 		8A6842302A02F4BF0063CBE6 /* ActiveChangesStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChangesStatsView.swift; sourceTree = "<group>"; };
 		8A6842382A03E25D0063CBE6 /* Pasteboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
+		8A6842582A0529BA0063CBE6 /* QuickCommitPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickCommitPanelView.swift; sourceTree = "<group>"; };
+		8A68425D2A052B430063CBE6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8A68425F2A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutsSettingsView.swift; sourceTree = "<group>"; };
+		8A6842612A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelExpandableLayout.swift; sourceTree = "<group>"; };
+		8A6842632A053D8B0063CBE6 /* MacTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTextEditorView.swift; sourceTree = "<group>"; };
 		8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitModeToggleView.swift; sourceTree = "<group>"; };
 		8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPlaceholderView.swift; sourceTree = "<group>"; };
 		8A6B649729730E560074B3C1 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
@@ -1155,6 +1166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A02C51B29AD3D67004DCA69 /* KeychainAccess in Frameworks */,
+				8A68425C2A052B230063CBE6 /* KeyboardShortcuts in Frameworks */,
 				8A1F2DB229C7C15C00E3C3F6 /* Algorithms in Frameworks */,
 				8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */,
 				8A97DDA3299BC76A001E25E1 /* Splash in Frameworks */,
@@ -1628,6 +1640,7 @@
 				8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */,
 				8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */,
 				8A02C51C29AD3DAB004DCA69 /* KeychainStorage.swift */,
+				8A68425D2A052B430063CBE6 /* Constants.swift */,
 				8A8C6658296464A700A774D7 /* Components */,
 				8AFBD54529702A2200525BF7 /* Extensions */,
 				8A07612429659EE400D878DC /* GitDiff */,
@@ -1695,6 +1708,8 @@
 				8A68422E2A02F1840063CBE6 /* FileStatsView.swift */,
 				8A6B649729730E560074B3C1 /* FileView.swift */,
 				8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */,
+				8A6842612A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift */,
+				8A6842632A053D8B0063CBE6 /* MacTextEditorView.swift */,
 				8A3421DB29CF08BE0001E58B /* GitFileStatusLabelView.swift */,
 				8AFBD55D29704F7000525BF7 /* GitFileStatusView.swift */,
 				8A327EFD298E9081008521B0 /* HeaderContentView.swift */,
@@ -2267,6 +2282,7 @@
 				8A3421DD29CF0D2B0001E58B /* SSHKeysSettingsView.swift */,
 				8AFBD51F296F2C1400525BF7 /* GeneralSettingsView.swift */,
 				8AD1088429EEB144000FFD70 /* BetaSettingsView.swift */,
+				8A68425F2A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift */,
 			);
 			path = SettingsViews;
 			sourceTree = "<group>";
@@ -2297,6 +2313,7 @@
 				8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */,
 				8A34219429C876B30001E58B /* WelcomeSheet.swift */,
 				8A3421E729D1B3CE0001E58B /* CommitHotKeyWindow.swift */,
+				8A6842582A0529BA0063CBE6 /* QuickCommitPanelView.swift */,
 				8A29E28029F815620049CBC8 /* OnboardingWindow.swift */,
 			);
 			path = Windows;
@@ -2382,6 +2399,7 @@
 				8AC7B8DE29B750D500AB2728 /* Menu */,
 				8AC7B8E129B751C700AB2728 /* WindowManagement */,
 				8A1F2DB129C7C15C00E3C3F6 /* Algorithms */,
+				8A68425B2A052B230063CBE6 /* KeyboardShortcuts */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -2463,6 +2481,7 @@
 				8AC7B8DD29B750D500AB2728 /* XCRemoteSwiftPackageReference "Menu" */,
 				8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
 				8A1F2DB029C7C15C00E3C3F6 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				8A68425A2A052B230063CBE6 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -2814,10 +2833,12 @@
 				8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */,
 				8ACCD2DE297F265C0020BF84 /* GitRepository+CherryPick.swift in Sources */,
 				8ACCD2BF297F265C0020BF84 /* StashDropTask.swift in Sources */,
+				8A6842592A0529BA0063CBE6 /* QuickCommitPanelView.swift in Sources */,
 				8A97DC91299BB148001E25E1 /* Int+IsOdd.swift in Sources */,
 				8A992DFF29A64867001E26A3 /* ToolbarMenuButtonStyle.swift in Sources */,
 				8ACCD2D6297F265C0020BF84 /* FileCoder.swift in Sources */,
 				8ACCD2D5297F265C0020BF84 /* FileStorage.swift in Sources */,
+				8A6842622A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift in Sources */,
 				8ACCD2CB297F265C0020BF84 /* TagTask.swift in Sources */,
 				8AFBD54E29703A9C00525BF7 /* DiffLineView.swift in Sources */,
 				8A992DF929A629F4001E26A3 /* CustomMenuView.swift in Sources */,
@@ -2895,6 +2916,7 @@
 				8ACCD2B4297F265B0020BF84 /* RemoteRenameTask.swift in Sources */,
 				8A97DDA5299BCA7A001E25E1 /* Theme+Light+Dark.swift in Sources */,
 				8AFBD53D296F2EB600525BF7 /* RepoWindow.swift in Sources */,
+				8A6842602A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift in Sources */,
 				8ACCD2BA297F265B0020BF84 /* AddTask.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,
 				8AAF7AF029A77E9F0007CE8D /* ActivityState.swift in Sources */,
@@ -2937,6 +2959,7 @@
 				8ACCD2A6297F265B0020BF84 /* ResetTask.swift in Sources */,
 				8ACCD292297F265B0020BF84 /* GitFormatEncoder.swift in Sources */,
 				8A34219529C876B30001E58B /* WelcomeSheet.swift in Sources */,
+				8A68425E2A052B430063CBE6 /* Constants.swift in Sources */,
 				8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */,
 				8ACCD2DB297F265C0020BF84 /* GitReference.swift in Sources */,
 				8A07612E29659EEE00D878DC /* GitDiffHunk.swift in Sources */,
@@ -2961,6 +2984,7 @@
 				8ACCD2A2297F265B0020BF84 /* ReferencesTask.swift in Sources */,
 				8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */,
 				8ACCD2AF297F265B0020BF84 /* GitPushOptions.swift in Sources */,
+				8A6842642A053D8B0063CBE6 /* MacTextEditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3324,6 +3348,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		8A68425A2A052B230063CBE6 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mergesort/Boutique.git";
@@ -3376,6 +3408,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A1F2DB029C7C15C00E3C3F6 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		8A68425B2A052B230063CBE6 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A68425A2A052B230063CBE6 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 		8A76E76829802F700033B978 /* Boutique */ = {
 			isa = XCSwiftPackageProductDependency;

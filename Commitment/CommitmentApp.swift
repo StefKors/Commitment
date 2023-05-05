@@ -9,6 +9,8 @@ import SwiftUI
 import Boutique
 import Foundation
 import WindowManagement
+import HotKey
+
 
 // https://github.com/Wouter01/SwiftUI-WindowManagement
 // NSWindow.alwaysUseActiveAppearance = true

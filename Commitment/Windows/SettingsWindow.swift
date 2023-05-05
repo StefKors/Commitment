@@ -12,6 +12,7 @@ struct SettingsWindow: View {
         case General
         case Credentials
         case SSH = "SSH Keys"
+        case KeyboardShortcuts = "Keyboard Shortcuts"
         case Beta = "Beta Features"
     }
 
@@ -25,6 +26,7 @@ struct SettingsWindow: View {
                 SettingsListItemView(tag: .General, image: "gear", fill: .gray)
                 SettingsListItemView(tag: .Credentials, image: "key.fill", fill: .gray.darker(by: 30))
                 SettingsListItemView(tag: .SSH, image: "lock.doc", fill: .orange)
+                SettingsListItemView(tag: .KeyboardShortcuts, image: "keyboard", fill: .green.darker())
                 SettingsListItemView(tag: .Beta, image: "testtube.2", fill: .blue)
             }
             .listStyle(.sidebar)
@@ -47,6 +49,8 @@ struct SettingsWindow: View {
                         GeneralSettingsView()
                     case .Credentials:
                         CredentialSettingsView()
+                    case .KeyboardShortcuts:
+                        KeyboardShortcutsSettingsView()
                     case .SSH:
                         SSHKeysSettingsView()
                     case .Beta:

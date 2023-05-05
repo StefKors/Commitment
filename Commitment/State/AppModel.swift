@@ -8,6 +8,7 @@
 import SwiftUI
 import Boutique
 import Foundation
+import KeyboardShortcuts
 
 class AppModel: ObservableObject {
     static let shared = AppModel()
@@ -32,6 +33,7 @@ class AppModel: ObservableObject {
     }
 
     let bookmarks: Bookmarks = .init()
+
     init() {
         bookmarks.loadBookmarks()
     }

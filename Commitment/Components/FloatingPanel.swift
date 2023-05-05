@@ -23,7 +23,7 @@ class FloatingPanel<Content: View>: NSPanel {
         self._isPresented = isPresented
 
         /// Init the window as usual
-        super.init(contentRect: contentRect,
+        super.init(contentRect: .zero,
                    styleMask: [.nonactivatingPanel, .titled, .resizable, .closable, .fullSizeContentView],
                    backing: backing,
                    defer: flag)
@@ -43,8 +43,8 @@ class FloatingPanel<Content: View>: NSPanel {
         /// Since there is no title bar make the window moveable by dragging on the background
         isMovableByWindowBackground = true
 
-        /// Hide when unfocused
-        hidesOnDeactivate = true
+        /// Keep showing when unfocused
+        hidesOnDeactivate = false
 
         /// Hide all traffic light buttons
         standardWindowButton(.closeButton)?.isHidden = true
