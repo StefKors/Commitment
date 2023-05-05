@@ -26,7 +26,7 @@ struct FileView<Content: View>: View {
             })
             .background(.separator)
 
-            VStack(alignment: .leading, spacing: 0) {
+            LazyVStack(alignment: .leading, spacing: 0) {
                 content()
             }
             .fontDesign(.monospaced)
