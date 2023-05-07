@@ -12,21 +12,21 @@ struct ProminentButtonStyle: ButtonStyle {
     @Environment(\.colorScheme) private var colorScheme
     @State var isHovering: Bool = false
 
-    static let light1 = Color.selectedContentBackgroundColor.lighter(by: 20)
-    static let light2 = Color.selectedContentBackgroundColor.darker(by: 20)
-    static let lightF1 = Color.selectedContentBackgroundColor.lighter(by: 5)
+    static let light1 = Color.selectedContentBackgroundColor.lighter(by: 15)
+    static let light2 = Color.selectedContentBackgroundColor.darker(by: 10)
+    static let lightF1 = Color.selectedContentBackgroundColor
     static let lightF2 = Color.selectedContentBackgroundColor.darker(by: 5)
     static let lightShadow = Color(red: 0, green: 0, blue: 0, opacity: 0.08)
 
-    static let dark1 = Color.selectedContentBackgroundColor.lighter(by: 20)
-    static let dark2 = Color.selectedContentBackgroundColor.darker(by: 20)
-    static let darkF1 = Color.selectedContentBackgroundColor.lighter(by: 5)
-    static let darkF2 = Color.selectedContentBackgroundColor
+    static let dark1 = Color.selectedContentBackgroundColor.lighter(by: 15)
+    static let dark2 = Color.selectedContentBackgroundColor.darker(by: 10)
+    static let darkF1 = Color.selectedContentBackgroundColor
+    static let darkF2 = Color.selectedContentBackgroundColor.darker(by: 5)
     static let darkShadow = Color(red: 0.0470743, green: 0.0470467, blue: 0.0549031)
 
     var hoverOutline: Color {
         if isHovering {
-            return .selectedContentBackgroundColor
+            return .selectedContentBackgroundColor.opacity(0.6)
         } else {
             return Color.clear
         }
@@ -35,35 +35,21 @@ struct ProminentButtonStyle: ButtonStyle {
     let cornerRadius = 5.0
 
     var color1: Color {
-        if colorScheme == .light {
-            return ProminentButtonStyle.light1
-        } else {
-            return ProminentButtonStyle.dark1
-        }
+        (Color.selectedContentBackgroundColor).lighter(by: 15)
     }
 
     var color2: Color {
-        if colorScheme == .light {
-            return ProminentButtonStyle.light2
-        } else {
-            return ProminentButtonStyle.dark2
-        }
+        (Color.selectedContentBackgroundColor).darker(by: 10)
     }
 
     var colorF1: Color {
-        if colorScheme == .light {
-            return ProminentButtonStyle.lightF1
-        } else {
-            return ProminentButtonStyle.darkF1
-        }
+        (
+            Color.selectedContentBackgroundColor
+        )
     }
 
     var colorF2: Color {
-        if colorScheme == .light {
-            return ProminentButtonStyle.lightF2
-        } else {
-            return ProminentButtonStyle.darkF2
-        }
+        (Color.selectedContentBackgroundColor).darker(by: 5)
     }
 
     var colorShadow: Color {
@@ -79,10 +65,10 @@ struct ProminentButtonStyle: ButtonStyle {
             configuration.label
                 .environment(\.colorScheme, .dark)
         }
-        .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+        .padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
         .background {
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(hoverOutline.opacity(0.6), lineWidth: 6))
+                .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(hoverOutline, lineWidth: 6))
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .fill(
                     LinearGradient(
@@ -119,9 +105,7 @@ struct ProminentButtonStyle: ButtonStyle {
         )
 
         .onHover(perform: { hoverState in
-            withAnimation(.easeIn(duration: 0.15)) {
-                isHovering = hoverState
-            }
+            isHovering = hoverState
         })
         .allowsHitTesting(isEnabled)
     }

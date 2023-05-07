@@ -183,7 +183,6 @@ struct FloatingPanelFooterView: View {
                         Image(systemName: "return")
                     }
                     .fontWeight(.semibold)
-                    .opacity(0.8)
                     .imageScale(.small)
                     .foregroundStyle(.secondary)
                 }

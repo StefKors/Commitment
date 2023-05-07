@@ -36,9 +36,6 @@ struct SSHKeyView: View {
                     Text(item.key)
                         .foregroundColor(.secondary)
                 }
-                // Text(String(repeating: "⏺", count: item.password.count))
-                //     .lineLimit(1)
-                //     .truncationMode(.middle)
             }
             Spacer()
             if showDelete {

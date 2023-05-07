@@ -78,7 +78,7 @@ struct RegularButtonStyle: ButtonStyle {
         HStack {
             configuration.label
         }
-        .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+        .padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
         .background {
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(hoverOutline, lineWidth: 3))
