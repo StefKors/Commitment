@@ -65,10 +65,18 @@ struct FloatingPanelSidebarView: View {
 
     @FocusState private var focusedField: Field?
 
+    private var placeholderTitle: String {
+        if let title = quickCommitTitle {
+            return title
+        }
+
+        return "Summary (Required)"
+    }
+
     var body: some View {
         VStack {
             Form {
-                TextField("commitTitle", text: $commitTitle, prompt: Text("Summary (required)"), axis: .vertical)
+                TextField("commitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
                     .textFieldStyle(.plain)
                     .onSubmit { handleSubmit() }
                     .font(.system(size: 16).leading(.loose))
@@ -81,7 +89,7 @@ struct FloatingPanelSidebarView: View {
                 MacEditorTextView(
                     text: $commitBody,
                     placeholder: "This commit updates several files in the codebase to include some code that they didn't have before, as well as removes some code they did have before.",
-                    isFirstResponder: true,
+                    isFirstResponder: false,
                     font: NSFont.systemFont(ofSize: 13)
                 )
                 .onSubmit { handleSubmit() }
@@ -203,14 +211,6 @@ struct QuickCommitPanelView: View {
         return nil
     }
 
-    private var placeholderTitle: String {
-        if let title = quickCommitTitle {
-            return title
-        }
-
-        return "Summary (Required)"
-    }
-
     var body: some View {
         FloatingPanelExpandableLayout(toolbar: {
             FloatingPanelToolbarView()
@@ -233,10 +233,10 @@ struct QuickCommitPanelView: View {
 
     func handleSubmit() {
         Task { @MainActor in
-            try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
-            commitTitle = ""
-            commitBody = ""
+            // try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
             showPanel = false
+            // commitTitle = ""
+            // commitBody = ""
         }
     }
 }
