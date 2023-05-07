@@ -57,6 +57,7 @@ struct FloatingPanelSidebarView: View {
     @Binding var commitTitle: String
     @Binding var commitBody: String
     var quickCommitTitle: String?
+    var handleSubmit: () -> Void
 
     enum Field: Hashable {
         case commitTitle
@@ -69,6 +70,7 @@ struct FloatingPanelSidebarView: View {
             Form {
                 TextField("commitTitle", text: $commitTitle, prompt: Text("Summary (required)"), axis: .vertical)
                     .textFieldStyle(.plain)
+                    .onSubmit { handleSubmit() }
                     .font(.system(size: 16).leading(.loose))
                     .focused($focusedField, equals: .commitTitle)
                     .labelsHidden()
@@ -82,6 +84,7 @@ struct FloatingPanelSidebarView: View {
                     isFirstResponder: true,
                     font: NSFont.systemFont(ofSize: 13)
                 )
+                .onSubmit { handleSubmit() }
             }
 
             Spacer()
@@ -156,18 +159,14 @@ struct FloatingPanelContentView: View {
 struct FloatingPanelFooterView: View {
     @EnvironmentObject private var repo: RepoState
 
-    @Binding var commitTitle: String
-    @Binding var commitBody: String
-    var quickCommitTitle: String?
+    var handleSubmit: () -> Void
 
     var body: some View {
         HStack {
             ActiveChangesStatsView(showBlocks: true)
             Spacer()
             Button {
-                Task {
-                    try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
-                }
+                handleSubmit()
             } label: {
                 HStack {
                     Text("Commit to \(repo.branch)")
@@ -182,6 +181,7 @@ struct FloatingPanelFooterView: View {
                 }
             }
             .buttonStyle(.borderedProminent)
+            .keyboardShortcut(.return, modifiers: .command)
         }
         .padding(16)
         .foregroundStyle(.secondary)
@@ -214,15 +214,28 @@ struct QuickCommitPanelView: View {
         FloatingPanelExpandableLayout(toolbar: {
             FloatingPanelToolbarView()
         }, sidebar: {
-            FloatingPanelSidebarView(commitTitle: $commitTitle, commitBody: $commitBody, quickCommitTitle: quickCommitTitle)
+            FloatingPanelSidebarView(
+                commitTitle: $commitTitle,
+                commitBody: $commitBody,
+                quickCommitTitle: quickCommitTitle,
+                handleSubmit: handleSubmit
+            )
         }, content: {
             FloatingPanelContentView()
         }, footer: {
-            FloatingPanelFooterView(commitTitle: $commitTitle, commitBody: $commitBody, quickCommitTitle: quickCommitTitle)
+            FloatingPanelFooterView(handleSubmit: handleSubmit)
         })
         .touchBar(content: {
             TouchbarContentView()
         })
+    }
+
+    func handleSubmit() {
+        Task { @MainActor in
+            try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
+            commitTitle = ""
+            commitBody = ""
+        }
     }
 }
 

@@ -75,6 +75,8 @@ struct TextEditorView: View {
     func handleSubmit() {
         Task { @MainActor in
             try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
+            commitTitle = ""
+            commitBody = ""
         }
     }
 }
