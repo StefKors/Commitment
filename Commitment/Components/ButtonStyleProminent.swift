@@ -105,7 +105,9 @@ struct ProminentButtonStyle: ButtonStyle {
         )
 
         .onHover(perform: { hoverState in
-            isHovering = hoverState
+            withAnimation(.easeIn(duration: 0.15)) {
+                isHovering = hoverState
+            }
         })
         .allowsHitTesting(isEnabled)
     }
