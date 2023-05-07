@@ -68,8 +68,6 @@ struct CommitmentApp: App {
         .titlebarAppearsTransparent(true)
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
         .windowStyle(.hiddenTitleBar)
-        // .windowStyle(.hiddenTitleBar)
-        // .windowToolbarStyle(.unifiedCompact(showsTitle: true))
         .windowResizability(.contentMinSize)
         .commands {
             SidebarCommands()

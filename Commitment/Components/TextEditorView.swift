@@ -35,21 +35,35 @@ struct TextEditorView: View {
     // @SceneStorage("commitBody") private var commitBody: String = ""
     @State private var commitBody: String = ""
     private let placeholderBody: String = "Body"
+
+    enum Field: Hashable {
+        case commitTitle
+    }
+
+    @FocusState private var focusedField: Field?
     
     var body: some View {
         Form {
-            TextField("CommitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
-                .lineLimit(1)
-                .multilineTextAlignment(.leading)
+            TextField("commitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
+                .textFieldStyle(.plain)
                 .onSubmit { handleSubmit() }
-                .textFieldStyle(.roundedBorder)
-            
-            TextField("Commitbody", text: $commitBody, prompt: Text(placeholderBody), axis: .vertical)
-                .textFieldStyle(.roundedBorder)
-                .lineLimit(3...20)
-                .multilineTextAlignment(.leading)
-                .onSubmit { handleSubmit() }
-            
+                .font(.system(size: 16).leading(.loose))
+                .focused($focusedField, equals: .commitTitle)
+                .labelsHidden()
+                .task {
+                    focusedField = .commitTitle
+                }
+                .foregroundStyle(.primary, .secondary)
+
+            MacEditorTextView(
+                text: $commitBody,
+                placeholder: "This commit updates several files in the codebase to include some code that they didn't have before, as well as removes some code they did have before.",
+                isFirstResponder: false,
+                font: NSFont.systemFont(ofSize: 13)
+            )
+            .frame(maxHeight: 65)
+            .onSubmit { handleSubmit() }
+
             Button(action: { handleSubmit() }) {
                 Text("Commit")
                 Text("to")
@@ -65,7 +79,7 @@ struct TextEditorView: View {
                 .imageScale(.small)
             }
             .buttonStyle(.prominentButtonStyle)
-            .disabled(isDisabled)
+            .disabled(isDisabled || (commitTitle + (quickCommitTitle ?? "")).isEmpty)
             .keyboardShortcut(.return, modifiers: .command)
         }
         .labelsHidden()

@@ -60,17 +60,11 @@ struct ActiveChangesSidebarView: View {
                             } label: {
                                 Text("Discard Changes")
                             }
-                            .keyboardShortcut(.delete)
                         }
                         .tag(fileStatus.id)
                 }
             }
             .listStyle(SidebarListStyle())
-            .onDeleteCommand {
-                Task {
-                    await repo.discardActiveChange()
-                }
-            }
 
             ActiveChangesStatsView()
             Divider()

@@ -25,7 +25,7 @@ struct ProminentButtonStyle: ButtonStyle {
     static let darkShadow = Color(red: 0.0470743, green: 0.0470467, blue: 0.0549031)
 
     var hoverOutline: Color {
-        if isHovering {
+        if isHovering, isEnabled {
             return .selectedContentBackgroundColor.opacity(0.6)
         } else {
             return Color.clear
@@ -103,6 +103,12 @@ struct ProminentButtonStyle: ButtonStyle {
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .shadow(color: colorShadow, radius: 2, x: 0, y: 1)
         )
+        .overlay(content: {
+            if !isEnabled {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous).fill(.background).opacity(0.5)
+            }
+        })
+        .brightness(isEnabled ? 0 : -0.1)
 
         .onHover(perform: { hoverState in
             withAnimation(.easeIn(duration: 0.15)) {
@@ -155,6 +161,11 @@ struct ButtonStyleProminent_Previews: PreviewProvider {
                 .padding()
                 .disabled(true)
                 .previewDisplayName("Disabled")
+
+            Button("Click Here! (Disabled)", action: {})
+                .padding()
+                .disabled(true)
+                .previewDisplayName("Disabled default")
         }
     }
 }

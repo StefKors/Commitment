@@ -191,7 +191,6 @@ struct FloatingPanelFooterView: View {
             .keyboardShortcut(.return, modifiers: .command)
         }
         .padding(16)
-        // .foregroundStyle(.secondary)
     }
 }
 
@@ -224,6 +223,7 @@ struct QuickCommitPanelView: View {
             FloatingPanelContentView()
         }, footer: {
             FloatingPanelFooterView(handleSubmit: handleSubmit)
+                .disabled((commitTitle + (quickCommitTitle ?? "")).isEmpty)
         })
         .touchBar(content: {
             TouchbarContentView()
