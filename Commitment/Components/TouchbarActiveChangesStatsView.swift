@@ -12,6 +12,10 @@ struct TouchbarActiveChangesStatsView: View {
     @EnvironmentObject private var repo: RepoState
     @State private var stats: GitCommitStats?
     var body: some View {
+        if let stats, stats.filesChanged > 0 {
+            Image(systemName: "chevron.compact.right")
+        }
+
         VStack {
             if let stats, stats.filesChanged > 0 {
                 HStack(spacing: 8) {

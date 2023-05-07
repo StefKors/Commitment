@@ -17,8 +17,9 @@ struct TouchbarContentView: View {
 
             if !self.repo.branch.isEmpty {
                 Label(self.repo.branch, image: "git-branch-16")
-                Image(systemName: "chevron.compact.right")
             }
+
+            
 
             TouchbarActiveChangesStatsView(showBlocks: true)
         }
