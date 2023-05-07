@@ -43,6 +43,7 @@ struct CommitmentApp: App {
                         .environmentObject(repo)
                         .environmentObject(repo.undo)
                         .focusedSceneValue(\.repo, $repo)
+                        .buttonStyle(.regularButtonStyle)
                 } else {
                     WelcomeSheet()
                 }
