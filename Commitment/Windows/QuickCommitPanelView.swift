@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PanelRepoSelectView: View {
     @EnvironmentObject private var repo: RepoState
-    
+
     var body: some View {
         HStack {
             Image("git-repo-16")
@@ -17,7 +17,7 @@ struct PanelRepoSelectView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 16, height: 16)
                 .foregroundStyle(.secondary)
-            
+
             Text(self.repo.folderName)
                 .foregroundStyle(.primary)
         }
@@ -26,7 +26,7 @@ struct PanelRepoSelectView: View {
 
 struct PanelBranchView: View {
     @EnvironmentObject private var repo: RepoState
-    
+
     var body: some View {
         HStack {
             Image("git-branch-16")
@@ -34,7 +34,7 @@ struct PanelBranchView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 16, height: 16)
                 .foregroundStyle(.secondary)
-            
+
             Text(repo.branch)
                 .foregroundStyle(.primary)
         }
@@ -56,13 +56,13 @@ struct FloatingPanelToolbarView: View {
 struct FloatingPanelSidebarView: View {
     @State private var commitTitle: String = ""
     @State private var commitBody: String = ""
-    
+
     enum Field: Hashable {
         case commitTitle
     }
-    
+
     @FocusState private var focusedField: Field?
-    
+
     var body: some View {
         VStack {
             Form {
@@ -74,7 +74,7 @@ struct FloatingPanelSidebarView: View {
                     .task {
                         focusedField = .commitTitle
                     }
-                
+
                 MacEditorTextView(
                     text: $commitBody,
                     placeholder: "This commit updates several files in the codebase to include some code that they didn't have before, as well as removes some code they did have before.",
@@ -82,7 +82,7 @@ struct FloatingPanelSidebarView: View {
                     font: NSFont.systemFont(ofSize: 13)
                 )
             }
-            
+
             Spacer()
         }
         .padding(16)
@@ -92,7 +92,7 @@ struct FloatingPanelSidebarView: View {
 struct FloatingPanelContentView: View {
     @EnvironmentObject private var repo: RepoState
     @EnvironmentObject private var model: AppModel
-    
+
     var body: some View {
         ScrollView(.vertical) {
             VStack {
@@ -108,7 +108,7 @@ struct FloatingPanelContentView: View {
                                 }
                             }
                             .keyboardShortcut("o")
-                            
+
                             Button("Open in \(model.editor.name)") {
                                 if let last = fileStatus.path.split(separator: " -> ").last {
                                     let fullPath = repo.path.appending(path: last)
@@ -116,9 +116,9 @@ struct FloatingPanelContentView: View {
                                 }
                             }
                             .keyboardShortcut("o", modifiers: [.command, .shift])
-                            
+
                             Divider()
-                            
+
                             Button("Copy File Path") {
                                 if let last = fileStatus.path.split(separator: " -> ").last {
                                     let fullPath = repo.path.appending(path: last)
@@ -126,16 +126,16 @@ struct FloatingPanelContentView: View {
                                 }
                             }
                             .keyboardShortcut("c")
-                            
+
                             Button("Copy Relative File Path") {
                                 if let last = fileStatus.path.split(separator: " -> ").last {
                                     copyToPasteboard(text: String(last))
                                 }
                             }
                             .keyboardShortcut("c", modifiers: [.command, .shift])
-                            
+
                             Divider()
-                            
+
                             Button {
                                 Task {
                                     await repo.discardActiveChange(path: fileStatus.path)
@@ -154,7 +154,7 @@ struct FloatingPanelContentView: View {
 
 struct FloatingPanelFooterView: View {
     @EnvironmentObject private var repo: RepoState
-    
+
     var body: some View {
         HStack {
             ActiveChangesStatsView(showBlocks: true)
