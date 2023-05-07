@@ -330,6 +330,8 @@
 		8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */; };
 		8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB629FBD1EC00CBDA41 /* View.swift */; };
 		8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */; };
+		8AC44EFF2A0806DC0016FFEC /* ButtonStyleProminent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC44EFE2A0806DC0016FFEC /* ButtonStyleProminent.swift */; };
+		8AC44F012A0806ED0016FFEC /* ButtonStyleRegular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC44F002A0806ED0016FFEC /* ButtonStyleRegular.swift */; };
 		8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC7B8E129B751C700AB2728 /* WindowManagement */; };
 		8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB49297586FC00365EB9 /* URL.swift */; };
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
@@ -1011,6 +1013,8 @@
 		8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		8ABB9FB629FBD1EC00CBDA41 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
+		8AC44EFE2A0806DC0016FFEC /* ButtonStyleProminent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleProminent.swift; sourceTree = "<group>"; };
+		8AC44F002A0806ED0016FFEC /* ButtonStyleRegular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleRegular.swift; sourceTree = "<group>"; };
 		8AC8EB49297586FC00365EB9 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
@@ -1753,6 +1757,8 @@
 				8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */,
 				8AD9B5E729E6DC1500631337 /* UndoActionView.swift */,
 				8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */,
+				8AC44EFE2A0806DC0016FFEC /* ButtonStyleProminent.swift */,
+				8AC44F002A0806ED0016FFEC /* ButtonStyleRegular.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2849,6 +2855,7 @@
 				8A992DFF29A64867001E26A3 /* ToolbarMenuButtonStyle.swift in Sources */,
 				8ACCD2D6297F265C0020BF84 /* FileCoder.swift in Sources */,
 				8ACCD2D5297F265C0020BF84 /* FileStorage.swift in Sources */,
+				8AC44EFF2A0806DC0016FFEC /* ButtonStyleProminent.swift in Sources */,
 				8A6842622A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift in Sources */,
 				8ACCD2CB297F265C0020BF84 /* TagTask.swift in Sources */,
 				8AFBD54E29703A9C00525BF7 /* DiffLineView.swift in Sources */,
@@ -2928,6 +2935,7 @@
 				8ACCD2B4297F265B0020BF84 /* RemoteRenameTask.swift in Sources */,
 				8A97DDA5299BCA7A001E25E1 /* Theme+Light+Dark.swift in Sources */,
 				8AFBD53D296F2EB600525BF7 /* RepoWindow.swift in Sources */,
+				8AC44F012A0806ED0016FFEC /* ButtonStyleRegular.swift in Sources */,
 				8A6842602A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift in Sources */,
 				8ACCD2BA297F265B0020BF84 /* AddTask.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,

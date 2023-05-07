@@ -64,7 +64,7 @@ struct TextEditorView: View {
                 .opacity(0.8)
                 .imageScale(.small)
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.prominentButtonStyle)
             .disabled(isDisabled)
             .keyboardShortcut(.return, modifiers: .command)
         }

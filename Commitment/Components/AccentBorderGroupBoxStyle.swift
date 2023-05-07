@@ -14,7 +14,7 @@ struct AccentBorderGroupBoxStyle: GroupBoxStyle {
             .background(.background)
             .clipShape(RoundedRectangle(cornerRadius: 4))
             .border(Color.accentColor, width: 1, cornerRadius: 6)
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.prominentButtonStyle)
     }
 }
 

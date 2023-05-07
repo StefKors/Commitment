@@ -11,13 +11,12 @@ struct MaterialAccentBorderGroupBoxStyle: GroupBoxStyle {
     var isActive: Bool
     func makeBody(configuration: Configuration) -> some View {
         let accent = isActive ? Color.accentColor : Color.clear
-        let accentDisabled: Double = isActive ? 0 : 1
         GroupBox(configuration)
             .background(.background.opacity(0.1))
             .background(.thinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 4))
             .border(accent, width: 1, cornerRadius: 4)
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.prominentButtonStyle)
             .foregroundColor(.primary)
             .animation(.easeIn(duration: 0.1), value: accent)
     }
