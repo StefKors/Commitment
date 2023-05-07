@@ -82,6 +82,9 @@ struct GitCommitStats: Codable {
 
 extension Int {
     func getScaledValue(sourceRangeMin: CGFloat, sourceRangeMax: CGFloat, targetRangeMin: CGFloat, targetRangeMax: CGFloat) -> CGFloat {
+        if self == .zero {
+            return CGFloat(0)
+        }
         var targetRange = targetRangeMax - targetRangeMin;
         var sourceRange = sourceRangeMax - sourceRangeMin;
         return (CGFloat(self) - sourceRangeMin) * targetRange / sourceRange + targetRangeMin;
