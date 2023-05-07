@@ -14,7 +14,7 @@ struct UndoActionView: View {
         HStack {
             VStack(alignment: .leading) {
                 Group {
-                    Text("\(action.type.rawValue.capitalized)ed ") + Text("\(action.createdAt.formatted(.relative(presentation: .named, unitsStyle: .wide)))")
+                    Text("\(action.type.rawValue.capitalized) ") + Text("\(action.createdAt.formatted(.relative(presentation: .named, unitsStyle: .wide)))")
                 }
                 .foregroundColor(.secondary)
 
