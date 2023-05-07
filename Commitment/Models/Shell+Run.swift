@@ -24,6 +24,7 @@ extension Shell {
         process.standardOutput = pipe
         process.standardError = pipe
 
+
         return try await withCheckedThrowingContinuation { continuation in
             process.terminationHandler = { process in
                 let data = pipe.fileHandleForReading.readDataToEndOfFile()
@@ -44,7 +45,11 @@ extension Shell {
                 }
             }
 
-            try? process.run()
+            do {
+                try process.run()
+            } catch {
+                continuation.resume(throwing: error)
+            }
         }
     }
 
@@ -71,7 +76,6 @@ extension Shell {
         if let appHome {
             envConfig["HOME"] = appHome.path(percentEncoded: false)
         }
-        print(envConfig.description)
         process = Process()
         let stdout = Pipe()
         // let stdin = Pipe()
@@ -89,13 +93,11 @@ extension Shell {
             try process.run()
 
             for try await line in stdout.fileHandleForReading.bytes.lines {
-                print("line stdout: \(line.description)")
                 // Update output
                 self.output = line
             }
 
             for try await line in stderr.fileHandleForReading.bytes.lines {
-                print("line stderr: \(line.description)")
                 // Update output
                 self.output = line
             }

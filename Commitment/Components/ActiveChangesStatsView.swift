@@ -15,7 +15,8 @@ struct ActiveChangesStatsView: View {
         VStack {
             if let stats, stats.filesChanged > 0 {
                 HStack(spacing: 8) {
-                    Text("^[\(Int(stats.filesChanged)) file](inflect: true) changed")
+                    // Text("^[\(Int(stats.filesChanged)) file](inflect: true) changed")
+                    Text("\(Int(stats.filesChanged)) files changed")
                         .foregroundStyle(.secondary)
 
                     HStack(spacing: 2) {

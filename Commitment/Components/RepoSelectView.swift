@@ -92,6 +92,13 @@ struct RepoSelectView: View {
                             }
                         })
                         .buttonStyle(.toolbarMenuButtonStyle)
+                        .contextMenu {
+                            Button("Remove Repo") {
+                                Task {
+                                    try await appModel.removeRepo(repo: repo)
+                                }
+                            }
+                        }
                     }
                 }
                 .truncationMode(.tail)

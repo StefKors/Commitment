@@ -48,6 +48,9 @@ class AppModel: ObservableObject {
     /// Removes one type from the `Store` in memory and on disk.
     func removeRepo(repo: RepoState) async throws {
         try await self.$repos.remove(repo)
+        if let id = await self.$repos.items.first?.id {
+            self.$activeRepositoryId.set(id)
+        }
     }
 
     /// Removes all of the types from the `Store` in memory and on disk.

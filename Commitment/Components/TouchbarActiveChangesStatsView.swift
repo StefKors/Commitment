@@ -15,7 +15,8 @@ struct TouchbarActiveChangesStatsView: View {
         VStack {
             if let stats, stats.filesChanged > 0 {
                 HStack(spacing: 8) {
-                    Label("^[\(Int(stats.filesChanged)) file](inflect: true) changed", image: "file-diff")
+                    // Label("^[\(Int(stats.filesChanged)) file](inflect: true) changed", image: "file-diff")
+                    Label("\(Int(stats.filesChanged)) files changed", image: "file-diff")
 
                     HStack(spacing: 2) {
                         Text("+\(stats.insertions)")

@@ -25,6 +25,7 @@
 		8A11B4652A0284BD00B2B3EA /* GitCommitStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11B4642A0284BD00B2B3EA /* GitCommitStats.swift */; };
 		8A11B4672A0285F600B2B3EA /* GitFileStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11B4662A0285F600B2B3EA /* GitFileStatsTests.swift */; };
 		8A11B4692A02860900B2B3EA /* GitCommitStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11B4682A02860900B2B3EA /* GitCommitStatsTests.swift */; };
+		8A164BD72A07DA0700053482 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 8A164BD62A07DA0700053482 /* HotKey */; };
 		8A1F2DAF29C7BC7200E3C3F6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A1F2DAE29C7BC7200E3C3F6 /* Credits.rtf */; };
 		8A1F2DB229C7C15C00E3C3F6 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8A1F2DB129C7C15C00E3C3F6 /* Algorithms */; };
 		8A29E28129F815620049CBC8 /* OnboardingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A29E28029F815620049CBC8 /* OnboardingWindow.swift */; };
@@ -1172,6 +1173,7 @@
 			files = (
 				8A02C51B29AD3D67004DCA69 /* KeychainAccess in Frameworks */,
 				8A68425C2A052B230063CBE6 /* KeyboardShortcuts in Frameworks */,
+				8A164BD72A07DA0700053482 /* HotKey in Frameworks */,
 				8A1F2DB229C7C15C00E3C3F6 /* Algorithms in Frameworks */,
 				8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */,
 				8A97DDA3299BC76A001E25E1 /* Splash in Frameworks */,
@@ -2406,6 +2408,7 @@
 				8AC7B8E129B751C700AB2728 /* WindowManagement */,
 				8A1F2DB129C7C15C00E3C3F6 /* Algorithms */,
 				8A68425B2A052B230063CBE6 /* KeyboardShortcuts */,
+				8A164BD62A07DA0700053482 /* HotKey */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -2487,6 +2490,7 @@
 				8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
 				8A1F2DB029C7C15C00E3C3F6 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				8A68425A2A052B230063CBE6 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				8A164BD52A07DA0700053482 /* XCRemoteSwiftPackageReference "HotKey" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -3348,6 +3352,14 @@
 				kind = branch;
 			};
 		};
+		8A164BD52A07DA0700053482 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/soffes/HotKey";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		8A1F2DB029C7C15C00E3C3F6 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-algorithms.git";
@@ -3403,6 +3415,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A02C51929AD3D67004DCA69 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		8A164BD62A07DA0700053482 /* HotKey */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A164BD52A07DA0700053482 /* XCRemoteSwiftPackageReference "HotKey" */;
+			productName = HotKey;
 		};
 		8A1F2DB129C7C15C00E3C3F6 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;

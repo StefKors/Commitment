@@ -74,6 +74,7 @@ struct CommitmentApp: App {
             SidebarCommands()
             AppCommands()
             OverrideCommands()
+            TextEditingCommands()
         }
 
         // WindowGroup("Commit", id: "CommitWindow", for: RepoState.ID.self) { $repoID in
