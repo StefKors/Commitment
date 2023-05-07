@@ -189,6 +189,7 @@ struct FloatingPanelFooterView: View {
 }
 
 struct QuickCommitPanelView: View {
+    @Binding var showPanel: Bool
     @EnvironmentObject private var repo: RepoState
     @State private var commitTitle: String = ""
     @State private var commitBody: String = ""
@@ -235,12 +236,13 @@ struct QuickCommitPanelView: View {
             try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
             commitTitle = ""
             commitBody = ""
+            showPanel = false
         }
     }
 }
 
 struct QuickCommitPanelView_Previews: PreviewProvider {
     static var previews: some View {
-        QuickCommitPanelView()
+        QuickCommitPanelView(showPanel: .constant(true))
     }
 }

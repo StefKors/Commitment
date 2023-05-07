@@ -29,7 +29,7 @@ struct RepoWindow: View {
             TouchbarContentView()
         })
         .floatingPanel(isPresented: $showPanel) {
-            QuickCommitPanelView()
+            QuickCommitPanelView(showPanel: $showPanel)
                 .environmentObject(repo)
                 .environmentObject(model)
         }
