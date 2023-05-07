@@ -298,6 +298,9 @@
 		8A8C66812964682B00A774D7 /* Inter-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C666E2964682B00A774D7 /* Inter-ExtraBoldItalic.otf */; };
 		8A8C66822964682B00A774D7 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C666F2964682B00A774D7 /* Inter-BoldItalic.otf */; };
 		8A8C66832964682B00A774D7 /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C66702964682B00A774D7 /* Inter-LightItalic.otf */; };
+		8A96B5FB2A07AEA100A52467 /* CommitStatsBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A96B5FA2A07AEA100A52467 /* CommitStatsBlocksView.swift */; };
+		8A96B5FD2A07AFD100A52467 /* TouchbarRepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A96B5FC2A07AFD100A52467 /* TouchbarRepoView.swift */; };
+		8A96B6072A07D5CA00A52467 /* TouchbarActiveChangesStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A96B6062A07D5CA00A52467 /* TouchbarActiveChangesStatsView.swift */; };
 		8A97DC73299BA4C4001E25E1 /* HighlightedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */; };
 		8A97DC8E299BB148001E25E1 /* CharacterSet+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC80299BB148001E25E1 /* CharacterSet+Contains.swift */; };
 		8A97DC8F299BB148001E25E1 /* Sequence+Occurrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97DC82299BB148001E25E1 /* Sequence+Occurrences.swift */; };
@@ -964,6 +967,9 @@
 		8A8C666F2964682B00A774D7 /* Inter-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.otf"; sourceTree = "<group>"; };
 		8A8C66702964682B00A774D7 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
 		8A8C6684296468CD00A774D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8A96B5FA2A07AEA100A52467 /* CommitStatsBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitStatsBlocksView.swift; sourceTree = "<group>"; };
+		8A96B5FC2A07AFD100A52467 /* TouchbarRepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchbarRepoView.swift; sourceTree = "<group>"; };
+		8A96B6062A07D5CA00A52467 /* TouchbarActiveChangesStatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchbarActiveChangesStatsView.swift; sourceTree = "<group>"; };
 		8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightedText.swift; sourceTree = "<group>"; };
 		8A97DC80299BB148001E25E1 /* CharacterSet+Contains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CharacterSet+Contains.swift"; sourceTree = "<group>"; };
 		8A97DC82299BB148001E25E1 /* Sequence+Occurrences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sequence+Occurrences.swift"; sourceTree = "<group>"; };
@@ -1686,6 +1692,8 @@
 				8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */,
 				8AFBD50D296F2A5E00525BF7 /* AccentGlow.swift */,
 				8A6842302A02F4BF0063CBE6 /* ActiveChangesStatsView.swift */,
+				8A96B6062A07D5CA00A52467 /* TouchbarActiveChangesStatsView.swift */,
+				8A96B5FA2A07AEA100A52467 /* CommitStatsBlocksView.swift */,
 				8A562CE229B33F79006C7E8A /* ActivityArrow.swift */,
 				8AFBD526296F2C1400525BF7 /* AddRepoView.swift */,
 				8AFBD50C296F2A5E00525BF7 /* AppIcon.swift */,
@@ -1737,6 +1745,7 @@
 				8A992DFE29A64867001E26A3 /* ToolbarMenuButtonStyle.swift */,
 				8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */,
 				8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */,
+				8A96B5FC2A07AFD100A52467 /* TouchbarRepoView.swift */,
 				8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */,
 				8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */,
 				8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */,
@@ -2761,6 +2770,7 @@
 				8AC8EB5029759AAD00365EB9 /* Border.swift in Sources */,
 				8ACCD29D297F265B0020BF84 /* ArgumentConvertible.swift in Sources */,
 				8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */,
+				8A96B5FB2A07AEA100A52467 /* CommitStatsBlocksView.swift in Sources */,
 				8ACCD2D4297F265C0020BF84 /* FileAnnotationRecord.swift in Sources */,
 				8ACCD29A297F265B0020BF84 /* InitTask.swift in Sources */,
 				8ACCD2E3297F265C0020BF84 /* GitRepository+Merge.swift in Sources */,
@@ -2773,6 +2783,7 @@
 				8ACCD2E4297F265C0020BF84 /* GitRepository+Tag.swift in Sources */,
 				8AFBD57D2971D14700525BF7 /* CheckoutProgressIconView.swift in Sources */,
 				8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */,
+				8A96B6072A07D5CA00A52467 /* TouchbarActiveChangesStatsView.swift in Sources */,
 				8ACCD2A9297F265B0020BF84 /* CherryTask.swift in Sources */,
 				8ACCD2D7297F265C0020BF84 /* GitFileStorage.swift in Sources */,
 				8A3421EE29D30FDD0001E58B /* HotKeyAccentBorderGroupBoxStyle.swift in Sources */,
@@ -2870,6 +2881,7 @@
 				8A07612D29659EEE00D878DC /* GitDiffHunkLine.swift in Sources */,
 				8ACCD2C8297F265C0020BF84 /* LogTask.swift in Sources */,
 				8ACCD2F3297F265C0020BF84 /* RepositoryTagRecord.swift in Sources */,
+				8A96B5FD2A07AFD100A52467 /* TouchbarRepoView.swift in Sources */,
 				8ACCD2CA297F265C0020BF84 /* ProcessSpawn.swift in Sources */,
 				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
 				8ACCD2AE297F265B0020BF84 /* PushTask.swift in Sources */,

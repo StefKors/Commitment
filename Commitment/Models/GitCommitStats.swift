@@ -81,6 +81,7 @@ struct GitCommitStats: Codable {
 }
 
 extension Int {
+    /// Scale number from a range to a range
     func getScaledValue(sourceRangeMin: CGFloat, sourceRangeMax: CGFloat, targetRangeMin: CGFloat, targetRangeMax: CGFloat) -> CGFloat {
         if self == .zero {
             return CGFloat(0)

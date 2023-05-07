@@ -24,12 +24,10 @@ struct RepoWindow: View {
         HStack {
             MainRepoContentView()
             // .navigationDocument(URL(fileURLWithPath: state.repo.path.absoluteString, isDirectory: true))
-                .toolbar(content: {
-                    ToolbarItemGroup(placement: .keyboard, content: {
-                        TouchbarContentView()
-                    })
-                })
         }
+        .touchBar(content: {
+            TouchbarContentView()
+        })
         .floatingPanel(isPresented: $showPanel) {
             QuickCommitPanelView()
                 .environmentObject(repo)
