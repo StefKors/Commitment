@@ -13,13 +13,13 @@ struct TextEditorView: View {
     // SceneStorage doesn't work well with textfield...
     // @SceneStorage("commitTitle") private var commitTitle: String = ""
     @State private var commitTitle: String = ""
-    
+
     private var quickCommitTitle: String? {
         if repo.status.count == 1, let first = repo.status.first, let str = first.path.split(separator: " -> ").last {
             let url = URL(filePath: String(str))
             return "Update \(url.lastPathComponent)"
         }
-        
+
         return nil
     }
     
@@ -74,27 +74,7 @@ struct TextEditorView: View {
     
     func handleSubmit() {
         Task { @MainActor in
-            var action: UndoAction?
-            if !commitTitle.isEmpty, !commitBody.isEmpty {
-                try? await repo.shell.commit(title: commitTitle, message: commitBody)
-                action = UndoAction(type: .commit, arguments: ["commit", "-m", commitTitle, "-m", commitBody], subtitle: commitTitle)
-                commitTitle = ""
-                commitBody = ""
-            } else if !commitTitle.isEmpty {
-                try? await repo.shell.commit(message: commitTitle)
-                action = UndoAction(type: .commit, arguments: ["commit", "-m", commitTitle], subtitle: commitTitle)
-                commitTitle = ""
-            } else if let title = quickCommitTitle {
-                try? await repo.shell.commit(message: title)
-                action = UndoAction(type: .commit, arguments: ["commit", "-m", title], subtitle: title)
-                commitTitle = ""
-            }
-            
-            if let action {
-                repo.undo.stack.append(action)
-            }
-            
-            try? await repo.refreshRepoState()
+            try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
         }
     }
 }

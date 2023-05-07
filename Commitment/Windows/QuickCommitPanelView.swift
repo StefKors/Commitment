@@ -54,8 +54,9 @@ struct FloatingPanelToolbarView: View {
 }
 
 struct FloatingPanelSidebarView: View {
-    @State private var commitTitle: String = ""
-    @State private var commitBody: String = ""
+    @Binding var commitTitle: String
+    @Binding var commitBody: String
+    var quickCommitTitle: String?
 
     enum Field: Hashable {
         case commitTitle
@@ -155,12 +156,18 @@ struct FloatingPanelContentView: View {
 struct FloatingPanelFooterView: View {
     @EnvironmentObject private var repo: RepoState
 
+    @Binding var commitTitle: String
+    @Binding var commitBody: String
+    var quickCommitTitle: String?
+
     var body: some View {
         HStack {
             ActiveChangesStatsView(showBlocks: true)
             Spacer()
             Button {
-                //
+                Task {
+                    try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
+                }
             } label: {
                 HStack {
                     Text("Commit to \(repo.branch)")
@@ -182,15 +189,36 @@ struct FloatingPanelFooterView: View {
 }
 
 struct QuickCommitPanelView: View {
+    @EnvironmentObject private var repo: RepoState
+    @State private var commitTitle: String = ""
+    @State private var commitBody: String = ""
+
+    private var quickCommitTitle: String? {
+        if repo.status.count == 1, let first = repo.status.first, let str = first.path.split(separator: " -> ").last {
+            let url = URL(filePath: String(str))
+            return "Update \(url.lastPathComponent)"
+        }
+
+        return nil
+    }
+
+    private var placeholderTitle: String {
+        if let title = quickCommitTitle {
+            return title
+        }
+
+        return "Summary (Required)"
+    }
+
     var body: some View {
         FloatingPanelExpandableLayout(toolbar: {
             FloatingPanelToolbarView()
         }, sidebar: {
-            FloatingPanelSidebarView()
+            FloatingPanelSidebarView(commitTitle: $commitTitle, commitBody: $commitBody, quickCommitTitle: quickCommitTitle)
         }, content: {
             FloatingPanelContentView()
         }, footer: {
-            FloatingPanelFooterView()
+            FloatingPanelFooterView(commitTitle: $commitTitle, commitBody: $commitBody, quickCommitTitle: quickCommitTitle)
         })
         .touchBar(content: {
             TouchbarContentView()

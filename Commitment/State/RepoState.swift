@@ -197,6 +197,26 @@ init RepoState: \(folderName) with:
         try String(contentsOf: url, encoding: .utf8)
     }
 
+    func commit(title: String, body: String, quickCommitTitle: String? = nil) async throws {
+        var action: UndoAction?
+        if !title.isEmpty, !body.isEmpty {
+            try await self.shell.commit(title: title, message: body)
+            action = UndoAction(type: .commit, arguments: ["commit", "-m", title, "-m", body], subtitle: title)
+        } else if !title.isEmpty {
+            try await self.shell.commit(message: title)
+            action = UndoAction(type: .commit, arguments: ["commit", "-m", title], subtitle: title)
+        } else if let title = quickCommitTitle {
+            try await self.shell.commit(message: title)
+            action = UndoAction(type: .commit, arguments: ["commit", "-m", title], subtitle: title)
+        }
+
+        if let action {
+            self.undo.stack.append(action)
+        }
+
+        try await self.refreshRepoState()
+    }
+
     static func == (lhs: RepoState, rhs: RepoState) -> Bool {
         lhs.path == rhs.path
     }
