@@ -209,6 +209,8 @@ struct QuickCommitPanelView: View {
         return nil
     }
 
+    @State private var isSubmitting: Bool = false
+
     var body: some View {
         FloatingPanelExpandableLayout(toolbar: {
             FloatingPanelToolbarView()
@@ -225,6 +227,8 @@ struct QuickCommitPanelView: View {
             FloatingPanelFooterView(handleSubmit: handleSubmit)
                 .disabled((commitTitle + (quickCommitTitle ?? "")).isEmpty)
         })
+        .offset(y: isSubmitting ? 50 : 0)
+        .animation(.stiffBounce, value: isSubmitting)
         .touchBar(content: {
             TouchbarContentView()
         })
@@ -232,10 +236,12 @@ struct QuickCommitPanelView: View {
 
     func handleSubmit() {
         Task { @MainActor in
+            isSubmitting = true
             try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
             showPanel = false
             commitTitle = ""
             commitBody = ""
+            isSubmitting = false
         }
     }
 }
