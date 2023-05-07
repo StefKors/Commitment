@@ -88,7 +88,7 @@ struct FloatingPanelSidebarView: View {
 
                 MacEditorTextView(
                     text: $commitBody,
-                    placeholder: "This commit updates several files in the codebase to include some code that they didn't have before, as well as removes some code they did have before.",
+                    placeholder: "Please enter the commit message body for your changes.",
                     isFirstResponder: false,
                     font: NSFont.systemFont(ofSize: 13)
                 )
