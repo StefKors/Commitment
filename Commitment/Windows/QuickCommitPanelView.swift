@@ -233,10 +233,10 @@ struct QuickCommitPanelView: View {
 
     func handleSubmit() {
         Task { @MainActor in
-            // try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
+            try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
             showPanel = false
-            // commitTitle = ""
-            // commitBody = ""
+            commitTitle = ""
+            commitBody = ""
         }
     }
 }
