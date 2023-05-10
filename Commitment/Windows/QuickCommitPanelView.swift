@@ -212,7 +212,7 @@ struct QuickCommitPanelView: View {
     @State private var isSubmitting: Bool = false
 
     var body: some View {
-        FloatingPanelExpandableLayout(toolbar: {
+        FloatingPanelExpandableLayout(isSubmitting: isSubmitting, toolbar: {
             FloatingPanelToolbarView()
         }, sidebar: {
             FloatingPanelSidebarView(
@@ -227,7 +227,6 @@ struct QuickCommitPanelView: View {
             FloatingPanelFooterView(handleSubmit: handleSubmit)
                 .disabled((commitTitle + (quickCommitTitle ?? "")).isEmpty)
         })
-        .offset(y: isSubmitting ? 50 : 0)
         .animation(.stiffBounce, value: isSubmitting)
         .touchBar(content: {
             TouchbarContentView()

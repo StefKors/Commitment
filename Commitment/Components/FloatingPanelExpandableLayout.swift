@@ -9,10 +9,12 @@ import SwiftUI
 
 /// This SwiftUI view provides basic modular capability to a `FloatingPanel`.
 public struct FloatingPanelExpandableLayout<Toolbar: View, Sidebar: View, Content: View, Footer: View>: View {
+    var isSubmitting: Bool = false
     @ViewBuilder let toolbar: () -> Toolbar
     @ViewBuilder let sidebar: () -> Sidebar
     @ViewBuilder let content: () -> Content
     @ViewBuilder let footer: () -> Footer
+
 
     /// The minimum width of the sidebar
     var sidebarWidth: CGFloat = 430.0
@@ -91,9 +93,24 @@ public struct FloatingPanelExpandableLayout<Toolbar: View, Sidebar: View, Conten
                     // .animation(.spring(), value: expanded(for: geo.size.width))
 
                     VStack(spacing: 0) {
+                        // ProgressView()
+                        //     .progressViewStyle(.linear)
                         Divider()
                         footer()
                     }
+                    .overlay(alignment: .top, content: {
+                        Group {
+                            if isSubmitting {
+                                ProgressView()
+                                    .progressViewStyle(.linear)
+                            } else {
+                                Divider()
+                            }
+                        }
+                            .alignmentGuide(VerticalAlignment.top) { dimentions in
+                                dimentions[VerticalAlignment.center]
+                            }
+                    })
                     .background(.regularMaterial)
                 }
             }
