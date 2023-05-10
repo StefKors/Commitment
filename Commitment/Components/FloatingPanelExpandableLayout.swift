@@ -37,8 +37,6 @@ public struct FloatingPanelExpandableLayout<Toolbar: View, Sidebar: View, Conten
     public var body: some View {
         GeometryReader { geo in
             ZStack {
-                // VisualEffectView(material: .sidebar)
-
                 VStack(spacing: 0) {
                     /// Display toolbar and toggle button
                     HStack {
@@ -79,22 +77,14 @@ public struct FloatingPanelExpandableLayout<Toolbar: View, Sidebar: View, Conten
                         /// Also attach a move from edge transition
                         if expanded(for: geo.size.width) {
                             VStack {
-                                // HStack(spacing: 0) {
-                                    content()
-                                    // .frame(width: geo.size.width-sidebarWidth)
-                                // }
+                                content()
                             }
-                            // .transition(.move(edge: .trailing))
-                            // .transition(.opacity)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
                     }
                     .navigationSplitViewStyle(.prominentDetail)
-                    // .animation(.spring(), value: expanded(for: geo.size.width))
 
                     VStack(spacing: 0) {
-                        // ProgressView()
-                        //     .progressViewStyle(.linear)
                         Divider()
                         footer()
                     }
