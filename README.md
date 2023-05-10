@@ -3,7 +3,7 @@
   <h1 align="center">Commitment</h1>
 </p>
 
-![Commitment](https://github.com/homescale-software/Commitment) is a native macOS Git interface. Written in SwiftUI and built to be a light and powerfull companion during your workday.
+[Commitment](https://github.com/StefKors/Commitment) is a native macOS Git interface. Written in SwiftUI and built to be a light and powerfull companion during your workday.
 
 #### Supported Platforms
 <p align="left">
@@ -47,4 +47,4 @@
 -------
 
 
-Built by ![Stef Kors](https://stefkors.com)
+Built by [Stef Kors](https://stefkors.com)
