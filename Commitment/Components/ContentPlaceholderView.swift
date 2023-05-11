@@ -72,7 +72,7 @@ struct PushChangesRepoPlaceholder: View {
                     })
                 }
                 .padding(.bottom, 4)
-                
+
                 PendingCommitSummaryView()
             }
             .scenePadding()
@@ -83,12 +83,12 @@ struct PushChangesRepoPlaceholder: View {
 
 struct QuickCommitFeaturePlaceholder: View {
     @EnvironmentObject private var repo: RepoState
-    
+
     var shortcut: [String] {
         let str = KeyboardShortcuts.Shortcut(name: .toggleUnicornMode)?.description ?? ""
         return str.map { String($0) }
     }
-    
+
     var body: some View {
         GroupBox {
             VStack {
@@ -104,7 +104,7 @@ struct QuickCommitFeaturePlaceholder: View {
                         }.foregroundStyle(.secondary)
                     }
                     Spacer()
-                    
+
                     Image(systemName: "keyboard")
                         .resizable()
                         .scaledToFit()
@@ -214,15 +214,14 @@ struct ContentPlaceholderView: View {
                 } else {
                     GoCodeRepoPlaceholder()
                 }
-                
+
                 OpenRepoInEditorPlaceholder()
-                
+
                 OpenRepoInFinderPlaceholder()
-                
+
                 QuickCommitFeaturePlaceholder()
             }
             .frame(minWidth: 400, maxWidth: 600, alignment: .topLeading)
-            .padding()
         }.scenePadding()
     }
 }
