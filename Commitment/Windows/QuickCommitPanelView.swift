@@ -85,6 +85,7 @@ struct FloatingPanelSidebarView: View {
                     .task {
                         focusedField = .commitTitle
                     }
+                    .lineLimit(1)
 
                 MacEditorTextView(
                     text: $commitBody,

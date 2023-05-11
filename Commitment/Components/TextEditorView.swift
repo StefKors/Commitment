@@ -54,6 +54,7 @@ struct TextEditorView: View {
                     focusedField = .commitTitle
                 }
                 .foregroundStyle(.primary, .secondary)
+                .lineLimit(1)
 
             MacEditorTextView(
                 text: $commitBody,
