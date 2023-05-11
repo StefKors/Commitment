@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KeyboardShortcuts
 
 struct PublishRepoPlaceholder: View {
     @EnvironmentObject private var repo: RepoState
@@ -80,6 +81,42 @@ struct PushChangesRepoPlaceholder: View {
     }
 }
 
+struct QuickCommitFeaturePlaceholder: View {
+    @EnvironmentObject private var repo: RepoState
+
+    var shortcut: [String] {
+        let str = KeyboardShortcuts.Shortcut(name: .toggleUnicornMode)?.description ?? ""
+        return str.map { String($0) }
+    }
+
+    var body: some View {
+        GroupBox {
+            VStack {
+                HStack {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Quick Commit Window")
+                            .fontWeight(.semibold)
+                        HStack {
+                            Text("Open the global quick commit window with")
+                            ForEach(shortcut, id: \.self) { key in
+                                KeyboardKey(key: key)
+                            }
+                        }.foregroundStyle(.secondary)
+                    }
+                    Spacer()
+
+                    Image(systemName: "keyboard")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+                }
+                .padding(.bottom, 4)
+            }
+            .scenePadding()
+        }
+    }
+}
+
 struct GoCodeRepoPlaceholder: View {
     @EnvironmentObject private var repo: RepoState
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
@@ -97,6 +134,7 @@ struct GoCodeRepoPlaceholder: View {
                 
                 Image(systemName: "wand.and.stars.inverse")
                     .resizable()
+                    .scaledToFit()
                     .frame(width: 25, height: 25)
                     .foregroundColor(.accentColor)
             }
@@ -201,6 +239,8 @@ struct ContentPlaceholderView: View {
                     OpenRepoInEditorPlaceholder()
                     
                     OpenRepoInFinderPlaceholder()
+
+                    QuickCommitFeaturePlaceholder()
                 }
                 .frame(minWidth: 400, maxWidth: 600, alignment: .topLeading)
             }
