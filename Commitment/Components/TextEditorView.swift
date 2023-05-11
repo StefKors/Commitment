@@ -53,7 +53,6 @@ struct TextEditorView: View {
                 .task {
                     focusedField = .commitTitle
                 }
-                .foregroundStyle(.primary, .secondary)
                 .lineLimit(1)
 
             MacEditorTextView(
@@ -65,19 +64,20 @@ struct TextEditorView: View {
             .frame(maxHeight: 65)
             .onSubmit { handleSubmit() }
 
-            Button(action: { handleSubmit() }) {
-                Text("Commit")
-                Text("to")
-                Text(repo.branch)
-                    .fontWeight(.bold)
-                Spacer()
-                HStack(spacing: 0) {
-                    Image(systemName: "command")
-                    Image(systemName: "return")
+            Button {
+                handleSubmit()
+            } label: {
+                HStack {
+                    Text("Commit to \(repo.branch)")
+                    Spacer()
+                    HStack(spacing: 0) {
+                        Image(systemName: "command")
+                        Image(systemName: "return")
+                    }
+                    .fontWeight(.semibold)
+                    .imageScale(.small)
+                    .foregroundStyle(.secondary)
                 }
-                .fontWeight(.semibold)
-                .opacity(0.8)
-                .imageScale(.small)
             }
             .buttonStyle(.prominentButtonStyle)
             .disabled(isDisabled || (commitTitle + (quickCommitTitle ?? "")).isEmpty)
