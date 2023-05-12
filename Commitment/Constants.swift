@@ -9,5 +9,5 @@ import Foundation
 import KeyboardShortcuts
 
 extension KeyboardShortcuts.Name {
-    static let toggleUnicornMode = Self("toggleUnicornMode", default: Shortcut(.r, modifiers: [.command, .shift]))
+    static let globalCommitPanel = Self("globalCommitPanel", default: Shortcut(.r, modifiers: [.command, .shift]))
 }

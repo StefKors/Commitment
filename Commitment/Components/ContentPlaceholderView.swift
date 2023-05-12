@@ -85,7 +85,7 @@ struct QuickCommitFeaturePlaceholder: View {
     @EnvironmentObject private var repo: RepoState
 
     var shortcut: [String] {
-        let str = KeyboardShortcuts.Shortcut(name: .toggleUnicornMode)?.description ?? ""
+        let str = KeyboardShortcuts.Shortcut(name: .globalCommitPanel)?.description ?? ""
         return str.map { String($0) }
     }
 
@@ -200,7 +200,6 @@ struct OpenRepoInFinderPlaceholder: View {
     }
 }
 
-
 struct ContentPlaceholderView: View {
     @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var repo: RepoState
@@ -209,6 +208,8 @@ struct ContentPlaceholderView: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 10) {
+                CommitContributionChartView()
+
                 if repo.commitsAhead.count > 0 {
                     PushChangesRepoPlaceholder()
                 } else {
@@ -221,7 +222,7 @@ struct ContentPlaceholderView: View {
 
                 QuickCommitFeaturePlaceholder()
             }
-            .frame(minWidth: 400, maxWidth: 600, alignment: .topLeading)
+            .frame(minWidth: 400, maxWidth: 900, alignment: .topLeading)
         }.scenePadding()
     }
 }

@@ -33,7 +33,7 @@ struct RepoWindow: View {
                 .environmentObject(repo)
                 .environmentObject(model)
         }
-        .onKeyboardShortcut(.toggleUnicornMode, type: .keyDown, perform: {
+        .onKeyboardShortcut(.globalCommitPanel, type: .keyDown, perform: {
             self.showPanel.toggle()
         })
         .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)

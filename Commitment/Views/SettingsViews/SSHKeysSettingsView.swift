@@ -68,29 +68,25 @@ struct SSHKeysSettingsView: View {
     @KeychainStorage("sshkeys") private var keys: SSHKeys? = nil
     
     var body: some View {
-        VStack {
-            SettingsBox(
-                label: "SSH Keys",
-                sublabel: "Import your `ssh` keys to authenticate with external Git Services. Click import to get started."
-            ) {
-                if let keys {
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(keys.values) { key in
-                            SSHKeyView(item: key, passwords: $keys)
-                            Divider()
-                        }
+        SettingsBox(label: "SSH Keys") {
+            Text(try! AttributedString(markdown: "Import your `ssh` keys to authenticate with external Git Services. Click import to get started."))
+            if let keys {
+                VStack(alignment: .leading, spacing: 10) {
+                    ForEach(keys.values) { key in
+                        SSHKeyView(item: key, passwords: $keys)
+                        Divider()
                     }
-                    .frame(alignment: .leading)
                 }
-                HStack {
-                    Spacer()
-                    Button("Import", action: handleImportAction)
-                }
-                .frame(alignment: .trailing)
+                .frame(alignment: .leading)
             }
+            HStack {
+                Spacer()
+                Button("Import", action: handleImportAction)
+            }
+            .frame(alignment: .trailing)
         }
     }
-
+    
     /// Use NSOpenPanel to open the users git config and update the stored credentials.
     func handleImportAction() {
         if let path = model.bookmarks.openSSHKey() {

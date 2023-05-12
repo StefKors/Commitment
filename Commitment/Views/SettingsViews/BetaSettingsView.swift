@@ -14,19 +14,11 @@ struct BetaSettingsView: View {
 
     var body: some View {
         SettingsBox(
-            label: "Feature Flags",
-            sublabel: "Below is a list of feature flags that enable / disable features that are still experimental. Use at your own risk."
+            label: "Feature Flags"
         ) {
-            VStack {
-                HStack {
-                    Text("Global Commit Window")
-                    Spacer()
-
-                    Toggle("CommitWindow", isOn: $commitWindow)
-                        .toggleStyle(.switch)
-                        .labelsHidden()
-                }
-            }.padding(6)
+            Text("Below is a list of feature flags that enable / disable features that are still experimental. Use at your own risk.")
+            Toggle("Global Commit Window", isOn: $commitWindow)
+                .toggleStyle(.switch)
         }
     }
 }

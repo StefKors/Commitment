@@ -231,6 +231,7 @@
 		8A3421DE29CF0D2B0001E58B /* SSHKeysSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421DD29CF0D2B0001E58B /* SSHKeysSettingsView.swift */; };
 		8A3421E629D19A9E0001E58B /* CommitmentAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */; };
 		8A3421F029D323C10001E58B /* ToolbarOpenCommitWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */; };
+		8A3462722A0D0B770051F195 /* CommitContributionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3462712A0D0B770051F195 /* CommitContributionChartView.swift */; };
 		8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */; };
 		8A486DC029AFB83200FB00F7 /* SettingsBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */; };
 		8A486DC229AFBCB700FB00F7 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DC129AFBCB700FB00F7 /* Animation.swift */; };
@@ -895,6 +896,7 @@
 		8A3421DD29CF0D2B0001E58B /* SSHKeysSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHKeysSettingsView.swift; sourceTree = "<group>"; };
 		8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentAppDelegate.swift; sourceTree = "<group>"; };
 		8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarOpenCommitWindowView.swift; sourceTree = "<group>"; };
+		8A3462712A0D0B770051F195 /* CommitContributionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitContributionChartView.swift; sourceTree = "<group>"; };
 		8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListItemView.swift; sourceTree = "<group>"; };
 		8A486DBF29AFB83200FB00F7 /* SettingsBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBox.swift; sourceTree = "<group>"; };
 		8A486DC129AFBCB700FB00F7 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -1701,6 +1703,7 @@
 				8A48D14C27FDB6DF007803D2 /* BranchView.swift */,
 				8AFBD57C2971D14700525BF7 /* CheckoutProgressIconView.swift */,
 				8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */,
+				8A3462712A0D0B770051F195 /* CommitContributionChartView.swift */,
 				8A992DF829A629F4001E26A3 /* CustomMenuView.swift */,
 				8AFBD54F29703AB600525BF7 /* DiffHunkView.swift */,
 				8AFBD54D29703A9C00525BF7 /* DiffLineView.swift */,
@@ -2931,6 +2934,7 @@
 				8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */,
 				8ACCD2CC297F265C0020BF84 /* GitTagListOptions.swift in Sources */,
 				8A0761302965A15200D878DC /* DiffRenderView.swift in Sources */,
+				8A3462722A0D0B770051F195 /* CommitContributionChartView.swift in Sources */,
 				8A02C51D29AD3DAB004DCA69 /* KeychainStorage.swift in Sources */,
 				8A97DC95299BB148001E25E1 /* String+Removing.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,

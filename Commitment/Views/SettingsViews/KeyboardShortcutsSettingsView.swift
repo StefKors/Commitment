@@ -10,10 +10,11 @@ import KeyboardShortcuts
 
 struct KeyboardShortcutsSettingsView: View {
     var body: some View {
-        Form {
-            KeyboardShortcuts.Recorder("Toggle Unicorn Mode:", name: .toggleUnicornMode)
+        SettingsBox(
+            label: "Keyboard Shortcuts"
+        ) {
+            KeyboardShortcuts.Recorder("Toggle Global Commit Window:", name: .globalCommitPanel)
         }
-        .formStyle(.grouped)
     }
 }
 

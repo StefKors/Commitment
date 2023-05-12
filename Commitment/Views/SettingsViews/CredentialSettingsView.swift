@@ -77,9 +77,9 @@ struct CredentialSettingsView: View {
     
     var body: some View {
         SettingsBox(
-            label: "Git-Credentials File",
-            sublabel: "Your git credentials can be parsed and imported from an `.git-credentials` file. Click import to get started."
+            label: "Git-Credentials File"
         ) {
+            Text(try! AttributedString(markdown: "Your git credentials can be parsed and imported from an `.git-credentials` file. Click import to get started."))
             if let passwords {
                 VStack(alignment: .leading, spacing: 10) {
                     ForEach(passwords.values) { credential in

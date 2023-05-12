@@ -42,24 +42,22 @@ struct SettingsWindow: View {
 
 
         } detail: {
-            ScrollView(.vertical) {
-                VStack(alignment: .leading, spacing: 12) {
-                    switch selectedMenu {
-                    case .General:
-                        GeneralSettingsView()
-                    case .Credentials:
-                        CredentialSettingsView()
-                    case .KeyboardShortcuts:
-                        KeyboardShortcutsSettingsView()
-                    case .SSH:
-                        SSHKeysSettingsView()
-                    case .Beta:
-                        BetaSettingsView()
-                    }
+            Form {
+                switch selectedMenu {
+                case .General:
+                    GeneralSettingsView()
+                case .Credentials:
+                    CredentialSettingsView()
+                case .KeyboardShortcuts:
+                    KeyboardShortcutsSettingsView()
+                case .SSH:
+                    SSHKeysSettingsView()
+                case .Beta:
+                    BetaSettingsView()
                 }
-                .animation(.easeInOut(duration: 0.2), value: selectedMenu)
-                .padding()
             }
+            .formStyle(.grouped)
+            .animation(.easeInOut(duration: 0.2), value: selectedMenu)
             .navigationTitle(selectedMenu.rawValue)
             .hideSidebarToggle()
         }

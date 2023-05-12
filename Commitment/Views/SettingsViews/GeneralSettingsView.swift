@@ -8,9 +8,15 @@
 import SwiftUI
 import Boutique
 
+enum DiffViewMode: String, CaseIterable {
+    case split
+    case sideBySide
+}
+
 struct GeneralSettingsView: View {
     @EnvironmentObject var appModel: AppModel
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
+    @AppStorage("DiffSettings.ViewMode") private var diffViewMode: String = "split"
 
     private var externalEditorPickerItems: [ExternalEditor] {
         ExternalEditors().editors.filter { editor in
@@ -30,38 +36,29 @@ struct GeneralSettingsView: View {
 
     var body: some View {
         SettingsBox(
-            label: "Editor Defaults",
-            sublabel: "Choose your default code editor"
+            label: "Editor Defaults"
         ) {
-            VStack {
-                HStack {
-                    Text("External Editor")
-                    Spacer()
-                    
-                    Picker("Editor Picker", selection: appModel.$editor.binding) {
-                        ForEach(externalEditorPickerItems, id: \.name) { item in
-                            Text(item.name).tag(item)
-                        }
-                    }
-                    .labelsHidden()
-                    .frame(maxWidth: 150)
+            Picker("External Editor", selection: appModel.$editor.binding) {
+                ForEach(externalEditorPickerItems, id: \.name) { item in
+                    Text(item.name).tag(item)
                 }
+            }
 
-                Divider()
-
-                HStack {
-                    Text("External Git Provider")
-                    Spacer()
-                    Picker("Git Provider", selection: $selectedExternalGitProvider) {
-                        ForEach(externalGitProviderPickerItems, id: \.self) { item in
-                            Text(item).tag(item as String?)
-                        }
-                    }
-                    .labelsHidden()
-                    .pickerStyle(.menu)
-                    .frame(maxWidth: 80)
+            Picker("External Git Provider", selection: $selectedExternalGitProvider) {
+                ForEach(externalGitProviderPickerItems, id: \.self) { item in
+                    Text(item).tag(item as String?)
                 }
-            }.padding(6)
+            }
+        }
+
+        SettingsBox(
+            label: "Diff Settings"
+        ) {
+            Picker("View Mode", selection: $diffViewMode) {
+                ForEach(DiffViewMode.allCases, id: \.self) { item in
+                    Text(item.rawValue).tag(item.rawValue)
+                }
+            }
         }
     }
 }

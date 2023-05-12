@@ -11,6 +11,7 @@ import SwiftUI
 // https://cindori.com/developer/searchable-floating-panel
 // https://cindori.com/developer/expandable-floating-panel
 /// An NSPanel subclass that implements floating panel traits.
+/// TODO: Should be converted to NSViewRepresentable or smth?
 class FloatingPanel<Content: View>: NSPanel {
     @Binding var isPresented: Bool
 
@@ -130,6 +131,9 @@ fileprivate struct FloatingPanelModifier<PanelContent: View>: ViewModifier {
             }.onChange(of: isPresented) { value in
                 /// On change of the presentation state, make the panel react accordingly
                 if value {
+                    panel = FloatingPanel(view: view, contentRect: contentRect, isPresented: $isPresented)
+                    // TODO: Might not need to center constantly?
+                    panel?.center()
                     present()
                 } else {
                     panel?.close()
