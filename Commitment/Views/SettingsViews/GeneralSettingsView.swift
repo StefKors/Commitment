@@ -9,14 +9,14 @@ import SwiftUI
 import Boutique
 
 enum DiffViewMode: String, CaseIterable {
-    case split
-    case sideBySide
+    case unified = "Unified"
+    case sideBySide = "Side by Side"
 }
 
 struct GeneralSettingsView: View {
     @EnvironmentObject var appModel: AppModel
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-    @AppStorage("DiffSettings.ViewMode") private var diffViewMode: String = "split"
+    @AppStorage("DiffSettings.ViewMode") private var diffViewMode: DiffViewMode = .unified
 
     private var externalEditorPickerItems: [ExternalEditor] {
         ExternalEditors().editors.filter { editor in
@@ -58,7 +58,7 @@ struct GeneralSettingsView: View {
                 ForEach(DiffViewMode.allCases, id: \.self) { item in
                     Text(item.rawValue).tag(item.rawValue)
                 }
-            }
+            }.pickerStyle(.segmented)
         }
     }
 }

@@ -25,8 +25,7 @@ struct ActiveChangesMainView: View {
             ZStack {
                 Rectangle().fill(.clear)
                 if let fileStatus {
-                    ContentPlaceholderView()
-                    // FileDiffChangesView(fileStatus: fileStatus, diff: diff)
+                    FileDiffChangesView(fileStatus: fileStatus, diff: diff)
                 } else if !isLoading {
                     ContentPlaceholderView()
                 } else {

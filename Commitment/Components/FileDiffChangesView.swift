@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct FileDiffChangesView: View {
+    @AppStorage("DiffSettings.ViewMode") private var diffViewMode: DiffViewMode = .unified
     let fileStatus: GitFileStatus
     let diff: GitDiff?
 
@@ -16,8 +17,13 @@ struct FileDiffChangesView: View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView(.vertical) {
                 if let diff {
-                    DiffRenderView(fileStatus: fileStatus, diff: diff)
-                        .padding()
+                    switch diffViewMode {
+                    case .unified:
+                        UnifiedDiffRenderView(fileStatus: fileStatus, diff: diff)
+                            .padding()
+                    case .sideBySide:
+                        SideBySideDiffRenderView(fileStatus: fileStatus, diff: diff)
+                    }
                 } else {
                     FileRenderView(fileStatus: fileStatus)
                         .padding()

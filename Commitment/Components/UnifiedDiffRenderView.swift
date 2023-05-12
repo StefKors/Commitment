@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DiffRenderView: View {
+struct UnifiedDiffRenderView: View {
     var fileStatus: GitFileStatus
     var diff: GitDiff
     
