@@ -21,17 +21,7 @@ struct ToolbarPushOriginActionButtonView: View {
     @StateObject private var shell: Shell
     @State private var progress: CGFloat = 0
 
-    // var isPushing: Bool {
-    //     repo.activity.current == .isPushingBranch
-    // }
-
-    // @State private var isPushing: Bool = false
-
-
     var body: some View {
-        // Text("\(isPushing.description)")
-        // Text("\(isPushing.description)")
-        Text("\(activity.isPushing.description)")
         Button(action: handleButton, label: {
             ViewThatFits {
                 HStack {
@@ -70,10 +60,7 @@ struct ToolbarPushOriginActionButtonView: View {
 
     func handleButton() {
         Task {
-            withAnimation(.spring()) {
-                // self.isPushing = true
             self.activity.start(.isPushingBranch)
-            }
             do {
                 _ = try await self.shell.push()
                 self.repo.undo.stack = self.repo.undo.stack.filters(allOf: .commit)
@@ -81,10 +68,7 @@ struct ToolbarPushOriginActionButtonView: View {
             } catch {
                 print(error.localizedDescription)
             }
-            withAnimation(.spring()) {
-                self.activity.finish(.isPushingBranch)
-                // self.isPushing = false
-            }
+            self.activity.finish(.isPushingBranch)
         }
     }
 }

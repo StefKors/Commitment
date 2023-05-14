@@ -5,7 +5,7 @@
 //  Created by Stef Kors on 23/02/2023.
 //
 
-import Foundation
+import SwiftUI
 
 enum Activity {
     case isRefreshingState
@@ -21,14 +21,16 @@ class ActivityState: ObservableObject {
     }
 
     @MainActor func start(_ activity: Activity) {
-        // isPushing = true
-        current = activity
+        withAnimation(.spring()) {
+            current = activity
+        }
     }
 
     @MainActor func finish(_ activity: Activity) {
-        // isPushing = false
         if current == activity {
-            current = nil
+            withAnimation(.spring()) {
+                current = nil
+            }
         }
     }
 }
