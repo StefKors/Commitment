@@ -16,15 +16,17 @@ enum Activity {
 
 class ActivityState: ObservableObject {
     @Published var current: Activity? = nil
-    @Published var isPushing = false
+    var isPushing: Bool {
+        self.current == .isPushingBranch
+    }
 
     @MainActor func start(_ activity: Activity) {
-        isPushing = true
+        // isPushing = true
         current = activity
     }
 
     @MainActor func finish(_ activity: Activity) {
-        isPushing = false
+        // isPushing = false
         if current == activity {
             current = nil
         }
