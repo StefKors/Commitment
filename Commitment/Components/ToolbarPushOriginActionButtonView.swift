@@ -27,6 +27,7 @@ struct ToolbarPushOriginActionButtonView: View {
 
     var body: some View {
         Button(action: handleButton, label: {
+            Text("\(repo.activity.current.debugDescription)")
             ViewThatFits {
                 HStack {
                     ActivityArrow(isPushingBranch: isPushing)
