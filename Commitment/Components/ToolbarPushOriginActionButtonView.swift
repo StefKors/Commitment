@@ -72,9 +72,3 @@ struct ToolbarPushOriginActionButtonView: View {
         }
     }
 }
-
-// struct ToolbarActionButtonView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         ToolbarPushOriginActionButtonView()
-//     }
-// }
