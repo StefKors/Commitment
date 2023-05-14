@@ -21,9 +21,6 @@ class Shell: ObservableObject {
     var workspace: URL
 
     var process: Process = .init()
-    var isRunning: Bool {
-        process.isRunning
-    }
 
     // Create a signposter that uses the default subsystem and category.
     internal let signposter = OSSignposter()

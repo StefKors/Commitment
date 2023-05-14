@@ -15,18 +15,15 @@ enum Activity {
 }
 
 class ActivityState: ObservableObject {
-    @Published var current: [Activity: Bool] = [
-        .isRefreshingState: false,
-        .isCommiting: false,
-        .isCheckingOutBranch: false,
-        .isPushingBranch: false
-    ]
+    @Published var current: Activity? = nil
 
     @MainActor func start(_ activity: Activity) {
-        current[activity] = true
+        current = activity
     }
 
     @MainActor func finish(_ activity: Activity) {
-        current[activity] = false
+        if current == activity {
+            current = nil
+        }
     }
 }

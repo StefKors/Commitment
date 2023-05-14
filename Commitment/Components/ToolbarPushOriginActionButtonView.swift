@@ -19,11 +19,17 @@ struct ToolbarPushOriginActionButtonView: View {
 
     @StateObject private var shell: Shell
     @State private var progress: CGFloat = 0
+
+    var isPushing: Bool {
+        repo.activity.current == .isPushingBranch
+    }
+
+
     var body: some View {
         Button(action: handleButton, label: {
             ViewThatFits {
                 HStack {
-                    ActivityArrow(isPushingBranch: shell.isRunning)
+                    ActivityArrow(isPushingBranch: isPushing)
                     VStack(alignment: .leading) {
                         Text("Push \(remote)")
                         OutputLine(output: shell.output, date: repo.lastFetchedDate)
@@ -36,7 +42,7 @@ struct ToolbarPushOriginActionButtonView: View {
                 .foregroundColor(.primary)
 
                 HStack {
-                    ActivityArrow(isPushingBranch: shell.isRunning)
+                    ActivityArrow(isPushingBranch: isPushing)
                     VStack(alignment: .leading) {
                         Text("Push \(remote)")
                         OutputLine(output: shell.output, date: repo.lastFetchedDate)
@@ -45,19 +51,20 @@ struct ToolbarPushOriginActionButtonView: View {
                 .foregroundColor(.primary)
 
                 HStack {
-                    ActivityArrow(isPushingBranch: shell.isRunning)
+                    ActivityArrow(isPushingBranch: isPushing)
                     Text("Push \(remote)")
                 }
                 .foregroundColor(.primary)
             }
         })
         .buttonStyle(.plain)
-        .animation(.easeIn(duration: 0.35), value: shell.isRunning)
+        .animation(.easeIn(duration: 0.35), value: isPushing)
         .keyboardShortcut(.init("p", modifiers: .command))
     }
 
     func handleButton() {
         Task {
+            self.repo.activity.start(.isPushingBranch)
             do {
                 _ = try await self.shell.push()
                 self.repo.undo.stack = self.repo.undo.stack.filters(allOf: .commit)
@@ -65,6 +72,7 @@ struct ToolbarPushOriginActionButtonView: View {
             } catch {
                 print(error.localizedDescription)
             }
+            self.repo.activity.finish(.isPushingBranch)
         }
     }
 }
