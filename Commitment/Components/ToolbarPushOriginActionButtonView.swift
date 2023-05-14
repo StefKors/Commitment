@@ -67,7 +67,9 @@ struct ToolbarPushOriginActionButtonView: View {
 
     func handleButton() {
         Task {
+            withAnimation(.spring()) {
             self.repo.activity.start(.isPushingBranch)
+            }
             do {
                 _ = try await self.shell.push()
                 self.repo.undo.stack = self.repo.undo.stack.filters(allOf: .commit)
@@ -75,7 +77,9 @@ struct ToolbarPushOriginActionButtonView: View {
             } catch {
                 print(error.localizedDescription)
             }
-            self.repo.activity.finish(.isPushingBranch)
+            withAnimation(.spring()) {
+                self.repo.activity.finish(.isPushingBranch)
+            }
         }
     }
 }
