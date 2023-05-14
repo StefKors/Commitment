@@ -10,14 +10,14 @@ import Boutique
 
 struct BetaSettingsView: View {
     @EnvironmentObject var appModel: AppModel
-    @AppStorage("CommitWindow") private var commitWindow: Bool = false
+    @AppStorage("SideBySideView") private var sideBySide: Bool = false
 
     var body: some View {
         SettingsBox(
             label: "Feature Flags"
         ) {
             Text("Below is a list of feature flags that enable / disable features that are still experimental. Use at your own risk.")
-            Toggle("Global Commit Window", isOn: $commitWindow)
+            Toggle("Side by Side diff view", isOn: $sideBySide)
                 .toggleStyle(.switch)
         }
     }

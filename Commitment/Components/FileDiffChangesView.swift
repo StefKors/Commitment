@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FileDiffChangesView: View {
     @AppStorage("DiffSettings.ViewMode") private var diffViewMode: DiffViewMode = .unified
+    @AppStorage("SideBySideView") private var sideBySide: Bool = false
     let fileStatus: GitFileStatus
     let diff: GitDiff?
 
@@ -22,7 +23,13 @@ struct FileDiffChangesView: View {
                         UnifiedDiffRenderView(fileStatus: fileStatus, diff: diff)
                             .padding()
                     case .sideBySide:
-                        SideBySideDiffRenderView(fileStatus: fileStatus, diff: diff)
+                        if sideBySide {
+                            SideBySideDiffRenderView(fileStatus: fileStatus, diff: diff)
+                                .padding()
+                        } else {
+                            UnifiedDiffRenderView(fileStatus: fileStatus, diff: diff)
+                                .padding()
+                        }
                     }
                 } else {
                     FileRenderView(fileStatus: fileStatus)

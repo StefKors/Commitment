@@ -14,32 +14,52 @@ struct SideBySideDiffRenderView: View {
     var body: some View {
         HStack {
             FileView(fileStatus: fileStatus) {
+
                 ForEach(diff.hunks, id: \.id) { hunk in
                     HunkHeaderLineView(header: hunk.header)
-                    
-                    ForEach(hunk.lines, id: \.id) { line  in
-                        HStack(spacing: 0) {
-                            switch line.type {
-                            case .addition:
-                                Color.clear.frame(height: 20)
-                            case .deletion:
-                                SideBySideDeletionDiffLineView(lineNumber: line.oldLineNumber, text: line.text)
-                            case .unchanged:
-                                SideBySideUnchangedDiffLineView(lineNumber: line.oldLineNumber, text: line.text)
+                    HStack(spacing: 0) {
+                        VStack(spacing: 0) {
+                            ForEach(hunk.lines, id: \.id) { line  in
+                                HStack(spacing: 0) {
+                                    VStack(spacing: 0) {
+                                        Divider()
+                                        .overlay(content: {
+                                            if line.type == .addition {
+                                                Color.accentColor.frame(height: 1)
+                                            }
+                                        })
+                                        if line.type == .deletion {
+                                            SideBySideDeletionDiffLineView(lineNumber: line.oldLineNumber, text: line.text)
+                                        } else if line.type == .unchanged {
+                                            SideBySideUnchangedDiffLineView(lineNumber: line.oldLineNumber, text: line.text)
+                                        }
+                                    }
+                                }
+                                // .frame(minHeight: line.type == .addition ? 1 : 0 )
+                                // .overlay(content: {
+                                //     if line.type == .addition {
+                                //         Color.accentColor.frame(height: 2)
+                                //     }
+                                // })
+                                // .border(.red, width: 1, cornerRadius: 4)
                             }
-                            Divider()
-                            Rectangle().fill(.clear)
-                                .frame(maxWidth: 40)
-                            Divider()
+                            Spacer()
+                        }
 
-                            switch line.type {
-                            case .addition:
-                                SideBySideAdditionDiffLineView(lineNumber: line.newLineNumber, text: line.text)
-                            case .deletion:
-                                Color.clear.frame(height: 20)
-                            case .unchanged:
-                                SideBySideUnchangedDiffLineView(lineNumber: line.newLineNumber, text: line.text)
+                        VStack(spacing: 0) {
+                            ForEach(hunk.lines, id: \.id) { line  in
+                                HStack(spacing: 0) {
+                                    VStack(spacing: 0) {
+                                        Divider()
+                                        if line.type == .addition {
+                                            SideBySideAdditionDiffLineView(lineNumber: line.newLineNumber, text: line.text)
+                                        } else if line.type == .unchanged {
+                                            SideBySideUnchangedDiffLineView(lineNumber: line.newLineNumber, text: line.text)
+                                        }
+                                    }
+                                }
                             }
+                            Spacer()
                         }
                     }
                 }

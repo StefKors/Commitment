@@ -17,6 +17,7 @@ struct GeneralSettingsView: View {
     @EnvironmentObject var appModel: AppModel
     @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
     @AppStorage("DiffSettings.ViewMode") private var diffViewMode: DiffViewMode = .unified
+    @AppStorage("SideBySideView") private var sideBySide: Bool = false
 
     private var externalEditorPickerItems: [ExternalEditor] {
         ExternalEditors().editors.filter { editor in
@@ -51,14 +52,16 @@ struct GeneralSettingsView: View {
             }
         }
 
-        SettingsBox(
-            label: "Diff Settings"
-        ) {
-            Picker("View Mode", selection: $diffViewMode) {
-                ForEach(DiffViewMode.allCases, id: \.self) { item in
-                    Text(item.rawValue).tag(item.rawValue)
-                }
-            }.pickerStyle(.segmented)
+        if sideBySide {
+            SettingsBox(
+                label: "Diff Settings"
+            ) {
+                Picker("View Mode", selection: $diffViewMode) {
+                    ForEach(DiffViewMode.allCases, id: \.self) { item in
+                        Text(item.rawValue).tag(item.rawValue)
+                    }
+                }.pickerStyle(.segmented)
+            }
         }
     }
 }
