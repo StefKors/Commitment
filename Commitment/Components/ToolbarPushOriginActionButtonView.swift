@@ -15,6 +15,7 @@ struct ToolbarPushOriginActionButtonView: View {
 
     @EnvironmentObject private var repo: RepoState
     @EnvironmentObject private var appModel: AppModel
+    @EnvironmentObject private var activity: ActivityState
     private let remote: String = "origin"
 
     @StateObject private var shell: Shell
@@ -24,17 +25,17 @@ struct ToolbarPushOriginActionButtonView: View {
     //     repo.activity.current == .isPushingBranch
     // }
 
-    @State private var isPushing: Bool = false
+    // @State private var isPushing: Bool = false
 
 
     var body: some View {
         // Text("\(isPushing.description)")
-        Text("\(isPushing.description)")
-        Text("\(repo.activity.isPushing.description)")
+        // Text("\(isPushing.description)")
+        Text("\(activity.isPushing.description)")
         Button(action: handleButton, label: {
             ViewThatFits {
                 HStack {
-                    ActivityArrow(isPushingBranch: isPushing)
+                    ActivityArrow(isPushingBranch: activity.isPushing)
                     VStack(alignment: .leading) {
                         Text("Push \(remote)")
                         OutputLine(output: shell.output, date: repo.lastFetchedDate)
@@ -47,7 +48,7 @@ struct ToolbarPushOriginActionButtonView: View {
                 .foregroundColor(.primary)
 
                 HStack {
-                    ActivityArrow(isPushingBranch: isPushing)
+                    ActivityArrow(isPushingBranch: activity.isPushing)
                     VStack(alignment: .leading) {
                         Text("Push \(remote)")
                         OutputLine(output: shell.output, date: repo.lastFetchedDate)
@@ -56,22 +57,22 @@ struct ToolbarPushOriginActionButtonView: View {
                 .foregroundColor(.primary)
 
                 HStack {
-                    ActivityArrow(isPushingBranch: isPushing)
+                    ActivityArrow(isPushingBranch: activity.isPushing)
                     Text("Push \(remote)")
                 }
                 .foregroundColor(.primary)
             }
         })
         .buttonStyle(.plain)
-        .animation(.easeIn(duration: 0.35), value: isPushing)
+        .animation(.easeIn(duration: 0.35), value: activity.isPushing)
         .keyboardShortcut(.init("p", modifiers: .command))
     }
 
     func handleButton() {
         Task {
             withAnimation(.spring()) {
-                self.isPushing = true
-            self.repo.activity.start(.isPushingBranch)
+                // self.isPushing = true
+            self.activity.start(.isPushingBranch)
             }
             do {
                 _ = try await self.shell.push()
@@ -81,8 +82,8 @@ struct ToolbarPushOriginActionButtonView: View {
                 print(error.localizedDescription)
             }
             withAnimation(.spring()) {
-                self.repo.activity.finish(.isPushingBranch)
-                self.isPushing = false
+                self.activity.finish(.isPushingBranch)
+                // self.isPushing = false
             }
         }
     }

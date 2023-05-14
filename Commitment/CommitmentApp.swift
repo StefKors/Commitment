@@ -26,6 +26,7 @@ struct CommitmentApp: App {
     @AppStorage("CommitWindow") private var commitWindow: Bool = false
     @NSApplicationDelegateAdaptor private var appDelegate: CommitmentAppDelegate
     @StateObject var appModel: AppModel = .shared
+    @StateObject var activity = ActivityState()
     @State private var repo: RepoState? = nil
     @Environment(\.window) private var window
     @State private var selectedRepo: RepoState.ID? = nil
