@@ -20,13 +20,15 @@ struct ToolbarPushOriginActionButtonView: View {
     @StateObject private var shell: Shell
     @State private var progress: CGFloat = 0
 
-    var isPushing: Bool {
-        repo.activity.current == .isPushingBranch
-    }
+    // var isPushing: Bool {
+    //     repo.activity.current == .isPushingBranch
+    // }
+
+    @State private var isPushing: Bool = false
 
 
     var body: some View {
-        Text("\(repo.activity.current.debugDescription)")
+        // Text("\(isPushing.description)")
         Text("\(isPushing.description)")
         Text("\(repo.activity.isPushing.description)")
         Button(action: handleButton, label: {
@@ -68,6 +70,7 @@ struct ToolbarPushOriginActionButtonView: View {
     func handleButton() {
         Task {
             withAnimation(.spring()) {
+                self.isPushing = true
             self.repo.activity.start(.isPushingBranch)
             }
             do {
@@ -79,6 +82,7 @@ struct ToolbarPushOriginActionButtonView: View {
             }
             withAnimation(.spring()) {
                 self.repo.activity.finish(.isPushingBranch)
+                self.isPushing = false
             }
         }
     }
