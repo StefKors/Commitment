@@ -50,6 +50,7 @@ struct CommitmentApp: App {
                 }
             }
             .environmentObject(appModel)
+            .environmentObject(activity)
             .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
                 let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
                 guard let repo else { return }
