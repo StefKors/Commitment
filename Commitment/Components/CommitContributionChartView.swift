@@ -16,6 +16,7 @@ struct Contribution {
     }
 }
 
+// TODO: Not showing todays commit activity?
 struct ContributionBlockView: View {
     let contribution: Contribution
 
