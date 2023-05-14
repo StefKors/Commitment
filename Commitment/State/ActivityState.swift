@@ -16,12 +16,15 @@ enum Activity {
 
 class ActivityState: ObservableObject {
     @Published var current: Activity? = nil
+    @Published var isPushing = false
 
     @MainActor func start(_ activity: Activity) {
+        isPushing = true
         current = activity
     }
 
     @MainActor func finish(_ activity: Activity) {
+        isPushing = false
         if current == activity {
             current = nil
         }

@@ -26,8 +26,10 @@ struct ToolbarPushOriginActionButtonView: View {
 
 
     var body: some View {
+        Text("\(repo.activity.current.debugDescription)")
+        Text("\(isPushing.description)")
+        Text("\(repo.activity.isPushing.description)")
         Button(action: handleButton, label: {
-            Text("\(repo.activity.current.debugDescription)")
             ViewThatFits {
                 HStack {
                     ActivityArrow(isPushingBranch: isPushing)
