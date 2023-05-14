@@ -59,7 +59,7 @@ struct ToolbarPushOriginActionButtonView: View {
     func handleButton() {
         Task {
             do {
-                _ = try await self.repo.shell.push()
+                _ = try await self.shell.push()
                 self.repo.undo.stack = self.repo.undo.stack.filters(allOf: .commit)
                 try await self.repo.refreshRepoState()
             } catch {
