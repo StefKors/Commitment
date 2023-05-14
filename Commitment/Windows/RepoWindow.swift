@@ -36,9 +36,9 @@ struct RepoWindow: View {
         .onKeyboardShortcut(.globalCommitPanel, type: .keyDown, perform: {
             self.showPanel.toggle()
         })
-        .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
-        // .navigationTitle(repo.folderName)
-        // .navigationSubtitle(repo.branch)
+        .frame(minWidth: 940)
+        .navigationTitle(repo.folderName)
+        .navigationSubtitle(repo.branch)
         .onChange(of: scenePhase) { phase in
             // Stop monitoring for file changes when app minimizes
             print("[Scene Change] App became: \(phase)")

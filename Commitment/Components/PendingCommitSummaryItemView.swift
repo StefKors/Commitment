@@ -43,8 +43,8 @@ struct PendingCommitSummaryItemView: View {
         .task(id: commit.hash, priority: .medium) {
             do {
                 stats = try await repo.shell.stats(for: commit.hash)
-                let numstat = try await repo.shell.numStat(for: commit.hash)
-                print(numstat)
+                // let numstat = try await repo.shell.numStat(for: commit.hash)
+                // print(numstat)
             } catch {
                 fatalError(error.localizedDescription)
             }

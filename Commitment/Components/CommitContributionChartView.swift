@@ -33,7 +33,9 @@ struct ContributionBlockView: View {
                 .border(Color.accentColor.opacity(opacityRatio+0.1), width: 1, cornerRadius: 2)
         }
         .onHover(perform: { hoverState in
-            isHovering = hoverState
+            if contribution.activity > 0 {
+                isHovering = hoverState
+            }
         })
         .popover(isPresented: $isHovering, content: {
             Text("\(contribution.activity) contributions on \(contribution.date.formatted())")

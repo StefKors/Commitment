@@ -209,7 +209,7 @@ struct ContentPlaceholderView: View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 10) {
                 CommitContributionChartView()
-
+                Divider()
                 if repo.commitsAhead.count > 0 {
                     PushChangesRepoPlaceholder()
                 } else {
@@ -222,8 +222,10 @@ struct ContentPlaceholderView: View {
 
                 QuickCommitFeaturePlaceholder()
             }
-            .frame(minWidth: 400, maxWidth: 900, alignment: .topLeading)
-        }.scenePadding()
+            .frame(width: 600, alignment: .topLeading)
+        }
+        .frame(width: 600, alignment: .topLeading)
+        .scenePadding()
     }
 }
 

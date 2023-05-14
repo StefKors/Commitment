@@ -96,7 +96,7 @@ class RepositoryTask {
             environmentVariables.append("HOME=\(String(cString:home))")
         }
 
-        print("commandLine \(commandLine) environmentVariables:\(environmentVariables)")
+        // print("commandLine \(commandLine) environmentVariables:\(environmentVariables)")
         process = try ProcessSpawn(args: commandLine, envs: environmentVariables, workingPath: workingPath, output: { [weak self] (output) in
             if self?.output == nil {
                 self?.output = ""

@@ -16,8 +16,10 @@ struct WelcomeSheet: View {
         }
             .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
             .onAppear() {
-                print("appear")
-                isPresented = true
+                // print("appear")
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+                    isPresented = true
+                })
             }
             .sheet(isPresented: $isPresented) {
                 WelcomeWindow()

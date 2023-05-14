@@ -276,7 +276,6 @@
 		8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */; };
 		8A6C4C4D298BEF49009377C0 /* ToolbarActionUpdateMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */; };
 		8A76E76929802F700033B978 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8A76E76829802F700033B978 /* Boutique */; };
-		8A7FBF6F29C340260032E394 /* LazyContentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */; };
 		8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C665B296464E300A774D7 /* TextEditorView.swift */; };
 		8A8C66712964682B00A774D7 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665E2964682B00A774D7 /* Inter-Bold.otf */; };
 		8A8C66722964682B00A774D7 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665F2964682B00A774D7 /* Inter-Regular.otf */; };
@@ -944,7 +943,6 @@
 		8A6B649929730FD50074B3C1 /* FileRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRenderView.swift; sourceTree = "<group>"; };
 		8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDiffChangesView.swift; sourceTree = "<group>"; };
 		8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarActionUpdateMain.swift; sourceTree = "<group>"; };
-		8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyContentWindow.swift; sourceTree = "<group>"; };
 		8A8C665B296464E300A774D7 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		8A8C665E2964682B00A774D7 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
 		8A8C665F2964682B00A774D7 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
@@ -2320,7 +2318,6 @@
 				8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */,
 				8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */,
 				8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */,
-				8A7FBF6E29C340260032E394 /* LazyContentWindow.swift */,
 				8A34219429C876B30001E58B /* WelcomeSheet.swift */,
 				8A6842582A0529BA0063CBE6 /* QuickCommitPanelView.swift */,
 				8A29E28029F815620049CBC8 /* OnboardingWindow.swift */,
@@ -2984,7 +2981,6 @@
 				8ACCD2E8297F265C0020BF84 /* GitTagRecord.swift in Sources */,
 				8A3421E629D19A9E0001E58B /* CommitmentAppDelegate.swift in Sources */,
 				8A327EFC298E8F20008521B0 /* TouchbarContentView.swift in Sources */,
-				8A7FBF6F29C340260032E394 /* LazyContentWindow.swift in Sources */,
 				8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */,
 				8ACCD2A0297F265B0020BF84 /* MergeTask.swift in Sources */,
 				8ACCD2D0297F265C0020BF84 /* GitStashRecord.swift in Sources */,
