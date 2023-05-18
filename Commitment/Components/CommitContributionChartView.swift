@@ -105,7 +105,7 @@ struct CommitContributionChartView: View {
 
             let startDate = gregorianCalendar.date(
                 byAdding: .yearForWeekOfYear,
-                value: 0,
+                value: -1,
                 to: endDate
             )!
 
