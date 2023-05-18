@@ -225,6 +225,7 @@ struct ContentPlaceholderView: View {
             // Fix some borders clipping
             .padding(2)
         }
+        .frame(maxWidth: 730, alignment: .trailing)
         .scenePadding()
     }
 }
