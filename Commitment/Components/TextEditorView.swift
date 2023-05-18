@@ -76,7 +76,6 @@ struct TextEditorView: View {
                     }
                     .fontWeight(.semibold)
                     .imageScale(.small)
-                    .foregroundStyle(.secondary)
                 }
             }
             .buttonStyleSubmitProminent()

@@ -222,9 +222,9 @@ struct ContentPlaceholderView: View {
 
                 QuickCommitFeaturePlaceholder()
             }
-            .frame(width: 600, alignment: .topLeading)
+            // Fix some borders clipping
+            .padding(2)
         }
-        .frame(width: 600, alignment: .topLeading)
         .scenePadding()
     }
 }

@@ -21,7 +21,7 @@ struct ActiveChangesMainView: View {
                 .zIndex(999)
 
             Divider()
-            CommitContributionChartView()
+
             ZStack {
                 Rectangle().fill(.clear)
                 if let fileStatus {

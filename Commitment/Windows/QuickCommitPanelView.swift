@@ -185,7 +185,6 @@ struct FloatingPanelFooterView: View {
                     }
                     .fontWeight(.semibold)
                     .imageScale(.small)
-                    .foregroundStyle(.secondary)
                 }
             }
             .buttonStyleSubmitProminent()

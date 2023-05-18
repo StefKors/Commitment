@@ -83,46 +83,52 @@ struct CommitContributionChartView: View {
     }
 
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: true) {
-            VStack(spacing: 0) {
-                LazyHGrid(rows: rows, spacing: 4) {
-                    ForEach(Array(zip(data.indices, data)), id: \.0) { (index, contribution) in
-                        ContributionBlockView(contribution: contribution)
-                    }
+        VStack(alignment: .trailing, spacing: 0) {
+            LazyHGrid(rows: rows, spacing: 4) {
+                ForEach(Array(zip(data.indices, data)), id: \.0) { (index, contribution) in
+                    ContributionBlockView(contribution: contribution)
+                        .id("contribution-\(index)")
                 }
             }
+            .id(rows.description)
         }
-        .task {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd-MM-YYYY"
-            // Iterate by 1 day
-            let dayDurationInSeconds: TimeInterval = 60*60*24
-            let endDate = Date.now.advanced(by: dayDurationInSeconds)
+        .frame(alignment: .trailing)
+        .task(id: repo.commits.count) {
+            print("runs task? 🦆")
+            generateContributions()
+        }
+    }
 
-            var userLocale = Locale.autoupdatingCurrent
-            var gregorianCalendar = Calendar(identifier: .gregorian)
-            gregorianCalendar.locale = userLocale
+    func generateContributions() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-YYYY"
+        // Iterate by 1 day
+        let dayDurationInSeconds: TimeInterval = 60*60*24
+        let endDate = Date.now.advanced(by: dayDurationInSeconds)
 
-            let startDate = gregorianCalendar.date(
-                byAdding: .yearForWeekOfYear,
-                value: -1,
-                to: endDate
-            )!
+        let userLocale = Locale.autoupdatingCurrent
+        var gregorianCalendar = Calendar(identifier: .gregorian)
+        gregorianCalendar.locale = userLocale
 
-            for date in stride(from: startDate, to: endDate, by: dayDurationInSeconds) {
-                data.append(Contribution(activity: 0, date: date))
-            }
+        let startDate = gregorianCalendar.date(
+            byAdding: .yearForWeekOfYear,
+            value: -1,
+            to: endDate
+        )!
 
-            // needs largest value
-            // map 0...largestValue to 0.0...0.5 for correct shading
+        for date in stride(from: startDate, to: endDate, by: dayDurationInSeconds) {
+            data.append(Contribution(activity: 0, date: date))
+        }
 
-            for commit in repo.commits {
-                // check if date is part of graph
-                if commit.commiterDate > startDate {
-                    let index = gregorianCalendar.numberOfDaysBetween(startDate, and: commit.commiterDate)
-                    if let prevContribution = data[safe: index] {
-                        data[index] = prevContribution.increaseActivity()
-                    }
+        // needs largest value
+        // map 0...largestValue to 0.0...0.5 for correct shading
+        
+        for commit in repo.commits {
+            // check if date is part of graph
+            if commit.commiterDate > startDate {
+                let index = gregorianCalendar.numberOfDaysBetween(startDate, and: commit.commiterDate)
+                if let prevContribution = data[safe: index] {
+                    data[index] = prevContribution.increaseActivity()
                 }
             }
         }
