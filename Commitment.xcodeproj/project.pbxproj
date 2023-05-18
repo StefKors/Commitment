@@ -316,6 +316,7 @@
 		8A992DFB29A62C8B001E26A3 /* StatefulPreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */; };
 		8A992DFD29A63B36001E26A3 /* OverlayAlignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */; };
 		8A992DFF29A64867001E26A3 /* ToolbarMenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFE29A64867001E26A3 /* ToolbarMenuButtonStyle.swift */; };
+		8AACBA672A161B57008DFF39 /* ButtonStyleSubmitProminent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AACBA662A161B57008DFF39 /* ButtonStyleSubmitProminent.swift */; };
 		8AAF7AEC29A6CEAE0007CE8D /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */; };
 		8AAF7AEE29A6D9600007CE8D /* HunkHeaderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AED29A6D9600007CE8D /* HunkHeaderLineView.swift */; };
 		8AAF7AF029A77E9F0007CE8D /* ActivityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */; };
@@ -983,6 +984,7 @@
 		8A992DFA29A62C8B001E26A3 /* StatefulPreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewContainer.swift; sourceTree = "<group>"; };
 		8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAlignmentView.swift; sourceTree = "<group>"; };
 		8A992DFE29A64867001E26A3 /* ToolbarMenuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarMenuButtonStyle.swift; sourceTree = "<group>"; };
+		8AACBA662A161B57008DFF39 /* ButtonStyleSubmitProminent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleSubmitProminent.swift; sourceTree = "<group>"; };
 		8AAD63E72976A88500C7D1BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8AAD63E92976A88500C7D1BB /* Screenshot-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-dark.png"; sourceTree = "<group>"; };
 		8AAD63EA2976A88500C7D1BB /* watchos.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = watchos.svg; sourceTree = "<group>"; };
@@ -1753,6 +1755,7 @@
 				8AD9B5E729E6DC1500631337 /* UndoActionView.swift */,
 				8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */,
 				8AC44EFE2A0806DC0016FFEC /* ButtonStyleProminent.swift */,
+				8AACBA662A161B57008DFF39 /* ButtonStyleSubmitProminent.swift */,
 				8AC44F002A0806ED0016FFEC /* ButtonStyleRegular.swift */,
 			);
 			path = Components;
@@ -2872,6 +2875,7 @@
 				8AFBD54429702A0600525BF7 /* Commit.swift in Sources */,
 				8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */,
 				8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */,
+				8AACBA672A161B57008DFF39 /* ButtonStyleSubmitProminent.swift in Sources */,
 				8ACCD2A3297F265B0020BF84 /* GitPullOptions.swift in Sources */,
 				8A327EFE298E9081008521B0 /* HeaderContentView.swift in Sources */,
 				8ACCD2ED297F265C0020BF84 /* Formatter+Date.swift in Sources */,

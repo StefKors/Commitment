@@ -188,7 +188,7 @@ struct FloatingPanelFooterView: View {
                     .foregroundStyle(.secondary)
                 }
             }
-            .buttonStyle(.prominentButtonStyle)
+            .buttonStyleSubmitProminent()
             .keyboardShortcut(.return, modifiers: .command)
         }
         .padding(16)

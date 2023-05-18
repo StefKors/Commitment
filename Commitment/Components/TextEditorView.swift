@@ -79,7 +79,7 @@ struct TextEditorView: View {
                     .foregroundStyle(.secondary)
                 }
             }
-            .buttonStyle(.prominentButtonStyle)
+            .buttonStyleSubmitProminent()
             .disabled(isDisabled || (commitTitle + (quickCommitTitle ?? "")).isEmpty)
             .keyboardShortcut(.return, modifiers: .command)
         }

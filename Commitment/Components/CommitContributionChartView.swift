@@ -5,6 +5,33 @@
 //  Created by Stef Kors on 11/05/2023.
 //
 
+// https://www.avanderlee.com/swift/expressible-literals/#initializing-a-custom-cache-from-a-dictionary
+// final class Cache<T> {
+//     private var store: [String: T]
+//
+//     init(objects: [String: T]) {
+//         self.store = objects
+//     }
+//
+//     func cache(_ object: T, forKey key: String) {
+//         store[key] = object
+//     }
+//
+//     func object(for key: String) -> T? {
+//         return store[key]
+//     }
+// }
+//
+// extension Cache: ExpressibleByDictionaryLiteral {
+//     convenience init(dictionaryLiteral elements: (String, T)...) {
+//         self.init(objects: [String: T](uniqueKeysWithValues: elements))
+//     }
+// }
+//
+// let cache: Cache<URL> = ["SwiftLee": URL(string: "https://www.avanderlee.com")!]
+// print(cache.object(for: "SwiftLee")!) // Prints: https://www.avanderlee.com
+
+
 import SwiftUI
 
 struct Contribution {
@@ -78,7 +105,7 @@ struct CommitContributionChartView: View {
 
             let startDate = gregorianCalendar.date(
                 byAdding: .yearForWeekOfYear,
-                value: -1,
+                value: 0,
                 to: endDate
             )!
 

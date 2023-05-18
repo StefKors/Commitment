@@ -77,6 +77,7 @@ struct RegularButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label
+                .foregroundStyle(isEnabled ? Color.primary : Color.disabledControlTextColor)
         }
         .padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
         .background {
@@ -146,7 +147,6 @@ struct ButtonStyleRegular_Previews: PreviewProvider {
                 .padding()
                 .environment(\.colorScheme, .dark)
                 .previewDisplayName("Default")
-
 
             Button("Click Here! (Hover)", action: {})
                 .buttonStyle(RegularButtonStyle(isHovering: true))

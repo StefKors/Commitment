@@ -35,21 +35,22 @@ struct ProminentButtonStyle: ButtonStyle {
     let cornerRadius = 5.0
 
     var color1: Color {
-        (Color.selectedContentBackgroundColor).lighter(by: 15)
+        if !isEnabled {
+            return (Color.selectedContentBackgroundColor).lighter(by: 5)
+        }
+        return (Color.selectedContentBackgroundColor).lighter(by: 15)
     }
 
     var color2: Color {
-        (Color.selectedContentBackgroundColor).darker(by: 10)
+        return (Color.selectedContentBackgroundColor).darker(by: 10)
     }
 
     var colorF1: Color {
-        (
-            Color.selectedContentBackgroundColor
-        )
+        return (Color.selectedContentBackgroundColor)
     }
 
     var colorF2: Color {
-        (Color.selectedContentBackgroundColor).darker(by: 5)
+        return (Color.selectedContentBackgroundColor).darker(by: 5)
     }
 
     var colorShadow: Color {
@@ -64,6 +65,7 @@ struct ProminentButtonStyle: ButtonStyle {
         HStack {
             configuration.label
                 .environment(\.colorScheme, .dark)
+                .foregroundStyle(isEnabled ? Color.primary : Color.disabledControlTextColor)
         }
         .padding(EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8))
         .background {
@@ -98,17 +100,13 @@ struct ProminentButtonStyle: ButtonStyle {
                         lineWidth: 1
                     )
                 )
+                .brightness(isEnabled ? 0 : 0.2)
+                .saturation(isEnabled ? 1 : 0.8)
         }
         .background(
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .shadow(color: colorShadow, radius: 2, x: 0, y: 1)
         )
-        .overlay(content: {
-            if !isEnabled {
-                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous).fill(.background).opacity(0.5)
-            }
-        })
-        .brightness(isEnabled ? 0 : -0.1)
 
         .onHover(perform: { hoverState in
             withAnimation(.easeIn(duration: 0.15)) {
@@ -120,52 +118,55 @@ struct ProminentButtonStyle: ButtonStyle {
 }
 
 extension ButtonStyle where Self == ProminentButtonStyle {
-    /// Custom button style
+    /// Custom Prominent accentColor button style
     static var prominentButtonStyle: ProminentButtonStyle { .init() }
 }
 
 struct ButtonStyleProminent_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            Button(action: {}) {
-                HStack {
-                    Label("Commitment", image: "git-repo-16")
-                    HStack(spacing: 0) {
-                        Image(systemName: "command")
-                        Image(systemName: "return")
-                    }
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.secondary)
-                    .imageScale(.small)
+        Button(action: {}) {
+            HStack {
+                Label("Commitment", image: "git-repo-16")
+                HStack(spacing: 0) {
+                    Image(systemName: "command")
+                    Image(systemName: "return")
                 }
+                .fontWeight(.semibold)
+                .foregroundStyle(.secondary)
+                .imageScale(.small)
             }
+        }
+        .buttonStyle(.prominentButtonStyle)
+        .padding()
+        .environment(\.colorScheme, .light)
+        .previewDisplayName("Default")
+
+        Button("Click Here! (Dark)", action: {})
             .buttonStyle(.prominentButtonStyle)
             .padding()
-            .environment(\.colorScheme, .light)
+            .environment(\.colorScheme, .dark)
             .previewDisplayName("Default")
 
-            Button("Click Here! (Dark)", action: {})
-                .buttonStyle(.prominentButtonStyle)
-                .padding()
-                .environment(\.colorScheme, .dark)
-                .previewDisplayName("Default")
+        Button("Click Here! (Hover)", action: {})
+            .buttonStyle(ProminentButtonStyle(isHovering: true))
+            .padding()
+            .previewDisplayName("Hover")
 
+        Button("Click Here! (Default)", action: {})
+            .buttonStyle(.prominentButtonStyle)
+            .padding()
+            .previewDisplayName("Default")
 
-            Button("Click Here! (Hover)", action: {})
-                .buttonStyle(ProminentButtonStyle(isHovering: true))
-                .padding()
-                .previewDisplayName("Hover")
+        Button("Click Here! (Disabled)", action: {})
+            .buttonStyle(.prominentButtonStyle)
+            .padding()
+            .disabled(true)
+            .previewDisplayName("Disabled")
 
-            Button("Click Here! (Disabled)", action: {})
-                .buttonStyle(.prominentButtonStyle)
-                .padding()
-                .disabled(true)
-                .previewDisplayName("Disabled")
-
-            Button("Click Here! (Disabled)", action: {})
-                .padding()
-                .disabled(true)
-                .previewDisplayName("Disabled default")
-        }
+        Button("Click Here! (prominent regular)", action: {})
+            .buttonStyle(.borderedProminent)
+            .padding()
+            .disabled(false)
+            .previewDisplayName("Reg Prominent")
     }
 }
