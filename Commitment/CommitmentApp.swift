@@ -27,9 +27,9 @@ struct CommitmentApp: App {
     @NSApplicationDelegateAdaptor private var appDelegate: CommitmentAppDelegate
     @StateObject var appModel: AppModel = .shared
     @StateObject var activity = ActivityState()
-    @State private var repo: RepoState? = nil
+    // @State private var repo: RepoState? = nil
     @Environment(\.window) private var window
-    @State private var selectedRepo: RepoState.ID? = nil
+    // @State private var selectedRepo: RepoState.ID? = nil
 
     init() {
         NSWindow.alwaysUseActiveAppearance = true
@@ -37,34 +37,43 @@ struct CommitmentApp: App {
 
     var body: some Scene {
         Window("Commitment", id: "MainWindow", content: {
-            Group {
-                if let repo {
+            ZStack {
+                if let repo = appModel.activeRepo {
                     RepoWindow()
-                        .ignoresSafeArea(.all, edges: .top)
+                        // .ignoresSafeArea(.all, edges: .top)
                         .environmentObject(repo)
                         .environmentObject(repo.undo)
-                        .focusedSceneValue(\.repo, $repo)
+                        // .focusedSceneValue(\.repo, repo)
                         .buttonStyle(.regularButtonStyle)
+                        .task(id: repo.id) {
+                            repo.startMonitor()
+                            Task {
+                                do {
+                                    try await repo.refreshRepoState()
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        }
                 } else {
                     WelcomeSheet()
                 }
             }
             .environmentObject(appModel)
             .environmentObject(activity)
-            .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
-                let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
-                guard let repo else { return }
-
-                self.repo = repo
-                Task {
-                    do {
-                        try await repo.refreshRepoState()
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-                }
-                repo.startMonitor()
-            })
+            // .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
+            //     let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
+            //     guard let repo else { return }
+            //     self.repo = repo
+            //     Task {
+            //         do {
+            //             try await self.repo?.refreshRepoState()
+            //         } catch {
+            //             print(error.localizedDescription)
+            //         }
+            //     }
+            //     self.repo?.startMonitor()
+            // })
         })
         .register("MainWindow")
         .titlebarAppearsTransparent(true)
@@ -73,7 +82,7 @@ struct CommitmentApp: App {
         .windowResizability(.contentMinSize)
         .commands {
             SidebarCommands()
-            AppCommands()
+            AppCommands(repo: appModel.activeRepo, appModel: appModel)
             OverrideCommands()
             TextEditingCommands()
         }

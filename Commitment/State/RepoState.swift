@@ -98,6 +98,12 @@ init RepoState: \(folderName) with:
     }
 
     func startMonitor() {
+        if let monitor {
+            if monitor.hasStarted {
+                print("stopping monitor")
+                monitor.stop()
+            }
+        }
         monitor = FolderContentMonitor(url: path, latency: 1) { [weak self] event in
             // TODO: Figure out better filtering... Perhaps based on .gitignore?
             // skip lock events

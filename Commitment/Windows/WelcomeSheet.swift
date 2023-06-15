@@ -11,20 +11,21 @@ struct WelcomeSheet: View {
     @State private var isPresented: Bool = false
 
     var body: some View {
-        HStack {
-            EmptyView()
-        }
-            .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
-            .onAppear() {
-                // print("appear")
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
-                    isPresented = true
-                })
-            }
-            .sheet(isPresented: $isPresented) {
-                WelcomeWindow()
-                    .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
-            }
+        WelcomeWindow()
+        // HStack {
+        //     EmptyView()
+        // }
+        //     .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
+        //     .onAppear() {
+        //         // print("appear")
+        //         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+        //             isPresented = true
+        //         })
+        //     }
+        //     .sheet(isPresented: $isPresented) {
+        //         WelcomeWindow()
+        //             .frame(minWidth: 400, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
+        //     }
     }
 }
 

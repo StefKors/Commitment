@@ -9,10 +9,11 @@ import SwiftUI
 
 struct AppCommands: Commands {
     // From: https://nilcoalescing.com/blog/ProvidingTheCurrentDocumentToMenuComma...
-    @FocusedBinding(\.repo) var repo
+    let repo: RepoState?
+    let appModel: AppModel
 
     @CommandsBuilder var body: some Commands {
-        if let repo, let repo {
+        if let repo {
             CommandMenu ("Active Changes") {
                 Button(action: {
                     Task {
@@ -31,6 +32,19 @@ struct AppCommands: Commands {
                     Text ("Discard All Changes")
                 }
                 .keyboardShortcut(.delete, modifiers: [.command, .shift])
+            }
+            CommandMenu ("Repository") {
+                Button(action: {
+                    Task {
+                        do {
+                            try await appModel.removeRepo(repo: repo)
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
+                }) {
+                    Text ("Remove...")
+                }
             }
         }
     }

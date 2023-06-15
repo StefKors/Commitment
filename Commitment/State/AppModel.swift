@@ -17,6 +17,13 @@ class AppModel: ObservableObject {
     @StoredValue(key: "ActiveRepository") var activeRepositoryId: RepoState.ID? = nil
     /// Creates a @Stored property to handle an in-memory and on-disk cache of type.
     @Stored(in: .repositoryStore) var repos
+
+    @MainActor
+    var activeRepo: RepoState? {
+        guard let activeRepositoryId else { return nil }
+        return self.repos.first(with: activeRepositoryId)
+    }
+
     @Published var isRepoSelectOpen: Bool = false {
         didSet {
             if isRepoSelectOpen {
@@ -48,9 +55,11 @@ class AppModel: ObservableObject {
     /// Removes one type from the `Store` in memory and on disk.
     func removeRepo(repo: RepoState) async throws {
         try await self.$repos.remove(repo)
-        if let id = await self.$repos.items.first?.id {
-            self.$activeRepositoryId.set(id)
-        }
+        let id = await self.$repos.items.first?.id
+        print("id: \(id?.description)")
+        self.$activeRepositoryId.set(id)
+        self.isRepoSelectOpen = false
+        self.isBranchSelectOpen = false
     }
 
     /// Removes all of the types from the `Store` in memory and on disk.
@@ -74,9 +83,14 @@ class AppModel: ObservableObject {
                 self.bookmarks.storeFolderInBookmark(url: url)
                 let repo = RepoState(path: url)
                 Task {
-                    try? await saveRepo(repo: repo)
+                    do {
+                        try await saveRepo(repo: repo)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 }
                 $activeRepositoryId.set(repo.id)
+                print(activeRepositoryId)
             }
         }
 

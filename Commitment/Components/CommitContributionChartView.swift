@@ -116,8 +116,9 @@ struct CommitContributionChartView: View {
             to: endDate
         )!
 
+        var newData: [Contribution] = []
         for date in stride(from: startDate, to: endDate, by: dayDurationInSeconds) {
-            data.append(Contribution(activity: 0, date: date))
+            newData.append(Contribution(activity: 0, date: date))
         }
 
         // needs largest value
@@ -127,11 +128,13 @@ struct CommitContributionChartView: View {
             // check if date is part of graph
             if commit.commiterDate > startDate {
                 let index = gregorianCalendar.numberOfDaysBetween(startDate, and: commit.commiterDate)
-                if let prevContribution = data[safe: index] {
-                    data[index] = prevContribution.increaseActivity()
+                if let prevContribution = newData[safe: index] {
+                    newData[index] = prevContribution.increaseActivity()
                 }
             }
         }
+
+        self.data = newData
     }
 }
 

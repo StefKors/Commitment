@@ -8,6 +8,7 @@
 import Foundation
 import AppKit
 
+
 class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     func application(
         _ application: NSApplication,
@@ -15,20 +16,39 @@ class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     ) {
         // Record the device token.
     }
-}
 
-
-// ARF not working!
-class CommitmentDockTilePlugIn: NSObject, NSDockTilePlugIn {
-    func setDockTile(_ dockTile: NSDockTile?) {
-        //
-        print("setDockTile has:\(dockTile != nil)")
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        // NSApp.dockTile.display()
+        print("dock?1")
+        // NSApp.dockTile = DockTilePlugin()
     }
 
-    func dockMenu() -> NSMenu? {
-        print("dockMenu")
+    func applicationDidBecomeActive(_ notification: Notification) {
+        // activateTheRealFinder()
+        print("dock?2 \(NSDocumentController.shared.recentDocumentURLs)")
+
+    }
+
+    func application(_ sender: NSApplication, openFile filename: String) -> Bool {
+        print("tried to openFile from ?dock? \(filename)")
+        return true
+    }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        // openTheRealFinder()
+        print("dock?3 ")
+        return false
+    }
+
+    func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
+        print("dock menu?")
         let menu = NSMenu()
-        menu.insertItem(NSMenuItem(title: "test menu item", action: nil, keyEquivalent: ""), at: 0)
+        menu.insertItem(NSMenuItem(title: "test menu item", action: #selector(handleMenu), keyEquivalent: ""), at: 0)
         return menu
+    }
+
+    @objc
+    func handleMenu() {
+        print("dock menu action!")
     }
 }

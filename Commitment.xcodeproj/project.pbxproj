@@ -269,6 +269,7 @@
 		8A6842602A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A68425F2A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift */; };
 		8A6842622A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6842612A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift */; };
 		8A6842642A053D8B0063CBE6 /* MacTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6842632A053D8B0063CBE6 /* MacTextEditorView.swift */; };
+		8A6AB29B2A3387FA00EFB79F /* ColorKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AB29A2A3387FA00EFB79F /* ColorKit.swift */; };
 		8A6B649429730B070074B3C1 /* SplitModeToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */; };
 		8A6B649629730B380074B3C1 /* ContentPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */; };
 		8A6B649829730E560074B3C1 /* FileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649729730E560074B3C1 /* FileView.swift */; };
@@ -503,6 +504,19 @@
 			remoteInfo = Commitment;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8A13F3F62A28BE540053871F /* Embed PlugIns */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmarks.swift; sourceTree = "<group>"; };
@@ -938,6 +952,7 @@
 		8A68425F2A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutsSettingsView.swift; sourceTree = "<group>"; };
 		8A6842612A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanelExpandableLayout.swift; sourceTree = "<group>"; };
 		8A6842632A053D8B0063CBE6 /* MacTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacTextEditorView.swift; sourceTree = "<group>"; };
+		8A6AB29A2A3387FA00EFB79F /* ColorKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorKit.swift; sourceTree = "<group>"; };
 		8A6B649329730B070074B3C1 /* SplitModeToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitModeToggleView.swift; sourceTree = "<group>"; };
 		8A6B649529730B380074B3C1 /* ContentPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPlaceholderView.swift; sourceTree = "<group>"; };
 		8A6B649729730E560074B3C1 /* FileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileView.swift; sourceTree = "<group>"; };
@@ -2351,6 +2366,7 @@
 				8AC8EB49297586FC00365EB9 /* URL.swift */,
 				8A02C4FE29ACB0E7004DCA69 /* Array.swift */,
 				8A6842382A03E25D0063CBE6 /* Pasteboard.swift */,
+				8A6AB29A2A3387FA00EFB79F /* ColorKit.swift */,
 				8A02C52229ADEE2A004DCA69 /* Color.swift */,
 				8ABB9FB629FBD1EC00CBDA41 /* View.swift */,
 				8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */,
@@ -2394,6 +2410,7 @@
 				8A48D10927FD9E2D007803D2 /* Sources */,
 				8A48D10A27FD9E2D007803D2 /* Frameworks */,
 				8A48D10B27FD9E2D007803D2 /* Resources */,
+				8A13F3F62A28BE540053871F /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -2896,6 +2913,7 @@
 				8A3421DE29CF0D2B0001E58B /* SSHKeysSettingsView.swift in Sources */,
 				8A3462742A0E9B330051F195 /* SideBySideDiffRenderView.swift in Sources */,
 				8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */,
+				8A6AB29B2A3387FA00EFB79F /* ColorKit.swift in Sources */,
 				8ACCD2F6297F265C0020BF84 /* RepositoryRemote.swift in Sources */,
 				8A6842312A02F4BF0063CBE6 /* ActiveChangesStatsView.swift in Sources */,
 				8ACCD2E5297F265C0020BF84 /* GitRepository+Init.swift in Sources */,
@@ -3157,6 +3175,7 @@
 		8A48D13327FD9E2F007803D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commitment/Commitment.entitlements;
@@ -3194,6 +3213,7 @@
 		8A48D13427FD9E2F007803D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Commitment/Commitment.entitlements;
