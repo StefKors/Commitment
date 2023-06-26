@@ -153,9 +153,9 @@ struct CredentialSettingsView: View {
 
 struct CredentialSettingsView_Previews: PreviewProvider {
     // Credentials(values: [
-    //     Credential(url: URL(string:"https://stefstefstef:sdflkjsdfJstaRpyj3sdlkjdsflkjsdf8D@github.com")!),
-    //     Credential(url: URL(string:"https://nemo:ghsdflkjsdfkJstaRpsdflkjfjdsflkjsdf8D@bitbucket.com")!),
-    //     Credential(url: URL(string:"https://sigfault:glkjsdfljtaRpsdflkjfjdsflkjsdf8D@gitlab.com")!),
+    //     Credential(url: URL(string:"....")!),
+    //     Credential(url: URL(string:"....")!),
+    //     Credential(url: URL(string:"....")!),
     // ])
     static var previews: some View {
         CredentialSettingsView()
