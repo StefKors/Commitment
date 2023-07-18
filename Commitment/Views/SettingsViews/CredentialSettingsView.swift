@@ -74,8 +74,26 @@ struct CredentialView: View {
 struct CredentialSettingsView: View {
     @EnvironmentObject private var model: AppModel
     @KeychainStorage("passwords") private var passwords: Credentials? = nil
-    
+    @State private var gitName: String = ""
+    @State private var gitEmail: String = ""
+
     var body: some View {
+        SettingsBox(
+            label: "Git Email"
+        ) {
+            Text("Set the email you want to use when commiting")
+            TextField("Name", text: $gitName, prompt: Text("Jane Doe"))
+                .onSubmit {
+
+                    submitUser()
+                }
+            TextField("Email", text: $gitEmail, prompt: Text("janedoe@example.com"))
+                .onSubmit {
+                    submitUser()
+                }
+            .frame(alignment: .trailing)
+        }
+
         SettingsBox(
             label: "Git-Credentials File"
         ) {
@@ -96,10 +114,16 @@ struct CredentialSettingsView: View {
             .frame(alignment: .trailing)
         }
     }
-    
+
+    func submitUser() {
+        print("submit git user")
+        guard !gitName.isEmpty, !gitEmail.isEmpty else { return }
+        model.setGitUser(GitUser(name: gitName, email: gitEmail))
+    }
+
     /// Use NSOpenPanel to open the users git config and update the stored credentials.
     func handleImportAction() {
-        if let path = model.bookmarks.openGitConfig() {
+        if let path = model.bookmarks.openGitCredentials() {
             if let content = try? String(contentsOf: URL(filePath: path.path()), encoding: .utf8) {
                 let oldPasswords = passwords?.values ?? []
                 let newPasswords = content

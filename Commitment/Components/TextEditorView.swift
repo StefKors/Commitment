@@ -44,16 +44,24 @@ struct TextEditorView: View {
     
     var body: some View {
         Form {
-            TextField("commitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
-                .textFieldStyle(.plain)
-                .onSubmit { handleSubmit() }
-                .font(.system(size: 16).leading(.loose))
-                .focused($focusedField, equals: .commitTitle)
-                .labelsHidden()
-                .task {
-                    focusedField = .commitTitle
+
+            HStack {
+                if let user = repo.user {
+                    AvatarView(email: user.email)
                 }
-                .lineLimit(1)
+
+                TextField("commitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
+                    .textFieldStyle(.plain)
+                    .onSubmit { handleSubmit() }
+                    .font(.system(size: 16).leading(.loose))
+                    .focused($focusedField, equals: .commitTitle)
+                    .labelsHidden()
+                    .task {
+                        focusedField = .commitTitle
+                    }
+                    .lineLimit(1)
+                
+            }
 
             MacEditorTextView(
                 text: $commitBody,

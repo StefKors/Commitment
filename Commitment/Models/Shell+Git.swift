@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum ShellError: Error {
+    case NoGitUser
+}
+
+
 extension Shell {
     func version() async throws -> String {
         try await self.runTask(.git, ["-v"])
@@ -42,9 +47,19 @@ extension Shell {
         }
     }
 
+    func getGitUser() async throws -> GitUser {
+        let name = try await self.runTask(.git, ["config", "user.name"]).trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = try await self.runTask(.git, ["config", "user.email"]).trimmingCharacters(in: .whitespacesAndNewlines)
+        print(name, email)
+        if name.isEmpty || email.isEmpty {
+            throw ShellError.NoGitUser
+        }
+        return GitUser(name: name, email: email)
+    }
+
     func commit(title: String, message: String) async throws {
         try await self.add()
-        try await self.runTask(.git, ["commit", "-m", title, "-m", message])
+        // try await self.runTask(.git, ["commit", "-m", title, "-m", message])
     }
 
     func commit(message: String) async throws {

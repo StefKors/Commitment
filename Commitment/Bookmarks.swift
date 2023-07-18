@@ -46,7 +46,7 @@ class Bookmarks {
         return openPanel.url
     }
 
-    func openGitConfig() -> URL? {
+    func openGitCredentials() -> URL? {
         let openPanel = NSOpenPanel()
         let delegate = GitCredentialsOpenPanel()
         openPanel.delegate = delegate

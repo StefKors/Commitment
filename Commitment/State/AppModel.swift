@@ -14,6 +14,7 @@ class AppModel: ObservableObject {
     static let shared = AppModel()
     @StoredValue(key: "Editor") var editor: ExternalEditor = .xcode
     @StoredValue(key: "WindowMode") var windowMode: SplitModeOptions = .history
+    @StoredValue(key: "GitUser") var user: GitUser? = nil
     @StoredValue(key: "ActiveRepository") var activeRepositoryId: RepoState.ID? = nil
     /// Creates a @Stored property to handle an in-memory and on-disk cache of type.
     @Stored(in: .repositoryStore) var repos
@@ -43,6 +44,10 @@ class AppModel: ObservableObject {
 
     init() {
         bookmarks.loadBookmarks()
+    }
+
+    func setGitUser(_ user: GitUser) {
+        self.$user.set(user)
     }
 
 
@@ -81,7 +86,7 @@ class AppModel: ObservableObject {
         if response == .OK {
             if let url = openPanel.url {
                 self.bookmarks.storeFolderInBookmark(url: url)
-                let repo = RepoState(path: url)
+                let repo = RepoState(path: url, user: user)
                 Task {
                     do {
                         try await saveRepo(repo: repo)

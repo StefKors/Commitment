@@ -67,8 +67,10 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         commits.first?.commiterDate
     }
     @Published var lastUpdate: Date? = nil
+    @Published var user: GitUser? = nil
 
-    init(path: URL) {
+    init(path: URL, user: GitUser?) {
+        self.user = user
         self.path = path
         self.shell = Shell(workspace: path.absoluteString)
         Task {
@@ -79,8 +81,8 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         }
     }
 
-    convenience init(path: URL, commits: [Commit], status: [GitFileStatus], diffs: [GitDiff]) {
-        self.init(path: path)
+    convenience init(path: URL, commits: [Commit], status: [GitFileStatus], diffs: [GitDiff], user: GitUser?) {
+        self.init(path: path, user: user)
         self.commits = commits
         self.status = status
         self.diffs = diffs
@@ -138,6 +140,7 @@ init RepoState: \(folderName) with:
     func refreshRepoState() async throws {
         refreshBranch()
         try? await refreshDiffsAndStatus()
+        try? await refreshUser()
     }
 
     /// Watch out for re-renders, can be slow
@@ -220,6 +223,10 @@ init RepoState: \(folderName) with:
         try await self.refreshRepoState()
     }
 
+    func refreshUser() async throws {
+        self.user = try await self.shell.getGitUser()
+    }
+
     static func == (lhs: RepoState, rhs: RepoState) -> Bool {
         lhs.path == rhs.path
     }
@@ -229,6 +236,7 @@ init RepoState: \(folderName) with:
         case commits = "commits"
         case status = "status"
         case diffs = "diffs"
+        case user = "user"
     }
 
     /// Manual conformance due to persisting published properties
@@ -239,6 +247,7 @@ init RepoState: \(folderName) with:
         try container.encode(commits, forKey: .commits)
         try container.encode(status, forKey: .status)
         try container.encode(diffs, forKey: .diffs)
+        try container.encode(user, forKey: .user)
     }
 
     required convenience init(from decoder: Decoder) throws {
@@ -247,11 +256,13 @@ init RepoState: \(folderName) with:
         let commits = try values.decode([Commit].self, forKey: .commits)
         let status = try values.decode([GitFileStatus].self, forKey: .status)
         let diffs = try values.decode([GitDiff].self, forKey: .diffs)
+        let user = try values.decode(GitUser.self, forKey: .user)
         self.init(
             path: path,
             commits: commits,
             status: status,
-            diffs: diffs
+            diffs: diffs,
+            user: user
         )
     }
 
@@ -265,7 +276,7 @@ init RepoState: \(folderName) with:
 
     required convenience init?(rawValue: URL) {
         // TODO: can probably stay url?
-        self.init(path: rawValue)
+        self.init(path: rawValue, user: nil)
     }
 
     // Identifiable

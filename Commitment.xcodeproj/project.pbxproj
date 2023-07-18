@@ -25,6 +25,7 @@
 		8A11B4652A0284BD00B2B3EA /* GitCommitStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11B4642A0284BD00B2B3EA /* GitCommitStats.swift */; };
 		8A11B4672A0285F600B2B3EA /* GitFileStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11B4662A0285F600B2B3EA /* GitFileStatsTests.swift */; };
 		8A11B4692A02860900B2B3EA /* GitCommitStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11B4682A02860900B2B3EA /* GitCommitStatsTests.swift */; };
+		8A13B8602A66AA590090A6D9 /* GitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A13B85F2A66AA590090A6D9 /* GitUser.swift */; };
 		8A164BD72A07DA0700053482 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 8A164BD62A07DA0700053482 /* HotKey */; };
 		8A1F2DAF29C7BC7200E3C3F6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8A1F2DAE29C7BC7200E3C3F6 /* Credits.rtf */; };
 		8A1F2DB229C7C15C00E3C3F6 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 8A1F2DB129C7C15C00E3C3F6 /* Algorithms */; };
@@ -536,6 +537,7 @@
 		8A11B4642A0284BD00B2B3EA /* GitCommitStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitStats.swift; sourceTree = "<group>"; };
 		8A11B4662A0285F600B2B3EA /* GitFileStatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStatsTests.swift; sourceTree = "<group>"; };
 		8A11B4682A02860900B2B3EA /* GitCommitStatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitCommitStatsTests.swift; sourceTree = "<group>"; };
+		8A13B85F2A66AA590090A6D9 /* GitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitUser.swift; sourceTree = "<group>"; };
 		8A1F2DAE29C7BC7200E3C3F6 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		8A29E28029F815620049CBC8 /* OnboardingWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWindow.swift; sourceTree = "<group>"; };
 		8A327EFB298E8F20008521B0 /* TouchbarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchbarContentView.swift; sourceTree = "<group>"; };
@@ -1878,6 +1880,7 @@
 				8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */,
 				8A562CDC29B2007C006C7E8A /* Shell+ViewModel.swift */,
 				8A562CE829B4DE58006C7E8A /* ExternalEditors.swift */,
+				8A13B85F2A66AA590090A6D9 /* GitUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2859,6 +2862,7 @@
 				8AAF7AEE29A6D9600007CE8D /* HunkHeaderLineView.swift in Sources */,
 				8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */,
 				8ACCD2DE297F265C0020BF84 /* GitRepository+CherryPick.swift in Sources */,
+				8A13B8602A66AA590090A6D9 /* GitUser.swift in Sources */,
 				8ACCD2BF297F265C0020BF84 /* StashDropTask.swift in Sources */,
 				8A6842592A0529BA0063CBE6 /* QuickCommitPanelView.swift in Sources */,
 				8A97DC91299BB148001E25E1 /* Int+IsOdd.swift in Sources */,

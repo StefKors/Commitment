@@ -37,7 +37,7 @@ class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         // openTheRealFinder()
         print("dock?3 ")
-        return false
+        return true
     }
 
     func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
