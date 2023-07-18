@@ -13,13 +13,15 @@ struct AvatarView: View {
 
     let size: CGFloat = 14
 
+    @State private var url: URL? = nil
+
     fileprivate func getAvatar(_ email: String) -> URL? {
         URL(string: "https://avatars.githubusercontent.com/u/e?email=\(email)&s=64")
     }
 
     var body: some View {
         CachedAsyncImage(
-            url: getAvatar(email),
+            url: url,
             urlCache: .imageCache,
             transaction: Transaction(animation: .spring())
         ) { phase in
@@ -38,6 +40,9 @@ struct AvatarView: View {
             }
         }
         .frame(width: size, height: size)
+        .task(id: email) {
+            self.url = getAvatar(email)
+        }
     }
 }
 

@@ -74,6 +74,10 @@ class RepoState: Codable, Equatable, Identifiable, ObservableObject {
         self.path = path
         self.shell = Shell(workspace: path.absoluteString)
         Task {
+            if let user {
+                try? await self.shell.setUser(user)
+            }
+
             let branch = try? await shell.branch()
             if let branch {
                 self.branch = branch

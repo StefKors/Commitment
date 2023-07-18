@@ -47,6 +47,12 @@ extension Shell {
         }
     }
 
+    func setUser(_ user: GitUser) async throws {
+        try await self.runTask(.git, ["config", "user.name", "\(user.name)"])
+        try await self.runTask(.git, ["config", "user.email", "\(user.email)"])
+        try await getGitUser()
+    }
+
     func getGitUser() async throws -> GitUser {
         let name = try await self.runTask(.git, ["config", "user.name"]).trimmingCharacters(in: .whitespacesAndNewlines)
         let email = try await self.runTask(.git, ["config", "user.email"]).trimmingCharacters(in: .whitespacesAndNewlines)

@@ -48,6 +48,7 @@ struct TextEditorView: View {
             HStack {
                 if let user = repo.user {
                     AvatarView(email: user.email)
+                        .shadow(radius: 2)
                 }
 
                 TextField("commitTitle", text: $commitTitle, prompt: Text(placeholderTitle), axis: .vertical)
