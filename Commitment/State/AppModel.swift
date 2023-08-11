@@ -10,6 +10,7 @@ import Boutique
 import Foundation
 import KeyboardShortcuts
 
+
 class AppModel: ObservableObject {
     static let shared = AppModel()
     @StoredValue(key: "Editor") var editor: ExternalEditor = .xcode

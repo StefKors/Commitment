@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-enum SplitModeOptions: String, CaseIterable, Codable {
-    case changes = "Changes"
-    case history = "History"
-}
-
 struct MainRepoContentView: View {
     @EnvironmentObject var appModel: AppModel
     
