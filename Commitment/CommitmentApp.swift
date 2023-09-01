@@ -27,71 +27,75 @@ struct CommitmentApp: App {
     @NSApplicationDelegateAdaptor private var appDelegate: CommitmentAppDelegate
     @StateObject var appModel: AppModel = .shared
     @StateObject var activity = ActivityState()
-    // @State private var repo: RepoState? = nil
+    @State private var repo: RepoState? = nil
     @Environment(\.window) private var window
-    // @State private var selectedRepo: RepoState.ID? = nil
+    @State private var selectedRepo: RepoState.ID? = nil
 
     init() {
         NSWindow.alwaysUseActiveAppearance = true
     }
 
     var body: some Scene {
-        DocumentGroup(viewing: CodeRepository.self, contentType: .folder) {
-            Text("testing")
-        }
-        // Window("Commitment", id: "MainWindow", content: {
-        // 
-        //     // ZStack {
-        //     //     if let repo = appModel.activeRepo {
-        //     //         RepoWindow()
-        //     //             // .ignoresSafeArea(.all, edges: .top)
-        //     //             .environmentObject(repo)
-        //     //             .environmentObject(repo.undo)
-        //     //             // .focusedSceneValue(\.repo, repo)
-        //     //             .buttonStyle(.regularButtonStyle)
-        //     //             .task(id: repo.id) {
-        //     //                 repo.startMonitor()
-        //     //                 Task {
-        //     //                     do {
-        //     //                         try await repo.refreshRepoState()
-        //     //                     } catch {
-        //     //                         print(error.localizedDescription)
-        //     //                     }
-        //     //                 }
-        //     //             }
-        //     //     } else {
-        //     //         WelcomeSheet()
-        //     //     }
-        //     // }
+        // DocumentGroup(viewing: CodeRepository.self, contentType: .folder) {
+            // Text("testing")
+        // }
+        // Window("test", id: "testing") {
+        //     Text("testing")
+        // }
+        // .modelContainer(for: CodeRepository.self)
+        Window("Commitment", id: "MainWindow", content: {
+        
+            ZStack {
+                if let repo = appModel.activeRepo {
+                    RepoWindow()
+                        // .ignoresSafeArea(.all, edges: .top)
+                        .environmentObject(repo)
+                        .environmentObject(repo.undo)
+                        // .focusedSceneValue(\.repo, repo)
+                        .buttonStyle(.regularButtonStyle)
+                        .task(id: repo.id) {
+                            repo.startMonitor()
+                            Task {
+                                do {
+                                    try await repo.refreshRepoState()
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        }
+                } else {
+                    WelcomeSheet()
+                }
+            }
         //     ContentView()
         //     .modelContainer(for: CodeRepository.self)
-        //     .environmentObject(appModel)
-        //     .environmentObject(activity)
-        //     // .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
-        //     //     let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
-        //     //     guard let repo else { return }
-        //     //     self.repo = repo
-        //     //     Task {
-        //     //         do {
-        //     //             try await self.repo?.refreshRepoState()
-        //     //         } catch {
-        //     //             print(error.localizedDescription)
-        //     //         }
-        //     //     }
-        //     //     self.repo?.startMonitor()
-        //     // })
-        // })
-        // .register("MainWindow")
-        // .titlebarAppearsTransparent(true)
-        // .windowToolbarStyle(.unifiedCompact(showsTitle: false))
-        // .windowStyle(.hiddenTitleBar)
-        // .windowResizability(.contentMinSize)
-        // .commands {
-        //     SidebarCommands()
-        //     AppCommands(repo: appModel.activeRepo, appModel: appModel)
-        //     OverrideCommands()
-        //     TextEditingCommands()
-        // }
+            .environmentObject(appModel)
+            .environmentObject(activity)
+            .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
+                let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
+                guard let repo else { return }
+                self.repo = repo
+                Task {
+                    do {
+                        try await self.repo?.refreshRepoState()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                self.repo?.startMonitor()
+            })
+        })
+        .register("MainWindow")
+        .titlebarAppearsTransparent(true)
+        .windowToolbarStyle(.unifiedCompact(showsTitle: false))
+        .windowStyle(.hiddenTitleBar)
+        .windowResizability(.contentMinSize)
+        .commands {
+            SidebarCommands()
+            AppCommands(repo: appModel.activeRepo, appModel: appModel)
+            OverrideCommands()
+            TextEditingCommands()
+        }
 
         Window("Settings", id: "settings") {
             SettingsWindow()

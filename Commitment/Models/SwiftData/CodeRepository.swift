@@ -8,25 +8,32 @@
 import SwiftUI
 import SwiftData
 
+struct NewShell {
+    var workspace: URL
+
+    init(workspace: URL) {
+        self.workspace = workspace
+    }
+}
 
 @Model
-@MainActor
+// @MainActor
 final
 class CodeRepository: Identifiable {
     @Attribute(.unique) var path: URL
 
     // Settings
-    var editor: ExternalEditor = ExternalEditor.xcode
-    var windowMode: SplitModeOptions = SplitModeOptions.changes
+    var editor: ExternalEditor
+    var windowMode: SplitModeOptions
 
     // Shell
-    var shell: Shell = Shell(workspace: "")
+    // var cli: NewShell
 
     // Stored repo info
-    var branches: [GitReference] = []
-    var commits: [Commit] = []
+    var branches: [GitReference]
+    var commits: [Commit]
     // TODO: remove?
-    var commitsAhead: [Commit] = []
+    var commitsAhead: [Commit]
 
     // Computed properties to easy reference
     var branch: GitReference? {
@@ -35,7 +42,13 @@ class CodeRepository: Identifiable {
 
     init(path: URL) {
         self.path = path
-        self.shell = Shell(workspace: path)
+        // self.cli = NewShell(workspace: path)
+        self.editor = ExternalEditor.xcode
+        self.windowMode = SplitModeOptions.changes
+
+        self.branches = []
+        self.commits = []
+        self.commitsAhead = []
     }
 }
 
