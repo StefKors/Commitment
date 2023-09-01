@@ -39,9 +39,9 @@
 </p>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="Commitment.png">
-  <source media="(prefers-color-scheme: light)" srcset="Commitment.png">
-  <img alt="Screenshot of Commitment, the native macOS Git Interface" src="Commitment.png">
+  <source media="(prefers-color-scheme: dark)" srcset="Commitment-2.png">
+  <source media="(prefers-color-scheme: light)" srcset="Commitment-2.png">
+  <img alt="Screenshot of Commitment, the native macOS Git Interface" src="Commitment-2.png">
 </picture>
 
 -------
