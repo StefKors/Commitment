@@ -99,18 +99,28 @@ struct HunkView: View {
     private let lineheight: CGFloat = 20
     private let minheight: CGFloat = 4
 
+    // TODO: should probably not be hardcoded index
+    private var indexOfFirstChange: Int {
+        return hunk.lines.firstIndex(where: { line in
+            return line.type != .unchanged
+        }) ?? 3
+    }
+
     private var oldSideTypeRelativePadding: CGFloat {
         // we want to draw a different line of the left side based on the type of change
 
         // a addition we want to draw a full lineheight line
         // a deletion we want to draw a thin line
 
-        // TODO: should probably not be hardcoded index
-        if hunk.lines[safe: 2]?.type == .addition {
+
+        let lineToCheck = hunk.lines.first { line in
+            return line.type == .deletion
+        }
+        if lineToCheck?.type == .addition {
             return 0
         }
 
-        if hunk.lines[safe: 2]?.type == .deletion {
+        if lineToCheck?.type == .deletion {
             return lineheight
         }
 
@@ -123,8 +133,24 @@ struct HunkView: View {
         max(toDistance(val: hunk.oldLineSpan - 6), minheight) + oldSideTypeRelativePadding
     }
 
+    private var newSideTypeRelativePadding: CGFloat {
+        // we want to draw a different line of the right side based on the type of change
+        let lineToCheck = hunk.lines.first { line in
+            return line.type == .addition
+        }
+        if lineToCheck?.type == .addition {
+            return lineheight
+        }
+
+        if lineToCheck?.type == .deletion {
+            return 0
+        }
+
+        return 0
+    }
+
     var newSideHeight: CGFloat {
-        max(toDistance(val: hunk.newLineSpan - 6), minheight)
+        max(toDistance(val: hunk.newLineSpan - 6), minheight) + newSideTypeRelativePadding
     }
 
     var body: some View {
@@ -132,20 +158,21 @@ struct HunkView: View {
         //     geometry in
         HunkHeaderLineView(header: hunk.header)
         ZStack {
+            let firstChangeOffset = toDistance(val: indexOfFirstChange)
 
             // Background style of side by side
             HStack(alignment: .top, spacing: 0) {
                 Rectangle()
                     .fill(Color.systemOrange.quaternary)
                     .frame(height: oldSideHeight)
-                    .offset(y: toDistance(val: 3))
+                    .offset(y: firstChangeOffset)
 
                 VStack {
                     SideBySideGutterView(
-                        startA: toDistance(val: 3),
-                        distanceA: toDistance(val: hunk.oldLineSpan - 6),
-                        startB: toDistance(val: 3),
-                        distanceB: toDistance(val: hunk.newLineSpan - 6)
+                        startA: firstChangeOffset,
+                        distanceA: oldSideHeight,
+                        startB: firstChangeOffset,
+                        distanceB: newSideHeight
                     )
                     Spacer()
                 }
@@ -154,7 +181,7 @@ struct HunkView: View {
                 Rectangle()
                     .fill(Color.systemPurple.quaternary)
                     .frame(height: newSideHeight)
-                    .offset(y: toDistance(val: 3))
+                    .offset(y: firstChangeOffset)
             }
             .opacity(isHovering ? 1 : 0.5)
 
