@@ -8,6 +8,7 @@
 import Foundation
 import AppKit
 
+// TODO: implement dock icon right click menu
 
 class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     func application(
@@ -19,13 +20,13 @@ class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // NSApp.dockTile.display()
-        print("dock?1")
+//        print("dock?1")
         // NSApp.dockTile = DockTilePlugin()
     }
 
     func applicationDidBecomeActive(_ notification: Notification) {
         // activateTheRealFinder()
-        print("dock?2 \(NSDocumentController.shared.recentDocumentURLs)")
+//        print("dock?2 \(NSDocumentController.shared.recentDocumentURLs)")
 
     }
 
@@ -36,7 +37,7 @@ class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         // openTheRealFinder()
-        print("dock?3 ")
+//        print("dock?3 ")
         return true
     }
 

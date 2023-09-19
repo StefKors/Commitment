@@ -68,24 +68,17 @@ extension GitDiff {
         /// A unified Diff String of a major version bump in a package.json file
         static let versionBump: String = """
 diff --git a/package.json b/package.json
-index 81aa5a5..4b49bb3 100644
+index 09ff520..4f245a9 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,6 @@
  {
-~
    "name": "playground",
-~
-   "version":
--"1.0.5",
-+"2.0.0",
-~
+-  "version": "2.0.0",
++  "version": "2.0.1",
    "main": "index.js",
-~
    "license": "MIT",
-~
    "dependencies": {
-~
 """
         /// A unified Diff String of a deleted file
         static let deletedFile: String = """
@@ -438,6 +431,137 @@ index 33f76a1..bf1cde8 100644
                  CODE_SIGN_STYLE = Automatic;
                  COMBINE_HIDPI_IMAGES = YES;
                  CURRENT_PROJECT_VERSION = 1;
+"""
+
+        static let sideBySideSample: String = """
+diff --git a/ColorPicker/ColorPickerApp.swift b/ColorPicker/ColorPickerApp.swift
+index 0b3fc7c..3dd217d 100644
+--- a/ColorPicker/ColorPickerApp.swift
++++ b/ColorPicker/ColorPickerApp.swift
+@@ -19,6 +19,11 @@ import AppKit
+
+     @AppStorage("ColorHistory") var colorHistory: [HistoricalColor] = []
+     @AppStorage("showAlpha") var showAlpha: Bool = false
++    @AppStorage("ColorStyle") var colorStyle: ColorStyle = .SwiftUI {
++        didSet {
++            self.refreshRightClickMenu()
++        }
++    }
+     @Published var isOn: Bool = true
+     @Published var showCode: Bool = false
+     @Published var setEffect: Bool = false
+@@ -27,11 +32,12 @@ import AppKit
+     var statusItem: NSStatusItem?
+     var statusBarMenu: NSMenu!
+
++    let anchor = NSMenuItem(title: "Set Color Style", action: nil, keyEquivalent: "")
++
+     var selectedColorLabel: String {
+-        showAlpha ? selectedColor.pasteboardTextWithAlpha : selectedColor.pasteboardText
++        selectedColor.pasteboardText(style: self.colorStyle, withAlpha: showAlpha)
+     }
+
+-
+     var toolbarBG: Color {
+         return selectedColor.darker(by: 5)
+     }
+@@ -85,7 +91,6 @@ import AppKit
+         statusItem.button?.action = #selector(self.statusBarButtonClicked(_:))
+         statusItem.button?.sendAction(on: [.leftMouseUp, .rightMouseUp])
+
+-
+         statusBarMenu = NSMenu(title: "Status Bar Menu")
+         statusBarMenu.delegate = self
+         self.statusItem = statusItem
+@@ -99,6 +104,13 @@ import AppKit
+         pasteboard.setString(content, forType: .rtf)
+     }
+
++    @objc func selectColorStyle(_ sender: NSMenuItem) {
++        if let style = ColorStyle(rawValue: sender.title) {
++            print("selected \\(style)")
++            colorStyle = style
++        }
++    }
++
+     @objc func statusBarButtonClicked(_ sender: NSStatusBarButton) {
+         if let event = NSApp.currentEvent,
+            event.type == NSEvent.EventType.rightMouseUp {
+@@ -124,22 +136,60 @@ import AppKit
+         }
+     }
+
+-    func rightMouseUp() {
++    func refreshRightClickMenu() {
+         statusItem?.menu = nil
+         statusBarMenu.items = []
+
++        let submenu = NSMenu(title: "Set Color Style")
++
++        for style in ColorStyle.allCases {
++            let item = NSMenuItem(
++                title: style.rawValue,
++                action: #selector(self.selectColorStyle),
++                keyEquivalent: ""
++            )
++            item.state = style == self.colorStyle ? .on : .off
++            submenu.addItem(item)
++        }
++
++        // set current item
++        if #available(macOS 14.0, *) {
++            anchor.badge = NSMenuItemBadge(string: self.colorStyle.rawValue)
++        } else {
++            // Fallback on earlier versions
++        }
++        statusBarMenu.addItem(anchor)
++        statusBarMenu.setSubmenu(submenu, for: anchor)
++
++        statusBarMenu.addItem(.separator())
+
+         for color in colorHistory.sorted(by: { $0.createdAt > $1.createdAt }).prefix(12) {
+             statusBarMenu.addItem(colorToMenuItem(color.value))
+         }
+-        statusItem?.menu = statusBarMenu // add menu to button...
++        statusItem?.menu = statusBarMenu
++    }
++
++    func rightMouseUp() {
++        self.refreshRightClickMenu()
+         statusItem?.button?.performClick(nil) // ...and click
+     }
+
+     func colorToMenuItem(_ color: Color) -> NSMenuItem {
+-        let simpleItem = NSMenuItem(title: color.pasteboardText, action: #selector(self.copyToPasteboard), keyEquivalent: "")
+-        if let image = NSImage(systemSymbolName: "app.fill",
+-                               accessibilityDescription: "A rectangle filled with the selected color.") {
++        let simpleItem = NSMenuItem(
++            title: color.pasteboardText(
++                style: self.colorStyle,
++                withAlpha: self.showAlpha
++            ),
++            action: #selector(
++                self.copyToPasteboard
++            ),
++            keyEquivalent: ""
++        )
++
++        if let image = NSImage(
++            systemSymbolName: "app.fill",
++            accessibilityDescription: "A rectangle filled with the selected color."
++        ) {
+             var config = NSImage.SymbolConfiguration(textStyle: .body, scale: .large)
+             config = config.applying(.init(paletteColors: [NSColor(color)]))
+             simpleItem.image = image.withSymbolConfiguration(config)
+@@ -154,7 +204,7 @@ struct ColorPickerApp: App {
+
+     var body: some Scene {
+         WindowGroup {
+-                ContentView()
++            ContentView()
+                 .environmentObject(appDelegate)
+                 .frame(maxWidth: 800)
+         }
 """
         static func toDiff(_ unifiedDiff: String) -> GitDiff? {
             return try? GitDiff(unifiedDiff: unifiedDiff)!

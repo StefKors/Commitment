@@ -96,22 +96,12 @@ struct SideBySideGutterView: View {
         startA: CGFloat,
         endA: CGFloat,
         startB: CGFloat,
-        endB: CGFloat,
-        colorA: Color? = nil,
-        colorB: Color? = nil
+        endB: CGFloat
     ) {
         self.startA = startA
         self.endA = endA
         self.startB = startB
         self.endB = endB
-
-        if let colorA {
-            self.colorA = colorA
-        }
-
-        if let colorB {
-            self.colorB = colorB
-        }
     }
 
     /// Draw a shape that arch between two sides.
@@ -119,26 +109,13 @@ struct SideBySideGutterView: View {
         startA: CGFloat,
         distanceA: CGFloat,
         startB: CGFloat,
-        distanceB: CGFloat,
-        colorA: Color? = nil,
-        colorB: Color? = nil
+        distanceB: CGFloat
     ) {
         self.startA = startA
         self.endA = startA + distanceA
         self.startB = startB
         self.endB = startB + distanceB
-
-        if let colorA {
-            self.colorA = colorA
-        }
-
-        if let colorB {
-            self.colorB = colorB
-        }
     }
-
-    private var colorA = Color(red: 0.944345, green: 0.604528, blue: 0.215502, opacity: 0.3)
-    private var colorB = Color(red: 0.674407, green: 0.222846, blue: 0.619637, opacity: 0.3)
 
     var body: some View {
         Arc(
@@ -147,16 +124,19 @@ struct SideBySideGutterView: View {
             startB: startB,
             endB: endB
         )
-        .fill(LinearGradient(
-            colors: [
-                colorA,
-                colorA,
-                colorB,
-                colorB
-            ],
-            startPoint: .leading,
-            endPoint: .trailing
-        ))
+        .fill(.foreground.quaternary)
+        .foregroundStyle(
+            .linearGradient(
+                colors: [
+                    Color.systemOrange,
+                    Color.systemOrange,
+                    Color.systemPurple,
+                    Color.systemPurple,
+                ],
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+        )
     }
 }
 

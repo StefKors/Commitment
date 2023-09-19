@@ -40,7 +40,10 @@ internal class GitDiffParser {
         var currentHunkNewCount: Int = 0
         var header: String?
         
-        unifiedDiff.enumerateLines { line, _ in
+        unifiedDiff.enumerateLines { simpleLine, _ in
+            // padd empty lines with a white space so we can still parse them
+            let line = simpleLine.isEmpty ? " " : simpleLine
+
             if line.starts(with: "@@ ") {
                 header = String(line)
             }
@@ -55,7 +58,7 @@ internal class GitDiffParser {
             }
 
             if let match = self.regex?.firstMatch(in: line, options: [], range: NSMakeRange(0, line.utf16.count)) {
-                
+
                 if let oldLineStartString = match.group(1, in: line), let oldLineStart = Int(oldLineStartString),
                     let newLineStartString = match.group(3, in: line), let newLineStart = Int(newLineStartString) {
                     

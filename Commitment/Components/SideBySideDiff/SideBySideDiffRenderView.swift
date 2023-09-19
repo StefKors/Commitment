@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+// TODO: https://www.avanderlee.com/swiftui/previews-different-states/#creating-a-preview-for-each-dynamic-type-size
 
 struct SideBySideDiffRenderView: View {
     var fileStatus: GitFileStatus
@@ -22,7 +23,7 @@ struct SideBySideDiffRenderView: View {
     }
 }
 
-#Preview {
+#Preview("Config Changes") {
     ScrollView {
         VStack {
             ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.configChanges)!.hunks, id: \.id) { hunk in
@@ -35,18 +36,108 @@ struct SideBySideDiffRenderView: View {
     .scenePadding()
 }
 
+#Preview("Version Bump") {
+    ScrollView {
+        VStack {
+            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.versionBump)!.hunks, id: \.id) { hunk in
+                HunkView(hunk: hunk)
+            }
+        }
+        .border(Color.black, width: 1)
+    }
+    .frame(width: 900, height: 800)
+    .scenePadding()
+}
+
+#Preview("Version Bump (unified)") {
+    ScrollView {
+        VStack {
+            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.versionBump)!.hunks, id: \.id) { hunk in
+                DiffHunkView(hunk: hunk)
+            }
+        }
+        .border(Color.black, width: 1)
+    }
+    .frame(width: 900, height: 800)
+    .scenePadding()
+}
+
+#Preview("Side by Side sample") {
+    ScrollView {
+        VStack {
+            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.sideBySideSample)!.hunks, id: \.id) { hunk in
+                HunkView(hunk: hunk)
+            }
+        }
+        .border(Color.black, width: 1)
+    }
+    .frame(width: 900, height: 800)
+    .scenePadding()
+}
+
+#Preview("Side by Side sample (unified)") {
+    ScrollView {
+        VStack {
+            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.sideBySideSample)!.hunks, id: \.id) { hunk in
+                DiffHunkView(hunk: hunk)
+            }
+        }
+        .border(Color.black, width: 1)
+    }
+    .frame(width: 900, height: 800)
+    .scenePadding()
+}
+
+
+
+
+
 struct HunkView: View {
     let hunk: GitDiffHunk
+
+    @State private var isHovering: Bool = false
     private let lineheight: CGFloat = 20
+    private let minheight: CGFloat = 4
+
+    private var oldSideTypeRelativePadding: CGFloat {
+        // we want to draw a different line of the left side based on the type of change
+
+        // a addition we want to draw a full lineheight line
+        // a deletion we want to draw a thin line
+
+        // TODO: should probably not be hardcoded index
+        if hunk.lines[safe: 2]?.type == .addition {
+            return 0
+        }
+
+        if hunk.lines[safe: 2]?.type == .deletion {
+            return lineheight
+        }
+
+        return 0
+    }
+
+    var oldSideHeight: CGFloat {
+        // Number of lines * lineheight with some bounds
+        // Add additional padding for certain line types
+        max(toDistance(val: hunk.oldLineSpan - 6), minheight) + oldSideTypeRelativePadding
+    }
+
+    var newSideHeight: CGFloat {
+        max(toDistance(val: hunk.newLineSpan - 6), minheight)
+    }
+
     var body: some View {
         // GeometryReader(content: {
         //     geometry in
         HunkHeaderLineView(header: hunk.header)
         ZStack {
+
+            // Background style of side by side
             HStack(alignment: .top, spacing: 0) {
                 Rectangle()
-                    .fill(Color(red: 0.944345, green: 0.604528, blue: 0.215502, opacity: 0.3))
-                    .frame(height: max(toDistance(val: hunk.oldLineSpan - 6), 4))
+                    .fill(Color.systemOrange.quaternary)
+                    .frame(height: oldSideHeight)
                     .offset(y: toDistance(val: 3))
 
                 VStack {
@@ -61,13 +152,15 @@ struct HunkView: View {
                 .frame(width: 60)
 
                 Rectangle()
-                    .fill(Color(red: 0.674407, green: 0.222846, blue: 0.619637, opacity: 0.3))
-                    .frame(height: max(toDistance(val: hunk.newLineSpan - 6), 4))
+                    .fill(Color.systemPurple.quaternary)
+                    .frame(height: newSideHeight)
                     .offset(y: toDistance(val: 3))
             }
+            .opacity(isHovering ? 1 : 0.5)
 
+            // Foreground text of side by side
             HStack(alignment: .top, spacing: 0) {
-                VStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: 0) {
                     ForEach(hunk.lines, id: \.id) { line  in
                         // HStack(alignment: .top, spacing: 0) {
                         // VStack(spacing: 0) {
@@ -99,7 +192,7 @@ struct HunkView: View {
                     .frame(width: 60)
 
 
-                VStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: 0) {
                     ForEach(hunk.lines, id: \.id) { line  in
                         // HStack(spacing: 0) {
                         //     VStack(spacing: 0) {
@@ -123,26 +216,11 @@ struct HunkView: View {
                     Spacer()
                 }
             }
-            // })
-            .task {
-                // var arches: [GutterArch] = []
-                print(hunk)
-                //
-                // arches.append(
-                //     GutterArch(
-                //         startA: CGFloat(hunk.oldLineStart),
-                //         distanceA: CGFloat(hunk.oldLineSpan),
-                //         startB: CGFloat(hunk.newLineStart),
-                //         distanceB: CGFloat(hunk.newLineSpan)
-                //     )
-                // )
-                // for (offset, line) in hunk.lines.enumerated() {
-                //     if line.type == .addition {
-                //
-                //         arches.append(GutterArch(startA: 0, endA: 0, startB: 0, endB: 0))
-                //     }
-                // }
-            }
+            .onHover(perform: { hovering in
+                withAnimation(.smooth) {
+                    isHovering = hovering
+                }
+            })
         }
     }
 
