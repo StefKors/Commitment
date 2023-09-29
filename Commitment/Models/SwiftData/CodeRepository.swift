@@ -35,9 +35,12 @@ class CodeRepository: Identifiable {
     // TODO: remove?
     var commitsAhead: [Commit]
 
-    // Computed properties to easy reference
+    // Computed properties for easy reference
     var branch: GitReference? {
         branches.first(where: \.active)
+    }
+    var folderName: String {
+        path.lastPathComponent
     }
 
     init(path: URL) {

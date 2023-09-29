@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct WelcomeWindow: View {
+    @Query private var repositories: [CodeRepository]
+
     var body: some View {
         HStack(alignment: .top, spacing: 50) {
             WelcomeStackView()
-            // WelcomeRepoListView()
+             WelcomeRepoListView(repos: repositories)
         }.padding()
     }
 }

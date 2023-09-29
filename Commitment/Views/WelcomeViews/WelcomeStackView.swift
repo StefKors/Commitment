@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct WelcomeStackView: View {
-    @EnvironmentObject var appModel: AppModel
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var appModel: AppModel
+    @State private var showFileImporter: Bool = false
+
     private let appVersion: String = "Build: \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "")"
     private let appBuild: String = "Version: \(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "")"
 
@@ -32,17 +35,55 @@ struct WelcomeStackView: View {
                 PillView(label: appVersion)
             }
 
-            ListItem(
+            WelcomeListItem(
                 label: "Add Local Repository",
                 subLabel: "Click here",
                 systemImage: "plus.rectangle.on.folder.fill"
             ).onTapGesture {
-                appModel.openRepo()
-                dismiss()
+                //                appModel.openRepo()
+                showFileImporter.toggle()
+//                dismiss()
             }
             .padding(.top, 30)
         }
+//        .fileImporter(
+//            isPresented: $showFileImporter,
+//            allowedContentTypes: [.directory]
+//        ) { result in
+//            switch result {
+//            case .success(let directory):
+//                // gain access to the directory
+//                let gotAccess = directory.startAccessingSecurityScopedResource()
+//                if !gotAccess { return }
+//
+//                self.appModel.bookmarks.storeFolderInBookmark(url: directory)
+//                addItem(url: directory)
+//                // access the directory URL
+//                // (read templates in the directory, make a bookmark, etc.)
+//                //                onTemplatesDirectoryPicked(directory)
+//                // release access
+//                directory.stopAccessingSecurityScopedResource()
+//            case .failure(let error):
+//                // handle error
+//                print(error)
+//            }
+//        }
     }
+
+    private func addItem(url: URL) {
+        withAnimation {
+            let newRepository = CodeRepository(path: url)
+            modelContext.insert(newRepository)
+        }
+    }
+
+    // private func deleteItems(offsets: IndexSet) {
+    //     withAnimation {
+    //         for index in offsets {
+    //             modelContext.delete(recordings[index])
+    //         }
+    //     }
+    // }
 }
 
 struct WelcomeStackView_Previews: PreviewProvider {

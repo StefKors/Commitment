@@ -8,38 +8,38 @@
 import SwiftUI
 
 struct WelcomeRepoListView: View {
-    @EnvironmentObject var appModel: AppModel
-    @State private var repos: [RepoState] = []
+    @EnvironmentObject private var appModel: AppModel
+    let repos: [CodeRepository]
 
     var body: some View {
-
         VStack(alignment: .leading, spacing: 0) {
             if !repos.isEmpty {
                 ForEach(repos, id: \.id) { repo in
-                    ListItem(
+                    WelcomeListItem(
                         label: repo.folderName,
-                        subLabel: repo.branch,
+                        subLabel: repo.branch?.name.localName ?? "",
                         assetImage: "git-repo-24"
                     ).onTapGesture {
-                        appModel.$activeRepositoryId.set(repo.id)
+                        print("TODO: implement open window")
+//                        appModel.$activeRepositoryId.set(repo.id)
                     }
                 }
 
             } else {
-                ListItem(
+                WelcomeListItem(
                     label: "Learn Git",
                     subLabel: "Getting started with Git",
                     systemImage: "graduationcap"
                 )
 
-                ListItem(
+                WelcomeListItem(
                     label: "Release Notes",
                     subLabel: "Learn about new features",
                     systemImage: "newspaper"
                 )
             }
 
-            ListItem(
+            WelcomeListItem(
                 label: "Add Local Repository",
                 subLabel: "Click here",
                 systemImage: "plus.rectangle.on.folder.fill"
@@ -47,14 +47,14 @@ struct WelcomeRepoListView: View {
                 appModel.openRepo()
             }
         }
-        .onReceive(appModel.$repos.$items, perform: {
+//        .onReceive(appModel.$repos.$items, perform: {
             // Filtering can happen here
-            self.repos = $0.suffix(5)
-        })
+//            self.repos = $0.suffix(5)
+//        })
     }
 }
 
-struct ListItem: View {
+struct WelcomeListItem: View {
     var label: String
     var subLabel: String
     var systemImage: String? = nil
@@ -103,6 +103,7 @@ struct ListItem: View {
 
 struct WelcomeRepoListView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeRepoListView()
+        // TODO: setup previews
+        WelcomeRepoListView(repos: [])
     }
 }
