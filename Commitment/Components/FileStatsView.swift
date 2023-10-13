@@ -10,7 +10,7 @@ import SwiftUI
 struct FileStatsView: View {
     let stats: GitFileStats?
 
-    @AppStorage("SideBySideView") private var sideBySide: Bool = false
+    @AppStorage(Settings.Features.SideBySide) private var sideBySide: Bool = false
 
     @State private var selection = 0
 

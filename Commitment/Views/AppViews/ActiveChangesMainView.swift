@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ActiveChangesMainView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
     let id: GitFileStatus.ID?
     let diffs: [GitDiff] = []
     @State private var fileStatus: GitFileStatus?
@@ -37,11 +37,12 @@ struct ActiveChangesMainView: View {
             await getDiffs()
             isLoading = false
         })
-        .onChange(of: repo.lastUpdate) { _ in
-            Task {
-                await getDiffs()
-            }
-        }
+        // TODO: shell date updates thingy
+//        .onChange(of: repo.lastUpdate) { _ in
+//            Task {
+//                await getDiffs()
+//            }
+//        }
     }
 
     func getDiffs() async {

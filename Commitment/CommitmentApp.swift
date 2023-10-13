@@ -10,7 +10,7 @@ import Boutique
 import Foundation
 import WindowManagement
 import HotKey
-
+import SwiftData
 
 // https://github.com/Wouter01/SwiftUI-WindowManagement
 // NSWindow.alwaysUseActiveAppearance = true
@@ -18,98 +18,82 @@ import HotKey
 // /.foregroundStyle(.blue, .green, Gradient(colors: [.red, .yellow]))
 // /.backgroundStyle(.pink)
 
+extension SceneID {
+    static let mainWindow = SceneID("MainWindow")
+    static let welcomeWindow = SceneID("WelcomeWindow")
+}
+
 
 // CLI tool for controlling the app
 // https://www.youtube.com/watch?v=hPEDjbb_BD0
 @main
 struct CommitmentApp: App {
-    @Environment(\.window) private var window
-    @AppStorage("CommitWindow") private var commitWindow: Bool = false
     @NSApplicationDelegateAdaptor private var appDelegate: CommitmentAppDelegate
-    @StateObject var appModel: AppModel = .shared
-//    @StateObject private var bookmarks: Bookmarks = .init()
-    @StateObject var activity = ActivityState()
-
-
-    @State private var repo: RepoState? = nil
-    @State private var selectedRepo: RepoState.ID? = nil
+    // TODO: How to handle shell?
 
     init() {
+//        enableWindowSizeSaveOnQuit(true)
         NSWindow.alwaysUseActiveAppearance = true
     }
 
+    // SwiftData types
+    let container = try! ModelContainer(for: CodeRepository.self, Bookmark.self)
+    // TODO: onboarding
     var body: some Scene {
-         DocumentGroup(viewing: CodeRepository.self, contentType: .directory) {
-             Text("testing")
-         }
-//         Window("test", id: "testing") {
-//                  ContentView()
-////             Text("testing")
-//         }
-//         .modelContainer(for: [CodeRepository.self])
-//         .environmentObject(appModel)
-        // .modelContainer(for: CodeRepository.self)
-//        Window("Commitment", id: "MainWindow", content: {
-//        
-//            ZStack {
-//                if let repo = appModel.activeRepo {
-//                    RepoWindow()
-//                        // .ignoresSafeArea(.all, edges: .top)
-//                        .environmentObject(repo)
-//                        .environmentObject(repo.undo)
-//                        // .focusedSceneValue(\.repo, repo)
-//                        .buttonStyle(.regularButtonStyle)
-//                        .task(id: repo.id) {
-//                            repo.startMonitor()
-//                            Task {
-//                                do {
-//                                    try await repo.refreshRepoState()
-//                                } catch {
-//                                    print(error.localizedDescription)
-//                                }
-//                            }
-//                        }
-//                } else {
-//                    WelcomeSheet()
-//                }
-//            }
-//            .environmentObject(appModel)
-//            .environmentObject(activity)
-//            .onReceive(appModel.activeRepositoryId.publisher, perform: { newVal in
-//                let repo = appModel.repos.first(with: appModel.activeRepositoryId) ?? appModel.repos.first
-//                guard let repo else { return }
-//                self.repo = repo
-//                Task {
-//                    do {
-//                        try await self.repo?.refreshRepoState()
-//                    } catch {
-//                        print(error.localizedDescription)
-//                    }
-//                }
-//                self.repo?.startMonitor()
-//            })
-//        })
-//        .register("MainWindow")
-//        .titlebarAppearsTransparent(true)
-//        .windowToolbarStyle(.unifiedCompact(showsTitle: false))
-//        .windowStyle(.hiddenTitleBar)
-//        .windowResizability(.contentMinSize)
-//        .commands {
-//            SidebarCommands()
-//            AppCommands(repo: appModel.activeRepo, appModel: appModel)
-//            OverrideCommands()
-//            TextEditingCommands()
-//        }
-
-        Window("Settings", id: "settings") {
-            SettingsWindow()
-                .frame(width: 650, height: 400)
-                .environmentObject(appModel)
-                .hideSidebarToggle()
+        Window("Welcome", id: SceneID.welcomeWindow.id) {
+            WelcomeContentView()
+                .frame(width: 700, height: 300, alignment: .center)
         }
-        .windowStyle(.automatic)
-        .windowToolbarStyle(.unified)
         .windowResizability(.contentSize)
-        .defaultSize(width: 650, height: 400)
+        .register(.welcomeWindow)
+
+        .transition(.none)
+        .defaultSize(width: 700, height: 300)
+        .enableOpenWindow()
+        .titlebarAppearsTransparent(true)
+        .windowToolbarStyle(.unifiedCompact(showsTitle: false))
+        .windowStyle(.hiddenTitleBar)
+        .modelContainer(container)
+
+        WindowGroup(id: SceneID.mainWindow.id, for: URL.self) { $repositoryID in
+            // TODO: better way to handle this?
+            if let repositoryID {
+                RepositoryWindow(path: repositoryID)
+                    .frame(minWidth: 1000)
+
+            } else {
+                EmptyView()
+            }
+        }
+        .modelContainer(container)
+        .register(.mainWindow)
+        .enableOpenWindow()
+        .titlebarAppearsTransparent(true)
+        .windowToolbarStyle(.unifiedCompact(showsTitle: false))
+        .windowStyle(.hiddenTitleBar)
+        .windowResizability(.contentMinSize)
+        .commands {
+            SidebarCommands()
+            //            AppCommands(repo: appModel.activeRepo, appModel: appModel)
+            //            OverrideCommands()
+            TextEditingCommands()
+        }
+////
+//
+//        Window("Welcome", id: "WelcomeWindow") {
+//            WelcomeContentView()
+//        }
+//        .modelContainer(container)
+
+
+//        Window("Settings", id: "settings") {
+//            SettingsWindow()
+//                .frame(width: 650, height: 400)
+//                .hideSidebarToggle()
+//        }
+//        .windowStyle(.automatic)
+//        .windowToolbarStyle(.unified)
+//        .windowResizability(.contentSize)
+//        .defaultSize(width: 650, height: 400)
     }
 }

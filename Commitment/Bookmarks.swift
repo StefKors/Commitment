@@ -29,8 +29,9 @@ class SSHKeyOpenPanel: NSObject, NSOpenSavePanelDelegate {
     }
 }
 
-class Bookmarks {
-    var bookmarks = [URL: Data]()
+class Bookmarks: ObservableObject {
+    @Published var bookmarks = [URL: Data]()
+
     func openFolderSelection() -> URL? {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
@@ -111,7 +112,7 @@ class Bookmarks {
 
     func getBookmarkPath() -> URL {
         var url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
-        url = url.appendingPathComponent("Bookmarks.dict")
+        url = url.appendingPathComponent("Bookmarks-3.dict")
         return url
     }
 

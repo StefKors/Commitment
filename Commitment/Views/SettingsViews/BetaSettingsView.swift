@@ -9,8 +9,7 @@ import SwiftUI
 import Boutique
 
 struct BetaSettingsView: View {
-    @EnvironmentObject var appModel: AppModel
-    @AppStorage("SideBySideView") private var sideBySide: Bool = false
+    @AppStorage(Settings.Features.SideBySide) private var sideBySide: Bool = false
 
     var body: some View {
         SettingsBox(

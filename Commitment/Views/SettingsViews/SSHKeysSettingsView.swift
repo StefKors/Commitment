@@ -62,46 +62,46 @@ struct SSHKeyView: View {
         }
     }
 }
-
-struct SSHKeysSettingsView: View {
-    @EnvironmentObject private var model: AppModel
-    @KeychainStorage("sshkeys") private var keys: SSHKeys? = nil
-    
-    var body: some View {
-        SettingsBox(label: "SSH Keys") {
-            Text(try! AttributedString(markdown: "Import your `ssh` keys to authenticate with external Git Services. Click import to get started."))
-            if let keys {
-                VStack(alignment: .leading, spacing: 10) {
-                    ForEach(keys.values) { key in
-                        SSHKeyView(item: key, passwords: $keys)
-                        Divider()
-                    }
-                }
-                .frame(alignment: .leading)
-            }
-            HStack {
-                Spacer()
-                Button("Import", action: handleImportAction)
-            }
-            .frame(alignment: .trailing)
-        }
-    }
-    
-    /// Use NSOpenPanel to open the users git config and update the stored credentials.
-    func handleImportAction() {
-        if let path = model.bookmarks.openSSHKey() {
-            if let content = try? String(contentsOf: URL(filePath: path.path()), encoding: .utf8) {
-                let oldValues = keys?.values ?? []
-                let newValues = oldValues + [SSHKey(url: path, key: content)]
-                withAnimation(.easeOut(duration: 0.2)) {
-                    keys = SSHKeys(values: newValues)
-                }
-            }
-        } else {
-            print("failed to get path")
-        }
-    }
-}
+// TODO: settings state etc....
+//struct SSHKeysSettingsView: View {
+//    @EnvironmentObject private var model: AppModel
+//    @KeychainStorage("sshkeys") private var keys: SSHKeys? = nil
+//    
+//    var body: some View {
+//        SettingsBox(label: "SSH Keys") {
+//            Text(try! AttributedString(markdown: "Import your `ssh` keys to authenticate with external Git Services. Click import to get started."))
+//            if let keys {
+//                VStack(alignment: .leading, spacing: 10) {
+//                    ForEach(keys.values) { key in
+//                        SSHKeyView(item: key, passwords: $keys)
+//                        Divider()
+//                    }
+//                }
+//                .frame(alignment: .leading)
+//            }
+//            HStack {
+//                Spacer()
+//                Button("Import", action: handleImportAction)
+//            }
+//            .frame(alignment: .trailing)
+//        }
+//    }
+//    
+//    /// Use NSOpenPanel to open the users git config and update the stored credentials.
+//    func handleImportAction() {
+//        if let path = model.bookmarks.openSSHKey() {
+//            if let content = try? String(contentsOf: URL(filePath: path.path()), encoding: .utf8) {
+//                let oldValues = keys?.values ?? []
+//                let newValues = oldValues + [SSHKey(url: path, key: content)]
+//                withAnimation(.easeOut(duration: 0.2)) {
+//                    keys = SSHKeys(values: newValues)
+//                }
+//            }
+//        } else {
+//            print("failed to get path")
+//        }
+//    }
+//}
 
 struct AdvancedSettingsView_Previews: PreviewProvider {
     // Credentials(values: [

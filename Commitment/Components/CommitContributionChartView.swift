@@ -74,7 +74,7 @@ struct ContributionBlockView: View {
 }
 
 struct CommitContributionChartView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
 
     @State private var data: [Contribution] = []
 

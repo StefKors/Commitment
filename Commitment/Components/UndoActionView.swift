@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct UndoActionView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject private var shell: Shell
+    @EnvironmentObject private var undoState: UndoState
     let action: UndoAction
     var body: some View {
         HStack {
@@ -29,14 +31,14 @@ struct UndoActionView: View {
                 Task {
                     switch action.type {
                     case .stash:
-                        try await repo.shell.applyLastStash()
-                        self.repo.undo.stack.removeLast()
+                        try await shell.applyLastStash()
+                        self.undoState.stack.removeLast()
                     case .discardChanges:
-                        try await repo.shell.applyLastStash()
-                        self.repo.undo.stack.removeLast()
+                        try await shell.applyLastStash()
+                        self.undoState.stack.removeLast()
                     case .commit:
-                        try await repo.shell.undoLastCommit()
-                        self.repo.undo.stack.removeLast()
+                        try await shell.undoLastCommit()
+                        self.undoState.stack.removeLast()
                     }
 
                     try await self.repo.refreshDiffsAndStatus()

@@ -7,10 +7,20 @@
 
 import Foundation
 import AppKit
+import SwiftData
+import SwiftUI
 
 // TODO: implement dock icon right click menu
 
 class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
+    private var repos: [CodeRepository] = []
+
+    lazy var container: ModelContainer = {
+        //let configuration = ModelConfiguration(inMemory: true)
+        let container = try! ModelContainer(for: CodeRepository.self, Bookmark.self)
+        return container
+    }()
+
     func application(
         _ application: NSApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
@@ -22,6 +32,8 @@ class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
         // NSApp.dockTile.display()
 //        print("dock?1")
         // NSApp.dockTile = DockTilePlugin()
+        fetchRepositories()
+//        NSApp.activate(ignoringOtherApps: true)
     }
 
     func applicationDidBecomeActive(_ notification: Notification) {
@@ -42,14 +54,35 @@ class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     }
 
     func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
-        print("dock menu?")
+//        print("dock menu?")
+        fetchRepositories()
         let menu = NSMenu()
-        menu.insertItem(NSMenuItem(title: "test menu item", action: #selector(handleMenu), keyEquivalent: ""), at: 0)
+        for repo in repos {
+            let menuItem = NSMenuItem(title: repo.folderName, action: #selector(handleMenu), keyEquivalent: "")
+            menuItem.representedObject = repo.path
+            menuItem.image = NSWorkspace.shared.icon(forFile: repo.path.path(percentEncoded: false))
+            menuItem.image?.size = NSSize(width: 13, height: 13)
+            menu.insertItem(menuItem, at: 0)
+        }
         return menu
     }
 
     @objc
-    func handleMenu() {
+    func handleMenu(_ sender: NSMenuItem) {
+        guard let path: URL = sender.representedObject as? URL else { return }
+        NSApp.openWindow(.mainWindow, value: path)
         print("dock menu action!")
+    }
+
+    @MainActor private func fetchRepositories() {
+        let context = container.mainContext
+
+        let fetchDescriptor: FetchDescriptor<CodeRepository> = FetchDescriptor()
+
+        do {
+            self.repos = try context.fetch(fetchDescriptor)
+        } catch {
+            print(error)
+        }
     }
 }

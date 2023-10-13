@@ -51,7 +51,8 @@ struct SettingsWindow: View {
                 case .KeyboardShortcuts:
                     KeyboardShortcutsSettingsView()
                 case .SSH:
-                    SSHKeysSettingsView()
+                    Text("todo")
+//                    SSHKeysSettingsView()
                 case .Beta:
                     BetaSettingsView()
                 }

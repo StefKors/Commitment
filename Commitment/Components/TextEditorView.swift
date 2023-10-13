@@ -9,7 +9,9 @@ import SwiftUI
 
 struct TextEditorView: View {
     let isDisabled: Bool
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject private var shell: Shell
+    @EnvironmentObject private var undoState: UndoState
     // SceneStorage doesn't work well with textfield...
     // @SceneStorage("commitTitle") private var commitTitle: String = ""
     @State private var commitTitle: String = ""
@@ -77,7 +79,7 @@ struct TextEditorView: View {
                 handleSubmit()
             } label: {
                 HStack {
-                    Text("Commit to \(repo.branch)")
+                    Text("Commit to \(repo.branch?.name.localName ?? "")")
                     Spacer()
                     HStack(spacing: 0) {
                         Image(systemName: "command")
@@ -97,10 +99,30 @@ struct TextEditorView: View {
     
     func handleSubmit() {
         Task { @MainActor in
-            try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
+            try await commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
             commitTitle = ""
             commitBody = ""
         }
+    }
+
+    func commit(title: String, body: String, quickCommitTitle: String? = nil) async throws {
+        var action: UndoAction?
+        if !title.isEmpty, !body.isEmpty {
+            try await self.shell.commit(title: title, message: body)
+            action = UndoAction(type: .commit, arguments: ["commit", "-m", title, "-m", body], subtitle: title)
+        } else if !title.isEmpty {
+            try await self.shell.commit(message: title)
+            action = UndoAction(type: .commit, arguments: ["commit", "-m", title], subtitle: title)
+        } else if let title = quickCommitTitle {
+            try await self.shell.commit(message: title)
+            action = UndoAction(type: .commit, arguments: ["commit", "-m", title], subtitle: title)
+        }
+
+        if let action {
+            self.undoState.stack.append(action)
+        }
+
+        try await self.repo.refreshRepoState()
     }
 }
 

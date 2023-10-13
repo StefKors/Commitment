@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PendingCommitSummaryView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
 
     var body: some View {
         ZStack {

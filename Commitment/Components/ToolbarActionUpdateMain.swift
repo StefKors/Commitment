@@ -9,7 +9,7 @@ import SwiftUI
 
 // git fetch origin main:main will fetch udpates and apply them to local main
 struct ToolbarActionUpdateMain: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var shell: Shell
     var body: some View {
         Button(action: handleButton, label: {
             HStack {
@@ -28,7 +28,7 @@ struct ToolbarActionUpdateMain: View {
 
     func handleButton() {
         Task {
-            try? await repo.shell.fetch(branch: "main")
+            try? await shell.fetch(branch: "main")
         }
     }
 }

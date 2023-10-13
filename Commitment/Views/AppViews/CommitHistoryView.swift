@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CommitHistoryView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var viewState: ViewState
     var body: some View {
         CommitHistorySidebarView()
             .frame(minWidth: 300)
@@ -23,8 +23,8 @@ struct CommitHistoryView: View {
                     AddRepoView()
                 }
             })
-        CommitHistoryMainView(id: repo.view.activeCommitSelection)
+        CommitHistoryMainView(id: viewState.activeCommitSelection)
             .ignoresSafeArea(.all, edges: .top)
-            .frame(minWidth: 300)
+            .frame(minWidth: 600)
     }
 }

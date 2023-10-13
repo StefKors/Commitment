@@ -247,6 +247,7 @@
 		8A48D12F27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D12E27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift */; };
 		8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14127FDA8A0007803D2 /* Shell.swift */; };
 		8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14C27FDB6DF007803D2 /* BranchView.swift */; };
+		8A4DD9B02AC6F3EB00B80F74 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4DD9AF2AC6F3EB00B80F74 /* Bookmark.swift */; };
 		8A562CDD29B2007C006C7E8A /* Shell+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CDC29B2007C006C7E8A /* Shell+ViewModel.swift */; };
 		8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */; };
 		8A562CE129B200E6006C7E8A /* Shell+Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE029B200E6006C7E8A /* Shell+Run.swift */; };
@@ -257,7 +258,6 @@
 		8A58736A2A687A2E00E630EA /* CodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5873692A687A2E00E630EA /* CodeRepository.swift */; };
 		8A58736C2A687A5E00E630EA /* SplitModeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58736B2A687A5E00E630EA /* SplitModeOptions.swift */; };
 		8A58736E2A687C8900E630EA /* ActiveChangesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58736D2A687C8900E630EA /* ActiveChangesState.swift */; };
-		8A5873702A687D2000E630EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58736F2A687D2000E630EA /* ContentView.swift */; };
 		8A5C64CF29797DB300CA8FE1 /* CommitHistorySidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */; };
 		8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */; };
 		8A5C64D129797DB300CA8FE1 /* ActiveChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */; };
@@ -459,6 +459,7 @@
 		8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E129E6D77600631337 /* UndoState.swift */; };
 		8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */; };
 		8AD9B5E829E6DC1500631337 /* UndoActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E729E6DC1500631337 /* UndoActionView.swift */; };
+		8AE294012AC6CE1D001BE6D0 /* UTType+Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE294002AC6CE1D001BE6D0 /* UTType+Directory.swift */; };
 		8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */; };
 		8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD506296F2A4000525BF7 /* PillView.swift */; };
 		8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */; };
@@ -938,6 +939,7 @@
 		8A48D12E27FD9E2F007803D2 /* CommitmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A48D14127FDA8A0007803D2 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		8A48D14C27FDB6DF007803D2 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
+		8A4DD9AF2AC6F3EB00B80F74 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		8A562CDC29B2007C006C7E8A /* Shell+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+ViewModel.swift"; sourceTree = "<group>"; };
 		8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Executable.swift"; sourceTree = "<group>"; };
 		8A562CE029B200E6006C7E8A /* Shell+Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Run.swift"; sourceTree = "<group>"; };
@@ -948,7 +950,6 @@
 		8A5873692A687A2E00E630EA /* CodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRepository.swift; sourceTree = "<group>"; };
 		8A58736B2A687A5E00E630EA /* SplitModeOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitModeOptions.swift; sourceTree = "<group>"; };
 		8A58736D2A687C8900E630EA /* ActiveChangesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChangesState.swift; sourceTree = "<group>"; };
-		8A58736F2A687D2000E630EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitHistorySidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesSidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesView.swift; sourceTree = "<group>"; };
@@ -1160,6 +1161,7 @@
 		8AD9B5E129E6D77600631337 /* UndoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoState.swift; sourceTree = "<group>"; };
 		8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActivityView.swift; sourceTree = "<group>"; };
 		8AD9B5E729E6DC1500631337 /* UndoActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActionView.swift; sourceTree = "<group>"; };
+		8AE294002AC6CE1D001BE6D0 /* UTType+Directory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Directory.swift"; sourceTree = "<group>"; };
 		8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPushOriginActionButtonView.swift; sourceTree = "<group>"; };
 		8AFBD506296F2A4000525BF7 /* PillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRepoListView.swift; sourceTree = "<group>"; };
@@ -1671,10 +1673,10 @@
 				8A48D11427FD9E2E007803D2 /* Assets.xcassets */,
 				8A48D11927FD9E2E007803D2 /* Commitment.entitlements */,
 				8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */,
-				8A58736F2A687D2000E630EA /* ContentView.swift */,
 				8AD9B5CF29E6C28500631337 /* Commands.swift */,
 				8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */,
 				8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */,
+				8A4DD9AF2AC6F3EB00B80F74 /* Bookmark.swift */,
 				8A02C51C29AD3DAB004DCA69 /* KeychainStorage.swift */,
 				8A68425D2A052B430063CBE6 /* Constants.swift */,
 				8A8C6658296464A700A774D7 /* Components */,
@@ -2408,6 +2410,7 @@
 				8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */,
 				8A486DC129AFBCB700FB00F7 /* Animation.swift */,
 				8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */,
+				8AE294002AC6CE1D001BE6D0 /* UTType+Directory.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2810,6 +2813,7 @@
 				8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */,
 				8ACCD291297F265B0020BF84 /* IndexIterator.swift in Sources */,
 				8ACCD2D8297F265C0020BF84 /* File.swift in Sources */,
+				8A4DD9B02AC6F3EB00B80F74 /* Bookmark.swift in Sources */,
 				8ACCD2F2297F265C0020BF84 /* RepositoryDelegate.swift in Sources */,
 				8ACCD2E9297F265C0020BF84 /* GitLogRecordList.swift in Sources */,
 				8A6C4C4D298BEF49009377C0 /* ToolbarActionUpdateMain.swift in Sources */,
@@ -2867,6 +2871,7 @@
 				8ACCD2AD297F265B0020BF84 /* CheckoutTask.swift in Sources */,
 				8ACCD2F5297F265C0020BF84 /* Repository.swift in Sources */,
 				8ACCD29C297F265B0020BF84 /* BranchTask.swift in Sources */,
+				8AE294012AC6CE1D001BE6D0 /* UTType+Directory.swift in Sources */,
 				8ACCD2AC297F265B0020BF84 /* CheckoutOptions.swift in Sources */,
 				8A562CE329B33F79006C7E8A /* ActivityArrow.swift in Sources */,
 				8AFBD54729702A2C00525BF7 /* Collection.swift in Sources */,
@@ -2891,7 +2896,6 @@
 				8A992DFB29A62C8B001E26A3 /* StatefulPreviewContainer.swift in Sources */,
 				8ACCD2A5297F265B0020BF84 /* GitResetOptions.swift in Sources */,
 				8ACCD2DC297F265C0020BF84 /* GitRepository+Log.swift in Sources */,
-				8A5873702A687D2000E630EA /* ContentView.swift in Sources */,
 				8ACCD2BB297F265B0020BF84 /* CloneTask.swift in Sources */,
 				8AAF7AEC29A6CEAE0007CE8D /* Throttler.swift in Sources */,
 				8ACCD2F0297F265C0020BF84 /* CredentialsProvider.swift in Sources */,
@@ -3465,7 +3469,7 @@
 			repositoryURL = "https://github.com/Wouter01/SwiftUI-WindowManagement.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 2.0.0;
 			};
 		};
 		8AFBD51A296F2BF600525BF7 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {

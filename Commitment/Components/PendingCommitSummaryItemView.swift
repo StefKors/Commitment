@@ -12,7 +12,7 @@ enum CommitSummary: Error {
 }
 
 struct PendingCommitSummaryItemView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var shell: Shell
     let commit: Commit
     @State var stats: GitCommitStats?
     var body: some View {
@@ -43,7 +43,7 @@ struct PendingCommitSummaryItemView: View {
         .border(Color.disabledControlTextColor, width: 1, cornerRadius: 4)
         .task(id: commit.hash, priority: .medium) {
             do {
-                stats = try await repo.shell.stats(for: commit.hash)
+                stats = try await shell.stats(for: commit.hash)
                 // let numstat = try await repo.shell.numStat(for: commit.hash)
                 // print(numstat)
             } catch {

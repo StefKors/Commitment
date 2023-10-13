@@ -11,7 +11,7 @@ struct WelcomeSheet: View {
     @State private var isPresented: Bool = false
 
     var body: some View {
-        WelcomeWindow()
+        WelcomeContentView()
         // HStack {
         //     EmptyView()
         // }

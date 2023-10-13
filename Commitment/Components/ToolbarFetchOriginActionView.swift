@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct ToolbarFetchOriginActionView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
     let remote: String = "origin"
-    @StateObject private var shell: Shell
-
-    internal init(workspace: URL) {
-        self._shell = StateObject(wrappedValue: Shell(workspace: workspace))
-    }
+    @EnvironmentObject private var shell: Shell
 
     // TODO: implement
     var body: some View {
@@ -26,7 +22,8 @@ struct ToolbarFetchOriginActionView: View {
 
                     VStack(alignment: .leading) {
                         Text("Fetch \(remote)")
-                        OutputLine(output: shell.output, date: repo.lastFetchedDate)
+                        // TODO: handle date in shell
+                        OutputLine(output: shell.output, date: nil)
                     }
                 }
                 .foregroundColor(.primary)
@@ -38,9 +35,10 @@ struct ToolbarFetchOriginActionView: View {
 
     func handleButton() {
         Task {
+            // TODO: Activity and Shell wombo combo
             // shell.isRunning = true
-            await self.shell.runActivity(.git, ["fetch", "origin", "main"], in: repo.shell.workspace)
-            shell.output = nil
+//            await self.shell.runActivity(.git, ["fetch", "origin", "main"], in: repo.shell.workspace)
+//            shell.output = nil
             // shell.isRunning = false
             // try? await self.repo.shell.push()
         }
@@ -49,6 +47,6 @@ struct ToolbarFetchOriginActionView: View {
 
 struct ToolbarFetchOriginActionView_Previews: PreviewProvider {
     static var previews: some View {
-        ToolbarFetchOriginActionView(workspace: .temporaryDirectory)
+        ToolbarFetchOriginActionView()
     }
 }

@@ -6,37 +6,43 @@
 //
 
 import SwiftUI
+import SwiftData
+import WindowManagement
 
 struct WelcomeRepoListView: View {
-    @EnvironmentObject private var appModel: AppModel
-    let repos: [CodeRepository]
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissWindow) private var dismissWindow
+
+    @State private var showFileImporter: Bool = false
+
+    @Query private var repositories: [CodeRepository]
 
     var body: some View {
+
         VStack(alignment: .leading, spacing: 0) {
-            if !repos.isEmpty {
-                ForEach(repos, id: \.id) { repo in
+            WelcomeListItem(
+                label: "Learn Git",
+                subLabel: "Getting started with Git",
+                systemImage: "graduationcap"
+            )
+
+            WelcomeListItem(
+                label: "Release Notes",
+                subLabel: "Learn about new features",
+                systemImage: "newspaper"
+            )
+
+            if !repositories.isEmpty {
+                ForEach(repositories, id: \.id) { repo in
                     WelcomeListItem(
                         label: repo.folderName,
                         subLabel: repo.branch?.name.localName ?? "",
                         assetImage: "git-repo-24"
                     ).onTapGesture {
-                        print("TODO: implement open window")
-//                        appModel.$activeRepositoryId.set(repo.id)
+                        open(repo.path)
                     }
                 }
-
-            } else {
-                WelcomeListItem(
-                    label: "Learn Git",
-                    subLabel: "Getting started with Git",
-                    systemImage: "graduationcap"
-                )
-
-                WelcomeListItem(
-                    label: "Release Notes",
-                    subLabel: "Learn about new features",
-                    systemImage: "newspaper"
-                )
             }
 
             WelcomeListItem(
@@ -44,13 +50,47 @@ struct WelcomeRepoListView: View {
                 subLabel: "Click here",
                 systemImage: "plus.rectangle.on.folder.fill"
             ).onTapGesture {
-                appModel.openRepo()
+                showFileImporter.toggle()
+            }
+            .fileImporter(
+                isPresented: $showFileImporter,
+                allowedContentTypes: [.directory]
+            ) { result in
+                switch result {
+                case .success(let directory):
+                    // gain access to the directory
+                    let gotAccess = directory.startAccessingSecurityScopedResource()
+                    if !gotAccess { return }
+                    addItem(url: directory)
+                    open(directory)
+
+                    //                directory.stopAccessingSecurityScopedResource()
+                case .failure(let error):
+                    // handle error
+                    print(error)
+                }
+            }
+
+
+        }
+
+
+    }
+
+    private func addItem(url: URL) {
+        withAnimation {
+            do {
+                let newRepository = try CodeRepository(path: url)
+                modelContext.insert(newRepository)
+            } catch {
+                print("failed to create code repo due to bookmark")
             }
         }
-//        .onReceive(appModel.$repos.$items, perform: {
-            // Filtering can happen here
-//            self.repos = $0.suffix(5)
-//        })
+    }
+
+    private func open(_ url: URL) {
+        dismissWindow(id: SceneID.welcomeWindow.id)
+        NSApp.openWindow(.mainWindow, value: url)
     }
 }
 
@@ -83,14 +123,16 @@ struct WelcomeListItem: View {
                     .truncationMode(.tail)
                     .lineLimit(1)
             }
+
+            Spacer()
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 6)
         .background(
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(.background)
-                    .shadow(radius: 5)
-                    .opacity(isHovering ? 1 : 0)
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .fill(.background)
+                .shadow(radius: 5)
+                .opacity(isHovering ? 1 : 0)
         )
         .offset(y: isHovering ? -3 : 0)
         .animation(.spring(response: 0.2, dampingFraction: 0.5, blendDuration: 0.2), value: isHovering)
@@ -104,6 +146,6 @@ struct WelcomeListItem: View {
 struct WelcomeRepoListView_Previews: PreviewProvider {
     static var previews: some View {
         // TODO: setup previews
-        WelcomeRepoListView(repos: [])
+        WelcomeRepoListView()
     }
 }

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ToolbarOpenCommitWindowView: View {
-    @EnvironmentObject private var repo: RepoState
     @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         Button {
+            // TODO: Check open window behaviour
             openWindow(id: "CommitWindow")
         } label: {
             HStack {

@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct FileRenderView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
 
     var fileStatus: GitFileStatus
 
@@ -34,9 +34,10 @@ struct FileRenderView: View {
             }
         }
         // .id(fileStatus)
-        .task(id: repo.lastUpdate) {
-            await handleGetFileStatus()
-        }
+        // TODO: shell date updates
+//        .task(id: repo.lastUpdate) {
+//            await handleGetFileStatus()
+//        }
     }
 
     func handleGetFileStatus() async {

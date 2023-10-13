@@ -72,7 +72,7 @@ struct CredentialView: View {
 }
 
 struct CredentialSettingsView: View {
-    @EnvironmentObject private var model: AppModel
+    @EnvironmentObject private var repo: CodeRepository
     @KeychainStorage("passwords") private var passwords: Credentials? = nil
     @State private var gitName: String = ""
     @State private var gitEmail: String = ""
@@ -118,32 +118,36 @@ struct CredentialSettingsView: View {
     func submitUser() {
         print("submit git user")
         guard !gitName.isEmpty, !gitEmail.isEmpty else { return }
-        model.setGitUser(GitUser(name: gitName, email: gitEmail))
+        print("TODO: handle git user stuff")
+        // TODO: handle git user stuff
+//        repo.setGitUser(GitUser(name: gitName, email: gitEmail))
     }
 
     /// Use NSOpenPanel to open the users git config and update the stored credentials.
     func handleImportAction() {
-        if let path = model.bookmarks.openGitCredentials() {
-            if let content = try? String(contentsOf: URL(filePath: path.path()), encoding: .utf8) {
-                let oldPasswords = passwords?.values ?? []
-                let newPasswords = content
-                    .lines
-                    .compactMap { line -> Credential? in
-                        guard let url = URL(string: String(line)) else { return nil }
-                        return Credential(url: url)
-                    }
-                
-                let newValues = Array(Set(oldPasswords + newPasswords))
-                writeGitConfig(newValues)
-                writeGitCredentials(newValues)
-                
-                withAnimation(.easeOut(duration: 0.2)) {
-                    passwords = Credentials(values: newValues)
-                }
-            }
-        } else {
-            print("failed to get path")
-        }
+        print("TODO: handle git credentials stuff")
+        // TODO: handle git credentials stuff
+//        if let path = repo.bookmarks.openGitCredentials() {
+//            if let content = try? String(contentsOf: URL(filePath: path.path()), encoding: .utf8) {
+//                let oldPasswords = passwords?.values ?? []
+//                let newPasswords = content
+//                    .lines
+//                    .compactMap { line -> Credential? in
+//                        guard let url = URL(string: String(line)) else { return nil }
+//                        return Credential(url: url)
+//                    }
+//                
+//                let newValues = Array(Set(oldPasswords + newPasswords))
+//                writeGitConfig(newValues)
+//                writeGitCredentials(newValues)
+//                
+//                withAnimation(.easeOut(duration: 0.2)) {
+//                    passwords = Credentials(values: newValues)
+//                }
+//            }
+//        } else {
+//            print("failed to get path")
+//        }
     }
     
     fileprivate func writeGitConfig(_ newPasswords: [Credential]) {

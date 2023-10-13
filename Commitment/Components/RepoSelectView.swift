@@ -7,9 +7,10 @@
 
 import SwiftUI
 import AppKit
+import SwiftData
 
 struct RepoSelectMenuButton: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
 
     var body: some View {
         HStack {
@@ -27,19 +28,23 @@ struct RepoSelectMenuButton: View {
     }
 }
 
+// TODO: do better filtering in the SwiftData query
 struct RepoSelectView: View {
-    @EnvironmentObject private var repo: RepoState
-    @EnvironmentObject var appModel: AppModel
-    @State private var repos: [RepoState] = []
-    var filteredRepos: [RepoState] {
-        if searchText.isEmpty {
-            return self.repos
-        } else {
-            return self.repos.filter({ repo in
-                repo.folderName.localizedCaseInsensitiveContains(searchText)
-            })
-        }
-    }
+    @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject var viewState: ViewState
+    @Query private var repos: [CodeRepository]
+
+//    private var filteredRepos: [CodeRepository] {
+//        if searchText.isEmpty {
+//            return self.repos
+//        } else {
+//            return self.repos.filter({ repo in
+//                repo.folderName.localizedCaseInsensitiveContains(searchText)
+//            })
+//        }
+//    }
+
     @State private var searchText: String = ""
     var placeholder = "Select Repo"
 
@@ -47,9 +52,9 @@ struct RepoSelectView: View {
         RepoSelectMenuButton()
             .contentShape(Rectangle())
             .onTapGesture {
-                appModel.isRepoSelectOpen.toggle()
+                viewState.isRepoSelectOpen.toggle()
             }
-            .overlay(isPresented: $appModel.isRepoSelectOpen, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
+            .overlay(isPresented: $viewState.isRepoSelectOpen, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
                 VStack(spacing: 0) {
                     TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
                         .textFieldStyle(.roundedBorder)
@@ -66,10 +71,10 @@ struct RepoSelectView: View {
                             }
                         }
 
-                    ForEach(filteredRepos) { repo in
+                    ForEach(repos, id: \.id) { repo in
                         Button(action: {
-                            appModel.$activeRepositoryId.set(repo.id)
-                            appModel.isRepoSelectOpen = false
+                            viewState.activeRepositoryId = repo.id
+                            viewState.isRepoSelectOpen = false
                             Task {
                                 try? await repo.refreshRepoState()
                             }
@@ -79,13 +84,13 @@ struct RepoSelectView: View {
                                     HStack {
                                         Text(repo.folderName)
                                             .foregroundStyle(.primary)
-                                        if let date = repo.lastFetchedDate {
-                                            Spacer()
-                                            Text(date, format: .relative(presentation: .named))
-                                                .foregroundStyle(.secondary)
-                                        }
+//                                        if let date = repo.lastFetchedDate {
+//                                            Spacer()
+//                                            Text(date, format: .relative(presentation: .named))
+//                                                .foregroundStyle(.secondary)
+//                                        }
                                     }
-                                    Text(repo.branch)
+                                    Text(repo.branch?.name.localName ?? "")
                                         .foregroundStyle(.secondary)
                                 }
                                 Spacer()
@@ -94,9 +99,7 @@ struct RepoSelectView: View {
                         .buttonStyle(.toolbarMenuButtonStyle)
                         .contextMenu {
                             Button("Remove Repo") {
-                                Task {
-                                    try await appModel.removeRepo(repo: repo)
-                                }
+                                removeRepo(repo)
                             }
                         }
                     }
@@ -110,10 +113,12 @@ struct RepoSelectView: View {
                 .overlay(RoundedRectangle(cornerRadius: 6).stroke(.separator, lineWidth: 1))
                 .shadow(radius: 15)
             }
-            .onReceive(appModel.$repos.$items, perform: {
-                // Filtering can happen here
-                self.repos = $0
-            })
+    }
+
+    private func removeRepo(_ repo: CodeRepository) {
+        withAnimation {
+            modelContext.delete(repo)
+        }
     }
 }
 

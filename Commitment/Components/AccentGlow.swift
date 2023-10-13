@@ -14,7 +14,7 @@ struct AccentGlow: ViewModifier {
     func body(content: Content) -> some View {
         content
             .shadow(color: Color.accentColor.opacity(0.9), radius: shift, x: 0, y: shift)
-            .onAppear() {
+            .task {
                 withAnimation(Animation.easeInOut(duration: 4.2).repeatForever()) {
                     shift = 20
                 }

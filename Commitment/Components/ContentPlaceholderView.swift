@@ -9,9 +9,9 @@ import SwiftUI
 import KeyboardShortcuts
 
 struct PublishRepoPlaceholder: View {
-    @EnvironmentObject private var repo: RepoState
-    @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-    
+    @EnvironmentObject private var repo: CodeRepository
+    @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
+
     var body: some View {
         GroupBox {
             HStack {
@@ -38,9 +38,11 @@ struct PublishRepoPlaceholder: View {
 }
 
 struct PushChangesRepoPlaceholder: View {
-    @EnvironmentObject private var repo: RepoState
-    @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-    
+    @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject private var shell: Shell
+    @EnvironmentObject private var undoState: UndoState
+    @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
+
     var body: some View {
         GroupBox {
             VStack {
@@ -62,8 +64,8 @@ struct PushChangesRepoPlaceholder: View {
                             // TODO: a way to show progress in toolbar button
                             // TODO: Convert to activity
                             do {
-                                _ = try await self.repo.shell.push()
-                                self.repo.undo.stack = self.repo.undo.stack.filters(allOf: .commit)
+                                _ = try await self.shell.push()
+                                self.undoState.stack = self.undoState.stack.filters(allOf: .commit)
                                 try? await self.repo.refreshRepoState()
                             } catch {
                                 print(error.localizedDescription)
@@ -82,7 +84,7 @@ struct PushChangesRepoPlaceholder: View {
 }
 
 struct QuickCommitFeaturePlaceholder: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
 
     var shortcut: [String] {
         let str = KeyboardShortcuts.Shortcut(name: .globalCommitPanel)?.description ?? ""
@@ -118,9 +120,9 @@ struct QuickCommitFeaturePlaceholder: View {
 }
 
 struct GoCodeRepoPlaceholder: View {
-    @EnvironmentObject private var repo: RepoState
-    @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-    
+    @EnvironmentObject private var repo: CodeRepository
+    @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
+
     var body: some View {
         GroupBox {
             HStack {
@@ -145,9 +147,8 @@ struct GoCodeRepoPlaceholder: View {
 }
 
 struct OpenRepoInEditorPlaceholder: View {
-    @EnvironmentObject private var model: AppModel
-    @EnvironmentObject private var repo: RepoState
-    
+    @EnvironmentObject private var repo: CodeRepository
+
     var body: some View {
         GroupBox {
             HStack {
@@ -162,8 +163,8 @@ struct OpenRepoInEditorPlaceholder: View {
                     }.foregroundStyle(.secondary)
                 }
                 Spacer()
-                Button("Open in \(model.editor.name)", action: {
-                    repo.path.openInEditor(model.editor)
+                Button("Open in \(repo.editor.rawValue)", action: {
+                    repo.path.openInEditor(repo.editor)
                 })
                 .keyboardShortcut(.init("a", modifiers: [.command, .shift]))
             }
@@ -173,9 +174,8 @@ struct OpenRepoInEditorPlaceholder: View {
 }
 
 struct OpenRepoInFinderPlaceholder: View {
-    @EnvironmentObject private var model: AppModel
-    @EnvironmentObject private var repo: RepoState
-    
+    @EnvironmentObject private var repo: CodeRepository
+
     var body: some View {
         GroupBox {
             HStack {
@@ -201,10 +201,9 @@ struct OpenRepoInFinderPlaceholder: View {
 }
 
 struct ContentPlaceholderView: View {
-    @EnvironmentObject private var model: AppModel
-    @EnvironmentObject private var repo: RepoState
-    @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-    
+    @EnvironmentObject private var repo: CodeRepository
+    @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
+
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 10) {

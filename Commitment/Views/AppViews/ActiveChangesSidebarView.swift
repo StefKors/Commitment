@@ -9,12 +9,12 @@ import SwiftUI
 
 
 struct ActiveChangesSidebarView: View {
-    @EnvironmentObject private var repo: RepoState
-    @EnvironmentObject private var model: AppModel
+    @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject private var viewState: ViewState
 
     var body: some View {
         VStack {
-            List(selection: $repo.view.activeChangesSelection) {
+            List(selection: $viewState.activeChangesSelection) {
                 ForEach(repo.status, id: \.id) { fileStatus in
                     GitFileStatusView(fileStatus: fileStatus)
                         .contextMenu {
@@ -26,10 +26,10 @@ struct ActiveChangesSidebarView: View {
                             }
                             .keyboardShortcut("o")
 
-                            Button("Open in \(model.editor.name)") {
+                            Button("Open in \(repo.editor.rawValue)") {
                                 if let last = fileStatus.path.split(separator: " -> ").last {
                                     let fullPath = repo.path.appending(path: last)
-                                    fullPath.openInEditor(model.editor)
+                                    fullPath.openInEditor(repo.editor)
                                 }
                             }
                             .keyboardShortcut("o", modifiers: [.command, .shift])

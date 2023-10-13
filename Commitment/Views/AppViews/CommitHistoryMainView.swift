@@ -9,25 +9,26 @@ import SwiftUI
 
 
 struct CommitHistoryMainView: View {
-    @EnvironmentObject private var model: AppModel
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject private var viewState: ViewState
+    @EnvironmentObject private var shell: Shell
     var id: Commit.ID? = nil
-
+    
     @State private var diffs: [GitDiff] = []
     @State private var files: [GitFileStatus] = [] {
         // set default view
         didSet {
-            if repo.view.activeCommitFileSelection == nil {
-                repo.view.activeCommitFileSelection = files.first?.id
+            if viewState.activeCommitFileSelection == nil {
+                viewState.activeCommitFileSelection = files.first?.id
             }
         }
     }
-
+    
     var body: some View {
         HSplitView {
             ZStack {
                 Rectangle().fill(.background)
-                List(selection: $repo.view.activeCommitFileSelection) {
+                List(selection: $viewState.activeCommitFileSelection) {
                     ForEach(files) { fileStatus in
                         GitFileStatusView(fileStatus: fileStatus)
                             .contextMenu {
@@ -38,17 +39,17 @@ struct CommitHistoryMainView: View {
                                     }
                                 }
                                 .keyboardShortcut("o")
-
-                                Button("Open in \(model.editor.name)") {
+                                
+                                Button("Open in \(repo.editor.rawValue)") {
                                     if let last = fileStatus.path.split(separator: " -> ").last {
                                         let fullPath = repo.path.appending(path: last)
-                                        fullPath.openInEditor(model.editor)
+                                        fullPath.openInEditor(repo.editor)
                                     }
                                 }
                                 .keyboardShortcut("o", modifiers: [.command, .shift])
-
+                                
                                 Divider()
-
+                                
                                 Button("Copy File Path") {
                                     if let last = fileStatus.path.split(separator: " -> ").last {
                                         let fullPath = repo.path.appending(path: last)
@@ -56,7 +57,7 @@ struct CommitHistoryMainView: View {
                                     }
                                 }
                                 .keyboardShortcut("c")
-
+                                
                                 Button("Copy Relative File Path") {
                                     if let last = fileStatus.path.split(separator: " -> ").last {
                                         copyToPasteboard(text: String(last))
@@ -74,18 +75,18 @@ struct CommitHistoryMainView: View {
             .task(id: id, priority: .userInitiated) {
                 if let id {
                     // TODO: is this the right way to do paralell?
-                    if let diffs = try? await repo.shell.diff(at: id) {
+                    if let diffs = try? await shell.diff(at: id) {
                         self.diffs = diffs
                     }
-
-                    if let newFiles = try? await repo.shell.show(at: id) {
-                        repo.view.activeCommitFileSelection = nil
+                    
+                    if let newFiles = try? await shell.show(at: id) {
+                        viewState.activeCommitFileSelection = nil
                         self.files = newFiles
                     }
                 }
             }
-
-            CommitHistoryDetailView(commitId: id, fileStatusId: repo.view.activeCommitFileSelection, files: files, diffs: diffs)
+            
+            CommitHistoryDetailView(commitId: id, fileStatusId: viewState.activeCommitFileSelection, files: files, diffs: diffs)
                 .ignoresSafeArea(.all, edges: .top)
                 .frame(minWidth: 300)
         }

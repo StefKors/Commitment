@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct CommitHistoryDetailView: View {
-    @EnvironmentObject private var repo: RepoState
     let commitId: Commit.ID?
     let fileStatusId: GitFileStatus.ID?
     let files: [GitFileStatus]

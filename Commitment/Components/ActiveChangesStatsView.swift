@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ActiveChangesStatsView: View {
     var showBlocks: Bool = false
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject private var shell: Shell
     @State private var stats: GitCommitStats?
     var body: some View {
         VStack {
@@ -33,13 +34,14 @@ struct ActiveChangesStatsView: View {
             }
         }
         .task(id: repo.status) {
-            self.stats = try? await repo.shell.stats()
+            self.stats = try? await shell.stats()
         }
-        .onChange(of: repo.lastUpdate) { _ in
-            Task {
-                self.stats = try? await repo.shell.stats()
-            }
-        }
+        // TODO: shell activity date
+//        .onChange(of: lastUpdate) { _ in
+//            Task {
+//                self.stats = try? await shell.stats()
+//            }
+//        }
     }
 }
 

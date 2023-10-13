@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BranchSelectButtonView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
 
     var body: some View {
         HStack {
@@ -20,7 +20,7 @@ struct BranchSelectButtonView: View {
             VStack(alignment: .leading) {
                 Text("Current Branch")
                     .foregroundStyle(.secondary)
-                Text(self.repo.branch)
+                Text(self.repo.branch?.name.localName ?? "")
                     .foregroundStyle(.primary)
             }
         }
@@ -28,8 +28,9 @@ struct BranchSelectButtonView: View {
 }
 
 struct BranchSelectView: View {
-    @EnvironmentObject var model: AppModel
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject private var viewState: ViewState
+    @EnvironmentObject private var shell: Shell
     var placeholder = "Select Branch"
     @State private var searchText: String = ""
     var filteredRepos: [GitReference] {
@@ -47,9 +48,9 @@ struct BranchSelectView: View {
         BranchSelectButtonView()
             .contentShape(Rectangle())
             .onTapGesture {
-                model.isBranchSelectOpen.toggle()
+                viewState.isBranchSelectOpen.toggle()
             }
-            .overlay(isPresented: $model.isBranchSelectOpen, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
+            .overlay(isPresented: $viewState.isBranchSelectOpen, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
                 VStack(spacing: 0) {
                     TextField("Branch Search", text: $searchText, prompt: Text("Filter"))
                         .textFieldStyle(.roundedBorder)
@@ -72,7 +73,7 @@ struct BranchSelectView: View {
                                 do {
                                     let name = branch.name.fullName
                                     print("checkout branch \(name)")
-                                    try await repo.shell.checkout(name)
+                                    try await shell.checkout(name)
                                 } catch {
                                     print(error.localizedDescription)
                                 }

@@ -8,23 +8,19 @@
 import SwiftUI
 import Boutique
 
-enum DiffViewMode: String, CaseIterable {
-    case unified = "Unified"
-    case sideBySide = "Side by Side"
-}
-
 struct GeneralSettingsView: View {
-    @EnvironmentObject var appModel: AppModel
-    @AppStorage("SelectedExternalGitProvider") private var selectedExternalGitProvider: String = "GitHub"
-    @AppStorage("DiffSettings.ViewMode") private var diffViewMode: DiffViewMode = .unified
-    @AppStorage("SideBySideView") private var sideBySide: Bool = false
+    @EnvironmentObject var repo: CodeRepository
+    @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
+    @AppStorage(Settings.Diff.Mode) private var diffViewMode: DiffViewMode = .unified
+    @AppStorage(Settings.Features.SideBySide) private var sideBySide: Bool = false
 
-    private var externalEditorPickerItems: [ExternalEditor] {
-        ExternalEditors().editors.filter { editor in
-            editor.bundleIdentifiers.first { identifier in
-                NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) != nil
-            } != nil
-        }
+    private var externalEditorPickerItems: [ExternalEditors] {
+        ExternalEditors.allCases
+//        ExternalEditors().editors.filter { editor in
+//            editor.bundleIdentifiers.first { identifier in
+//                NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) != nil
+//            } != nil
+//        }
     }
 
     private let externalGitProviderPickerItems = [
@@ -39,9 +35,9 @@ struct GeneralSettingsView: View {
         SettingsBox(
             label: "Editor Defaults"
         ) {
-            Picker("External Editor", selection: appModel.$editor.binding) {
-                ForEach(externalEditorPickerItems, id: \.name) { item in
-                    Text(item.name).tag(item)
+            Picker("External Editor", selection: $repo.editor) {
+                ForEach(externalEditorPickerItems, id: \.self) { item in
+                    Text(item.rawValue).tag(item)
                 }
             }
 

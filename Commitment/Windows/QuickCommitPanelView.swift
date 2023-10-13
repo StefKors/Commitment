@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PanelRepoSelectView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
 
     var body: some View {
         HStack {
@@ -25,7 +25,7 @@ struct PanelRepoSelectView: View {
 }
 
 struct PanelBranchView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
 
     var body: some View {
         HStack {
@@ -35,7 +35,7 @@ struct PanelBranchView: View {
                 .frame(width: 16, height: 16)
                 .foregroundStyle(.secondary)
 
-            Text(repo.branch)
+            Text(repo.branch?.name.localName ?? "")
                 .foregroundStyle(.primary)
         }
     }
@@ -103,8 +103,7 @@ struct FloatingPanelSidebarView: View {
 }
 
 struct FloatingPanelContentView: View {
-    @EnvironmentObject private var repo: RepoState
-    @EnvironmentObject private var model: AppModel
+    @EnvironmentObject private var repo: CodeRepository
 
     var body: some View {
         ScrollView(.vertical) {
@@ -122,10 +121,10 @@ struct FloatingPanelContentView: View {
                             }
                             .keyboardShortcut("o")
 
-                            Button("Open in \(model.editor.name)") {
+                            Button("Open in \(repo.editor.rawValue)") {
                                 if let last = fileStatus.path.split(separator: " -> ").last {
                                     let fullPath = repo.path.appending(path: last)
-                                    fullPath.openInEditor(model.editor)
+                                    fullPath.openInEditor(repo.editor)
                                 }
                             }
                             .keyboardShortcut("o", modifiers: [.command, .shift])
@@ -166,7 +165,7 @@ struct FloatingPanelContentView: View {
 }
 
 struct FloatingPanelFooterView: View {
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
 
     var handleSubmit: () -> Void
 
@@ -178,7 +177,7 @@ struct FloatingPanelFooterView: View {
                 handleSubmit()
             } label: {
                 HStack {
-                    Text("Commit to \(repo.branch)")
+                    Text("Commit to \(repo.branch?.name.localName ?? "")")
                     HStack(spacing: 0) {
                         Image(systemName: "command")
                         Image(systemName: "return")
@@ -196,7 +195,9 @@ struct FloatingPanelFooterView: View {
 
 struct QuickCommitPanelView: View {
     @Binding var showPanel: Bool
-    @EnvironmentObject private var repo: RepoState
+    @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject private var shell: Shell
+    @EnvironmentObject private var undoState: UndoState
     @State private var commitTitle: String = ""
     @State private var commitBody: String = ""
 
@@ -236,12 +237,32 @@ struct QuickCommitPanelView: View {
     func handleSubmit() {
         Task { @MainActor in
             isSubmitting = true
-            try await repo.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
+            try await self.commit(title: commitTitle, body: commitBody, quickCommitTitle: quickCommitTitle)
             showPanel = false
             commitTitle = ""
             commitBody = ""
             isSubmitting = false
         }
+    }
+
+    func commit(title: String, body: String, quickCommitTitle: String? = nil) async throws {
+        var action: UndoAction?
+        if !title.isEmpty, !body.isEmpty {
+            try await self.shell.commit(title: title, message: body)
+            action = UndoAction(type: .commit, arguments: ["commit", "-m", title, "-m", body], subtitle: title)
+        } else if !title.isEmpty {
+            try await self.shell.commit(message: title)
+            action = UndoAction(type: .commit, arguments: ["commit", "-m", title], subtitle: title)
+        } else if let title = quickCommitTitle {
+            try await self.shell.commit(message: title)
+            action = UndoAction(type: .commit, arguments: ["commit", "-m", title], subtitle: title)
+        }
+
+        if let action {
+            self.undoState.stack.append(action)
+        }
+
+        try await self.repo.refreshRepoState()
     }
 }
 

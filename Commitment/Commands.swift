@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AppCommands: Commands {
+    @Environment(\.modelContext) private var modelContext
+
     // From: https://nilcoalescing.com/blog/ProvidingTheCurrentDocumentToMenuComma...
-    let repo: RepoState?
-    let appModel: AppModel
+    let repo: CodeRepository?
 
     @CommandsBuilder var body: some Commands {
         if let repo {
@@ -35,17 +37,18 @@ struct AppCommands: Commands {
             }
             CommandMenu ("Repository") {
                 Button(action: {
-                    Task {
-                        do {
-                            try await appModel.removeRepo(repo: repo)
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                    }
+                    removeRepo(repo)
                 }) {
                     Text ("Remove...")
                 }
             }
+        }
+    }
+
+
+    private func removeRepo(_ repo: CodeRepository) {
+        withAnimation {
+            modelContext.delete(repo)
         }
     }
 }
