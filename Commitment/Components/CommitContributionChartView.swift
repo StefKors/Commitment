@@ -74,7 +74,7 @@ struct ContributionBlockView: View {
 }
 
 struct CommitContributionChartView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    let commits: [Commit]
 
     @State private var data: [Contribution] = []
 
@@ -93,8 +93,7 @@ struct CommitContributionChartView: View {
             .id(rows.description)
         }
         .frame(alignment: .trailing)
-        .task(id: repo.commits.count) {
-            print("runs task? 🦆")
+        .task(id: commits.count, priority: .background) {
             generateContributions()
         }
     }
@@ -124,7 +123,7 @@ struct CommitContributionChartView: View {
         // needs largest value
         // map 0...largestValue to 0.0...0.5 for correct shading
         
-        for commit in repo.commits {
+        for commit in commits {
             // check if date is part of graph
             if commit.commiterDate > startDate {
                 let index = gregorianCalendar.numberOfDaysBetween(startDate, and: commit.commiterDate)
@@ -159,6 +158,6 @@ extension Date: Strideable {
 }
 struct CommitContributionChartView_Previews: PreviewProvider {
     static var previews: some View {
-        CommitContributionChartView()
+        CommitContributionChartView(commits: [])
     }
 }

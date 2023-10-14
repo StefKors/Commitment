@@ -7,7 +7,9 @@
 
 import SwiftUI
 import SwiftData
-import UniformTypeIdentifiers
+import OSLog
+
+fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "CodeRepository")
 
 struct NewShell {
     var workspace: URL
@@ -17,10 +19,7 @@ struct NewShell {
     }
 }
 
-@Model
-// @MainActor
-final
-class CodeRepository: Identifiable, ObservableObject {
+@Model final class CodeRepository: Identifiable, ObservableObject {
     @Attribute(.unique) var path: URL
 
     var bookmark: Bookmark
@@ -67,6 +66,15 @@ class CodeRepository: Identifiable, ObservableObject {
     }
 }
 
+// MARK: - SwiftData Predicates
+extension CodeRepository {
+    static func predicate(url: URL) -> Predicate<CodeRepository> {
+        return #Predicate<CodeRepository> { repository in
+            repository.path == url
+        }
+    }
+}
+
 // TODO: Propagate changes through swift data instead of running methods here
 extension CodeRepository {
     func refreshBranch() {
@@ -88,6 +96,7 @@ extension CodeRepository {
     
     /// Watch out for re-renders, can be slow
     func refreshDiffsAndStatus() async throws {
+        log.warning("TODO: implement Refresh Diffs")
 //        let diffs = try await self.shell.diff()
 //        let status = try await self.shell.status()
 //        let commits = try await getCommits()

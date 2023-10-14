@@ -333,6 +333,8 @@
 		8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */; };
 		8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */; };
 		8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */; };
+		8AB8CD982ADAB8AE00F6C647 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CD972ADAB8AE00F6C647 /* ContentView.swift */; };
+		8AB8CD9A2ADABFCB00F6C647 /* WelcomeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CD992ADABFCB00F6C647 /* WelcomeListItem.swift */; };
 		8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */; };
 		8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB629FBD1EC00CBDA41 /* View.swift */; };
 		8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */; };
@@ -1036,6 +1038,8 @@
 		8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarFetchOriginActionView.swift; sourceTree = "<group>"; };
 		8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Git.swift"; sourceTree = "<group>"; };
 		8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewDebugging.swift; sourceTree = "<group>"; };
+		8AB8CD972ADAB8AE00F6C647 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8AB8CD992ADABFCB00F6C647 /* WelcomeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeListItem.swift; sourceTree = "<group>"; };
 		8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		8ABB9FB629FBD1EC00CBDA41 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
@@ -1673,6 +1677,7 @@
 				8A48D11427FD9E2E007803D2 /* Assets.xcassets */,
 				8A48D11927FD9E2E007803D2 /* Commitment.entitlements */,
 				8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */,
+				8AB8CD972ADAB8AE00F6C647 /* ContentView.swift */,
 				8AD9B5CF29E6C28500631337 /* Commands.swift */,
 				8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */,
 				8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */,
@@ -2337,6 +2342,7 @@
 				8AFBD506296F2A4000525BF7 /* PillView.swift */,
 				8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */,
 				8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */,
+				8AB8CD992ADABFCB00F6C647 /* WelcomeListItem.swift */,
 			);
 			path = WelcomeViews;
 			sourceTree = "<group>";
@@ -2849,6 +2855,7 @@
 				8ACCD2A9297F265B0020BF84 /* CherryTask.swift in Sources */,
 				8A58736E2A687C8900E630EA /* ActiveChangesState.swift in Sources */,
 				8ACCD2D7297F265C0020BF84 /* GitFileStorage.swift in Sources */,
+				8AB8CD982ADAB8AE00F6C647 /* ContentView.swift in Sources */,
 				8ACCD2EB297F265C0020BF84 /* GitRemote.swift in Sources */,
 				8AD1088529EEB144000FFD70 /* BetaSettingsView.swift in Sources */,
 				8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */,
@@ -2910,6 +2917,7 @@
 				8A992DFF29A64867001E26A3 /* ToolbarMenuButtonStyle.swift in Sources */,
 				8ACCD2D6297F265C0020BF84 /* FileCoder.swift in Sources */,
 				8ACCD2D5297F265C0020BF84 /* FileStorage.swift in Sources */,
+				8AB8CD9A2ADABFCB00F6C647 /* WelcomeListItem.swift in Sources */,
 				8AC44EFF2A0806DC0016FFEC /* ButtonStyleProminent.swift in Sources */,
 				8A6842622A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift in Sources */,
 				8ACCD2CB297F265C0020BF84 /* TagTask.swift in Sources */,

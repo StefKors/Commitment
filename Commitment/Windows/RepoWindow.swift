@@ -10,15 +10,15 @@ import KeychainAccess
 import KeyboardShortcuts
 import SwiftData
 import WindowManagement
+import OSLog
+
+fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "FileMonitor")
 
 /// TODO: I was converting Repostate to CodeRepository....
 struct RepositoryWindow: View {
-    let path: URL?
+    let repository: CodeRepository
 
     @Environment(\.dismissWindow) private var dismissWindow
-    @Query private var repositories: [CodeRepository]
-    @State private var repository: CodeRepository?
-
     // Repo Scoped App State
     @State private var folderMonitor: FolderContentMonitor? = nil
     // TODO: merge activity state and shell?
@@ -30,47 +30,47 @@ struct RepositoryWindow: View {
 
     var body: some View {
         VStack {
-            if let repository, shell != nil, let shell {
+            if shell != nil, let shell {
                 LoadedRepositoryWindow()
                     .environmentObject(repository)
                     .environmentObject(activityState)
                     .environmentObject(viewState)
                     .environmentObject(undoState)
                     .environmentObject(shell)
+                    .navigationDocument(repository.path)
             } else {
                 Text("failed to open repository")
             }
-        }.task(id: path) {
-            if let path {
-                dismissWindow(id: SceneID.welcomeWindow.id)
+        }
+        .task(id: repository) {
+            print("run task")
+//            if let path {
+                //                dismissWindow(id: SceneID.welcomeWindow.id)
                 do {
-                    let result = repositories.first { repo in
-                        repo.path == path
-                    }
-                    guard let url = try result?.bookmark.startUsingTargetURL() else { return }
-                    result?.path = url
+
+                    let url = try repository.bookmark.startUsingTargetURL()
+                    repository.path = url
                     // TODO: re-save repo with update path?
-                    self.repository = result
                     self.shell = Shell(workspace: url)
+                    NSDocumentController.shared.noteNewRecentDocumentURL(url)
                     startFolderMonitor(path: url)
                 } catch {
                     print("failed to display repo: \(error.localizedDescription)")
                 }
-            }
+//            }
         }
     }
 
     func startFolderMonitor(path: URL) {
         if let folderMonitor {
             if folderMonitor.hasStarted {
-                print("stopping monitor")
                 folderMonitor.stop()
             }
         }
+
         folderMonitor = FolderContentMonitor(url: path, latency: 1) { event in
             // TODO: Figure out better filtering... Perhaps based on .gitignore?
             // skip lock events
-            // print("[File Change] Refreshing Branch \(event.url.lastPathComponent) (\(event.change))")
             if event.filename == "index.lock", event.filename == ".DS_Store" {
                 return
             }
@@ -79,17 +79,16 @@ struct RepositoryWindow: View {
 
             if isGitFolderChange, event.filename == "HEAD" {
                 Throttler.throttle( delay: .seconds(3),shouldRunImmediately: true) {
-                    print("[File Change] Refreshing Branch \(event.url.lastPathComponent) (\(event.change))")
-                    repository?.refreshBranch()
+                    log.debug("[File Change] Refreshing Branch \(event.url.lastPathComponent) (\(event.change))")
+                    repository.refreshBranch()
                 }
             }
             if !isGitFolderChange {
                 Throttler.throttle( delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) {
                     Task(priority: .userInitiated, operation: {
-                        print("[File Change] \(event.url.lastPathComponent)")
-                        try? await repository?.refreshDiffsAndStatus()
-                        // TODO: Save to SwiftData
-                        print("TODO: Save to SwiftData")
+                        log.debug("[File Change] \(event.url.lastPathComponent)")
+                        try? await repository.refreshDiffsAndStatus()
+                        //  TODO: Save repo changes to SwiftData
 //                        try? await AppModel.shared.saveRepo(repo: self)
                     })
                 }
