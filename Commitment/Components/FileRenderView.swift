@@ -14,12 +14,10 @@ struct FileRenderView: View {
     var fileStatus: GitFileStatus
 
     @State private var lines: [GitDiffHunkLine] = []
-    @State private var path: String = ""
-    @State private var content: String = ""
     @State private var finishedFetching: Bool = false
 
     var body: some View {
-        VStack {
+        Group {
             if finishedFetching {
                 FileView(fileStatus: fileStatus) {
                     if !lines.isEmpty {
@@ -28,44 +26,27 @@ struct FileRenderView: View {
                                 .id(line.id)
                         }
                     } else {
-                        Text("Could not read file at \(path)")
+                        Text("Could not read file at \(fileStatus.cleanedPath)")
                     }
                 }
             }
         }
-        // .id(fileStatus)
-        // TODO: shell date updates
-//        .task(id: repo.lastUpdate) {
-//            await handleGetFileStatus()
-//        }
-    }
-
-    func handleGetFileStatus() async {
-        // handles renamed
-        self.path = String(fileStatus.path.split(separator: " -> ").last ?? "")
-        let fullFileURL = URL(fileURLWithPath: path, isDirectory: false, relativeTo: repo.path)
-        do {
-            self.content = try repo.readFile(at: fullFileURL)
-            self.lines = content
-                .components(separatedBy: "\n")
-                .enumerated()
-                .map({ (index, line) in
-                    return GitDiffHunkLine(
-                        type: fileStatus.diffModificationState,
-                        text: String(line),
-                        oldLineNumber: index,
-                        newLineNumber: index
-                    )
-                })
+        .task(id: fileStatus.stats) {
+            let fullFileURL = URL(fileURLWithPath: fileStatus.cleanedPath, isDirectory: false, relativeTo: repo.path)
+            if let content = try? repo.readFile(at: fullFileURL) {
+                self.lines = content
+                    .components(separatedBy: "\n")
+                    .enumerated()
+                    .map({ (index, line) in
+                        return GitDiffHunkLine(
+                            type: fileStatus.diffModificationState,
+                            text: String(line),
+                            oldLineNumber: index,
+                            newLineNumber: index
+                        )
+                    })
+            }
             self.finishedFetching = true
-        } catch {
-            print("Failed at FileRenderView: \(error.localizedDescription)")
         }
     }
 }
-
-// struct FileRenderView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         FileRenderView(path: "TBD preview content file")
-//     }
-// }

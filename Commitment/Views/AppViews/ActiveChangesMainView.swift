@@ -9,9 +9,13 @@ import SwiftUI
 
 struct ActiveChangesMainView: View {
     @EnvironmentObject private var repo: CodeRepository
-    let id: GitFileStatus.ID?
+    @EnvironmentObject private var viewState: ViewState
+    @EnvironmentObject private var activeChangesState: ActiveChangesState
+
+//    let id: GitFileStatus?
+
+
     let diffs: [GitDiff] = []
-    @State private var fileStatus: GitFileStatus?
     @State private var diff: GitDiff?
     @State private var isLoading: Bool = true
 
@@ -24,7 +28,7 @@ struct ActiveChangesMainView: View {
 
             ZStack {
                 Rectangle().fill(.clear)
-                if let fileStatus {
+                if let fileStatus = viewState.activeChangesSelection {
                     FileDiffChangesView(fileStatus: fileStatus, diff: diff)
                 } else if !isLoading {
                     ContentPlaceholderView()
@@ -33,28 +37,12 @@ struct ActiveChangesMainView: View {
                 }
             }.layoutPriority(1)
         }
-        .task(id: id, priority: .userInitiated, {
-            await getDiffs()
+        .task(id: viewState.activeChangesSelection) {
+            if let fileStatus = viewState.activeChangesSelection {
+                self.diff = activeChangesState.diffs[fileStatus.cleanedPath]
+            }
             isLoading = false
-        })
-        // TODO: shell date updates thingy
-//        .onChange(of: repo.lastUpdate) { _ in
-//            Task {
-//                await getDiffs()
-//            }
-//        }
-    }
-
-    func getDiffs() async {
-        print("todo: get diffs in active changes main view")
-//        guard isLoading == false else { return }
-//        let status = repo.status.first(with: id)
-//        self.fileStatus = status
-//        if status?.state.index.isAny(of: [.added, .deleted]) == true {
-//            self.diff = nil
-//        } else if let id {
-//            self.diff = repo.diffs.fileStatus(for: id)
-//        }
+        }
     }
 }
 

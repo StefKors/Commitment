@@ -62,7 +62,7 @@ struct ActiveChangesSidebarView: View {
                                 Text("Discard Changes")
                             }
                         }
-                        .tag(fileStatus.id)
+                        .tag(fileStatus)
                 }
             }
             .listStyle(SidebarListStyle())

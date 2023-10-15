@@ -20,9 +20,6 @@ struct UnifiedDiffRenderView: View {
     }
 }
 
-// struct DiffRenderView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         DiffRenderView(diff: GitDiff.Preview.toDiff(GitDiff.Preview.versionBump))
-//             .padding()
-//     }
-// }
+#Preview {
+    UnifiedDiffRenderView(fileStatus: .previewVersionBump, diff: .previewVersionBump)
+}

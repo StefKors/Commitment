@@ -9,7 +9,6 @@ import SwiftUI
 
 
 struct ActiveChangesView: View {
-    @EnvironmentObject private var viewState: ViewState
     var body: some View {
         ActiveChangesSidebarView()
             .frame(minWidth: 300)
@@ -25,7 +24,7 @@ struct ActiveChangesView: View {
                 }
             })
 
-        ActiveChangesMainView(id: viewState.activeChangesSelection)
+        ActiveChangesMainView()
             .ignoresSafeArea(.all, edges: .top)
             .frame(minWidth: 750, alignment: .leading)
     }

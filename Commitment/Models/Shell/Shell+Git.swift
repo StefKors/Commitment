@@ -87,6 +87,29 @@ extension Shell {
             }
     }
 
+    // TODO: profile if this is fast or slow
+    func diff() async -> [String: GitDiff] {
+        let diffs = await self.runTask(.git, ["diff"])
+
+        var diffDict: [String: GitDiff] = [:]
+
+        for diffSegment in diffs.split(separator: "\ndiff --git ") {
+            if let diff = GitDiff(unifiedDiff: String(diffSegment)) {
+                var path = diff.addedFile
+
+                if path.isEmpty, diff.removedFile.isNotEmpty {
+                    path = diff.removedFile
+                }
+
+                path = path.deletingPrefix("b/").deletingPrefix("a/")
+
+                diffDict[path] = diff
+            }
+        }
+
+        return diffDict
+    }
+
     func diff(at commitA: String) async -> [GitDiff] {
         let commitB = await self.SHAbefore(SHA: commitA)
         return await self.runTask(.git, ["diff", "\(commitB)..\(commitA)", "--no-ext-diff", "--no-color", "--find-renames"])

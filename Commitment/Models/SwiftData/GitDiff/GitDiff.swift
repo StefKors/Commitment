@@ -63,7 +63,30 @@ public struct GitDiff: Codable, Equatable {
     }
 }
 
+extension Collection where Element == GitDiff {
+    func fileStatus(for fileId: GitFileStatus.ID?) -> GitDiff? {
+        guard let fileId else { return nil }
+        // Gets file path while supporting renamed/moved files
+        // handles renamed
+        guard let filePath = fileId.split(separator: " -> ").last else { return nil }
+        let path = String(filePath)
+        return self.first { diff in
+            return diff.addedFile.contains(path)
+        }
+    }
+
+    func fileStatus(for status: GitFileStatus?) -> GitDiff? {
+        guard let fileId = status?.cleanedPath else { return nil }
+        // Gets file path while supporting renamed/moved files
+        return self.first { diff in
+            return diff.addedFile.contains(fileId)
+        }
+    }
+}
+
 extension GitDiff {
+    static let previewVersionBump = GitDiff.Preview.toDiff(GitDiff.Preview.versionBump)!
+
     struct Preview {
         /// A unified Diff String of a major version bump in a package.json file
         static let versionBump: String = """
@@ -564,20 +587,7 @@ index 0b3fc7c..3dd217d 100644
          }
 """
         static func toDiff(_ unifiedDiff: String) -> GitDiff? {
-            return try? GitDiff(unifiedDiff: unifiedDiff)!
-        }
-    }
-}
-
-extension Collection where Element == GitDiff {
-    func fileStatus(for fileId: GitFileStatus.ID?) -> GitDiff? {
-        guard let fileId else { return nil }
-        // Gets file path while supporting renamed/moved files
-        // handles renamed
-        guard let filePath = fileId.split(separator: " -> ").last else { return nil }
-        let path = String(filePath)
-        return self.first { diff in
-            return diff.addedFile.contains(path)
+            return GitDiff(unifiedDiff: unifiedDiff)!
         }
     }
 }

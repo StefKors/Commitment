@@ -9,7 +9,7 @@ import Foundation
 import RegexBuilder
 
 
-public struct GitFileStats: Codable {
+public struct GitFileStats: Codable, Equatable {
     // 4    1    Commitment/Views/AppViews/ActiveChangesMainView.swift
     init(_ input: String) {
         self.raw = input

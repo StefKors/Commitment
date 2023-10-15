@@ -8,7 +8,9 @@
 import SwiftUI
 
 class ViewState: ObservableObject {
-    @Published var activeChangesSelection: GitFileStatus.ID? = nil
+    // Active Changes Views
+    @Published var activeChangesSelection: GitFileStatus? = nil
+
     @Published var activeCommitSelection: Commit.ID? = nil
     @Published var activeCommitFileSelection: GitFileStatus.ID? = nil
     // TODO: grab open / close logic from old RepoState

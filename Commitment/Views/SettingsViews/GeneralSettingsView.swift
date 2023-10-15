@@ -13,7 +13,6 @@ struct GeneralSettingsView: View {
     @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
     @AppStorage(Settings.Diff.Mode) private var diffViewMode: DiffViewMode = .unified
     @AppStorage(Settings.Diff.ShowStatsBlocks) private var showStatsBlocks: Bool = true
-    @AppStorage(Settings.Features.SideBySide) private var sideBySide: Bool = false
 
     private var externalEditorPickerItems: [ExternalEditors] {
         ExternalEditors.allCases
@@ -52,13 +51,11 @@ struct GeneralSettingsView: View {
         SettingsBox(
             label: "Diff Settings"
         ) {
-            if sideBySide {
-                Picker("View Mode", selection: $diffViewMode) {
-                    ForEach(DiffViewMode.allCases, id: \.self) { item in
-                        Text(item.rawValue).tag(item.rawValue)
-                    }
-                }.pickerStyle(.segmented)
-            }
+            Picker("View Mode", selection: $diffViewMode) {
+                ForEach(DiffViewMode.allCases, id: \.self) { item in
+                    Text(item.rawValue).tag(item.rawValue)
+                }
+            }.pickerStyle(.segmented)
 
             Toggle("Show Blocks in Diff stats", isOn: $showStatsBlocks)
                 .toggleStyle(.switch)

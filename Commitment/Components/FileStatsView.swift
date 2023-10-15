@@ -10,9 +10,7 @@ import SwiftUI
 struct FileStatsView: View {
     let stats: GitFileStats?
 
-    @AppStorage(Settings.Features.SideBySide) private var sideBySide: Bool = false
-
-    @State private var selection = 0
+    @AppStorage(Settings.Diff.Mode) private var diffViewMode: DiffViewMode = .unified
 
     var body: some View {
         if let stats {
@@ -36,32 +34,20 @@ struct FileStatsView: View {
 
 //                GroupBox {
                     HStack(spacing: 8) {
-                        Picker("Choose view style?", selection: $selection) {
-                            Image(systemName: "rectangle.split.2x1.fill").tag(0)
-                            Image(systemName: "rectangle.split.1x2.fill").tag(1)
+                        Picker("Choose view style?", selection: $diffViewMode) {
+                            Image(systemName: "rectangle.split.2x1.fill").tag(DiffViewMode.sideBySide)
+                            Image(systemName: "rectangle.split.1x2.fill").tag(DiffViewMode.unified)
                         }
                         .pickerStyle(.segmented)
                             .labelsHidden()
                             .frame(width: 100)
                     }
-                    .onChange(of: selection, initial: false, { oldValue, newValue in
-                        if selection == 0 {
-                            sideBySide = true
-                        } else {
-                            sideBySide = false
-                        }
-                    })
 //                }
                 .background(.thinMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
                 .fontDesign(.monospaced)
                 .shadow(radius: 4, y: 2)
                 .padding()
-                .task {
-                    selection = sideBySide ? 0 : 1
-                }
-
-
             }
         }
     }

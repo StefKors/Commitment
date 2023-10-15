@@ -82,7 +82,7 @@ struct LoadedRepositoryView: View {
                 }
             }
             .task($activeChangesUpdate) {
-                async let diffs = self.shell.diff()
+                async let diffs: [String: GitDiff] = self.shell.diff()
                 async let status = self.shell.status()
                 async let stats: ActiveChangesStats = self.shell.stats()
 

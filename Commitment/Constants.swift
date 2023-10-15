@@ -28,7 +28,4 @@ class Settings {
         static let Provider: String = "ExternalGitProvider"
 
     }
-    struct Features {
-        static let SideBySide: String = "SideBySideFeature"
-    }
 }

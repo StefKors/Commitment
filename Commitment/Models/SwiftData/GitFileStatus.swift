@@ -35,7 +35,6 @@ public class GitFileStatus: Codable, Identifiable {
         } else {
             lhs = ModificationState.unknown.rawValue
             rhs = ModificationState.unknown.rawValue
-            
         }
         
         self.state = State(lhs: lhs, rhs: rhs)
@@ -44,7 +43,15 @@ public class GitFileStatus: Codable, Identifiable {
     public var id: String {
         self.path
     }
-    
+
+    /// Cleaned up version of the file path that only contains the path
+    /// while supporting renamed/moved file paths with " -> " in it
+    /// starts with "a/..." or "b/..."
+    public var cleanedPath: String {
+        guard let filePath = path.split(separator: " -> ").last else { return path }
+        return String(filePath)
+    }
+
     /// A path to the file on the disk including file name.
     /// File path is always relative to a repository root.
     public private(set) var path: String
@@ -93,6 +100,23 @@ public class GitFileStatus: Codable, Identifiable {
             return .unchanged
         }
     }
+}
+
+extension GitFileStatus {
+    /// Status for active (uncommited) change
+    static let previewVersionBump = GitFileStatus(
+        path: "package.json",
+        state: "M",
+        sha: nil,
+        stats: GitFileStats("1    1   package.json")
+    )
+    /// Status for active (uncommited) change
+    static let previewSwift = GitFileStatus(
+        path: "Commitment/Components/FileDiffChangesView.swift",
+        state: "M",
+        sha: nil,
+        stats: GitFileStats("2    1   Commitment/Components/FileDiffChangesView.swift")
+    )
 }
 
 // MARK: - Types
