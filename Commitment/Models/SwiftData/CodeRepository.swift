@@ -11,14 +11,6 @@ import OSLog
 
 fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "CodeRepository")
 
-struct NewShell {
-    var workspace: URL
-
-    init(workspace: URL) {
-        self.workspace = workspace
-    }
-}
-
 @Model final class CodeRepository: Identifiable, ObservableObject {
     @Attribute(.unique) var path: URL
 
@@ -26,24 +18,23 @@ struct NewShell {
     // Settings
     var editor: ExternalEditors = ExternalEditors.xcode
     var windowMode: SplitModeOptions = SplitModeOptions.changes
-//    var diffViewMode: DiffViewMode = DiffViewMode.unified
+
     var user: GitUser? = nil
 
-    // Stored repo info
+    // All branches in the local repo
     var branches: [GitReference]
+    
+    /// All commits in the local repo
     var commits: [Commit]
-    // TODO: remove?
-    var commitsAhead: [Commit]
 
-    // Current State
-    // TODO: move to view state instead?
-    var status: [GitFileStatus] = []
-    var diffs: [GitDiff] = []
+    /// All commits that exist locally but don't exist on remote
+    var commitsAhead: [Commit]
 
     // Computed properties for easy reference
     var branch: GitReference? {
         branches.first(where: \.active)
     }
+
     var folderName: String {
         path.lastPathComponent
     }
@@ -51,14 +42,9 @@ struct NewShell {
     init(path: URL) throws {
         self.path = path
         self.bookmark = try Bookmark(targetFileURL: path)
-
-        self.editor = ExternalEditors.xcode
-        self.windowMode = SplitModeOptions.changes
-
-        // self.cli = NewShell(workspace: path)
-//        self.editor = ExternalEditor.xcode
+//
+//        self.editor = ExternalEditors.xcode
 //        self.windowMode = SplitModeOptions.changes
-//        self.diffViewMode = DiffViewMode.unified
 
         self.branches = []
         self.commits = []

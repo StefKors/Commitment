@@ -36,9 +36,12 @@ struct TouchbarActiveChangesStatsView: View {
                 }
             }
         }
-        .task(id: repo.status) {
-            self.stats = try? await shell.stats()
+        .task {
+            print("todo: touchbar stats")
         }
+//        .task(id: repo.status) {
+//            self.stats = try? await shell.stats()
+//        }
         // TODO: check if stats update correctly
 //        .onChange(of: repo.lastUpdate) { _ in
 //            Task {

@@ -17,10 +17,11 @@ struct TextEditorView: View {
     @State private var commitTitle: String = ""
 
     private var quickCommitTitle: String? {
-        if repo.status.count == 1, let first = repo.status.first, let str = first.path.split(separator: " -> ").last {
-            let url = URL(filePath: String(str))
-            return "Update \(url.lastPathComponent)"
-        }
+        print("todo: generate quick commit title")
+//        if repo.status.count == 1, let first = repo.status.first, let str = first.path.split(separator: " -> ").last {
+//            let url = URL(filePath: String(str))
+//            return "Update \(url.lastPathComponent)"
+//        }
 
         return nil
     }

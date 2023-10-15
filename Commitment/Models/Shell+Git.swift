@@ -78,38 +78,38 @@ extension Shell {
         return await self.runTask(.git, ["push", remote, branch])
     }
 
-    func diff() async throws -> [GitDiff] {
+    func diff() async -> [GitDiff] {
         let diff = await self.runTask(.git, ["diff"])
         return diff
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
-                return try? GitDiff(unifiedDiff: String(diffSegment))
+                return GitDiff(unifiedDiff: String(diffSegment))
             }
     }
 
-    func diff(at commitA: String) async throws -> [GitDiff] {
+    func diff(at commitA: String) async -> [GitDiff] {
         let commitB = await self.SHAbefore(SHA: commitA)
         return await self.runTask(.git, ["diff", "\(commitB)..\(commitA)", "--no-ext-diff", "--no-color", "--find-renames"])
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
-                return try? GitDiff(unifiedDiff: String(diffSegment))
+                return GitDiff(unifiedDiff: String(diffSegment))
             }
     }
 
-    func show(file: String) async throws -> String {
+    func show(file: String) async -> String {
         let result = await self.runTask(.git, ["show", "--textconv", "HEAD:\(file)"])
 
         // still handle files not in git history
-        if result.starts(with: "fatal: path") {
-            return try String(contentsOf: URL(filePath: file), encoding: .utf8)
+        if result.starts(with: "fatal: path"), let fileContent = try? String(contentsOf: URL(filePath: file), encoding: .utf8) {
+            return fileContent
         }
 
         return result
     }
 
     /// Probably not performant
-    func show(file: String, defaultType: GitDiffHunkLineType = .unchanged) async throws -> [GitDiffHunkLine] {
-        return try await self.show(file: file)
+    func show(file: String, defaultType: GitDiffHunkLineType = .unchanged) async -> [GitDiffHunkLine] {
+        return await self.show(file: file)
             .lines
             .enumerated()
             .map({ (index, line) in
@@ -122,8 +122,8 @@ extension Shell {
             })
     }
 
-    func show(at commit: String) async throws -> [GitFileStatus] {
-        return try await self.runTask(.git, ["show", "--oneline", "--name-status", "--no-color", commit])
+    func show(at commit: String) async -> [GitFileStatus] {
+        return await self.runTask(.git, ["show", "--oneline", "--name-status", "--no-color", commit])
             .lines
             .parallelMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }
@@ -161,8 +161,8 @@ extension Shell {
         return decoder.decode(output)
     }
 
-    func status() async throws -> [GitFileStatus] {
-        try await self.runTask(.git, ["status", "--porcelain"])
+    func status() async -> [GitFileStatus] {
+        await self.runTask(.git, ["status", "--porcelain"])
             .lines
             .parallelMap { line -> GitFileStatus? in
                 guard line.count > 3 else { return nil }

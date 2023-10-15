@@ -14,7 +14,6 @@
 		8A02C50529ACD3AA004DCA69 /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C50429ACD3AA004DCA69 /* Rotation.swift */; };
 		8A02C51B29AD3D67004DCA69 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8A02C51A29AD3D67004DCA69 /* KeychainAccess */; };
 		8A02C51D29AD3DAB004DCA69 /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C51C29AD3DAB004DCA69 /* KeychainStorage.swift */; };
-		8A02C52129ADEDA9004DCA69 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C52029ADEDA9004DCA69 /* AppModel.swift */; };
 		8A02C52329ADEE2A004DCA69 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C52229ADEE2A004DCA69 /* Color.swift */; };
 		8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612529659EEE00D878DC /* GitDiff.swift */; };
 		8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07612629659EEE00D878DC /* GitDiffHunkLineType.swift */; };
@@ -338,6 +337,9 @@
 		8AB8CD9D2ADAC23300F6C647 /* TaskTrigger in Frameworks */ = {isa = PBXBuildFile; productRef = 8AB8CD9C2ADAC23300F6C647 /* TaskTrigger */; };
 		8AB8CD9F2ADAC72C00F6C647 /* FolderContentMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CD9E2ADAC72C00F6C647 /* FolderContentMonitorView.swift */; };
 		8AB8CDA12ADAC74D00F6C647 /* GitFolderContentMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA02ADAC74D00F6C647 /* GitFolderContentMonitorView.swift */; };
+		8AB8CDA32ADC02D400F6C647 /* Sequence+Sorted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA22ADC02D400F6C647 /* Sequence+Sorted.swift */; };
+		8AB8CDA52ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA42ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift */; };
+		8AB8CDA72ADC0CB000F6C647 /* LoadedRepositoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA62ADC0CB000F6C647 /* LoadedRepositoryView.swift */; };
 		8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */; };
 		8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB629FBD1EC00CBDA41 /* View.swift */; };
 		8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */; };
@@ -538,7 +540,6 @@
 		8A02C50229ACB9CF004DCA69 /* LogOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOptions.swift; sourceTree = "<group>"; };
 		8A02C50429ACD3AA004DCA69 /* Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rotation.swift; sourceTree = "<group>"; };
 		8A02C51C29AD3DAB004DCA69 /* KeychainStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
-		8A02C52029ADEDA9004DCA69 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		8A02C52229ADEE2A004DCA69 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8A07612529659EEE00D878DC /* GitDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiff.swift; sourceTree = "<group>"; };
 		8A07612629659EEE00D878DC /* GitDiffHunkLineType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitDiffHunkLineType.swift; sourceTree = "<group>"; };
@@ -1045,6 +1046,9 @@
 		8AB8CD992ADABFCB00F6C647 /* WelcomeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeListItem.swift; sourceTree = "<group>"; };
 		8AB8CD9E2ADAC72C00F6C647 /* FolderContentMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderContentMonitorView.swift; sourceTree = "<group>"; };
 		8AB8CDA02ADAC74D00F6C647 /* GitFolderContentMonitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFolderContentMonitorView.swift; sourceTree = "<group>"; };
+		8AB8CDA22ADC02D400F6C647 /* Sequence+Sorted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Sorted.swift"; sourceTree = "<group>"; };
+		8AB8CDA42ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryWindowLoadingBarView.swift; sourceTree = "<group>"; };
+		8AB8CDA62ADC0CB000F6C647 /* LoadedRepositoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedRepositoryView.swift; sourceTree = "<group>"; };
 		8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		8ABB9FB629FBD1EC00CBDA41 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
@@ -1816,6 +1820,7 @@
 				8AC44EFE2A0806DC0016FFEC /* ButtonStyleProminent.swift */,
 				8AACBA662A161B57008DFF39 /* ButtonStyleSubmitProminent.swift */,
 				8AC44F002A0806ED0016FFEC /* ButtonStyleRegular.swift */,
+				8AB8CDA42ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1866,6 +1871,7 @@
 			children = (
 				8A97DC82299BB148001E25E1 /* Sequence+Occurrences.swift */,
 				8A97DC83299BB148001E25E1 /* Sequence+AnyOf.swift */,
+				8AB8CDA22ADC02D400F6C647 /* Sequence+Sorted.swift */,
 			);
 			path = Sequence;
 			sourceTree = "<group>";
@@ -2376,6 +2382,7 @@
 				8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */,
 				8A5C64CB29797DB300CA8FE1 /* CommitHistoryView.swift */,
 				8AFBD528296F2C1400525BF7 /* MainRepoContentView.swift */,
+				8AB8CDA62ADC0CB000F6C647 /* LoadedRepositoryView.swift */,
 			);
 			path = AppViews;
 			sourceTree = "<group>";
@@ -2435,7 +2442,6 @@
 				8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */,
 				8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */,
 				8AD9B5E129E6D77600631337 /* UndoState.swift */,
-				8A02C52029ADEDA9004DCA69 /* AppModel.swift */,
 				8A562CE629B4C335006C7E8A /* ViewState.swift */,
 				8A58736D2A687C8900E630EA /* ActiveChangesState.swift */,
 			);
@@ -2840,13 +2846,13 @@
 				8ACCD294297F265B0020BF84 /* GitReferenceList.swift in Sources */,
 				8AFBD5762971B08D00525BF7 /* Change.swift in Sources */,
 				8ACCD2A7297F265B0020BF84 /* GitCherryOptions.swift in Sources */,
-				8A02C52129ADEDA9004DCA69 /* AppModel.swift in Sources */,
 				8ACCD290297F265B0020BF84 /* GitFormatDecoder.swift in Sources */,
 				8A97DC90299BB148001E25E1 /* Sequence+AnyOf.swift in Sources */,
 				8A97DC96299BB148001E25E1 /* String+IsNumber.swift in Sources */,
 				8ACCD2C2297F265C0020BF84 /* StashListTask.swift in Sources */,
 				8AC8EB5029759AAD00365EB9 /* Border.swift in Sources */,
 				8ACCD29D297F265B0020BF84 /* ArgumentConvertible.swift in Sources */,
+				8AB8CDA52ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift in Sources */,
 				8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */,
 				8A96B5FB2A07AEA100A52467 /* CommitStatsBlocksView.swift in Sources */,
 				8ACCD2D4297F265C0020BF84 /* FileAnnotationRecord.swift in Sources */,
@@ -2954,6 +2960,7 @@
 				8AFBD52E296F2C1400525BF7 /* SidebarFooterView.swift in Sources */,
 				8ACCD2E1297F265C0020BF84 /* GitRepository+Remotes.swift in Sources */,
 				8ACCD2BE297F265C0020BF84 /* GitStashApplyOptions.swift in Sources */,
+				8AB8CDA32ADC02D400F6C647 /* Sequence+Sorted.swift in Sources */,
 				8A07612C29659EEE00D878DC /* GitDiffParser.swift in Sources */,
 				8AFBD54429702A0600525BF7 /* Commit.swift in Sources */,
 				8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */,
@@ -3000,6 +3007,7 @@
 				8ACCD2AB297F265B0020BF84 /* GitStatusOptions.swift in Sources */,
 				8A992DFD29A63B36001E26A3 /* OverlayAlignmentView.swift in Sources */,
 				8AD1088329ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift in Sources */,
+				8AB8CDA72ADC0CB000F6C647 /* LoadedRepositoryView.swift in Sources */,
 				8ACCD2C4297F265C0020BF84 /* StashTask.swift in Sources */,
 				8AFBD55E29704F7000525BF7 /* GitFileStatusView.swift in Sources */,
 				8ACCD2DF297F265C0020BF84 /* GitRepository+Cherry.swift in Sources */,

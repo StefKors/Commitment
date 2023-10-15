@@ -43,6 +43,10 @@ struct GitFolderContentMonitorView: ViewModifier {
 }
 
 extension View {
+    func gitFolderMonitor(url: URL, onFileChange: ( (FolderContentChangeEvent) -> Void)? = nil, onGitChange: ( (FolderContentChangeEvent) -> Void)? = nil) -> some View {
+        modifier(GitFolderContentMonitorView(url: url, onFileChange: onFileChange, onGitChange: onGitChange))
+    }
+
     func gitFolderMonitor(_ url: URL, onFileChange: ( (FolderContentChangeEvent) -> Void)? = nil, onGitChange: ( (FolderContentChangeEvent) -> Void)? = nil) -> some View {
         modifier(GitFolderContentMonitorView(url: url, onFileChange: onFileChange, onGitChange: onGitChange))
     }

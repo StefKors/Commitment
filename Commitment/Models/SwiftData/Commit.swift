@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Algorithms
 
 struct Commit: Equatable, Codable, Hashable, Identifiable {
     var id: String {

@@ -27,8 +27,8 @@ public struct GitDiff: Codable, Equatable {
     // Source string of diff
     public let unifiedDiff: String
     
-    public init?(unifiedDiff: String) throws {
-        let parsingResults = try GitDiffParser(unifiedDiff: unifiedDiff).parse()
+    public init?(unifiedDiff: String) {
+        let parsingResults = GitDiffParser(unifiedDiff: unifiedDiff).parse()
         self.init(
             addedFile: parsingResults.addedFile,
             removedFile: parsingResults.removedFile,

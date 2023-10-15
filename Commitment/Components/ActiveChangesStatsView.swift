@@ -33,9 +33,12 @@ struct ActiveChangesStatsView: View {
                 }
             }
         }
-        .task(id: repo.status) {
-            self.stats = try? await shell.stats()
+        .task {
+            print("todo: fetch active changes stats")
         }
+//        .task(id: repo.status) {
+//            self.stats = try? await shell.stats()
+//        }
         // TODO: shell activity date
 //        .onChange(of: lastUpdate) { _ in
 //            Task {

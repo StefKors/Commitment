@@ -207,8 +207,9 @@ struct ContentPlaceholderView: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 10) {
-                CommitContributionChartView(commits: repo.commits)
-                Divider()
+                // TODO: figure out Commit Contribution Chart view
+//                CommitContributionChartView(commits: repo.commits)
+//                Divider()
                 if repo.commitsAhead.count > 0 {
                     PushChangesRepoPlaceholder()
                 } else {

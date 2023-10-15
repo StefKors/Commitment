@@ -46,14 +46,15 @@ struct ActiveChangesMainView: View {
     }
 
     func getDiffs() async {
-        guard isLoading == false else { return }
-        let status = repo.status.first(with: id)
-        self.fileStatus = status
-        if status?.state.index.isAny(of: [.added, .deleted]) == true {
-            self.diff = nil
-        } else if let id {
-            self.diff = repo.diffs.fileStatus(for: id)
-        }
+        print("todo: get diffs in active changes main view")
+//        guard isLoading == false else { return }
+//        let status = repo.status.first(with: id)
+//        self.fileStatus = status
+//        if status?.state.index.isAny(of: [.added, .deleted]) == true {
+//            self.diff = nil
+//        } else if let id {
+//            self.diff = repo.diffs.fileStatus(for: id)
+//        }
     }
 }
 

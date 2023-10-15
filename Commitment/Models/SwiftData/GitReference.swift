@@ -71,4 +71,3 @@ extension GitReference {
         static let SeparatorCharacterSet = CharacterSet(charactersIn: RefPath.Separator)
     }
 }
-

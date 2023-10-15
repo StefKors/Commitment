@@ -29,7 +29,7 @@ internal class GitDiffParser {
         )
     }
     
-    func parse() throws -> (addedFile: String, removedFile: String, hunks: [GitDiffHunk]) {
+    func parse() -> (addedFile: String, removedFile: String, hunks: [GitDiffHunk]) {
         
         var addedFile: String?
         var removedFile: String?

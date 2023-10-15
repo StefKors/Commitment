@@ -15,7 +15,8 @@ class LogOptions: ArgumentConvertible {
         return LogOptions()
     }
 
-    init() {
+    init(compareReference: ReferenceComparator? = nil) {
+        self.compareReference = compareReference
     }
 
     /// A number of commits to load. Default value is not specified that means there is not limit.

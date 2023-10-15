@@ -104,11 +104,12 @@ struct FloatingPanelSidebarView: View {
 
 struct FloatingPanelContentView: View {
     @EnvironmentObject private var repo: CodeRepository
+    @EnvironmentObject private var activeChangesState: ActiveChangesState
 
     var body: some View {
         ScrollView(.vertical) {
             VStack {
-                ForEach(repo.status, id: \.id) { fileStatus in
+                ForEach(activeChangesState.status, id: \.id) { fileStatus in
                     GitFileStatusView(fileStatus: fileStatus)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 1)
@@ -202,10 +203,11 @@ struct QuickCommitPanelView: View {
     @State private var commitBody: String = ""
 
     private var quickCommitTitle: String? {
-        if repo.status.count == 1, let first = repo.status.first, let str = first.path.split(separator: " -> ").last {
-            let url = URL(filePath: String(str))
-            return "Update \(url.lastPathComponent)"
-        }
+        print("todo: generate quick commit title")
+//        if repo.status.count == 1, let first = repo.status.first, let str = first.path.split(separator: " -> ").last {
+//            let url = URL(filePath: String(str))
+//            return "Update \(url.lastPathComponent)"
+//        }
 
         return nil
     }

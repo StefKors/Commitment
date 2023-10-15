@@ -11,11 +11,12 @@ import SwiftUI
 struct ActiveChangesSidebarView: View {
     @EnvironmentObject private var repo: CodeRepository
     @EnvironmentObject private var viewState: ViewState
+    @EnvironmentObject private var activeChangesState: ActiveChangesState
 
     var body: some View {
         VStack {
             List(selection: $viewState.activeChangesSelection) {
-                ForEach(repo.status, id: \.id) { fileStatus in
+                ForEach(activeChangesState.status, id: \.id) { fileStatus in
                     GitFileStatusView(fileStatus: fileStatus)
                         .contextMenu {
                             Button("Reveal in Finder") {
@@ -69,7 +70,7 @@ struct ActiveChangesSidebarView: View {
             ActiveChangesStatsView()
             Divider()
             VStack {
-                TextEditorView(isDisabled: repo.diffs.isEmpty)
+                TextEditorView(isDisabled: activeChangesState.diffs.isEmpty)
                 UndoActivityView()
             }
             .padding(.bottom)
