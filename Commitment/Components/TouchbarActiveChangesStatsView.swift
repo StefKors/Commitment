@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TouchbarActiveChangesStatsView: View {
     var showBlocks: Bool = false
+    @EnvironmentObject private var activeChangesState: ActiveChangesState
     @EnvironmentObject private var repo: CodeRepository
     @EnvironmentObject private var shell: Shell
     @State private var stats: GitCommitStats?

@@ -70,14 +70,21 @@ struct GitCommitStats: Codable {
         }
 
         self.blocks = blockArray
+
+        self.hasChanges = (filesChanged.isNotZero || insertions.isNotZero || deletions.isNotZero)
     }
 
     var filesChanged: Int = 0
     var insertions: Int = 0
     var deletions: Int = 0
+    var hasChanges: Bool = false
 
     var blocks: [GitStatBlockType]
     let raw: String
+}
+
+extension GitCommitStats {
+    static let preview = GitCommitStats("2 files changed, 5 insertions(+), 2 deletions(-)")
 }
 
 extension Int {
@@ -86,8 +93,8 @@ extension Int {
         if self == .zero {
             return CGFloat(0)
         }
-        var targetRange = targetRangeMax - targetRangeMin;
-        var sourceRange = sourceRangeMax - sourceRangeMin;
+        let targetRange = targetRangeMax - targetRangeMin;
+        let sourceRange = sourceRangeMax - sourceRangeMin;
         return (CGFloat(self) - sourceRangeMin) * targetRange / sourceRange + targetRangeMin;
     }
 }

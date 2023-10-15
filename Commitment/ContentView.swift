@@ -35,21 +35,3 @@ struct ContentView: View {
         })
     }
 }
-
-
-private struct ActiveRepositoryID: EnvironmentKey {
-    static let defaultValue: Binding<URL?> = .constant(nil)
-}
-
-extension EnvironmentValues {
-    var activeRepositoryID: Binding<URL?> {
-        get { self[ActiveRepositoryID.self] }
-        set { self[ActiveRepositoryID.self] = newValue }
-    }
-}
-
-extension View {
-    func activeRepositoryID(_ activeRepositoryID: Binding<URL?>) -> some View {
-        environment(\.activeRepositoryID, activeRepositoryID)
-    }
-}
