@@ -335,6 +335,9 @@
 		8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */; };
 		8AB8CD982ADAB8AE00F6C647 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CD972ADAB8AE00F6C647 /* ContentView.swift */; };
 		8AB8CD9A2ADABFCB00F6C647 /* WelcomeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CD992ADABFCB00F6C647 /* WelcomeListItem.swift */; };
+		8AB8CD9D2ADAC23300F6C647 /* TaskTrigger in Frameworks */ = {isa = PBXBuildFile; productRef = 8AB8CD9C2ADAC23300F6C647 /* TaskTrigger */; };
+		8AB8CD9F2ADAC72C00F6C647 /* FolderContentMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CD9E2ADAC72C00F6C647 /* FolderContentMonitorView.swift */; };
+		8AB8CDA12ADAC74D00F6C647 /* GitFolderContentMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA02ADAC74D00F6C647 /* GitFolderContentMonitorView.swift */; };
 		8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */; };
 		8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB629FBD1EC00CBDA41 /* View.swift */; };
 		8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */; };
@@ -481,7 +484,7 @@
 		8AFBD536296F2C4300525BF7 /* RepoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD535296F2C4300525BF7 /* RepoState.swift */; };
 		8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */; };
 		8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */; };
-		8AFBD53D296F2EB600525BF7 /* RepoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */; };
+		8AFBD53D296F2EB600525BF7 /* RepositoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD53A296F2EB600525BF7 /* RepositoryWindow.swift */; };
 		8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */; };
 		8AFBD54429702A0600525BF7 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD54329702A0600525BF7 /* Commit.swift */; };
 		8AFBD54729702A2C00525BF7 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD54629702A2C00525BF7 /* Collection.swift */; };
@@ -1040,6 +1043,8 @@
 		8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewDebugging.swift; sourceTree = "<group>"; };
 		8AB8CD972ADAB8AE00F6C647 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8AB8CD992ADABFCB00F6C647 /* WelcomeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeListItem.swift; sourceTree = "<group>"; };
+		8AB8CD9E2ADAC72C00F6C647 /* FolderContentMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderContentMonitorView.swift; sourceTree = "<group>"; };
+		8AB8CDA02ADAC74D00F6C647 /* GitFolderContentMonitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFolderContentMonitorView.swift; sourceTree = "<group>"; };
 		8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		8ABB9FB629FBD1EC00CBDA41 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
@@ -1184,7 +1189,7 @@
 		8AFBD535296F2C4300525BF7 /* RepoState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoState.swift; sourceTree = "<group>"; };
 		8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
 		8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeWindow.swift; sourceTree = "<group>"; };
-		8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoWindow.swift; sourceTree = "<group>"; };
+		8AFBD53A296F2EB600525BF7 /* RepositoryWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryWindow.swift; sourceTree = "<group>"; };
 		8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarContentView.swift; sourceTree = "<group>"; };
 		8AFBD54329702A0600525BF7 /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
 		8AFBD54629702A2C00525BF7 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -1208,6 +1213,7 @@
 			files = (
 				8A02C51B29AD3D67004DCA69 /* KeychainAccess in Frameworks */,
 				8A68425C2A052B230063CBE6 /* KeyboardShortcuts in Frameworks */,
+				8AB8CD9D2ADAC23300F6C647 /* TaskTrigger in Frameworks */,
 				8A164BD72A07DA0700053482 /* HotKey in Frameworks */,
 				8A1F2DB229C7C15C00E3C3F6 /* Algorithms in Frameworks */,
 				8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */,
@@ -2379,7 +2385,7 @@
 			children = (
 				8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */,
 				8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */,
-				8AFBD53A296F2EB600525BF7 /* RepoWindow.swift */,
+				8AFBD53A296F2EB600525BF7 /* RepositoryWindow.swift */,
 				8A34219429C876B30001E58B /* WelcomeSheet.swift */,
 				8A6842582A0529BA0063CBE6 /* QuickCommitPanelView.swift */,
 				8A29E28029F815620049CBC8 /* OnboardingWindow.swift */,
@@ -2442,6 +2448,8 @@
 				8AFBD5732971B08D00525BF7 /* Change.swift */,
 				8AFBD5722971B08D00525BF7 /* FolderContentChangeEvent.swift */,
 				8AFBD5712971B08D00525BF7 /* FolderContentMonitor.swift */,
+				8AB8CD9E2ADAC72C00F6C647 /* FolderContentMonitorView.swift */,
+				8AB8CDA02ADAC74D00F6C647 /* GitFolderContentMonitorView.swift */,
 			);
 			path = FileMonitor;
 			sourceTree = "<group>";
@@ -2472,6 +2480,7 @@
 				8A1F2DB129C7C15C00E3C3F6 /* Algorithms */,
 				8A68425B2A052B230063CBE6 /* KeyboardShortcuts */,
 				8A164BD62A07DA0700053482 /* HotKey */,
+				8AB8CD9C2ADAC23300F6C647 /* TaskTrigger */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -2554,6 +2563,7 @@
 				8A1F2DB029C7C15C00E3C3F6 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				8A68425A2A052B230063CBE6 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				8A164BD52A07DA0700053482 /* XCRemoteSwiftPackageReference "HotKey" */,
+				8AB8CD9B2ADAC23300F6C647 /* XCRemoteSwiftPackageReference "TaskTrigger" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -2850,11 +2860,13 @@
 				8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */,
 				8ACCD2E4297F265C0020BF84 /* GitRepository+Tag.swift in Sources */,
 				8AFBD57D2971D14700525BF7 /* CheckoutProgressIconView.swift in Sources */,
+				8AB8CDA12ADAC74D00F6C647 /* GitFolderContentMonitorView.swift in Sources */,
 				8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */,
 				8A96B6072A07D5CA00A52467 /* TouchbarActiveChangesStatsView.swift in Sources */,
 				8ACCD2A9297F265B0020BF84 /* CherryTask.swift in Sources */,
 				8A58736E2A687C8900E630EA /* ActiveChangesState.swift in Sources */,
 				8ACCD2D7297F265C0020BF84 /* GitFileStorage.swift in Sources */,
+				8AB8CD9F2ADAC72C00F6C647 /* FolderContentMonitorView.swift in Sources */,
 				8AB8CD982ADAB8AE00F6C647 /* ContentView.swift in Sources */,
 				8ACCD2EB297F265C0020BF84 /* GitRemote.swift in Sources */,
 				8AD1088529EEB144000FFD70 /* BetaSettingsView.swift in Sources */,
@@ -3000,7 +3012,7 @@
 				8ACCD2C3297F265C0020BF84 /* GitStashOptions.swift in Sources */,
 				8ACCD2B4297F265B0020BF84 /* RemoteRenameTask.swift in Sources */,
 				8A97DDA5299BCA7A001E25E1 /* Theme+Light+Dark.swift in Sources */,
-				8AFBD53D296F2EB600525BF7 /* RepoWindow.swift in Sources */,
+				8AFBD53D296F2EB600525BF7 /* RepositoryWindow.swift in Sources */,
 				8AC44F012A0806ED0016FFEC /* ButtonStyleRegular.swift in Sources */,
 				8A6842602A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift in Sources */,
 				8ACCD2BA297F265B0020BF84 /* AddTask.swift in Sources */,
@@ -3472,6 +3484,14 @@
 				kind = branch;
 			};
 		};
+		8AB8CD9B2ADAC23300F6C647 /* XCRemoteSwiftPackageReference "TaskTrigger" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lukepistrol/TaskTrigger";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.3;
+			};
+		};
 		8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Wouter01/SwiftUI-WindowManagement.git";
@@ -3520,6 +3540,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */;
 			productName = Splash;
+		};
+		8AB8CD9C2ADAC23300F6C647 /* TaskTrigger */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AB8CD9B2ADAC23300F6C647 /* XCRemoteSwiftPackageReference "TaskTrigger" */;
+			productName = TaskTrigger;
 		};
 		8AC7B8E129B751C700AB2728 /* WindowManagement */ = {
 			isa = XCSwiftPackageProductDependency;

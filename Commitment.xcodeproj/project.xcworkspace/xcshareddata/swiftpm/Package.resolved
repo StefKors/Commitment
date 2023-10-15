@@ -107,6 +107,15 @@
         "revision" : "adbebf5d7df325f3d7bf07dc832e5e162a9003f5",
         "version" : "2.1.1"
       }
+    },
+    {
+      "identity" : "tasktrigger",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lukepistrol/TaskTrigger",
+      "state" : {
+        "revision" : "4be55873f831a07b4e56e814f45e9413e5ca9c48",
+        "version" : "0.2.3"
+      }
     }
   ],
   "version" : 2

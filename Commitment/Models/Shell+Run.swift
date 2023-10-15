@@ -8,13 +8,15 @@
 import Foundation
 import OSLog
 
+fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "Shell")
+
 extension Shell {
     @discardableResult
     func runTask(
         _ executable: Executable,
         _ command: [String],
         in currentDirectoryURL: URL? = nil
-    ) async throws -> String {
+    ) async -> String {
         let location = currentDirectoryURL ?? self.workspace
         let signpostID = signposter.makeSignpostID()
         let state = signposter.beginInterval("run", id: signpostID)
@@ -25,31 +27,38 @@ extension Shell {
         process.standardError = pipe
 
 
-        return try await withCheckedThrowingContinuation { continuation in
-            process.terminationHandler = { process in
-                let data = pipe.fileHandleForReading.readDataToEndOfFile()
-                let output = data.toShellOutput
+        do {
+            let result: String = try await withCheckedThrowingContinuation { continuation in
+                process.terminationHandler = { process in
+                    let data = pipe.fileHandleForReading.readDataToEndOfFile()
+                    let output = data.toShellOutput
 
-                switch process.terminationReason {
-                case .uncaughtSignal:
-                    let error = ProcessError(terminationStatus: process.terminationStatus, output: output)
-                    self.signposter.endInterval("run", state)
+                    switch process.terminationReason {
+                    case .uncaughtSignal:
+                        let error = ProcessError(terminationStatus: process.terminationStatus, output: output)
+                        self.signposter.endInterval("run", state)
+                        continuation.resume(throwing: error)
+                    case .exit:
+                        self.signposter.endInterval("run", state)
+                        continuation.resume(returning: output)
+                    @unknown default:
+                        //TODO: theoretically, this ought not to happen
+                        self.signposter.endInterval("run", state)
+                        continuation.resume(returning: output)
+                    }
+                }
+
+                do {
+                    try process.run()
+                } catch {
                     continuation.resume(throwing: error)
-                case .exit:
-                    self.signposter.endInterval("run", state)
-                    continuation.resume(returning: output)
-                @unknown default:
-                    //TODO: theoretically, this ought not to happen
-                    self.signposter.endInterval("run", state)
-                    continuation.resume(returning: output)
                 }
             }
 
-            do {
-                try process.run()
-            } catch {
-                continuation.resume(throwing: error)
-            }
+            return result
+        } catch {
+            Commitment.log.error("Run Task failed with: \(error.localizedDescription)")
+            return "Run Task failed with: \(error.localizedDescription)"
         }
     }
 

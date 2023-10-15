@@ -9,11 +9,16 @@
 import Foundation
 import SwiftUI
 
+
+extension URL {
+    static let previewFolder: URL = URL(filePath: "/users/stefkors/Developer/Commitment")
+}
+
 /// Monitor for a particular file or folder. Change events
 /// will fire when the contents of the URL changes:
 ///
 /// If it's a folder, it will fire when you add/remove/rename files or folders
-/// below the reference paths. See `Change` for an incomprehensive list of 
+/// below the reference paths. See `Change` for an incomprehensive list of
 /// events details that will be reported.
 public class FolderContentMonitor: ObservableObject {
 
@@ -37,15 +42,15 @@ public class FolderContentMonitor: ObservableObject {
         latency: CFTimeInterval = 0,
         callback: ((FolderContentChangeEvent) -> Void)? = nil) {
 
-        self.init(
-            pathsToWatch: [url.path],
-            sinceWhen: sinceWhen,
-            latency: latency,
-            callback: callback)
-    }
+            self.init(
+                pathsToWatch: [url.path],
+                sinceWhen: sinceWhen,
+                latency: latency,
+                callback: callback)
+        }
 
     /// - parameter pathsToWatch: Collection of file or folder paths.
-    /// - parameter sinceWhen: Reference event for the subscription. Default 
+    /// - parameter sinceWhen: Reference event for the subscription. Default
     ///   is `kFSEventStreamEventIdSinceNow`.
     /// - parameter latency: Interval (in seconds) to allow coalescing events.
     /// - parameter callback: Callback for incoming file system events. Can be ignored
@@ -56,11 +61,11 @@ public class FolderContentMonitor: ObservableObject {
         latency: CFTimeInterval = 0,
         callback: ((FolderContentChangeEvent) -> Void)? = nil) {
 
-        self.lastEventId = sinceWhen
-        self.pathsToWatch = pathsToWatch
-        self.latency = latency
-        self.callback = callback
-    }
+            self.lastEventId = sinceWhen
+            self.pathsToWatch = pathsToWatch
+            self.latency = latency
+            self.callback = callback
+        }
 
     deinit {
         stop()
@@ -91,17 +96,17 @@ public class FolderContentMonitor: ObservableObject {
 
     private let eventCallback: FSEventStreamCallback = {
         (stream: ConstFSEventStreamRef,
-        contextInfo: UnsafeMutableRawPointer?,
-        numEvents: Int,
-        eventPaths: UnsafeMutableRawPointer,
-        eventFlags: UnsafePointer<FSEventStreamEventFlags>,
-        eventIds: UnsafePointer<FSEventStreamEventId>) in
+         contextInfo: UnsafeMutableRawPointer?,
+         numEvents: Int,
+         eventPaths: UnsafeMutableRawPointer,
+         eventFlags: UnsafePointer<FSEventStreamEventFlags>,
+         eventIds: UnsafePointer<FSEventStreamEventId>) in
 
         let fileSystemWatcher: FolderContentMonitor = unsafeBitCast(contextInfo, to: FolderContentMonitor.self)
 
         guard let callback = fileSystemWatcher.callback,
-            let paths = unsafeBitCast(eventPaths, to: NSArray.self) as? [String]
-            else { return }
+              let paths = unsafeBitCast(eventPaths, to: NSArray.self) as? [String]
+        else { return }
 
         for index in 0 ..< numEvents {
             let change = Change(eventFlags: eventFlags[index])
