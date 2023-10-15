@@ -8,47 +8,31 @@
 import SwiftUI
 
 struct TouchbarActiveChangesStatsView: View {
-    var showBlocks: Bool = false
+    @AppStorage(Settings.Diff.ShowStatsBlocks) private var showStatsBlocks: Bool = true
     @EnvironmentObject private var activeChangesState: ActiveChangesState
-    @EnvironmentObject private var repo: CodeRepository
-    @EnvironmentObject private var shell: Shell
-    @State private var stats: GitCommitStats?
+
     var body: some View {
-        if let stats, stats.filesChanged > 0 {
+        if activeChangesState.stats.hasChanges {
             Image(systemName: "chevron.compact.right")
         }
 
-        VStack {
-            if let stats, stats.filesChanged > 0 {
-                HStack(spacing: 8) {
-                    // Label("^[\(Int(stats.filesChanged)) file](inflect: true) changed", image: "file-diff")
-                    Label("\(Int(stats.filesChanged)) files changed", image: "file-diff")
+        if activeChangesState.stats.hasChanges {
+            HStack(spacing: 8) {
+                // Label("^[\(Int(stats.filesChanged)) file](inflect: true) changed", image: "file-diff")
+                Label("\(Int(activeChangesState.stats.filesChanged)) files changed", image: "file-diff")
 
-                    HStack(spacing: 2) {
-                        Text("+\(stats.insertions)")
-                            .foregroundStyle(Color("GitHubDiffGreenBright"))
-                        Text("-\(stats.deletions)")
-                            .foregroundStyle(Color("GitHubDiffRedBright"))
-                    }
+                HStack(spacing: 2) {
+                    Text("+\(activeChangesState.stats.insertions)")
+                        .foregroundStyle(Color("GitHubDiffGreenBright"))
+                    Text("-\(activeChangesState.stats.deletions)")
+                        .foregroundStyle(Color("GitHubDiffRedBright"))
+                }
 
-                    if showBlocks {
-                        CommitStatsBlocksView(blocks: stats.blocks)
-                    }
+                if showStatsBlocks {
+                    CommitStatsBlocksView(blocks: activeChangesState.stats.blocks)
                 }
             }
         }
-        .task {
-            print("todo: touchbar stats")
-        }
-//        .task(id: repo.status) {
-//            self.stats = try? await shell.stats()
-//        }
-        // TODO: check if stats update correctly
-//        .onChange(of: repo.lastUpdate) { _ in
-//            Task {
-//                self.stats = try? await shell.stats()
-//            }
-//        }
     }
 }
 

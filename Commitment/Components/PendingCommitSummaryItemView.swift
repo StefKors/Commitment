@@ -6,34 +6,20 @@
 //
 
 import SwiftUI
-
-enum CommitSummary: Error {
-    case emptyString
-}
+import TaskTrigger
 
 struct PendingCommitSummaryItemView: View {
-    @EnvironmentObject private var shell: Shell
     let commit: Commit
-    @State var stats: GitCommitStats?
+
+    @EnvironmentObject private var shell: Shell
+    @State private var stats: ActiveChangesStats?
+    @State private var hashUpdate = PlainTaskTrigger()
+
     var body: some View {
         GroupBox {
             VStack(alignment: .leading) {
                 SidebarCommitLabelView(commit: commit)
-                if let stats {
-                    HStack {
-                        Image("file-diff")
-                            .imageScale(.small)
-                        Text("\(stats.filesChanged) files changed")
-                        Text("\(stats.insertions) +++")
-                            .foregroundColor(Color("GitHubDiffGreenBright"))
-                        Text("\(stats.deletions) ---")
-                            .foregroundColor(Color("GitHubDiffRedBright"))
-                        Spacer()
-                    }
-                } else {
-                    ProgressView()
-                        .progressViewStyle(.linear)
-                }
+                InlineCommitStatsView(stats: stats)
             }
             .padding(4)
         }
@@ -42,19 +28,36 @@ struct PendingCommitSummaryItemView: View {
         .shadow(color: .black.opacity(0.1), radius: 4,  y: 2)
         .border(Color.disabledControlTextColor, width: 1, cornerRadius: 4)
         .task(id: commit.hash, priority: .medium) {
-            do {
-                stats = try await shell.stats(for: commit.hash)
-                // let numstat = try await repo.shell.numStat(for: commit.hash)
-                // print(numstat)
-            } catch {
-                fatalError(error.localizedDescription)
-            }
+            hashUpdate.trigger()
+        }
+        .task($hashUpdate) {
+            stats = await shell.stats(for: commit.hash)
         }
     }
 }
 
-// struct PendingCommitSummaryItemView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         PendingCommitSummaryItemView()
-//     }
-// }
+fileprivate struct InlineCommitStatsView: View {
+    let stats: ActiveChangesStats?
+
+    var body: some View {
+        if let stats {
+            HStack {
+                Image("file-diff")
+                    .imageScale(.small)
+                Text("\(stats.filesChanged) files changed")
+                Text("\(stats.insertions) +++")
+                    .foregroundColor(Color("GitHubDiffGreenBright"))
+                Text("\(stats.deletions) ---")
+                    .foregroundColor(Color("GitHubDiffRedBright"))
+                Spacer()
+            }
+        } else {
+            ProgressView()
+                .progressViewStyle(.linear)
+        }
+    }
+}
+
+#Preview {
+    InlineCommitStatsView(stats: .previewLargeChanges)
+}

@@ -22,6 +22,7 @@ enum DiffViewMode: String, CaseIterable, Codable {
 class Settings {
     struct Diff {
         static let Mode: String = "DiffViewMode"
+        static let ShowStatsBlocks: String = "ShowStatsBlocks"
     }
     struct Git {
         static let Provider: String = "ExternalGitProvider"

@@ -172,7 +172,7 @@ struct FloatingPanelFooterView: View {
 
     var body: some View {
         HStack {
-            ActiveChangesStatsView(showBlocks: true)
+            ActiveChangesStatsView()
             Spacer()
             Button {
                 handleSubmit()

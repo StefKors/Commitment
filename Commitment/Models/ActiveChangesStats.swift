@@ -13,7 +13,16 @@ enum GitStatBlockType: String, Codable {
     case deletion
 }
 
-struct GitCommitStats: Codable {
+struct ActiveChangesStats: Codable {
+    init() {
+        self.raw = ""
+        self.hasChanges = false
+        self.blocks = []
+        self.filesChanged = 0
+        self.insertions = 0
+        self.deletions = 0
+    }
+
     // 2 files changed, 5 insertions(+), 2 deletions(-)
     init(_ input: String) {
         self.raw = input
@@ -32,6 +41,7 @@ struct GitCommitStats: Codable {
         let matches = input.matches(of: matcher)
         for match in matches {
             let (_, digit, words) = match.output
+
             if words.contains("file") {
                 self.filesChanged = Int(String(digit)) ?? 0
             }
@@ -45,20 +55,20 @@ struct GitCommitStats: Codable {
             }
         }
 
-        let total = self.insertions + self.deletions
-        let adds = Int(self.insertions.getScaledValue(
+        let total: Int = self.insertions + self.deletions
+        let adds: Int = self.insertions.getScaledValue(
             sourceRangeMin: 0,
-            sourceRangeMax: CGFloat(total),
+            sourceRangeMax: total,
             targetRangeMin: 0,
             targetRangeMax: 5
-        ).rounded())
+        )
 
-        let dels = Int(self.deletions.getScaledValue(
+        let dels: Int = self.deletions.getScaledValue(
             sourceRangeMin: 0,
-            sourceRangeMax: CGFloat(total),
+            sourceRangeMax: total,
             targetRangeMin: 0,
             targetRangeMax: 5
-        ).rounded())
+        )
 
         var blockArray: [GitStatBlockType] = []
         for _ in 0..<adds {
@@ -83,18 +93,40 @@ struct GitCommitStats: Codable {
     let raw: String
 }
 
-extension GitCommitStats {
-    static let preview = GitCommitStats("2 files changed, 5 insertions(+), 2 deletions(-)")
+extension ActiveChangesStats {
+    static let preview = ActiveChangesStats("2 files changed, 5 insertions(+), 2 deletions(-)")
+    static let previewLargeChanges = ActiveChangesStats("928 files changed, 286 insertions(+), 863 deletions(-)")
+    static let previewNoChanges = ActiveChangesStats("")
 }
 
 extension Int {
     /// Scale number from a range to a range
-    func getScaledValue(sourceRangeMin: CGFloat, sourceRangeMax: CGFloat, targetRangeMin: CGFloat, targetRangeMax: CGFloat) -> CGFloat {
+    func getScaledValue(
+        sourceRangeMin: CGFloat,
+        sourceRangeMax: CGFloat,
+        targetRangeMin: CGFloat,
+        targetRangeMax: CGFloat
+    ) -> CGFloat {
         if self == .zero {
             return CGFloat(0)
         }
         let targetRange = targetRangeMax - targetRangeMin;
         let sourceRange = sourceRangeMax - sourceRangeMin;
         return (CGFloat(self) - sourceRangeMin) * targetRange / sourceRange + targetRangeMin;
+    }
+
+    /// Scale number from a range to a range
+    func getScaledValue(
+        sourceRangeMin: Int,
+        sourceRangeMax: Int,
+        targetRangeMin: Int,
+        targetRangeMax: Int
+    ) -> Int {
+        if self == .zero {
+            return 0
+        }
+        let targetRange = targetRangeMax - targetRangeMin;
+        let sourceRange = sourceRangeMax - sourceRangeMin;
+        return (self - sourceRangeMin) * targetRange / sourceRange + targetRangeMin;
     }
 }

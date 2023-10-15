@@ -13,5 +13,5 @@ class ActiveChangesState: ObservableObject {
     @Published var diffs: [GitDiff] = []
     @Published var status: [GitFileStatus] = []
     
-    @Published var GitCommitStats: GitCommitStats? = nil
+    @Published var stats: ActiveChangesStats = .init()
 }

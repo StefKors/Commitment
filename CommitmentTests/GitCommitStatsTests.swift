@@ -19,8 +19,8 @@ final class GitCommitStatsTests: XCTestCase {
     }
 
     func testParseFromStringNoChanges() throws {
-        let input = "2 files changed, 5 insertions(+), 2 deletions(-)"
-        let output = GitCommitStats(input)
+        let input = ""
+        let output = ActiveChangesStats(input)
         XCTAssertEqual(output.filesChanged, 0)
         XCTAssertEqual(output.insertions, 0)
         XCTAssertEqual(output.deletions, 0)
@@ -29,7 +29,7 @@ final class GitCommitStatsTests: XCTestCase {
 
     func testParseFromString() throws {
         let input = "2 files changed, 5 insertions(+), 2 deletions(-)"
-        let output = GitCommitStats(input)
+        let output = ActiveChangesStats(input)
         XCTAssertEqual(output.filesChanged, 2)
         XCTAssertEqual(output.insertions, 5)
         XCTAssertEqual(output.deletions, 2)
@@ -38,7 +38,7 @@ final class GitCommitStatsTests: XCTestCase {
 
     func testParseFromStringOnlyDeletions() throws {
         let input = "2 files changed, 5 deletions(-)"
-        let output = GitCommitStats(input)
+        let output = ActiveChangesStats(input)
         XCTAssertEqual(output.filesChanged, 2)
         XCTAssertEqual(output.insertions, 0)
         XCTAssertEqual(output.deletions, 5)
@@ -47,7 +47,7 @@ final class GitCommitStatsTests: XCTestCase {
 
     func testParseFromStringOnlyInsertions() throws {
         let input = "2 files changed, 5 insertions(+)"
-        let output = GitCommitStats(input)
+        let output = ActiveChangesStats(input)
         XCTAssertEqual(output.filesChanged, 2)
         XCTAssertEqual(output.insertions, 5)
         XCTAssertEqual(output.deletions, 0)
@@ -59,7 +59,7 @@ final class GitCommitStatsTests: XCTestCase {
     func testPerformance() throws {
         self.measure {
             for sample in testData {
-                let output = GitCommitStats(sample)
+                let output = ActiveChangesStats(sample)
             }
         }
     }

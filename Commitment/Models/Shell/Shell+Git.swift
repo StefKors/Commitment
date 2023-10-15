@@ -280,9 +280,9 @@ extension Shell {
     }
 
     /// Get diff stats of current active changes
-    func stats() async -> GitCommitStats {
+    func stats() async -> ActiveChangesStats {
         let output = await self.runTask(.git, ["diff", "--shortstat"])
-        return GitCommitStats(output)
+        return ActiveChangesStats(output)
     }
 
     /// Get diff stats of a SHA
@@ -292,10 +292,10 @@ extension Shell {
     }
 
     /// Get diff stats of a SHA
-    func stats(for sha: String) async -> GitCommitStats {
+    func stats(for sha: String) async -> ActiveChangesStats {
         let shaBefore = await self.SHAbefore(SHA: sha)
         let output = await self.runTask(.git, ["diff", "--shortstat", shaBefore, sha])
-        return GitCommitStats(output)
+        return ActiveChangesStats(output)
     }
 
     /// Get diff stats of a SHA per file

@@ -12,15 +12,16 @@ struct GeneralSettingsView: View {
     @EnvironmentObject var repo: CodeRepository
     @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
     @AppStorage(Settings.Diff.Mode) private var diffViewMode: DiffViewMode = .unified
+    @AppStorage(Settings.Diff.ShowStatsBlocks) private var showStatsBlocks: Bool = true
     @AppStorage(Settings.Features.SideBySide) private var sideBySide: Bool = false
 
     private var externalEditorPickerItems: [ExternalEditors] {
         ExternalEditors.allCases
-//        ExternalEditors().editors.filter { editor in
-//            editor.bundleIdentifiers.first { identifier in
-//                NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) != nil
-//            } != nil
-//        }
+        //        ExternalEditors().editors.filter { editor in
+        //            editor.bundleIdentifiers.first { identifier in
+        //                NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) != nil
+        //            } != nil
+        //        }
     }
 
     private let externalGitProviderPickerItems = [
@@ -48,16 +49,19 @@ struct GeneralSettingsView: View {
             }
         }
 
-        if sideBySide {
-            SettingsBox(
-                label: "Diff Settings"
-            ) {
+        SettingsBox(
+            label: "Diff Settings"
+        ) {
+            if sideBySide {
                 Picker("View Mode", selection: $diffViewMode) {
                     ForEach(DiffViewMode.allCases, id: \.self) { item in
                         Text(item.rawValue).tag(item.rawValue)
                     }
                 }.pickerStyle(.segmented)
             }
+
+            Toggle("Show Blocks in Diff stats", isOn: $showStatsBlocks)
+                .toggleStyle(.switch)
         }
     }
 }

@@ -8,43 +8,30 @@
 import SwiftUI
 
 struct ActiveChangesStatsView: View {
-    var showBlocks: Bool = false
-    @EnvironmentObject private var repo: CodeRepository
-    @EnvironmentObject private var shell: Shell
-    @State private var stats: GitCommitStats?
+    @AppStorage(Settings.Diff.ShowStatsBlocks) private var showStatsBlocks: Bool = true
+    @EnvironmentObject private var activeChangesState: ActiveChangesState
+
     var body: some View {
         VStack {
-            if let stats, stats.filesChanged > 0 {
+            if activeChangesState.stats.hasChanges {
                 HStack(spacing: 8) {
                     // Text("^[\(Int(stats.filesChanged)) file](inflect: true) changed")
-                    Text("\(Int(stats.filesChanged)) files changed")
+                    Text("\(Int(activeChangesState.stats.filesChanged)) files changed")
                         .foregroundStyle(.secondary)
 
                     HStack(spacing: 2) {
-                        Text("+\(stats.insertions)")
+                        Text("+\(activeChangesState.stats.insertions)")
                             .foregroundStyle(Color("GitHubDiffGreenBright"))
-                        Text("-\(stats.deletions)")
+                        Text("-\(activeChangesState.stats.deletions)")
                             .foregroundStyle(Color("GitHubDiffRedBright"))
                     }
 
-                    if showBlocks {
-                        CommitStatsBlocksView(blocks: stats.blocks)
+                    if showStatsBlocks {
+                        CommitStatsBlocksView(blocks: activeChangesState.stats.blocks)
                     }
                 }
             }
         }
-        .task {
-            print("todo: fetch active changes stats")
-        }
-//        .task(id: repo.status) {
-//            self.stats = try? await shell.stats()
-//        }
-        // TODO: shell activity date
-//        .onChange(of: lastUpdate) { _ in
-//            Task {
-//                self.stats = try? await shell.stats()
-//            }
-//        }
     }
 }
 

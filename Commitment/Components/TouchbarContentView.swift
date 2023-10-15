@@ -19,7 +19,7 @@ struct TouchbarContentView: View {
                 Label(branch, image: "git-branch-16")
             }
 
-            TouchbarActiveChangesStatsView(showBlocks: true)
+            TouchbarActiveChangesStatsView()
         }
         .touchBarItemPresence(.required("stefkors.commitment.requiredtoolbaritems"))
     }

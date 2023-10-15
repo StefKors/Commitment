@@ -70,23 +70,25 @@ struct LoadedRepositoryView: View {
                     .sorted(by: \.date, using: >)
             }
             .task($gitHistoryUpdate) {
-                let commits = await self.shell.log()
+                async let commits = self.shell.log()
 
                 let options = LogOptions(compareReference: .init(lhsReferenceName: "origin/HEAD", rhsReferenceName: "HEAD"))
-                let localCommits = await self.shell.log(options: options, isLocal: true)
+                async let localCommits = self.shell.log(options: options, isLocal: true)
 
-                if commits.isNotEmpty {
-                    let mergedCommits = commits.merge(localCommits)
+                if await commits.isNotEmpty {
+                    let mergedCommits = await commits.merge(localCommits)
                     self.repository.commits = mergedCommits
-                    self.repository.commitsAhead = localCommits
+                    self.repository.commitsAhead = await localCommits
                 }
             }
             .task($activeChangesUpdate) {
-                let diffs = await self.shell.diff()
-                let status = await self.shell.status()
+                async let diffs = self.shell.diff()
+                async let status = self.shell.status()
+                async let stats: ActiveChangesStats = self.shell.stats()
 
-                activeChangesState.diffs = diffs
-                activeChangesState.status = status
+                activeChangesState.diffs = await diffs
+                activeChangesState.status = await status
+                activeChangesState.stats = await stats
             }
     }
 }
