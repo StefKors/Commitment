@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "file_type_editorconfig.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

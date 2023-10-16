@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "file_type_light_spin.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

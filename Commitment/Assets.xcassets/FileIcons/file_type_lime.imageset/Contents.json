@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "file_type_lime.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

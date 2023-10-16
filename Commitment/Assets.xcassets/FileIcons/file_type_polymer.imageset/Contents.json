@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "file_type_polymer.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

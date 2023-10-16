@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "file_type_qml.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

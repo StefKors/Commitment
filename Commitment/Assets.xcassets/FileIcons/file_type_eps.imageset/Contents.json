@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "file_type_eps.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A0131792ADD733C0017E8E1 /* FileTypeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0131782ADD733C0017E8E1 /* FileTypeIconView.swift */; };
+		8A01317B2ADD77560017E8E1 /* CollectionConcurrencyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01317A2ADD77560017E8E1 /* CollectionConcurrencyKit.swift */; };
 		8A02C1BD29ABD15B004DCA69 /* Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */; };
 		8A02C4FF29ACB0E7004DCA69 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C4FE29ACB0E7004DCA69 /* Array.swift */; };
 		8A02C50129ACB801004DCA69 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C50029ACB801004DCA69 /* Remote.swift */; };
@@ -342,6 +344,7 @@
 		8AB8CDAA2ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA92ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift */; };
 		8AB8CDAC2ADC108100F6C647 /* Int+IsNotZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDAB2ADC108100F6C647 /* Int+IsNotZero.swift */; };
 		8AB8CDAE2ADC289D00F6C647 /* String+DeletePrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDAD2ADC289D00F6C647 /* String+DeletePrefix.swift */; };
+		8AB8CDB02ADD6A7A00F6C647 /* FileIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDAF2ADD6A7A00F6C647 /* FileIcons.swift */; };
 		8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */; };
 		8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB629FBD1EC00CBDA41 /* View.swift */; };
 		8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */; };
@@ -536,6 +539,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A0131782ADD733C0017E8E1 /* FileTypeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeIconView.swift; sourceTree = "<group>"; };
+		8A01317A2ADD77560017E8E1 /* CollectionConcurrencyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionConcurrencyKit.swift; path = ../../../../Downloads/CollectionConcurrencyKit.swift; sourceTree = "<group>"; };
 		8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmarks.swift; sourceTree = "<group>"; };
 		8A02C4FE29ACB0E7004DCA69 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		8A02C50029ACB801004DCA69 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
@@ -1053,6 +1058,7 @@
 		8AB8CDA92ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+ActiveRepositoryID.swift"; sourceTree = "<group>"; };
 		8AB8CDAB2ADC108100F6C647 /* Int+IsNotZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+IsNotZero.swift"; sourceTree = "<group>"; };
 		8AB8CDAD2ADC289D00F6C647 /* String+DeletePrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DeletePrefix.swift"; sourceTree = "<group>"; };
+		8AB8CDAF2ADD6A7A00F6C647 /* FileIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIcons.swift; sourceTree = "<group>"; };
 		8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		8ABB9FB629FBD1EC00CBDA41 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
@@ -1825,6 +1831,8 @@
 				8AACBA662A161B57008DFF39 /* ButtonStyleSubmitProminent.swift */,
 				8AC44F002A0806ED0016FFEC /* ButtonStyleRegular.swift */,
 				8AB8CDA42ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift */,
+				8AB8CDAF2ADD6A7A00F6C647 /* FileIcons.swift */,
+				8A0131782ADD733C0017E8E1 /* FileTypeIconView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2432,6 +2440,7 @@
 				8A97DC81299BB148001E25E1 /* Sequence */,
 				8A97DC88299BB148001E25E1 /* Strings */,
 				8AFBD54629702A2C00525BF7 /* Collection.swift */,
+				8A01317A2ADD77560017E8E1 /* CollectionConcurrencyKit.swift */,
 				8AD1088629EEB82A000FFD70 /* View+HideSidebarToggle.swift */,
 				8AC8EB49297586FC00365EB9 /* URL.swift */,
 				8A02C4FE29ACB0E7004DCA69 /* Array.swift */,
@@ -2970,6 +2979,7 @@
 				8ACCD2E6297F265C0020BF84 /* GitFileStatusList.swift in Sources */,
 				8ACCD2B5297F265B0020BF84 /* RemoteListTask.swift in Sources */,
 				8AFBD55A2970461C00525BF7 /* FileChangeIconView.swift in Sources */,
+				8A01317B2ADD77560017E8E1 /* CollectionConcurrencyKit.swift in Sources */,
 				8A6B649A29730FD50074B3C1 /* FileRenderView.swift in Sources */,
 				8ACCD2B0297F265B0020BF84 /* CleanTask.swift in Sources */,
 				8AFBD52E296F2C1400525BF7 /* SidebarFooterView.swift in Sources */,
@@ -3019,6 +3029,7 @@
 				8A5C64D329797DB300CA8FE1 /* CommitHistoryView.swift in Sources */,
 				8A97DC8E299BB148001E25E1 /* CharacterSet+Contains.swift in Sources */,
 				8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */,
+				8A0131792ADD733C0017E8E1 /* FileTypeIconView.swift in Sources */,
 				8ACCD2AB297F265B0020BF84 /* GitStatusOptions.swift in Sources */,
 				8A992DFD29A63B36001E26A3 /* OverlayAlignmentView.swift in Sources */,
 				8AD1088329ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift in Sources */,
@@ -3101,6 +3112,7 @@
 				8ACCD2EF297F265C0020BF84 /* RepositoryError.swift in Sources */,
 				8AB8CDAA2ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift in Sources */,
 				8ACCD2B2297F265B0020BF84 /* GitFetchOptions.swift in Sources */,
+				8AB8CDB02ADD6A7A00F6C647 /* FileIcons.swift in Sources */,
 				8ACCD296297F265B0020BF84 /* GitReferenceName.swift in Sources */,
 				8ACCD2A2297F265B0020BF84 /* ReferencesTask.swift in Sources */,
 				8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */,

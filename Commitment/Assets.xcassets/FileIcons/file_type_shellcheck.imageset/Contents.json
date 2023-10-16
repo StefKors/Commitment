@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "file_type_shellcheck.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
