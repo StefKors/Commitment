@@ -20,12 +20,15 @@ enum DiffViewMode: String, CaseIterable, Codable {
 // TODO: Convert to environment value that inherently passes type so it works like:
 // @Environment(\.Settings.Diff.Mode) private var mode
 class Settings {
+    struct Changes {
+        static let ShowFullPathInActiveChanges: String = "ShowFullPathInActiveChanges"
+        static let ShowFileIconInActiveChanges: String = "ShowFileIconInActiveChanges"
+    }
     struct Diff {
         static let Mode: String = "DiffViewMode"
         static let ShowStatsBlocks: String = "ShowStatsBlocks"
     }
     struct Git {
         static let Provider: String = "ExternalGitProvider"
-
     }
 }

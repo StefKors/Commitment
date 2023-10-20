@@ -17,14 +17,20 @@ struct RepositoryWindow: View {
     @StateObject private var activityState = ActivityState()
     @StateObject private var viewState = ViewState()
     @StateObject private var undoState = UndoState()
-    @StateObject private var activeChangesState = ActiveChangesState()
+
+    /// What am I doing?
+    /// Active changes is based per repo
+    /// it's a lot of data that ideally we want to persist
+    /// perhaps the best "SwiftData" way to do this is to build relational data
+    /// link GitFileState to GitRepo or History / GitCommit, so we can use
+    /// swiftdata to fetch the file status of a specific commit / changes
+
 
     var body: some View {
         Group {
             if shell != nil, let shell {
                 LoadedRepositoryView()
                     .environmentObject(repository)
-                    .environmentObject(activeChangesState)
                     .environmentObject(activityState)
                     .environmentObject(viewState)
                     .environmentObject(undoState)

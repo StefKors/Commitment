@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct GitFileStatusView: View {
+    @AppStorage(Settings.Changes.ShowFullPathInActiveChanges) private var showFullPathInActiveChanges: Bool = true
+    @AppStorage(Settings.Changes.ShowFileIconInActiveChanges) private var showFileIconInActiveChanges: Bool = true
+
     internal init(fileStatus: GitFileStatus) {
         self.fileStatus = fileStatus
         // slow here?
@@ -20,10 +23,14 @@ struct GitFileStatusView: View {
 
     var body: some View {
         HStack(alignment: .center) {
-            HStack(spacing: .zero, content: {
+            if showFileIconInActiveChanges {
+                FileTypeIconView(path: fileStatus.path)
+            }
+
+            HStack(alignment: .center, spacing: .zero, content: {
                 ForEach(labels, id: \.self) { label in
                     let isRename = labels.count > 1
-                    GitFileStatusLabelView(label: label, isRename: isRename)
+                    GitFileStatusLabelView(label: label, isRename: isRename, showPath: showFullPathInActiveChanges)
 
                     /// Show arrow right icon for moved files
                     if isRename, label == labels.first {
@@ -37,7 +44,7 @@ struct GitFileStatusView: View {
             .allowsHitTesting(true)
             
             Spacer()
-            FileChangeIconView(type: fileStatus.state.index)
+            FileStateIconsView(state: fileStatus.state)
         }
     }
 }

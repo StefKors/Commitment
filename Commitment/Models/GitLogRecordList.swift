@@ -17,15 +17,15 @@
 
 import Foundation
 
-/// List containing log records
-@available(*, deprecated, message: "use simple array of `[GitLogRecord]`")
-public class GitLogRecordList {
-    
-    // MARK: - Public
-    required public init(_ records: [GitLogRecord] = []) {
-        self.records = records
-    }
-    
-    // MARK: - Private
-    private(set) public var records: [GitLogRecord]
-}
+///// List containing log records
+//@available(*, deprecated, message: "use simple array of `[GitLogRecord]`")
+//public class GitLogRecordList {
+//    
+//    // MARK: - Public
+//    required public init(_ records: [GitLogRecord] = []) {
+//        self.records = records
+//    }
+//    
+//    // MARK: - Private
+//    private(set) public var records: [GitLogRecord]
+//}

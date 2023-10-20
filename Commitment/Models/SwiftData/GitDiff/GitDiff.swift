@@ -6,28 +6,33 @@
 //
 
 import Foundation
+import SwiftData
 
 /// Represents a universal git diff
-public struct GitDiff: Codable, Equatable {
-    public static func == (lhs: GitDiff, rhs: GitDiff) -> Bool {
+@Model
+class GitDiff: Equatable {
+    static func == (lhs: GitDiff, rhs: GitDiff) -> Bool {
         return lhs.addedFile == rhs.addedFile &&
         lhs.removedFile == rhs.removedFile &&
         lhs.hunks == rhs.hunks &&
         lhs.lines == rhs.lines
     }
-    
-    public let addedFile: String
-    
-    public let removedFile: String
-    
-    public let hunks: [GitDiffHunk]
 
-    public var lines: [GitDiffHunkLine]
+
+    var status: GitFileStatus?
+
+    let addedFile: String
+
+    let removedFile: String
+
+    let hunks: [GitDiffHunk]
+
+    var lines: [GitDiffHunkLine]
 
     // Source string of diff
-    public let unifiedDiff: String
-    
-    public init?(unifiedDiff: String) {
+    let unifiedDiff: String
+
+    convenience init(unifiedDiff: String) {
         let parsingResults = GitDiffParser(unifiedDiff: unifiedDiff).parse()
         self.init(
             addedFile: parsingResults.addedFile,
@@ -36,8 +41,8 @@ public struct GitDiff: Codable, Equatable {
             unifiedDiff: unifiedDiff
         )
     }
-    
-    internal init(
+
+    init(
         addedFile: String,
         removedFile: String,
         hunks: [GitDiffHunk],
@@ -51,8 +56,8 @@ public struct GitDiff: Codable, Equatable {
             hunk.lines
         }.flatMap { $0 }
     }
-    
-    internal var description: String {
+
+    var description: String {
         let header = """
         --- \(removedFile)
         +++ \(addedFile)
@@ -85,7 +90,7 @@ extension Collection where Element == GitDiff {
 }
 
 extension GitDiff {
-    static let previewVersionBump = GitDiff.Preview.toDiff(GitDiff.Preview.versionBump)!
+    static let previewVersionBump = GitDiff.Preview.toDiff(GitDiff.Preview.versionBump)
 
     struct Preview {
         /// A unified Diff String of a major version bump in a package.json file
@@ -586,8 +591,8 @@ index 0b3fc7c..3dd217d 100644
                  .frame(maxWidth: 800)
          }
 """
-        static func toDiff(_ unifiedDiff: String) -> GitDiff? {
-            return GitDiff(unifiedDiff: unifiedDiff)!
+        static func toDiff(_ unifiedDiff: String) -> GitDiff {
+            return GitDiff(unifiedDiff: unifiedDiff)
         }
     }
 }

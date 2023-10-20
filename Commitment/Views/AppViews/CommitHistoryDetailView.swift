@@ -22,9 +22,8 @@ struct CommitHistoryDetailView: View {
             Rectangle().fill(.clear)
             
             if let file {
-                FileDiffChangesView(fileStatus: file, diff: diff)
+                FileDiffChangesView(fileStatus: file)
                     .tag(file.id)
-                
             } else {
                 EmptyView()
             }

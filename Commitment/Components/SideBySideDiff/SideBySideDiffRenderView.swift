@@ -26,7 +26,7 @@ struct SideBySideDiffRenderView: View {
 #Preview("Config Changes") {
     ScrollView {
         VStack {
-            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.configChanges)!.hunks, id: \.id) { hunk in
+            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.configChanges).hunks, id: \.id) { hunk in
                 HunkView(hunk: hunk)
             }
         }
@@ -39,7 +39,7 @@ struct SideBySideDiffRenderView: View {
 #Preview("Version Bump") {
     ScrollView {
         VStack {
-            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.versionBump)!.hunks, id: \.id) { hunk in
+            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.versionBump).hunks, id: \.id) { hunk in
                 HunkView(hunk: hunk)
             }
         }
@@ -52,7 +52,7 @@ struct SideBySideDiffRenderView: View {
 #Preview("Version Bump (unified)") {
     ScrollView {
         VStack {
-            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.versionBump)!.hunks, id: \.id) { hunk in
+            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.versionBump).hunks, id: \.id) { hunk in
                 DiffHunkView(hunk: hunk)
             }
         }
@@ -65,7 +65,7 @@ struct SideBySideDiffRenderView: View {
 #Preview("Side by Side sample") {
     ScrollView {
         VStack {
-            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.sideBySideSample)!.hunks, id: \.id) { hunk in
+            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.sideBySideSample).hunks, id: \.id) { hunk in
                 HunkView(hunk: hunk)
             }
         }
@@ -78,7 +78,7 @@ struct SideBySideDiffRenderView: View {
 #Preview("Side by Side sample (unified)") {
     ScrollView {
         VStack {
-            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.sideBySideSample)!.hunks, id: \.id) { hunk in
+            ForEach(GitDiff.Preview.toDiff(GitDiff.Preview.sideBySideSample).hunks, id: \.id) { hunk in
                 DiffHunkView(hunk: hunk)
             }
         }

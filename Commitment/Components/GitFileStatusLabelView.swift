@@ -13,6 +13,8 @@ struct GitFileStatusLabelView: View {
 
     let isRename: Bool
 
+    var showPath: Bool = true
+
     // For example: "Commitment/Views/Components/"
     var relativePath: String {
         label.deletingLastPathComponent().path(percentEncoded: false)
@@ -36,7 +38,7 @@ struct GitFileStatusLabelView: View {
 
     var body: some View {
         HStack(spacing: 0) {
-            if !isRename {
+            if !isRename && showPath {
                 Text(relativePath)
                     .truncationMode(.tail)
                     .foregroundColor(.secondary)

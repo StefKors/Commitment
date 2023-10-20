@@ -10,14 +10,8 @@ import SwiftUI
 struct ActiveChangesMainView: View {
     @EnvironmentObject private var repo: CodeRepository
     @EnvironmentObject private var viewState: ViewState
-    @EnvironmentObject private var activeChangesState: ActiveChangesState
 
 //    let id: GitFileStatus?
-
-
-    let diffs: [GitDiff] = []
-    @State private var diff: GitDiff?
-    @State private var isLoading: Bool = true
 
     var body: some View {
         VStack(spacing: 0) {
@@ -29,19 +23,11 @@ struct ActiveChangesMainView: View {
             ZStack {
                 Rectangle().fill(.clear)
                 if let fileStatus = viewState.activeChangesSelection {
-                    FileDiffChangesView(fileStatus: fileStatus, diff: diff)
-                } else if !isLoading {
-                    ContentPlaceholderView()
+                    FileDiffChangesView(fileStatus: fileStatus)
                 } else {
-                    EmptyView()
+                    ContentPlaceholderView()
                 }
             }.layoutPriority(1)
-        }
-        .task(id: viewState.activeChangesSelection) {
-            if let fileStatus = viewState.activeChangesSelection {
-                self.diff = activeChangesState.diffs[fileStatus.cleanedPath]
-            }
-            isLoading = false
         }
     }
 }

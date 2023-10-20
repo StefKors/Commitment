@@ -104,12 +104,11 @@ struct FloatingPanelSidebarView: View {
 
 struct FloatingPanelContentView: View {
     @EnvironmentObject private var repo: CodeRepository
-    @EnvironmentObject private var activeChangesState: ActiveChangesState
 
     var body: some View {
         ScrollView(.vertical) {
             VStack {
-                ForEach(activeChangesState.status, id: \.id) { fileStatus in
+                ForEach(repo.status, id: \.id) { fileStatus in
                     GitFileStatusView(fileStatus: fileStatus)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 1)

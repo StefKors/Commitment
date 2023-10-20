@@ -15,14 +15,16 @@ struct CommitHistoryMainView: View {
     var id: Commit.ID? = nil
     
     @State private var diffs: [GitDiff] = []
-    @State private var files: [GitFileStatus] = [] {
+    @State private var files: [GitFileStatus] = [] 
+//    {
         // set default view
-        didSet {
-            if viewState.activeCommitFileSelection == nil {
-                viewState.activeCommitFileSelection = files.first?.id
-            }
-        }
-    }
+        // TODO: Handle default view
+//        didSet {
+//            if viewState.activeCommitFileSelection == nil {
+//                viewState.activeCommitFileSelection = files.first?.id
+//            }
+//        }
+//    }
     
     var body: some View {
         HSplitView {

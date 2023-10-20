@@ -18,6 +18,7 @@ import UniformTypeIdentifiers
 /// theming?
 // /.foregroundStyle(.blue, .green, Gradient(colors: [.red, .yellow]))
 // /.backgroundStyle(.pink)
+// https://developer.apple.com/documentation/foundation/filemanager/2765464-enumerator
 
 extension SceneID {
     static let mainWindow = SceneID("MainWindow")
@@ -37,7 +38,7 @@ struct CommitmentApp: App {
     }
 
     // SwiftData types
-    let container = try! ModelContainer(for: CodeRepository.self, Bookmark.self)
+    let container = try! ModelContainer(for: CodeRepository.self, Bookmark.self, GitFileStatus.self, GitDiff.self)
 
     var body: some Scene {
         WindowGroup(id: SceneID.mainWindow.id, for: URL.self) { $repositoryID in

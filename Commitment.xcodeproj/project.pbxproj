@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A0131792ADD733C0017E8E1 /* FileTypeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0131782ADD733C0017E8E1 /* FileTypeIconView.swift */; };
 		8A01317B2ADD77560017E8E1 /* CollectionConcurrencyKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A01317A2ADD77560017E8E1 /* CollectionConcurrencyKit.swift */; };
+		8A0131852ADD960E0017E8E1 /* GitFileStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0131842ADD960E0017E8E1 /* GitFileStatusTests.swift */; };
 		8A02C1BD29ABD15B004DCA69 /* Bookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */; };
 		8A02C4FF29ACB0E7004DCA69 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C4FE29ACB0E7004DCA69 /* Array.swift */; };
 		8A02C50129ACB801004DCA69 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C50029ACB801004DCA69 /* Remote.swift */; };
@@ -257,7 +258,6 @@
 		8A562CE929B4DE58006C7E8A /* ExternalEditors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE829B4DE58006C7E8A /* ExternalEditors.swift */; };
 		8A58736A2A687A2E00E630EA /* CodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5873692A687A2E00E630EA /* CodeRepository.swift */; };
 		8A58736C2A687A5E00E630EA /* SplitModeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58736B2A687A5E00E630EA /* SplitModeOptions.swift */; };
-		8A58736E2A687C8900E630EA /* ActiveChangesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A58736D2A687C8900E630EA /* ActiveChangesState.swift */; };
 		8A5C64CF29797DB300CA8FE1 /* CommitHistorySidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */; };
 		8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */; };
 		8A5C64D129797DB300CA8FE1 /* ActiveChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */; };
@@ -355,111 +355,14 @@
 		8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */; };
 		8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */; };
 		8AC8EB5029759AAD00365EB9 /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8EB4F29759AAD00365EB9 /* Border.swift */; };
-		8ACCD290297F265B0020BF84 /* GitFormatDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD205297F265B0020BF84 /* GitFormatDecoder.swift */; };
-		8ACCD291297F265B0020BF84 /* IndexIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD206297F265B0020BF84 /* IndexIterator.swift */; };
-		8ACCD292297F265B0020BF84 /* GitFormatEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD207297F265B0020BF84 /* GitFormatEncoder.swift */; };
-		8ACCD293297F265B0020BF84 /* GitOutputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD208297F265B0020BF84 /* GitOutputParser.swift */; };
 		8ACCD294297F265B0020BF84 /* GitReferenceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD20A297F265B0020BF84 /* GitReferenceList.swift */; };
-		8ACCD295297F265B0020BF84 /* GitRepositoryErrorFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD20B297F265B0020BF84 /* GitRepositoryErrorFormatter.swift */; };
 		8ACCD296297F265B0020BF84 /* GitReferenceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD20C297F265B0020BF84 /* GitReferenceName.swift */; };
-		8ACCD297297F265B0020BF84 /* CommitTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD20F297F265B0020BF84 /* CommitTask.swift */; };
-		8ACCD298297F265B0020BF84 /* CommitOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD210297F265B0020BF84 /* CommitOptions.swift */; };
-		8ACCD299297F265B0020BF84 /* InitOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD212297F265B0020BF84 /* InitOptions.swift */; };
-		8ACCD29A297F265B0020BF84 /* InitTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD213297F265B0020BF84 /* InitTask.swift */; };
-		8ACCD29B297F265B0020BF84 /* BranchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD215297F265B0020BF84 /* BranchOptions.swift */; };
-		8ACCD29C297F265B0020BF84 /* BranchTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD216297F265B0020BF84 /* BranchTask.swift */; };
-		8ACCD29D297F265B0020BF84 /* ArgumentConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD217297F265B0020BF84 /* ArgumentConvertible.swift */; };
-		8ACCD29E297F265B0020BF84 /* CherryPickTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD219297F265B0020BF84 /* CherryPickTask.swift */; };
-		8ACCD29F297F265B0020BF84 /* CherryPickOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD21A297F265B0020BF84 /* CherryPickOptions.swift */; };
-		8ACCD2A0297F265B0020BF84 /* MergeTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD21C297F265B0020BF84 /* MergeTask.swift */; };
-		8ACCD2A1297F265B0020BF84 /* MergeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD21D297F265B0020BF84 /* MergeOptions.swift */; };
-		8ACCD2A2297F265B0020BF84 /* ReferencesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD21F297F265B0020BF84 /* ReferencesTask.swift */; };
-		8ACCD2A3297F265B0020BF84 /* GitPullOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD221297F265B0020BF84 /* GitPullOptions.swift */; };
-		8ACCD2A4297F265B0020BF84 /* PullTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD222297F265B0020BF84 /* PullTask.swift */; };
-		8ACCD2A5297F265B0020BF84 /* GitResetOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD224297F265B0020BF84 /* GitResetOptions.swift */; };
-		8ACCD2A6297F265B0020BF84 /* ResetTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD225297F265B0020BF84 /* ResetTask.swift */; };
-		8ACCD2A7297F265B0020BF84 /* GitCherryOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD227297F265B0020BF84 /* GitCherryOptions.swift */; };
-		8ACCD2A8297F265B0020BF84 /* GitCherryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD228297F265B0020BF84 /* GitCherryResult.swift */; };
-		8ACCD2A9297F265B0020BF84 /* CherryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD229297F265B0020BF84 /* CherryTask.swift */; };
-		8ACCD2AA297F265B0020BF84 /* StatusTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD22B297F265B0020BF84 /* StatusTask.swift */; };
-		8ACCD2AB297F265B0020BF84 /* GitStatusOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD22C297F265B0020BF84 /* GitStatusOptions.swift */; };
-		8ACCD2AC297F265B0020BF84 /* CheckoutOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD22E297F265B0020BF84 /* CheckoutOptions.swift */; };
-		8ACCD2AD297F265B0020BF84 /* CheckoutTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD22F297F265B0020BF84 /* CheckoutTask.swift */; };
-		8ACCD2AE297F265B0020BF84 /* PushTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD231297F265B0020BF84 /* PushTask.swift */; };
-		8ACCD2AF297F265B0020BF84 /* GitPushOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD232297F265B0020BF84 /* GitPushOptions.swift */; };
-		8ACCD2B0297F265B0020BF84 /* CleanTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD234297F265B0020BF84 /* CleanTask.swift */; };
-		8ACCD2B1297F265B0020BF84 /* CleanOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD235297F265B0020BF84 /* CleanOptions.swift */; };
-		8ACCD2B2297F265B0020BF84 /* GitFetchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD237297F265B0020BF84 /* GitFetchOptions.swift */; };
-		8ACCD2B3297F265B0020BF84 /* FetchTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD238297F265B0020BF84 /* FetchTask.swift */; };
-		8ACCD2B4297F265B0020BF84 /* RemoteRenameTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD23A297F265B0020BF84 /* RemoteRenameTask.swift */; };
-		8ACCD2B5297F265B0020BF84 /* RemoteListTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD23B297F265B0020BF84 /* RemoteListTask.swift */; };
-		8ACCD2B6297F265B0020BF84 /* RemoteUrlChangeTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD23C297F265B0020BF84 /* RemoteUrlChangeTask.swift */; };
-		8ACCD2B7297F265B0020BF84 /* RemoteAddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD23D297F265B0020BF84 /* RemoteAddTask.swift */; };
-		8ACCD2B8297F265B0020BF84 /* RemoteUrlTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD23E297F265B0020BF84 /* RemoteUrlTask.swift */; };
-		8ACCD2B9297F265B0020BF84 /* GitAddOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD240297F265B0020BF84 /* GitAddOptions.swift */; };
-		8ACCD2BA297F265B0020BF84 /* AddTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD241297F265B0020BF84 /* AddTask.swift */; };
-		8ACCD2BB297F265B0020BF84 /* CloneTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD243297F265B0020BF84 /* CloneTask.swift */; };
-		8ACCD2BC297F265B0020BF84 /* CloneOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD244297F265B0020BF84 /* CloneOptions.swift */; };
-		8ACCD2BD297F265B0020BF84 /* StashApplyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD247297F265B0020BF84 /* StashApplyTask.swift */; };
-		8ACCD2BE297F265C0020BF84 /* GitStashApplyOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD248297F265B0020BF84 /* GitStashApplyOptions.swift */; };
-		8ACCD2BF297F265C0020BF84 /* StashDropTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD24A297F265B0020BF84 /* StashDropTask.swift */; };
-		8ACCD2C0297F265C0020BF84 /* GitStashDropOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD24B297F265B0020BF84 /* GitStashDropOptions.swift */; };
-		8ACCD2C1297F265C0020BF84 /* GitStashListOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD24D297F265B0020BF84 /* GitStashListOptions.swift */; };
-		8ACCD2C2297F265C0020BF84 /* StashListTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD24E297F265B0020BF84 /* StashListTask.swift */; };
-		8ACCD2C3297F265C0020BF84 /* GitStashOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD250297F265B0020BF84 /* GitStashOptions.swift */; };
-		8ACCD2C4297F265C0020BF84 /* StashTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD251297F265B0020BF84 /* StashTask.swift */; };
-		8ACCD2C5297F265C0020BF84 /* RepositoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD252297F265B0020BF84 /* RepositoryTask.swift */; };
-		8ACCD2C6297F265C0020BF84 /* GitLogCompareOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD254297F265B0020BF84 /* GitLogCompareOptions.swift */; };
-		8ACCD2C7297F265C0020BF84 /* GitLogOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD255297F265B0020BF84 /* GitLogOptions.swift */; };
-		8ACCD2C8297F265C0020BF84 /* LogTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD256297F265B0020BF84 /* LogTask.swift */; };
-		8ACCD2C9297F265C0020BF84 /* CheckReferenceTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD258297F265B0020BF84 /* CheckReferenceTask.swift */; };
-		8ACCD2CA297F265C0020BF84 /* ProcessSpawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD259297F265B0020BF84 /* ProcessSpawn.swift */; };
-		8ACCD2CB297F265C0020BF84 /* TagTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD25B297F265B0020BF84 /* TagTask.swift */; };
-		8ACCD2CC297F265C0020BF84 /* GitTagListOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD25C297F265B0020BF84 /* GitTagListOptions.swift */; };
-		8ACCD2CD297F265C0020BF84 /* GitTagOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD25D297F265B0020BF84 /* GitTagOptions.swift */; };
-		8ACCD2CE297F265C0020BF84 /* GitCredentialsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD25E297F265B0020BF84 /* GitCredentialsProvider.swift */; };
-		8ACCD2CF297F265C0020BF84 /* GitLogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD25F297F265B0020BF84 /* GitLogRecord.swift */; };
-		8ACCD2D0297F265C0020BF84 /* GitStashRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD260297F265B0020BF84 /* GitStashRecord.swift */; };
-		8ACCD2D1297F265C0020BF84 /* GitMergeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD261297F265B0020BF84 /* GitMergeStatus.swift */; };
-		8ACCD2D2297F265C0020BF84 /* GitStashRecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD262297F265B0020BF84 /* GitStashRecordList.swift */; };
-		8ACCD2D3297F265C0020BF84 /* GitFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD264297F265B0020BF84 /* GitFile.swift */; };
-		8ACCD2D4297F265C0020BF84 /* FileAnnotationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD265297F265B0020BF84 /* FileAnnotationRecord.swift */; };
-		8ACCD2D5297F265C0020BF84 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD266297F265B0020BF84 /* FileStorage.swift */; };
-		8ACCD2D6297F265C0020BF84 /* FileCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD267297F265B0020BF84 /* FileCoder.swift */; };
-		8ACCD2D7297F265C0020BF84 /* GitFileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD268297F265B0020BF84 /* GitFileStorage.swift */; };
-		8ACCD2D8297F265C0020BF84 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD269297F265B0020BF84 /* File.swift */; };
-		8ACCD2D9297F265C0020BF84 /* GitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD26A297F265B0020BF84 /* GitRepository.swift */; };
-		8ACCD2DA297F265C0020BF84 /* GitRemoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD26B297F265B0020BF84 /* GitRemoteList.swift */; };
 		8ACCD2DB297F265C0020BF84 /* GitReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD26C297F265B0020BF84 /* GitReference.swift */; };
-		8ACCD2DC297F265C0020BF84 /* GitRepository+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD26E297F265B0020BF84 /* GitRepository+Log.swift */; };
-		8ACCD2DD297F265C0020BF84 /* GitRepository+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD26F297F265B0020BF84 /* GitRepository+Status.swift */; };
-		8ACCD2DE297F265C0020BF84 /* GitRepository+CherryPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD270297F265B0020BF84 /* GitRepository+CherryPick.swift */; };
-		8ACCD2DF297F265C0020BF84 /* GitRepository+Cherry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD271297F265B0020BF84 /* GitRepository+Cherry.swift */; };
-		8ACCD2E0297F265C0020BF84 /* GitRepository+Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD272297F265B0020BF84 /* GitRepository+Reference.swift */; };
-		8ACCD2E1297F265C0020BF84 /* GitRepository+Remotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD273297F265B0020BF84 /* GitRepository+Remotes.swift */; };
-		8ACCD2E2297F265C0020BF84 /* GitRepository+Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD274297F265B0020BF84 /* GitRepository+Files.swift */; };
-		8ACCD2E3297F265C0020BF84 /* GitRepository+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD275297F265B0020BF84 /* GitRepository+Merge.swift */; };
-		8ACCD2E4297F265C0020BF84 /* GitRepository+Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD276297F265B0020BF84 /* GitRepository+Tag.swift */; };
-		8ACCD2E5297F265C0020BF84 /* GitRepository+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD277297F265B0020BF84 /* GitRepository+Init.swift */; };
 		8ACCD2E6297F265C0020BF84 /* GitFileStatusList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD278297F265B0020BF84 /* GitFileStatusList.swift */; };
 		8ACCD2E7297F265C0020BF84 /* GitFileStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD279297F265B0020BF84 /* GitFileStatus.swift */; };
-		8ACCD2E8297F265C0020BF84 /* GitTagRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD27A297F265B0020BF84 /* GitTagRecord.swift */; };
 		8ACCD2E9297F265C0020BF84 /* GitLogRecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD27B297F265B0020BF84 /* GitLogRecordList.swift */; };
-		8ACCD2EA297F265C0020BF84 /* GitTagRecordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD27C297F265B0020BF84 /* GitTagRecordList.swift */; };
-		8ACCD2EB297F265C0020BF84 /* GitRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD27D297F265B0020BF84 /* GitRemote.swift */; };
-		8ACCD2EC297F265C0020BF84 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD280297F265B0020BF84 /* Array+Utils.swift */; };
-		8ACCD2ED297F265C0020BF84 /* Formatter+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD282297F265B0020BF84 /* Formatter+Date.swift */; };
-		8ACCD2EE297F265C0020BF84 /* FileManager+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD284297F265B0020BF84 /* FileManager+Utils.swift */; };
-		8ACCD2EF297F265C0020BF84 /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD286297F265B0020BF84 /* RepositoryError.swift */; };
-		8ACCD2F0297F265C0020BF84 /* CredentialsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD287297F265B0020BF84 /* CredentialsProvider.swift */; };
 		8ACCD2F1297F265C0020BF84 /* RepositoryReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD288297F265B0020BF84 /* RepositoryReference.swift */; };
-		8ACCD2F2297F265C0020BF84 /* RepositoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD289297F265B0020BF84 /* RepositoryDelegate.swift */; };
-		8ACCD2F3297F265C0020BF84 /* RepositoryTagRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28A297F265B0020BF84 /* RepositoryTagRecord.swift */; };
 		8ACCD2F4297F265C0020BF84 /* RepositoryReferenceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28B297F265B0020BF84 /* RepositoryReferenceName.swift */; };
-		8ACCD2F5297F265C0020BF84 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28C297F265B0020BF84 /* Repository.swift */; };
-		8ACCD2F6297F265C0020BF84 /* RepositoryRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28D297F265B0020BF84 /* RepositoryRemote.swift */; };
-		8ACCD2F7297F265C0020BF84 /* RepositoryLogRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */; };
-		8ACCD2F8297F265C0020BF84 /* RepositoryStashRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACCD28F297F265B0020BF84 /* RepositoryStashRecord.swift */; };
 		8AD1087F29ED4B9D000FFD70 /* UndoActionButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */; };
 		8AD1088129ED6AF7000FFD70 /* PendingCommitSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088029ED6AF7000FFD70 /* PendingCommitSummaryView.swift */; };
 		8AD1088329ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD1088229ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift */; };
@@ -472,6 +375,14 @@
 		8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */; };
 		8AD9B5E829E6DC1500631337 /* UndoActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E729E6DC1500631337 /* UndoActionView.swift */; };
 		8AE294012AC6CE1D001BE6D0 /* UTType+Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE294002AC6CE1D001BE6D0 /* UTType+Directory.swift */; };
+		8AF347BF2AE1268500B7BD45 /* ArgumentConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347B72AE1268500B7BD45 /* ArgumentConvertible.swift */; };
+		8AF347C02AE1268500B7BD45 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347BA2AE1268500B7BD45 /* Array+Utils.swift */; };
+		8AF347C12AE1268500B7BD45 /* Formatter+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347BC2AE1268500B7BD45 /* Formatter+Date.swift */; };
+		8AF347C22AE1268500B7BD45 /* FileManager+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347BE2AE1268500B7BD45 /* FileManager+Utils.swift */; };
+		8AF347C82AE1270600B7BD45 /* GitFormatDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347C42AE1270600B7BD45 /* GitFormatDecoder.swift */; };
+		8AF347C92AE1270600B7BD45 /* IndexIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347C52AE1270600B7BD45 /* IndexIterator.swift */; };
+		8AF347CA2AE1270600B7BD45 /* GitFormatEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347C62AE1270600B7BD45 /* GitFormatEncoder.swift */; };
+		8AF347CB2AE1270600B7BD45 /* GitOutputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347C72AE1270600B7BD45 /* GitOutputParser.swift */; };
 		8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */; };
 		8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD506296F2A4000525BF7 /* PillView.swift */; };
 		8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */; };
@@ -488,7 +399,6 @@
 		8AFBD531296F2C1400525BF7 /* AddRepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD526296F2C1400525BF7 /* AddRepoView.swift */; };
 		8AFBD532296F2C1400525BF7 /* RepoSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD527296F2C1400525BF7 /* RepoSelectView.swift */; };
 		8AFBD533296F2C1400525BF7 /* MainRepoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD528296F2C1400525BF7 /* MainRepoContentView.swift */; };
-		8AFBD536296F2C4300525BF7 /* RepoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD535296F2C4300525BF7 /* RepoState.swift */; };
 		8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */; };
 		8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */; };
 		8AFBD53D296F2EB600525BF7 /* RepositoryWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD53A296F2EB600525BF7 /* RepositoryWindow.swift */; };
@@ -541,6 +451,7 @@
 /* Begin PBXFileReference section */
 		8A0131782ADD733C0017E8E1 /* FileTypeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypeIconView.swift; sourceTree = "<group>"; };
 		8A01317A2ADD77560017E8E1 /* CollectionConcurrencyKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionConcurrencyKit.swift; path = ../../../../Downloads/CollectionConcurrencyKit.swift; sourceTree = "<group>"; };
+		8A0131842ADD960E0017E8E1 /* GitFileStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStatusTests.swift; sourceTree = "<group>"; };
 		8A02C1BC29ABD15B004DCA69 /* Bookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmarks.swift; sourceTree = "<group>"; };
 		8A02C4FE29ACB0E7004DCA69 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		8A02C50029ACB801004DCA69 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
@@ -961,7 +872,6 @@
 		8A562CE829B4DE58006C7E8A /* ExternalEditors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalEditors.swift; sourceTree = "<group>"; };
 		8A5873692A687A2E00E630EA /* CodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRepository.swift; sourceTree = "<group>"; };
 		8A58736B2A687A5E00E630EA /* SplitModeOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitModeOptions.swift; sourceTree = "<group>"; };
-		8A58736D2A687C8900E630EA /* ActiveChangesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChangesState.swift; sourceTree = "<group>"; };
 		8A5C64C729797DB300CA8FE1 /* CommitHistorySidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitHistorySidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C829797DB300CA8FE1 /* ActiveChangesSidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesSidebarView.swift; sourceTree = "<group>"; };
 		8A5C64C929797DB300CA8FE1 /* ActiveChangesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveChangesView.swift; sourceTree = "<group>"; };
@@ -1068,111 +978,14 @@
 		8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKey.swift; sourceTree = "<group>"; };
 		8AC8EB4D29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentBorderGroupBoxStyle.swift; sourceTree = "<group>"; };
 		8AC8EB4F29759AAD00365EB9 /* Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Border.swift; path = Commitment/Extensions/Border.swift; sourceTree = SOURCE_ROOT; };
-		8ACCD205297F265B0020BF84 /* GitFormatDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFormatDecoder.swift; sourceTree = "<group>"; };
-		8ACCD206297F265B0020BF84 /* IndexIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexIterator.swift; sourceTree = "<group>"; };
-		8ACCD207297F265B0020BF84 /* GitFormatEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFormatEncoder.swift; sourceTree = "<group>"; };
-		8ACCD208297F265B0020BF84 /* GitOutputParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitOutputParser.swift; sourceTree = "<group>"; };
 		8ACCD20A297F265B0020BF84 /* GitReferenceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitReferenceList.swift; sourceTree = "<group>"; };
-		8ACCD20B297F265B0020BF84 /* GitRepositoryErrorFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitRepositoryErrorFormatter.swift; sourceTree = "<group>"; };
 		8ACCD20C297F265B0020BF84 /* GitReferenceName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitReferenceName.swift; sourceTree = "<group>"; };
-		8ACCD20F297F265B0020BF84 /* CommitTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitTask.swift; sourceTree = "<group>"; };
-		8ACCD210297F265B0020BF84 /* CommitOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommitOptions.swift; sourceTree = "<group>"; };
-		8ACCD212297F265B0020BF84 /* InitOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitOptions.swift; sourceTree = "<group>"; };
-		8ACCD213297F265B0020BF84 /* InitTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitTask.swift; sourceTree = "<group>"; };
-		8ACCD215297F265B0020BF84 /* BranchOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchOptions.swift; sourceTree = "<group>"; };
-		8ACCD216297F265B0020BF84 /* BranchTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchTask.swift; sourceTree = "<group>"; };
-		8ACCD217297F265B0020BF84 /* ArgumentConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentConvertible.swift; sourceTree = "<group>"; };
-		8ACCD219297F265B0020BF84 /* CherryPickTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CherryPickTask.swift; sourceTree = "<group>"; };
-		8ACCD21A297F265B0020BF84 /* CherryPickOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CherryPickOptions.swift; sourceTree = "<group>"; };
-		8ACCD21C297F265B0020BF84 /* MergeTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeTask.swift; sourceTree = "<group>"; };
-		8ACCD21D297F265B0020BF84 /* MergeOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOptions.swift; sourceTree = "<group>"; };
-		8ACCD21F297F265B0020BF84 /* ReferencesTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferencesTask.swift; sourceTree = "<group>"; };
-		8ACCD221297F265B0020BF84 /* GitPullOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitPullOptions.swift; sourceTree = "<group>"; };
-		8ACCD222297F265B0020BF84 /* PullTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullTask.swift; sourceTree = "<group>"; };
-		8ACCD224297F265B0020BF84 /* GitResetOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitResetOptions.swift; sourceTree = "<group>"; };
-		8ACCD225297F265B0020BF84 /* ResetTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetTask.swift; sourceTree = "<group>"; };
-		8ACCD227297F265B0020BF84 /* GitCherryOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCherryOptions.swift; sourceTree = "<group>"; };
-		8ACCD228297F265B0020BF84 /* GitCherryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCherryResult.swift; sourceTree = "<group>"; };
-		8ACCD229297F265B0020BF84 /* CherryTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CherryTask.swift; sourceTree = "<group>"; };
-		8ACCD22B297F265B0020BF84 /* StatusTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusTask.swift; sourceTree = "<group>"; };
-		8ACCD22C297F265B0020BF84 /* GitStatusOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitStatusOptions.swift; sourceTree = "<group>"; };
-		8ACCD22E297F265B0020BF84 /* CheckoutOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutOptions.swift; sourceTree = "<group>"; };
-		8ACCD22F297F265B0020BF84 /* CheckoutTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutTask.swift; sourceTree = "<group>"; };
-		8ACCD231297F265B0020BF84 /* PushTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushTask.swift; sourceTree = "<group>"; };
-		8ACCD232297F265B0020BF84 /* GitPushOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitPushOptions.swift; sourceTree = "<group>"; };
-		8ACCD234297F265B0020BF84 /* CleanTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanTask.swift; sourceTree = "<group>"; };
-		8ACCD235297F265B0020BF84 /* CleanOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanOptions.swift; sourceTree = "<group>"; };
-		8ACCD237297F265B0020BF84 /* GitFetchOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFetchOptions.swift; sourceTree = "<group>"; };
-		8ACCD238297F265B0020BF84 /* FetchTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTask.swift; sourceTree = "<group>"; };
-		8ACCD23A297F265B0020BF84 /* RemoteRenameTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteRenameTask.swift; sourceTree = "<group>"; };
-		8ACCD23B297F265B0020BF84 /* RemoteListTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteListTask.swift; sourceTree = "<group>"; };
-		8ACCD23C297F265B0020BF84 /* RemoteUrlChangeTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteUrlChangeTask.swift; sourceTree = "<group>"; };
-		8ACCD23D297F265B0020BF84 /* RemoteAddTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAddTask.swift; sourceTree = "<group>"; };
-		8ACCD23E297F265B0020BF84 /* RemoteUrlTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteUrlTask.swift; sourceTree = "<group>"; };
-		8ACCD240297F265B0020BF84 /* GitAddOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitAddOptions.swift; sourceTree = "<group>"; };
-		8ACCD241297F265B0020BF84 /* AddTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTask.swift; sourceTree = "<group>"; };
-		8ACCD243297F265B0020BF84 /* CloneTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloneTask.swift; sourceTree = "<group>"; };
-		8ACCD244297F265B0020BF84 /* CloneOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloneOptions.swift; sourceTree = "<group>"; };
-		8ACCD247297F265B0020BF84 /* StashApplyTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StashApplyTask.swift; sourceTree = "<group>"; };
-		8ACCD248297F265B0020BF84 /* GitStashApplyOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitStashApplyOptions.swift; sourceTree = "<group>"; };
-		8ACCD24A297F265B0020BF84 /* StashDropTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StashDropTask.swift; sourceTree = "<group>"; };
-		8ACCD24B297F265B0020BF84 /* GitStashDropOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitStashDropOptions.swift; sourceTree = "<group>"; };
-		8ACCD24D297F265B0020BF84 /* GitStashListOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitStashListOptions.swift; sourceTree = "<group>"; };
-		8ACCD24E297F265B0020BF84 /* StashListTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StashListTask.swift; sourceTree = "<group>"; };
-		8ACCD250297F265B0020BF84 /* GitStashOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitStashOptions.swift; sourceTree = "<group>"; };
-		8ACCD251297F265B0020BF84 /* StashTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StashTask.swift; sourceTree = "<group>"; };
-		8ACCD252297F265B0020BF84 /* RepositoryTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTask.swift; sourceTree = "<group>"; };
-		8ACCD254297F265B0020BF84 /* GitLogCompareOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitLogCompareOptions.swift; sourceTree = "<group>"; };
-		8ACCD255297F265B0020BF84 /* GitLogOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitLogOptions.swift; sourceTree = "<group>"; };
-		8ACCD256297F265B0020BF84 /* LogTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTask.swift; sourceTree = "<group>"; };
-		8ACCD258297F265B0020BF84 /* CheckReferenceTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckReferenceTask.swift; sourceTree = "<group>"; };
-		8ACCD259297F265B0020BF84 /* ProcessSpawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessSpawn.swift; sourceTree = "<group>"; };
-		8ACCD25B297F265B0020BF84 /* TagTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagTask.swift; sourceTree = "<group>"; };
-		8ACCD25C297F265B0020BF84 /* GitTagListOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitTagListOptions.swift; sourceTree = "<group>"; };
-		8ACCD25D297F265B0020BF84 /* GitTagOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitTagOptions.swift; sourceTree = "<group>"; };
-		8ACCD25E297F265B0020BF84 /* GitCredentialsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitCredentialsProvider.swift; sourceTree = "<group>"; };
-		8ACCD25F297F265B0020BF84 /* GitLogRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitLogRecord.swift; sourceTree = "<group>"; };
-		8ACCD260297F265B0020BF84 /* GitStashRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitStashRecord.swift; sourceTree = "<group>"; };
-		8ACCD261297F265B0020BF84 /* GitMergeStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitMergeStatus.swift; sourceTree = "<group>"; };
-		8ACCD262297F265B0020BF84 /* GitStashRecordList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitStashRecordList.swift; sourceTree = "<group>"; };
-		8ACCD264297F265B0020BF84 /* GitFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFile.swift; sourceTree = "<group>"; };
-		8ACCD265297F265B0020BF84 /* FileAnnotationRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileAnnotationRecord.swift; sourceTree = "<group>"; };
-		8ACCD266297F265B0020BF84 /* FileStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
-		8ACCD267297F265B0020BF84 /* FileCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCoder.swift; sourceTree = "<group>"; };
-		8ACCD268297F265B0020BF84 /* GitFileStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFileStorage.swift; sourceTree = "<group>"; };
-		8ACCD269297F265B0020BF84 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		8ACCD26A297F265B0020BF84 /* GitRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitRepository.swift; sourceTree = "<group>"; };
-		8ACCD26B297F265B0020BF84 /* GitRemoteList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitRemoteList.swift; sourceTree = "<group>"; };
 		8ACCD26C297F265B0020BF84 /* GitReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitReference.swift; sourceTree = "<group>"; };
-		8ACCD26E297F265B0020BF84 /* GitRepository+Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+Log.swift"; sourceTree = "<group>"; };
-		8ACCD26F297F265B0020BF84 /* GitRepository+Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+Status.swift"; sourceTree = "<group>"; };
-		8ACCD270297F265B0020BF84 /* GitRepository+CherryPick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+CherryPick.swift"; sourceTree = "<group>"; };
-		8ACCD271297F265B0020BF84 /* GitRepository+Cherry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+Cherry.swift"; sourceTree = "<group>"; };
-		8ACCD272297F265B0020BF84 /* GitRepository+Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+Reference.swift"; sourceTree = "<group>"; };
-		8ACCD273297F265B0020BF84 /* GitRepository+Remotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+Remotes.swift"; sourceTree = "<group>"; };
-		8ACCD274297F265B0020BF84 /* GitRepository+Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+Files.swift"; sourceTree = "<group>"; };
-		8ACCD275297F265B0020BF84 /* GitRepository+Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+Merge.swift"; sourceTree = "<group>"; };
-		8ACCD276297F265B0020BF84 /* GitRepository+Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+Tag.swift"; sourceTree = "<group>"; };
-		8ACCD277297F265B0020BF84 /* GitRepository+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GitRepository+Init.swift"; sourceTree = "<group>"; };
 		8ACCD278297F265B0020BF84 /* GitFileStatusList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFileStatusList.swift; sourceTree = "<group>"; };
 		8ACCD279297F265B0020BF84 /* GitFileStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFileStatus.swift; sourceTree = "<group>"; };
-		8ACCD27A297F265B0020BF84 /* GitTagRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitTagRecord.swift; sourceTree = "<group>"; };
 		8ACCD27B297F265B0020BF84 /* GitLogRecordList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitLogRecordList.swift; sourceTree = "<group>"; };
-		8ACCD27C297F265B0020BF84 /* GitTagRecordList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitTagRecordList.swift; sourceTree = "<group>"; };
-		8ACCD27D297F265B0020BF84 /* GitRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitRemote.swift; sourceTree = "<group>"; };
-		8ACCD280297F265B0020BF84 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
-		8ACCD282297F265B0020BF84 /* Formatter+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Formatter+Date.swift"; sourceTree = "<group>"; };
-		8ACCD284297F265B0020BF84 /* FileManager+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Utils.swift"; sourceTree = "<group>"; };
-		8ACCD286297F265B0020BF84 /* RepositoryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
-		8ACCD287297F265B0020BF84 /* CredentialsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialsProvider.swift; sourceTree = "<group>"; };
 		8ACCD288297F265B0020BF84 /* RepositoryReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryReference.swift; sourceTree = "<group>"; };
-		8ACCD289297F265B0020BF84 /* RepositoryDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryDelegate.swift; sourceTree = "<group>"; };
-		8ACCD28A297F265B0020BF84 /* RepositoryTagRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTagRecord.swift; sourceTree = "<group>"; };
 		8ACCD28B297F265B0020BF84 /* RepositoryReferenceName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryReferenceName.swift; sourceTree = "<group>"; };
-		8ACCD28C297F265B0020BF84 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		8ACCD28D297F265B0020BF84 /* RepositoryRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryRemote.swift; sourceTree = "<group>"; };
-		8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryLogRecord.swift; sourceTree = "<group>"; };
-		8ACCD28F297F265B0020BF84 /* RepositoryStashRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryStashRecord.swift; sourceTree = "<group>"; };
 		8AD1087E29ED4B9D000FFD70 /* UndoActionButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoActionButtonStyle.swift; sourceTree = "<group>"; };
 		8AD1088029ED6AF7000FFD70 /* PendingCommitSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCommitSummaryView.swift; sourceTree = "<group>"; };
 		8AD1088229ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCommitSummaryItemView.swift; sourceTree = "<group>"; };
@@ -1185,6 +998,14 @@
 		8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActivityView.swift; sourceTree = "<group>"; };
 		8AD9B5E729E6DC1500631337 /* UndoActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActionView.swift; sourceTree = "<group>"; };
 		8AE294002AC6CE1D001BE6D0 /* UTType+Directory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Directory.swift"; sourceTree = "<group>"; };
+		8AF347B72AE1268500B7BD45 /* ArgumentConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentConvertible.swift; sourceTree = "<group>"; };
+		8AF347BA2AE1268500B7BD45 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
+		8AF347BC2AE1268500B7BD45 /* Formatter+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Formatter+Date.swift"; sourceTree = "<group>"; };
+		8AF347BE2AE1268500B7BD45 /* FileManager+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Utils.swift"; sourceTree = "<group>"; };
+		8AF347C42AE1270600B7BD45 /* GitFormatDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFormatDecoder.swift; sourceTree = "<group>"; };
+		8AF347C52AE1270600B7BD45 /* IndexIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexIterator.swift; sourceTree = "<group>"; };
+		8AF347C62AE1270600B7BD45 /* GitFormatEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFormatEncoder.swift; sourceTree = "<group>"; };
+		8AF347C72AE1270600B7BD45 /* GitOutputParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitOutputParser.swift; sourceTree = "<group>"; };
 		8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPushOriginActionButtonView.swift; sourceTree = "<group>"; };
 		8AFBD506296F2A4000525BF7 /* PillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRepoListView.swift; sourceTree = "<group>"; };
@@ -1200,7 +1021,6 @@
 		8AFBD526296F2C1400525BF7 /* AddRepoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRepoView.swift; sourceTree = "<group>"; };
 		8AFBD527296F2C1400525BF7 /* RepoSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoSelectView.swift; sourceTree = "<group>"; };
 		8AFBD528296F2C1400525BF7 /* MainRepoContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRepoContentView.swift; sourceTree = "<group>"; };
-		8AFBD535296F2C4300525BF7 /* RepoState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoState.swift; sourceTree = "<group>"; };
 		8AFBD538296F2EB600525BF7 /* SettingsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
 		8AFBD539296F2EB600525BF7 /* WelcomeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeWindow.swift; sourceTree = "<group>"; };
 		8AFBD53A296F2EB600525BF7 /* RepositoryWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryWindow.swift; sourceTree = "<group>"; };
@@ -1694,6 +1514,7 @@
 		8A48D10F27FD9E2D007803D2 /* Commitment */ = {
 			isa = PBXGroup;
 			children = (
+				8AF347B42AE1268500B7BD45 /* GitMacOS */,
 				8A48D11427FD9E2E007803D2 /* Assets.xcassets */,
 				8A48D11927FD9E2E007803D2 /* Commitment.entitlements */,
 				8A48D11027FD9E2D007803D2 /* CommitmentApp.swift */,
@@ -1706,7 +1527,6 @@
 				8A68425D2A052B430063CBE6 /* Constants.swift */,
 				8A8C6658296464A700A774D7 /* Components */,
 				8AFBD54529702A2200525BF7 /* Extensions */,
-				8ACCD203297F265B0020BF84 /* GitMacOS */,
 				8A8C6684296468CD00A774D7 /* Info.plist */,
 				8AA71063296D5BE0002F6C24 /* Models */,
 				8A48D11627FD9E2E007803D2 /* Preview Content */,
@@ -1732,6 +1552,7 @@
 				8A11B4662A0285F600B2B3EA /* GitFileStatsTests.swift */,
 				8A8398D72AB9AFB900F589FD /* DiffParserTests.swift */,
 				8A11B4682A02860900B2B3EA /* GitCommitStatsTests.swift */,
+				8A0131842ADD960E0017E8E1 /* GitFileStatusTests.swift */,
 			);
 			path = CommitmentTests;
 			sourceTree = "<group>";
@@ -1985,388 +1806,75 @@
 			path = Shell;
 			sourceTree = "<group>";
 		};
-		8ACCD203297F265B0020BF84 /* GitMacOS */ = {
+		8AF347B42AE1268500B7BD45 /* GitMacOS */ = {
 			isa = PBXGroup;
 			children = (
-				8ACCD204297F265B0020BF84 /* Core */,
-				8ACCD209297F265B0020BF84 /* Classes */,
-				8ACCD27E297F265B0020BF84 /* Extensions */,
-				8ACCD285297F265B0020BF84 /* Protocols */,
+				8AF347C32AE1270600B7BD45 /* Core */,
+				8AF347B52AE1268500B7BD45 /* Classes */,
+				8AF347B82AE1268500B7BD45 /* Extensions */,
 			);
 			path = GitMacOS;
 			sourceTree = "<group>";
 		};
-		8ACCD204297F265B0020BF84 /* Core */ = {
+		8AF347B52AE1268500B7BD45 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8ACCD205297F265B0020BF84 /* GitFormatDecoder.swift */,
-				8ACCD206297F265B0020BF84 /* IndexIterator.swift */,
-				8ACCD207297F265B0020BF84 /* GitFormatEncoder.swift */,
-				8ACCD208297F265B0020BF84 /* GitOutputParser.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		8ACCD209297F265B0020BF84 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD20B297F265B0020BF84 /* GitRepositoryErrorFormatter.swift */,
-				8ACCD20D297F265B0020BF84 /* Tasks */,
-				8ACCD25E297F265B0020BF84 /* GitCredentialsProvider.swift */,
-				8ACCD25F297F265B0020BF84 /* GitLogRecord.swift */,
-				8ACCD260297F265B0020BF84 /* GitStashRecord.swift */,
-				8ACCD261297F265B0020BF84 /* GitMergeStatus.swift */,
-				8ACCD262297F265B0020BF84 /* GitStashRecordList.swift */,
-				8ACCD263297F265B0020BF84 /* FileManagement */,
-				8ACCD26A297F265B0020BF84 /* GitRepository.swift */,
-				8ACCD26B297F265B0020BF84 /* GitRemoteList.swift */,
-				8ACCD26D297F265B0020BF84 /* GitRepository */,
-				8ACCD27A297F265B0020BF84 /* GitTagRecord.swift */,
-				8ACCD27C297F265B0020BF84 /* GitTagRecordList.swift */,
-				8ACCD27D297F265B0020BF84 /* GitRemote.swift */,
+				8AF347B62AE1268500B7BD45 /* Tasks */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		8ACCD20D297F265B0020BF84 /* Tasks */ = {
+		8AF347B62AE1268500B7BD45 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				8ACCD20E297F265B0020BF84 /* Commit */,
-				8ACCD211297F265B0020BF84 /* Init */,
-				8ACCD214297F265B0020BF84 /* Branch */,
-				8ACCD217297F265B0020BF84 /* ArgumentConvertible.swift */,
-				8ACCD218297F265B0020BF84 /* CherryPick */,
-				8ACCD21B297F265B0020BF84 /* Merge */,
-				8ACCD21E297F265B0020BF84 /* References */,
-				8ACCD220297F265B0020BF84 /* Pull */,
-				8ACCD223297F265B0020BF84 /* Reset */,
-				8ACCD226297F265B0020BF84 /* Cherry */,
-				8ACCD22A297F265B0020BF84 /* Status */,
-				8ACCD22D297F265B0020BF84 /* Checkout */,
-				8ACCD230297F265B0020BF84 /* Push */,
-				8ACCD233297F265B0020BF84 /* Clean */,
-				8ACCD236297F265B0020BF84 /* Fetch */,
-				8ACCD239297F265B0020BF84 /* Remotes */,
-				8ACCD23F297F265B0020BF84 /* Add */,
-				8ACCD242297F265B0020BF84 /* Clone */,
-				8ACCD245297F265B0020BF84 /* Stash */,
-				8ACCD252297F265B0020BF84 /* RepositoryTask.swift */,
-				8ACCD253297F265B0020BF84 /* Log */,
-				8ACCD257297F265B0020BF84 /* CheckRefFormat */,
-				8ACCD259297F265B0020BF84 /* ProcessSpawn.swift */,
-				8ACCD25A297F265B0020BF84 /* Tag */,
+				8AF347B72AE1268500B7BD45 /* ArgumentConvertible.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
 		};
-		8ACCD20E297F265B0020BF84 /* Commit */ = {
+		8AF347B82AE1268500B7BD45 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8ACCD20F297F265B0020BF84 /* CommitTask.swift */,
-				8ACCD210297F265B0020BF84 /* CommitOptions.swift */,
-			);
-			path = Commit;
-			sourceTree = "<group>";
-		};
-		8ACCD211297F265B0020BF84 /* Init */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD212297F265B0020BF84 /* InitOptions.swift */,
-				8ACCD213297F265B0020BF84 /* InitTask.swift */,
-			);
-			path = Init;
-			sourceTree = "<group>";
-		};
-		8ACCD214297F265B0020BF84 /* Branch */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD215297F265B0020BF84 /* BranchOptions.swift */,
-				8ACCD216297F265B0020BF84 /* BranchTask.swift */,
-			);
-			path = Branch;
-			sourceTree = "<group>";
-		};
-		8ACCD218297F265B0020BF84 /* CherryPick */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD219297F265B0020BF84 /* CherryPickTask.swift */,
-				8ACCD21A297F265B0020BF84 /* CherryPickOptions.swift */,
-			);
-			path = CherryPick;
-			sourceTree = "<group>";
-		};
-		8ACCD21B297F265B0020BF84 /* Merge */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD21C297F265B0020BF84 /* MergeTask.swift */,
-				8ACCD21D297F265B0020BF84 /* MergeOptions.swift */,
-			);
-			path = Merge;
-			sourceTree = "<group>";
-		};
-		8ACCD21E297F265B0020BF84 /* References */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD21F297F265B0020BF84 /* ReferencesTask.swift */,
-			);
-			path = References;
-			sourceTree = "<group>";
-		};
-		8ACCD220297F265B0020BF84 /* Pull */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD221297F265B0020BF84 /* GitPullOptions.swift */,
-				8ACCD222297F265B0020BF84 /* PullTask.swift */,
-			);
-			path = Pull;
-			sourceTree = "<group>";
-		};
-		8ACCD223297F265B0020BF84 /* Reset */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD224297F265B0020BF84 /* GitResetOptions.swift */,
-				8ACCD225297F265B0020BF84 /* ResetTask.swift */,
-			);
-			path = Reset;
-			sourceTree = "<group>";
-		};
-		8ACCD226297F265B0020BF84 /* Cherry */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD227297F265B0020BF84 /* GitCherryOptions.swift */,
-				8ACCD228297F265B0020BF84 /* GitCherryResult.swift */,
-				8ACCD229297F265B0020BF84 /* CherryTask.swift */,
-			);
-			path = Cherry;
-			sourceTree = "<group>";
-		};
-		8ACCD22A297F265B0020BF84 /* Status */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD22B297F265B0020BF84 /* StatusTask.swift */,
-				8ACCD22C297F265B0020BF84 /* GitStatusOptions.swift */,
-			);
-			path = Status;
-			sourceTree = "<group>";
-		};
-		8ACCD22D297F265B0020BF84 /* Checkout */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD22E297F265B0020BF84 /* CheckoutOptions.swift */,
-				8ACCD22F297F265B0020BF84 /* CheckoutTask.swift */,
-			);
-			path = Checkout;
-			sourceTree = "<group>";
-		};
-		8ACCD230297F265B0020BF84 /* Push */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD231297F265B0020BF84 /* PushTask.swift */,
-				8ACCD232297F265B0020BF84 /* GitPushOptions.swift */,
-			);
-			path = Push;
-			sourceTree = "<group>";
-		};
-		8ACCD233297F265B0020BF84 /* Clean */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD234297F265B0020BF84 /* CleanTask.swift */,
-				8ACCD235297F265B0020BF84 /* CleanOptions.swift */,
-			);
-			path = Clean;
-			sourceTree = "<group>";
-		};
-		8ACCD236297F265B0020BF84 /* Fetch */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD237297F265B0020BF84 /* GitFetchOptions.swift */,
-				8ACCD238297F265B0020BF84 /* FetchTask.swift */,
-			);
-			path = Fetch;
-			sourceTree = "<group>";
-		};
-		8ACCD239297F265B0020BF84 /* Remotes */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD23A297F265B0020BF84 /* RemoteRenameTask.swift */,
-				8ACCD23B297F265B0020BF84 /* RemoteListTask.swift */,
-				8ACCD23C297F265B0020BF84 /* RemoteUrlChangeTask.swift */,
-				8ACCD23D297F265B0020BF84 /* RemoteAddTask.swift */,
-				8ACCD23E297F265B0020BF84 /* RemoteUrlTask.swift */,
-			);
-			path = Remotes;
-			sourceTree = "<group>";
-		};
-		8ACCD23F297F265B0020BF84 /* Add */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD240297F265B0020BF84 /* GitAddOptions.swift */,
-				8ACCD241297F265B0020BF84 /* AddTask.swift */,
-			);
-			path = Add;
-			sourceTree = "<group>";
-		};
-		8ACCD242297F265B0020BF84 /* Clone */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD243297F265B0020BF84 /* CloneTask.swift */,
-				8ACCD244297F265B0020BF84 /* CloneOptions.swift */,
-			);
-			path = Clone;
-			sourceTree = "<group>";
-		};
-		8ACCD245297F265B0020BF84 /* Stash */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD246297F265B0020BF84 /* Apply */,
-				8ACCD249297F265B0020BF84 /* Drop */,
-				8ACCD24C297F265B0020BF84 /* List */,
-				8ACCD24F297F265B0020BF84 /* Create */,
-			);
-			path = Stash;
-			sourceTree = "<group>";
-		};
-		8ACCD246297F265B0020BF84 /* Apply */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD247297F265B0020BF84 /* StashApplyTask.swift */,
-				8ACCD248297F265B0020BF84 /* GitStashApplyOptions.swift */,
-			);
-			path = Apply;
-			sourceTree = "<group>";
-		};
-		8ACCD249297F265B0020BF84 /* Drop */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD24A297F265B0020BF84 /* StashDropTask.swift */,
-				8ACCD24B297F265B0020BF84 /* GitStashDropOptions.swift */,
-			);
-			path = Drop;
-			sourceTree = "<group>";
-		};
-		8ACCD24C297F265B0020BF84 /* List */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD24D297F265B0020BF84 /* GitStashListOptions.swift */,
-				8ACCD24E297F265B0020BF84 /* StashListTask.swift */,
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		8ACCD24F297F265B0020BF84 /* Create */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD250297F265B0020BF84 /* GitStashOptions.swift */,
-				8ACCD251297F265B0020BF84 /* StashTask.swift */,
-			);
-			path = Create;
-			sourceTree = "<group>";
-		};
-		8ACCD253297F265B0020BF84 /* Log */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD254297F265B0020BF84 /* GitLogCompareOptions.swift */,
-				8ACCD255297F265B0020BF84 /* GitLogOptions.swift */,
-				8ACCD256297F265B0020BF84 /* LogTask.swift */,
-			);
-			path = Log;
-			sourceTree = "<group>";
-		};
-		8ACCD257297F265B0020BF84 /* CheckRefFormat */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD258297F265B0020BF84 /* CheckReferenceTask.swift */,
-			);
-			path = CheckRefFormat;
-			sourceTree = "<group>";
-		};
-		8ACCD25A297F265B0020BF84 /* Tag */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD25B297F265B0020BF84 /* TagTask.swift */,
-				8ACCD25C297F265B0020BF84 /* GitTagListOptions.swift */,
-				8ACCD25D297F265B0020BF84 /* GitTagOptions.swift */,
-			);
-			path = Tag;
-			sourceTree = "<group>";
-		};
-		8ACCD263297F265B0020BF84 /* FileManagement */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD264297F265B0020BF84 /* GitFile.swift */,
-				8ACCD265297F265B0020BF84 /* FileAnnotationRecord.swift */,
-				8ACCD266297F265B0020BF84 /* FileStorage.swift */,
-				8ACCD267297F265B0020BF84 /* FileCoder.swift */,
-				8ACCD268297F265B0020BF84 /* GitFileStorage.swift */,
-				8ACCD269297F265B0020BF84 /* File.swift */,
-			);
-			path = FileManagement;
-			sourceTree = "<group>";
-		};
-		8ACCD26D297F265B0020BF84 /* GitRepository */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD26E297F265B0020BF84 /* GitRepository+Log.swift */,
-				8ACCD26F297F265B0020BF84 /* GitRepository+Status.swift */,
-				8ACCD270297F265B0020BF84 /* GitRepository+CherryPick.swift */,
-				8ACCD271297F265B0020BF84 /* GitRepository+Cherry.swift */,
-				8ACCD272297F265B0020BF84 /* GitRepository+Reference.swift */,
-				8ACCD273297F265B0020BF84 /* GitRepository+Remotes.swift */,
-				8ACCD274297F265B0020BF84 /* GitRepository+Files.swift */,
-				8ACCD275297F265B0020BF84 /* GitRepository+Merge.swift */,
-				8ACCD276297F265B0020BF84 /* GitRepository+Tag.swift */,
-				8ACCD277297F265B0020BF84 /* GitRepository+Init.swift */,
-			);
-			path = GitRepository;
-			sourceTree = "<group>";
-		};
-		8ACCD27E297F265B0020BF84 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				8ACCD27F297F265B0020BF84 /* General */,
-				8ACCD281297F265B0020BF84 /* Formatter */,
-				8ACCD283297F265B0020BF84 /* FileManager */,
+				8AF347B92AE1268500B7BD45 /* General */,
+				8AF347BB2AE1268500B7BD45 /* Formatter */,
+				8AF347BD2AE1268500B7BD45 /* FileManager */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		8ACCD27F297F265B0020BF84 /* General */ = {
+		8AF347B92AE1268500B7BD45 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				8ACCD280297F265B0020BF84 /* Array+Utils.swift */,
+				8AF347BA2AE1268500B7BD45 /* Array+Utils.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
 		};
-		8ACCD281297F265B0020BF84 /* Formatter */ = {
+		8AF347BB2AE1268500B7BD45 /* Formatter */ = {
 			isa = PBXGroup;
 			children = (
-				8ACCD282297F265B0020BF84 /* Formatter+Date.swift */,
+				8AF347BC2AE1268500B7BD45 /* Formatter+Date.swift */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
 		};
-		8ACCD283297F265B0020BF84 /* FileManager */ = {
+		8AF347BD2AE1268500B7BD45 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
-				8ACCD284297F265B0020BF84 /* FileManager+Utils.swift */,
+				8AF347BE2AE1268500B7BD45 /* FileManager+Utils.swift */,
 			);
 			path = FileManager;
 			sourceTree = "<group>";
 		};
-		8ACCD285297F265B0020BF84 /* Protocols */ = {
+		8AF347C32AE1270600B7BD45 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				8ACCD286297F265B0020BF84 /* RepositoryError.swift */,
-				8ACCD287297F265B0020BF84 /* CredentialsProvider.swift */,
-				8ACCD289297F265B0020BF84 /* RepositoryDelegate.swift */,
-				8ACCD28A297F265B0020BF84 /* RepositoryTagRecord.swift */,
-				8ACCD28C297F265B0020BF84 /* Repository.swift */,
-				8ACCD28D297F265B0020BF84 /* RepositoryRemote.swift */,
-				8ACCD28E297F265B0020BF84 /* RepositoryLogRecord.swift */,
-				8ACCD28F297F265B0020BF84 /* RepositoryStashRecord.swift */,
+				8AF347C42AE1270600B7BD45 /* GitFormatDecoder.swift */,
+				8AF347C52AE1270600B7BD45 /* IndexIterator.swift */,
+				8AF347C62AE1270600B7BD45 /* GitFormatEncoder.swift */,
+				8AF347C72AE1270600B7BD45 /* GitOutputParser.swift */,
 			);
-			path = Protocols;
+			path = Core;
 			sourceTree = "<group>";
 		};
 		8AFBD505296F2A4000525BF7 /* WelcomeViews */ = {
@@ -2460,12 +1968,10 @@
 			isa = PBXGroup;
 			children = (
 				8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */,
-				8AFBD535296F2C4300525BF7 /* RepoState.swift */,
 				8AD9B5D329E6C7CB00631337 /* RepoState+Commands.swift */,
 				8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */,
 				8AD9B5E129E6D77600631337 /* UndoState.swift */,
 				8A562CE629B4C335006C7E8A /* ViewState.swift */,
-				8A58736D2A687C8900E630EA /* ActiveChangesState.swift */,
 				8AB8CDA92ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift */,
 			);
 			path = State;
@@ -2854,171 +2360,103 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AD1088129ED6AF7000FFD70 /* PendingCommitSummaryView.swift in Sources */,
-				8ACCD2CD297F265C0020BF84 /* GitTagOptions.swift in Sources */,
 				8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */,
-				8ACCD291297F265B0020BF84 /* IndexIterator.swift in Sources */,
-				8ACCD2D8297F265C0020BF84 /* File.swift in Sources */,
 				8A4DD9B02AC6F3EB00B80F74 /* Bookmark.swift in Sources */,
-				8ACCD2F2297F265C0020BF84 /* RepositoryDelegate.swift in Sources */,
 				8ACCD2E9297F265C0020BF84 /* GitLogRecordList.swift in Sources */,
 				8A6C4C4D298BEF49009377C0 /* ToolbarActionUpdateMain.swift in Sources */,
-				8ACCD2D2297F265C0020BF84 /* GitStashRecordList.swift in Sources */,
-				8ACCD2C6297F265C0020BF84 /* GitLogCompareOptions.swift in Sources */,
 				8AFBD530296F2C1400525BF7 /* MD5+Gravitar.swift in Sources */,
 				8A5C64D129797DB300CA8FE1 /* ActiveChangesView.swift in Sources */,
 				8ACCD294297F265B0020BF84 /* GitReferenceList.swift in Sources */,
 				8AFBD5762971B08D00525BF7 /* Change.swift in Sources */,
-				8ACCD2A7297F265B0020BF84 /* GitCherryOptions.swift in Sources */,
-				8ACCD290297F265B0020BF84 /* GitFormatDecoder.swift in Sources */,
 				8A97DC90299BB148001E25E1 /* Sequence+AnyOf.swift in Sources */,
 				8A97DC96299BB148001E25E1 /* String+IsNumber.swift in Sources */,
-				8ACCD2C2297F265C0020BF84 /* StashListTask.swift in Sources */,
 				8AC8EB5029759AAD00365EB9 /* Border.swift in Sources */,
-				8ACCD29D297F265B0020BF84 /* ArgumentConvertible.swift in Sources */,
 				8AB8CDA52ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift in Sources */,
 				8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */,
 				8A96B5FB2A07AEA100A52467 /* CommitStatsBlocksView.swift in Sources */,
-				8ACCD2D4297F265C0020BF84 /* FileAnnotationRecord.swift in Sources */,
-				8ACCD29A297F265B0020BF84 /* InitTask.swift in Sources */,
-				8ACCD2E3297F265C0020BF84 /* GitRepository+Merge.swift in Sources */,
-				8ACCD2AA297F265B0020BF84 /* StatusTask.swift in Sources */,
-				8ACCD2D9297F265C0020BF84 /* GitRepository.swift in Sources */,
-				8ACCD2B7297F265B0020BF84 /* RemoteAddTask.swift in Sources */,
-				8ACCD2CF297F265C0020BF84 /* GitLogRecord.swift in Sources */,
 				8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */,
 				8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */,
-				8ACCD2E4297F265C0020BF84 /* GitRepository+Tag.swift in Sources */,
 				8AFBD57D2971D14700525BF7 /* CheckoutProgressIconView.swift in Sources */,
 				8AB8CDA12ADAC74D00F6C647 /* GitFolderContentMonitorView.swift in Sources */,
 				8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */,
 				8A96B6072A07D5CA00A52467 /* TouchbarActiveChangesStatsView.swift in Sources */,
-				8ACCD2A9297F265B0020BF84 /* CherryTask.swift in Sources */,
-				8A58736E2A687C8900E630EA /* ActiveChangesState.swift in Sources */,
-				8ACCD2D7297F265C0020BF84 /* GitFileStorage.swift in Sources */,
 				8AB8CD9F2ADAC72C00F6C647 /* FolderContentMonitorView.swift in Sources */,
 				8AB8CD982ADAB8AE00F6C647 /* ContentView.swift in Sources */,
-				8ACCD2EB297F265C0020BF84 /* GitRemote.swift in Sources */,
 				8AD1088529EEB144000FFD70 /* BetaSettingsView.swift in Sources */,
 				8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */,
 				8AD9B5D029E6C28500631337 /* Commands.swift in Sources */,
-				8ACCD2A8297F265B0020BF84 /* GitCherryResult.swift in Sources */,
-				8ACCD2BD297F265B0020BF84 /* StashApplyTask.swift in Sources */,
-				8ACCD299297F265B0020BF84 /* InitOptions.swift in Sources */,
 				8AFBD531296F2C1400525BF7 /* AddRepoView.swift in Sources */,
 				8AFBD52B296F2C1400525BF7 /* CredentialSettingsView.swift in Sources */,
-				8ACCD2D3297F265C0020BF84 /* GitFile.swift in Sources */,
 				8AD1087F29ED4B9D000FFD70 /* UndoActionButtonStyle.swift in Sources */,
 				8A97DC97299BB148001E25E1 /* String+HTMLEntities.swift in Sources */,
 				8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */,
 				8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */,
-				8ACCD295297F265B0020BF84 /* GitRepositoryErrorFormatter.swift in Sources */,
 				8A58736A2A687A2E00E630EA /* CodeRepository.swift in Sources */,
 				8A562CE129B200E6006C7E8A /* Shell+Run.swift in Sources */,
-				8ACCD2CE297F265C0020BF84 /* GitCredentialsProvider.swift in Sources */,
 				8A486DC029AFB83200FB00F7 /* SettingsBox.swift in Sources */,
-				8ACCD2AD297F265B0020BF84 /* CheckoutTask.swift in Sources */,
-				8ACCD2F5297F265C0020BF84 /* Repository.swift in Sources */,
-				8ACCD29C297F265B0020BF84 /* BranchTask.swift in Sources */,
 				8AE294012AC6CE1D001BE6D0 /* UTType+Directory.swift in Sources */,
-				8ACCD2AC297F265B0020BF84 /* CheckoutOptions.swift in Sources */,
 				8A562CE329B33F79006C7E8A /* ActivityArrow.swift in Sources */,
+				8AF347BF2AE1268500B7BD45 /* ArgumentConvertible.swift in Sources */,
 				8AFBD54729702A2C00525BF7 /* Collection.swift in Sources */,
 				8AFBD50F296F2A5F00525BF7 /* AccentGlow.swift in Sources */,
 				8A02C1BD29ABD15B004DCA69 /* Bookmarks.swift in Sources */,
 				8A02C52329ADEE2A004DCA69 /* Color.swift in Sources */,
-				8ACCD2C1297F265C0020BF84 /* GitStashListOptions.swift in Sources */,
 				8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */,
 				8AD9B5E829E6DC1500631337 /* UndoActionView.swift in Sources */,
-				8ACCD2B1297F265B0020BF84 /* CleanOptions.swift in Sources */,
 				8A486DC229AFBCB700FB00F7 /* Animation.swift in Sources */,
 				8A97DC73299BA4C4001E25E1 /* HighlightedText.swift in Sources */,
 				8AB8CDAE2ADC289D00F6C647 /* String+DeletePrefix.swift in Sources */,
-				8ACCD2EE297F265C0020BF84 /* FileManager+Utils.swift in Sources */,
 				8AFBD532296F2C1400525BF7 /* RepoSelectView.swift in Sources */,
-				8ACCD2C5297F265C0020BF84 /* RepositoryTask.swift in Sources */,
 				8AB8CDAC2ADC108100F6C647 /* Int+IsNotZero.swift in Sources */,
 				8A562CE929B4DE58006C7E8A /* ExternalEditors.swift in Sources */,
-				8ACCD2C7297F265C0020BF84 /* GitLogOptions.swift in Sources */,
 				8A97DC93299BB148001E25E1 /* Substring+HasSuffix.swift in Sources */,
-				8ACCD298297F265B0020BF84 /* CommitOptions.swift in Sources */,
-				8ACCD297297F265B0020BF84 /* CommitTask.swift in Sources */,
 				8ACCD2E7297F265C0020BF84 /* GitFileStatus.swift in Sources */,
 				8A992DFB29A62C8B001E26A3 /* StatefulPreviewContainer.swift in Sources */,
-				8ACCD2A5297F265B0020BF84 /* GitResetOptions.swift in Sources */,
-				8ACCD2DC297F265C0020BF84 /* GitRepository+Log.swift in Sources */,
-				8ACCD2BB297F265B0020BF84 /* CloneTask.swift in Sources */,
 				8AAF7AEC29A6CEAE0007CE8D /* Throttler.swift in Sources */,
-				8ACCD2F0297F265C0020BF84 /* CredentialsProvider.swift in Sources */,
-				8ACCD2A4297F265B0020BF84 /* PullTask.swift in Sources */,
+				8AF347C02AE1268500B7BD45 /* Array+Utils.swift in Sources */,
 				8AAF7AEE29A6D9600007CE8D /* HunkHeaderLineView.swift in Sources */,
 				8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */,
-				8ACCD2DE297F265C0020BF84 /* GitRepository+CherryPick.swift in Sources */,
 				8A13B8602A66AA590090A6D9 /* GitUser.swift in Sources */,
-				8ACCD2BF297F265C0020BF84 /* StashDropTask.swift in Sources */,
 				8A6842592A0529BA0063CBE6 /* QuickCommitPanelView.swift in Sources */,
 				8A97DC91299BB148001E25E1 /* Int+IsOdd.swift in Sources */,
 				8A992DFF29A64867001E26A3 /* ToolbarMenuButtonStyle.swift in Sources */,
-				8ACCD2D6297F265C0020BF84 /* FileCoder.swift in Sources */,
-				8ACCD2D5297F265C0020BF84 /* FileStorage.swift in Sources */,
 				8AB8CD9A2ADABFCB00F6C647 /* WelcomeListItem.swift in Sources */,
 				8AC44EFF2A0806DC0016FFEC /* ButtonStyleProminent.swift in Sources */,
 				8A6842622A0532E30063CBE6 /* FloatingPanelExpandableLayout.swift in Sources */,
-				8ACCD2CB297F265C0020BF84 /* TagTask.swift in Sources */,
 				8AFBD54E29703A9C00525BF7 /* DiffLineView.swift in Sources */,
 				8A992DF929A629F4001E26A3 /* CustomMenuView.swift in Sources */,
-				8ACCD2EA297F265C0020BF84 /* GitTagRecordList.swift in Sources */,
 				8A9E089A2A864C6500244E1B /* SideBySideGutterView.swift in Sources */,
-				8ACCD29B297F265B0020BF84 /* BranchOptions.swift in Sources */,
-				8ACCD2B8297F265B0020BF84 /* RemoteUrlTask.swift in Sources */,
 				8AC8EB4E29759A6600365EB9 /* AccentBorderGroupBoxStyle.swift in Sources */,
-				8ACCD2C0297F265C0020BF84 /* GitStashDropOptions.swift in Sources */,
 				8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */,
 				8A29E28129F815620049CBC8 /* OnboardingWindow.swift in Sources */,
-				8ACCD2E0297F265C0020BF84 /* GitRepository+Reference.swift in Sources */,
-				8ACCD2D1297F265C0020BF84 /* GitMergeStatus.swift in Sources */,
 				8ACCD2E6297F265C0020BF84 /* GitFileStatusList.swift in Sources */,
-				8ACCD2B5297F265B0020BF84 /* RemoteListTask.swift in Sources */,
 				8AFBD55A2970461C00525BF7 /* FileChangeIconView.swift in Sources */,
 				8A01317B2ADD77560017E8E1 /* CollectionConcurrencyKit.swift in Sources */,
 				8A6B649A29730FD50074B3C1 /* FileRenderView.swift in Sources */,
-				8ACCD2B0297F265B0020BF84 /* CleanTask.swift in Sources */,
 				8AFBD52E296F2C1400525BF7 /* SidebarFooterView.swift in Sources */,
-				8ACCD2E1297F265C0020BF84 /* GitRepository+Remotes.swift in Sources */,
-				8ACCD2BE297F265C0020BF84 /* GitStashApplyOptions.swift in Sources */,
 				8AB8CDA32ADC02D400F6C647 /* Sequence+Sorted.swift in Sources */,
 				8A07612C29659EEE00D878DC /* GitDiffParser.swift in Sources */,
+				8AF347C92AE1270600B7BD45 /* IndexIterator.swift in Sources */,
 				8AFBD54429702A0600525BF7 /* Commit.swift in Sources */,
 				8A5C64D029797DB300CA8FE1 /* ActiveChangesSidebarView.swift in Sources */,
 				8AC8EB4A297586FC00365EB9 /* URL.swift in Sources */,
+				8AF347CB2AE1270600B7BD45 /* GitOutputParser.swift in Sources */,
 				8AACBA672A161B57008DFF39 /* ButtonStyleSubmitProminent.swift in Sources */,
-				8ACCD2A3297F265B0020BF84 /* GitPullOptions.swift in Sources */,
 				8A327EFE298E9081008521B0 /* HeaderContentView.swift in Sources */,
-				8ACCD2ED297F265C0020BF84 /* Formatter+Date.swift in Sources */,
 				8A97DC92299BB148001E25E1 /* Equatable+AnyOf.swift in Sources */,
-				8ACCD2E2297F265C0020BF84 /* GitRepository+Files.swift in Sources */,
 				8A07612D29659EEE00D878DC /* GitDiffHunkLine.swift in Sources */,
-				8ACCD2C8297F265C0020BF84 /* LogTask.swift in Sources */,
-				8ACCD2F3297F265C0020BF84 /* RepositoryTagRecord.swift in Sources */,
 				8A96B5FD2A07AFD100A52467 /* TouchbarRepoView.swift in Sources */,
-				8ACCD2CA297F265C0020BF84 /* ProcessSpawn.swift in Sources */,
 				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
-				8ACCD2AE297F265B0020BF84 /* PushTask.swift in Sources */,
 				8ACCD2F1297F265C0020BF84 /* RepositoryReference.swift in Sources */,
-				8ACCD2F7297F265C0020BF84 /* RepositoryLogRecord.swift in Sources */,
 				8A3421F029D323C10001E58B /* ToolbarOpenCommitWindowView.swift in Sources */,
 				8A02C50129ACB801004DCA69 /* Remote.swift in Sources */,
-				8ACCD2B9297F265B0020BF84 /* GitAddOptions.swift in Sources */,
 				8A3421DE29CF0D2B0001E58B /* SSHKeysSettingsView.swift in Sources */,
 				8A3462742A0E9B330051F195 /* SideBySideDiffRenderView.swift in Sources */,
 				8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */,
 				8A6AB29B2A3387FA00EFB79F /* ColorKit.swift in Sources */,
-				8ACCD2F6297F265C0020BF84 /* RepositoryRemote.swift in Sources */,
 				8A58736C2A687A5E00E630EA /* SplitModeOptions.swift in Sources */,
 				8A6842312A02F4BF0063CBE6 /* ActiveChangesStatsView.swift in Sources */,
-				8ACCD2E5297F265C0020BF84 /* GitRepository+Init.swift in Sources */,
-				8ACCD2DD297F265C0020BF84 /* GitRepository+Status.swift in Sources */,
 				8AFBD52D296F2C1400525BF7 /* AvatarView.swift in Sources */,
-				8ACCD293297F265B0020BF84 /* GitOutputParser.swift in Sources */,
 				8A3421DC29CF08BE0001E58B /* GitFileStatusLabelView.swift in Sources */,
 				8A11B4652A0284BD00B2B3EA /* ActiveChangesStats.swift in Sources */,
 				8AFBD57B2971CAC500525BF7 /* BranchSelectView.swift in Sources */,
@@ -3030,43 +2468,33 @@
 				8A97DC8E299BB148001E25E1 /* CharacterSet+Contains.swift in Sources */,
 				8A07612A29659EEE00D878DC /* GitDiff.swift in Sources */,
 				8A0131792ADD733C0017E8E1 /* FileTypeIconView.swift in Sources */,
-				8ACCD2AB297F265B0020BF84 /* GitStatusOptions.swift in Sources */,
 				8A992DFD29A63B36001E26A3 /* OverlayAlignmentView.swift in Sources */,
 				8AD1088329ED6D5D000FFD70 /* PendingCommitSummaryItemView.swift in Sources */,
 				8AB8CDA72ADC0CB000F6C647 /* LoadedRepositoryView.swift in Sources */,
-				8ACCD2C4297F265C0020BF84 /* StashTask.swift in Sources */,
 				8AFBD55E29704F7000525BF7 /* GitFileStatusView.swift in Sources */,
-				8ACCD2DF297F265C0020BF84 /* GitRepository+Cherry.swift in Sources */,
 				8A5C64D529797DB300CA8FE1 /* CommitHistoryDetailView.swift in Sources */,
 				8AFBD54929702A4200525BF7 /* GitDiffLine.swift in Sources */,
-				8ACCD2EC297F265C0020BF84 /* Array+Utils.swift in Sources */,
 				8A97DC94299BB148001E25E1 /* String+PrefixChecking.swift in Sources */,
 				8A5C64CF29797DB300CA8FE1 /* CommitHistorySidebarView.swift in Sources */,
 				8AFBD55029703AB600525BF7 /* DiffHunkView.swift in Sources */,
-				8ACCD2C3297F265C0020BF84 /* GitStashOptions.swift in Sources */,
-				8ACCD2B4297F265B0020BF84 /* RemoteRenameTask.swift in Sources */,
 				8A97DDA5299BCA7A001E25E1 /* Theme+Light+Dark.swift in Sources */,
 				8AFBD53D296F2EB600525BF7 /* RepositoryWindow.swift in Sources */,
 				8AC44F012A0806ED0016FFEC /* ButtonStyleRegular.swift in Sources */,
 				8A6842602A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift in Sources */,
-				8ACCD2BA297F265B0020BF84 /* AddTask.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,
 				8AAF7AF029A77E9F0007CE8D /* ActivityState.swift in Sources */,
-				8ACCD2BC297F265B0020BF84 /* CloneOptions.swift in Sources */,
 				8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */,
 				8ACCD2F4297F265C0020BF84 /* RepositoryReferenceName.swift in Sources */,
 				8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */,
-				8ACCD2CC297F265C0020BF84 /* GitTagListOptions.swift in Sources */,
 				8A0761302965A15200D878DC /* UnifiedDiffRenderView.swift in Sources */,
 				8A3462722A0D0B770051F195 /* CommitContributionChartView.swift in Sources */,
 				8A02C51D29AD3DAB004DCA69 /* KeychainStorage.swift in Sources */,
 				8A97DC95299BB148001E25E1 /* String+Removing.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,
 				8AD1088729EEB82A000FFD70 /* View+HideSidebarToggle.swift in Sources */,
-				8ACCD2C9297F265C0020BF84 /* CheckReferenceTask.swift in Sources */,
 				8A562CE729B4C335006C7E8A /* ViewState.swift in Sources */,
+				8AF347CA2AE1270600B7BD45 /* GitFormatEncoder.swift in Sources */,
 				8AFBD540296F41A600525BF7 /* ToolbarContentView.swift in Sources */,
-				8ACCD2A1297F265B0020BF84 /* MergeOptions.swift in Sources */,
 				8AFBD53B296F2EB600525BF7 /* SettingsWindow.swift in Sources */,
 				8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */,
 				8A68422F2A02F1840063CBE6 /* FileStatsView.swift in Sources */,
@@ -3077,46 +2505,33 @@
 				8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */,
 				8A562CE529B33F8D006C7E8A /* OutputLine.swift in Sources */,
 				8A6B649629730B380074B3C1 /* ContentPlaceholderView.swift in Sources */,
-				8ACCD2DA297F265C0020BF84 /* GitRemoteList.swift in Sources */,
 				8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */,
 				8A02C4FF29ACB0E7004DCA69 /* Array.swift in Sources */,
 				8AD9B5D429E6C7CB00631337 /* RepoState+Commands.swift in Sources */,
-				8ACCD29F297F265B0020BF84 /* CherryPickOptions.swift in Sources */,
 				8AFBD5752971B08D00525BF7 /* FolderContentChangeEvent.swift in Sources */,
-				8ACCD2F8297F265C0020BF84 /* RepositoryStashRecord.swift in Sources */,
-				8ACCD29E297F265B0020BF84 /* CherryPickTask.swift in Sources */,
 				8A6842392A03E25D0063CBE6 /* Pasteboard.swift in Sources */,
 				8AAF7AF629A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift in Sources */,
-				8ACCD2B3297F265B0020BF84 /* FetchTask.swift in Sources */,
-				8ACCD2A6297F265B0020BF84 /* ResetTask.swift in Sources */,
-				8ACCD292297F265B0020BF84 /* GitFormatEncoder.swift in Sources */,
 				8A34219529C876B30001E58B /* WelcomeSheet.swift in Sources */,
 				8A68425E2A052B430063CBE6 /* Constants.swift in Sources */,
 				8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */,
 				8ACCD2DB297F265C0020BF84 /* GitReference.swift in Sources */,
 				8A07612E29659EEE00D878DC /* GitDiffHunk.swift in Sources */,
 				8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */,
-				8AFBD536296F2C4300525BF7 /* RepoState.swift in Sources */,
 				8A02C50329ACB9CF004DCA69 /* LogOptions.swift in Sources */,
-				8ACCD2B6297F265B0020BF84 /* RemoteUrlChangeTask.swift in Sources */,
 				8AFBD5742971B08D00525BF7 /* FolderContentMonitor.swift in Sources */,
 				8A5C64D229797DB300CA8FE1 /* ActiveChangesMainView.swift in Sources */,
-				8ACCD2E8297F265C0020BF84 /* GitTagRecord.swift in Sources */,
+				8AF347C12AE1268500B7BD45 /* Formatter+Date.swift in Sources */,
 				8A3421E629D19A9E0001E58B /* CommitmentAppDelegate.swift in Sources */,
 				8A327EFC298E8F20008521B0 /* TouchbarContentView.swift in Sources */,
+				8AF347C22AE1268500B7BD45 /* FileManager+Utils.swift in Sources */,
 				8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */,
-				8ACCD2A0297F265B0020BF84 /* MergeTask.swift in Sources */,
-				8ACCD2D0297F265C0020BF84 /* GitStashRecord.swift in Sources */,
+				8AF347C82AE1270600B7BD45 /* GitFormatDecoder.swift in Sources */,
 				8AFBD52F296F2C1400525BF7 /* SidebarCommitLabelView.swift in Sources */,
 				8AFBD533296F2C1400525BF7 /* MainRepoContentView.swift in Sources */,
-				8ACCD2EF297F265C0020BF84 /* RepositoryError.swift in Sources */,
 				8AB8CDAA2ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift in Sources */,
-				8ACCD2B2297F265B0020BF84 /* GitFetchOptions.swift in Sources */,
 				8AB8CDB02ADD6A7A00F6C647 /* FileIcons.swift in Sources */,
 				8ACCD296297F265B0020BF84 /* GitReferenceName.swift in Sources */,
-				8ACCD2A2297F265B0020BF84 /* ReferencesTask.swift in Sources */,
 				8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */,
-				8ACCD2AF297F265B0020BF84 /* GitPushOptions.swift in Sources */,
 				8A6842642A053D8B0063CBE6 /* MacTextEditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3125,6 +2540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A0131852ADD960E0017E8E1 /* GitFileStatusTests.swift in Sources */,
 				8A11B4692A02860900B2B3EA /* GitCommitStatsTests.swift in Sources */,
 				8A8398D82AB9AFB900F589FD /* DiffParserTests.swift in Sources */,
 				8A11B4672A0285F600B2B3EA /* GitFileStatsTests.swift in Sources */,

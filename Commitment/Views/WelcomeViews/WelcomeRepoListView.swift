@@ -7,6 +7,9 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
+
+fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "WelcomeRepoListView")
 
 struct WelcomeRepoListView: View {
     @Environment(\.modelContext) private var modelContext
@@ -56,7 +59,10 @@ struct WelcomeRepoListView: View {
                 case .success(let directory):
                     // gain access to the directory
                     let gotAccess = directory.startAccessingSecurityScopedResource()
-                    if !gotAccess { return }
+                    if !gotAccess {
+                        log.error("Failed to start accessing directory \(directory.description)")
+                        return
+                    }
                     addItem(url: directory)
                     open(directory)
                 case .failure(let error):
@@ -79,6 +85,7 @@ struct WelcomeRepoListView: View {
     }
 
     private func open(_ url: URL) {
+        // TODO: this doesn't work correctly
         repositoryID.wrappedValue = url
     }
 }

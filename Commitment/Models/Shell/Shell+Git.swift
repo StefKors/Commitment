@@ -89,24 +89,25 @@ extension Shell {
 
     // TODO: profile if this is fast or slow
     func diff() async -> [String: GitDiff] {
+        print("starting diff")
         let diffs = await self.runTask(.git, ["diff"])
 
         var diffDict: [String: GitDiff] = [:]
 
         for diffSegment in diffs.split(separator: "\ndiff --git ") {
-            if let diff = GitDiff(unifiedDiff: String(diffSegment)) {
-                var path = diff.addedFile
+            let diff = GitDiff(unifiedDiff: String(diffSegment))
+            var path = diff.addedFile
 
-                if path.isEmpty, diff.removedFile.isNotEmpty {
-                    path = diff.removedFile
-                }
-
-                path = path.deletingPrefix("b/").deletingPrefix("a/")
-
-                diffDict[path] = diff
+            if path.isEmpty, diff.removedFile.isNotEmpty {
+                path = diff.removedFile
             }
+
+            path = path.deletingPrefix("b/").deletingPrefix("a/")
+
+            diffDict[path] = diff
         }
 
+        print("returning diff")
         return diffDict
     }
 
@@ -185,9 +186,13 @@ extension Shell {
     }
 
     func status() async -> [GitFileStatus] {
-        await self.runTask(.git, ["status", "--porcelain"])
-            .lines
-            .parallelMap { line -> GitFileStatus? in
+        // print("starting status")
+        let statusString = await self.runTask(.git, ["status", "--porcelain=v1"])
+        // print("status string \(statusString)")
+        let lines = statusString.lines
+        // print("status lines \(lines)")
+        let mapToStatus = await lines.asyncCompactMap({ line -> GitFileStatus? in
+//                print("map status")
                 guard line.count > 3 else { return nil }
                 var trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
                 let fileState = String(trimmedLine.prefix(2))
@@ -196,10 +201,14 @@ extension Shell {
                 // When file name contains spaces, need to ensure leading and trailing quoes escapes are removed
                 fileName = fileName.trimmingCharacters(in: CharacterSet(charactersIn: "\"\\"))
 
-                let stats = await self.numStat(file: fileName)
-                return GitFileStatus(path: fileName, state: fileState, stats: stats)
-            }
-            .compactMap({$0})
+            // TODO: need to figure out a performant way to get stats....
+//                let stats = await self.numStat(file: fileName)
+                return GitFileStatus(path: fileName, state: fileState, stats: nil)
+            })
+//            }
+//            .compactMap({$0})
+        // print("returning status")
+        return mapToStatus
     }
 
     func log(options: LogOptions = LogOptions.default, isLocal: Bool = false, limit: Int? = nil) async -> [Commit] {

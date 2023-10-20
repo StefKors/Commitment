@@ -10,14 +10,14 @@ import SwiftUI
 
 struct FileDiffChangesView: View {
     let fileStatus: GitFileStatus
-    let diff: GitDiff?
 
     @AppStorage(Settings.Diff.Mode) private var diffViewMode: DiffViewMode = .unified
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            ScrollView(.vertical) {
-                if let diff {
+        ScrollView(.vertical) {
+            Text("fileStatus.diff \((fileStatus.diff != nil).description)")
+                if let diff = fileStatus.diff {
                     switch diffViewMode {
                     case .unified:
                         UnifiedDiffRenderView(fileStatus: fileStatus, diff: diff)
@@ -39,5 +39,5 @@ struct FileDiffChangesView: View {
 }
 
 #Preview {
-    FileDiffChangesView(fileStatus: .previewVersionBump, diff: .previewVersionBump)
+    FileDiffChangesView(fileStatus: .previewVersionBump)
 }

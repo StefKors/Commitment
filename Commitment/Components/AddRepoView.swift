@@ -7,6 +7,9 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
+
+fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "AddRepoView")
 
 struct AddRepoView: View {
     @Environment(\.openWindow) private var openWindow
@@ -28,7 +31,10 @@ struct AddRepoView: View {
             case .success(let directory):
                 // gain access to the directory
                 let gotAccess = directory.startAccessingSecurityScopedResource()
-                if !gotAccess { return }
+                if !gotAccess {
+                    log.error("Failed to start accessing directory \(directory.description)")
+                    return
+                }
                 addItem(url: directory)
             case .failure(let error):
                 // handle error

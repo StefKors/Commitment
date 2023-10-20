@@ -9,27 +9,27 @@ import SwiftUI
 
 struct TouchbarActiveChangesStatsView: View {
     @AppStorage(Settings.Diff.ShowStatsBlocks) private var showStatsBlocks: Bool = true
-    @EnvironmentObject private var activeChangesState: ActiveChangesState
+    @EnvironmentObject private var repository: CodeRepository
 
     var body: some View {
-        if activeChangesState.stats.hasChanges {
+        if repository.stats.hasChanges {
             Image(systemName: "chevron.compact.right")
         }
 
-        if activeChangesState.stats.hasChanges {
+        if repository.stats.hasChanges {
             HStack(spacing: 8) {
                 // Label("^[\(Int(stats.filesChanged)) file](inflect: true) changed", image: "file-diff")
-                Label("\(Int(activeChangesState.stats.filesChanged)) files changed", image: "file-diff")
+                Label("\(Int(repository.stats.filesChanged)) files changed", image: "file-diff")
 
                 HStack(spacing: 2) {
-                    Text("+\(activeChangesState.stats.insertions)")
+                    Text("+\(repository.stats.insertions)")
                         .foregroundStyle(Color("GitHubDiffGreenBright"))
-                    Text("-\(activeChangesState.stats.deletions)")
+                    Text("-\(repository.stats.deletions)")
                         .foregroundStyle(Color("GitHubDiffRedBright"))
                 }
 
                 if showStatsBlocks {
-                    CommitStatsBlocksView(blocks: activeChangesState.stats.blocks)
+                    CommitStatsBlocksView(blocks: repository.stats.blocks)
                 }
             }
         }

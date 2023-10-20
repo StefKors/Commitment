@@ -16,12 +16,13 @@
 //  limitations under the License.
 
 import Foundation
+import SwiftData
 
 /// Describes a single file status
-public class GitFileStatus: Codable, Identifiable {
-
+@Model final class GitFileStatus: Identifiable {
+    
     // MARK: - Init
-    internal init(path: String, state: String, sha: String? = nil, stats: GitFileStats? = nil) {
+    init(path: String, state: String, sha: String? = nil, stats: GitFileStats? = nil) {
         self.path = path
         self.sha = sha
         self.stats = stats
@@ -33,44 +34,50 @@ public class GitFileStatus: Codable, Identifiable {
             lhs = String(state[state.startIndex])
             rhs = String(state[state.index(state.startIndex, offsetBy: 1)])
         } else {
-            lhs = ModificationState.unknown.rawValue
-            rhs = ModificationState.unknown.rawValue
+            lhs = GitFileStatusModificationState.unknown.rawValue
+            rhs = GitFileStatusModificationState.unknown.rawValue
         }
         
-        self.state = State(lhs: lhs, rhs: rhs)
+        self.state = GitFileStatusState(lhs: lhs, rhs: rhs)
     }
-
-    public var id: String {
+    
+    @Attribute(.unique)
+    var id: String {
         self.path
     }
+
+    var repository: CodeRepository?
+    
+    @Relationship(deleteRule: .cascade, inverse: \GitDiff.status)
+    var diff: GitDiff?
 
     /// Cleaned up version of the file path that only contains the path
     /// while supporting renamed/moved file paths with " -> " in it
     /// starts with "a/..." or "b/..."
-    public var cleanedPath: String {
+    var cleanedPath: String {
         guard let filePath = path.split(separator: " -> ").last else { return path }
         return String(filePath)
     }
-
+    
     /// A path to the file on the disk including file name.
     /// File path is always relative to a repository root.
-    public private(set) var path: String
-
+    private(set) var path: String
+    
     // Commit SHA from which the status was created
-    public private(set) var sha: String?
-
-    public private(set) var stats: GitFileStats?
+    private(set) var sha: String?
+    
+    private(set) var stats: GitFileStats?
     
     /// Current file state
-    public private(set) var state: State
+    var state: GitFileStatusState
     
     /// Determines whether a status is a conflicted status or not
-    public var hasConflicts: Bool {
+    var hasConflicts: Bool {
         return state.conflict != nil
     }
     
     /// Indicates whether a file is staged for commit or not
-    public var hasChangesInIndex: Bool {
+    var hasChangesInIndex: Bool {
         switch state.index {
         case .unmodified, .ignored, .untracked, .unknown:
             return false
@@ -80,7 +87,7 @@ public class GitFileStatus: Codable, Identifiable {
     }
     
     /// Indicates whether a file is changed in the worktree, but still not staged for commit
-    public var hasChangesInWorktree: Bool {
+    var hasChangesInWorktree: Bool {
         switch state.worktree {
         case .unmodified, .ignored, .untracked, .unknown:
             return false
@@ -88,9 +95,9 @@ public class GitFileStatus: Codable, Identifiable {
             return true
         }
     }
-
-
-    public var diffModificationState: GitDiffHunkLineType {
+    
+    
+    var diffModificationState: GitDiffHunkLineType {
         switch state.index {
         case .deleted:
             return .deletion
@@ -100,6 +107,7 @@ public class GitFileStatus: Codable, Identifiable {
             return .unchanged
         }
     }
+    
 }
 
 extension GitFileStatus {
@@ -119,111 +127,110 @@ extension GitFileStatus {
     )
 }
 
-// MARK: - Types
-public extension GitFileStatus {
+// MARK: - ModificationState
+enum GitFileStatusModificationState: String, Codable {
     
-    // MARK: - State
-    class State: Codable {
-        
-        // MARK: - Init
-        public required init(index: ModificationState, worktree: ModificationState) {
-            self.index = index
-            self.worktree = worktree
-        }
-        
-        internal convenience init(lhs: String, rhs: String) {
-            let index = ModificationState(rawValue: lhs) ?? .unknown
-            let worktree = ModificationState(rawValue: rhs) ?? .unknown
+    case modified = "M"
+    case added = "A"
+    case deleted = "D"
+    case renamed = "R"
+    case copied = "C"
+    case untracked = "?"
+    case ignored = "!"
+    case unmerged = "U"
+    case unmodified = " "
+    
+    case unknown = "Z"
+}
 
-            self.init(index: index, worktree: worktree)
-        }
+// MARK: - ConflictState
+enum GitFileStatusConflictState: Codable {
+    
+    case unmergedAddedBoth
+    case unmergedAddedByUs
+    case unmergedAddedByThem
+    
+    case unmergedDeletedBoth
+    case unmergedDeletedByUs
+    case unmergedDeletedByThem
+    
+    case unmergedModifiedBoth
+}
+
+// MARK: - Types
+
+// MARK: - State
+struct GitFileStatusState: Codable {
+
+    // MARK: - Init
+    init(index: GitFileStatusModificationState, worktree: GitFileStatusModificationState) {
+        self.index = index
+        self.worktree = worktree
+    }
+    
+    init(lhs: String, rhs: String) {
+        let index = GitFileStatusModificationState(rawValue: lhs) ?? .unknown
+        let worktree = GitFileStatusModificationState(rawValue: rhs) ?? .unknown
         
-        /// Shows the modification state of the index
-        public var index: ModificationState
-        
-        /// Shows the modification status of the working tree
-        public var worktree: ModificationState
-        
-        /// Shows the current merge conflict state. Returns nil when there is no conflict
-        public var conflict: ConflictState? {
-            switch (index, worktree) {
+        self.init(index: index, worktree: worktree)
+    }
+    
+    /// Shows the modification state of the index
+    var index: GitFileStatusModificationState
+    
+    /// Shows the modification status of the working tree
+    var worktree: GitFileStatusModificationState
+    
+    /// Shows the current merge conflict state. Returns nil when there is no conflict
+    var conflict: GitFileStatusConflictState? {
+        switch (index, worktree) {
             // DD
-            case (.deleted, .deleted): return .unmergedDeletedBoth
+        case (.deleted, .deleted): return .unmergedDeletedBoth
             
             // AU
-            case (.added, .unmerged): return .unmergedAddedByUs
-               
+        case (.added, .unmerged): return .unmergedAddedByUs
+            
             // UD
-            case (.unmerged, .deleted): return .unmergedDeletedByThem
-                
+        case (.unmerged, .deleted): return .unmergedDeletedByThem
+            
             // UA
-            case (.unmerged, .added): return .unmergedAddedByThem
-                
+        case (.unmerged, .added): return .unmergedAddedByThem
+            
             // DU
-            case (.deleted, .unmerged): return .unmergedDeletedByUs
-                
+        case (.deleted, .unmerged): return .unmergedDeletedByUs
+            
             // AA
-            case (.added, .added): return .unmergedAddedBoth
-                
+        case (.added, .added): return .unmergedAddedBoth
+            
             // UU
-            case (.unmerged, .unmerged): return .unmergedModifiedBoth
-                
-            default: return nil
-            }
+        case (.unmerged, .unmerged): return .unmergedModifiedBoth
+            
+        default: return nil
         }
     }
     
-    // MARK: - ModificationState
-    enum ModificationState: String, Codable {
-        
-        case modified = "M"
-        case added = "A"
-        case deleted = "D"
-        case renamed = "R"
-        case copied = "C"
-        case untracked = "?"
-        case ignored = "!"
-        case unmerged = "U"
-        case unmodified = " "
-        
-        case unknown = "Z"
-    }
-    
-    // MARK: - ConflictState
-    enum ConflictState: Codable {
-        
-        case unmergedAddedBoth
-        case unmergedAddedByUs
-        case unmergedAddedByThem
-        
-        case unmergedDeletedBoth
-        case unmergedDeletedByUs
-        case unmergedDeletedByThem
-        
-        case unmergedModifiedBoth
-    }
 }
 
-extension GitFileStatus.State: Hashable {
-    public static func == (lhs: GitFileStatus.State, rhs: GitFileStatus.State) -> Bool {
-        return lhs.index == rhs.index &&
-        lhs.worktree == rhs.worktree
-    }
+//extension GitFileStatusState: Hashable {
+//    static func == (lhs: GitFileStatusState, rhs: GitFileStatusState) -> Bool {
+//        return lhs.index == rhs.index &&
+//        lhs.worktree == rhs.worktree
+//    }
+//    
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(index)
+//        hasher.combine(worktree)
+//    }
+//}
 
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(index)
-        hasher.combine(worktree)
-    }
-}
-
-extension GitFileStatus: Hashable {
-    public static func == (lhs: GitFileStatus, rhs: GitFileStatus) -> Bool {
-        lhs.path == rhs.path &&
-        lhs.state == rhs.state
-    }
-
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(path)
-        hasher.combine(state)
-    }
-}
+//extension GitFileStatus: Hashable {
+//    static func == (lhs: GitFileStatus, rhs: GitFileStatus) -> Bool {
+//        lhs.path == rhs.path &&
+//        lhs.state == rhs.state
+//    }
+//    
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(path)
+//        hasher.combine(state)
+//    }
+//}

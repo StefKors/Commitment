@@ -14,6 +14,11 @@ fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "Co
 @Model final class CodeRepository: Identifiable, ObservableObject {
     @Attribute(.unique) var path: URL
 
+    @Relationship(deleteRule: .cascade, inverse: \GitFileStatus.repository)
+    var status = [GitFileStatus]()
+
+    var stats: ActiveChangesStats = ActiveChangesStats()
+
     var bookmark: Bookmark
     // Settings
     var editor: ExternalEditors = ExternalEditors.xcode

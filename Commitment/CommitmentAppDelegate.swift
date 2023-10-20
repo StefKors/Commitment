@@ -28,7 +28,7 @@ class CommitmentAppDelegate: NSObject, NSApplicationDelegate, ObservableObject {
     private var repos: [CodeRepository] = []
     private lazy var container: ModelContainer? = {
         //let configuration = ModelConfiguration(inMemory: true)
-        let container = try? ModelContainer(for: CodeRepository.self, Bookmark.self)
+        let container = try? ModelContainer(for: CodeRepository.self, Bookmark.self, GitFileStatus.self)
         return container
     }()
 

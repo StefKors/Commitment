@@ -9,25 +9,25 @@ import SwiftUI
 
 struct ActiveChangesStatsView: View {
     @AppStorage(Settings.Diff.ShowStatsBlocks) private var showStatsBlocks: Bool = true
-    @EnvironmentObject private var activeChangesState: ActiveChangesState
+    @EnvironmentObject private var repository: CodeRepository
 
     var body: some View {
         VStack {
-            if activeChangesState.stats.hasChanges {
+            if repository.stats.hasChanges {
                 HStack(spacing: 8) {
                     // Text("^[\(Int(stats.filesChanged)) file](inflect: true) changed")
-                    Text("\(Int(activeChangesState.stats.filesChanged)) files changed")
+                    Text("\(Int(repository.stats.filesChanged)) files changed")
                         .foregroundStyle(.secondary)
 
                     HStack(spacing: 2) {
-                        Text("+\(activeChangesState.stats.insertions)")
+                        Text("+\(repository.stats.insertions)")
                             .foregroundStyle(Color("GitHubDiffGreenBright"))
-                        Text("-\(activeChangesState.stats.deletions)")
+                        Text("-\(repository.stats.deletions)")
                             .foregroundStyle(Color("GitHubDiffRedBright"))
                     }
 
                     if showStatsBlocks {
-                        CommitStatsBlocksView(blocks: activeChangesState.stats.blocks)
+                        CommitStatsBlocksView(blocks: repository.stats.blocks)
                     }
                 }
             }

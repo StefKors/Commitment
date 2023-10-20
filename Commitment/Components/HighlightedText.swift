@@ -9,6 +9,8 @@
 import SwiftUI
 import Splash
 
+// have a look at: https://github.com/ActuallyTaylor/Firefly?
+
 fileprivate struct ThemeHighlightedText: View {
     let highlightedContent: AttributedString
     let theme: Theme = .dark()

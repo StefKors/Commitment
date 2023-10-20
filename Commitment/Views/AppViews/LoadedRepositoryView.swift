@@ -16,7 +16,6 @@ struct LoadedRepositoryView: View {
     @EnvironmentObject private var undoState: UndoState
     @EnvironmentObject private var viewState: ViewState
     @EnvironmentObject private var shell: Shell
-    @EnvironmentObject private var activeChangesState: ActiveChangesState
 
     // Updates Triggered by Folder Monitor
     @State private var gitBranchUpdate = PlainTaskTrigger()
@@ -38,7 +37,6 @@ struct LoadedRepositoryView: View {
                     .environmentObject(viewState)
                     .environmentObject(undoState)
                     .environmentObject(shell)
-                    .environmentObject(activeChangesState)
             }
             .onKeyboardShortcut(.globalCommitPanel, type: .keyDown, perform: {
                 self.showPanel.toggle()
@@ -82,13 +80,15 @@ struct LoadedRepositoryView: View {
                 }
             }
             .task($activeChangesUpdate) {
-                async let diffs: [String: GitDiff] = self.shell.diff()
-                async let status = self.shell.status()
-                async let stats: ActiveChangesStats = self.shell.stats()
+                let diffs: [String: GitDiff] = await self.shell.diff()
 
-                activeChangesState.diffs = await diffs
-                activeChangesState.status = await status
-                activeChangesState.stats = await stats
+                async let status = self.shell.status().map { status in
+                    status.diff = diffs[status.cleanedPath]
+                    return status
+                }
+
+                repository.status = await status
+                repository.stats = await self.shell.stats()
             }
     }
 }

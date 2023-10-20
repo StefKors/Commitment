@@ -12,7 +12,8 @@ class ViewState: ObservableObject {
     @Published var activeChangesSelection: GitFileStatus? = nil
 
     @Published var activeCommitSelection: Commit.ID? = nil
-    @Published var activeCommitFileSelection: GitFileStatus.ID? = nil
+    // TODO: revert string type back to id GitFileStatus.ID
+    @Published var activeCommitFileSelection: String? = nil
     // TODO: grab open / close logic from old RepoState
     @Published var isBranchSelectOpen: Bool = false
     @Published var isRepoSelectOpen: Bool = false
