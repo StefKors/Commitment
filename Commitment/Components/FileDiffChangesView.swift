@@ -16,7 +16,6 @@ struct FileDiffChangesView: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
         ScrollView(.vertical) {
-            Text("fileStatus.diff \((fileStatus.diff != nil).description)")
                 if let diff = fileStatus.diff {
                     switch diffViewMode {
                     case .unified:
