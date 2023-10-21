@@ -9,13 +9,15 @@ import SwiftUI
 
 
 struct ActiveChangesView: View {
+    @Environment(CodeRepository.self) private var repository
+
     var body: some View {
         ActiveChangesSidebarView()
             .frame(minWidth: 300)
             .toolbar(content: {
                 // TODO: Hide when sidebar is closed
                 ToolbarItem(placement: .automatic) {
-                    SplitModeToggleView()
+                    SplitModeToggleView(repository: repository)
                 }
 
                 // TODO: Hide when sidebar is closed

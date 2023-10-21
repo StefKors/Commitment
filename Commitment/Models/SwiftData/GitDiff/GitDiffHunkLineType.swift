@@ -8,7 +8,7 @@
 import Foundation
 
 /// Types of lines inside a hunk.
-public enum GitDiffHunkLineType: String, Codable {
+public enum GitDiffHunkLineType: String, Codable, Equatable {
     case unchanged
     case addition
     case deletion

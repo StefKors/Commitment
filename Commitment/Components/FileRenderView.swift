@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct FileRenderView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var fileStatus: GitFileStatus
 
@@ -32,8 +32,8 @@ struct FileRenderView: View {
             }
         }
         .task(id: fileStatus.stats) {
-            let fullFileURL = URL(fileURLWithPath: fileStatus.cleanedPath, isDirectory: false, relativeTo: repo.path)
-            if let content = try? repo.readFile(at: fullFileURL) {
+            let fullFileURL = URL(fileURLWithPath: fileStatus.cleanedPath, isDirectory: false, relativeTo: self.repository.path)
+            if let content = try? self.repository.readFile(at: fullFileURL) {
                 self.lines = content
                     .components(separatedBy: "\n")
                     .enumerated()

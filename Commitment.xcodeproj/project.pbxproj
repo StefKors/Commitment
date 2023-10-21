@@ -384,6 +384,7 @@
 		8AF347CA2AE1270600B7BD45 /* GitFormatEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347C62AE1270600B7BD45 /* GitFormatEncoder.swift */; };
 		8AF347CB2AE1270600B7BD45 /* GitOutputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347C72AE1270600B7BD45 /* GitOutputParser.swift */; };
 		8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */; };
+		8AF893162AE400CA002E4282 /* AppStorage+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF893152AE400CA002E4282 /* AppStorage+Array.swift */; };
 		8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD506296F2A4000525BF7 /* PillView.swift */; };
 		8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */; };
 		8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */; };
@@ -1007,6 +1008,7 @@
 		8AF347C62AE1270600B7BD45 /* GitFormatEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitFormatEncoder.swift; sourceTree = "<group>"; };
 		8AF347C72AE1270600B7BD45 /* GitOutputParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitOutputParser.swift; sourceTree = "<group>"; };
 		8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPushOriginActionButtonView.swift; sourceTree = "<group>"; };
+		8AF893152AE400CA002E4282 /* AppStorage+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+Array.swift"; sourceTree = "<group>"; };
 		8AFBD506296F2A4000525BF7 /* PillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRepoListView.swift; sourceTree = "<group>"; };
 		8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeStackView.swift; sourceTree = "<group>"; };
@@ -1960,6 +1962,7 @@
 				8A486DC129AFBCB700FB00F7 /* Animation.swift */,
 				8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */,
 				8AE294002AC6CE1D001BE6D0 /* UTType+Directory.swift */,
+				8AF893152AE400CA002E4282 /* AppStorage+Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2463,6 +2466,7 @@
 				8A5C64D629797DB300CA8FE1 /* CommitHistoryMainView.swift in Sources */,
 				8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */,
 				8A02C50529ACD3AA004DCA69 /* Rotation.swift in Sources */,
+				8AF893162AE400CA002E4282 /* AppStorage+Array.swift in Sources */,
 				8A6B649429730B070074B3C1 /* SplitModeToggleView.swift in Sources */,
 				8A5C64D329797DB300CA8FE1 /* CommitHistoryView.swift in Sources */,
 				8A97DC8E299BB148001E25E1 /* CharacterSet+Contains.swift in Sources */,

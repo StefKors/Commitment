@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TouchbarRepoView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
-        Label(self.repo.folderName, image: "git-repo-16")
+        Label( self.repository.folderName, image: "git-repo-16")
     }
 }
 

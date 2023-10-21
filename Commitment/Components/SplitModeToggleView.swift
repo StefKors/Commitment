@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SplitModeToggleView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Bindable var repository: CodeRepository
 
     var body: some View {
-        Picker("", selection: $repo.windowMode) {
+        Picker("", selection: $repository.windowMode) {
             ForEach(SplitModeOptions.allCases, id: \.self) { option in
                 Text(option.rawValue)
                     .tag(option)

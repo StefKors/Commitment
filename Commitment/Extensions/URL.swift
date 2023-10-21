@@ -17,17 +17,6 @@ extension URL {
         }
     }
 
-    func openInEditor(_ editor: ExternalEditors) {
-        let appUrl = NSWorkspace.shared.urlForApplication(withBundleIdentifier: editor.rawValue)
-
-        if let appUrl {
-            let config = NSWorkspace.OpenConfiguration.init()
-            config.promptsUserIfNeeded = true
-            config.activates = true
-            NSWorkspace.shared.open([self], withApplicationAt: appUrl, configuration: config)
-        }
-    }
-
     func openInEditor(_ editor: ExternalEditor) {
         let appUrl = editor.bundleIdentifiers.compactMap { identifier in
             NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier)

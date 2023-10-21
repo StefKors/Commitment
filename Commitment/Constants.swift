@@ -31,4 +31,7 @@ class Settings {
     struct Git {
         static let Provider: String = "ExternalGitProvider"
     }
+    struct Editor {
+        static let ExternalEditor: String = "ExternalEditor"
+    }
 }

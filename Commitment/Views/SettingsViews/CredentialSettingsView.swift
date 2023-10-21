@@ -72,7 +72,7 @@ struct CredentialView: View {
 }
 
 struct CredentialSettingsView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @KeychainStorage("passwords") private var passwords: Credentials? = nil
     @State private var gitName: String = ""
     @State private var gitEmail: String = ""

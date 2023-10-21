@@ -19,8 +19,7 @@ import Foundation
 import SwiftData
 
 /// Describes a single file status
-@Model final class GitFileStatus: Identifiable {
-    
+@Model final class GitFileStatus: Identifiable, Equatable {
     // MARK: - Init
     init(path: String, state: String, sha: String? = nil, stats: GitFileStats? = nil) {
         self.path = path
@@ -43,7 +42,11 @@ import SwiftData
     
     @Attribute(.unique)
     var id: String {
-        self.path
+        if let sha {
+            return self.path + sha
+        }
+
+        return self.path
     }
 
     var repository: CodeRepository?
@@ -160,7 +163,7 @@ enum GitFileStatusConflictState: Codable {
 // MARK: - Types
 
 // MARK: - State
-struct GitFileStatusState: Codable {
+struct GitFileStatusState: Codable, Equatable {
 
     // MARK: - Init
     init(index: GitFileStatusModificationState, worktree: GitFileStatusModificationState) {

@@ -9,7 +9,7 @@ import SwiftUI
 import KeyboardShortcuts
 
 struct PublishRepoPlaceholder: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
 
     var body: some View {
@@ -28,7 +28,7 @@ struct PublishRepoPlaceholder: View {
                 }
                 Spacer()
                 Button("Publish repository", action: {
-                    repo.path.showInFinder()
+                    self.repository.path.showInFinder()
                 })
             }
             .scenePadding()
@@ -38,7 +38,7 @@ struct PublishRepoPlaceholder: View {
 }
 
 struct PushChangesRepoPlaceholder: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var shell: Shell
     @EnvironmentObject private var undoState: UndoState
     @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
@@ -50,7 +50,7 @@ struct PushChangesRepoPlaceholder: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Push commits to the origin remote")
                             .fontWeight(.semibold)
-                        Text("You have \(repo.commitsAhead.count) local commit waiting to be pushed to \(selectedExternalGitProvider).")
+                        Text("You have \(self.repository.commitsAhead.count) local commit waiting to be pushed to \(selectedExternalGitProvider).")
                             .foregroundStyle(.secondary)
                         HStack {
                             Text("Always available in the toolbar for local commits or")
@@ -66,7 +66,7 @@ struct PushChangesRepoPlaceholder: View {
                             do {
                                 _ = try await self.shell.push()
                                 self.undoState.stack = self.undoState.stack.filters(allOf: .commit)
-                                try? await self.repo.refreshRepoState()
+                                try? await  self.repository.refreshRepoState()
                             } catch {
                                 print(error.localizedDescription)
                             }
@@ -84,7 +84,7 @@ struct PushChangesRepoPlaceholder: View {
 }
 
 struct QuickCommitFeaturePlaceholder: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var shortcut: [String] {
         let str = KeyboardShortcuts.Shortcut(name: .globalCommitPanel)?.description ?? ""
@@ -120,7 +120,7 @@ struct QuickCommitFeaturePlaceholder: View {
 }
 
 struct GoCodeRepoPlaceholder: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
 
     var body: some View {
@@ -147,7 +147,8 @@ struct GoCodeRepoPlaceholder: View {
 }
 
 struct OpenRepoInEditorPlaceholder: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditor.xcode
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         GroupBox {
@@ -163,8 +164,8 @@ struct OpenRepoInEditorPlaceholder: View {
                     }.foregroundStyle(.secondary)
                 }
                 Spacer()
-                Button("Open in \(repo.editor.rawValue)", action: {
-                    repo.path.openInEditor(repo.editor)
+                Button("Open in \(externalEditor.name)", action: {
+                    self.repository.path.openInEditor(externalEditor)
                 })
                 .keyboardShortcut(.init("a", modifiers: [.command, .shift]))
             }
@@ -174,7 +175,7 @@ struct OpenRepoInEditorPlaceholder: View {
 }
 
 struct OpenRepoInFinderPlaceholder: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         GroupBox {
@@ -191,7 +192,7 @@ struct OpenRepoInFinderPlaceholder: View {
                 }
                 Spacer()
                 Button("Show in Finder", action: {
-                    repo.path.showInFinder()
+                    self.repository.path.showInFinder()
                 })
                 .keyboardShortcut("f", modifiers: [.command, .shift])
             }
@@ -201,16 +202,16 @@ struct OpenRepoInFinderPlaceholder: View {
 }
 
 struct ContentPlaceholderView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
 
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: 10) {
                 // TODO: figure out Commit Contribution Chart view
-//                CommitContributionChartView(commits: repo.commits)
+//                CommitContributionChartView(commits: self.repository.commits)
 //                Divider()
-                if repo.commitsAhead.count > 0 {
+                if self.repository.commitsAhead.count > 0 {
                     PushChangesRepoPlaceholder()
                 } else {
                     GoCodeRepoPlaceholder()

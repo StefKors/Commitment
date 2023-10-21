@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActiveChangesStatsView: View {
     @AppStorage(Settings.Diff.ShowStatsBlocks) private var showStatsBlocks: Bool = true
-    @EnvironmentObject private var repository: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         VStack {

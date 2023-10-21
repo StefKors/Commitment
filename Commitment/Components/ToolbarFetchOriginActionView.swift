@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ToolbarFetchOriginActionView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     let remote: String = "origin"
     @EnvironmentObject private var shell: Shell
 
@@ -40,7 +40,7 @@ struct ToolbarFetchOriginActionView: View {
 //            await self.shell.runActivity(.git, ["fetch", "origin", "main"], in: repo.shell.workspace)
 //            shell.output = nil
             // shell.isRunning = false
-            // try? await self.repo.shell.push()
+            // try? await  self.repository.shell.push()
         }
     }
 }

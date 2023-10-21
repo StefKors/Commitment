@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BranchSelectButtonView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         HStack {
@@ -20,7 +20,7 @@ struct BranchSelectButtonView: View {
             VStack(alignment: .leading) {
                 Text("Current Branch")
                     .foregroundStyle(.secondary)
-                Text(self.repo.branch?.name.localName ?? "")
+                Text( self.repository.branch?.name.localName ?? "")
                     .foregroundStyle(.primary)
             }
         }
@@ -28,16 +28,16 @@ struct BranchSelectButtonView: View {
 }
 
 struct BranchSelectView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var viewState: ViewState
     @EnvironmentObject private var shell: Shell
     var placeholder = "Select Branch"
     @State private var searchText: String = ""
     var filteredRepos: [GitReference] {
         if searchText.isEmpty {
-            return self.repo.branches
+            return  self.repository.branches
         } else {
-            return self.repo.branches.filter({ branch in
+            return  self.repository.branches.filter({ branch in
                 branch.name.localName.localizedCaseInsensitiveContains(searchText)
             })
         }
@@ -67,7 +67,7 @@ struct BranchSelectView: View {
                             }
                         }
 
-                    ForEach(repo.branches) { branch in
+                    ForEach(self.repository.branches) { branch in
                         Button(action: {
                             Task(priority: .userInitiated, operation: { @MainActor in
                                 do {
@@ -77,7 +77,7 @@ struct BranchSelectView: View {
                                 } catch {
                                     print(error.localizedDescription)
                                 }
-                                try await repo.refreshRepoState()
+                                try await self.repository.refreshRepoState()
                             })
                         }, label: {
                             HStack {

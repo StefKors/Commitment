@@ -6,73 +6,88 @@
 //
 
 import SwiftUI
+import SwiftData
 
+fileprivate struct ContextMenuContent: View {
+    let fileStatus: GitFileStatus
+    @Environment(CodeRepository.self) private var repository
+    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditor.xcode
+
+    var body: some View {
+        Button("Reveal in Finder") {
+            if let last = fileStatus.path.split(separator: " -> ").last {
+                let fullPath = self.repository.path.appending(path: last)
+                fullPath.showInFinder()
+            }
+        }
+        .keyboardShortcut("o")
+
+        Button("Open in \(externalEditor.name)") {
+            if let last = fileStatus.path.split(separator: " -> ").last {
+                let fullPath = self.repository.path.appending(path: last)
+                fullPath.openInEditor(externalEditor)
+            }
+        }
+        .keyboardShortcut("o", modifiers: [.command, .shift])
+
+        Divider()
+
+        Button("Copy File Path") {
+            if let last = fileStatus.path.split(separator: " -> ").last {
+                let fullPath = self.repository.path.appending(path: last)
+                copyToPasteboard(text: fullPath.relativePath)
+            }
+        }
+        .keyboardShortcut("c")
+
+        Button("Copy Relative File Path") {
+            if let last = fileStatus.path.split(separator: " -> ").last {
+                copyToPasteboard(text: String(last))
+            }
+        }
+        .keyboardShortcut("c", modifiers: [.command, .shift])
+
+        Divider()
+
+        Button {
+            Task {
+                await self.repository.discardActiveChange(path: fileStatus.path)
+            }
+        } label: {
+            Text("Discard Changes")
+        }
+    }
+}
 
 struct ActiveChangesSidebarView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
+
     @EnvironmentObject private var viewState: ViewState
+
+    @State private var selection: GitFileStatus.ID?
 
     var body: some View {
         VStack {
-            List(selection: $viewState.activeChangesSelection) {
-                ForEach(repo.status, id: \.id) { fileStatus in
-                    GitFileStatusView(fileStatus: fileStatus)
-                        .contextMenu {
-                            Button("Reveal in Finder") {
-                                if let last = fileStatus.path.split(separator: " -> ").last {
-                                    let fullPath = repo.path.appending(path: last)
-                                    fullPath.showInFinder()
-                                }
-                            }
-                            .keyboardShortcut("o")
-
-                            Button("Open in \(repo.editor.rawValue)") {
-                                if let last = fileStatus.path.split(separator: " -> ").last {
-                                    let fullPath = repo.path.appending(path: last)
-                                    fullPath.openInEditor(repo.editor)
-                                }
-                            }
-                            .keyboardShortcut("o", modifiers: [.command, .shift])
-
-                            Divider()
-
-                            Button("Copy File Path") {
-                                if let last = fileStatus.path.split(separator: " -> ").last {
-                                    let fullPath = repo.path.appending(path: last)
-                                    copyToPasteboard(text: fullPath.relativePath)
-                                }
-                            }
-                            .keyboardShortcut("c")
-
-                            Button("Copy Relative File Path") {
-                                if let last = fileStatus.path.split(separator: " -> ").last {
-                                    copyToPasteboard(text: String(last))
-                                }
-                            }
-                            .keyboardShortcut("c", modifiers: [.command, .shift])
-
-                            Divider()
-
-                            Button {
-                                Task {
-                                    await repo.discardActiveChange(path: fileStatus.path)
-                                }
-                            } label: {
-                                Text("Discard Changes")
-                            }
-                        }
-                        .tag(fileStatus)
-                }
+            List(self.repository.status.sorted(by: \.cleanedPath), id: \.path, selection: $selection) { fileStatus in
+                GitFileStatusView(fileStatus: fileStatus)
+                    .contextMenu {
+                        ContextMenuContent(fileStatus: fileStatus)
+                    }
+                    .tag(fileStatus.id)
             }
-            .listStyle(SidebarListStyle())
 
             ActiveChangesStatsView()
             Divider()
             VStack {
-                TextEditorView(isDisabled: repo.status.isEmpty)
+                TextEditorView(isDisabled: self.repository.status.isEmpty)
                 UndoActivityView()
             }
             .padding(.bottom)
+        }
+        .task(id: selection) {
+            viewState.activeChangesSelection = self.repository.status.first(where:  { status in
+                status.id == selection
+            })
         }
     }
 }

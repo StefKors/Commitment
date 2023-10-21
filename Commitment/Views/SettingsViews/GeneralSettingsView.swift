@@ -9,18 +9,17 @@ import SwiftUI
 import Boutique
 
 struct GeneralSettingsView: View {
-    @EnvironmentObject var repo: CodeRepository
     @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
     @AppStorage(Settings.Diff.Mode) private var diffViewMode: DiffViewMode = .unified
     @AppStorage(Settings.Diff.ShowStatsBlocks) private var showStatsBlocks: Bool = true
+    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditor.xcode
 
-    private var externalEditorPickerItems: [ExternalEditors] {
-        ExternalEditors.allCases
-        //        ExternalEditors().editors.filter { editor in
-        //            editor.bundleIdentifiers.first { identifier in
-        //                NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) != nil
-        //            } != nil
-        //        }
+    private var externalEditorPickerItems: [ExternalEditor] {
+        ExternalEditors().editors.filter { editor in
+            editor.bundleIdentifiers.first { identifier in
+                NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) != nil
+            } != nil
+        }
     }
 
     private let externalGitProviderPickerItems = [
@@ -35,9 +34,9 @@ struct GeneralSettingsView: View {
         SettingsBox(
             label: "Editor Defaults"
         ) {
-            Picker("External Editor", selection: $repo.editor) {
+            Picker("External Editor", selection: $externalEditor) {
                 ForEach(externalEditorPickerItems, id: \.self) { item in
-                    Text(item.rawValue).tag(item)
+                    Text(item.name).tag(item)
                 }
             }
 

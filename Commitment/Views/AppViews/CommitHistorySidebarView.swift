@@ -9,12 +9,12 @@ import SwiftUI
 
 
 struct CommitHistorySidebarView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var viewState: ViewState
 
     var body: some View {
         List(selection: $viewState.activeCommitSelection) {
-            ForEach(repo.commits) { commit in
+            ForEach(self.repository.commits) { commit in
                 SidebarCommitLabelView(commit: commit)
                     .tag(commit)
             }

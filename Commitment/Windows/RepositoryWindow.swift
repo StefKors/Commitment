@@ -11,12 +11,13 @@ import OSLog
 fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "RepositoryWindow")
 
 struct RepositoryWindow: View {
-    let repository: CodeRepository
+//    let repository: CodeRepository
 
     @State private var shell: Shell? = nil
     @StateObject private var activityState = ActivityState()
     @StateObject private var viewState = ViewState()
     @StateObject private var undoState = UndoState()
+    @Environment(CodeRepository.self) private var repository
 
     /// What am I doing?
     /// Active changes is based per repo
@@ -30,7 +31,6 @@ struct RepositoryWindow: View {
         Group {
             if shell != nil, let shell {
                 LoadedRepositoryView()
-                    .environmentObject(repository)
                     .environmentObject(activityState)
                     .environmentObject(viewState)
                     .environmentObject(undoState)

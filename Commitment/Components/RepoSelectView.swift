@@ -10,7 +10,7 @@ import AppKit
 import SwiftData
 
 struct RepoSelectMenuButton: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         HStack {
@@ -22,7 +22,7 @@ struct RepoSelectMenuButton: View {
             VStack(alignment: .leading) {
                 Text("Current Repository")
                     .opacity(0.7)
-                Text(self.repo.folderName)
+                Text( self.repository.folderName)
             }
         }
     }
@@ -31,7 +31,7 @@ struct RepoSelectMenuButton: View {
 // TODO: do better filtering in the SwiftData query
 struct RepoSelectView: View {
     @Environment(\.modelContext) private var modelContext
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject var viewState: ViewState
     @Query private var repos: [CodeRepository]
 

@@ -11,24 +11,24 @@ import OSLog
 
 fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "CodeRepository")
 
-@Model final class CodeRepository: Identifiable, ObservableObject {
+@Model final class CodeRepository: Identifiable {
     @Attribute(.unique) var path: URL
 
+    // Active Changes
     @Relationship(deleteRule: .cascade, inverse: \GitFileStatus.repository)
     var status = [GitFileStatus]()
-
     var stats: ActiveChangesStats = ActiveChangesStats()
 
     var bookmark: Bookmark
+
     // Settings
-    var editor: ExternalEditors = ExternalEditors.xcode
     var windowMode: SplitModeOptions = SplitModeOptions.changes
 
     var user: GitUser? = nil
 
     // All branches in the local repo
     var branches: [GitReference]
-    
+
     /// All commits in the local repo
     var commits: [Commit]
 

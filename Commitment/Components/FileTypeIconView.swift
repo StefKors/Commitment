@@ -10,12 +10,12 @@ import UniformTypeIdentifiers
 
 struct FileTypeIconView: View {
     let path: String
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     @ScaledMetric private var size = 18
 
     private var url: URL {
-        URL(filePath: path, relativeTo: repo.path)
+        URL(filePath: path, relativeTo: self.repository.path)
     }
 
     private var isImage: Bool {
@@ -25,22 +25,32 @@ struct FileTypeIconView: View {
         return false
     }
 
+    private var isPbxproj: Bool {
+        url.pathExtension == "pbxproj"
+    }
+
     var body: some View {
         Group {
             if isImage {
                 Image(systemName: "photo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.tint)
             } else if let icon = fileLanguages[url.pathExtension] {
                 Image(icon.filename)
-                    .renderingMode(.template)
+//                    .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.8)
+            } else if isPbxproj {
+                Image(.pbxprojAlt)
+                    .renderingMode(.template)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.tint)
             } else {
                 Image(.defaultFile)
-                    .renderingMode(.template)
+//                    .renderingMode(.template)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .opacity(0.8)

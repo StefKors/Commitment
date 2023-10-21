@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UndoActionView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var shell: Shell
     @EnvironmentObject private var undoState: UndoState
     let action: UndoAction
@@ -41,7 +41,7 @@ struct UndoActionView: View {
                         self.undoState.stack.removeLast()
                     }
 
-                    try await self.repo.refreshDiffsAndStatus()
+                    try await  self.repository.refreshDiffsAndStatus()
                 }
             })
             .buttonStyle(.undo)

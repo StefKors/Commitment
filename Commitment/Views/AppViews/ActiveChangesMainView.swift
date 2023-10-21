@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ActiveChangesMainView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var viewState: ViewState
 
 //    let id: GitFileStatus?

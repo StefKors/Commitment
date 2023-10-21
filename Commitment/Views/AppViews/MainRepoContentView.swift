@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MainRepoContentView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         NavigationView {
-            switch repo.windowMode {
+            switch self.repository.windowMode {
             case .history:
                 CommitHistoryView()
 

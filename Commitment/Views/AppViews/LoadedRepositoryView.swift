@@ -11,7 +11,7 @@ import Algorithms
 import KeyboardShortcuts
 
 struct LoadedRepositoryView: View {
-    @EnvironmentObject private var repository: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var activityState: ActivityState
     @EnvironmentObject private var undoState: UndoState
     @EnvironmentObject private var viewState: ViewState
@@ -32,7 +32,7 @@ struct LoadedRepositoryView: View {
             }
             .floatingPanel(isPresented: $showPanel) {
                 QuickCommitPanelView(showPanel: $showPanel)
-                    .environmentObject(repository)
+                    .environment(repository)
                     .environmentObject(activityState)
                     .environmentObject(viewState)
                     .environmentObject(undoState)
@@ -82,12 +82,20 @@ struct LoadedRepositoryView: View {
             .task($activeChangesUpdate) {
                 let diffs: [String: GitDiff] = await self.shell.diff()
 
-                async let status = self.shell.status().map { status in
+                let status = await self.shell.status().map { status in
                     status.diff = diffs[status.cleanedPath]
                     return status
                 }
 
-                repository.status = await status
+//                let updatedStatus: [GitFileStatus] = status.filter { status in
+//                    !repository.status.contains(where: { existingFileStatus in
+//                        status.id == existingFileStatus.id
+//                    })
+//                }
+                print("updating status testing: ActiveChangesSidebarView")
+                // TODO: why is this losing selection
+//                repository.status.append(contentsOf: updatedStatus)
+                repository.status = status
                 repository.stats = await self.shell.stats()
             }
     }

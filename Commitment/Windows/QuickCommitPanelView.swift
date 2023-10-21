@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PanelRepoSelectView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         HStack {
@@ -18,14 +18,14 @@ struct PanelRepoSelectView: View {
                 .frame(width: 16, height: 16)
                 .foregroundStyle(.secondary)
 
-            Text(self.repo.folderName)
+            Text( self.repository.folderName)
                 .foregroundStyle(.primary)
         }
     }
 }
 
 struct PanelBranchView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         HStack {
@@ -35,7 +35,7 @@ struct PanelBranchView: View {
                 .frame(width: 16, height: 16)
                 .foregroundStyle(.secondary)
 
-            Text(repo.branch?.name.localName ?? "")
+            Text(self.repository.branch?.name.localName ?? "")
                 .foregroundStyle(.primary)
         }
     }
@@ -103,28 +103,29 @@ struct FloatingPanelSidebarView: View {
 }
 
 struct FloatingPanelContentView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditor.xcode
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         ScrollView(.vertical) {
             VStack {
-                ForEach(repo.status, id: \.id) { fileStatus in
+                ForEach(self.repository.status, id: \.id) { fileStatus in
                     GitFileStatusView(fileStatus: fileStatus)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 1)
                         .contextMenu {
                             Button("Reveal in Finder") {
                                 if let last = fileStatus.path.split(separator: " -> ").last {
-                                    let fullPath = repo.path.appending(path: last)
+                                    let fullPath = self.repository.path.appending(path: last)
                                     fullPath.showInFinder()
                                 }
                             }
                             .keyboardShortcut("o")
 
-                            Button("Open in \(repo.editor.rawValue)") {
+                            Button("Open in \(externalEditor.name)") {
                                 if let last = fileStatus.path.split(separator: " -> ").last {
-                                    let fullPath = repo.path.appending(path: last)
-                                    fullPath.openInEditor(repo.editor)
+                                    let fullPath = self.repository.path.appending(path: last)
+                                    fullPath.openInEditor(externalEditor)
                                 }
                             }
                             .keyboardShortcut("o", modifiers: [.command, .shift])
@@ -133,7 +134,7 @@ struct FloatingPanelContentView: View {
 
                             Button("Copy File Path") {
                                 if let last = fileStatus.path.split(separator: " -> ").last {
-                                    let fullPath = repo.path.appending(path: last)
+                                    let fullPath = self.repository.path.appending(path: last)
                                     copyToPasteboard(text: fullPath.relativePath)
                                 }
                             }
@@ -150,7 +151,7 @@ struct FloatingPanelContentView: View {
 
                             Button {
                                 Task {
-                                    await repo.discardActiveChange(path: fileStatus.path)
+                                    await self.repository.discardActiveChange(path: fileStatus.path)
                                 }
                             } label: {
                                 Text("Discard Changes")
@@ -165,7 +166,7 @@ struct FloatingPanelContentView: View {
 }
 
 struct FloatingPanelFooterView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var handleSubmit: () -> Void
 
@@ -177,7 +178,7 @@ struct FloatingPanelFooterView: View {
                 handleSubmit()
             } label: {
                 HStack {
-                    Text("Commit to \(repo.branch?.name.localName ?? "")")
+                    Text("Commit to \(self.repository.branch?.name.localName ?? "")")
                     HStack(spacing: 0) {
                         Image(systemName: "command")
                         Image(systemName: "return")
@@ -195,7 +196,7 @@ struct FloatingPanelFooterView: View {
 
 struct QuickCommitPanelView: View {
     @Binding var showPanel: Bool
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var shell: Shell
     @EnvironmentObject private var undoState: UndoState
     @State private var commitTitle: String = ""
@@ -203,7 +204,7 @@ struct QuickCommitPanelView: View {
 
     private var quickCommitTitle: String? {
         print("todo: generate quick commit title")
-//        if repo.status.count == 1, let first = repo.status.first, let str = first.path.split(separator: " -> ").last {
+//        if self.repository.status.count == 1, let first = self.repository.status.first, let str = first.path.split(separator: " -> ").last {
 //            let url = URL(filePath: String(str))
 //            return "Update \(url.lastPathComponent)"
 //        }
@@ -263,7 +264,7 @@ struct QuickCommitPanelView: View {
             self.undoState.stack.append(action)
         }
 
-        try await self.repo.refreshRepoState()
+        try await  self.repository.refreshRepoState()
     }
 }
 

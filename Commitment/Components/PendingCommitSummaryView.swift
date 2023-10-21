@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct PendingCommitSummaryView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         ZStack {
-            let items = repo.commitsAhead.sorted(by: { A, B in
+            let items = self.repository.commitsAhead.sorted(by: { A, B in
                 return A.commiterDate < B.commiterDate
             }).suffix(3)
             ForEach(Array(zip(items.indices, items)), id: \.0) { index, commit in
                 PendingCommitSummaryItemView(commit: commit)
-                    .stacked(at: index, in: repo.commitsAhead.count)
+                    .stacked(at: index, in: self.repository.commitsAhead.count)
                     .id(commit.hash)
                     .transition(.opacity.animation(.stiffBounce).combined(with: .scale.animation(.interpolatingSpring(stiffness: 1000, damping: 80))))
                     .animation(.stiffBounce, value: items)

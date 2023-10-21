@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TextEditorView: View {
     let isDisabled: Bool
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var shell: Shell
     @EnvironmentObject private var undoState: UndoState
     // SceneStorage doesn't work well with textfield...
@@ -49,7 +49,7 @@ struct TextEditorView: View {
         Form {
 
             HStack {
-                if let user = repo.user {
+                if let user = self.repository.user {
                     AvatarView(email: user.email)
                         .shadow(radius: 2)
                 }
@@ -80,7 +80,7 @@ struct TextEditorView: View {
                 handleSubmit()
             } label: {
                 HStack {
-                    Text("Commit to \(repo.branch?.name.localName ?? "")")
+                    Text("Commit to \(self.repository.branch?.name.localName ?? "")")
                     Spacer()
                     HStack(spacing: 0) {
                         Image(systemName: "command")
@@ -123,7 +123,7 @@ struct TextEditorView: View {
             self.undoState.stack.append(action)
         }
 
-        try await self.repo.refreshRepoState()
+        try await  self.repository.refreshRepoState()
     }
 }
 

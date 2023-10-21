@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ToolbarPrimaryActionView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
 
-        if repo.commitsAhead.count > 0 {
+        if self.repository.commitsAhead.count > 0 {
             ToolbarPushOriginActionButtonView()
         } else {
             ToolbarFetchOriginActionView()

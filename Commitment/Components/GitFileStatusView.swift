@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GitFileStatusView: View {
     @AppStorage(Settings.Changes.ShowFullPathInActiveChanges) private var showFullPathInActiveChanges: Bool = true
-    @AppStorage(Settings.Changes.ShowFileIconInActiveChanges) private var showFileIconInActiveChanges: Bool = true
 
     internal init(fileStatus: GitFileStatus) {
         self.fileStatus = fileStatus
@@ -23,10 +22,6 @@ struct GitFileStatusView: View {
 
     var body: some View {
         HStack(alignment: .center) {
-            if showFileIconInActiveChanges {
-                FileTypeIconView(path: fileStatus.path)
-            }
-
             HStack(alignment: .center, spacing: .zero, content: {
                 ForEach(labels, id: \.self) { label in
                     let isRename = labels.count > 1

@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct HeaderContentView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(repo.folderName)
+                Text(self.repository.folderName)
                     .fontWeight(.bold)
-                Text(repo.branch?.name.localName ?? "")
+                Text(self.repository.branch?.name.localName ?? "")
                     .foregroundColor(.secondary)
                     .font(.system(size: 11))
             }

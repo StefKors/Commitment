@@ -9,7 +9,8 @@ import SwiftUI
 
 
 struct CommitHistoryMainView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditor.xcode
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var viewState: ViewState
     @EnvironmentObject private var shell: Shell
     var id: Commit.ID? = nil
@@ -36,16 +37,16 @@ struct CommitHistoryMainView: View {
                             .contextMenu {
                                 Button("Reveal in Finder") {
                                     if let last = fileStatus.path.split(separator: " -> ").last {
-                                        let fullPath = repo.path.appending(path: last)
+                                        let fullPath = self.repository.path.appending(path: last)
                                         fullPath.showInFinder()
                                     }
                                 }
                                 .keyboardShortcut("o")
                                 
-                                Button("Open in \(repo.editor.rawValue)") {
+                                Button("Open in \(externalEditor.name)") {
                                     if let last = fileStatus.path.split(separator: " -> ").last {
-                                        let fullPath = repo.path.appending(path: last)
-                                        fullPath.openInEditor(repo.editor)
+                                        let fullPath = self.repository.path.appending(path: last)
+                                        fullPath.openInEditor(externalEditor)
                                     }
                                 }
                                 .keyboardShortcut("o", modifiers: [.command, .shift])
@@ -54,7 +55,7 @@ struct CommitHistoryMainView: View {
                                 
                                 Button("Copy File Path") {
                                     if let last = fileStatus.path.split(separator: " -> ").last {
-                                        let fullPath = repo.path.appending(path: last)
+                                        let fullPath = self.repository.path.appending(path: last)
                                         copyToPasteboard(text: fullPath.relativePath)
                                     }
                                 }

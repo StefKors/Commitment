@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct TouchbarContentView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
 
     var body: some View {
         HStack {
-            Label(self.repo.folderName, image: "git-repo-16")
+            Label( self.repository.folderName, image: "git-repo-16")
             Image(systemName: "chevron.compact.right")
 
-            if let branch = self.repo.branch?.name.localName, !branch.isEmpty {
+            if let branch =  self.repository.branch?.name.localName, !branch.isEmpty {
                 Label(branch, image: "git-branch-16")
             }
 

@@ -41,6 +41,16 @@ struct CommitmentApp: App {
     let container = try! ModelContainer(for: CodeRepository.self, Bookmark.self, GitFileStatus.self, GitDiff.self)
 
     var body: some Scene {
+        SwiftUI.Settings {
+            SettingsWindow()
+                .frame(width: 650, height: 400)
+                .hideSidebarToggle()
+        }
+        .windowStyle(.automatic)
+        .windowToolbarStyle(.unified)
+        .windowResizability(.contentSize)
+        .defaultSize(width: 650, height: 400)
+
         WindowGroup(id: SceneID.mainWindow.id, for: URL.self) { $repositoryID in
             ContentView(repositoryID: $repositoryID)
         }
@@ -57,16 +67,8 @@ struct CommitmentApp: App {
             //            OverrideCommands()
             TextEditingCommands()
         }
-
-
-//        Window("Settings", id: "settings") {
-//            SettingsWindow()
-//                .frame(width: 650, height: 400)
-//                .hideSidebarToggle()
-//        }
-//        .windowStyle(.automatic)
-//        .windowToolbarStyle(.unified)
-//        .windowResizability(.contentSize)
-//        .defaultSize(width: 650, height: 400)
+        //        Window("Settings", id: "settings") {
+        //
+        //        }
     }
 }

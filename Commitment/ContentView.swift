@@ -17,7 +17,8 @@ struct ContentView: View {
     var body: some View {
         Group {
             if let activeRepository {
-                RepositoryWindow(repository: activeRepository)
+                RepositoryWindow()
+                    .environment(activeRepository)
                     .frame(minWidth: 1100, minHeight: 600)
             } else {
                 WelcomeContentView()

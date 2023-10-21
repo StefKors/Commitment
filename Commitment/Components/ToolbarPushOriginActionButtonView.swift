@@ -9,7 +9,7 @@ import SwiftUI
 import KeychainAccess
 
 struct ToolbarPushOriginActionButtonView: View {
-    @EnvironmentObject private var repo: CodeRepository
+    @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var activityState: ActivityState
     @EnvironmentObject private var undoState: UndoState
     @EnvironmentObject private var shell: Shell
@@ -30,7 +30,7 @@ struct ToolbarPushOriginActionButtonView: View {
                     }.frame(maxWidth: 190, alignment: .leading)
 
                     GroupBox {
-                        Text(repo.commitsAhead.count.description)
+                        Text(self.repository.commitsAhead.count.description)
                     }
                 }
                 .foregroundColor(.primary)
@@ -63,7 +63,7 @@ struct ToolbarPushOriginActionButtonView: View {
             do {
                 _ = try await self.shell.push()
                 self.undoState.stack = self.undoState.stack.filters(allOf: .commit)
-                try await self.repo.refreshRepoState()
+                try await  self.repository.refreshRepoState()
             } catch {
                 print(error.localizedDescription)
             }
