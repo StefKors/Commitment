@@ -188,6 +188,7 @@ extension Shell {
     func status() async -> [GitFileStatus] {
         // print("starting status")
         let statusString = await self.runTask(.git, ["status", "--porcelain=v1"])
+        if statusString.isEmpty { return [] }
         // print("status string \(statusString)")
         let lines = statusString.lines
          print("status lines \(lines)")

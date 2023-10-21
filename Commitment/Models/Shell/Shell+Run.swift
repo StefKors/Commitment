@@ -143,7 +143,7 @@ extension Shell {
 //        return process
 
         let execResult = Exec.run(executable.url.path(), command, currentDirectory: location.absoluteString, stderr: .merge)
-        return execResult.string ?? "fail"
+        return execResult.string ?? ""
 //
 //        let signpostID = signposter.makeSignpostID()
 //        let state = signposter.beginInterval("run", id: signpostID)
