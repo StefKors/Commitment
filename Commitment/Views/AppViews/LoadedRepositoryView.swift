@@ -87,6 +87,8 @@ struct LoadedRepositoryView: View {
                     return status
                 }
 
+                print("\(status.first)")
+
 //                let updatedStatus: [GitFileStatus] = status.filter { status in
 //                    !repository.status.contains(where: { existingFileStatus in
 //                        status.id == existingFileStatus.id
