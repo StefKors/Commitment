@@ -190,7 +190,7 @@ extension Shell {
         let statusString = await self.runTask(.git, ["status", "--porcelain=v1"])
         // print("status string \(statusString)")
         let lines = statusString.lines
-        // print("status lines \(lines)")
+         print("status lines \(lines)")
         let mapToStatus = await lines.asyncCompactMap({ line -> GitFileStatus? in
 //                print("map status")
                 guard line.count > 3 else { return nil }
