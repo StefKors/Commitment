@@ -17,23 +17,14 @@ struct CommitHistoryMainView: View {
     
     @State private var diffs: [GitDiff] = []
     @State private var files: [GitFileStatus] = [] 
-//    {
-        // set default view
-        // TODO: Handle default view
-//        didSet {
-//            if viewState.activeCommitFileSelection == nil {
-//                viewState.activeCommitFileSelection = files.first?.id
-//            }
-//        }
-//    }
-    
+
     var body: some View {
         HSplitView {
             ZStack {
                 Rectangle().fill(.background)
                 List(selection: $viewState.activeCommitFileSelection) {
                     ForEach(files) { fileStatus in
-                        GitFileStatusView(fileStatus: fileStatus)
+                        SidebarGitFileStatusView(fileStatus: fileStatus)
                             .contextMenu {
                                 Button("Reveal in Finder") {
                                     if let last = fileStatus.path.split(separator: " -> ").last {

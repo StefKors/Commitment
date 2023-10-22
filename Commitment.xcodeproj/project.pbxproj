@@ -385,6 +385,7 @@
 		8AF347CB2AE1270600B7BD45 /* GitOutputParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347C72AE1270600B7BD45 /* GitOutputParser.swift */; };
 		8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */; };
 		8AF893162AE400CA002E4282 /* AppStorage+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF893152AE400CA002E4282 /* AppStorage+Array.swift */; };
+		8AF893182AE563A4002E4282 /* SidebarGitFileStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF893172AE563A4002E4282 /* SidebarGitFileStatusView.swift */; };
 		8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD506296F2A4000525BF7 /* PillView.swift */; };
 		8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */; };
 		8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */; };
@@ -1009,6 +1010,7 @@
 		8AF347C72AE1270600B7BD45 /* GitOutputParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitOutputParser.swift; sourceTree = "<group>"; };
 		8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPushOriginActionButtonView.swift; sourceTree = "<group>"; };
 		8AF893152AE400CA002E4282 /* AppStorage+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppStorage+Array.swift"; sourceTree = "<group>"; };
+		8AF893172AE563A4002E4282 /* SidebarGitFileStatusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarGitFileStatusView.swift; sourceTree = "<group>"; };
 		8AFBD506296F2A4000525BF7 /* PillView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillView.swift; sourceTree = "<group>"; };
 		8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeRepoListView.swift; sourceTree = "<group>"; };
 		8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeStackView.swift; sourceTree = "<group>"; };
@@ -1618,6 +1620,7 @@
 				8A6842632A053D8B0063CBE6 /* MacTextEditorView.swift */,
 				8A3421DB29CF08BE0001E58B /* GitFileStatusLabelView.swift */,
 				8AFBD55D29704F7000525BF7 /* GitFileStatusView.swift */,
+				8AF893172AE563A4002E4282 /* SidebarGitFileStatusView.swift */,
 				8A327EFD298E9081008521B0 /* HeaderContentView.swift */,
 				8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */,
 				8AAF7AED29A6D9600007CE8D /* HunkHeaderLineView.swift */,
@@ -2448,6 +2451,7 @@
 				8A327EFE298E9081008521B0 /* HeaderContentView.swift in Sources */,
 				8A97DC92299BB148001E25E1 /* Equatable+AnyOf.swift in Sources */,
 				8A07612D29659EEE00D878DC /* GitDiffHunkLine.swift in Sources */,
+				8AF893182AE563A4002E4282 /* SidebarGitFileStatusView.swift in Sources */,
 				8A96B5FD2A07AFD100A52467 /* TouchbarRepoView.swift in Sources */,
 				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
 				8ACCD2F1297F265C0020BF84 /* RepositoryReference.swift in Sources */,
@@ -2726,7 +2730,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.Commitment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2765,7 +2769,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=200 -Xfrontend -warn-long-expression-type-checking=200";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.Commitment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

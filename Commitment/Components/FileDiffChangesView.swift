@@ -14,8 +14,19 @@ struct FileDiffChangesView: View {
     @AppStorage(Settings.Diff.Mode) private var diffViewMode: DiffViewMode = .unified
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-        ScrollView(.vertical) {
+        VStack(alignment: .leading) {
+            HStack(spacing: 8) {
+                Picker("Choose view style?", selection: $diffViewMode) {
+                    Image(systemName: "rectangle.split.2x1.fill").tag(DiffViewMode.sideBySide)
+                    Image(systemName: "rectangle.split.1x2.fill").tag(DiffViewMode.unified)
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
+                .frame(width: 100)
+            }
+            Divider()
+
+            ScrollView(.vertical) {
                 if let diff = fileStatus.diff {
                     switch diffViewMode {
                     case .unified:
@@ -30,9 +41,6 @@ struct FileDiffChangesView: View {
                         .padding()
                 }
             }
-
-            FileStatsView(stats: fileStatus.stats)
-                .padding()
         }
     }
 }

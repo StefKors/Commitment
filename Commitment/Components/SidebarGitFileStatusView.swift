@@ -1,5 +1,5 @@
 //
-//  GitFileStatusView.swift
+//  SidebarGitFileStatusView.swift
 //  Commitment
 //
 //  Created by Stef Kors on 12/01/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GitFileStatusView: View {
+struct SidebarGitFileStatusView: View {
     @AppStorage(Settings.Changes.ShowFullPathInActiveChanges) private var showFullPathInActiveChanges: Bool = true
 
     internal init(fileStatus: GitFileStatus) {
@@ -39,7 +39,7 @@ struct GitFileStatusView: View {
             .allowsHitTesting(true)
             
             Spacer()
-            FileStatsView(stats: fileStatus.stats)
+
             FileStateIconsView(state: fileStatus.state)
         }
     }

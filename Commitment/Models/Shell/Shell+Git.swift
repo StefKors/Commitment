@@ -203,8 +203,8 @@ extension Shell {
                 fileName = fileName.trimmingCharacters(in: CharacterSet(charactersIn: "\"\\"))
 
             // TODO: need to figure out a performant way to get stats....
-//                let stats = await self.numStat(file: fileName)
-                return GitFileStatus(path: fileName, state: fileState, stats: nil)
+                let stats = await self.numStat(file: fileName)
+                return GitFileStatus(path: fileName, state: fileState, stats: stats)
             })
 //            }
 //            .compactMap({$0})

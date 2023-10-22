@@ -110,7 +110,7 @@ struct FloatingPanelContentView: View {
         ScrollView(.vertical) {
             VStack {
                 ForEach(self.repository.status, id: \.id) { fileStatus in
-                    GitFileStatusView(fileStatus: fileStatus)
+                    SidebarGitFileStatusView(fileStatus: fileStatus)
                         .padding(.horizontal, 4)
                         .padding(.vertical, 1)
                         .contextMenu {

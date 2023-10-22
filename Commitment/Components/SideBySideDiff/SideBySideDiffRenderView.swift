@@ -88,10 +88,6 @@ struct SideBySideDiffRenderView: View {
     .scenePadding()
 }
 
-
-
-
-
 struct HunkView: View {
     let hunk: GitDiffHunk
 
@@ -174,7 +170,6 @@ struct HunkView: View {
                         startB: firstChangeOffset,
                         distanceB: newSideHeight
                     )
-                    Spacer()
                 }
                 .frame(width: 60)
 

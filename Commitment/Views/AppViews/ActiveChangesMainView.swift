@@ -14,7 +14,7 @@ struct ActiveChangesMainView: View {
 //    let id: GitFileStatus?
 
     var fileStatus: GitFileStatus? {
-        self.repository.status.first(where:  { status in
+        self.repository.status.first(where: { status in
             status.id == viewState.activeChangeSelection
         })
     }

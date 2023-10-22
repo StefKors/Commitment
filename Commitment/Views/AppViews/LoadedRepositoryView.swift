@@ -48,15 +48,11 @@ struct LoadedRepositoryView: View {
             .gitFolderMonitor(
                 url: repository.path,
                 onFileChange: { fileChange in
-                    Throttler.throttle(delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) {
-                        // TODO: Save repo changes to SwiftData
+//                    Throttler.throttle(delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) {
                         activeChangesUpdate.trigger()
-                        Task(priority: .userInitiated, operation: {
-                        })
-                    }
                 },
                 onGitChange: { gitChange in
-                    Throttler.throttle( delay: .seconds(3),shouldRunImmediately: true) {
+                    Throttler.throttle(delay: .seconds(3),shouldRunImmediately: true) {
                         gitBranchUpdate.trigger()
                         gitHistoryUpdate.trigger()
                     }
@@ -80,19 +76,15 @@ struct LoadedRepositoryView: View {
                 }
             }
             .task($activeChangesUpdate) {
-                print("timer: 1")
+                repository.stats = await self.shell.stats()
+            }
+            .task($activeChangesUpdate) {
                 let diffs: [String: GitDiff] = await self.shell.diff()
-                print("timer: 2")
                 /// Add diffs to status
-                let status = await self.shell.status()
-                print("timer: 3")
-                let filledStatus = status.map { status in
+                repository.status = await self.shell.status().map { status in
                     status.diff = diffs[status.cleanedPath]
                     return status
                 }
-                print("timer: 4")
-                repository.status = filledStatus
-                repository.stats = await self.shell.stats()
             }
     }
 }
