@@ -42,6 +42,9 @@ struct FileDiffChangesView: View {
                 }
             }
         }
+        .task(id: fileStatus) {
+            print("hasdiff \((fileStatus.diff != nil).description)")
+        }
     }
 }
 

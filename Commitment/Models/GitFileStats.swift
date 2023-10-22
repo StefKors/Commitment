@@ -42,6 +42,13 @@ public struct GitFileStats: Codable, Equatable {
         }
     }
 
+    init(fileChanged: String? = nil, insertions: Int, deletions: Int, raw: String) {
+        self.fileChanged = fileChanged
+        self.insertions = insertions
+        self.deletions = deletions
+        self.raw = raw
+    }
+
     var fileChanged: String?
     var insertions: Int = 0
     var deletions: Int = 0

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CachedAsyncImage
+import NukeUI
 
 struct AvatarView: View {
     var email: String
@@ -20,19 +20,17 @@ struct AvatarView: View {
     }
 
     var body: some View {
-        CachedAsyncImage(
+        LazyImage(request: ImageRequest(
             url: url,
-            urlCache: .imageCache,
-            transaction: Transaction(animation: .spring())
-        ) { phase in
-            switch phase {
-            case .success(let image):
+            processors: [.resize(width: size*3)]
+        )) { state in
+            if let image = state.image {
                 ZStack {
                     image
                         .resizable()
                         .clipShape(Circle())
                 }
-            default:
+            } else {
                 ZStack {
                     Image(systemName: "person.crop.circle.fill")
                         .resizable()

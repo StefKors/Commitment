@@ -386,12 +386,15 @@
 		8AF7637C2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */; };
 		8AF893162AE400CA002E4282 /* AppStorage+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF893152AE400CA002E4282 /* AppStorage+Array.swift */; };
 		8AF893182AE563A4002E4282 /* SidebarGitFileStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF893172AE563A4002E4282 /* SidebarGitFileStatusView.swift */; };
+		8AF8931E2AE56CB7002E4282 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF8931D2AE56CB7002E4282 /* Nuke */; };
+		8AF893202AE56CB7002E4282 /* NukeExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF8931F2AE56CB7002E4282 /* NukeExtensions */; };
+		8AF893222AE56CB7002E4282 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF893212AE56CB7002E4282 /* NukeUI */; };
+		8AF893242AE56CB7002E4282 /* NukeVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF893232AE56CB7002E4282 /* NukeVideo */; };
 		8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD506296F2A4000525BF7 /* PillView.swift */; };
 		8AFBD50A296F2A4000525BF7 /* WelcomeRepoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD507296F2A4000525BF7 /* WelcomeRepoListView.swift */; };
 		8AFBD50B296F2A4000525BF7 /* WelcomeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD508296F2A4000525BF7 /* WelcomeStackView.swift */; };
 		8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD50C296F2A5E00525BF7 /* AppIcon.swift */; };
 		8AFBD50F296F2A5F00525BF7 /* AccentGlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD50D296F2A5E00525BF7 /* AccentGlow.swift */; };
-		8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */; };
 		8AFBD52B296F2C1400525BF7 /* CredentialSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD51E296F2C1400525BF7 /* CredentialSettingsView.swift */; };
 		8AFBD52C296F2C1400525BF7 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD51F296F2C1400525BF7 /* GeneralSettingsView.swift */; };
 		8AFBD52D296F2C1400525BF7 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFBD522296F2C1400525BF7 /* AvatarView.swift */; };
@@ -1049,15 +1052,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AF8931E2AE56CB7002E4282 /* Nuke in Frameworks */,
 				8A02C51B29AD3D67004DCA69 /* KeychainAccess in Frameworks */,
 				8A68425C2A052B230063CBE6 /* KeyboardShortcuts in Frameworks */,
 				8AB8CD9D2ADAC23300F6C647 /* TaskTrigger in Frameworks */,
 				8A164BD72A07DA0700053482 /* HotKey in Frameworks */,
 				8A1F2DB229C7C15C00E3C3F6 /* Algorithms in Frameworks */,
-				8AFBD51C296F2BF600525BF7 /* CachedAsyncImage in Frameworks */,
 				8A97DDA3299BC76A001E25E1 /* Splash in Frameworks */,
+				8AF893242AE56CB7002E4282 /* NukeVideo in Frameworks */,
 				8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */,
+				8AF893222AE56CB7002E4282 /* NukeUI in Frameworks */,
 				8A76E76929802F700033B978 /* Boutique in Frameworks */,
+				8AF893202AE56CB7002E4282 /* NukeExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2013,7 +2019,6 @@
 			);
 			name = Commitment;
 			packageProductDependencies = (
-				8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */,
 				8A76E76829802F700033B978 /* Boutique */,
 				8A97DDA2299BC76A001E25E1 /* Splash */,
 				8A02C51A29AD3D67004DCA69 /* KeychainAccess */,
@@ -2022,6 +2027,10 @@
 				8A68425B2A052B230063CBE6 /* KeyboardShortcuts */,
 				8A164BD62A07DA0700053482 /* HotKey */,
 				8AB8CD9C2ADAC23300F6C647 /* TaskTrigger */,
+				8AF8931D2AE56CB7002E4282 /* Nuke */,
+				8AF8931F2AE56CB7002E4282 /* NukeExtensions */,
+				8AF893212AE56CB7002E4282 /* NukeUI */,
+				8AF893232AE56CB7002E4282 /* NukeVideo */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -2096,7 +2105,6 @@
 			);
 			mainGroup = 8A48D10427FD9E2D007803D2;
 			packageReferences = (
-				8AFBD51A296F2BF600525BF7 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 				8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */,
 				8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */,
 				8A02C51929AD3D67004DCA69 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
@@ -2105,6 +2113,7 @@
 				8A68425A2A052B230063CBE6 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				8A164BD52A07DA0700053482 /* XCRemoteSwiftPackageReference "HotKey" */,
 				8AB8CD9B2ADAC23300F6C647 /* XCRemoteSwiftPackageReference "TaskTrigger" */,
+				8AF8931C2AE56CB7002E4282 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -2960,12 +2969,12 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		8AFBD51A296F2BF600525BF7 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+		8AF8931C2AE56CB7002E4282 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			repositoryURL = "https://github.com/kean/Nuke";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.1.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -3011,10 +3020,25 @@
 			package = 8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */;
 			productName = WindowManagement;
 		};
-		8AFBD51B296F2BF600525BF7 /* CachedAsyncImage */ = {
+		8AF8931D2AE56CB7002E4282 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8AFBD51A296F2BF600525BF7 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
-			productName = CachedAsyncImage;
+			package = 8AF8931C2AE56CB7002E4282 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		8AF8931F2AE56CB7002E4282 /* NukeExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF8931C2AE56CB7002E4282 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeExtensions;
+		};
+		8AF893212AE56CB7002E4282 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF8931C2AE56CB7002E4282 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
+		};
+		8AF893232AE56CB7002E4282 /* NukeVideo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF8931C2AE56CB7002E4282 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeVideo;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

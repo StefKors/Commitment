@@ -46,6 +46,15 @@
       }
     },
     {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Nuke",
+      "state" : {
+        "revision" : "3f666f120b63ea7de57d42e9a7c9b47f8e7a290b",
+        "version" : "12.1.6"
+      }
+    },
+    {
       "identity" : "splash",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JohnSundell/Splash.git",
@@ -88,15 +97,6 @@
       "state" : {
         "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
         "version" : "1.0.2"
-      }
-    },
-    {
-      "identity" : "swiftui-cached-async-image",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/lorenzofiamingo/swiftui-cached-async-image",
-      "state" : {
-        "branch" : "main",
-        "revision" : "f94be38411297c71aa8df69c6875127e6d8d7a92"
       }
     },
     {

@@ -69,7 +69,7 @@ import SwiftData
     // Commit SHA from which the status was created
     private(set) var sha: String?
     
-    private(set) var stats: GitFileStats?
+    var stats: GitFileStats?
     
     /// Current file state
     var state: GitFileStatusState
