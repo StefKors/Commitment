@@ -13,6 +13,12 @@ struct ActiveChangesMainView: View {
 
 //    let id: GitFileStatus?
 
+    var fileStatus: GitFileStatus? {
+        self.repository.status.first(where:  { status in
+            status.id == viewState.activeChangeSelection
+        })
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             ToolbarContentView()
@@ -22,7 +28,7 @@ struct ActiveChangesMainView: View {
 
             ZStack {
                 Rectangle().fill(.clear)
-                if let fileStatus = viewState.activeChangesSelection {
+                if let fileStatus {
                     FileDiffChangesView(fileStatus: fileStatus)
                 } else {
                     ContentPlaceholderView()

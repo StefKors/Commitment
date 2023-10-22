@@ -9,7 +9,7 @@ import SwiftUI
 
 class ViewState: ObservableObject {
     // Active Changes Views
-    @Published var activeChangesSelection: GitFileStatus? = nil
+    @Published var activeChangeSelection: GitFileStatus.ID? = nil
 
     @Published var activeCommitSelection: Commit.ID? = nil
     // TODO: revert string type back to id GitFileStatus.ID

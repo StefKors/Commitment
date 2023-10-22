@@ -61,14 +61,11 @@ fileprivate struct ContextMenuContent: View {
 
 struct ActiveChangesSidebarView: View {
     @Environment(CodeRepository.self) private var repository
-
     @EnvironmentObject private var viewState: ViewState
-
-    @State private var selection: GitFileStatus.ID?
 
     var body: some View {
         VStack {
-            List(self.repository.status.sorted(by: \.cleanedPath), id: \.path, selection: $selection) { fileStatus in
+            List(self.repository.status.sorted(by: \.cleanedPath), id: \.path, selection: $viewState.activeChangeSelection) { fileStatus in
                 GitFileStatusView(fileStatus: fileStatus)
                     .contextMenu {
                         ContextMenuContent(fileStatus: fileStatus)
@@ -83,11 +80,6 @@ struct ActiveChangesSidebarView: View {
                 UndoActivityView()
             }
             .padding(.bottom)
-        }
-        .task(id: selection) {
-            viewState.activeChangesSelection = self.repository.status.first(where:  { status in
-                status.id == selection
-            })
         }
     }
 }
