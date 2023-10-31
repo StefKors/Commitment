@@ -124,14 +124,18 @@ struct SideBySideGutterView: View {
             startB: startB,
             endB: endB
         )
-        .fill(.foreground.quaternary)
+//        .fill(.foreground.quaternary)
         .foregroundStyle(
             .linearGradient(
                 colors: [
-                    Color.systemOrange,
-                    Color.systemOrange,
-                    Color.systemPurple,
-                    Color.systemPurple,
+                    Color(.gitHubDiffRed),
+                    Color(.gitHubDiffRed),
+                    Color(.gitHubDiffGreen),
+                    Color(.gitHubDiffGreen)
+//                    Color.systemOrange,
+//                    Color.systemOrange,
+//                    Color.systemPurple,
+//                    Color.systemPurple,
                 ],
                 startPoint: .leading,
                 endPoint: .trailing

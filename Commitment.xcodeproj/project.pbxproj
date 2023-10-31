@@ -233,7 +233,6 @@
 		8A3421DC29CF08BE0001E58B /* GitFileStatusLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421DB29CF08BE0001E58B /* GitFileStatusLabelView.swift */; };
 		8A3421DE29CF0D2B0001E58B /* SSHKeysSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421DD29CF0D2B0001E58B /* SSHKeysSettingsView.swift */; };
 		8A3421E629D19A9E0001E58B /* CommitmentAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */; };
-		8A3421F029D323C10001E58B /* ToolbarOpenCommitWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */; };
 		8A3462722A0D0B770051F195 /* CommitContributionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3462712A0D0B770051F195 /* CommitContributionChartView.swift */; };
 		8A3462742A0E9B330051F195 /* SideBySideDiffRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3462732A0E9B330051F195 /* SideBySideDiffRenderView.swift */; };
 		8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */; };
@@ -282,6 +281,7 @@
 		8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */; };
 		8A6C4C4D298BEF49009377C0 /* ToolbarActionUpdateMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */; };
 		8A76E76929802F700033B978 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8A76E76829802F700033B978 /* Boutique */; };
+		8A7E73352AE67AFF0097644D /* DiffModeToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E73342AE67AFF0097644D /* DiffModeToggleView.swift */; };
 		8A8398D82AB9AFB900F589FD /* DiffParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8398D72AB9AFB900F589FD /* DiffParserTests.swift */; };
 		8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C665B296464E300A774D7 /* TextEditorView.swift */; };
 		8A8C66712964682B00A774D7 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A8C665E2964682B00A774D7 /* Inter-Bold.otf */; };
@@ -332,6 +332,7 @@
 		8AAF7AF829AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */; };
 		8AAF7AFA29AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */; };
 		8AAF7B0729AA7D0D0007CE8D /* Shell+Git.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */; };
+		8AB220B72AE7E0610026431F /* ShadowLush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB220B62AE7E0610026431F /* ShadowLush.swift */; };
 		8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */; };
 		8AB8CD982ADAB8AE00F6C647 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CD972ADAB8AE00F6C647 /* ContentView.swift */; };
 		8AB8CD9A2ADABFCB00F6C647 /* WelcomeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CD992ADABFCB00F6C647 /* WelcomeListItem.swift */; };
@@ -341,7 +342,6 @@
 		8AB8CDA32ADC02D400F6C647 /* Sequence+Sorted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA22ADC02D400F6C647 /* Sequence+Sorted.swift */; };
 		8AB8CDA52ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA42ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift */; };
 		8AB8CDA72ADC0CB000F6C647 /* LoadedRepositoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA62ADC0CB000F6C647 /* LoadedRepositoryView.swift */; };
-		8AB8CDAA2ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDA92ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift */; };
 		8AB8CDAC2ADC108100F6C647 /* Int+IsNotZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDAB2ADC108100F6C647 /* Int+IsNotZero.swift */; };
 		8AB8CDAE2ADC289D00F6C647 /* String+DeletePrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDAD2ADC289D00F6C647 /* String+DeletePrefix.swift */; };
 		8AB8CDB02ADD6A7A00F6C647 /* FileIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDAF2ADD6A7A00F6C647 /* FileIcons.swift */; };
@@ -848,7 +848,6 @@
 		8A3421DB29CF08BE0001E58B /* GitFileStatusLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitFileStatusLabelView.swift; sourceTree = "<group>"; };
 		8A3421DD29CF0D2B0001E58B /* SSHKeysSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSHKeysSettingsView.swift; sourceTree = "<group>"; };
 		8A3421E529D19A9E0001E58B /* CommitmentAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitmentAppDelegate.swift; sourceTree = "<group>"; };
-		8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarOpenCommitWindowView.swift; sourceTree = "<group>"; };
 		8A3462712A0D0B770051F195 /* CommitContributionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitContributionChartView.swift; sourceTree = "<group>"; };
 		8A3462732A0E9B330051F195 /* SideBySideDiffRenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBySideDiffRenderView.swift; sourceTree = "<group>"; };
 		8A486DBD29AFB59900FB00F7 /* SettingsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsListItemView.swift; sourceTree = "<group>"; };
@@ -899,6 +898,7 @@
 		8A6B649929730FD50074B3C1 /* FileRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRenderView.swift; sourceTree = "<group>"; };
 		8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDiffChangesView.swift; sourceTree = "<group>"; };
 		8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarActionUpdateMain.swift; sourceTree = "<group>"; };
+		8A7E73342AE67AFF0097644D /* DiffModeToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffModeToggleView.swift; sourceTree = "<group>"; };
 		8A8398D72AB9AFB900F589FD /* DiffParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffParserTests.swift; sourceTree = "<group>"; };
 		8A8C665B296464E300A774D7 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		8A8C665E2964682B00A774D7 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
@@ -962,6 +962,7 @@
 		8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarPrimaryActionView.swift; sourceTree = "<group>"; };
 		8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarFetchOriginActionView.swift; sourceTree = "<group>"; };
 		8AAF7B0629AA7D0D0007CE8D /* Shell+Git.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Git.swift"; sourceTree = "<group>"; };
+		8AB220B62AE7E0610026431F /* ShadowLush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowLush.swift; sourceTree = "<group>"; };
 		8AB5BCD929BB608800C9E6EC /* SwiftUIViewDebugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewDebugging.swift; sourceTree = "<group>"; };
 		8AB8CD972ADAB8AE00F6C647 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8AB8CD992ADABFCB00F6C647 /* WelcomeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeListItem.swift; sourceTree = "<group>"; };
@@ -970,7 +971,6 @@
 		8AB8CDA22ADC02D400F6C647 /* Sequence+Sorted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Sorted.swift"; sourceTree = "<group>"; };
 		8AB8CDA42ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryWindowLoadingBarView.swift; sourceTree = "<group>"; };
 		8AB8CDA62ADC0CB000F6C647 /* LoadedRepositoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedRepositoryView.swift; sourceTree = "<group>"; };
-		8AB8CDA92ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+ActiveRepositoryID.swift"; sourceTree = "<group>"; };
 		8AB8CDAB2ADC108100F6C647 /* Int+IsNotZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+IsNotZero.swift"; sourceTree = "<group>"; };
 		8AB8CDAD2ADC289D00F6C647 /* String+DeletePrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DeletePrefix.swift"; sourceTree = "<group>"; };
 		8AB8CDAF2ADD6A7A00F6C647 /* FileIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIcons.swift; sourceTree = "<group>"; };
@@ -1649,9 +1649,9 @@
 				8A97DDA4299BCA7A001E25E1 /* Theme+Light+Dark.swift */,
 				8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */,
 				8AFBD53F296F41A600525BF7 /* ToolbarContentView.swift */,
+				8A7E73342AE67AFF0097644D /* DiffModeToggleView.swift */,
 				8AAF7AF929AA0DEC0007CE8D /* ToolbarFetchOriginActionView.swift */,
 				8A992DFE29A64867001E26A3 /* ToolbarMenuButtonStyle.swift */,
-				8A3421EF29D323C10001E58B /* ToolbarOpenCommitWindowView.swift */,
 				8AAF7AF729AA0B4C0007CE8D /* ToolbarPrimaryActionView.swift */,
 				8A96B5FC2A07AFD100A52467 /* TouchbarRepoView.swift */,
 				8AF7637B2987FC6300DBB0BA /* ToolbarPushOriginActionButtonView.swift */,
@@ -1665,6 +1665,7 @@
 				8AB8CDA42ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift */,
 				8AB8CDAF2ADD6A7A00F6C647 /* FileIcons.swift */,
 				8A0131782ADD733C0017E8E1 /* FileTypeIconView.swift */,
+				8AB220B62AE7E0610026431F /* ShadowLush.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1984,7 +1985,6 @@
 				8AAF7AEF29A77E9F0007CE8D /* ActivityState.swift */,
 				8AD9B5E129E6D77600631337 /* UndoState.swift */,
 				8A562CE629B4C335006C7E8A /* ViewState.swift */,
-				8AB8CDA92ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -2388,6 +2388,7 @@
 				8AC8EB5029759AAD00365EB9 /* Border.swift in Sources */,
 				8AB8CDA52ADC09FC00F6C647 /* RepositoryWindowLoadingBarView.swift in Sources */,
 				8AFBD564297150DF00525BF7 /* DiffSummaryView.swift in Sources */,
+				8A7E73352AE67AFF0097644D /* DiffModeToggleView.swift in Sources */,
 				8A96B5FB2A07AEA100A52467 /* CommitStatsBlocksView.swift in Sources */,
 				8AFBD53C296F2EB600525BF7 /* WelcomeWindow.swift in Sources */,
 				8AB5BCDA29BB608800C9E6EC /* SwiftUIViewDebugging.swift in Sources */,
@@ -2406,6 +2407,7 @@
 				8A97DC97299BB148001E25E1 /* String+HTMLEntities.swift in Sources */,
 				8AFBD509296F2A4000525BF7 /* PillView.swift in Sources */,
 				8AFBD50E296F2A5F00525BF7 /* AppIcon.swift in Sources */,
+				8AB220B72AE7E0610026431F /* ShadowLush.swift in Sources */,
 				8A58736A2A687A2E00E630EA /* CodeRepository.swift in Sources */,
 				8A562CE129B200E6006C7E8A /* Shell+Run.swift in Sources */,
 				8A486DC029AFB83200FB00F7 /* SettingsBox.swift in Sources */,
@@ -2464,7 +2466,6 @@
 				8A96B5FD2A07AFD100A52467 /* TouchbarRepoView.swift in Sources */,
 				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
 				8ACCD2F1297F265C0020BF84 /* RepositoryReference.swift in Sources */,
-				8A3421F029D323C10001E58B /* ToolbarOpenCommitWindowView.swift in Sources */,
 				8A02C50129ACB801004DCA69 /* Remote.swift in Sources */,
 				8A3421DE29CF0D2B0001E58B /* SSHKeysSettingsView.swift in Sources */,
 				8A3462742A0E9B330051F195 /* SideBySideDiffRenderView.swift in Sources */,
@@ -2545,7 +2546,6 @@
 				8AF347C82AE1270600B7BD45 /* GitFormatDecoder.swift in Sources */,
 				8AFBD52F296F2C1400525BF7 /* SidebarCommitLabelView.swift in Sources */,
 				8AFBD533296F2C1400525BF7 /* MainRepoContentView.swift in Sources */,
-				8AB8CDAA2ADC0EE900F6C647 /* Environment+ActiveRepositoryID.swift in Sources */,
 				8AB8CDB02ADD6A7A00F6C647 /* FileIcons.swift in Sources */,
 				8ACCD296297F265B0020BF84 /* GitReferenceName.swift in Sources */,
 				8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */,

@@ -22,14 +22,13 @@ struct ContentView: View {
                     .frame(minWidth: 1100, minHeight: 600)
             } else {
                 WelcomeContentView()
-                    .environment(\.activeRepositoryID, $repositoryID)
                     .frame(width: 700, height: 300, alignment: .center)
             }
         }
         .task(id: repositoryID) {
             self.activeRepository = repositories.first { repo in
                 repo.path == repositoryID
-            }
+            } ?? repositories.first
         }
         .onOpenURL(perform: { url in
             repositoryID = url

@@ -11,7 +11,7 @@ struct ActiveChangesMainView: View {
     @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var viewState: ViewState
 
-//    let id: GitFileStatus?
+    //    let id: GitFileStatus?
 
     var fileStatus: GitFileStatus? {
         self.repository.status.first(where: { status in
@@ -20,21 +20,24 @@ struct ActiveChangesMainView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            ToolbarContentView()
-                .zIndex(999)
 
-            Divider()
+        ZStack(alignment: .top) {
+            Rectangle().fill(.clear)
 
-            ZStack {
-                Rectangle().fill(.clear)
+            Group {
                 if let fileStatus {
                     FileDiffChangesView(fileStatus: fileStatus)
                 } else {
                     ContentPlaceholderView()
+                        .padding(.top, 60)
                 }
-            }.layoutPriority(1)
-        }
+            }
+
+            ToolbarContentView()
+                .background(.ultraThinMaterial)
+
+        }.layoutPriority(1)
+
     }
 }
 

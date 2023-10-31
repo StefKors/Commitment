@@ -13,34 +13,33 @@ struct ToolbarContentView: View {
     /// TODO: improve menu...
     /// TODO: Fix blinking when switching view
 
-    @AppStorage("CommitWindow") private var commitWindow: Bool = false
-    
     var body: some View {
-        HStack(alignment: .center, spacing: 10) {
-            Group {
-                RepoSelectView()
-                Divider()
-                BranchSelectView()
-                Divider()
-                ToolbarPrimaryActionView()
-                Divider()
-            }
+        VStack(spacing: 0) {
 
-            if commitWindow {
+            HStack(alignment: .center, spacing: 10) {
                 Group {
+                    RepoSelectView()
+                    Divider()
+                    BranchSelectView()
+                    Divider()
+                    ToolbarPrimaryActionView()
+                    Divider()
                     ToolbarActionUpdateMain()
                     Divider()
-                    ToolbarOpenCommitWindowView()
-                    Divider()
                 }
-            }
 
-            Spacer()
+                Spacer()
+
+                DiffModeToggleView()
+            }
+            .frame(height: 50)
+            .padding(.horizontal, 10)
+            .truncationMode(.head)
+            .lineLimit(1)
+            .zIndex(999)
+
+            Divider()
         }
-        .frame(height: 50)
-        .padding(.horizontal, 10)
-        .truncationMode(.head)
-        .lineLimit(1)
     }
 }
 

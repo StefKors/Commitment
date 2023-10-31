@@ -15,17 +15,6 @@ struct FileDiffChangesView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(spacing: 8) {
-                Picker("Choose view style?", selection: $diffViewMode) {
-                    Image(systemName: "rectangle.split.2x1.fill").tag(DiffViewMode.sideBySide)
-                    Image(systemName: "rectangle.split.1x2.fill").tag(DiffViewMode.unified)
-                }
-                .pickerStyle(.segmented)
-                .labelsHidden()
-                .frame(width: 100)
-            }
-            Divider()
-
             ScrollView(.vertical) {
                 if let diff = fileStatus.diff {
                     switch diffViewMode {
@@ -41,6 +30,7 @@ struct FileDiffChangesView: View {
                         .padding()
                 }
             }
+            .contentMargins(.top, 60, for: .scrollContent)
         }
         .task(id: fileStatus) {
             print("hasdiff \((fileStatus.diff != nil).description)")

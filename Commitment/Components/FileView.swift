@@ -26,12 +26,10 @@ struct FileView<Content: View>: View {
                         GitFileStatusView(fileStatus: fileStatus)
                     }
                 })
-                .padding(.top, 7)
+                .padding(.vertical, 7)
                 .padding(.horizontal, 10)
-
-                Divider()
             })
-            .background(.separator)
+            .background(.separator, in: Rectangle())
 
             LazyVStack(alignment: .center, spacing: 0) {
                 content()
@@ -45,11 +43,20 @@ struct FileView<Content: View>: View {
             RoundedRectangle(cornerRadius: 6)
                 .stroke(.separator, lineWidth: 1)
         )
+        .containerShape(RoundedRectangle(cornerRadius: 6))
+        .background {
+            RoundedRectangle(cornerRadius: 6)
+                .fill(.windowBackground)
+                .shadowLush()
+
+//                .shadow(radius: 20, y: 16)
+        }
+
     }
 }
-
-// struct FileView_Previews: PreviewProvider {
-//     static var previews: some View {
-//         FileView()
-//     }
-// }
+//
+//#Preview {
+//    FileView(fileStatus: .previewSwift) {
+//        Text("content here.....")
+//    }
+//}

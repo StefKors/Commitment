@@ -50,6 +50,7 @@ struct FileRenderView: View {
                             }
                         }
                     } else {
+                        // TODO: handle deleted files
                         Text("Could not read file at \(fileStatus.cleanedPath)")
                     }
                 }

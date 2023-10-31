@@ -13,20 +13,30 @@ import HotKey
 import SwiftData
 import UniformTypeIdentifiers
 
-// https://github.com/Wouter01/SwiftUI-WindowManagement
-// NSWindow.alwaysUseActiveAppearance = true
-/// theming?
-// /.foregroundStyle(.blue, .green, Gradient(colors: [.red, .yellow]))
-// /.backgroundStyle(.pink)
-// https://developer.apple.com/documentation/foundation/filemanager/2765464-enumerator
-
 extension SceneID {
     static let mainWindow = SceneID("MainWindow")
 }
 
-// TODO: onboarding
-// CLI tool for controlling the app
-// https://www.youtube.com/watch?v=hPEDjbb_BD0
+/// Project todo / idea list:
+/// - 3rd diff showing final state vs unified diff https://matklad.github.io/2023/10/23/unified-vs-split-diff.html
+/// - onboarding flow
+/// - CLI tool for controlling the app https://www.youtube.com/watch?v=hPEDjbb_BD0
+/// - File A / File B header blocks like kaleidoscope https://blog.kaleidoscope.app/wp-content/uploads/2022/04/ksdiff-three.jpg
+/// - Theming options for UI elements
+/// - Theming options for Syntax Highlighting
+/// - Import and parse VSCode and Xcode theme files
+/// - Iconset
+/// - Update appicon, designed for information, show diff stats and current project / branch
+/// - Menubar app like gitlab app, incl github, bitbucket
+/// - Localise with that app that pulls localisations from apple products
+/// - Watch for changes across projects, so when opening the quick commit window it opens with your current working project
+/// - Switch projects in quick commit window
+/// - Open full window from quick commit window
+/// - Better automatic commit tiles and descriptions
+/// - Builtin support for semver commit titles / messages
+///
+///
+
 @main
 struct CommitmentApp: App {
     @NSApplicationDelegateAdaptor private var appDelegate: CommitmentAppDelegate
@@ -67,8 +77,5 @@ struct CommitmentApp: App {
             //            OverrideCommands()
             TextEditingCommands()
         }
-        //        Window("Settings", id: "settings") {
-        //
-        //        }
     }
 }

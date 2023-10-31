@@ -126,7 +126,7 @@ struct HunkView: View {
     var oldSideHeight: CGFloat {
         // Number of lines * lineheight with some bounds
         // Add additional padding for certain line types
-        max(toDistance(val: hunk.oldLineSpan - 6), minheight) + oldSideTypeRelativePadding
+        max(toDistance(val: hunk.oldLineSpan - 6), minheight) //+ oldSideTypeRelativePadding
     }
 
     private var newSideTypeRelativePadding: CGFloat {
@@ -146,7 +146,7 @@ struct HunkView: View {
     }
 
     var newSideHeight: CGFloat {
-        max(toDistance(val: hunk.newLineSpan - 6), minheight) + newSideTypeRelativePadding
+        max(toDistance(val: hunk.newLineSpan - 6), minheight) //+ newSideTypeRelativePadding
     }
 
     var body: some View {
@@ -159,7 +159,8 @@ struct HunkView: View {
             // Background style of side by side
             HStack(alignment: .top, spacing: 0) {
                 Rectangle()
-                    .fill(Color.systemOrange.quaternary)
+                    .fill(Color(.gitHubDiffRed))
+//                    .fill(Color.systemOrange.quaternary)
                     .frame(height: oldSideHeight)
                     .offset(y: firstChangeOffset)
 
@@ -174,7 +175,8 @@ struct HunkView: View {
                 .frame(width: 60)
 
                 Rectangle()
-                    .fill(Color.systemPurple.quaternary)
+                    .fill(Color(.gitHubDiffGreen))
+//                    .fill(Color.systemPurple.quaternary)
                     .frame(height: newSideHeight)
                     .offset(y: firstChangeOffset)
             }
@@ -325,7 +327,7 @@ struct SideBySideAdditionDiffLineView: View {
     let lineNumber: Int?
     let text: String
     private let image: String? = "plus"
-    private let color: Color = Color(red: 0.674407, green: 0.222846, blue: 0.619637, opacity: 0.3)
+    private let color: Color =  Color(red: 0.674407, green: 0.222846, blue: 0.619637, opacity: 0.3)
     private let colorOpaque: Color = Color(red: 0.674407, green: 0.222846, blue: 0.619637, opacity: 0.3)
 
     var body: some View {

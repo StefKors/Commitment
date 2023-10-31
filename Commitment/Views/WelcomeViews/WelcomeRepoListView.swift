@@ -8,12 +8,14 @@
 import SwiftUI
 import SwiftData
 import OSLog
+import WindowManagement
 
 fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "WelcomeRepoListView")
 
 struct WelcomeRepoListView: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(\.activeRepositoryID) private var repositoryID
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.window) private var window
     @State private var showFileImporter: Bool = false
     @Query private var repositories: [CodeRepository]
 
@@ -86,6 +88,9 @@ struct WelcomeRepoListView: View {
 
     private func open(_ url: URL) {
         // TODO: this doesn't work correctly
-        repositoryID.wrappedValue = url
+//        window.close()
+        NSApp.mainWindow?.close()
+    NSApp.openWindow(SceneID.mainWindow, value: url)
+//        openWindow(id: SceneID.mainWindow.id, value: url)
     }
 }

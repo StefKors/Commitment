@@ -16,7 +16,7 @@ fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "Co
 
     // Active Changes
     @Relationship(deleteRule: .cascade, inverse: \GitFileStatus.repository)
-    var status = [GitFileStatus]()
+    var status: [GitFileStatus] = []
     var stats: ActiveChangesStats = ActiveChangesStats()
 
     var bookmark: Bookmark
@@ -47,9 +47,6 @@ fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "Co
     init(path: URL) throws {
         self.path = path
         self.bookmark = try Bookmark(targetFileURL: path)
-//
-//        self.editor = ExternalEditors.xcode
-//        self.windowMode = SplitModeOptions.changes
 
         self.branches = []
         self.commits = []
