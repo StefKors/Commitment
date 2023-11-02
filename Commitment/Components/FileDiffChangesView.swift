@@ -32,9 +32,6 @@ struct FileDiffChangesView: View {
             }
             .contentMargins(.top, 60, for: .scrollContent)
         }
-        .task(id: fileStatus) {
-            print("hasdiff \((fileStatus.diff != nil).description)")
-        }
     }
 }
 

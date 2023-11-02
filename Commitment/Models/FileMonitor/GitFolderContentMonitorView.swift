@@ -36,7 +36,7 @@ struct GitFolderContentMonitorView: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .task {
+            .task(id: folderMonitor.pathsToWatch) {
                 self.folderMonitor.start()
             }
     }

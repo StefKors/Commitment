@@ -8,6 +8,7 @@
 import SwiftUI
 import AppKit
 import SwiftData
+import WindowManagement
 
 struct RepoSelectMenuButton: View {
     @Environment(CodeRepository.self) private var repository
@@ -34,6 +35,9 @@ struct RepoSelectView: View {
     @Environment(CodeRepository.self) private var repository
     @EnvironmentObject var viewState: ViewState
     @Query private var repos: [CodeRepository]
+    @State private var isRepoSelectOpen: Bool = false
+    @Environment(\.openURL) private var openURL
+    @Environment(\.openRepository) private var openRepository
 
 //    private var filteredRepos: [CodeRepository] {
 //        if searchText.isEmpty {
@@ -52,32 +56,42 @@ struct RepoSelectView: View {
         RepoSelectMenuButton()
             .contentShape(Rectangle())
             .onTapGesture {
-                viewState.isRepoSelectOpen.toggle()
+                isRepoSelectOpen.toggle()
             }
-            .overlay(isPresented: $viewState.isRepoSelectOpen, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
+            // not sure why arrow edge is set at bottom here
+            .popover(isPresented: $isRepoSelectOpen, attachmentAnchor: .point(UnitPoint.bottom), arrowEdge: .bottom, content: {
+//            .overlay(isPresented: $viewState.isRepoSelectOpen, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
                 VStack(spacing: 0) {
-                    TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
-                        .textFieldStyle(.roundedBorder)
-                        .font(.body)
-                        .overlay(alignment: .trailing) {
-                            if !searchText.isEmpty {
-                                Button(action: {
-                                    self.searchText = ""
-                                }) {
-                                    Image(systemName: "multiply.circle.fill")
-                                        .foregroundColor(.secondary)
-                                        .padding(.trailing, 4)
-                                }.buttonStyle(.plain)
-                            }
-                        }
+//                    TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
+//                        .textFieldStyle(.roundedBorder)
+//                        .font(.body)
+//                        .overlay(alignment: .trailing) {
+//                            if !searchText.isEmpty {
+//                                Button(action: {
+//                                    self.searchText = ""
+//                                }) {
+//                                    Image(systemName: "multiply.circle.fill")
+//                                        .foregroundColor(.secondary)
+//                                        .padding(.trailing, 4)
+//                                }.buttonStyle(.plain)
+//                            }
+//                        }
 
                     ForEach(repos, id: \.id) { repo in
                         Button(action: {
-                            viewState.activeRepositoryId = repo.id
-                            viewState.isRepoSelectOpen = false
-                            Task {
-                                try? await repo.refreshRepoState()
-                            }
+                            // TODO: how to open the current repo instead of creating a new window?
+                            print("select repo \(repo.path)")
+//                            openURL(repo.path)
+                            openRepository(repo)
+
+//                            NSApp.mainWindow?.close()
+
+//                            NSApp.openWindow(SceneID.mainWindow, value: repo.path)
+//                            viewState.activeRepositoryId = repo.id
+//                            viewState.isRepoSelectOpen = false
+//                            Task {
+//                                try? await repo.refreshRepoState()
+//                            }
                         }, label: {
                             HStack {
                                 VStack(alignment: .leading) {
@@ -105,14 +119,14 @@ struct RepoSelectView: View {
                     }
                 }
                 .truncationMode(.tail)
-                .frame(maxWidth: 300)
+                .frame(width: 300)
                 .padding(.vertical, 4)
                 .padding(.horizontal, 4)
                 .background(.ultraThinMaterial)
-                .cornerRadius(6)
-                .overlay(RoundedRectangle(cornerRadius: 6).stroke(.separator, lineWidth: 1))
-                .shadow(radius: 15)
-            }
+//                .cornerRadius(6)
+//                .overlay(RoundedRectangle(cornerRadius: 6).stroke(.separator, lineWidth: 1))
+//                .shadow(radius: 15)
+            })
     }
 
     private func removeRepo(_ repo: CodeRepository) {

@@ -186,12 +186,9 @@ extension Shell {
     }
 
     func status() async -> [GitFileStatus] {
-        // print("starting status")
         let statusString = await self.runTask(.git, ["status", "--porcelain=v1"])
         if statusString.isEmpty { return [] }
-        // print("status string \(statusString)")
         let lines = statusString.lines
-         print("status lines \(lines)")
         let mapToStatus = await lines.asyncCompactMap({ line -> GitFileStatus? in
 //                print("map status")
                 guard line.count > 3 else { return nil }
@@ -208,7 +205,7 @@ extension Shell {
             })
 //            }
 //            .compactMap({$0})
-        // print("returning status")
+
         return mapToStatus
     }
 

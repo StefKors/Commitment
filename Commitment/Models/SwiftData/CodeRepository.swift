@@ -54,6 +54,12 @@ fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "Co
     }
 }
 
+extension CodeRepository: CustomDebugStringConvertible {
+    var debugDescription: String {
+        return "\(self.folderName) | \(self.branch?.name.localName ?? "no branch available")"
+    }
+}
+
 // MARK: - SwiftData Predicates
 extension CodeRepository {
     static func predicate(url: URL) -> Predicate<CodeRepository> {

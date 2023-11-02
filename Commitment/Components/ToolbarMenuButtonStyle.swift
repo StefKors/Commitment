@@ -42,11 +42,12 @@ struct ToolbarMenuButtonStyle: ButtonStyle {
             configuration.label
                 .foregroundStyle(textColorPrimary, textColorSecondary)
         }
-        .padding(EdgeInsets(top: 6, leading: 4, bottom: 6, trailing: 4))
+        .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
         .background {
-            RoundedRectangle(cornerRadius: 6)
+            RoundedRectangle(cornerRadius: 4)
                 .fill(fillColor)
         }
+        .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 0))
         .onHover(perform: { hoverState in
             isHovering = hoverState
         })

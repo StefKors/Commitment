@@ -129,3 +129,9 @@ public class FolderContentMonitor: ObservableObject {
         hasStarted = false
     }
 }
+
+extension FolderContentMonitor: CustomDebugStringConvertible {
+    public var debugDescription: String {
+        return "Monitoring: \(self.pathsToWatch.debugDescription)"
+    }
+}

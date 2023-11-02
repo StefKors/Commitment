@@ -13,11 +13,13 @@ struct ContentView: View {
 
     @Query private var repositories: [CodeRepository]
     @State private var activeRepository: CodeRepository?
+    
 
     var body: some View {
         Group {
             if let activeRepository {
                 RepositoryWindow()
+                    .id(activeRepository.id)
                     .environment(activeRepository)
                     .frame(minWidth: 1100, minHeight: 600)
             } else {
@@ -25,12 +27,16 @@ struct ContentView: View {
                     .frame(width: 700, height: 300, alignment: .center)
             }
         }
+        .environment(\.openRepository, OpenRepository({ repo in
+            self.activeRepository = repo
+        }))
         .task(id: repositoryID) {
             self.activeRepository = repositories.first { repo in
                 repo.path == repositoryID
             } ?? repositories.first
         }
         .onOpenURL(perform: { url in
+            print("onOpenURL \(url)")
             repositoryID = url
         })
     }
