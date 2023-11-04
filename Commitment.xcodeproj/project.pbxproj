@@ -902,6 +902,10 @@
 		8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarActionUpdateMain.swift; sourceTree = "<group>"; };
 		8A7E73342AE67AFF0097644D /* DiffModeToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffModeToggleView.swift; sourceTree = "<group>"; };
 		8A8398D72AB9AFB900F589FD /* DiffParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffParserTests.swift; sourceTree = "<group>"; };
+		8A8777A92AF54B0000DBA05F /* merge.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = merge.sh; sourceTree = "<group>"; };
+		8A8777AA2AF54B0000DBA05F /* run-all.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "run-all.sh"; sourceTree = "<group>"; };
+		8A8777AB2AF54B0000DBA05F /* git-log2json.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "git-log2json.sh"; sourceTree = "<group>"; };
+		8A8777AC2AF54B0000DBA05F /* git-stat2json.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "git-stat2json.sh"; sourceTree = "<group>"; };
 		8A8C665B296464E300A774D7 /* TextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		8A8C665E2964682B00A774D7 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
 		8A8C665F2964682B00A774D7 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
@@ -1501,6 +1505,7 @@
 				8A486DC529AFDFBB00FB00F7 /* .gitconfig */,
 				8AAD63E72976A88500C7D1BB /* README.md */,
 				8A1F2DAE29C7BC7200E3C3F6 /* Credits.rtf */,
+				8A8777A82AF54B0000DBA05F /* git-commit-export */,
 				8A48D10F27FD9E2D007803D2 /* Commitment */,
 				8A48D12127FD9E2E007803D2 /* CommitmentTests */,
 				8A48D12B27FD9E2F007803D2 /* CommitmentUITests */,
@@ -1592,6 +1597,17 @@
 				8A07612429659EE400D878DC /* GitDiff */,
 			);
 			path = SwiftData;
+			sourceTree = "<group>";
+		};
+		8A8777A82AF54B0000DBA05F /* git-commit-export */ = {
+			isa = PBXGroup;
+			children = (
+				8A8777A92AF54B0000DBA05F /* merge.sh */,
+				8A8777AA2AF54B0000DBA05F /* run-all.sh */,
+				8A8777AB2AF54B0000DBA05F /* git-log2json.sh */,
+				8A8777AC2AF54B0000DBA05F /* git-stat2json.sh */,
+			);
+			path = "git-commit-export";
 			sourceTree = "<group>";
 		};
 		8A8C6658296464A700A774D7 /* Components */ = {

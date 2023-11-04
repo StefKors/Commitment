@@ -34,8 +34,9 @@ extension SceneID {
 /// - Open full window from quick commit window
 /// - Better automatic commit tiles and descriptions
 /// - Builtin support for semver commit titles / messages
-///
-///
+/// - spotlight support? https://betterprogramming.pub/implement-core-spotlight-in-a-swiftui-app-859cb703f55d
+/// - quick view previews support
+/// - https://commit-chronicle.github.io/
 
 @main
 struct CommitmentApp: App {
