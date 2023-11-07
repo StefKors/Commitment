@@ -6,21 +6,35 @@
 //
 
 import SwiftUI
-import Boutique
 
 struct GeneralSettingsView: View {
     @AppStorage(Settings.Git.Provider) private var selectedExternalGitProvider: String = "GitHub"
     @AppStorage(Settings.Diff.Mode) private var diffViewMode: DiffViewMode = .unified
     @AppStorage(Settings.Diff.ShowStatsBlocks) private var showStatsBlocks: Bool = true
-    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditor.xcode
+    // TODO: The external editor picker is not working, crashes when selecting different editor
+    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditorSetting: ExternalEditor = ExternalEditors.xcode
 
-    private var externalEditorPickerItems: [ExternalEditor] {
-        ExternalEditors().editors.filter { editor in
-            editor.bundleIdentifiers.first { identifier in
-                NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) != nil
-            } != nil
-        }
+    init() {
+        externalEditorPickerItems = ExternalEditors().editors
+//        ExternalEditors().editors.filter { editor in
+//            editor.bundleIdentifiers.first { identifier in
+//                NSWorkspace.shared.urlForApplication(withBundleIdentifier: identifier) != nil
+//            } != nil
+//        }
+
+//        selectedExternalEditor = externalEditorPickerItems.first?.name ?? "Xcode"
     }
+
+//    @State private var externalEditor: ExternalEditor = ExternalEditors.xcode
+//    @State private var selectedExternalEditor: String
+
+    private let externalEditorPickerItems: [ExternalEditor]
+
+//    private var externalEditorPickerNames: [String] {
+//        externalEditorPickerItems.map { editor in
+//            editor.name
+//        }
+//    }
 
     private let externalGitProviderPickerItems = [
         "GitHub",
@@ -34,11 +48,27 @@ struct GeneralSettingsView: View {
         SettingsBox(
             label: "Editor Defaults"
         ) {
-            Picker("External Editor", selection: $externalEditor) {
-                ForEach(externalEditorPickerItems, id: \.self) { item in
-                    Text(item.name).tag(item)
+            Picker("External Editor", selection: $externalEditorSetting) {
+                ForEach(externalEditorPickerItems, id: \.id) { item in
+                    Text(item.name)
+                        .tag(item)
                 }
             }
+            .disabled(true)
+//            .task {
+//                selectedExternalEditor = externalEditorSetting.name
+//            }
+            // Update setting
+//            .onChange(of: selectedExternalEditor) { oldValue, newValue in
+//                print(oldValue, newValue)
+//                let editor = externalEditorPickerItems.first(where: { editor in
+//                    editor.name == newValue
+//                })
+//
+//                if let editor {
+//                    externalEditorSetting = editor
+//                }
+//            }
 
             Picker("External Git Provider", selection: $selectedExternalGitProvider) {
                 ForEach(externalGitProviderPickerItems, id: \.self) { item in
@@ -55,7 +85,7 @@ struct GeneralSettingsView: View {
                     Text(item.rawValue).tag(item.rawValue)
                 }
             }.pickerStyle(.segmented)
-
+            
             Toggle("Show Blocks in Diff stats", isOn: $showStatsBlocks)
                 .toggleStyle(.switch)
         }

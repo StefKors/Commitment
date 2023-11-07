@@ -61,7 +61,7 @@ struct RepoSelectView: View {
             // not sure why arrow edge is set at bottom here
             .popover(isPresented: $isRepoSelectOpen, attachmentAnchor: .point(UnitPoint.bottom), arrowEdge: .bottom, content: {
 //            .overlay(isPresented: $viewState.isRepoSelectOpen, alignment: .topLeading, relativePos: .bottomLeading, extendHorizontally: true) {
-                VStack(spacing: 0) {
+//                VStack(spacing: 0) {
 //                    TextField("Repo Search", text: $searchText, prompt: Text("Filter"))
 //                        .textFieldStyle(.roundedBorder)
 //                        .font(.body)
@@ -76,53 +76,55 @@ struct RepoSelectView: View {
 //                                }.buttonStyle(.plain)
 //                            }
 //                        }
+                    List {
+                        ForEach(repos, id: \.id) { repo in
+                            Button(action: {
+                                // TODO: how to open the current repo instead of creating a new window?
+                                print("select repo \(repo.path)")
+                                //                            openURL(repo.path)
+                                openRepository(repo)
 
-                    ForEach(repos, id: \.id) { repo in
-                        Button(action: {
-                            // TODO: how to open the current repo instead of creating a new window?
-                            print("select repo \(repo.path)")
-//                            openURL(repo.path)
-                            openRepository(repo)
+                                //                            NSApp.mainWindow?.close()
 
-//                            NSApp.mainWindow?.close()
-
-//                            NSApp.openWindow(SceneID.mainWindow, value: repo.path)
-//                            viewState.activeRepositoryId = repo.id
-//                            viewState.isRepoSelectOpen = false
-//                            Task {
-//                                try? await repo.refreshRepoState()
-//                            }
-                        }, label: {
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        Text(repo.folderName)
-                                            .foregroundStyle(.primary)
-//                                        if let date = repo.lastFetchedDate {
-//                                            Spacer()
-//                                            Text(date, format: .relative(presentation: .named))
-//                                                .foregroundStyle(.secondary)
-//                                        }
+                                //                            NSApp.openWindow(SceneID.mainWindow, value: repo.path)
+                                //                            viewState.activeRepositoryId = repo.id
+                                //                            viewState.isRepoSelectOpen = false
+                                //                            Task {
+                                //                                try? await repo.refreshRepoState()
+                                //                            }
+                            }, label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        HStack {
+                                            Text(repo.folderName)
+                                                .foregroundStyle(.primary)
+                                            //                                        if let date = repo.lastFetchedDate {
+                                            //                                            Spacer()
+                                            //                                            Text(date, format: .relative(presentation: .named))
+                                            //                                                .foregroundStyle(.secondary)
+                                            //                                        }
+                                        }
+                                        Text(repo.branch?.name.localName ?? "")
+                                            .foregroundStyle(.secondary)
                                     }
-                                    Text(repo.branch?.name.localName ?? "")
-                                        .foregroundStyle(.secondary)
+                                    Spacer()
                                 }
-                                Spacer()
-                            }
-                        })
-                        .buttonStyle(.toolbarMenuButtonStyle)
-                        .contextMenu {
-                            Button("Remove Repo") {
-                                removeRepo(repo)
+                            })
+                            .buttonStyle(.toolbarMenuButtonStyle)
+                            .contextMenu {
+                                Button("Remove Repo") {
+                                    removeRepo(repo)
+                                }
                             }
                         }
+                        .onDelete(perform: deleteItems)
                     }
-                }
-                .truncationMode(.tail)
-                .frame(width: 300)
-                .padding(.vertical, 4)
-                .padding(.horizontal, 4)
-                .background(.ultraThinMaterial)
+                    .truncationMode(.tail)
+//                }
+//                .frame(width: 300)
+//                .padding(.vertical, 4)
+//                .padding(.horizontal, 4)
+//                .background(.ultraThinMaterial)
 //                .cornerRadius(6)
 //                .overlay(RoundedRectangle(cornerRadius: 6).stroke(.separator, lineWidth: 1))
 //                .shadow(radius: 15)
@@ -132,6 +134,14 @@ struct RepoSelectView: View {
     private func removeRepo(_ repo: CodeRepository) {
         withAnimation {
             modelContext.delete(repo)
+        }
+    }
+
+    private func deleteItems(offsets: IndexSet) {
+        withAnimation {
+            for index in offsets {
+                modelContext.delete(repos[index])
+            }
         }
     }
 }

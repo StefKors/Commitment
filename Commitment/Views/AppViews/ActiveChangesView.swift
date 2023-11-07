@@ -28,6 +28,8 @@ struct ActiveChangesView: View {
 
         ActiveChangesMainView()
             .ignoresSafeArea(.all, edges: .top)
-            .frame(minWidth: 750, alignment: .leading)
+//        750 so nothing clips
+//            .frame(minWidth: 750, alignment: .leading)
+            .frame(minWidth: 350, alignment: .leading)
     }
 }

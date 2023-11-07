@@ -147,7 +147,7 @@ struct GoCodeRepoPlaceholder: View {
 }
 
 struct OpenRepoInEditorPlaceholder: View {
-    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditor.xcode
+    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditors.xcode
     @Environment(CodeRepository.self) private var repository
 
     var body: some View {

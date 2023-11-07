@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Boutique
 import Foundation
 import WindowManagement
 import HotKey
@@ -48,14 +47,29 @@ struct CommitmentApp: App {
         NSWindow.alwaysUseActiveAppearance = true
     }
 
-    // SwiftData types
-    let container = try! ModelContainer(for: CodeRepository.self, Bookmark.self, GitFileStatus.self, GitDiff.self)
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            CodeRepository.self,
+            Bookmark.self,
+            GitFileStatus.self,
+            GitDiff.self,
+            Credential.self
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
 
     var body: some Scene {
         SwiftUI.Settings {
             SettingsWindow()
                 .frame(width: 650, height: 400)
-                .hideSidebarToggle()
+//                .hideSidebarToggle()
+                .modelContainer(sharedModelContainer)
         }
         .windowStyle(.automatic)
         .windowToolbarStyle(.unified)
@@ -65,7 +79,7 @@ struct CommitmentApp: App {
         WindowGroup(id: SceneID.mainWindow.id, for: URL.self) { $repositoryID in
             ContentView(repositoryID: $repositoryID)
         }
-        .modelContainer(container)
+        .modelContainer(sharedModelContainer)
         .register(.mainWindow)
         .enableOpenWindow()
         .titlebarAppearsTransparent(true)

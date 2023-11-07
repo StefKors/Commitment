@@ -47,7 +47,7 @@ struct ToolbarMenuButtonStyle: ButtonStyle {
             RoundedRectangle(cornerRadius: 4)
                 .fill(fillColor)
         }
-        .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 0))
+//        .padding(EdgeInsets(top: 2, leading: 0, bottom: 2, trailing: 0))
         .onHover(perform: { hoverState in
             isHovering = hoverState
         })

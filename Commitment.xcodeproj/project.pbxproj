@@ -281,7 +281,6 @@
 		8A6B649A29730FD50074B3C1 /* FileRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649929730FD50074B3C1 /* FileRenderView.swift */; };
 		8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6B649B2973124B0074B3C1 /* FileDiffChangesView.swift */; };
 		8A6C4C4D298BEF49009377C0 /* ToolbarActionUpdateMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6C4C4C298BEF49009377C0 /* ToolbarActionUpdateMain.swift */; };
-		8A76E76929802F700033B978 /* Boutique in Frameworks */ = {isa = PBXBuildFile; productRef = 8A76E76829802F700033B978 /* Boutique */; };
 		8A7E73352AE67AFF0097644D /* DiffModeToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E73342AE67AFF0097644D /* DiffModeToggleView.swift */; };
 		8A8398D82AB9AFB900F589FD /* DiffParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8398D72AB9AFB900F589FD /* DiffParserTests.swift */; };
 		8A8C665C296464E300A774D7 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8C665B296464E300A774D7 /* TextEditorView.swift */; };
@@ -346,6 +345,8 @@
 		8AB8CDAC2ADC108100F6C647 /* Int+IsNotZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDAB2ADC108100F6C647 /* Int+IsNotZero.swift */; };
 		8AB8CDAE2ADC289D00F6C647 /* String+DeletePrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDAD2ADC289D00F6C647 /* String+DeletePrefix.swift */; };
 		8AB8CDB02ADD6A7A00F6C647 /* FileIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB8CDAF2ADD6A7A00F6C647 /* FileIcons.swift */; };
+		8AB967A62AF8CD010041F47E /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB967A52AF8CD010041F47E /* Credential.swift */; };
+		8AB967A82AF8CD970041F47E /* CredentialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB967A72AF8CD970041F47E /* CredentialView.swift */; };
 		8ABB9FB529FBD1C300CBDA41 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */; };
 		8ABB9FB729FBD1EC00CBDA41 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FB629FBD1EC00CBDA41 /* View.swift */; };
 		8ABB9FC129FD6C8400CBDA41 /* FloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */; };
@@ -980,6 +981,8 @@
 		8AB8CDAB2ADC108100F6C647 /* Int+IsNotZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+IsNotZero.swift"; sourceTree = "<group>"; };
 		8AB8CDAD2ADC289D00F6C647 /* String+DeletePrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DeletePrefix.swift"; sourceTree = "<group>"; };
 		8AB8CDAF2ADD6A7A00F6C647 /* FileIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIcons.swift; sourceTree = "<group>"; };
+		8AB967A52AF8CD010041F47E /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		8AB967A72AF8CD970041F47E /* CredentialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialView.swift; sourceTree = "<group>"; };
 		8ABB9FB429FBD1C300CBDA41 /* KeyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		8ABB9FB629FBD1EC00CBDA41 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8ABB9FC029FD6C8400CBDA41 /* FloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPanel.swift; sourceTree = "<group>"; };
@@ -1068,7 +1071,6 @@
 				8AF893242AE56CB7002E4282 /* NukeVideo in Frameworks */,
 				8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */,
 				8AF893222AE56CB7002E4282 /* NukeUI in Frameworks */,
-				8A76E76929802F700033B978 /* Boutique in Frameworks */,
 				8AF893202AE56CB7002E4282 /* NukeExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1595,6 +1597,7 @@
 				8ACCD28B297F265B0020BF84 /* RepositoryReferenceName.swift */,
 				8ACCD279297F265B0020BF84 /* GitFileStatus.swift */,
 				8A07612429659EE400D878DC /* GitDiff */,
+				8AB967A52AF8CD010041F47E /* Credential.swift */,
 			);
 			path = SwiftData;
 			sourceTree = "<group>";
@@ -1684,6 +1687,7 @@
 				8AB8CDAF2ADD6A7A00F6C647 /* FileIcons.swift */,
 				8A0131782ADD733C0017E8E1 /* FileTypeIconView.swift */,
 				8AB220B62AE7E0610026431F /* ShadowLush.swift */,
+				8AB967A72AF8CD970041F47E /* CredentialView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -2038,7 +2042,6 @@
 			);
 			name = Commitment;
 			packageProductDependencies = (
-				8A76E76829802F700033B978 /* Boutique */,
 				8A97DDA2299BC76A001E25E1 /* Splash */,
 				8A02C51A29AD3D67004DCA69 /* KeychainAccess */,
 				8AC7B8E129B751C700AB2728 /* WindowManagement */,
@@ -2124,7 +2127,6 @@
 			);
 			mainGroup = 8A48D10427FD9E2D007803D2;
 			packageReferences = (
-				8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */,
 				8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */,
 				8A02C51929AD3D67004DCA69 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				8AC7B8E029B751C700AB2728 /* XCRemoteSwiftPackageReference "SwiftUI-WindowManagement" */,
@@ -2485,6 +2487,7 @@
 				8A96B5FD2A07AFD100A52467 /* TouchbarRepoView.swift in Sources */,
 				8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */,
 				8ACCD2F1297F265C0020BF84 /* RepositoryReference.swift in Sources */,
+				8AB967A62AF8CD010041F47E /* Credential.swift in Sources */,
 				8A02C50129ACB801004DCA69 /* Remote.swift in Sources */,
 				8A3421DE29CF0D2B0001E58B /* SSHKeysSettingsView.swift in Sources */,
 				8A3462742A0E9B330051F195 /* SideBySideDiffRenderView.swift in Sources */,
@@ -2525,6 +2528,7 @@
 				8A486DBE29AFB59900FB00F7 /* SettingsListItemView.swift in Sources */,
 				8A0761302965A15200D878DC /* UnifiedDiffRenderView.swift in Sources */,
 				8A3462722A0D0B770051F195 /* CommitContributionChartView.swift in Sources */,
+				8AB967A82AF8CD970041F47E /* CredentialView.swift in Sources */,
 				8A02C51D29AD3DAB004DCA69 /* KeychainStorage.swift in Sources */,
 				8A97DC95299BB148001E25E1 /* String+Removing.swift in Sources */,
 				8A07612B29659EEE00D878DC /* GitDiffHunkLineType.swift in Sources */,
@@ -2957,14 +2961,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mergesort/Boutique.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		8A97DDA1299BC76A001E25E1 /* XCRemoteSwiftPackageReference "Splash" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/Splash.git";
@@ -3019,11 +3015,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A68425A2A052B230063CBE6 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
-		};
-		8A76E76829802F700033B978 /* Boutique */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A76E76729802F700033B978 /* XCRemoteSwiftPackageReference "Boutique" */;
-			productName = Boutique;
 		};
 		8A97DDA2299BC76A001E25E1 /* Splash */ = {
 			isa = XCSwiftPackageProductDependency;

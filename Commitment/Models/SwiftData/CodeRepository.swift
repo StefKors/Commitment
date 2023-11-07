@@ -35,11 +35,18 @@ fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "Co
     /// All commits that exist locally but don't exist on remote
     var commitsAhead: [Commit]
 
+    // TODO: store branch name as string instead of computed so we don't lose state as much
     // Computed properties for easy reference
     var branch: GitReference? {
         branches.first(where: \.active)
     }
 
+    @Attribute(.spotlight) 
+    private var currentBranch: String? {
+        branches.first(where: \.active)?.name.shortName
+    }
+
+    @Attribute(.spotlight) 
     var folderName: String {
         path.lastPathComponent
     }

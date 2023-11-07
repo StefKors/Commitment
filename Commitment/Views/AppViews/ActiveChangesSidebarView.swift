@@ -11,7 +11,7 @@ import SwiftData
 fileprivate struct ContextMenuContent: View {
     let fileStatus: GitFileStatus
     @Environment(CodeRepository.self) private var repository
-    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditor.xcode
+    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditors.xcode
 
     var body: some View {
         Button("Reveal in Finder") {

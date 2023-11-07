@@ -17,7 +17,8 @@ struct HideSidebarToggleViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .task {
-                let window = NSApp.windows.first { $0.identifier?.rawValue == "settings" }!
+                let window = NSApp.windows.first { $0.identifier?.rawValue == "settings" }
+                guard let window else { return }
                 let sidebaritem = "com.apple.SwiftUI.navigationSplitView.toggleSidebar"
                 let index = window.toolbar?.items.firstIndex { $0.itemIdentifier.rawValue == sidebaritem }
                 if let index {

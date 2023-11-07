@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct CommitHistoryMainView: View {
-    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditor.xcode
+    @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditors.xcode
     @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var viewState: ViewState
     @EnvironmentObject private var shell: Shell

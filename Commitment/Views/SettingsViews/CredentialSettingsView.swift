@@ -7,75 +7,17 @@
 
 import SwiftUI
 import KeychainAccess
+import SwiftData
+import OSLog
 
-struct Credentials: Codable {
-    var values: [Credential]
-}
-
-struct Credential: Codable, Identifiable, Equatable, Hashable {
-    var id: String {
-        self.url.absoluteString
-    }
-    let url: URL
-    var password: String {
-        self.url.password ?? ""
-    }
-    var user: String {
-        self.url.user ?? ""
-    }
-    var host: String {
-        self.url.host ?? ""
-    }
-}
-
-struct CredentialView: View {
-    let item: Credential
-    @Binding var passwords: Credentials?
-    @State private var showDelete: Bool = false
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(item.user)
-                        .foregroundColor(.primary)
-                    Text(item.host)
-                        .foregroundColor(.secondary)
-                }
-                Text(String(repeating: "⏺", count: item.password.count))
-                    .lineLimit(1)
-                    .truncationMode(.middle)
-            }
-            Spacer()
-            if showDelete {
-                Button(role: .destructive) {
-                    withAnimation(.easeOut(duration: 0.2)) {
-                        passwords?.values.removeAll { credential in
-                            credential == item
-                        }
-                    }
-                } label: {
-                    Label("Delete", systemImage: "trash")
-                }
-                .tint(.red)
-                .buttonStyle(.borderedProminent)
-            } else {
-                Image(systemName: "info.circle")
-                    .imageScale(.large)
-                    .onTapGesture {
-                        withAnimation(.stiffBounce) {
-                            showDelete = true
-                        }
-                    }
-            }
-        }
-    }
-}
+fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "CredentialSettingsView")
 
 struct CredentialSettingsView: View {
-    @Environment(CodeRepository.self) private var repository
-    @KeychainStorage("passwords") private var passwords: Credentials? = nil
+    @Environment(\.modelContext) private var modelContext
+    @Query private var credentials: [Credential]
     @State private var gitName: String = ""
     @State private var gitEmail: String = ""
+    @State private var showFileImporter: Bool = false
 
     var body: some View {
         SettingsBox(
@@ -98,10 +40,10 @@ struct CredentialSettingsView: View {
             label: "Git-Credentials File"
         ) {
             Text(try! AttributedString(markdown: "Your git credentials can be parsed and imported from an `.git-credentials` file. Click import to get started."))
-            if let passwords {
+            if credentials.isNotEmpty {
                 VStack(alignment: .leading, spacing: 10) {
-                    ForEach(passwords.values) { credential in
-                        CredentialView(item: credential, passwords: $passwords)
+                    ForEach(credentials) { credential in
+                        CredentialView(credential: credential)
                         Divider()
                     }
                 }
@@ -112,6 +54,29 @@ struct CredentialSettingsView: View {
                 Button("Import", action: handleImportAction)
             }
             .frame(alignment: .trailing)
+        }
+        .fileDialogBrowserOptions(.includeHiddenFiles)
+        .fileDialogDefaultDirectory(URL(filePath: "~/"))
+        .fileDialogMessage("Select your .git-credentials file")
+        .fileDialogConfirmationLabel("Import")
+        .fileImporter(
+            isPresented: $showFileImporter,
+            allowedContentTypes: [.directory]
+        ) { result in
+            switch result {
+            case .success(let directory):
+                // gain access to the directory
+                let gotAccess = directory.startAccessingSecurityScopedResource()
+                if !gotAccess {
+                    log.error("Failed to start accessing directory \(directory.description)")
+                    return
+                }
+                addItem(url: directory)
+//                open(directory)
+            case .failure(let error):
+                // handle error
+                print(error)
+            }
         }
     }
 
@@ -149,7 +114,26 @@ struct CredentialSettingsView: View {
 //            print("failed to get path")
 //        }
     }
-    
+
+    private func addItem(url: URL) {
+                    if let content = try? String(contentsOf: URL(filePath: url.path()), encoding: .utf8) {
+                    }
+        //                        let oldPasswords = passwords?.values ?? []
+        //
+        //
+        //                        let newValues = Array(Set(oldPasswords + newPasswords))
+        //                        writeGitConfig(newValues)
+        //                        writeGitCredentials(newValues)
+        //
+        //                        withAnimation(.easeOut(duration: 0.2)) {
+        //                            passwords = Credentials(values: newValues)
+        //                        }
+        withAnimation {
+            let newCredential = Credential(path: url)
+            modelContext.insert(newCredential)
+        }
+    }
+
     fileprivate func writeGitConfig(_ newPasswords: [Credential]) {
         guard let appHome = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true) else { return }
         let toConfigPath = appHome.path + "/.gitconfig"
@@ -173,7 +157,7 @@ struct CredentialSettingsView: View {
         guard let appHome = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: .applicationSupportDirectory, create: true) else { return }
         let toCredsPath = appHome.path + "/.git-credentials"
         let content = newPasswords.map { cred -> String in
-            cred.url.absoluteString
+            cred.path.absoluteString
         }.joined(separator: "\n")
         FileManager.default.createFile(atPath: toCredsPath, contents: content.data(using: .utf8))
     }

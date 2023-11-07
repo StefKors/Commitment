@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Boutique
 
 /**
  * This list contains all the external editors supported on macOS. Add a new
@@ -17,9 +16,18 @@ struct ExternalEditor: Equatable, Hashable {
     let name: String
     let bundleIdentifiers: [String]
 
+    let uuid: String
+
     init(name: String, bundleIdentifiers: [String]) {
         self.name = name
         self.bundleIdentifiers = bundleIdentifiers
+        self.uuid = UUID().uuidString
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+        hasher.combine(uuid)
+        hasher.combine(bundleIdentifiers)
     }
 }
 
@@ -33,18 +41,21 @@ extension ExternalEditor: Codable {
     enum CodingKeys: CodingKey {
         case name
         case bundleIdentifiers
+        case uuid
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.name = try container.decode(String.self, forKey: .name)
         self.bundleIdentifiers = try container.decode([String].self, forKey: .bundleIdentifiers)
+        self.uuid = try container.decode(String.self, forKey: .uuid)
     }
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.name, forKey: .name)
         try container.encode(self.bundleIdentifiers, forKey: .bundleIdentifiers)
+        try container.encode(self.uuid, forKey: .uuid)
     }
 }
 
@@ -68,15 +79,13 @@ extension ExternalEditor: RawRepresentable {
     }
 }
 
-extension ExternalEditor {
+struct ExternalEditors: Codable {
     // default
     static var xcode = ExternalEditor(
         name: "Xcode",
         bundleIdentifiers: ["com.apple.dt.Xcode"]
     )
-}
 
-struct ExternalEditors: Codable {
     var editors: [ExternalEditor] = [
         ExternalEditor(
             name: "Atom",
