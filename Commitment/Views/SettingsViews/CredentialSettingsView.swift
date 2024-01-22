@@ -9,6 +9,7 @@ import SwiftUI
 import KeychainAccess
 import SwiftData
 import OSLog
+import UniformTypeIdentifiers
 
 fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "CredentialSettingsView")
 
@@ -55,13 +56,9 @@ struct CredentialSettingsView: View {
             }
             .frame(alignment: .trailing)
         }
-        .fileDialogBrowserOptions(.includeHiddenFiles)
-        .fileDialogDefaultDirectory(URL(filePath: "~/"))
-        .fileDialogMessage("Select your .git-credentials file")
-        .fileDialogConfirmationLabel("Import")
         .fileImporter(
             isPresented: $showFileImporter,
-            allowedContentTypes: [.directory]
+            allowedContentTypes: [.gitcredentials]
         ) { result in
             switch result {
             case .success(let directory):
@@ -78,6 +75,10 @@ struct CredentialSettingsView: View {
                 print(error)
             }
         }
+        .fileDialogBrowserOptions(.includeHiddenFiles)
+        .fileDialogDefaultDirectory(URL(filePath: "~/"))
+        .fileDialogMessage("Select your .git-credentials file")
+        .fileDialogConfirmationLabel("Import")
     }
 
     func submitUser() {
@@ -90,6 +91,7 @@ struct CredentialSettingsView: View {
 
     /// Use NSOpenPanel to open the users git config and update the stored credentials.
     func handleImportAction() {
+        showFileImporter.toggle()
         print("TODO: handle git credentials stuff")
         // TODO: handle git credentials stuff
 //        if let path = repo.bookmarks.openGitCredentials() {

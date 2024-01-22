@@ -38,11 +38,12 @@ fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "Co
     // TODO: store branch name as string instead of computed so we don't lose state as much
     // Computed properties for easy reference
     var branch: GitReference? {
-        branches.first(where: \.active)
+        print(branches.debugDescription)
+        return branches.first(where: \.active)
     }
 
     @Attribute(.spotlight) 
-    private var currentBranch: String? {
+    var currentBranch: String? {
         branches.first(where: \.active)?.name.shortName
     }
 

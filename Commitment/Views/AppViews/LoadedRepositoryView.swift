@@ -60,7 +60,7 @@ struct LoadedRepositoryView: View {
             )
             .task($gitBranchUpdate) {
                 repository.branches = await shell.listReferences()
-                    .uniqued(on: \.id)
+//                    .uniqued(on: \.id)
                     .sorted(by: \.date, using: >)
             }
             .task($gitHistoryUpdate) {

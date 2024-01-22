@@ -20,7 +20,7 @@ struct BranchSelectButtonView: View {
             VStack(alignment: .leading) {
                 Text("Current Branch")
                     .foregroundStyle(.secondary)
-                Text( self.repository.branch?.name.localName ?? "")
+                Text( self.repository.branch?.name.fullName ?? "--")
                     .foregroundStyle(.primary)
             }
         }
@@ -35,13 +35,23 @@ struct BranchSelectView: View {
     @State private var searchText: String = ""
     @State private var isBranchSelectOpen: Bool = false
 
-    var filteredRepos: [GitReference] {
-        if searchText.isEmpty {
-            return  self.repository.branches
-        } else {
-            return  self.repository.branches.filter({ branch in
-                branch.name.localName.localizedCaseInsensitiveContains(searchText)
-            })
+//    var filteredRepos: [GitReference] {
+//        if searchText.isEmpty {
+//            return  self.repository.branches
+//        } else {
+//            return  self.repository.branches.filter({ branch in
+//                branch.name.localName.localizedCaseInsensitiveContains(searchText)
+//            })
+//        }
+//    }
+
+    var sectionedBranches: [String: [GitReference]] {
+        Dictionary(grouping: self.repository.branches) { branch in
+            if branch.name.remoteName.isEmpty {
+                return "local"
+            }
+
+            return branch.name.remoteName
         }
     }
 
@@ -51,7 +61,7 @@ struct BranchSelectView: View {
             .onTapGesture {
                 isBranchSelectOpen.toggle()
             }
-            .popover(isPresented: $isBranchSelectOpen, attachmentAnchor: .point(UnitPoint.bottom), arrowEdge: .top, content: {
+            .popover(isPresented: $isBranchSelectOpen, attachmentAnchor: .point(UnitPoint.bottom), arrowEdge: .bottom, content: {
                 menuContent
                     .presentationDragIndicator(.visible)
             })
@@ -62,6 +72,51 @@ struct BranchSelectView: View {
 
     var menuContent: some View {
         VStack(spacing: 0) {
+//        List {
+
+            ForEach(Array(sectionedBranches.keys).sorted(), id: \.self) { origin in
+                if let branches = sectionedBranches[origin] {
+                    GroupBox(origin) {
+                        ForEach(branches) { branch in
+                            Button(action: {
+                                Task(priority: .userInitiated, operation: { @MainActor in
+                                    let name = branch.name.fullName
+                                    print("checkout branch \(name)")
+                                    await shell.checkout(name)
+                                    //                                try await self.repository.refreshRepoState()
+                                })
+                            }, label: {
+                                HStack {
+                                    Image("git-branch-16")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 16, height: 16)
+                                        .foregroundStyle(.primary)
+
+                                    HStack(spacing: 0) {
+                                        if branch.name.remoteName.isNotEmpty {
+                                            Text(branch.name.remoteName)
+                                                .foregroundStyle(.secondary)
+
+                                            Text("/")
+                                        }
+
+                                        Text(branch.name.localName)
+                                            .foregroundStyle(.primary)
+                                    }
+
+                                    Spacer(minLength: 4)
+                                    Text(branch.date, format: .relative(presentation: .named))
+                                        .foregroundStyle(.secondary)
+                                }
+                                //                    .frame(height: 16)
+                            })
+                            .buttonStyle(.toolbarMenuButtonStyle)
+                        }
+                    }
+                }
+            }
+
             //            TextField("Branch Search", text: $searchText, prompt: Text("Filter"))
             //                .textFieldStyle(.roundedBorder)
             //                .font(.body)
@@ -77,40 +132,51 @@ struct BranchSelectView: View {
             //                    }
             //                }
 
-            ForEach(self.repository.branches) { branch in
-                Button(action: {
-                    Task(priority: .userInitiated, operation: { @MainActor in
-                        let name = branch.name.fullName
-                        print("checkout branch \(name)")
-                        await shell.checkout(name)
-                        //                                try await self.repository.refreshRepoState()
-                    })
-                }, label: {
-                    HStack {
-                        Image("git-branch-16")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 16, height: 16)
-                            .foregroundStyle(.primary)
-                        Text(branch.name.localName)
-                            .foregroundStyle(.primary)
-                        Spacer()
-                        Text(branch.date, format: .relative(presentation: .named))
-                            .foregroundStyle(.secondary)
-                    }
-//                    .frame(height: 16)
-                })
-                .buttonStyle(.toolbarMenuButtonStyle)
-
-                if branch.id == self.repository.branches.first?.id {
-                    Divider() 
-                        .padding(4)
-                }
-            }
+//            ForEach(self.repository.branches) { branch in
+//                Button(action: {
+//                    Task(priority: .userInitiated, operation: { @MainActor in
+//                        let name = branch.name.fullName
+//                        print("checkout branch \(name)")
+//                        await shell.checkout(name)
+//                        //                                try await self.repository.refreshRepoState()
+//                    })
+//                }, label: {
+//                    HStack {
+//                        Image("git-branch-16")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 16, height: 16)
+//                            .foregroundStyle(.primary)
+//
+//                        HStack(spacing: 0) {
+//                            if branch.name.remoteName.isNotEmpty {
+//                                Text(branch.name.remoteName)
+//                                    .foregroundStyle(.secondary)
+//
+//                                Text("/")
+//                            }
+//
+//                            Text(branch.name.localName)
+//                                .foregroundStyle(.primary)
+//                        }
+//
+//                        Spacer(minLength: 4)
+//                        Text(branch.date, format: .relative(presentation: .named))
+//                            .foregroundStyle(.secondary)
+//                    }
+////                    .frame(height: 16)
+//                })
+//                .buttonStyle(.toolbarMenuButtonStyle)
+//
+////                if branch.id == self.repository.branches.first?.id {
+////                    Divider() 
+////                        .padding(4)
+////                }
+//            }
 
         }
         .truncationMode(.tail)
-        .frame(maxWidth: 300)
+        .frame(maxWidth: 400)
         .padding(.vertical, 4)
         .padding(.horizontal, 4)
         .background(.ultraThinMaterial)

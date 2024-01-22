@@ -11,6 +11,7 @@ import SwiftData
 struct ContentView: View {
     @Binding var repositoryID: URL?
 
+    @AppStorage(Settings.Window.LastSelectedRepo) private var lastSelectedRepo: URL?
     @Query private var repositories: [CodeRepository]
     @State private var activeRepository: CodeRepository?
     
@@ -28,15 +29,20 @@ struct ContentView: View {
             }
         }
         .environment(\.openRepository, OpenRepository({ repo in
+            self.lastSelectedRepo = repo.path
             self.activeRepository = repo
         }))
         .task(id: repositoryID) {
+            if let repositoryID {
+                lastSelectedRepo = repositoryID
+            }
+
             self.activeRepository = repositories.first { repo in
-                repo.path == repositoryID
+                repo.path == repositoryID ?? lastSelectedRepo
             } ?? repositories.first
         }
         .onOpenURL(perform: { url in
-            print("onOpenURL \(url)")
+            lastSelectedRepo = url
             repositoryID = url
         })
     }

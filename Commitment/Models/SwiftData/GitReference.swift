@@ -17,13 +17,18 @@
 
 import Foundation
 
-class GitReference: RepositoryReference, Codable, Identifiable, Hashable, Equatable {
+class GitReference: RepositoryReference, Codable, Identifiable, Hashable, Equatable, CustomDebugStringConvertible {
+    var debugDescription: String {
+        "<GitReference \(self.path) | active: \(active.description) >"
+    }
+
     static func == (lhs: GitReference, rhs: GitReference) -> Bool {
         lhs.id == rhs.id
     }
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+//        hasher.combine(objectName)
         hasher.combine(parentId)
         hasher.combine(active)
         hasher.combine(author)
@@ -32,7 +37,11 @@ class GitReference: RepositoryReference, Codable, Identifiable, Hashable, Equata
         hasher.combine(path)
     }
     
-    var id: String
+    var id: String {
+        "\(self.objectName)-\(self.name.fullName)"
+    }
+
+    var objectName: String
     var parentId: String?
     
     var active: Bool

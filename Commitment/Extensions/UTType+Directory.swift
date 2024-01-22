@@ -9,5 +9,5 @@
 import UniformTypeIdentifiers
 
 extension UTType {
-    static var commitmentDirectory = UTType(exportedAs: "com.stefkors.commitmentDirectory")
+    static var gitcredentials = UTType(".git-credentials")!
 }

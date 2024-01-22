@@ -18,7 +18,7 @@
 import Foundation
 
 class GitFormatDecoder {
-
+    
     // MARK: - Public
     /// Converts an output provided by git command line (with outputWriter formatter) to an array of objects
     func decode<T: Decodable>(_ formatOutput: String) -> [T] {
@@ -41,7 +41,7 @@ class GitFormatDecoder {
             guard let data = escapedRecord.data(using: .utf8) else {
                 continue
             }
-
+            
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             

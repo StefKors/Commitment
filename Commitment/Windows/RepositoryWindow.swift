@@ -49,7 +49,11 @@ struct RepositoryWindow: View {
                 repository.path = url
 
                 self.shell = Shell(workspace: url)
-                NSDocumentController.shared.noteNewRecentDocumentURL(url)
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500), execute: {
+                    print("adding url to recents")
+                    NSDocumentController.shared.noteNewRecentDocumentURL(url)
+                })
             } catch {
                 log.error("failed to restore bookmark: \(error.localizedDescription)")
             }
