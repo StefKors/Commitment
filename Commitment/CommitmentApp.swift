@@ -36,6 +36,7 @@ extension SceneID {
 /// - spotlight support? https://betterprogramming.pub/implement-core-spotlight-in-a-swiftui-app-859cb703f55d
 /// - quick view previews support
 /// - https://commit-chronicle.github.io/
+/// https://github.com/gonzalezreal/swift-markdown-ui/blob/main/Examples/Demo/Demo/SyntaxHighlighter/SplashCodeSyntaxHighlighter.swift
 
 @main
 struct CommitmentApp: App {
