@@ -51,5 +51,10 @@ extension GitDiffHunkLine {
         static var unchanged: GitDiffHunkLine {
             GitDiffHunk.Preview.versionBump.lines[5]
         }
+
+        static var largeNum: GitDiffHunkLine {
+            GitDiffHunkLine(type: .addition, text: "let count = commits.length + 2", oldLineNumber: 12345, newLineNumber: 23456)
+        }
+
     }
 }

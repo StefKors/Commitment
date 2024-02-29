@@ -12,15 +12,14 @@ struct DiffLineNumberView: View {
     let color: Color
 
     var body: some View {
-        ZStack(alignment: .center) {
-            color
-            if let number {
-                Text(number.description)
-            }
+        color.overlay {
+            Text(number?.description ?? " ")
         }
-        .frame(width: 30)
-        .font(.system(size: 11))
-        .foregroundColor(.secondary)
+            .frame(width: 36, alignment: .center)
+            .background(color)
+
+            .font(.system(size: 11))
+            .foregroundColor(.secondary)
     }
 }
 
@@ -29,10 +28,10 @@ struct DiffLineView: View {
     private let image: String?
     private let color: Color
     private let colorOpaque: Color
-    
+
     init(line: GitDiffHunkLine) {
         self.line = line
-        
+
         switch line.type {
         case .addition:
             self.image = "plus"
@@ -48,11 +47,11 @@ struct DiffLineView: View {
             self.colorOpaque = .clear
         }
     }
-    
+
     var body: some View {
         HStack(spacing: 0) {
             DiffLineNumberView(number: line.oldLineNumber, color: color)
-            
+
             DiffLineNumberView(number: line.newLineNumber, color: color)
 
             ZStack(alignment: .center) {
@@ -63,7 +62,7 @@ struct DiffLineView: View {
             }
             .frame(width: 30)
             .font(.system(size: 8))
-            
+
             ZStack(alignment: .leading) {
                 colorOpaque
                 HighlightedText(line.text)
@@ -81,5 +80,7 @@ struct DiffLineView_Previews: PreviewProvider {
         DiffLineView(line: GitDiffHunkLine.Preview.addition)
 
         DiffLineView(line: GitDiffHunkLine.Preview.unchanged)
+
+        DiffLineView(line: GitDiffHunkLine.Preview.largeNum)
     }
 }
