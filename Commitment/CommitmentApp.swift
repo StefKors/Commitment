@@ -64,8 +64,84 @@ struct CommitmentApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    let code: String = """
+//
+//  FileStatsView.swift
+//  Commitment
+//
+//  Created by Stef Kors on 03/05/2023.
+//
+
+import SwiftUI
+
+struct UndoAction: Identifiable, Equatable {
+    let type: UndoActionType
+    let arguments: [String]
+    let id: UUID = .init()
+    let createdAt: Date = .now
+    var subtitle: String? = nil
+
+    func test() async -> Int {
+        return 12
+    }
+}
+
+extension Theme {
+    public static let commitmentDark = Theme(
+        [
+            "type": Theme.Value(color: Color(ThemeColors.Dark.lightBlue)),
+            "class": Theme.Value(color: Color(ThemeColors.Dark.yellow)),
+            "class.system": Theme.Value(color: Color(ThemeColors.Dark.yellow))
+        ]
+    )
+}
+
+struct FileStatsView: View {
+    let stats: GitFileStats?
+
+    var count: Int {
+        var value = 1
+        value += 5
+        return value
+    }
+
+    var body: some View {
+        if let stats {
+            HStack(spacing: 8) {
+                Text("++\\(stats.insertions)")
+                    .foregroundColor(Color("GitHubDiffGreenBright"))
+                Divider()
+                    .frame(maxHeight: 16)
+                Text("--\\(stats.deletions)")
+                    .foregroundColor(Color("GitHubDiffRedBright"))
+                Divider()
+            }
+            .fontDesign(.monospaced)
+        }
+    }
+}
+
+struct FileStatsView_Previews: PreviewProvider {
+    static var previews: some View {
+        FileStatsView(stats: GitFileStats("4    1    Commitment/Views/AppViews/ActiveChangesMainView.swift"))
+    }
+}
+
+"""
+    let text = """
+func test() async -> Int {
+    return 12
+}
+"""
+
+
 
     var body: some Scene {
+        Window("commitment", id: "test window") {
+                HighlightedSTTextView(text)
+        }
+
+
         SwiftUI.Settings {
             SettingsWindow()
                 .frame(width: 650, height: 400)

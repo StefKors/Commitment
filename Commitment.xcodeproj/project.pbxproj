@@ -250,6 +250,8 @@
 		8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14127FDA8A0007803D2 /* Shell.swift */; };
 		8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14C27FDB6DF007803D2 /* BranchView.swift */; };
 		8A4DD9B02AC6F3EB00B80F74 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4DD9AF2AC6F3EB00B80F74 /* Bookmark.swift */; };
+		8A53ADB72B8B547800E31EE9 /* HighlightedSTTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53ADB62B8B547800E31EE9 /* HighlightedSTTextView.swift */; };
+		8A53ADB92B8B54E800E31EE9 /* NeonPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 8A53ADB82B8B54E800E31EE9 /* NeonPlugin */; };
 		8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */; };
 		8A562CE129B200E6006C7E8A /* Shell+Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE029B200E6006C7E8A /* Shell+Run.swift */; };
 		8A562CE329B33F79006C7E8A /* ActivityArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE229B33F79006C7E8A /* ActivityArrow.swift */; };
@@ -871,6 +873,7 @@
 		8A48D14127FDA8A0007803D2 /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		8A48D14C27FDB6DF007803D2 /* BranchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchView.swift; sourceTree = "<group>"; };
 		8A4DD9AF2AC6F3EB00B80F74 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		8A53ADB62B8B547800E31EE9 /* HighlightedSTTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightedSTTextView.swift; sourceTree = "<group>"; };
 		8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Executable.swift"; sourceTree = "<group>"; };
 		8A562CE029B200E6006C7E8A /* Shell+Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shell+Run.swift"; sourceTree = "<group>"; };
 		8A562CE229B33F79006C7E8A /* ActivityArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityArrow.swift; sourceTree = "<group>"; };
@@ -1070,6 +1073,7 @@
 				8A97DDA3299BC76A001E25E1 /* Splash in Frameworks */,
 				8AF893242AE56CB7002E4282 /* NukeVideo in Frameworks */,
 				8AC7B8E229B751C700AB2728 /* WindowManagement in Frameworks */,
+				8A53ADB92B8B54E800E31EE9 /* NeonPlugin in Frameworks */,
 				8AF893222AE56CB7002E4282 /* NukeUI in Frameworks */,
 				8AF893202AE56CB7002E4282 /* NukeExtensions in Frameworks */,
 			);
@@ -1650,6 +1654,7 @@
 				8AF893172AE563A4002E4282 /* SidebarGitFileStatusView.swift */,
 				8A327EFD298E9081008521B0 /* HeaderContentView.swift */,
 				8A97DC72299BA4C4001E25E1 /* HighlightedText.swift */,
+				8A53ADB62B8B547800E31EE9 /* HighlightedSTTextView.swift */,
 				8AAF7AED29A6D9600007CE8D /* HunkHeaderLineView.swift */,
 				8AC8EB4B297587F400365EB9 /* KeyboardKey.swift */,
 				8AAF7AF529A7D5750007CE8D /* MaterialAccentBorderGroupBoxStyle.swift */,
@@ -2053,6 +2058,7 @@
 				8AF8931F2AE56CB7002E4282 /* NukeExtensions */,
 				8AF893212AE56CB7002E4282 /* NukeUI */,
 				8AF893232AE56CB7002E4282 /* NukeVideo */,
+				8A53ADB82B8B54E800E31EE9 /* NeonPlugin */,
 			);
 			productName = Commitment;
 			productReference = 8A48D10D27FD9E2D007803D2 /* Commitment.app */;
@@ -2135,6 +2141,8 @@
 				8A164BD52A07DA0700053482 /* XCRemoteSwiftPackageReference "HotKey" */,
 				8AB8CD9B2ADAC23300F6C647 /* XCRemoteSwiftPackageReference "TaskTrigger" */,
 				8AF8931C2AE56CB7002E4282 /* XCRemoteSwiftPackageReference "Nuke" */,
+				8AD43B5F2B8B5373008A02F7 /* XCRemoteSwiftPackageReference "STTextView-Plugin-Neon" */,
+				8A53ADBF2B8B58A600E31EE9 /* XCRemoteSwiftPackageReference "STTextView" */,
 			);
 			productRefGroup = 8A48D10E27FD9E2D007803D2 /* Products */;
 			projectDirPath = "";
@@ -2521,6 +2529,7 @@
 				8AFBD53D296F2EB600525BF7 /* RepositoryWindow.swift in Sources */,
 				8AC44F012A0806ED0016FFEC /* ButtonStyleRegular.swift in Sources */,
 				8A6842602A052B720063CBE6 /* KeyboardShortcutsSettingsView.swift in Sources */,
+				8A53ADB72B8B547800E31EE9 /* HighlightedSTTextView.swift in Sources */,
 				8A48D11127FD9E2D007803D2 /* CommitmentApp.swift in Sources */,
 				8AAF7AF029A77E9F0007CE8D /* ActivityState.swift in Sources */,
 				8AC8EB4C297587F400365EB9 /* KeyboardKey.swift in Sources */,
@@ -2666,7 +2675,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2723,7 +2732,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -2953,6 +2962,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		8A53ADBF2B8B58A600E31EE9 /* XCRemoteSwiftPackageReference "STTextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:StefKors/STTextView.git";
+			requirement = {
+				branch = ruler;
+				kind = branch;
+			};
+		};
 		8A68425A2A052B230063CBE6 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts.git";
@@ -2985,6 +3002,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		8AD43B5F2B8B5373008A02F7 /* XCRemoteSwiftPackageReference "STTextView-Plugin-Neon" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/STTextView-Plugin-Neon";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		8AF8931C2AE56CB7002E4282 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke";
@@ -3010,6 +3035,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A1F2DB029C7C15C00E3C3F6 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		8A53ADB82B8B54E800E31EE9 /* NeonPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AD43B5F2B8B5373008A02F7 /* XCRemoteSwiftPackageReference "STTextView-Plugin-Neon" */;
+			productName = NeonPlugin;
 		};
 		8A68425B2A052B230063CBE6 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;

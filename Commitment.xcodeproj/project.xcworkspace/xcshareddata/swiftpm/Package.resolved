@@ -1,4 +1,5 @@
 {
+  "originHash" : "3db0b360517b8d7a442726a04d0470b2ab575c561d60b7ad41ef8151e6996b00",
   "pins" : [
     {
       "identity" : "hotkey",
@@ -28,6 +29,15 @@
       }
     },
     {
+      "identity" : "neon",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ChimeHQ/Neon.git",
+      "state" : {
+        "revision" : "7df7d080a271cfa4dc87f94cccc024665a75047e",
+        "version" : "0.6.0"
+      }
+    },
+    {
       "identity" : "nuke",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Nuke",
@@ -37,12 +47,48 @@
       }
     },
     {
+      "identity" : "rearrange",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ChimeHQ/Rearrange",
+      "state" : {
+        "revision" : "5ff7f3363f7a08f77e0d761e38e6add31c2136e1",
+        "version" : "1.8.1"
+      }
+    },
+    {
       "identity" : "splash",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JohnSundell/Splash.git",
       "state" : {
         "branch" : "master",
         "revision" : "2e3f17c2d09689c8bf175c4a84ff7f2ad3353301"
+      }
+    },
+    {
+      "identity" : "sttextkitplus",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/STTextKitPlus",
+      "state" : {
+        "revision" : "5500fa8811ed339605b0861ae0390677863a7bfe",
+        "version" : "0.0.2"
+      }
+    },
+    {
+      "identity" : "sttextview",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:StefKors/STTextView.git",
+      "state" : {
+        "branch" : "ruler",
+        "revision" : "6ed90c333c4f4e4379d9a3132f1d730a94b0400f"
+      }
+    },
+    {
+      "identity" : "sttextview-plugin-neon",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/STTextView-Plugin-Neon",
+      "state" : {
+        "revision" : "51ee66d2c3e4c259b25af2f6e7c2671209f8d3a6",
+        "version" : "0.1.0"
       }
     },
     {
@@ -64,6 +110,15 @@
       }
     },
     {
+      "identity" : "swifttreesitter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ChimeHQ/SwiftTreeSitter",
+      "state" : {
+        "revision" : "2599e95310b3159641469d8a21baf2d3d200e61f",
+        "version" : "0.8.0"
+      }
+    },
+    {
       "identity" : "swiftui-windowmanagement",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Wouter01/SwiftUI-WindowManagement.git",
@@ -80,7 +135,16 @@
         "revision" : "4be55873f831a07b4e56e814f45e9413e5ca9c48",
         "version" : "0.2.3"
       }
+    },
+    {
+      "identity" : "tree-sitter-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/tree-sitter-xcframework",
+      "state" : {
+        "revision" : "8c11cc2d299a5afed6d8ae77b29c8204743b1c4f",
+        "version" : "0.208.5"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
