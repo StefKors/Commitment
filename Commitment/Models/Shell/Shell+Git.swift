@@ -79,23 +79,25 @@ extension Shell {
     }
 
     func diff() async -> [GitDiff] {
-        let diff = await self.runTask(.git, ["diff"])
+//        "--output-indicator-context==",
+        let diff = await self.runTask(.git, ["diff",  "--no-ext-diff", "--no-color", "--find-renames"])
         return diff
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
-                return GitDiff(unifiedDiff: String(diffSegment))
+                return GitDiff(unifiedDiff: String(diffSegment), modelContext: .application)
             }
     }
 
     // TODO: profile if this is fast or slow
     func diff() async -> [String: GitDiff] {
         print("starting diff")
-        let diffs = await self.runTask(.git, ["diff"])
+//        "--output-indicator-context==",
+        let diffs = await self.runTask(.git, ["diff",  "--no-ext-diff", "--no-color", "--find-renames"])
 
         var diffDict: [String: GitDiff] = [:]
 
         for diffSegment in diffs.split(separator: "\ndiff --git ") {
-            let diff = GitDiff(unifiedDiff: String(diffSegment))
+            let diff = GitDiff(unifiedDiff: String(diffSegment), modelContext: .application)
             var path = diff.addedFile
 
             if path.isEmpty, diff.removedFile.isNotEmpty {
@@ -116,7 +118,7 @@ extension Shell {
         return await self.runTask(.git, ["diff", "\(commitB)..\(commitA)", "--no-ext-diff", "--no-color", "--find-renames"])
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
-                return GitDiff(unifiedDiff: String(diffSegment))
+                return GitDiff(unifiedDiff: String(diffSegment), modelContext: .application)
             }
     }
 
@@ -132,13 +134,13 @@ extension Shell {
     }
 
     /// Probably not performant
-    func show(file: String, defaultType: GitDiffHunkLineType = .unchanged) async -> [GitDiffHunkLine] {
+    func show(file: String, defaultType: GitDiffHunkLineType = .context) async -> [GitDiffHunkLine] {
         return await self.show(file: file)
             .lines
             .enumerated()
             .map({ (index, line) in
                 return GitDiffHunkLine(
-                    type: .unchanged,
+                    type: .context,
                     text: String(line),
                     oldLineNumber: index,
                     newLineNumber: index

@@ -250,6 +250,7 @@
 		8A48D14227FDA8A0007803D2 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14127FDA8A0007803D2 /* Shell.swift */; };
 		8A48D14D27FDB6DF007803D2 /* BranchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A48D14C27FDB6DF007803D2 /* BranchView.swift */; };
 		8A4DD9B02AC6F3EB00B80F74 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4DD9AF2AC6F3EB00B80F74 /* Bookmark.swift */; };
+		8A4F87CA2B99DDEA00BAEBC3 /* git-add--interactive in Resources */ = {isa = PBXBuildFile; fileRef = 8A341FE529C867330001E58B /* git-add--interactive */; };
 		8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CDE29B200AF006C7E8A /* Shell+Executable.swift */; };
 		8A562CE129B200E6006C7E8A /* Shell+Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE029B200E6006C7E8A /* Shell+Run.swift */; };
 		8A562CE329B33F79006C7E8A /* ActivityArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A562CE229B33F79006C7E8A /* ActivityArrow.swift */; };
@@ -324,6 +325,9 @@
 		8A992DFD29A63B36001E26A3 /* OverlayAlignmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */; };
 		8A992DFF29A64867001E26A3 /* ToolbarMenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A992DFE29A64867001E26A3 /* ToolbarMenuButtonStyle.swift */; };
 		8A9E089A2A864C6500244E1B /* SideBySideGutterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9E08992A864C6500244E1B /* SideBySideGutterView.swift */; };
+		8AAA91202B90734100D6B0A1 /* SideBySideHunkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA911F2B90734100D6B0A1 /* SideBySideHunkView.swift */; };
+		8AAA91242B9073F700D6B0A1 /* SideBySideDiffLineTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA91232B9073F700D6B0A1 /* SideBySideDiffLineTypeView.swift */; };
+		8AAA91262B9074A500D6B0A1 /* SideBySideDiffLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA91252B9074A500D6B0A1 /* SideBySideDiffLineView.swift */; };
 		8AACBA672A161B57008DFF39 /* ButtonStyleSubmitProminent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AACBA662A161B57008DFF39 /* ButtonStyleSubmitProminent.swift */; };
 		8AAF7AEC29A6CEAE0007CE8D /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AEB29A6CEAE0007CE8D /* Throttler.swift */; };
 		8AAF7AEE29A6D9600007CE8D /* HunkHeaderLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAF7AED29A6D9600007CE8D /* HunkHeaderLineView.swift */; };
@@ -376,6 +380,7 @@
 		8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E129E6D77600631337 /* UndoState.swift */; };
 		8AD9B5E429E6D90D00631337 /* UndoActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */; };
 		8AD9B5E829E6DC1500631337 /* UndoActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9B5E729E6DC1500631337 /* UndoActionView.swift */; };
+		8ADFFE772B95E74F00EB58D8 /* DiffHunkSwiftDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADFFE762B95E74F00EB58D8 /* DiffHunkSwiftDataTests.swift */; };
 		8AE294012AC6CE1D001BE6D0 /* UTType+Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE294002AC6CE1D001BE6D0 /* UTType+Directory.swift */; };
 		8AF347BF2AE1268500B7BD45 /* ArgumentConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347B72AE1268500B7BD45 /* ArgumentConvertible.swift */; };
 		8AF347C02AE1268500B7BD45 /* Array+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347BA2AE1268500B7BD45 /* Array+Utils.swift */; };
@@ -948,6 +953,9 @@
 		8A992DFC29A63B36001E26A3 /* OverlayAlignmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayAlignmentView.swift; sourceTree = "<group>"; };
 		8A992DFE29A64867001E26A3 /* ToolbarMenuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarMenuButtonStyle.swift; sourceTree = "<group>"; };
 		8A9E08992A864C6500244E1B /* SideBySideGutterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBySideGutterView.swift; sourceTree = "<group>"; };
+		8AAA911F2B90734100D6B0A1 /* SideBySideHunkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBySideHunkView.swift; sourceTree = "<group>"; };
+		8AAA91232B9073F700D6B0A1 /* SideBySideDiffLineTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBySideDiffLineTypeView.swift; sourceTree = "<group>"; };
+		8AAA91252B9074A500D6B0A1 /* SideBySideDiffLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBySideDiffLineView.swift; sourceTree = "<group>"; };
 		8AACBA662A161B57008DFF39 /* ButtonStyleSubmitProminent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleSubmitProminent.swift; sourceTree = "<group>"; };
 		8AAD63E72976A88500C7D1BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8AAD63E92976A88500C7D1BB /* Screenshot-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot-dark.png"; sourceTree = "<group>"; };
@@ -1011,6 +1019,7 @@
 		8AD9B5E129E6D77600631337 /* UndoState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoState.swift; sourceTree = "<group>"; };
 		8AD9B5E329E6D90D00631337 /* UndoActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActivityView.swift; sourceTree = "<group>"; };
 		8AD9B5E729E6DC1500631337 /* UndoActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoActionView.swift; sourceTree = "<group>"; };
+		8ADFFE762B95E74F00EB58D8 /* DiffHunkSwiftDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffHunkSwiftDataTests.swift; sourceTree = "<group>"; };
 		8AE294002AC6CE1D001BE6D0 /* UTType+Directory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Directory.swift"; sourceTree = "<group>"; };
 		8AF347B72AE1268500B7BD45 /* ArgumentConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentConvertible.swift; sourceTree = "<group>"; };
 		8AF347BA2AE1268500B7BD45 /* Array+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Utils.swift"; sourceTree = "<group>"; };
@@ -1567,6 +1576,7 @@
 		8A48D12127FD9E2E007803D2 /* CommitmentTests */ = {
 			isa = PBXGroup;
 			children = (
+				8ADFFE762B95E74F00EB58D8 /* DiffHunkSwiftDataTests.swift */,
 				8A48D12227FD9E2E007803D2 /* CommitmentTests.swift */,
 				8A11B4662A0285F600B2B3EA /* GitFileStatsTests.swift */,
 				8A8398D72AB9AFB900F589FD /* DiffParserTests.swift */,
@@ -1776,8 +1786,11 @@
 		8A9E08982A864C4C00244E1B /* SideBySideDiff */ = {
 			isa = PBXGroup;
 			children = (
+				8AAA91232B9073F700D6B0A1 /* SideBySideDiffLineTypeView.swift */,
+				8AAA91252B9074A500D6B0A1 /* SideBySideDiffLineView.swift */,
 				8A3462732A0E9B330051F195 /* SideBySideDiffRenderView.swift */,
 				8A9E08992A864C6500244E1B /* SideBySideGutterView.swift */,
+				8AAA911F2B90734100D6B0A1 /* SideBySideHunkView.swift */,
 			);
 			path = SideBySideDiff;
 			sourceTree = "<group>";
@@ -2102,7 +2115,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					8A48D10C27FD9E2D007803D2 = {
 						CreatedOnToolsVersion = 13.3;
@@ -2416,6 +2429,7 @@
 				8AFBD57D2971D14700525BF7 /* CheckoutProgressIconView.swift in Sources */,
 				8AB8CDA12ADAC74D00F6C647 /* GitFolderContentMonitorView.swift in Sources */,
 				8AD9B5E229E6D77600631337 /* UndoState.swift in Sources */,
+				8AAA91202B90734100D6B0A1 /* SideBySideHunkView.swift in Sources */,
 				8A96B6072A07D5CA00A52467 /* TouchbarActiveChangesStatsView.swift in Sources */,
 				8AB8CD9F2ADAC72C00F6C647 /* FolderContentMonitorView.swift in Sources */,
 				8AB8CD982ADAB8AE00F6C647 /* ContentView.swift in Sources */,
@@ -2492,6 +2506,7 @@
 				8A3421DE29CF0D2B0001E58B /* SSHKeysSettingsView.swift in Sources */,
 				8A3462742A0E9B330051F195 /* SideBySideDiffRenderView.swift in Sources */,
 				8A562CDF29B200AF006C7E8A /* Shell+Executable.swift in Sources */,
+				8AAA91242B9073F700D6B0A1 /* SideBySideDiffLineTypeView.swift in Sources */,
 				8A6AB29B2A3387FA00EFB79F /* ColorKit.swift in Sources */,
 				8A58736C2A687A5E00E630EA /* SplitModeOptions.swift in Sources */,
 				8A6842312A02F4BF0063CBE6 /* ActiveChangesStatsView.swift in Sources */,
@@ -2501,6 +2516,7 @@
 				8AFBD57B2971CAC500525BF7 /* BranchSelectView.swift in Sources */,
 				8A5C64D629797DB300CA8FE1 /* CommitHistoryMainView.swift in Sources */,
 				8A6B649C2973124B0074B3C1 /* FileDiffChangesView.swift in Sources */,
+				8AAA91262B9074A500D6B0A1 /* SideBySideDiffLineView.swift in Sources */,
 				8A02C50529ACD3AA004DCA69 /* Rotation.swift in Sources */,
 				8AF893162AE400CA002E4282 /* AppStorage+Array.swift in Sources */,
 				8A6B649429730B070074B3C1 /* SplitModeToggleView.swift in Sources */,
@@ -2585,6 +2601,7 @@
 				8A11B4692A02860900B2B3EA /* GitCommitStatsTests.swift in Sources */,
 				8A8398D82AB9AFB900F589FD /* DiffParserTests.swift in Sources */,
 				8A11B4672A0285F600B2B3EA /* GitFileStatsTests.swift in Sources */,
+				8ADFFE772B95E74F00EB58D8 /* DiffHunkSwiftDataTests.swift in Sources */,
 				8A48D12327FD9E2E007803D2 /* CommitmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2618,6 +2635,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -2652,6 +2670,7 @@
 				EAGER_LINKING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2681,6 +2700,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -2715,6 +2735,7 @@
 				EAGER_LINKING = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2752,6 +2773,7 @@
 				EAGER_LINKING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Commitment/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Commitment;
@@ -2791,6 +2813,7 @@
 				EAGER_LINKING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Commitment/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Commitment;
@@ -2820,6 +2843,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
@@ -2840,6 +2864,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
@@ -2859,6 +2884,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.CommitmentUITests;
@@ -2877,6 +2903,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = RT5BSWJB4U;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefkors.CommitmentUITests;

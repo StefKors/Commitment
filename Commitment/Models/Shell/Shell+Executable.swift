@@ -11,6 +11,7 @@ enum Executable: String {
     case git
 
     var url: URL {
-        Bundle.main.url(forResource: self.rawValue, withExtension: "")!
+        Bundle.main.url(forResource: self.rawValue, withExtension: "") ?? URL(fileURLWithPath: "")
+//        Bundle.main.url(forResource: self.rawValue, withExtension: "")
     }
 }

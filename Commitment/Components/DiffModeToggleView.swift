@@ -12,11 +12,11 @@ struct DiffViewModePickerView: View {
     var body: some View {
         switch mode {
         case .unified:
-            Label("Side by Side", systemImage: "rectangle.split.2x1.fill")
-                .help("Side by Side")
-        case .sideBySide:
             Label("Unified", systemImage: "rectangle.split.1x2.fill")
                 .help("Unified")
+        case .sideBySide:
+            Label("Side by Side", systemImage: "rectangle.split.2x1.fill")
+                .help("Side by Side")
         }
     }
 }

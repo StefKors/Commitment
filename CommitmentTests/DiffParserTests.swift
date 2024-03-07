@@ -7,19 +7,38 @@
 
 import XCTest
 @testable import Commitment
+import SwiftData
 
+@MainActor
 final class DiffParserTests: XCTestCase {
-    
+
     // We want to check if the first line character is correctly removed.
     // That's where the `+` or `-` or ` ` (unchanged) is and we will parse that to a specific type.
     func testSimpleVersionBump() throws {
-        let output = try? GitDiff(unifiedDiff:  simpleVersionBump)
+//        let parsingResults = GitDiffParser.parse(unifiedDiff: simpleVersionBump)
+//        let output = GitDiff(
+//            addedFile: parsingResults.addedFile,
+//            removedFile: parsingResults.removedFile,
+//            hunks: parsingResults.hunks,
+//            unifiedDiff: simpleVersionBump
+//        )
+//        let output = GitDiff(unifiedDiff:  simpleVersionBump)
+//        context.insert(output)
 
-        let firstHunk = output?.hunks.first
+        let parsingResults = GitDiffParserParse(unifiedDiff: simpleVersionBump, modelContext: .previews)
+
+        let output = GitDiff.init(
+            addedFile: parsingResults.addedFile,
+            removedFile: parsingResults.removedFile,
+            hunks: parsingResults.hunks,
+            unifiedDiff: simpleVersionBump
+        )
+
+        let firstHunk = output.hunks.first
         let firstLine = firstHunk?.lines.first
 
-        XCTAssertEqual(output?.hunks.count, 1)
-        XCTAssertEqual(firstLine?.type, .unchanged)
+        XCTAssertEqual(output.hunks.count, 1)
+        XCTAssertEqual(firstLine?.type, .context)
         guard let text = firstLine?.text else {
             XCTFail("expected text on first line of diff")
             return
@@ -29,19 +48,61 @@ final class DiffParserTests: XCTestCase {
     }
 
     func testDataWithBrokenInitalLine() throws {
-        let output = try? GitDiff(unifiedDiff:  dataWithBrokenInitalLine)
+        let output = GitDiff(unifiedDiff:  dataWithBrokenInitalLine, modelContext: .previews)
 
-        let firstHunk = output?.hunks.first
+        let firstHunk = output.hunks.first
         let firstLine = firstHunk?.lines.first
 
-        XCTAssertEqual(output?.hunks.count, 1)
-        XCTAssertEqual(firstLine?.type, .unchanged)
+        XCTAssertEqual(output.hunks.count, 1)
+        XCTAssertEqual(firstLine?.type, .context)
         guard let text = firstLine?.text else {
             XCTFail("expected text on first line of diff")
             return
         }
         XCTAssertEqual(text, "")
     }
+
+    func testDataWithCustomContextIndicator() throws {
+        let output = GitDiff(unifiedDiff:  dataWithCustomContextIndicator, modelContext: .previews)
+
+        let firstHunk = output.hunks.first
+
+        let types = firstHunk?.lines.map { line in
+            return line.type
+        }
+
+        let expectedTypes: [GitDiffHunkLineType] = [.context, .context, .deletion, .addition, .context, .context, .context]
+        XCTAssertEqual(types, expectedTypes)
+
+        let firstLine = firstHunk?.lines.first(where: { line in
+            line.type != .context
+        })
+
+        XCTAssertEqual(output.hunks.count, 1)
+        XCTAssertEqual(firstLine?.type, .deletion)
+        guard let text = firstLine?.text else {
+            XCTFail("expected text on first line of diff")
+            return
+        }
+        XCTAssertEqual(text, "  \"version\": \"2.0.0\",")
+    }
+
+    // custom context indicator =
+    let dataWithCustomContextIndicator = """
+diff --git a/package.json b/package.json
+index 09ff520..4f245a9 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+={
+=  "name": "playground",
+-  "version": "2.0.0",
++  "version": "2.0.1",
+=  "main": "index.js",
+=  "license": "MIT",
+=  "dependencies": {
+
+"""
 
     let dataWithBrokenInitalLine: String = """
 diff --git a/ColorPicker/ColorPickerApp.swift b/ColorPicker/ColorPickerApp.swift

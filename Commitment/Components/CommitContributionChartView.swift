@@ -147,15 +147,6 @@ extension Calendar {
     }
 }
 
-extension Date: Strideable {
-    public func distance(to other: Date) -> TimeInterval {
-        return other.timeIntervalSinceReferenceDate - self.timeIntervalSinceReferenceDate
-    }
-
-    public func advanced(by n: TimeInterval) -> Date {
-        return self + n
-    }
-}
 struct CommitContributionChartView_Previews: PreviewProvider {
     static var previews: some View {
         CommitContributionChartView(commits: [])

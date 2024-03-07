@@ -19,7 +19,7 @@ import Foundation
 import SwiftData
 
 /// Describes a single file status
-@Model final class GitFileStatus: Identifiable, Equatable {
+@Model final class GitFileStatus: Identifiable {
     // MARK: - Init
     init(path: String, state: String, sha: String? = nil, stats: GitFileStats? = nil) {
         self.path = path
@@ -52,7 +52,7 @@ import SwiftData
     var repository: CodeRepository?
     
     @Relationship(deleteRule: .cascade, inverse: \GitDiff.status)
-    var diff: GitDiff?
+    var diff: GitDiff? = nil
 
     /// Cleaned up version of the file path that only contains the path
     /// while supporting renamed/moved file paths with " -> " in it
@@ -107,7 +107,7 @@ import SwiftData
         case.added:
             return .addition
         default:
-            return .unchanged
+            return .context
         }
     }
     

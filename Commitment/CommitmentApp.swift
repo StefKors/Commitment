@@ -37,6 +37,52 @@ extension SceneID {
 /// - quick view previews support
 /// - https://commit-chronicle.github.io/
 /// https://github.com/gonzalezreal/swift-markdown-ui/blob/main/Examples/Demo/Demo/SyntaxHighlighter/SplashCodeSyntaxHighlighter.swift
+///
+
+extension ModelContainer {
+    static var previews: ModelContainer = {
+        let schema = Schema([
+            CodeRepository.self,
+            Bookmark.self,
+            GitFileStatus.self,
+            //            GitDiff.self,
+            Credential.self,
+            GitDiffHunk.self,
+            //            GitDiffHunkLine.self,
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+
+    static var application: ModelContainer = {
+        let schema = Schema([
+            CodeRepository.self,
+            Bookmark.self,
+            GitFileStatus.self,
+            //            GitDiff.self,
+            Credential.self,
+            GitDiffHunk.self,
+            //            GitDiffHunkLine.self,
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+}
+
+extension ModelContext {
+    static var previews: ModelContext = ModelContext(.previews)
+    static var application: ModelContext = ModelContext(.application)
+}
 
 @main
 struct CommitmentApp: App {
@@ -48,29 +94,12 @@ struct CommitmentApp: App {
         NSWindow.alwaysUseActiveAppearance = true
     }
 
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            CodeRepository.self,
-            Bookmark.self,
-            GitFileStatus.self,
-            GitDiff.self,
-            Credential.self
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     var body: some Scene {
         SwiftUI.Settings {
             SettingsWindow()
                 .frame(width: 650, height: 400)
 //                .hideSidebarToggle()
-                .modelContainer(sharedModelContainer)
+                .modelContainer(.application)
         }
         .windowStyle(.automatic)
         .windowToolbarStyle(.unified)
@@ -80,7 +109,7 @@ struct CommitmentApp: App {
         WindowGroup(id: SceneID.mainWindow.id, for: URL.self) { $repositoryID in
             ContentView(repositoryID: $repositoryID)
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(.application)
         .register(.mainWindow)
         .enableOpenWindow()
         .titlebarAppearsTransparent(true)

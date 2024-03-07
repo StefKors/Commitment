@@ -38,7 +38,6 @@ fileprivate let log = Logger(subsystem: "com.stefkors.commitment", category: "Co
     // TODO: store branch name as string instead of computed so we don't lose state as much
     // Computed properties for easy reference
     var branch: GitReference? {
-        print(branches.debugDescription)
         return branches.first(where: \.active)
     }
 

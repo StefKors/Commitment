@@ -1,29 +1,13 @@
 //
-//  DiffLineView.swift
+//  SideBySideDiffLineView.swift
 //  Commitment
 //
-//  Created by Stef Kors on 12/01/2023.
+//  Created by Stef Kors on 29/02/2024.
 //
 
 import SwiftUI
 
-struct DiffLineNumberView: View {
-    let number: Int?
-    let color: Color
-
-    var body: some View {
-        color.overlay {
-            Text(number?.description ?? " ")
-        }
-            .frame(width: 36, alignment: .center)
-            .background(color)
-
-            .font(.system(size: 11))
-            .foregroundColor(.secondary)
-    }
-}
-
-struct DiffLineView: View {
+struct OldSideBySideDiffLineView: View {
     let line: GitDiffHunkLine
     private let image: String?
     private let color: Color
@@ -35,11 +19,11 @@ struct DiffLineView: View {
         switch line.type {
         case .addition:
             self.image = "plus"
-            self.color = Color("GitHubDiffGreen")
+            self.color = .accentColor
             self.colorOpaque = color.opacity(0.3)
         case .deletion:
             self.image = "minus"
-            self.color = Color("GitHubDiffRed")
+            self.color = .accentColor
             self.colorOpaque = color.opacity(0.3)
         case .context:
             self.image = nil
@@ -73,14 +57,6 @@ struct DiffLineView: View {
     }
 }
 
-struct DiffLineView_Previews: PreviewProvider {
-    static var previews: some View {
-        DiffLineView(line: GitDiffHunkLine.Preview.deletion)
-
-        DiffLineView(line: GitDiffHunkLine.Preview.addition)
-
-        DiffLineView(line: GitDiffHunkLine.Preview.unchanged)
-
-        DiffLineView(line: GitDiffHunkLine.Preview.largeNum)
-    }
-}
+//#Preview {
+//    OldSideBySideDiffLineView(line: .Preview.addition)
+//}

@@ -6,36 +6,57 @@
 //
 
 import Foundation
-
+import SwiftData
 /// A diff line inside a hunk,
-public struct GitDiffHunkLine: Identifiable, Codable, Equatable {
+///
+@Model class GitDiffHunkLine {
 
-    public let id: String
+//    @Attribute(.unique) var id: String = UUID().uuidString
+//    var id: String = UUID().uuidString
 
-    public let type: GitDiffHunkLineType
-    
-    public let text: String
+    var type: GitDiffHunkLineType
 
-    public let oldLineNumber: Int?
+    var text: String
 
-    public let newLineNumber: Int?
-    
-    internal let description: String
+    var oldLineNumber: Int?
 
-    internal init(type: GitDiffHunkLineType, text: String, oldLineNumber: Int? = nil, newLineNumber: Int? = nil) {
+    var newLineNumber: Int?
+
+    var hunk: GitDiffHunk?
+
+    init(type: GitDiffHunkLineType, text: String, oldLineNumber: Int? = nil, newLineNumber: Int? = nil) {
         self.type = type
         self.text = text
         self.oldLineNumber = oldLineNumber
         self.newLineNumber = newLineNumber
-
-        self.id = "\(self.oldLineNumber ?? 0)-\(self.newLineNumber ?? 0)-\(self.type)-\(self.text)"
-
-        switch type {
-        case .addition: self.description = "+\(text)"
-        case .deletion: self.description = "-\(text)"
-        case .unchanged: self.description = " \(text)"
-        }
     }
+
+//    var description: String = ""
+//    {
+//        switch type {
+//        case .addition: return "+\(text)"
+//        case .deletion: return "-\(text)"
+//        case .context: return " \(text)"
+//        }
+//    }
+
+//    init(type: GitDiffHunkLineType, text: String, oldLineNumber: Int?, newLineNumber: Int?) {
+////        self.type = type
+//        self.text = text
+//        self.oldLineNumber = oldLineNumber
+//        self.newLineNumber = newLineNumber
+//    }
+
+//    init(type: GitDiffHunkLineType, text: String, oldLineNumber: Int? = nil, newLineNumber: Int? = nil) {
+//        self.type = type
+//        self.text = text
+//        self.oldLineNumber = oldLineNumber
+//        self.newLineNumber = newLineNumber
+//
+//        self.id = "\(oldLineNumber ?? 0)-\(newLineNumber ?? 0)-\(type)-\(text)"
+//    }
+
+
 }
 
 extension GitDiffHunkLine {
@@ -55,6 +76,5 @@ extension GitDiffHunkLine {
         static var largeNum: GitDiffHunkLine {
             GitDiffHunkLine(type: .addition, text: "let count = commits.length + 2", oldLineNumber: 12345, newLineNumber: 23456)
         }
-
     }
 }

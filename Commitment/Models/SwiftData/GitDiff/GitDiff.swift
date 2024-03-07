@@ -9,31 +9,38 @@ import Foundation
 import SwiftData
 
 /// Represents a universal git diff
-@Model
-class GitDiff: Equatable {
-    static func == (lhs: GitDiff, rhs: GitDiff) -> Bool {
-        return lhs.addedFile == rhs.addedFile &&
-        lhs.removedFile == rhs.removedFile &&
-        lhs.hunks == rhs.hunks &&
-        lhs.lines == rhs.lines
-    }
+@Model final class GitDiff {
+//    static func == (lhs: GitDiff, rhs: GitDiff) -> Bool {
+//        return lhs.addedFile == rhs.addedFile &&
+//        lhs.removedFile == rhs.removedFile &&
+//        lhs.hunks == rhs.hunks 
+//        //&&
+////        lhs.lines == rhs.lines
+//    }
 
 
-    var status: GitFileStatus?
+    var status: GitFileStatus? = nil
 
-    let addedFile: String
+    var addedFile: String = ""
 
-    let removedFile: String
+    var removedFile: String = ""
 
-    let hunks: [GitDiffHunk]
-
-    var lines: [GitDiffHunkLine]
+    @Relationship(deleteRule: .cascade, inverse: \GitDiffHunk.diff)
+    var hunks = [GitDiffHunk]()
 
     // Source string of diff
-    let unifiedDiff: String
+    let unifiedDiff: String = ""
 
-    convenience init(unifiedDiff: String) {
-        let parsingResults = GitDiffParser(unifiedDiff: unifiedDiff).parse()
+    init(status: GitFileStatus? = nil, addedFile: String = "", removedFile: String = "", hunks: [GitDiffHunk], unifiedDiff: String = "") {
+        self.status = status
+        self.addedFile = addedFile
+        self.removedFile = removedFile
+        self.hunks = hunks
+        self.unifiedDiff = unifiedDiff
+    }
+
+    convenience init(unifiedDiff: String, modelContext: ModelContext) {
+        let parsingResults = GitDiffParserParse(unifiedDiff: unifiedDiff, modelContext: modelContext)
         self.init(
             addedFile: parsingResults.addedFile,
             removedFile: parsingResults.removedFile,
@@ -42,30 +49,16 @@ class GitDiff: Equatable {
         )
     }
 
-    init(
-        addedFile: String,
-        removedFile: String,
-        hunks: [GitDiffHunk],
-        unifiedDiff: String
-    ) {
-        self.addedFile = addedFile
-        self.removedFile = removedFile
-        self.hunks = hunks
-        self.unifiedDiff = unifiedDiff
-        self.lines = hunks.map { hunk in
-            hunk.lines
-        }.flatMap { $0 }
-    }
-
-    var description: String {
-        let header = """
-        --- \(removedFile)
-        +++ \(addedFile)
-        """
-        return hunks.reduce(into: header) {
-            $0 +=  "\n\($1.description)"
-        }
-    }
+//    var description: String {
+//        let header = """
+//        --- \(removedFile)
+//        +++ \(addedFile)
+//        """
+//        return header
+//        return hunks.reduce(into: header) {
+//            $0 +=  "\n\($1.description)"
+//        }
+//    }
 }
 
 extension Collection where Element == GitDiff {
@@ -90,9 +83,23 @@ extension Collection where Element == GitDiff {
 }
 
 extension GitDiff {
-    static let previewVersionBump = GitDiff.Preview.toDiff(GitDiff.Preview.versionBump)
+    static let previewVersionBump = GitDiff(unifiedDiff: GitDiff.Preview.versionBump, modelContext: .previews)
 
     struct Preview {
+        static let dataWithCustomContextIndicator = """
+diff --git a/package.json b/package.json
+index 09ff520..4f245a9 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+={
+=  "name": "playground",
+-  "version": "2.0.0",
++  "version": "2.0.1",
+=  "main": "index.js",
+=  "license": "MIT",
+=  "dependencies": {
+"""
         /// A unified Diff String of a major version bump in a package.json file
         static let versionBump: String = """
 diff --git a/package.json b/package.json
@@ -591,8 +598,28 @@ index 0b3fc7c..3dd217d 100644
                  .frame(maxWidth: 800)
          }
 """
-        static func toDiff(_ unifiedDiff: String) -> GitDiff {
-            return GitDiff(unifiedDiff: unifiedDiff)
-        }
+
+        static let sideBySideDebug: String = """
+diff --git a/Commitment/Components/SideBySideDiff/SideBySideDiffLineView.swift b/Commitment/Components/SideBySideDiff/SideBySideDiffLineView.swift
+index a6e8715..e07847b 100644
+--- a/Commitment/Components/SideBySideDiff/SideBySideDiffLineView.swift
++++ b/Commitment/Components/SideBySideDiff/SideBySideDiffLineView.swift
+@@ -7,7 +7,7 @@
+
+ import SwiftUI
+
+-struct SideBySideDiffLineView: View {
++struct OldSideBySideDiffLineView: View {
+     let line: GitDiffHunkLine
+     private let image: String?
+     private let color: Color
+@@ -58,5 +58,5 @@ struct SideBySideDiffLineView: View {
+ }
+
+ #Preview {
+-    SideBySideDiffLineView(line: .Preview.addition)
++    OldSideBySideDiffLineView(line: .Preview.addition)
+ }
+"""
     }
 }
