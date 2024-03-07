@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 enum ShellError: Error {
     case NoGitUser
@@ -78,18 +79,18 @@ extension Shell {
         return await self.runTask(.git, ["push", remote, branch])
     }
 
-    func diff() async -> [GitDiff] {
+    func diff(modelContext: ModelContext) async -> [GitDiff] {
 //        "--output-indicator-context==",
         let diff = await self.runTask(.git, ["diff",  "--no-ext-diff", "--no-color", "--find-renames"])
         return diff
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
-                return GitDiff(unifiedDiff: String(diffSegment), modelContext: .application)
+                return GitDiff(unifiedDiff: String(diffSegment), modelContext: modelContext)
             }
     }
 
     // TODO: profile if this is fast or slow
-    func diff() async -> [String: GitDiff] {
+    func diff(modelContext: ModelContext) async -> [String: GitDiff] {
         print("starting diff")
 //        "--output-indicator-context==",
         let diffs = await self.runTask(.git, ["diff",  "--no-ext-diff", "--no-color", "--find-renames"])
@@ -97,7 +98,7 @@ extension Shell {
         var diffDict: [String: GitDiff] = [:]
 
         for diffSegment in diffs.split(separator: "\ndiff --git ") {
-            let diff = GitDiff(unifiedDiff: String(diffSegment), modelContext: .application)
+            let diff = GitDiff(unifiedDiff: String(diffSegment), modelContext: modelContext)
             var path = diff.addedFile
 
             if path.isEmpty, diff.removedFile.isNotEmpty {
@@ -113,12 +114,12 @@ extension Shell {
         return diffDict
     }
 
-    func diff(at commitA: String) async -> [GitDiff] {
+    func diff(at commitA: String, modelContext: ModelContext) async -> [GitDiff] {
         let commitB = await self.SHAbefore(SHA: commitA)
         return await self.runTask(.git, ["diff", "\(commitB)..\(commitA)", "--no-ext-diff", "--no-color", "--find-renames"])
             .split(separator: "\ndiff --git ")
             .compactMap { diffSegment in
-                return GitDiff(unifiedDiff: String(diffSegment), modelContext: .application)
+                return GitDiff(unifiedDiff: String(diffSegment), modelContext: modelContext)
             }
     }
 

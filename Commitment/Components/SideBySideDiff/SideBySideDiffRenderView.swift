@@ -17,6 +17,7 @@ struct SideBySideDiffRenderView: View {
             FileView(fileStatus: fileStatus) {
                 ForEach(diff.hunks, id: \.id) { hunk in
                     SideBySideHunkView(hunk: hunk)
+                        .id(hunk.id)
                 }
             }
         }

@@ -9,9 +9,11 @@ import SwiftUI
 import TaskTrigger
 import Algorithms
 import KeyboardShortcuts
+import SwiftData
 
 struct LoadedRepositoryView: View {
     @Environment(CodeRepository.self) private var repository
+    @Environment(\.modelContext) private var modelContext
     @EnvironmentObject private var activityState: ActivityState
     @EnvironmentObject private var undoState: UndoState
     @EnvironmentObject private var viewState: ViewState
@@ -48,11 +50,12 @@ struct LoadedRepositoryView: View {
             .gitFolderMonitor(
                 url: repository.path,
                 onFileChange: { fileChange in
+                    print("filechange \(fileChange.description)")
 //                    Throttler.throttle(delay: .seconds(6),shouldRunImmediately: true, shouldRunLatest: false) {
                         activeChangesUpdate.trigger()
                 },
                 onGitChange: { gitChange in
-                    Throttler.throttle(delay: .seconds(3),shouldRunImmediately: true) {
+                    Throttler.throttle(delay: .seconds(30),shouldRunImmediately: true) {
                         gitBranchUpdate.trigger()
                         gitHistoryUpdate.trigger()
                     }
@@ -79,12 +82,18 @@ struct LoadedRepositoryView: View {
                 repository.stats = await self.shell.stats()
             }
             .task($activeChangesUpdate) {
-                let diffs: [String: GitDiff] = await self.shell.diff()
+                let diffs: [String: GitDiff] = await self.shell.diff(modelContext: modelContext)
+                modelContext.autosaveEnabled = false
+                for status in repository.status {
+                    modelContext.delete(status)
+                }
                 /// Add diffs to status
                 repository.status = await self.shell.status().map { status in
                     status.diff = diffs[status.cleanedPath]
                     return status
                 }
+                try? modelContext.save()
+                modelContext.autosaveEnabled = true
             }
     }
 }

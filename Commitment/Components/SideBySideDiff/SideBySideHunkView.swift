@@ -14,11 +14,7 @@ struct SideBySideHunkView: View {
     private let lineheight: CGFloat = 20
     private let minheight: CGFloat = 4
 
-    private var sortedLines: [GitDiffHunkLine] {
-        hunk.lines.sorted { lhs, rhs in
-            return (lhs.oldLineNumber ?? lhs.newLineNumber ?? 0) < (rhs.oldLineNumber ?? rhs.newLineNumber ?? 0)
-        }
-    }
+    @State private var sortedLines: [GitDiffHunkLine] = []
 
     // TODO: should probably not be hardcoded index
     private var indexOfFirstChange: Int {
@@ -51,7 +47,6 @@ struct SideBySideHunkView: View {
         // Number of lines * lineheight with some bounds
         // Add additional padding for certain line types
         let numOfDeletions = sortedLines.filter { $0.type == .deletion}.count
-
         return max(toDistance(val: numOfDeletions), minheight) //+ oldSideTypeRelativePadding
     }
 
@@ -172,6 +167,11 @@ struct SideBySideHunkView: View {
                     isHovering = hovering
                 }
             })
+        }
+        .task(id: hunk.id) {
+            self.sortedLines = hunk.lines.sorted { lhs, rhs in
+                return (lhs.oldLineNumber ?? lhs.newLineNumber ?? 0) < (rhs.oldLineNumber ?? rhs.newLineNumber ?? 0)
+            }
         }
     }
 

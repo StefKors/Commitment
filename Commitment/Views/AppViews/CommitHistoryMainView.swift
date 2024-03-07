@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 struct CommitHistoryMainView: View {
     @AppStorage(Settings.Editor.ExternalEditor) private var externalEditor: ExternalEditor = ExternalEditors.xcode
+    @Environment(\.modelContext) private var modelContext
     @Environment(CodeRepository.self) private var repository
     @EnvironmentObject private var viewState: ViewState
     @EnvironmentObject private var shell: Shell
@@ -69,7 +71,7 @@ struct CommitHistoryMainView: View {
             .task(id: id, priority: .userInitiated) {
                 if let id {
                     // TODO: is this the right way to do paralell?
-                    if let diffs = try? await shell.diff(at: id) {
+                    if let diffs = try? await shell.diff(at: id, modelContext: modelContext) {
                         self.diffs = diffs
                     }
                     
